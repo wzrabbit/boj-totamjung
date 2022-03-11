@@ -1,0 +1,100 @@
+:root {
+    --normal-main-color: rgb(0, 118, 191);
+    --normal-sub-color: rgb(255, 255, 255);
+    --normal-hover-color: rgb(182, 210, 228);
+    --translucent-white-color: rgb(255, 255, 255, 0);
+    --shadow-color: rgb(0, 0, 0, 0.3);
+}
+
+.ttj-widget {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 40px;
+    height: 180px;
+    right: 30px;
+    bottom: 30px;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+.ttj-widget * {
+    pointer-events: auto;
+    align-self: flex-end;
+}
+
+.ttj-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px !important;
+    border: 2px solid var(--normal-main-color);
+    box-shadow: 3px 3px 10px var(--shadow-color);
+    background-color: var(--translucent-white-color);
+    backdrop-filter: blur(5px);
+    overflow-y: hidden;
+    transition: 0.3s;
+}
+
+.ttj-menu-item {
+    width: 36px;
+    height: 32px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.ttj-menu-item:hover {
+    background-color: var(--normal-hover-color);
+}
+
+.ttj-menu-item:first-child {
+    margin-top: 8px;
+}
+
+.ttj-menu-image {
+    display: block;
+    margin: 3px auto;
+    height: 26px;
+}
+
+.ttj-topbtn {
+    position: absolute;
+    top: 140px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px !important;
+    background-color: var(--normal-main-color);
+    cursor: pointer;
+}
+
+.ttj-topbtn span {
+    position: absolute;
+    width: 17.5px;
+    height: 6px;
+    top: 15px;
+    background-color: var(--normal-sub-color);
+    border-radius: 4px !important;
+}
+
+@keyframes topbtn-animation {
+    0% { top: 15px; }
+    33% { top: 20px; }
+    66% {top: 8px; }
+    100% {top: 15px }
+}
+
+.ttj-topbtn[cooldown='true'] span {
+    animation: topbtn-animation 1s;
+}
+
+.ttj-topbtn span:nth-child(1) {
+    left: 7px;
+    transform: rotate(-45deg);
+}
+
+.ttj-topbtn span:nth-child(2) {
+    right: 7px;
+    transform: rotate(45deg);
+}
+

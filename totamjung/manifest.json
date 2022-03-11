@@ -1,0 +1,40 @@
+{
+    "name": "Totamjung",
+    "description": "BOJ Algorithm Tag Locker",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "optionPageOpener.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.acmicpc.net/*"
+            ],
+            "run_at": "document_idle",
+            "js": [
+                "widget.js"
+            ],
+            "css": [
+                "widget.css"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "images/*.png"
+            ],
+            "matches": [
+                "https://www.acmicpc.net/*"
+            ]
+        }
+    ],
+    "options_page": "options.html"
+}

@@ -24,6 +24,18 @@
             "css": [
                 "widget.css"
             ]
+        },
+        {
+            "matches": [
+                "https://www.acmicpc.net/*"
+            ],
+            "run_at": "document_start",
+            "js": [
+                "loader.js"
+            ],
+            "css": [
+                "pallette.css"
+            ]
         }
     ],
     "web_accessible_resources": [

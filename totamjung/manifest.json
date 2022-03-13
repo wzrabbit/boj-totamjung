@@ -34,7 +34,8 @@
                 "loader.js"
             ],
             "css": [
-                "pallette.css"
+                "pallette.css",
+                "theme.css",
             ]
         }
     ],

@@ -1,9 +1,14 @@
 html[totamjung='on'] p,
-html[totamjung='on'] div,
+html[totamjung='on'] div:not(.CodeMirror-code),
 html[totamjung='on'] li,
 html[totamjung='on'] li a,
-html[totamjung='on'] pre {
+html[totamjung='on'] label,
+html[totamjung='on'] pre:not(.CodeMirror-line) {
     color: var(--text-color);
+}
+
+html[totamjung='on'] .CodeMirror-line {
+    color: red;
 }
 
 html[totamjung='on'] a,
@@ -31,6 +36,10 @@ html[totamjung='on'] textarea {
     background-color: var(--menu-color) !important;
     border-color: var(--bright-menu-line-color) !important;
     color: var(--text-color) !important;
+}
+
+html[totamjung='on'] select option:hover {
+    background-color: red;
 }
 
 html[totamjung='on'] input[type='checkbox'],
@@ -271,7 +280,7 @@ html[totamjung='on'] .nav-pills > li > a:active {
     background-color: var(--tab-hover-color) !important;
 }
 
-html[totamjung='on'] pre {
+html[totamjung='on'] pre:not(.CodeMirror-line) {
     background-color: var(--menu-color);
     border-color: var(--menu-color);
     box-shadow: 0px 0px 5px var(--menu-color);
@@ -286,6 +295,15 @@ html[totamjung='on'] .breadcrumbs {
     background-color: var(--secondary-menu-color);
     box-shadow: 0px 5px 10px var(--secondary-menu-color);
     border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] #logo-header {
+    filter: invert(6%)
+            sepia(85%)
+            saturate(500%)
+            hue-rotate(331deg)
+            brightness(200%)
+            contrast(100%);
 }
 
 html[totamjung='on'] .parallax-counter-v1 {
@@ -534,10 +552,6 @@ html[totamjung='on'] .close:hover {
     text-shadow: 0 0 7px var(--title-color);
 }
 
-html[totamjung='on'] .user-admin {
-    text-shadow: 0 0 10px var(--text-color);
-}
-
 html[totamjung='on'] .coderTextRed {
     text-shadow: 0 0 10px var(--tc-red);
 }
@@ -558,9 +572,21 @@ html[totamjung='on'] .coderTextGray {
     text-shadow: 0 0 10px var(--tc-gray);
 }
 
+html[totamjung='on'] .user-admin {
+    text-shadow: 0 0 10px var(--cf-admin);
+}
+
 html[totamjung='on'] .user-legendary,
 html[totamjung='on'] .user-red {
     text-shadow: 0 0 10px var(--cf-red);
+}
+
+html[totamjung='on'] .user-admin {
+    color: var(--cf-admin) !important;
+}
+
+html[totamjung='on'] .user-legendary-first-letter {
+    color: var(--cf-legendary) !important;
 }
 
 html[totamjung='on'] .user-orange {
@@ -724,6 +750,10 @@ html[totamjung='on'] .blog-content a {
     color: var(--link-color);
 }
 
+html[totamjung='on'] code.hljs.cs {
+    color: var(--text-color);
+}
+
 html[totamjung='on'] .list-group.sidebar-nav-v1 {
     box-shadow: 0 0 13px var(--menu-color);
 }
@@ -774,6 +804,16 @@ html[totamjung='on'] .ibox-content {
     border-top-color: var(--link-color);
 }
 
+html[totamjung='on'] .s-results .inner-results h3 a,
+html[totamjung='on'] .s-results .related-search h3 {
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .s-results .down-ul li a,
+html[totamjung='on'] .s-results .related-search li a {
+    color: var(--link-color);
+}
+
 html[totamjung='on'] .search-block-v2 {
     background: none;
     background-color: var(--secondary-menu-color);
@@ -811,19 +851,169 @@ html[totamjung='on'] pre::-webkit-scrollbar,
 html[totamjung='on']::-webkit-scrollbar-track,
 html[totamjung='on'] pre::-webkit-scrollbar-track,
 html[totamjung='on']::-webkit-scrollbar-thumb,
-html[totamjung='on'] pre::-webkit-scrollbar-thumb {
-    width: 12px;
+html[totamjung='on'] pre::-webkit-scrollbar-thumb,
+html[totamjung='on'] .table-responsive::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
 }
 
 html[totamjung='on']::-webkit-scrollbar,
 html[totamjung='on'] pre::-webkit-scrollbar,
 html[totamjung='on']::-webkit-scrollbar-track,
-html[totamjung='on'] pre::-webkit-scrollbar-track {
+html[totamjung='on'] pre::-webkit-scrollbar-track,
+html[totamjung='on'] .table-responsive::-webkit-scrollbar-track {
     background-color: var(--secondary-menu-color);
 }
 
 html[totamjung='on']::-webkit-scrollbar-thumb,
-html[totamjung='on'] pre::-webkit-scrollbar-thumb {
+html[totamjung='on'] pre::-webkit-scrollbar-thumb,
+html[totamjung='on'] .table-responsive::-webkit-scrollbar-thumb {
     background-color: var(--bright-menu-line-color);
     border-radius: 10px;
+}
+
+html[totamjung='on'] .chosen-container-single .chosen-single {
+    background: var(--menu-color);
+    color: var(--text-color);
+    border: none;
+    box-shadow: 0 0 5px var(--menu-color);
+}
+
+html[totamjung='on'] .active-result.result-selected.highlighted,
+html[totamjung='on'] .chosen-container .chosen-results
+html[totamjung='on'] .active-result.group-option.highlighted {
+    background: var(--menu-line-color);
+}
+
+html[totamjung='on'] .reg-page {
+    background-color: var(--menu-color);
+    box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjung='on'] .reg-header {
+    border-bottom-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] span.input-group-addon {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+html[totamjung='on'] span.input-group-addon i {
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .ttj-dropdown-menu {
+    background-color: var(--translucent-dark-color);
+    border-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] .ttj-topbtn {
+    background-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] .ttj-topbtn > span {
+    background-color: var(--menu-color);
+}
+
+html[totamjung='on'] .ttj-menu-image {
+    filter: invert(48%)
+            sepia(26%)
+            saturate(575%)
+            hue-rotate(330deg)
+            brightness(95%)
+            contrast(85%);
+}
+
+#problem-body.font-1 .problem-text {
+    font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-2 .problem-text {
+    font-family: 'Nanum Gothic Coding', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-3 .problem-text {
+    font-family: 'Nanum Myeongjo', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-4 .problem-text {
+    font-family: 'Do Hyeon', 'Noto Sans KR', sans-serif !important;
+    font-size: 18px;
+}
+
+#problem-body.font-5 .problem-text {
+    font-family: 'Jua', 'Noto Sans KR', sans-serif !important;
+    font-size: 18px;
+}
+
+#problem-body.font-6 .problem-text {
+    font-family: 'Noto Serif KR', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-7 .problem-text {
+    font-family: 'Sunflower', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-8 .problem-text {
+    font-family: 'Yeon Sung', 'Noto Sans KR', sans-serif !important;
+    font-size: 20px;
+}
+
+#problem-body.font-9 .problem-text {
+    font-family: 'Cute Font', 'Noto Sans KR', sans-serif !important;
+    font-size: 22px;
+}
+
+#problem-body.font-10 .problem-text {
+    font-family: 'Gaegu', 'Noto Sans KR', sans-serif !important;
+    font-size: 20px;
+}
+
+#problem-body.font-11 .problem-text {
+    font-family: 'Gothic A1', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-12 .problem-text {
+    font-family: 'Gowun Batang', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-13 .problem-text {
+    font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-14 .problem-text {
+    font-family: 'Hi Melody', 'Noto Sans KR', sans-serif !important;
+    font-size: 20px;
+}
+
+#problem-body.font-15 .problem-text {
+    font-family: 'IPM Plex Sans', 'Noto Sans KR', sans-serif !important;
+}
+
+#problem-body.font-16 .problem-text {
+    font-family: 'Poor Story', 'Noto Sans KR', sans-serif !important;
+    font-size: 18px;
+}
+
+#problem-body.font-17 .problem-text {
+    font-family: 'Single Day', 'Noto Sans KR', sans-serif !important;
+    font-size: 18px;
+}
+
+#problem-body.font-18 .problem-text {
+    font-family: 'Song Myung', 'Noto Sans KR', sans-serif !important;
+    font-size: 18px;
+}
+
+#problem-body.font-19 .problem-text {
+    font-family: 'Stylish', 'Noto Sans KR', sans-serif !important;
+    font-size: 20px;
+}
+
+/* FOR BOJ EXTENDED */
+html[totamjung='on'] .table > thead > tr.result-mine > td:first-child,
+html[totamjung='on'] .table > tbody > tr.result-mine > td:first-child,
+html[totamjung='on'] .table > tfoot > tr.result-mine > td:first-child {
+    border-left-color: var(--title-color);
 }

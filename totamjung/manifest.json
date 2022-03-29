@@ -9,8 +9,11 @@
         "scripting",
         "tabs"
     ],
+    "host_permissions": [
+        "https://www.acmicpc.net/*"
+    ],
     "background": {
-        "service_worker": "optionPageOpener.js"
+        "service_worker": "background.js"
     },
     "content_scripts": [
         {
@@ -35,7 +38,7 @@
             ],
             "css": [
                 "pallette.css",
-                "theme.css",
+                "theme.css"
             ]
         }
     ],

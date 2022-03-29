@@ -20,6 +20,7 @@
     --table-contest-color-dark: rgb(2, 0, 37);
     --glyphicon-like-color: rgb(0, 255, 98);
     --glyphicon-unlike-color: rgb(255, 0, 0);
+    --default-black: rgb(30, 30, 30);
     --gradient-black: linear-gradient(
         to right,
         rgb(0, 0, 0, 0.4) 0%, 
@@ -36,6 +37,8 @@
     --tc-green: rgb(0, 169, 0);
     --tc-gray: rgb(153, 153, 153);
 
+    --cf-admin: white;
+    --cf-legendary: rgb(250, 125, 125);
     --cf-red: red;
     --cf-orange: rgb(255, 140, 0);
     --cf-purple: rgb(170, 0, 170);
@@ -53,11 +56,18 @@
     --at-brown: rgb(128, 64, 0);
     --at-gray: gray;
 
-    --normal-blue: rgb(66, 139, 202);
+    /*--normal-blue: rgb(66, 139, 202);
     --panel-know-bg: rgb(204, 204, 204);
     --panel-dontknow-bg: rgb(173, 211, 245);
     --panel-result: black;
     --panel-know-emp: rgb(80, 80, 80);
     --panel-dontknow-emp: rgb(0, 75, 141);
-    --ttj-panel-know-bg: rgb(0, 49, 8, 0.5);
+    --ttj-panel-know-bg: rgb(0, 49, 8, 0.5);*/
+
+    --normal-main-color: rgb(0, 118, 191);
+    --normal-sub-color: rgb(255, 255, 255);
+    --normal-hover-color: rgb(182, 210, 228);
+    --translucent-white-color: rgb(255, 255, 255, 0);
+    --translucent-dark-color: rgb(0, 0, 0, 0.3);
+    --shadow-color: rgb(0, 0, 0, 0.3);
 }

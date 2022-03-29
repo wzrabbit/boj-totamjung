@@ -10,8 +10,8 @@ const resetSettings = {
 const resetTimer = {
     'hour': 0,
     'minute': 10,
-    'problem': 1000,
-    'expire': 0
+    'problem': -1,
+    'expire': -1
 };
 
 function setData(key, value) {
@@ -98,11 +98,11 @@ function updateSettingsData(name, value, state) {
         loaded = loaded['settings'];
 
         if (loaded === undefined || Object.values(loaded).indexOf(undefined) !== -1)
-            loaded = resetData;
+            loaded = resetSettings;
 
         console.log('before', loaded);
         if (['predict', 'lock', 'theme', 'font'].indexOf(name) === -1) {
-            loaded = resetData;
+            loaded = resetSettings;
             console.log('invaild request!! aborting.');
             return;
         }
@@ -150,18 +150,18 @@ function updateTimerData(element) {
     chrome.storage.sync.get(['timer'], (loaded) => {
         loaded = loaded['loaded'];
         if (loaded === undefined ||
-            isNaN(loaded.hour) || loaded.hour % 1 !== 0 || loaded.hour > 8 || loaded.hour < 0 ||
-            isNaN(loaded.minute) || loaded.minute % 1 !== 0 || loaded.minute > 59 || loaded.minute < 0 ||
+            isNaN(loaded.hour) || loaded.hour === '' || loaded.hour % 1 !== 0 || loaded.hour > 8 || loaded.hour < 0 ||
+            isNaN(loaded.minute) || loaded.minute === '' || loaded.minute % 1 !== 0 || loaded.minute > 59 || loaded.minute < 0 ||
             isNaN(loaded.problem) || isNaN(loaded.expire)
         )
             loaded = resetTimer;
 
         if (element === hour) {
-            if (isNaN(hour.value) || hour.value % 1 !== 0 || hour.value > 8 || hour.value < 0)
+            if (isNaN(hour.value) || hour.value === '' || hour.value % 1 !== 0 || hour.value > 8 || hour.value < 0)
                 hour.value = loaded.hour;
         }
         else if (element === minute) {
-            if (isNaN(minute.value) || minute.value % 1 !== 0 || minute.value > 59 || minute.value < 0)
+            if (isNaN(minute.value) || minute.value === '' || minute.value % 1 !== 0 || minute.value > 59 || minute.value < 0)
                 minute.value = loaded.minute;
         }
 
@@ -176,7 +176,6 @@ function updateTimerData(element) {
         });
     });
 }
-
 
 window.onload = () => {
     loadPool();

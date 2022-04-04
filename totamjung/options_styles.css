@@ -9,20 +9,16 @@ html {
     background-attachment: fixed;
     background-color: var(--bg-first-color);
     background-image:
-        linear-gradient(
-            56.4deg,
+        linear-gradient(56.4deg,
             var(--bg-second-color) 25%,
             transparent 25%,
             transparent 75%,
-            var(--bg-second-color) 75%
-        ),
-        linear-gradient(
-            -56.4deg,
+            var(--bg-second-color) 75%),
+        linear-gradient(-56.4deg,
             var(--bg-second-color) 25%,
             transparent 25%,
             transparent 75%,
-            var(--bg-second-color) 75%
-        );
+            var(--bg-second-color) 75%);
 }
 
 p {
@@ -33,7 +29,7 @@ p {
     font-weight: 400;
 }
 
-label + p {
+label+p {
     margin-top: 10px;
 }
 
@@ -50,12 +46,13 @@ span.emphasize {
 
 .wrapper {
     display: flex;
-    width: 1200px;
+    width: 1450px;
     height: 550px;
     margin-left: 20px;
 }
 
-.word-menu, .settings-menu {
+.word-menu,
+.settings-menu {
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -80,7 +77,7 @@ span.emphasize {
     border-bottom: 1px dotted var(--bright-menu-line-color);
 }
 
-.section-title > span {
+.section-title>span {
     padding-bottom: 5px;
     color: var(--title-color);
     font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
@@ -137,7 +134,7 @@ span.emphasize {
     transition: 0.2s;
 }
 
-.time + p {
+.time+p {
     margin: 15px 6px 0 3px;
 }
 
@@ -148,7 +145,7 @@ span.emphasize {
 
 .time::-webkit-outer-spin-button,
 .time::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 .time:active,
@@ -257,6 +254,7 @@ span.emphasize {
 .choosing-bundle label {
     margin-right: 10px;
 }
+
 .radio-text {
     margin-bottom: 5px;
     font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
@@ -285,14 +283,38 @@ span.checkbox-visual {
     transition: 0.15s;
 }
 
-input[type='checkbox'] + span.checkbox-visual {
+input[type='checkbox']+span.checkbox-visual {
     border-radius: 3px;
 }
 
-input[type='radio']:checked + span.checkbox-visual,
-input[type='checkbox']:checked + span.checkbox-visual {
+input[type='radio']:checked+span.checkbox-visual,
+input[type='checkbox']:checked+span.checkbox-visual {
     background-color: var(--title-color);
     box-shadow: 0 0 8px var(--title-color);
+}
+
+@keyframes breathe {
+    0% {
+        margin-top: 250px;
+        height: 331px;
+    }
+
+    50% {
+        margin-top: 260px;
+        height: 321px;
+    }
+
+    100% {
+        margin-top: 250px;
+        height: 331px;
+    }
+}
+
+.rabbit {
+    margin-top: 210px;
+    width: 250px;
+    height: 331px;
+    animation: breathe linear 3s infinite;
 }
 
 html::-webkit-scrollbar,

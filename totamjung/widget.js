@@ -165,6 +165,20 @@ function setTimer(expire) {
     catch (e) { return; }
 }
 
+function createPopup() {
+    const knowImagePath = chrome.runtime.getURL('images/know.png');
+    const popup = document.createElement('div');
+
+    popup.className = 'ttj-popup';
+
+    popup.innerHTML = `
+        <img id="ttj-result-image" src="${knowImagePath}" />
+        <div id="ttj-result-text">이 문제는 알고 있는 알고리즘만을<br />이용하여 풀 수 있습니다.</div>
+    `;
+
+    document.querySelector('body').appendChild(popup);
+}
+
 function createWidget() {
     let widget = document.createElement('div');
     widget.className = 'ttj-widget';
@@ -172,16 +186,16 @@ function createWidget() {
     widget.innerHTML = `
         <div class="ttj-dropdown-menu" id="ttj-dropdown-menu">
             <div class="ttj-menu-item ttj-option-btn" id="ttj-optionbtn">
-                <img class="ttj-menu-image" src="${chrome.runtime.getURL('images/options_normal.png')}" />
+                <img class="ttj-menu-image" src="${chrome.runtime.getURL('images/options.png')}" />
             </div>
             <div class="ttj-menu-item" id="ttj-themebtn">
-                <img class="ttj-menu-image" src="${chrome.runtime.getURL('images/theme_normal.png')}" />
+                <img class="ttj-menu-image" src="${chrome.runtime.getURL('images/theme.png')}" />
             </div>
-            <div class="ttj-menu-item">
-                <img class="ttj-menu-image" src="${chrome.runtime.getURL('images/task_normal.png')}" />
+            <div class="ttj-menu-item" id="ttj-checkbtn">
+                <img class="ttj-menu-image" id="ttj-checkimg" src="${chrome.runtime.getURL('images/check.png')}" />
             </div>
             <div class="ttj-menu-item" id="ttj-lockbtn">
-                <img class="ttj-menu-image" src="${chrome.runtime.getURL('images/lock_normal.png')}" />
+                <img class="ttj-menu-image" src="${chrome.runtime.getURL('images/lock.png')}" />
             </div>
         </div>
         <div class="ttj-topbtn" id="ttj-topbtn" cooldown="false">
@@ -252,7 +266,84 @@ function createThemeButtonListener() {
     });
 }
 
+function createCheckButtonListener() {
+    const checkBtn = document.querySelector('#ttj-checkbtn');
+    const checkImg = document.querySelector('#ttj-checkimg');
+    const spoilerBtn = document.querySelector('.show-spoiler');
+    const algorithmElementList = document.querySelectorAll('.spoiler-link');
+
+    const popup = document.querySelector('.ttj-popup');
+    const popupImage = document.querySelector('#ttj-result-image');
+    const popupText = document.querySelector('#ttj-result-text');
+
+    const knowImagePath = chrome.runtime.getURL('images/know.png');
+    const dontKnowImagePath = chrome.runtime.getURL('images/dontknow.png');
+
+    const problemTitle = document.querySelector('#problem_title');
+
+    const knowIcon = document.createElement('img');
+    knowIcon.src = knowImagePath;
+    knowIcon.classList.add('ttj-result-icon');
+
+    const dontKnowIcon = document.createElement('img');
+    dontKnowIcon.src = dontKnowImagePath;
+    dontKnowIcon.classList.add('ttj-result-icon');
+
+    let allKnow = true;
+
+    console.log("Spoiler: ", spoilerBtn);
+    if (!spoilerBtn) {
+        checkBtn.classList.add('disabled');
+        return;
+    }
+
+    chrome.storage.sync.get(['algorithm'], (loaded) => {
+        const knowAlgorithm = new Set(loaded['algorithm'] || []);
+
+        for (let i = 0; i < algorithmElementList.length; i++) {
+            if (!knowAlgorithm.has(algorithmToId[algorithmElementList[i].innerText])) {
+                allKnow = false;
+                break;
+            }
+        }
+    });
+
+    checkBtn.addEventListener('click', () => {
+        if ([...checkBtn.classList].includes('disabled'))
+            return;
+
+        checkBtn.classList.add('disabled');
+        if (allKnow) {
+            console.log("Know!");
+            checkImg.src = knowImagePath;
+            problemTitle.after(knowIcon);
+        }
+        else {
+            console.log("Don't Know!");
+            checkImg.src = dontKnowImagePath;
+            problemTitle.after(dontKnowIcon);
+            popupImage.src = dontKnowImagePath;
+            popupText.innerHTML = '이 문제를 풀기 위해 아직 모르는<br />알고리즘을 이용해야 할 수 있습니다.';
+        }
+
+        popup.style.left = '20px';
+        setTimeout(() => {
+            popup.style.left = '-310px';
+        }, 2000);
+    });
+
+    chrome.storage.sync.get(['settings'], (loaded) => {
+        loaded = loaded.settings;
+
+        if (loaded !== undefined && loaded.predict === 'always') {
+            popup.style.display = 'none';
+            checkBtn.click();
+        }
+    });
+}
+
 function createLockButtonListener() {
+    const checkBtn = document.querySelector('#ttj-checkbtn');
     const lockBtn = document.querySelector('#ttj-lockbtn');
     const spoilerBtn = document.querySelector('.show-spoiler');
     const algorithmElementCore = document.querySelector('.spoiler');
@@ -265,7 +356,6 @@ function createLockButtonListener() {
             if (!knowAlgorithm.has(algorithmToId[algorithmElementList[i].innerText])) {
                 tag.style.fontWeight = 800;
                 tag.innerText = tag.innerText + ' ⚠️';
-                allKnow = false;
             }
         });
     });
@@ -304,6 +394,9 @@ function createLockButtonListener() {
             newBtn.style.display = 'none';
             console.log(algorithmElementList, algorithmElementList.parentNode);
             algorithmElementCore.style.display = 'block';
+
+            checkBtn.classList.add('disabled');
+            lockBtn.classList.add('disabled');
         }
     });
 
@@ -325,7 +418,15 @@ function createLockButtonListener() {
         }
         else {
             isLocked = false;
+            chrome.runtime.sendMessage({ msg: 'deleteTimer' });
         }
+    });
+
+    chrome.storage.sync.get(['settings'], (loaded) => {
+        loaded = loaded.settings;
+
+        if (loaded !== undefined && loaded.lock === 'always')
+            lockBtn.click();
     });
 }
 
@@ -350,9 +451,11 @@ function applyFont() {
 
 window.onload = () => {
     applyFont();
+    createPopup();
     createWidget();
     createTopButtonListener();
     createOptionButtonListener();
     createThemeButtonListener();
+    createCheckButtonListener();
     createLockButtonListener();
 }

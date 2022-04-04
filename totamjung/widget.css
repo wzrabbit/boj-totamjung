@@ -1,3 +1,36 @@
+.ttj-popup {
+    position: fixed;
+    display: flex;
+    padding: 17.5px 0 17.5px 5px;
+    width: 300px;
+    height: 90px;
+    left: -320px;
+    bottom: 20px;
+    background-color: var(--normal-main-color);
+    border-radius: 10px !important;
+    box-shadow: 3px 3px 13px var(--shadow-color);
+    transition: 0.3s;
+    z-index: 999999;
+}
+
+#ttj-result-image {
+    width: 55px;
+    height: 55px;
+    padding: 10px;
+    filter: var(--filter-white);
+}
+
+#ttj-result-text {
+    font-family: "Noto Sans KR", sans-serif, "맑은 고딕", serif;
+    font-size: 14px;
+    padding: 12px 0 0 10px;
+    margin-left: 7.5px;
+    border-left: 2px dashed white;
+    line-height: 1.2;
+    color: white;
+    font-weight: 800;
+}
+
 .ttj-widget {
     position: fixed;
     display: flex;
@@ -48,9 +81,10 @@
     display: block;
     margin: 3px auto;
     height: 26px;
+    filter: var(--filter-blue);
 }
 
-.ttj-menu-item.disabled > .ttj-menu-image {
+.ttj-menu-item.disabled>.ttj-menu-image {
     opacity: 0.4;
 }
 
@@ -74,10 +108,21 @@
 }
 
 @keyframes topbtn-animation {
-    0% { top: 15px; }
-    33% { top: 20px; }
-    66% {top: 8px; }
-    100% {top: 15px }
+    0% {
+        top: 15px;
+    }
+
+    33% {
+        top: 20px;
+    }
+
+    66% {
+        top: 8px;
+    }
+
+    100% {
+        top: 15px
+    }
 }
 
 .ttj-topbtn[cooldown='true'] span {
@@ -94,3 +139,9 @@
     transform: rotate(45deg);
 }
 
+.ttj-result-icon {
+    margin: 1px 0 5px 7px;
+    width: 26px;
+    height: 26px;
+    filter: var(--filter-blue);
+}

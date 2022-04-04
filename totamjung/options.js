@@ -148,7 +148,7 @@ function updateTimerData(element) {
     let minute = document.querySelector('#minute');
 
     chrome.storage.sync.get(['timer'], (loaded) => {
-        loaded = loaded['loaded'];
+        loaded = loaded['timer'];
         if (loaded === undefined ||
             isNaN(loaded.hour) || loaded.hour === '' || loaded.hour % 1 !== 0 || loaded.hour > 8 || loaded.hour < 0 ||
             isNaN(loaded.minute) || loaded.minute === '' || loaded.minute % 1 !== 0 || loaded.minute > 59 || loaded.minute < 0 ||

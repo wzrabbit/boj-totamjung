@@ -68,6 +68,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 sendResponse(loaded.expire);
             }
             else {
+                console.log("Unlocked");
                 chrome.storage.sync.set({
                     ['timer']: {
                         'hour': loaded.hour,

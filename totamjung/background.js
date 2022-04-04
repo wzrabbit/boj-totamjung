@@ -12,11 +12,12 @@ const resetTimer = {
     'expire': -1
 };
 
-chrome.runtime.onInstalled.addListener((reason) => {
-    if (reason === 'install') {
+chrome.runtime.onInstalled.addListener((details) => {
+    if (details.reason === 'install') {
         setData('algorithm', [2]);
         setData('settings', resetSettings);
         setData('timer', resetTimer);
+        console.log("NEW DATA SET")
     }
 });
 

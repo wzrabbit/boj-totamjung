@@ -131,9 +131,9 @@ function setData(key, value) {
 
 function getProblemNo() {
     const wholePath = location.href;
-    const no = (wholePath.match(/https:\/\/www.acmicpc.net\/problem\/[0-9]+.*/) || [-1])[0];
+    const no = (wholePath.match(/(?<=https:\/\/www.acmicpc.net\/problem\/)[0-9]+(?=.*)/) || [-1])[0];
 
-    return no;
+    return parseInt(no);
 }
 
 function setTimer(expire) {
@@ -379,7 +379,7 @@ function createLockButtonListener() {
         const now = new Date().getTime();
         const expire = timer.expire;
 
-        if (now >= expire)
+        if (now >= expire || getProblemNo() !== timer.problem)
             return;
 
         console.log(now, expire);
@@ -422,11 +422,20 @@ function createLockButtonListener() {
         }
     });
 
-    chrome.storage.sync.get(['settings'], (loaded) => {
-        loaded = loaded.settings;
+    chrome.storage.sync.get(['settings', 'timer'], (loaded) => {
+        const settings = loaded.settings;
+        const timer = loaded.timer;
 
-        if (loaded !== undefined && loaded.lock === 'always')
+        const now = new Date().getTime();
+        const expire = timer.expire;
+        console.log("Prob", getProblemNo(), timer.problem);
+        if (loaded !== undefined && settings.lock === 'always' && (now >= expire || getProblemNo() !== timer.problem)) {
+            console.log("Query:", now >= expire, getProblemNo() !== timer.problem)
+
+            console.log("Lock Button Automatically Clicked");
             lockBtn.click();
+        }
+
     });
 }
 

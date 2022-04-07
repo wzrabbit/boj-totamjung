@@ -1,5 +1,5 @@
 html[totamjung='on'] p,
-html[totamjung='on'] div:not(.CodeMirror-code),
+html[totamjung='on'] div,
 html[totamjung='on'] li,
 html[totamjung='on'] li a,
 html[totamjung='on'] label,
@@ -493,6 +493,11 @@ html[totamjung='on'] .redactor-statusbar {
     background-color: var(--secondary-menu-color);
 }
 
+html[totamjung='on'] .redactor-styles pre {
+    background-color: black;
+    border-color: var(--bright-menu-line-color);
+}
+
 html[totamjung='on'] .progress {
     background-color: black;
 }
@@ -896,6 +901,23 @@ html[totamjung='on'] span.input-group-addon i {
 html[totamjung='on'] span.solvedac-tier-name-0:after,
 html[totamjung='on'] span.solvedac-tier-name--1:after {
     color: var(--text-color);
+}
+
+html[totamjung='on'] .uploadcare--dialog div {
+    color: black;
+}
+
+html[totamjung='on'] .CodeMirror-line>span {
+    color: black;
+}
+
+html[totamjung='on'] .cm-s-3024-night.CodeMirror .CodeMirror-line>span {
+    color: #d6d5d4;
+}
+
+html[totamjung='on'] .cm-s-abcdef.CodeMirror .CodeMirror-line>span,
+html[totamjung='on'] .cm-s-ambiance.CodeMirror .CodeMirror-line>span {
+    color: #d7d4f0;
 }
 
 html[totamjung='on'] .ttj-dropdown-menu {

@@ -911,13 +911,28 @@ html[totamjung='on'] .CodeMirror-line>span {
     color: black;
 }
 
-html[totamjung='on'] .cm-s-3024-night.CodeMirror .CodeMirror-line>span {
+html[totamjung='on'] .cm-s-bespin.CodeMirror .CodeMirror-line>span {
+    color: #9d9b97;
+}
+
+html[totamjung='on'] .cm-s-3024-night.CodeMirror .CodeMirror-line>span,
+html[totamjung='on'] .cm-s-base16-dark.CodeMirror .CodeMirror-line>span {
     color: #d6d5d4;
 }
+
+html[totamjung='on'] .cm-s-blackboard.CodeMirror .CodeMirror-line>span,
+html[totamjung='on'] .cm-s-colorforth.CodeMirror .CodeMirror-line>span {
+    color: #f8f8f8;
+}
+
 
 html[totamjung='on'] .cm-s-abcdef.CodeMirror .CodeMirror-line>span,
 html[totamjung='on'] .cm-s-ambiance.CodeMirror .CodeMirror-line>span {
     color: #d7d4f0;
+}
+
+html[totamjung='on'] .cm-s-cobalt.CodeMirror .CodeMirror-line>span {
+    color: #ffffff;
 }
 
 html[totamjung='on'] .ttj-dropdown-menu {

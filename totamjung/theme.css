@@ -47,6 +47,7 @@ html[totamjung='on'] button[type='submit'],
 html[totamjung='on'] button[type='submit']:hover,
 html[totamjung='on'] button[type='submit']:focus,
 html[totamjung='on'] button.btn.btn-primary,
+html[totamjung='on'] button.btn.btn,
 html[totamjung='on'] button.navbar-toggle,
 html[totamjung='on'] a.btn,
 html[totamjung='on'] .btn.btn-default,
@@ -99,7 +100,7 @@ html[totamjung='on'] .sky-form .icon-append {
     color: var(--title-color);
 }
 
-html[totamjung='on'] .sky-form .inline-group > label {
+html[totamjung='on'] .sky-form .inline-group>label {
     color: var(--text-color);
 }
 
@@ -108,17 +109,17 @@ html[totamjung='on'] .sky-form .selectize-input {
     border: 3px solid var(--title-color);
 }
 
-html[totamjung='on'] .sky-form label > i {
+html[totamjung='on'] .sky-form label>i {
     background-color: var(--title-color);
     box-shadow: 0 0 10px var(--title-color);
     border-color: var(--title-color);
 }
 
-html[totamjung='on'] .sky-form label > i::after {
+html[totamjung='on'] .sky-form label>i::after {
     color: var(--menu-color);
 }
 
-html[totamjung='on'] .sky-form .label > .rounded-x::after {
+html[totamjung='on'] .sky-form .label>.rounded-x::after {
     background-color: var(--menu-color);
     width: 8px !important;
     height: 8px !important;
@@ -497,6 +498,69 @@ html[totamjung='on'] .table-condensed th {
         border: none;
         box-shadow: 0 0 13px var(--menu-color);
     }
+}
+
+html[totamjung='on'] .table-responsive #problem-info thead {
+    color: var(--title-color);
+    border-bottom-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] .table-responsive #problem-info * {
+    border-top-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] #problem-memo-edit {
+    box-shadow: 0 0 14px var(--menu-color);
+    margin-bottom: 20px;
+}
+
+html[totamjung='on'] #problem-memo-edit div {
+    box-shadow: none;
+}
+
+html[totamjung='on'] #problem-memo-edit .editor-toolbar,
+html[totamjung='on'] .editor-statusbar {
+    background-color: var(--secondary-menu-color);
+    opacity: 1;
+    border: none;
+}
+
+html[totamjung='on'] .cm-s-default.CodeMirror,
+html[totamjung='on'] .cm-s-paper.CodeMirror {
+    background: var(--menu-color);
+    border-color: var(--menu-color);
+}
+
+html[totamjung='on'] .cm-s-paper.CodeMirror-fullscreen {
+    z-index: 1000000;
+}
+
+html[totamjung='on'] .editor-toolbar.fullscreen::before,
+html[totamjung='on'] .editor-toolbar.fullscreen::after {
+    background: none;
+}
+
+html[totamjung='on'] .editor-toolbar a {
+    color: var(--title-color) !important;
+    transition: 0.2s;
+}
+
+html[totamjung='on'] .editor-toolbar a:hover {
+    background-color: var(--menu-line-color) !important;
+    border-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .editor-toolbar i.separator {
+    border-left-width: 0;
+    border-right-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] .cm-s-paper.CodeMirror .CodeMirror-line>span {
+    color: var(--text-color);
+}
+
+html[totamjung='on'] .editor-preview-side {
+    background-color: var(--menu-line-color);
 }
 
 html[totamjung='on'] .redactor-box.redactor-styles-on {
@@ -970,6 +1034,7 @@ html[totamjung='on'] .cm-s-bespin.CodeMirror .CodeMirror-line>span {
 html[totamjung='on'] .cm-s-pastel-on-dark.CodeMirror .CodeMirror-line>span {
     color: #8f938f;
 }
+
 html[totamjung='on'] .cm-s-shadowfox.CodeMirror .CodeMirror-line>span {
     color: #b1b1b3;
 }
@@ -994,7 +1059,8 @@ html[totamjung='on'] .cm-s-tomorrow-night-eighties.CodeMirror .CodeMirror-line>s
     color: #ccc;
 }
 
-html[totamjung='on'] .cm-s-yeti.CodeMirror .CodeMirror-line>span {
+html[totamjung='on'] .cm-s-yeti.CodeMirror .CodeMirror-line>span,
+html[totamjung='on'] .cm-s-seti.CodeMirror .CodeMirror-line>span {
     color: #cfd2d1;
 }
 
@@ -1042,7 +1108,8 @@ html[totamjung='on'] .cm-s-tomorrow-night-bright.CodeMirror .CodeMirror-line>spa
     color: #eaeaea;
 }
 
-html[totamjung='on'] .cm-s-lesser-dark.CodeMirror .CodeMirror-line>span {
+html[totamjung='on'] .cm-s-lesser-dark.CodeMirror .CodeMirror-line>span,
+html[totamjung='on'] .cm-s-railscasts.CodeMirror .CodeMirror-line>span {
     color: #f4f1ed;
 }
 

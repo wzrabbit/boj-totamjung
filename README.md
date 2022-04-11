@@ -39,3 +39,7 @@
 https://github.com/drash99/BJ_addon
 * boj-extended
 https://github.com/joonas-yoon/boj-extended
+
+### 이 프로젝트는 아직 미완성이며, 테스트 중입니다.
+테마의 일부가 적용되어 있지 않거나, 일부 기능이 제대로 작동하지 않을 수도 있습니다.
+만약 오류를 발견하셨다면, [여기](https://docs.google.com/forms/d/e/1FAIpQLSdxYqETZlQbmlKJ04B-spO2TqqAUBEAjgBWJ6vg3EjSCLesPg/viewform?usp=sf_link)로 알려주시면 감사하겠습니다.

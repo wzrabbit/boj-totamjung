@@ -129,6 +129,11 @@ function setData(key, value) {
     chrome.storage.sync.set({ [key]: value }, () => { console.log('ok') });
 }
 
+function sleep(ms) {
+    const wakeUpTime = Date.now() + ms;
+    while (Date.now() < wakeUpTime) { }
+}
+
 function getProblemNo() {
     const wholePath = location.href;
     const no = (wholePath.match(/(?<=https:\/\/www.acmicpc.net\/problem\/)[0-9]+(?=.*)/) || [-1])[0];
@@ -294,7 +299,7 @@ function createCheckButtonListener() {
     console.log("Spoiler: ", spoilerBtn);
     if (!spoilerBtn) {
         checkBtn.classList.add('disabled');
-        return;
+        return false;
     }
 
     chrome.storage.sync.get(['algorithm'], (loaded) => {
@@ -340,6 +345,8 @@ function createCheckButtonListener() {
             checkBtn.click();
         }
     });
+
+    return true;
 }
 
 function createLockButtonListener() {
@@ -365,7 +372,7 @@ function createLockButtonListener() {
 
     if (!spoilerBtn) {
         lockBtn.classList.add('disabled');
-        return;
+        return false;
     }
 
     const newBtn = spoilerBtn.cloneNode(true);
@@ -440,6 +447,8 @@ function createLockButtonListener() {
         }
 
     });
+
+    return true;
 }
 
 function applyFont() {
@@ -470,4 +479,19 @@ window.onload = () => {
     createThemeButtonListener();
     createCheckButtonListener();
     createLockButtonListener();
+
+    /* Provisional */
+    let retry = 5;
+    let reloader = setInterval(reload, 500);
+
+    function reload() {
+        let checkBtnRes = createCheckButtonListener();
+        let lockBtnRes = createLockButtonListener();
+
+        console.log('Loading Fail. Still Retrying...')
+        if (checkBtnRes && lockBtnRes || retry <= 0)
+            clearInterval(reloader);
+        else
+            retry--;
+    }
 }

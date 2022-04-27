@@ -477,8 +477,6 @@ window.onload = () => {
     createTopButtonListener();
     createOptionButtonListener();
     createThemeButtonListener();
-    createCheckButtonListener();
-    createLockButtonListener();
 
     /* Provisional */
     let retry = 5;
@@ -488,6 +486,7 @@ window.onload = () => {
         let checkBtnRes = createCheckButtonListener();
         let lockBtnRes = createLockButtonListener();
 
+        console.log(checkBtnRes, lockBtnRes);
         console.log('Loading Fail. Still Retrying...')
         if (checkBtnRes && lockBtnRes || retry <= 0)
             clearInterval(reloader);

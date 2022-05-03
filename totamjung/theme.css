@@ -7,10 +7,6 @@ html[totamjung='on'] pre:not(.CodeMirror-line) {
     color: var(--text-color);
 }
 
-html[totamjung='on'] .CodeMirror-line {
-    color: red;
-}
-
 html[totamjung='on'] a,
 html[totamjung='on'] .btn-link {
     color: var(--link-color);
@@ -43,13 +39,19 @@ html[totamjung='on'] input[type='radio'] {
     filter: invert(110%) hue-rotate(18deg) brightness(1.2);
 }
 
+html[totamjung='on'] kbd {
+    background-color: black;
+    border-color: var(--menu-line-color);
+    color: black;
+}
+
 html[totamjung='on'] button[type='submit'],
 html[totamjung='on'] button[type='submit']:hover,
 html[totamjung='on'] button[type='submit']:focus,
 html[totamjung='on'] button.btn.btn-primary,
-html[totamjung='on'] button.btn.btn,
+html[totamjung='on'] button.btn.btn-lg,
 html[totamjung='on'] button.navbar-toggle,
-html[totamjung='on'] a.btn,
+html[totamjung='on'] a.btn:not(.btn-link),
 html[totamjung='on'] .btn.btn-default,
 html[totamjung='on'] .btn-u {
     background-color: var(--menu-line-color);
@@ -509,6 +511,37 @@ html[totamjung='on'] .table-responsive #problem-info * {
     border-top-color: var(--bright-menu-line-color);
 }
 
+html[totamjung='on'] #contest_scoreboard tr>th:nth-child(2)>a,
+html[totamjung='on'] #contest_scoreboard tr:nth-child(1)>th:nth-child(n+2)>a {
+    color: var(--link-color);
+}
+
+html[totamjung='on'] #contest_scoreboard tr>td.accepted {
+    color: var(--table-ac-text-color);
+}
+
+html[totamjung='on'] #contest_scoreboard tr:nth-child(odd)>td.accepted {
+    background-color: var(--table-ac-color) !important;
+    font-weight: 800;
+}
+
+html[totamjung='on'] #contest_scoreboard tr:nth-child(even)>td.accepted {
+    background-color: var(--table-ac-secondary-color) !important;
+    font-weight: 800;
+}
+
+html[totamjung='on'] #contest_scoreboard tr>td.wronganswer {
+    color: var(--table-wa-text-color);
+}
+
+html[totamjung='on'] #contest_scoreboard tr:nth-child(odd)>td.wronganswer {
+    background-color: var(--table-wa-color) !important;
+}
+
+html[totamjung='on'] #contest_scoreboard tr:nth-child(even)>td.wronganswer {
+    background-color: var(--table-wa-secondary-color) !important;
+}
+
 html[totamjung='on'] #problem-memo-edit {
     box-shadow: 0 0 14px var(--menu-color);
     margin-bottom: 20px;
@@ -518,7 +551,8 @@ html[totamjung='on'] #problem-memo-edit div {
     box-shadow: none;
 }
 
-html[totamjung='on'] #problem-memo-edit .editor-toolbar,
+html[totamjung='on'] .editor-toolbar,
+html[totamjung='on'] .redactor-toolbar,
 html[totamjung='on'] .editor-statusbar {
     background-color: var(--secondary-menu-color);
     opacity: 1;
@@ -545,9 +579,15 @@ html[totamjung='on'] .editor-toolbar a {
     transition: 0.2s;
 }
 
-html[totamjung='on'] .editor-toolbar a:hover {
+html[totamjung='on'] .editor-toolbar a:hover,
+html[totamjung='on'] .editor-toolbar a.active {
     background-color: var(--menu-line-color) !important;
     border-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .editor-toolbar.disabled-for-preview .fa:not(.no-disable) {
+    background-color: transparent;
+    opacity: 0.5;
 }
 
 html[totamjung='on'] .editor-toolbar i.separator {
@@ -559,8 +599,22 @@ html[totamjung='on'] .cm-s-paper.CodeMirror .CodeMirror-line>span {
     color: var(--text-color);
 }
 
+html[totamjung='on'] .editor-preview {
+    background-color: var(--menu-color);
+}
+
 html[totamjung='on'] .editor-preview-side {
     background-color: var(--menu-line-color);
+    border: var(--menu-line-color);
+}
+
+html[totamjung='on'] .CodeMirror-selected {
+    background-color: var(--menu-color);
+}
+
+html[totamjung='on'] .CodeMirror-selectedtext {
+    background-color: var(--menu-line-color);
+    border-color: var(--menu-line-color);
 }
 
 html[totamjung='on'] .redactor-box.redactor-styles-on {
@@ -588,6 +642,72 @@ html[totamjung='on'] .redactor-statusbar {
 html[totamjung='on'] .redactor-styles pre {
     background-color: black;
     border-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] .redactor-dropdown a {
+    background-color: var(--secondary-menu-color);
+    border-bottom: 1px solid var(--menu-line-color);
+    transition: 0.2s;
+}
+
+html[totamjung='on'] .redactor-dropdown a:hover {
+    background-color: var(--menu-line-color) !important;
+}
+
+html[totamjung='on'] .redactor-dropdown-item-disabled span {
+    color: var(--blurred-link-color);
+}
+
+html[totamjung='on'] .redactor-source-view {
+    background-color: black !important;
+}
+
+html[totamjung='on'] .redactor-styles code {
+    background-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .redactor-dropdown-item-p span,
+html[totamjung='on'] .redactor-dropdown-item-pre span {
+    color: var(--text-color);
+}
+
+html[totamjung='on'] .redactor-dropdown-item-h1,
+html[totamjung='on'] .redactor-dropdown-item-h2,
+html[totamjung='on'] .redactor-dropdown-item-h3,
+html[totamjung='on'] .redactor-dropdown-item-h4,
+html[totamjung='on'] .redactor-dropdown-item-h5,
+html[totamjung='on'] .redactor-dropdown-item-h6 {
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .redactor-dropdown-item-blockquote {
+    background-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] .redactor-styles mark,
+html[totamjung='on'] .redactor-dropdown-item-marked span {
+    background-color: var(--menu-line-color);
+    color: var(--text-color);
+}
+
+html[totamjung='on'] .redactor-dropdown-item-variable span {
+    color: var(--text-color);
+}
+
+html[totamjung='on'] .redactor-dropdown-item-shortcut span {
+    background-color: black;
+    border-color: var(--menu-line-color);
+}
+
+
+html[totamjung='on'] .redactor-dropdown-item-blockquote span,
+html[totamjung='on'] .redactor-styles blockquote {
+    background-color: transparent;
+    color: var(--link-color);
+}
+
+html[totamjung='on'] .redactor-styles td {
+    border: solid var(--menu-line-color);
 }
 
 html[totamjung='on'] .progress {
@@ -838,8 +958,24 @@ html[totamjung='on'] .blog-content a {
     color: var(--link-color);
 }
 
-html[totamjung='on'] code.hljs.cs {
+html[totamjung='on'] code.hljs {
     color: var(--text-color);
+}
+
+html[totamjung='on'] ul.tagit {
+    background: var(--menu-color);
+    box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjung='on'] ul.tagit li.tagit-choice,
+html[totamjung='on'] .ui-widget-content {
+    background: var(--secondary-menu-color);
+    background-color: var(--secondary-menu-color);
+    border-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] ul.tagit li.tagit-choice .tagit-label {
+    color: var(--link-color);
 }
 
 html[totamjung='on'] .list-group.sidebar-nav-v1 {
@@ -1002,6 +1138,109 @@ html[totamjung='on'] .uploadcare--dialog div {
 html[totamjung='on'] .CodeMirror-line>span {
     color: black;
 }
+
+html[totamjung='on'] .CodeMirror-cursor {
+    border-left: 1px solid var(--text-color);
+}
+
+/* Temp: Group CSS */
+html[totamjung='on'] .toastui-editor-defaultUI {
+    background-color: var(--menu-color);
+    border: 1px transparent;
+    box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjung='on'] .toastui-editor-md-tab-container,
+html[totamjung='on'] .toastui-editor-defaultUI-toolbar {
+    background-color: var(--secondary-menu-color);
+    border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-tabs .tab-item {
+    margin-top: 12px;
+    background-color: transparent;
+    border: none;
+    border: 0 0 1px 0 solid var(--menu-line-color);
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .tab-item:nth-child(2) {
+    margin-left: 1px;
+}
+
+html[totamjung='on'] .toastui-editor-tabs .tab-item.active {
+    background-color: var(--menu-color);
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-toolbar-icons {
+    border: none;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+html[totamjung='on'] .toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
+    background-color: transparent;
+    border: none;
+    opacity: 1;
+}
+
+html[totamjung='on'] .toastui-editor-toolbar-icons {
+    filter: var(--filter-gold);
+}
+
+html[totamjung='on'] .toastui-editor-popup {
+    background: none;
+    border-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-popup-body {
+    z-index: 10;
+}
+
+html[totamjung='on'] .toastui-editor-popup-body ul {
+    padding: 0;
+}
+
+html[totamjung='on'] .toastui-editor-popup-body li {
+    background-color: var(--secondary-menu-color);
+    border-bottom: 1px solid var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-popup-body li:hover {
+    background-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-toolbar-divider {
+    background-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-popup-body,
+html[totamjung='on'] .toastui-editor-dropdown-toolbar {
+    top: 44px !important;
+    background-color: var(--secondary-menu-color);
+    border-width: 0 1px 1px 1px;
+    border-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-mode-switch,
+html[totamjung='on'] .toastui-editor-mode-switch .tab-item {
+    background-color: var(--secondary-menu-color);
+    border-top-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-md-code-block-line-background {
+    background-color: transparent;
+}
+
+html[totamjung='on'] .toastui-editor-md-link.toastui-editor-md-link-desc.toastui-editor-md-marked-text,
+html[totamjung='on'] .toastui-editor-md-list-item-style.toastui-editor-md-list-item-odd {
+    color: var(--title-color);
+}
+
+/* End of Group CSS */
 
 html[totamjung='on'] .cm-s-the-matrix.CodeMirror .CodeMirror-line>span {
     color: #0f0;

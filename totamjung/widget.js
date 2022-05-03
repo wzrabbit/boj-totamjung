@@ -126,7 +126,7 @@ let allKnow = true;
 let isLocked = false;
 
 function setData(key, value) {
-    chrome.storage.sync.set({ [key]: value }, () => { console.log('ok') });
+    chrome.storage.sync.set({ [key]: value }, () => { });
 }
 
 function sleep(ms) {
@@ -142,8 +142,6 @@ function getProblemNo() {
 }
 
 function setTimer(expire) {
-    console.log("Lock Timer Set", expire);
-
     const spoilerBtn = document.querySelector('.show-spoiler');
     let now, left, displayText;
     isLocked = true;
@@ -296,7 +294,6 @@ function createCheckButtonListener() {
 
     let allKnow = true;
 
-    console.log("Spoiler: ", spoilerBtn);
     if (!spoilerBtn) {
         checkBtn.classList.add('disabled');
         return false;
@@ -319,12 +316,10 @@ function createCheckButtonListener() {
 
         checkBtn.classList.add('disabled');
         if (allKnow) {
-            console.log("Know!");
             checkImg.src = knowImagePath;
             problemTitle.after(knowIcon);
         }
         else {
-            console.log("Don't Know!");
             checkImg.src = dontKnowImagePath;
             problemTitle.after(dontKnowIcon);
             popupImage.src = dontKnowImagePath;
@@ -358,13 +353,9 @@ function createLockButtonListener() {
 
     chrome.storage.sync.get(['algorithm'], (loaded) => {
         const knowAlgorithm = new Set(loaded['algorithm'] || []);
-
-        console.log("Load")
-        console.log(algorithmElementList);
         algorithmElementList.forEach((tag, i) => {
             if (!knowAlgorithm.has(algorithmToId[algorithmElementList[i].innerText])) {
                 tag.style.fontWeight = 800;
-                console.log("dontknow: " + algorithmToId[algorithmElementList[i].innerText]);
                 tag.innerText = tag.innerText + ' ⚠️';
             }
         });
@@ -392,8 +383,6 @@ function createLockButtonListener() {
         if (now >= expire || getProblemNo() !== timer.problem)
             return;
 
-        console.log(now, expire);
-
         setTimer(expire);
     });
 
@@ -402,7 +391,6 @@ function createLockButtonListener() {
 
         if (algorithmElementList && ![...lockBtn.classList].includes('disabled') && isLocked === false) {
             newBtn.style.display = 'none';
-            console.log(algorithmElementList, algorithmElementList.parentNode);
             algorithmElementCore.style.display = 'block';
 
             checkBtn.classList.add('disabled');
@@ -420,7 +408,6 @@ function createLockButtonListener() {
                 if (loaded === undefined)
                     return;
 
-                console.log("Will Send Msg Settimer");
                 chrome.runtime.sendMessage({ msg: 'setTimer' }, (response) => {
                     setTimer(response);
                 });
@@ -438,21 +425,14 @@ function createLockButtonListener() {
 
         const now = new Date().getTime();
         const expire = timer.expire;
-        console.log("Prob", getProblemNo(), timer.problem);
-        if (loaded !== undefined && settings.lock === 'always' && (now >= expire || getProblemNo() !== timer.problem)) {
-            console.log("Query:", now >= expire, getProblemNo() !== timer.problem)
-
-            console.log("Lock Button Automatically Clicked");
+        if (loaded !== undefined && settings.lock === 'always' && (now >= expire || getProblemNo() !== timer.problem))
             lockBtn.click();
-        }
-
     });
 
     return true;
 }
 
 function applyFont() {
-    console.log('start');
     if (getProblemNo() === -1)
         return;
 
@@ -465,8 +445,6 @@ function applyFont() {
 
         target.classList.remove(...target.classList);
         target.classList.add(font);
-
-        console.log('end');
     });
 }
 
@@ -477,20 +455,6 @@ window.onload = () => {
     createTopButtonListener();
     createOptionButtonListener();
     createThemeButtonListener();
-
-    /* Provisional */
-    let retry = 5;
-    let reloader = setInterval(reload, 500);
-
-    function reload() {
-        let checkBtnRes = createCheckButtonListener();
-        let lockBtnRes = createLockButtonListener();
-
-        console.log(checkBtnRes, lockBtnRes);
-        console.log('Loading Fail. Still Retrying...')
-        if (checkBtnRes && lockBtnRes || retry <= 0)
-            clearInterval(reloader);
-        else
-            retry--;
-    }
+    createCheckButtonListener();
+    createLockButtonListener();
 }

@@ -6,6 +6,7 @@
     --disabled-menu-color: rgb(26, 14, 10, 0.6);
     --text-color: rgb(221, 217, 213);
     --link-color: rgb(255, 242, 200);
+    --blurred-link-color: rgb(255, 242, 200, 0.5);
     --title-color: rgb(209, 176, 114);
     --tab-hover-color: rgb(209, 176, 114, 0.6);
     --menu-line-color: rgb(105, 65, 50);
@@ -65,4 +66,13 @@
     --filter-white: brightness(0) saturate(100%) invert(99%) sepia(94%) saturate(2%) hue-rotate(358deg) brightness(109%) contrast(100%);
     --filter-light-brown: brightness(0) saturate(100%) invert(49%) sepia(26%) saturate(568%) hue-rotate(330deg) brightness(93%) contrast(86%);
     --filter-dark-brown: brightness(0) saturate(100%) invert(5%) sepia(26%) saturate(1245%) hue-rotate(329deg) brightness(98%) contrast(97%);
+    --filter-gold: brightness(0) saturate(100%) invert(77%) sepia(25%) saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);
+
+
+    --table-ac-color: rgb(0, 42, 8);
+    --table-ac-secondary-color: rgb(0, 54, 9);
+    --table-ac-text-color: rgb(95, 174, 95);
+    --table-wa-color: rgb(67, 1, 21);
+    --table-wa-secondary-color: rgb(87, 2, 27);
+    --table-wa-text-color: rgb(199, 110, 110);
 }

@@ -608,15 +608,6 @@ html[totamjung='on'] .editor-preview-side {
     border: var(--menu-line-color);
 }
 
-html[totamjung='on'] .CodeMirror-selected {
-    background-color: var(--menu-color);
-}
-
-html[totamjung='on'] .CodeMirror-selectedtext {
-    background-color: var(--menu-line-color);
-    border-color: var(--menu-line-color);
-}
-
 html[totamjung='on'] .redactor-box.redactor-styles-on {
     background-color: var(--menu-color);
     box-shadow: 0 0 13px var(--menu-color);
@@ -1070,9 +1061,13 @@ html[totamjung='on'] .chosen-drop {
     color: var(--text-color);
 }
 
-html[totamjung='on']::-webkit-scrollbar,
+html[totamjung='on'] .media-object {
+    filter: brightness(45%) sepia(80%) hue-rotate(-24deg);
+}
+
+html[totamjung='on'] ::-webkit-scrollbar,
 html[totamjung='on'] pre::-webkit-scrollbar,
-html[totamjung='on']::-webkit-scrollbar-track,
+html[totamjung='on'] ::-webkit-scrollbar-track,
 html[totamjung='on'] pre::-webkit-scrollbar-track,
 html[totamjung='on']::-webkit-scrollbar-thumb,
 html[totamjung='on'] pre::-webkit-scrollbar-thumb,
@@ -1081,19 +1076,29 @@ html[totamjung='on'] .table-responsive::-webkit-scrollbar {
     height: 15px;
 }
 
-html[totamjung='on']::-webkit-scrollbar,
+html[totamjung='on'] ::-webkit-scrollbar,
 html[totamjung='on'] pre::-webkit-scrollbar,
-html[totamjung='on']::-webkit-scrollbar-track,
+html[totamjung='on'] ::-webkit-scrollbar-track,
 html[totamjung='on'] pre::-webkit-scrollbar-track,
 html[totamjung='on'] .table-responsive::-webkit-scrollbar-track {
     background-color: var(--secondary-menu-color);
 }
 
-html[totamjung='on']::-webkit-scrollbar-thumb,
+html[totamjung='on'] ::-webkit-scrollbar-thumb,
 html[totamjung='on'] pre::-webkit-scrollbar-thumb,
 html[totamjung='on'] .table-responsive::-webkit-scrollbar-thumb {
     background-color: var(--bright-menu-line-color);
     border-radius: 10px;
+}
+
+html[totamjung='on'] ::selection,
+html[totamjung='on'] .CodeMirror-focused,
+html[totamjung='on'] .CodeMirror-selected,
+html[totamjung='on'] .CodeMirror-line::selection,
+html[totamjung='on'] .CodeMirror-line>span::selection,
+html[totamjung='on'] .CodeMirror-line>span>span::selection {
+    color: black;
+    background: var(--blurred-link-color);
 }
 
 html[totamjung='on'] .chosen-container-single .chosen-single {

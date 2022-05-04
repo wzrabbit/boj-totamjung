@@ -1092,7 +1092,6 @@ html[totamjung='on'] .table-responsive::-webkit-scrollbar-thumb {
 }
 
 html[totamjung='on'] ::selection,
-html[totamjung='on'] .CodeMirror-focused,
 html[totamjung='on'] .CodeMirror-selected,
 html[totamjung='on'] .CodeMirror-line::selection,
 html[totamjung='on'] .CodeMirror-line>span::selection,

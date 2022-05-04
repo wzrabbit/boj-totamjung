@@ -21,6 +21,11 @@ html {
             var(--bg-second-color) 75%);
 }
 
+h1 {
+    display: inline-block;
+    width: 1030px;
+}
+
 p {
     margin-bottom: 7px;
     font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
@@ -38,10 +43,34 @@ span.emphasize {
     font-weight: 600;
 }
 
+.title-wrapper {
+    width: 1450px;
+    display: flex;
+}
+
 .title {
     margin-top: 20px;
     margin-left: 20px;
-    width: 120px;
+    width: 150px;
+}
+
+.widget-bundle {
+    display: inline-block;
+    margin-top: 35px;
+}
+
+.version {
+    display: inline-block;
+    color: var(--link-color);
+    font-family: 'Jua', sans-serif;
+    font-size: 24px;
+}
+
+.guide-link,
+.github-link {
+    width: 50px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .wrapper {

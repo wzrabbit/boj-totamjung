@@ -177,8 +177,24 @@ function updateTimerData(element) {
     });
 }
 
+function loadLinks() {
+    const guideBtn = document.querySelector('#guideBtn');
+    const githubBtn = document.querySelector('#githubBtn');
+
+    guideBtn.addEventListener('click', () => {
+        if (confirm('도움말 페이지를 방문하시겠습니까?'))
+            window.open('https://github.com/wzrabbit/boj-totamjung/blob/main/GUIDE.md');
+    });
+
+    githubBtn.addEventListener('click', () => {
+        if (confirm('토탐정 깃허브 저장소를 방문하시겠습니까?'))
+            window.open('https://github.com/wzrabbit/boj-totamjung');
+    });
+}
+
 window.onload = () => {
     loadPool();
     loadSettings();
     loadTimer();
+    loadLinks();
 }

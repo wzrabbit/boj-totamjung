@@ -1150,29 +1150,34 @@ html[totamjung='on'] .toastui-editor-defaultUI {
     box-shadow: 0 0 14px var(--menu-color);
 }
 
+html[totamjung='on'] .toastui-editor-defaultUI input:focus {
+    outline: none;
+}
+
 html[totamjung='on'] .toastui-editor-md-tab-container,
 html[totamjung='on'] .toastui-editor-defaultUI-toolbar {
     background-color: var(--secondary-menu-color);
     border-bottom-color: var(--menu-line-color);
 }
 
-html[totamjung='on'] .toastui-editor-tabs .tab-item {
+html[totamjung='on'] .toastui-editor-md-tab-container>.toastui-editor-tabs .tab-item {
     margin-top: 12px;
     background-color: transparent;
     border: none;
     border: 0 0 1px 0 solid var(--menu-line-color);
-    color: var(--title-color);
+    color: var(--blurred-link-color);
 }
 
 html[totamjung='on'] .tab-item:nth-child(2) {
     margin-left: 1px;
 }
 
-html[totamjung='on'] .toastui-editor-tabs .tab-item.active {
+html[totamjung='on'] .toastui-editor-md-tab-container>.toastui-editor-tabs .tab-item.active {
     background-color: var(--menu-color);
     border-width: 1px 1px 0 1px;
     border-style: solid;
     border-color: var(--menu-line-color);
+    color: var(--title-color);
 }
 
 html[totamjung='on'] .toastui-editor-toolbar-icons {
@@ -1225,10 +1230,21 @@ html[totamjung='on'] .toastui-editor-dropdown-toolbar {
     border-color: var(--menu-line-color);
 }
 
-html[totamjung='on'] .toastui-editor-mode-switch,
-html[totamjung='on'] .toastui-editor-mode-switch .tab-item {
+html[totamjung='on'] .toastui-editor-mode-switch {
     background-color: var(--secondary-menu-color);
     border-top-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-mode-switch>.tab-item {
+    background-color: var(--secondary-menu-color);
+    border-color: var(--menu-line-color) transparent transparent transparent;
+    color: var(--blurred-link-color);
+}
+
+html[totamjung='on'] .toastui-editor-mode-switch>.tab-item.active {
+    background-color: var(--menu-color);
+    border-color: transparent var(--menu-line-color) var(--menu-line-color) var(--menu-line-color);
+    color: var(--title-color);
 }
 
 html[totamjung='on'] .toastui-editor-md-code-block-line-background {
@@ -1240,7 +1256,83 @@ html[totamjung='on'] .toastui-editor-md-list-item-style.toastui-editor-md-list-i
     color: var(--title-color);
 }
 
+html[totamjung='on'] .ProseMirror.toastui-editor-contents {
+    background-color: var(--menu-color);
+}
+
+html[totamjung='on'] .toastui-editor-contents h1,
+html[totamjung='on'] .toastui-editor-contents h2,
+html[totamjung='on'] .toastui-editor-contents h3,
+html[totamjung='on'] .toastui-editor-contents h4,
+html[totamjung='on'] .toastui-editor-contents h5,
+html[totamjung='on'] .toastui-editor-contents h6 {
+    border-bottom-color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] .toastui-editor-popup-add-table .toastui-editor-table-cell {
+    background-color: var(--disabled-menu-color);
+    border-color: var(--title-color);
+}
+
+html[totamjung='on'] .toastui-editor-table-selection-layer {
+    margin: 0px 0 0 0px;
+    border-color: var(--title-color);
+    background-color: var(--blurred-link-color);
+    box-shadow: 0 0 5px var(--title-color);
+    opacity: 0.5;
+}
+
+html[totamjung='on'] .toastui-editor-popup.toastui-editor-popup-add-image,
+html[totamjung='on'] .toastui-editor-popup.toastui-editor-popup-add-link {
+    background-color: var(--secondary-menu-color);
+}
+
+html[totamjung='on'] .toastui-editor-table-description {
+    color: var(--link-color);
+}
+
+html[totamjung='on'] .toastui-editor-tabs[aria-role='tabpanel'] .tab-item {
+    border-bottom-color: var(--blurred-link-color);
+    color: var(--blurred-link-color);
+}
+
+html[totamjung='on'] .toastui-editor-tabs[aria-role='tabpanel'] .tab-item.active {
+    border-bottom-color: var(--title-color);
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .toastui-editor-file-name,
+html[totamjung='on'] .toastui-editor-file-name.has-file {
+    background-color: black;
+    border-color: var(--bright-menu-line-color);
+    color: var(--text-color);
+}
+
+html[totamjung='on'] .toastui-editor-file-select-button,
+html[totamjung='on'] .toastui-editor-close-button,
+html[totamjung='on'] .toastui-editor-ok-button {
+    background-color: var(--menu-line-color);
+    border-color: var(--menu-line-color);
+    border-width: 1px !important;
+    box-shadow: 0 0 14px var(--menu-color);
+    color: var(--text-color);
+    transition: 0.2s;
+}
+
+html[totamjung='on'] .toastui-editor-file-select-button:hover,
+html[totamjung='on'] .toastui-editor-close-button:hover,
+html[totamjung='on'] .toastui-editor-ok-button:hover {
+    background-color: var(--menu-line-color);
+    border-color: var(--menu-line-color);
+}
+
 /* End of Group CSS */
+
+html[totamjung='on'] .uploadcare--widget__button.uploadcare--widget__button_type_open {
+    background-color: var(--menu-line-color);
+    cursor: pointer;
+    box-shadow: 0 0 14px var(--menu-color);
+}
 
 html[totamjung='on'] .cm-s-the-matrix.CodeMirror .CodeMirror-line>span {
     color: #0f0;

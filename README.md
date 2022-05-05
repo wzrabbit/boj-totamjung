@@ -35,7 +35,7 @@
 3. 다운로드 받은 파일에서 `totamjung` 폴더를 선택합니다. 토탐정 다운로드는 깃허브에서 `Code`를 클릭하고, `Download ZIP`을 클릭하시면 됩니다.
 
 ## 사용 방법
-[가이드 페이지](https://github.com/wzrabbit/boj-totamjung/issues) 를 참고해 주세요!
+[가이드 페이지](https://github.com/wzrabbit/boj-totamjung/blob/main/GUIDE.md) 를 참고해 주세요!
 
 ## 참고한 레퍼지토리
 * BJ_Addon

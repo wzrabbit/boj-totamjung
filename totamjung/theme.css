@@ -303,8 +303,11 @@ html[totamjung='on'] .nav-pills>li.active>a {
 
 html[totamjung='on'] .nav-pills>li>a:hover,
 html[totamjung='on'] .nav-pills>li>a:focus,
-html[totamjung='on'] .nav-pills>li>a:active {
-    background-color: var(--tab-hover-color) !important;
+html[totamjung='on'] .nav-pills>li>a:active,
+html[totamjung='on'] .nav .open>a,
+html[totamjung='on'] .nav .open>a:hover,
+html[totamjung='on'] .nav .open>a:focus {
+    background-color: var(--tab-hover-color);
 }
 
 html[totamjung='on'] pre:not(.CodeMirror-line) {
@@ -1614,4 +1617,13 @@ html[totamjung='on'] .panel-footer {
     background-color: var(--secondary-menu-color);
     border-top-color: var(--menu-line-color);
     color: var(--link-color);
+}
+
+html[totamjung='on'] .dropdown-menu {
+    background-color: var(--menu-color) !important;
+    box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjung='on'] #problem-timer .dropdown-menu input.timer-number {
+    outline: none;
 }

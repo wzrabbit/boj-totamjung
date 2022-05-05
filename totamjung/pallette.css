@@ -58,7 +58,8 @@
     --normal-main-color: rgb(0, 118, 192);
     --normal-sub-color: rgb(255, 255, 255);
     --normal-hover-color: rgb(182, 210, 228);
-    --translucent-white-color: rgb(255, 255, 255, 0.2);
+    --translucent-white-color: rgb(255, 255, 255, 0.1);
+    --ttj-hover-color: rgb(114, 75, 61, 0.75);
     --translucent-dark-color: rgb(0, 0, 0, 0.3);
     --shadow-color: rgb(0, 0, 0, 0.35);
 

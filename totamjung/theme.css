@@ -1520,6 +1520,10 @@ html[totamjung='on'] #ttj-result-text {
     border-left-color: var(--menu-color);
 }
 
+html[totamjung='on'] .ttj-menu-item:hover {
+    background-color: var(--ttj-hover-color);
+}
+
 #problem-body.font-1 .problem-text {
     font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif !important;
 }

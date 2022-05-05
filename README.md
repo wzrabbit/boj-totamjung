@@ -14,12 +14,6 @@
 * 충분한 시간을 고민하지 못 하고 알고리즘 분류를 자주 공개하시는 분
 * 예쁜 테마와 다양한 폰트를 사용하고 싶으신 분
 
-## 설치 방법
-**토탐정**은 아직 테스트 중인 확장 프로그램으로, 현재로써는 Chrome 브라우저에서 수동 설치를 사용하는 방법만 가능합니다.
-1. Chrome 브라우저의 `우측 삼단바 메뉴` - `도구 더보기` - `확장 프로그램` 메뉴를 클릭합니다.
-2. `개발자 모드` 를 켜고, `압축해제된 확장 프로그램을 로드합니다.` 버튼을 클릭합니다.
-3. 다운로드 받은 파일에서 `totamjung` 폴더를 선택합니다. 토탐정 다운로드는 깃허브에서 `Code`를 클릭하고, `Download ZIP`을 클릭하시면 됩니다.
-
 ## 미리 보기
 ### 알고리즘 기능
 <img src="https://user-images.githubusercontent.com/87642422/162564084-451cd2f1-9e8d-4d12-9269-54ec2beca63d.PNG" width="350px" />
@@ -34,12 +28,24 @@
 <img src="https://user-images.githubusercontent.com/87642422/162564373-19fb779c-e90f-4ffc-8cf2-533159deec19.PNG" width="1000px" />
 <img src="https://user-images.githubusercontent.com/87642422/162564221-b5808ac1-6338-4f81-b58b-c41df0205643.PNG" width="1000px" />
 
-### 참고한 레퍼지토리
+## 설치 방법
+**토탐정**은 아직 미출시 프로그램으로, 현재로써는 Chrome 브라우저에서 수동 설치를 사용하는 방법만 가능합니다.
+1. Chrome 브라우저의 `우측 삼단바 메뉴` - `도구 더보기` - `확장 프로그램` 메뉴를 클릭합니다.
+2. `개발자 모드` 를 켜고, `압축해제된 확장 프로그램을 로드합니다.` 버튼을 클릭합니다.
+3. 다운로드 받은 파일에서 `totamjung` 폴더를 선택합니다. 토탐정 다운로드는 깃허브에서 `Code`를 클릭하고, `Download ZIP`을 클릭하시면 됩니다.
+
+## 사용 방법
+[가이드 페이지](https://github.com/wzrabbit/boj-totamjung/issues) 를 참고해 주세요!
+
+## 참고한 레퍼지토리
 * BJ_Addon
 https://github.com/drash99/BJ_addon
 * boj-extended
 https://github.com/joonas-yoon/boj-extended
 
-### 이 프로젝트는 아직 미완성이며, 테스트 중입니다.
-테마의 일부가 적용되어 있지 않거나, 일부 기능이 제대로 작동하지 않을 수도 있습니다.
-만약 오류를 발견하셨다면, [여기](https://docs.google.com/forms/d/e/1FAIpQLSdxYqETZlQbmlKJ04B-spO2TqqAUBEAjgBWJ6vg3EjSCLesPg/viewform?usp=sf_link)로 알려주시면 감사하겠습니다.
+## 오류를 찾으셨나요? 건의하시고 싶은 기능이 있나요?
+문제가 있거나, 건의하고 싶은 사항이 있으시다면, 언제든지 문의해 주세요!
+* [Google 설문지를 통해 익명으로 문의하기](https://docs.google.com/forms/d/e/1FAIpQLSdxYqETZlQbmlKJ04B-spO2TqqAUBEAjgBWJ6vg3EjSCLesPg/viewform)
+* [Github Issue를 통해 공개적으로 문의하기](https://github.com/wzrabbit/boj-totamjung/issues)
+
+토탐정을 이용해 주셔서 감사합니다!

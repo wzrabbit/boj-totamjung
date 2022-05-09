@@ -29,7 +29,10 @@
 <img src="https://user-images.githubusercontent.com/87642422/162564221-b5808ac1-6338-4f81-b58b-c41df0205643.PNG" width="1000px" />
 
 ## 설치 방법
-**토탐정**은 아직 미출시 프로그램으로, 현재로써는 Chrome 브라우저에서 수동 설치를 사용하는 방법만 가능합니다.
+### Chrome 웹 스토어에서 설치하기
+[여기](https://chrome.google.com/webstore/detail/%ED%86%A0%ED%83%90%EC%A0%95/hannhecbnjnnbbafffmogdlnajpcomek)를 눌러 웹 스토어로 이동할 수 있습니다.
+
+### 수동 설치하기
 1. Chrome 브라우저의 `우측 삼단바 메뉴` - `도구 더보기` - `확장 프로그램` 메뉴를 클릭합니다.
 2. `개발자 모드` 를 켜고, `압축해제된 확장 프로그램을 로드합니다.` 버튼을 클릭합니다.
 3. 다운로드 받은 파일에서 `totamjung` 폴더를 선택합니다. 토탐정 다운로드는 깃허브에서 `Code`를 클릭하고, `Download ZIP`을 클릭하시면 됩니다.

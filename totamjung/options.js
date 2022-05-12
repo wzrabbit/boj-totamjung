@@ -157,11 +157,16 @@ function updateTimerData(element) {
             loaded = resetTimer;
 
         if (element === hour) {
-            if (isNaN(hour.value) || hour.value === '' || hour.value % 1 !== 0 || hour.value > 8 || hour.value < 0)
+            if (isNaN(hour.value) || hour.value === '' || hour.value % 1 !== 0 || hour.value > 8 || hour.value < 0 ||
+                hour.value.toString().length >= 2 || hour.value.toString().includes('-')
+            )
                 hour.value = loaded.hour;
         }
         else if (element === minute) {
-            if (isNaN(minute.value) || minute.value === '' || minute.value % 1 !== 0 || minute.value > 59 || minute.value < 0)
+            if (isNaN(minute.value) || minute.value === '' || minute.value % 1 !== 0 || minute.value > 59 ||
+                minute.value < 0 || minute.value.toString().length >= 3 || minute.value.toString().includes('-') ||
+                minute.value.toString() === '00'
+            )
                 minute.value = loaded.minute;
         }
 

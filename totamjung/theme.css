@@ -1,3 +1,9 @@
+/*
+Experimental
+html[totamjung='on'] * {
+    filter: hue-rotate(100deg);
+}*/
+
 html[totamjung='on'] p,
 html[totamjung='on'] div,
 html[totamjung='on'] li,
@@ -97,6 +103,10 @@ html[totamjung='on'] .datepicker::after {
     border-bottom-color: var(--menu-line-color);
 }
 
+html[totamjung='on'] .sky-form {
+    font-family: "Noto Sans KR";
+    box-shadow: 0 0 14px var(--menu-color);
+}
 
 html[totamjung='on'] .sky-form .icon-append {
     color: var(--title-color);
@@ -111,21 +121,54 @@ html[totamjung='on'] .sky-form .selectize-input {
     border: 3px solid var(--title-color);
 }
 
-html[totamjung='on'] .sky-form label>i {
-    background-color: var(--title-color);
-    box-shadow: 0 0 10px var(--title-color);
+html[totamjung='on'] .sky-form .selectize-input div.item {
+    border-width: 1px;
+    border-color: var(--menu-line-color);
+    background-color: var(--secondary-menu-color);
+    color: var(--link-color);
+}
+
+html[totamjung='on'] .sky-form .selectize-dropdown {
+    background-color: var(--menu-color);
+    border-width: 1px;
     border-color: var(--title-color);
 }
 
-html[totamjung='on'] .sky-form label>i::after {
-    color: var(--menu-color);
+html[totamjung='on'] .sky-form .selectize-dropdown .option.active {
+    background-color: var(--menu-line-color);
+    color: var(--link-color);
 }
 
-html[totamjung='on'] .sky-form .label>.rounded-x::after {
-    background-color: var(--menu-color);
-    width: 8px !important;
-    height: 8px !important;
-    transform: translateX(-20%) translateY(-20%);
+html[totamjung='on'] .sky-form label>i {
+    background-color: var(--secondary-menu-color);
+    border-color: var(--title-color);
+    border-width: 2px;
+}
+
+html[totamjung='on'] .sky-form label.radio>i::after {
+    width: 10px;
+    height: 10px;
+    transform: translateX(-35%) translateY(-35%);
+    background-color: var(--title-color);
+}
+
+html[totamjung='on'] .sky-form label.checkbox>i::after {
+    width: 15px;
+    height: 15px;
+    transform: translateX(-10%) translateY(-10%);
+    background-color: transparent;
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .sky-form label:hover>i {
+    border-color: var(--link-color);
+}
+
+html[totamjung='on'] .sky-form .radio input:checked+i,
+html[totamjung='on'] .sky-form .checkbox input:checked+i,
+html[totamjung='on'] .sky-form .toggle input:checked+i {
+    box-shadow: 0 0 5px var(--title-color);
+    border-color: var(--title-color);
 }
 
 html[totamjung='on'] .sky-form footer {
@@ -291,6 +334,44 @@ html[totamjung='on'] .panel-body>.content>pre {
     border: 1px solid var(--menu-line-color);
 }
 
+html[totamjung='on'] #heatmap rect:not(rect[fill="#ffffff"]),
+html[totamjung='on'] #heatmap g>path:first-child {
+    filter: hue-rotate(80deg) invert(100%) saturate(70%) brightness(150%) sepia(50%);
+}
+
+html[totamjung='on'] #heatmap rect[fill="#ffffff"] {
+    filter: invert(100%);
+}
+
+html[totamjung='on'] #heatmap rect[fill="#ffffff"] {
+    fill-opacity: 1;
+    fill: var(--opposite-streak-color);
+}
+
+html[totamjung='on'] #heatmap path[stroke="#c9c9c9"] {
+    stroke: var(--menu-line-color);
+}
+
+html[totamjung='on'] #heatmap path[stroke="#000000"] {
+    stroke: var(--title-color);
+    stroke-width: 2;
+}
+
+html[totamjung='on'] #heatmap path:focus {
+    stroke: blue;
+    stroke-width: 2;
+}
+
+html[totamjung='on'] #heatmap g:nth-child(2) text {
+    font-family: 'Noto Sans KR';
+    fill: var(--link-color);
+}
+
+html[totamjung='on'] #heatmap g:nth-child(2) text:nth-child(8n+16) {
+    font-weight: 800;
+    fill: var(--title-color);
+}
+
 html[totamjung='on'] .nav-pills>li>a {
     transition: 0.2s;
 }
@@ -326,7 +407,7 @@ html[totamjung='on'] pre.CodeMirror-line {
 
 html[totamjung='on'] .breadcrumbs {
     background-image: none;
-    background-color: var(--secondary-menu-color);
+    background: var(--light-gradient-color);
     box-shadow: 0px 5px 10px var(--secondary-menu-color);
     border-bottom-color: var(--menu-line-color);
 }
@@ -713,13 +794,8 @@ html[totamjung='on'] .progress-bar {
 }
 
 html[totamjung='on'] .alert {
-    background-color: var(--menu-color);
+    background: var(--dark-gradient-color);
     box-shadow: 0 0 13px var(--menu-color);
-    border: none;
-}
-
-html[totamjung='on'] .alert {
-    background-color: var(--menu-color);
     border: none;
 }
 
@@ -1034,7 +1110,7 @@ html[totamjung='on'] .s-results .related-search li a {
 
 html[totamjung='on'] .search-block-v2 {
     background: none;
-    background-color: var(--secondary-menu-color);
+    background: var(--light-gradient-color);
     box-shadow: 0 0 20px var(--secondary-menu-color);
     border-bottom-color: var(--menu-line-color);
 }

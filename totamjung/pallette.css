@@ -76,4 +76,27 @@
     --table-wa-color: rgb(67, 1, 21);
     --table-wa-secondary-color: rgb(87, 2, 27);
     --table-wa-text-color: rgb(199, 110, 110);
+
+    --light-gradient-color: linear-gradient(60deg,
+            var(--secondary-menu-color) 0%,
+            var(--secondary-menu-color) 10%,
+            rgba(56, 24, 0, 1) 14%,
+            var(--secondary-menu-color) 18%,
+            rgba(49, 20, 0, 1) 65%,
+            rgba(61, 39, 0, 1) 72%,
+            var(--secondary-menu-color) 79%,
+            var(--secondary-menu-color) 92%,
+            rgba(56, 24, 0, 1) 94%,
+            var(--secondary-menu-color) 96%);
+
+    --dark-gradient-color: linear-gradient(60deg,
+            rgba(26, 14, 10, 1) 0%,
+            rgba(21, 6, 0, 1) 49%,
+            rgba(36, 14, 6, 1) 61%,
+            rgba(26, 14, 10, 1) 75%,
+            rgba(52, 17, 0, 1) 83%,
+            rgba(26, 14, 10, 1) 90%,
+            rgba(26, 14, 10, 1) 100%);
+
+    --opposite-streak-color: rgb(216, 233, 239);
 }

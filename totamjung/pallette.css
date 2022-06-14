@@ -99,4 +99,37 @@
             rgba(26, 14, 10, 1) 100%);
 
     --opposite-streak-color: rgb(216, 233, 239);
+
+    /* AC Label Colors */
+    --label-green-gradient-color: linear-gradient(120deg,
+            rgb(43, 100, 60) 0%,
+            rgb(13, 49, 23) 100%);
+
+    --label-red-gradient-color: linear-gradient(120deg,
+            rgb(186, 44, 40) 0%,
+            rgb(102, 23, 21) 100%);
+
+    --label-yellow-gradient-color: linear-gradient(120deg,
+            rgb(219, 162, 20) 0%,
+            rgb(102, 76, 10) 100%);
+
+    --label-sky-gradient-color: linear-gradient(120deg,
+            rgb(35, 141, 174) 0%,
+            rgb(17, 68, 84) 100%);
+
+    --label-gray-gradient-color: linear-gradient(120deg,
+            rgb(75, 75, 75) 0%,
+            rgb(35, 35, 35) 100%);
+
+    --label-blue-gradient-color: linear-gradient(120deg,
+            rgb(54, 77, 122) 0%,
+            rgb(29, 42, 66) 100%);
+
+    --label-mint-gradient-color: linear-gradient(120deg,
+            rgb(18, 129, 108) 0%,
+            rgb(10, 75, 63) 100%);
+
+    --scoreboard-gold-gradient-color: linear-gradient(150deg, rgba(255, 242, 199, 1) 0%, rgba(246, 220, 136, 1) 15%, rgba(213, 169, 72, 1) 40%, rgba(195, 152, 56, 1) 63%, rgba(253, 162, 47, 1) 100%);
+    --scoreboard-silver-gradient-color: linear-gradient(150deg, rgba(227, 227, 227, 1) 0%, rgba(167, 167, 167, 1) 15%, rgba(129, 129, 129, 1) 38%, rgba(93, 93, 98, 1) 74%, rgba(138, 136, 146, 1) 100%);
+    --scoreboard-bronze-gradient-color: linear-gradient(150deg, rgba(227, 199, 182, 1) 0%, rgba(209, 140, 98, 1) 15%, rgba(162, 97, 57, 1) 40%, rgba(159, 86, 40, 1) 74%, rgba(208, 89, 29, 1) 100%);
 }

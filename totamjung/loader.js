@@ -1,7 +1,6 @@
 (() => {
     'use strict';
 
-    console.log('load start')
     chrome.storage.sync.get('settings', (loaded) => {
 
         loaded = loaded['settings'];

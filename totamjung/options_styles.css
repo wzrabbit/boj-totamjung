@@ -3,8 +3,11 @@
     padding: 0;
 }
 
-
 html {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/bg.png');
+}
+
+/*html {
     background-size: 100px 150px;
     background-attachment: fixed;
     background-color: var(--bg-first-color);
@@ -19,7 +22,7 @@ html {
             transparent 25%,
             transparent 75%,
             var(--bg-second-color) 75%);
-}
+}*/
 
 h1 {
     display: inline-block;

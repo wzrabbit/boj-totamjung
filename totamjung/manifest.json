@@ -1,7 +1,7 @@
 {
     "name": "토탐정",
     "description": "토탐정은 백준 온라인 저지(BOJ)에서 사용할 수 있는 확장 프로그램입니다.\n알고리즘 분류 잠금 및 테마 기능을 제공합니다.",
-    "version": "0.0.4",
+    "version": "1.0.5",
     "manifest_version": 3,
     "permissions": [
         "storage"

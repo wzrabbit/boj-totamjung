@@ -44,9 +44,9 @@ html[totamjung='on'] input[type='radio'] {
 }
 
 html[totamjung='on'] kbd {
-    background-color: black;
+    background-color: var(--dark-menu-color);
     border-color: var(--menu-line-color);
-    color: black;
+    color: var(--dark-menu-color);
 }
 
 html[totamjung='on'] button[type='submit'],
@@ -212,29 +212,15 @@ html[totamjung='on'] legend {
     font-weight: 600;
 }
 
-/*html[totamjung='on'] .wrapper {
-    background-size: 100px 150px;
-    background-attachment: fixed;
-    background-color: var(--bg-first-color);
-    background-image:
-        linear-gradient(56.4deg,
-            var(--bg-second-color) 25%,
-            transparent 25%,
-            transparent 75%,
-            var(--bg-second-color) 75%),
-        linear-gradient(-56.4deg,
-            var(--bg-second-color) 25%,
-            transparent 25%,
-            transparent 75%,
-            var(--bg-second-color) 75%);
-}*/
-
-
 html[totamjung='on'] body,
 html[totamjung='on'] .wrapper,
 html[totamjung='on'] .gray-bg {
     background: transparent;
     background-color: transparent;
+}
+
+html[totamjung='on'] {
+    background-color: var(--dark-menu-color);
 }
 
 html[totamjung='on'] {
@@ -315,17 +301,32 @@ html[totamjung='on'] .nav.navbar-nav>li>a {
     transition: 0.3s;
 }
 
-html[totamjung='on'] .nav.navbar-nav>li.active>a,
-html[totamjung='on'] .nav.navbar-nav li:hover>a {
+html[totamjung='on'] .header .navbar-default .navbar-nav>li>a {
+    color: var(--bright-menu-line-color);
+}
+
+@media (max-width: 991px) {
+    html[totamjung='on'] .header .navbar-default .navbar-nav>li a {
+        border-bottom-color: var(--menu-line-color);
+    }
+}
+
+html[totamjung='on'] .header .navbar-default .navbar-nav>li:hover>a,
+html[totamjung='on'] .header .navbar-default .navbar-nav>li:active>a,
+html[totamjung='on'] .header .navbar-default .navbar-nav>li:focus>a,
+html[totamjung='on'] .header .navbar-default .navbar-nav>li.active>a {
     color: var(--title-color);
     border-bottom-color: var(--link-color);
 }
 
-@media (max-width: 991px) {
-    html[totamjung='on'] .header .navbar-default .navbar-nav>.active>a {
-        background-color: var(--menu-line-color);
-        color: var(--menu-color);
-    }
+html[totamjung='on'] .header .topbar ul.loginbar>li>a,
+html[totamjung='on'] .header .topbar ul.loginbar>li>a:hover,
+html[totamjung='on'] .header .topbar ul.loginbar .fa:before {
+    color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .header .topbar ul.loginbar .topbar-devider {
+    border-right-color: var(--menu-line-color);
 }
 
 html[totamjung='on'] .page-header {
@@ -338,7 +339,7 @@ html[totamjung='on'] .panel {
 }
 
 html[totamjung='on'] .panel-heading {
-    background-color: black;
+    background-color: var(--dark-menu-color);
     border-bottom-color: var(--menu-line-color);
 }
 
@@ -347,7 +348,7 @@ html[totamjung='on'] .panel-body {
 }
 
 html[totamjung='on'] .panel-body>.content>pre {
-    background-color: black;
+    background-color: var(--dark-menu-color);
     border: 1px solid var(--menu-line-color);
 }
 
@@ -529,7 +530,7 @@ html[totamjung='on'] .tab-v2 .nav-tabs li.active a {
 
 html[totamjung='on'] .table-striped>thead>tr,
 html[totamjung='on'] .table-bordered>thead>tr {
-    background-color: black;
+    background-color: var(--dark-menu-color);
 }
 
 html[totamjung='on'] .table-striped,
@@ -728,7 +729,7 @@ html[totamjung='on'] .redactor-statusbar {
 }
 
 html[totamjung='on'] .redactor-styles pre {
-    background-color: black;
+    background-color: var(--dark-menu-color);
     border-color: var(--bright-menu-line-color);
 }
 
@@ -783,7 +784,7 @@ html[totamjung='on'] .redactor-dropdown-item-variable span {
 }
 
 html[totamjung='on'] .redactor-dropdown-item-shortcut span {
-    background-color: black;
+    background-color: var(--dark-menu-color);
     border-color: var(--menu-line-color);
 }
 
@@ -800,8 +801,18 @@ html[totamjung='on'] .redactor-styles td {
 
 html[totamjung='on'] .redactor-modal-header,
 html[totamjung='on'] .redactor-modal-footer {
-    background-color: black;
+    background-color: var(--dark-menu-color);
 }
+
+html[totamjung='on'] .redactor-modal-header {
+    border-bottom: 1px solid var(--menu-line-color);
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .redactor-modal-footer {
+    border-top: 1px solid var(--menu-line-color);
+}
+
 
 html[totamjung='on'] .modal-video-input {
     background-color: black !important;
@@ -811,12 +822,18 @@ html[totamjung='on'] .redactor-modal-body {
     background-color: var(--menu-color);
 }
 
-html[totamjung='on'] .redactor-modal button {
-    border: 2px solid var(--menu-line-color);
+html[totamjung='on'] .redactor-modal button[data-command="insert"] {
+    background-color: transparent;
+    border: 2px solid var(--title-color);
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .redactor-modal button[data-command="cancel"] {
+    color: var(--title-color);
 }
 
 html[totamjung='on'] .progress {
-    background-color: black;
+    background-color: var(--dark-menu-color);
 }
 
 html[totamjung='on'] .progress-bar {
@@ -1128,7 +1145,7 @@ html[totamjung='on'] .ibox-content {
     border-top-color: var(--link-color);
 }
 
-/*
+
 html[totamjung='on'] .row.team:first-child .ibox-content {
     background: var(--scoreboard-gold-gradient-color);
     color: var(--menu-color);
@@ -1150,45 +1167,213 @@ html[totamjung='on'] .row.team:nth-child(2) .ibox-content .team-name-link,
 html[totamjung='on'] .row.team:nth-child(3) .ibox-content .team-name-link {
     color: var(--menu-color);
 }
-*/
+
+html[totamjung='on'] #spinner {
+    filter: var(--filter-gold);
+}
+
+html[totamjung='on'] .top-navigation .navbar-brand {
+    background-color: var(--secondary-menu-color);
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+html[totamjung='on'] .top-navigation .nav>li>a {
+    color: var(--title-color);
+    transition: background-color 0.3s;
+}
+
+html[totamjung='on'] .top-navigation .nav>li a:hover,
+html[totamjung='on'] .top-navigation .nav>li a:focus {
+    color: var(--title-color);
+    background-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .row.border-bottom.white-bg,
+html[totamjung='on'] .navbar-collapse {
+    border-bottom-color: var(--menu-line-color) !important;
+}
+
+html[totamjung='on'] .white-bg {
+    background-color: transparent;
+}
+
+html[totamjung='on'] .irs-bar,
+html[totamjung='on'] .irs-bar-edge,
+html[totamjung='on'] .irs-slider {
+    filter: var(--filter-gold);
+}
+
+html[totamjung='on'] .irs-line-left,
+html[totamjung='on'] .irs-line-mid,
+html[totamjung='on'] .irs-line-right {
+    filter: var(--filter-mid-brown);
+}
+
+html[totamjung='on'] .irs-min,
+html[totamjung='on'] .irs-max {
+    background-color: var(--secondary-menu-color);
+    border: 0.5px solid var(--menu-line-color);
+    color: var(--text-color);
+}
+
+html[totamjung='on'] .irs-single {
+    background-color: var(--title-color);
+    color: var(--menu-color);
+}
+
+html[totamjung='on'] .irs-single:after {
+    border-top-color: var(--title-color);
+}
+
+html[totamjung='on'] .irs-grid .irs-grid-pol {
+    background: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] .irs-grid .irs-grid-text {
+    color: var(--bright-menu-line-color);
+}
+
+html[totamjung='on'] #right-sidebar .sidebar-title {
+    background-color: var(--menu-color);
+    border-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .sidebar-container ul.sidebar-list li {
+    border: none;
+}
+
+html[totamjung='on'] #right-sidebar {
+    background-color: var(--menu-color);
+    border-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] #right-sidebar li.sidebar-success:nth-child(2n) {
+    background-color: var(--table-ac-color);
+}
+
+html[totamjung='on'] #right-sidebar li.sidebar-success:nth-child(2n+1) {
+    background-color: var(--table-ac-secondary-color);
+    color: var(--table-ac-text-color);
+}
+
+html[totamjung='on'] #right-sidebar li.sidebar-success h4 {
+    color: var(--table-ac-text-color);
+}
+
+html[totamjung='on'] #right-sidebar li.sidebar-fail:nth-child(2n) {
+    background-color: var(--table-wa-color);
+}
+
+html[totamjung='on'] #right-sidebar li.sidebar-fail:nth-child(2n+1) {
+    background-color: var(--table-wa-secondary-color);
+    color: var(--table-wa-text-color);
+}
+
+html[totamjung='on'] #right-sidebar li.sidebar-fail h4 {
+    color: var(--table-wa-text-color);
+}
+
+html[totamjung='on'] .modal-content {
+    border: none;
+}
+
+html[totamjung='on'] .inmodal .modal-header {
+    background-color: var(--dark-menu-color);
+    border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .inmodal .modal-body {
+    background-color: var(--menu-color);
+}
+
+html[totamjung='on'] .inmodal .modal-footer {
+    background-color: var(--dark-menu-color);
+    border-top-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .inmodal button.btn.btn-white {
+    background-color: var(--menu-line-color);
+}
+
+html[totamjung='on'] .inmodal .tab-content {
+    border: 1px;
+}
+
+html[totamjung='on'] .top-navigation .nav>li.active {
+    background: transparent;
+}
+
+html[totamjung='on'] .tabs-container .nav-tabs>li.active>a,
+html[totamjung='on'] .tabs-container .nav-tabs>li.active>a:hover,
+html[totamjung='on'] .tabs-container .nav-tabs>li.active>a:focus {
+    background-color: var(--secondary-menu-color);
+    border-color: var(--menu-line-color) var(--menu-line-color) transparent var(--menu-line-color);
+    z-index: 1;
+}
+
+html[totamjung='on'] .tabs-container .panel-body {
+    background-color: var(--secondary-menu-color);
+    border: 1px solid var(--menu-line-color);
+}
+
+html[totamjung='on'] .tabs-container .panel-body>.table th {
+    border-bottom-color: var(--menu-line-color);
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .tabs-container .panel-body>.table td {
+    border-top-color: var(--menu-line-color);
+}
+
 html[totamjung='on'] .widget.style1.text-center.navy-bg {
-    background-color: #00210e98;
-    border: 2px solid #00aa47;
-    box-shadow: 0 0 6px #00aa47;
+    background-color: var(--scoreboard-green-bg-color);
+    border: 2px solid var(--scoreboard-green-color);
+    box-shadow: 0 0 6px var(--scoreboard-green-color);
 }
 
 html[totamjung='on'] .widget.style1.text-center.lazur-bg {
-    background-color: #0020298e;
-    border: 2px solid #0089af;
-    box-shadow: 0 0 6px #0089af;
+    background-color: var(--scoreboard-mint-bg-color);
+    border: 2px solid var(--scoreboard-mint-color);
+    box-shadow: 0 0 6px var(--scoreboard-mint-color);
+}
+
+html[totamjung='on'] .widget.style1.text-center.blue-bg {
+    background-color: var(--scoreboard-blue-bg-color);
+    border: 2px solid var(--scoreboard-blue-color);
+    box-shadow: 0 0 6px var(--scoreboard-blue-color);
 }
 
 html[totamjung='on'] .widget.style1.text-center.yellow-bg {
-    background-color: #291b0096;
-    border: 2px solid #b98800;
-    box-shadow: 0 0 6px #b98800;
+    background-color: var(--scroeboard-yellow-bg-color);
+    border: 2px solid var(--scoreboard-yellow-color);
+    box-shadow: 0 0 6px var(--scoreboard-yellow-color);
 }
 
 html[totamjung='on'] .widget.style1.text-center.red-bg {
-    background: #2100009d;
-    border: 2px solid #b8001c;
-    box-shadow: 0 0 6px #b8001c;
+    background: var(--scoreboard-red-bg-color);
+    border: 2px solid var(--scoreboard-red-color);
+    box-shadow: 0 0 6px var(--scoreboard-red-color);
 }
 
 html[totamjung='on'] .widget.style1.text-center.navy-bg h2 {
-    color: #00aa47;
+    color: var(--scoreboard-green-color);
 }
 
 html[totamjung='on'] .widget.style1.text-center.lazur-bg h2 {
-    color: #0089af;
+    color: var(--scoreboard-mint-color);
+}
+
+html[totamjung='on'] .widget.style1.text-center.blue-bg h2 {
+    color: var(--scoreboard-blue-color);
 }
 
 html[totamjung='on'] .widget.style1.text-center.yellow-bg h2 {
-    color: #b98800;
+    color: var(--scoreboard-yellow-color);
 }
 
 html[totamjung='on'] .widget.style1.text-center.red-bg h2 {
-    color: #b8001c;
+    color: var(--scoreboard-red-color);
 }
 
 html[totamjung='on'] .s-results .inner-results h3 a,
@@ -1268,7 +1453,7 @@ html[totamjung='on'] .CodeMirror-selected,
 html[totamjung='on'] .CodeMirror-line::selection,
 html[totamjung='on'] .CodeMirror-line>span::selection,
 html[totamjung='on'] .CodeMirror-line>span>span::selection {
-    color: black;
+    color: var(--dark-menu-color);
     background: var(--blurred-link-color);
 }
 
@@ -1308,11 +1493,11 @@ html[totamjung='on'] span.solvedac-tier-name--1:after {
 }
 
 html[totamjung='on'] .uploadcare--dialog div {
-    color: black;
+    color: var(--dark-menu-color);
 }
 
 html[totamjung='on'] .CodeMirror-line>span {
-    color: black;
+    color: var(--dark-menu-color);
 }
 
 html[totamjung='on'] .CodeMirror-cursor {
@@ -1479,7 +1664,7 @@ html[totamjung='on'] .toastui-editor-tabs[aria-role='tabpanel'] .tab-item.active
 
 html[totamjung='on'] .toastui-editor-file-name,
 html[totamjung='on'] .toastui-editor-file-name.has-file {
-    background-color: black;
+    background-color: var(--dark-menu-color);
     border-color: var(--bright-menu-line-color);
     color: var(--text-color);
 }
@@ -1509,8 +1694,6 @@ html[totamjung='on'] .navbar.navbar-static-top {
     background-color: var(--menu-color);
     border-bottom: none;
 }
-
-/* End of Scoreboard CSS */
 
 html[totamjung='on'] .uploadcare--widget__button.uploadcare--widget__button_type_open {
     background-color: var(--menu-line-color);
@@ -1744,7 +1927,9 @@ html[totamjung='on'] .problem-label.problem-label-unofficial {
     background: var(--label-mint-gradient-color);
 }
 
-html[totamjung='on'] .problem-label.problem-label-language-restrict {
+html[totamjung='on'] .problem-label.problem-label-language-restrict,
+html[totamjung='on'] .badge.badge-blue.problem-label,
+html[totamjung='on'] .badge.rounded-score.badge-blue {
     background: var(--label-blue-gradient-color);
 }
 
@@ -1867,9 +2052,46 @@ html[totamjung='on'] #problem-timer .dropdown-menu input.timer-number {
     outline: none;
 }
 
+html[totamjung='on'] #quick-search .tabs .tab {
+    color: var(--menu-line-color);
+    transition: 0.2s;
+}
+
+html[totamjung='on'] #quick-search .tabs .tab.active,
+html[totamjung='on'] #quick-search .tabs .tab:hover,
+html[totamjung='on'] #quick-search .tabs .tab:active {
+    background-color: var(--menu-color);
+    border-color: var(--secondary-menu-color);
+    color: var(--title-color);
+}
+
+html[totamjung='on'] #quick-search .form-control {
+    background-color: var(--dark-menu-color);
+    box-shadow: none;
+}
+
+html[totamjung='on'] #quick-search .results {
+    background-color: var(--menu-color);
+}
+
+html[totamjung='on'] #quick-search .results .quick-search-item {
+    border-bottom-color: var(--secondary-menu-color);
+}
+
+html[totamjung='on'] #quick-search .form-control,
+html[totamjung='on'] #quick-search .results {
+    border-color: var(--secondary-menu-color) !important;
+}
+
+#quick-search .results::-webkit-scrollbar-thumb {
+    background: var(--menu-line-color);
+}
+
+#quick-search .results::-webkit-scrollbar-thumb:hover {
+    background: var(--bright-menu-line-color);
+}
+
 /* FOR TIERIMNIDA */
-html[totamjung='on'] .result-ac span[style="color:#000000"],
-html[totamjung='on'] .result-pac span[style="color:#000000"],
-html[totamjung='on'] .result-wa span[style="color:#000000"] {
+html[totamjung='on'] .problem-list span[style="color:#000000"] {
     color: var(--text-color) !important;
 }

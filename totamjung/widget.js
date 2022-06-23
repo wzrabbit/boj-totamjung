@@ -52,6 +52,8 @@ const algorithmToId = {
     "탑 트리": 176, "춤추는 링크": 177, "보이어–무어 다수결 투표": 178, "트리 압축": 179,
     "생성 함수": 180, "a*": 181, "레드-블랙 트리": 182, "델로네 삼각분할": 183,
     "서큘레이션": 184, "이산 k제곱근": 185, "다중 대입값 계산": 186, "차분 공격": 187,
+    "하켄부시 게임": 188, "트리 분할": 189, "생일 문제": 190, "도형에서의 불 연산": 191,
+    "현 그래프": 192, "차수열": 193, "utf-8 입력 처리": 194,
 
     "Mathematics": 1, "Implementation": 2, "Dynamic Programming": 3, "Graph Theory": 4,
     "Data Structures": 5, "String": 6, "Greedy": 7, "Bruteforcing": 8,
@@ -111,7 +113,10 @@ const algorithmToId = {
     "Top Tree": 176, "Dancing Links": 177, "Boyer–moore Majority Vote": 178,
     "Tree Compression": 179, "Generating Function": 180, "A*": 181, "Red-black Tree": 182,
     "Delaunay Triangulation": 183, "Circulation": 184, "Discrete k-th Root": 185,
-    "Multipoint Evaluation": 186, "Differential Cryptanalysis": 187
+    "Multipoint Evaluation": 186, "Differential Cryptanalysis": 187,
+    "Hackenbush": 188, "Tree Decomposition": 189, "Birthday": 190,
+    "Boolean Operations On Geometric Objects": 191, "Chordal Graph": 192, "Degree Sequence": 193,
+    "Utf-8 Inputs": 194,
 }
 
 
@@ -259,10 +264,12 @@ function createThemeButtonListener() {
 
             if (loaded.theme === 'yes') {
                 html.setAttribute('totamjung', 'off');
+                html.style.backgroundColor = 'transparent';
                 chrome.runtime.sendMessage({ msg: 'themeOff' });
             }
             else {
                 html.setAttribute('totamjung', 'on');
+                html.style.backgroundColor = 'rgb(26, 14, 10)';
                 chrome.runtime.sendMessage({ msg: 'themeOn' });
             }
         });

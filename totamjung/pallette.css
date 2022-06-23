@@ -3,6 +3,7 @@
     --bg-second-color: rgb(68, 32, 23);
     --secondary-menu-color: rgb(39, 22, 16);
     --menu-color: rgb(26, 14, 10);
+    --dark-menu-color: rgb(20, 10, 7);
     --disabled-menu-color: rgb(26, 14, 10, 0.6);
     --text-color: rgb(221, 217, 213);
     --link-color: rgb(255, 242, 200);
@@ -66,6 +67,7 @@
     --filter-blue: brightness(0) saturate(100%) invert(29%) sepia(66%) saturate(1717%) hue-rotate(179deg) brightness(101%) contrast(101%);
     --filter-white: brightness(0) saturate(100%) invert(99%) sepia(94%) saturate(2%) hue-rotate(358deg) brightness(109%) contrast(100%);
     --filter-light-brown: brightness(0) saturate(100%) invert(49%) sepia(26%) saturate(568%) hue-rotate(330deg) brightness(93%) contrast(86%);
+    --filter-mid-brown: brightness(0) saturate(100%) invert(8%) sepia(7%) saturate(4167%) hue-rotate(329deg) brightness(97%) contrast(96%);
     --filter-dark-brown: brightness(0) saturate(100%) invert(5%) sepia(26%) saturate(1245%) hue-rotate(329deg) brightness(98%) contrast(97%);
     --filter-gold: brightness(0) saturate(100%) invert(77%) sepia(25%) saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);
 
@@ -100,6 +102,18 @@
 
     --opposite-streak-color: rgb(216, 233, 239);
 
+    /* Scoreboard Block Colors */
+    --scoreboard-green-color: rgb(0, 171, 71);
+    --scoreboard-green-bg-color: rgba(0, 33, 14, 0.6);
+    --scoreboard-mint-color: rgb(0, 137, 175);
+    --scoreboard-mint-bg-color: rgba(0, 32, 41, 0.6);
+    --scoreboard-blue-color: rgb(0, 44, 175);
+    --scoreboard-blue-bg-color: rgba(0, 12, 41, 0.6);
+    --scoreboard-yellow-color: rgb(185, 136, 0);
+    --scoreboard-yellow-bg-color: rgba(41, 27, 0, 0.6);
+    --scoreboard-red-color: rgb(184, 0, 28);
+    --scoreboard-red-bg-color: rgba(33, 0, 0, 0.6);
+
     /* AC Label Colors */
     --label-green-gradient-color: linear-gradient(120deg,
             rgb(43, 100, 60) 0%,
@@ -129,7 +143,7 @@
             rgb(18, 129, 108) 0%,
             rgb(10, 75, 63) 100%);
 
-    --scoreboard-gold-gradient-color: linear-gradient(150deg, rgba(255, 242, 199, 1) 0%, rgba(246, 220, 136, 1) 15%, rgba(213, 169, 72, 1) 40%, rgba(195, 152, 56, 1) 63%, rgba(253, 162, 47, 1) 100%);
+    --scoreboard-gold-gradient-color: linear-gradient(150deg, rgba(250, 240, 170, 1) 0%, rgba(250, 220, 70, 1) 18%, rgba(200, 150, 20, 1) 41%, rgba(216, 142, 12, 1) 64%, rgba(150, 90, 10, 1) 88%);
     --scoreboard-silver-gradient-color: linear-gradient(150deg, rgba(227, 227, 227, 1) 0%, rgba(167, 167, 167, 1) 15%, rgba(129, 129, 129, 1) 38%, rgba(93, 93, 98, 1) 74%, rgba(138, 136, 146, 1) 100%);
     --scoreboard-bronze-gradient-color: linear-gradient(150deg, rgba(227, 199, 182, 1) 0%, rgba(209, 140, 98, 1) 15%, rgba(162, 97, 57, 1) 40%, rgba(159, 86, 40, 1) 74%, rgba(208, 89, 29, 1) 100%);
 }

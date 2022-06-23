@@ -1,17 +1,19 @@
 (() => {
     'use strict';
 
+    console.log('load start')
     chrome.storage.sync.get('settings', (loaded) => {
+
         loaded = loaded['settings'];
+        const html = document.documentElement;
+        if (loaded !== undefined && loaded.theme === 'yes') {
+            html.setAttribute('totamjung', 'on');
+            html.style.backgroundColor = 'rgb(26, 14, 10)';
+        }
 
         const observer = new MutationObserver(() => {
-            const html = document.querySelector('html');
-            const head = document.querySelector('head');
 
-            if (loaded.theme === 'yes') {
-                if (html)
-                    html.setAttribute('totamjung', 'on');
-            }
+            const head = document.querySelector('head');
 
             if (head) {
                 let pre = document.createElement('link');

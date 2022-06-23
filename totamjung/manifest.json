@@ -42,7 +42,8 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "images/*"
+                "images/*",
+                "myscript.js"
             ],
             "matches": [
                 "https://www.acmicpc.net/*"

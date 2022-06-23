@@ -309,6 +309,12 @@ html[totamjung='on'] .header .navbar-default .navbar-nav>li>a {
     html[totamjung='on'] .header .navbar-default .navbar-nav>li a {
         border-bottom-color: var(--menu-line-color);
     }
+
+    html[totamjung='on'] .header .navbar-default .navbar-nav>.active>a,
+    html[totamjung='on'] .header .navbar-default .navbar-nav>.active>a:hover,
+    html[totamjung='on'] .header .navbar-default .navbar-nav>.active>a:focus {
+        background-color: var(--menu-line-color);
+    }
 }
 
 html[totamjung='on'] .header .navbar-default .navbar-nav>li:hover>a,

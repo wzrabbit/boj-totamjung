@@ -1944,8 +1944,8 @@ html[totamjung='on'] span.badge-red {
     color: var(--text-color);
 }
 
-html[totamjung='on'] a.list-group-item.active>span.badge-red,
-html[totamjung='on'] .nav-pills>.active>a>span.badge-red {
+html[totamjung='on'] .list-group-item.active>.badge,
+html[totamjung='on'] .nav-pills>.active>a>.badge {
     background: var(--secondary-menu-color);
     color: var(--text-color);
 }

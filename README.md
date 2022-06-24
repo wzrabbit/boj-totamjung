@@ -20,7 +20,7 @@
 <img src="https://user-images.githubusercontent.com/87642422/162564088-6519ed77-735e-4e64-975c-451571e8db1a.PNG" width="350px" />
 
 ### 설정
-<img src="https://user-images.githubusercontent.com/87642422/162564090-c07c5d4e-c7ec-4ea3-9fd2-55e12ad1bbcc.PNG" width="1000px" />
+<img src="https://user-images.githubusercontent.com/87642422/175487597-f2c6ad54-3087-4ede-9551-4cf4f1638cfe.PNG" width="1000px" />
 
 ### 테마
 <img src="https://user-images.githubusercontent.com/87642422/175485090-36318747-2079-41bd-a441-395d26296d84.PNG" width="1000px" />

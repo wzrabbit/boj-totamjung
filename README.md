@@ -23,10 +23,12 @@
 <img src="https://user-images.githubusercontent.com/87642422/162564090-c07c5d4e-c7ec-4ea3-9fd2-55e12ad1bbcc.PNG" width="1000px" />
 
 ### 테마
-<img src="https://user-images.githubusercontent.com/87642422/162564200-0eb02a12-62ec-4d2d-a83b-14f4c558cc94.PNG" width="1000px" />
-<img src="https://user-images.githubusercontent.com/87642422/162564205-f0fca82e-7cee-4c6c-8868-aa5de7f2e461.PNG" width="1000px" />
-<img src="https://user-images.githubusercontent.com/87642422/162564373-19fb779c-e90f-4ffc-8cf2-533159deec19.PNG" width="1000px" />
-<img src="https://user-images.githubusercontent.com/87642422/162564221-b5808ac1-6338-4f81-b58b-c41df0205643.PNG" width="1000px" />
+<img src="https://user-images.githubusercontent.com/87642422/175485090-36318747-2079-41bd-a441-395d26296d84.PNG" width="1000px" />
+<img src="https://user-images.githubusercontent.com/87642422/175485610-1a35f4a9-ac74-4602-bd46-1ec4be72c989.PNG" width="1000px" />
+<img src="https://user-images.githubusercontent.com/87642422/175485823-baf6e975-6739-4615-bc8d-ac73f57b969f.PNG" width="1000px" />
+<img src="https://user-images.githubusercontent.com/87642422/175486297-2c7b6699-35e2-4325-989d-7826b88f791b.PNG" width="1000px" />
+
+테마를 적용한 이미지들은 [여기](https://github.com/wzrabbit/boj-totamjung/blob/main/THEME.md)에서 더 열람하실 수 있습니다.
 
 ## 설치 방법
 ### Chrome 웹 스토어에서 설치하기
@@ -48,7 +50,7 @@ https://github.com/joonas-yoon/boj-extended
 
 ## 오류를 찾으셨나요? 건의하시고 싶은 기능이 있나요?
 문제가 있거나, 건의하고 싶은 사항이 있으시다면, 언제든지 문의해 주세요!
-* [Google 설문지를 통해 익명으로 문의하기](https://docs.google.com/forms/d/e/1FAIpQLSdxYqETZlQbmlKJ04B-spO2TqqAUBEAjgBWJ6vg3EjSCLesPg/viewform)
-* [Github Issue를 통해 공개적으로 문의하기](https://github.com/wzrabbit/boj-totamjung/issues)
+* `curious.wzrabbit@gmail.com` 으로 문의
+* [Github Issue를 통해 공개적으로 문의](https://github.com/wzrabbit/boj-totamjung/issues)
 
 토탐정을 이용해 주셔서 감사합니다!

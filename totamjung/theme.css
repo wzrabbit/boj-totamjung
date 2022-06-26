@@ -1711,6 +1711,10 @@ html[totamjung='on'] .CodeMirror.cm-s-default {
     background-color: #fff;
 }
 
+html[totamjung='on'] .CodeMirror.cm-s-default .CodeMirror-selected {
+    background-color: #d9d9d9;
+}
+
 html[totamjung='on'] .cm-s-default .CodeMirror-cursor {
     border-left: 1px solid black;
 }

@@ -1707,6 +1707,14 @@ html[totamjung='on'] .uploadcare--widget__button.uploadcare--widget__button_type
     box-shadow: 0 0 14px var(--menu-color);
 }
 
+html[totamjung='on'] .CodeMirror.cm-s-default {
+    background-color: #fff;
+}
+
+html[totamjung='on'] .cm-s-default .CodeMirror-cursor {
+    border-left: 1px solid black;
+}
+
 html[totamjung='on'] .cm-s-the-matrix.CodeMirror .CodeMirror-line>span {
     color: #0f0;
 }

@@ -2122,10 +2122,20 @@ html[totamjung='on'] #quick-search .results {
     background: var(--bright-menu-line-color);
 }
 
+
+html[totamjung='on'] a[href^="/problem"].problem-link-style-box {
+    background-color: var(--secondary-menu-color);
+    color: var(--bright-menu-line-color);
+    transition: 0.2s;
+}
+
+html[totamjung='on'] a[href^="/problem"].problem-link-style-box:hover {
+    border-color: var(--bright-menu-line-color);
+}
+
 html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-ac {
     background-color: var(--problem-link-ac-box-color);
     color: var(--problem-link-ac-color);
-    transition: 0.2s;
 }
 
 html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-ac:hover {
@@ -2135,7 +2145,6 @@ html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-ac:hover 
 html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-pac {
     background-color: var(--problem-link-pac-box-color);
     color: var(--problem-link-pac-color);
-    transition: 0.2s;
 }
 
 html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-pac:hover {
@@ -2145,7 +2154,6 @@ html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-pac:hover
 html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-wa {
     background-color: var(--problem-link-wa-box-color);
     color: var(--problem-link-wa-color);
-    transition: 0.2s;
 }
 
 html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-wa:hover {

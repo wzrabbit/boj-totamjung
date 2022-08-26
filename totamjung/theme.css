@@ -2122,6 +2122,57 @@ html[totamjung='on'] #quick-search .results {
     background: var(--bright-menu-line-color);
 }
 
+html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-ac {
+    background-color: var(--problem-link-ac-box-color);
+    color: var(--problem-link-ac-color);
+    transition: 0.2s;
+}
+
+html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-ac:hover {
+    border-color: var(--problem-link-ac-color);
+}
+
+html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-pac {
+    background-color: var(--problem-link-pac-box-color);
+    color: var(--problem-link-pac-color);
+    transition: 0.2s;
+}
+
+html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-pac:hover {
+    border-color: var(--problem-link-pac-color);
+}
+
+html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-wa {
+    background-color: var(--problem-link-wa-box-color);
+    color: var(--problem-link-wa-color);
+    transition: 0.2s;
+}
+
+html[totamjung='on'] a[href^="/problem"].problem-link-style-box.result-wa:hover {
+    border-color: var(--problem-link-wa-color);
+}
+
+html[totamjung='on'] .btn-vs {
+    background-image: var(--vs-gradient-color);
+    background-size: 200%;
+    transition: all 0.4s ease-in-out;
+    font-weight: 800;
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .boj-ext-alert {
+    background-color: var(--menu-color);
+    border: 1px solid var(--secondary-menu-color);
+}
+
+html[totamjung='on'] .boj-ext-alert>.title {
+    color: var(--title-color);
+}
+
+html[totamjung='on'] .boj-ext-alert>.title>a {
+    color: var(--link-color);
+}
+
 /* FOR TIERIMNIDA */
 html[totamjung='on'] .problem-list span[style="color:#000000"] {
     color: var(--text-color) !important;

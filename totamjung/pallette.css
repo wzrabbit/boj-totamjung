@@ -144,6 +144,21 @@
             rgb(18, 129, 108) 0%,
             rgb(10, 75, 63) 100%);
 
+    /* BOJ Extended Colors */
+    --problem-link-ac-box-color: rgb(0, 40, 20);
+    --problem-link-pac-box-color: rgb(60, 50, 0);
+    --problem-link-wa-box-color: rgb(45, 0, 0);
+    --problem-link-ac-color: rgb(136, 232, 178);
+    --problem-link-pac-color: rgb(236, 222, 115);
+    --problem-link-wa-color: rgb(238, 123, 123);
+    --vs-gradient-color: linear-gradient(60deg,
+            rgb(40, 18, 4) 15%,
+            rgb(83, 30, 8) 30%,
+            rgb(124, 84, 36) 45%,
+            rgb(44, 19, 5) 60%,
+            rgb(22, 11, 4) 75%,
+            rgb(99, 46, 12) 90%);
+
     --scoreboard-gold-gradient-color: linear-gradient(150deg, rgba(250, 240, 170, 1) 0%, rgba(250, 220, 70, 1) 18%, rgba(200, 150, 20, 1) 41%, rgba(216, 142, 12, 1) 64%, rgba(150, 90, 10, 1) 88%);
     --scoreboard-silver-gradient-color: linear-gradient(150deg, rgba(227, 227, 227, 1) 0%, rgba(167, 167, 167, 1) 15%, rgba(129, 129, 129, 1) 38%, rgba(93, 93, 98, 1) 74%, rgba(138, 136, 146, 1) 100%);
     --scoreboard-bronze-gradient-color: linear-gradient(150deg, rgba(227, 199, 182, 1) 0%, rgba(209, 140, 98, 1) 15%, rgba(162, 97, 57, 1) 40%, rgba(159, 86, 40, 1) 74%, rgba(208, 89, 29, 1) 100%);

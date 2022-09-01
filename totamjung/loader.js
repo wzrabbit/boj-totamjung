@@ -7,7 +7,8 @@
         const html = document.documentElement;
         if (loaded !== undefined && loaded.theme === 'yes') {
             html.setAttribute('totamjung', 'on');
-            html.style.backgroundColor = 'rgb(26, 14, 10)';
+            html.setAttribute('ttjtheme', 'hacker');
+            html.style.backgroundColor = 'rgb(0, 0, 0)';
         }
 
         const observer = new MutationObserver(() => {

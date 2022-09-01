@@ -1,0 +1,120 @@
+html[ttjtheme="hacker"] * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+html[ttjtheme="hacker"] {
+    background: black;
+}
+
+
+html[ttjtheme="hacker"] button[type="submit"],
+html[ttjtheme="hacker"] button[type="submit"]:hover,
+html[ttjtheme="hacker"] button[type="submit"]:focus,
+html[ttjtheme="hacker"] button.btn.btn-primary,
+html[ttjtheme="hacker"] button.btn.btn-lg,
+html[ttjtheme="hacker"] button.navbar-toggle,
+html[ttjtheme="hacker"] a.btn:not(.btn-link),
+html[ttjtheme="hacker"] .btn.btn-default,
+html[ttjtheme="hacker"] .btn-u {
+    background-color: black !important;
+    border: 1.2px solid var(--bright-menu-line-color);
+    color: var(--text-color) !important;
+}
+
+/* 수정 필요 */
+
+html[ttjtheme="hacker"] #logo-header {
+    filter: brightness(0) saturate(100%) invert(72%) sepia(61%) saturate(7038%) hue-rotate(91deg) brightness(126%) contrast(119%);
+}
+
+html[ttjtheme="hacker"] #problem-body img,
+html[ttjtheme="hacker"] .blog-content img {
+    transition: 0.3s;
+}
+
+html[ttjtheme="hacker"] #problem-body img:not(img:hover),
+html[ttjtheme="hacker"] .img-responsive,
+html[ttjtheme="hacker"] .blog-content img:not(img:hover),
+html[ttjtheme="hacker"] .startlink-logo {
+    filter: brightness(60%) sepia(100%) hue-rotate(58deg) saturate(200%);
+}
+
+html[ttjtheme="hacker"] .problem-label,
+html[ttjtheme="hacker"] .label {
+    color: var(--link-color);
+    border: 1px solid var(--text-color);
+}
+
+html[ttjtheme="hacker"] .copyright {
+    background-color: black;
+    color: var(--text-color);
+    border-top: 3px solid var(--link-color);
+}
+
+html[ttjtheme="hacker"] .copyright .list-unstyled>li,
+html[ttjtheme="hacker"] .footer-v3 .copyright p {
+    color: var(--text-color) !important;
+}
+
+html[ttjtheme="hacker"] .copyright a {
+    color: var(--link-color) !important;
+}
+
+html[ttjtheme="hacker"] input[type="radio"] {
+    filter: invert(100%) hue-rotate(60deg) brightness(1.2);
+}
+
+html[ttjtheme="hacker"] .media-object {
+    filter: invert(100%) hue-rotate(60deg) brightness(1.2);
+}
+
+html[ttjtheme="hacker"] .space-highlight {
+    background-color: var(--tab-hover-color);
+}
+
+html[ttjtheme="hacker"] table {
+    border: 0.2px solid var(--text-color) !important;
+}
+
+html[ttjtheme="hacker"] .funny-boxes-top-sea {
+    border: 0.2px solid var(--text-color);
+    border-top-width: 5px;
+}
+
+/* TTJ WIDGET */
+
+html[ttjtheme="hacker"] .ttj-dropdown-menu {
+    border-color: var(--text-color);
+}
+
+html[ttjtheme="hacker"] .ttj-topbtn {
+    background-color: var(--text-color);
+}
+
+html[ttjtheme="hacker"] .ttj-topbtn>span {
+    background-color: var(--menu-color);
+}
+
+html[ttjtheme="hacker"] .ttj-menu-image,
+html[ttjtheme="hacker"] .ttj-result-icon,
+html[ttjtheme="hacker"] .ttj-result-img {
+    filter: var(--filter-light-brown);
+}
+
+html[ttjtheme="hacker"] .ttj-popup {
+    background-color: var(--bright-menu-line-color);
+}
+
+html[ttjtheme="hacker"] #ttj-result-image {
+    filter: var(--filter-dark-brown);
+}
+
+html[ttjtheme="hacker"] #ttj-result-text {
+    color: var(--menu-color);
+    border-left-color: var(--menu-color);
+}
+
+html[ttjtheme="hacker"] .ttj-menu-item:hover {
+    background-color: var(--ttj-hover-color);
+}

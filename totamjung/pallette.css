@@ -1,6 +1,4 @@
 :root {
-    --bg-first-color: rgb(51, 23, 15);
-    --bg-second-color: rgb(68, 32, 23);
     --secondary-menu-color: rgb(39, 22, 16);
     --table-border-color: rgb(53, 30, 21);
     --menu-color: rgb(26, 14, 10);
@@ -158,6 +156,125 @@
             rgb(44, 19, 5) 60%,
             rgb(22, 11, 4) 75%,
             rgb(99, 46, 12) 90%);
+
+    --scoreboard-gold-gradient-color: linear-gradient(150deg, rgba(250, 240, 170, 1) 0%, rgba(250, 220, 70, 1) 18%, rgba(200, 150, 20, 1) 41%, rgba(216, 142, 12, 1) 64%, rgba(150, 90, 10, 1) 88%);
+    --scoreboard-silver-gradient-color: linear-gradient(150deg, rgba(227, 227, 227, 1) 0%, rgba(167, 167, 167, 1) 15%, rgba(129, 129, 129, 1) 38%, rgba(93, 93, 98, 1) 74%, rgba(138, 136, 146, 1) 100%);
+    --scoreboard-bronze-gradient-color: linear-gradient(150deg, rgba(227, 199, 182, 1) 0%, rgba(209, 140, 98, 1) 15%, rgba(162, 97, 57, 1) 40%, rgba(159, 86, 40, 1) 74%, rgba(208, 89, 29, 1) 100%);
+}
+
+:root[ttjtheme='hacker'] {
+    --secondary-menu-color: rgb(0, 25, 0);
+    --table-border-color: rgb(10, 160, 0);
+    --menu-color: rgb(0, 15, 0);
+    --dark-menu-color: rgb(0, 15, 0);
+    --disabled-menu-color: rgb(26, 14, 10, 0.6);
+    --text-color: rgb(10, 160, 0);
+    --link-color: rgb(68, 255, 68);
+    --blurred-link-color: rgb(10, 160, 0);
+    --title-color: rgb(10, 160, 0);
+    --tab-hover-color: rgb(10, 160, 0, 0.3);
+    --bright-menu-line-color: rgb(6, 85, 0);
+    --menu-line-color: rgb(6, 85, 0);
+    --button-red: rgb(105, 42, 42);
+    --button-dark: rgb(51, 32, 63);
+    --button-darkblue: rgb(34, 32, 63);
+    --button-mint: rgb(39, 73, 70);
+    --table-notice-color-light: rgb(3, 55, 0);
+    --table-notice-color-dark: rgb(0, 45, 9);
+    --table-contest-color-light: rgb(3, 55, 0);
+    --table-contest-color-dark: rgb(0, 45, 9);
+    --glyphicon-like-color: rgb(0, 255, 98);
+    --glyphicon-unlike-color: rgb(255, 0, 0);
+    --default-black: rgb(30, 30, 30);
+    --gradient-black: linear-gradient(to right,
+            rgb(0, 0, 0, 0.4) 0%,
+            rgb(0, 0, 0, 0.4) 35%,
+            transparent 80%);
+
+    --settings-block-color: rgb(48, 30, 24);
+    --settings-secondary-block-color: rgb(65, 42, 35);
+
+    --tc-red: rgb(238, 0, 0);
+    --tc-yellow: rgb(221, 204, 0);
+    --tc-blue: rgb(102, 102, 255);
+    --tc-green: rgb(0, 169, 0);
+    --tc-gray: rgb(153, 153, 153);
+
+    --cf-admin: white;
+    --cf-legendary: rgb(250, 125, 125);
+    --cf-red: red;
+    --cf-orange: rgb(255, 140, 0);
+    --cf-purple: rgb(170, 0, 170);
+    --cf-blue: blue;
+    --cf-mint: rgb(3, 168, 158);
+    --cf-green: green;
+    --cf-gray: gray;
+
+    --at-red: red;
+    --at-orange: rgb(255, 128, 0);
+    --at-yellow: rgb(192, 192, 0);
+    --at-blue: blue;
+    --at-mint: rgb(0, 192, 192);
+    --at-green: rgb(0, 128, 0);
+    --at-brown: rgb(128, 64, 0);
+    --at-gray: gray;
+
+    --normal-main-color: rgb(0, 118, 192);
+    --normal-sub-color: rgb(255, 255, 255);
+    --normal-hover-color: rgb(182, 210, 228);
+    --translucent-white-color: rgb(255, 255, 255, 0.1);
+    --ttj-hover-color: rgb(114, 75, 61, 0.75);
+    --translucent-dark-color: rgb(0, 0, 0, 0.3);
+    --shadow-color: rgb(0, 0, 0, 0.35);
+
+    --filter-blue: brightness(0) saturate(100%) invert(29%) sepia(66%) saturate(1717%) hue-rotate(179deg) brightness(101%) contrast(101%);
+    --filter-white: brightness(0) saturate(100%) invert(99%) sepia(94%) saturate(2%) hue-rotate(358deg) brightness(109%) contrast(100%);
+    --filter-light-brown: brightness(0) saturate(100%) invert(49%) sepia(26%) saturate(568%) hue-rotate(330deg) brightness(93%) contrast(86%);
+    --filter-mid-brown: brightness(0) saturate(100%) invert(8%) sepia(7%) saturate(4167%) hue-rotate(329deg) brightness(97%) contrast(96%);
+    --filter-dark-brown: brightness(0) saturate(100%) invert(5%) sepia(26%) saturate(1245%) hue-rotate(329deg) brightness(98%) contrast(97%);
+    --filter-gold: brightness(0) saturate(100%) invert(77%) sepia(25%) saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);
+
+
+    --table-ac-color: rgb(0, 42, 8);
+    --table-ac-secondary-color: rgb(0, 54, 9);
+    --table-ac-text-color: rgb(95, 174, 95);
+    --table-wa-color: rgb(67, 1, 21);
+    --table-wa-secondary-color: rgb(87, 2, 27);
+    --table-wa-text-color: rgb(199, 110, 110);
+
+    --light-gradient-color: black;
+    --dark-gradient-color: black;
+    --opposite-streak-color: rgb(216, 233, 239);
+
+    /* Scoreboard Block Colors */
+    --scoreboard-green-color: rgb(10, 160, 0);
+    --scoreboard-green-bg-color: rgba(0, 33, 14, 0.6);
+    --scoreboard-mint-color: rgb(0, 137, 175);
+    --scoreboard-mint-bg-color: rgba(0, 32, 41, 0.6);
+    --scoreboard-blue-color: rgb(0, 44, 175);
+    --scoreboard-blue-bg-color: rgba(0, 12, 41, 0.6);
+    --scoreboard-yellow-color: rgb(185, 136, 0);
+    --scoreboard-yellow-bg-color: rgba(41, 27, 0, 0.6);
+    --scoreboard-red-color: rgb(184, 0, 28);
+    --scoreboard-red-bg-color: rgba(33, 0, 0, 0.6);
+
+    /* AC Label Colors */
+    --label-green-gradient-color: black;
+    --label-red-gradient-color: black;
+    --label-yellow-gradient-color: black;
+    --label-sky-gradient-color: black;
+    --label-gray-gradient-color: black;
+    --label-blue-gradient-color: black;
+    --label-mint-gradient-color: black;
+
+    /* BOJ Extended Colors */
+    --problem-link-ac-box-color: black;
+    --problem-link-pac-box-color: black;
+    --problem-link-wa-box-color: black;
+    --problem-link-ac-color: rgb(140, 255, 0);
+    --problem-link-pac-color: rgb(255, 225, 0);
+    --problem-link-wa-color: rgb(255, 71, 71);
+    --vs-gradient-color: black;
 
     --scoreboard-gold-gradient-color: linear-gradient(150deg, rgba(250, 240, 170, 1) 0%, rgba(250, 220, 70, 1) 18%, rgba(200, 150, 20, 1) 41%, rgba(216, 142, 12, 1) 64%, rgba(150, 90, 10, 1) 88%);
     --scoreboard-silver-gradient-color: linear-gradient(150deg, rgba(227, 227, 227, 1) 0%, rgba(167, 167, 167, 1) 15%, rgba(129, 129, 129, 1) 38%, rgba(93, 93, 98, 1) 74%, rgba(138, 136, 146, 1) 100%);

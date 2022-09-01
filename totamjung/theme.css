@@ -358,6 +358,10 @@ html[totamjung='on'] .panel-body>.content>pre {
     border: 1px solid var(--menu-line-color);
 }
 
+html[totamjung='on'] .panel-title a[href^='/user/'] {
+    font-weight: 400;
+}
+
 html[totamjung='on'] #heatmap rect:not(rect[fill="#ffffff"]),
 html[totamjung='on'] #heatmap g>path:first-child {
     filter: hue-rotate(80deg) invert(100%) saturate(70%) brightness(150%) sepia(50%);
@@ -1075,6 +1079,10 @@ html[totamjung='on'] .posts .dl-horizontal:hover a,
 html[totamjung='on'] .posts .dl-horizontal a:hover {
     transition: 0.2s;
     color: var(--link-color);
+}
+
+html[totamjung='on'] .funny-boxes p a.btn-u {
+    color: var(--text-color);
 }
 
 html[totamjung='on'] .blog h2 a {

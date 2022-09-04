@@ -99,7 +99,7 @@ html[ttjtheme="hacker"] .ttj-topbtn>span {
 html[ttjtheme="hacker"] .ttj-menu-image,
 html[ttjtheme="hacker"] .ttj-result-icon,
 html[ttjtheme="hacker"] .ttj-result-img {
-    filter: var(--filter-light-brown);
+    filter: brightness(0) saturate(100%) invert(90%) sepia(94%) saturate(4577%) hue-rotate(49deg) brightness(102%) contrast(103%);
 }
 
 html[ttjtheme="hacker"] .ttj-popup {
@@ -118,3 +118,10 @@ html[ttjtheme="hacker"] #ttj-result-text {
 html[ttjtheme="hacker"] .ttj-menu-item:hover {
     background-color: var(--ttj-hover-color);
 }
+
+/*html[ttjtheme="hacker"] {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/hacker_bg.jpg');
+
+    background-size: 2000px;
+    background-attachment: fixed;
+}*/

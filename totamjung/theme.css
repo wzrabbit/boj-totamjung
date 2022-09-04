@@ -1887,6 +1887,8 @@ html[totamjung='on'] .cm-s-vibrant-ink.CodeMirror .CodeMirror-line>span {
     color: #ffffff;
 }
 
+/* TTJ WIDGET */
+
 html[totamjung='on'] .ttj-dropdown-menu {
     background-color: var(--translucent-dark-color);
     border-color: var(--bright-menu-line-color);
@@ -2179,6 +2181,7 @@ html[totamjung='on'] .btn-vs {
 html[totamjung='on'] .boj-ext-alert {
     background-color: var(--menu-color);
     border: 1px solid var(--secondary-menu-color);
+    right: 7em;
 }
 
 html[totamjung='on'] .boj-ext-alert>.title {

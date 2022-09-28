@@ -1,4 +1,7 @@
-import idToAlgorithm from './idToAlgorithm.js';
+import db from './db.js';
+import loadSliderModule from './slider.js';
+import loadSlotAndSearcherModule from './slotAndSearcher.js';
+import loadHistory from './history.js';
 
 const resetSettings = {
     'predict': 'click',
@@ -15,25 +18,66 @@ const resetTimer = {
 };
 
 function setData(key, value) {
-    chrome.storage.sync.set({ [key]: value }, () => { console.log('ok') });
+    chrome.storage.sync.set({ [key]: value });
 }
 
-function loadPool() {
+function trimWord(word) {
+    word = word.toLowerCase();
+    word = word.replace(/^tag:|^#|[,_/#-]| /g, '');
+    return word;
+}
+
+function makeCategoryListener() {
+    const settings01 = document.querySelector('#sp-01');
+    const settings02 = document.querySelector('#sp-02');
+    const category01 = document.querySelector('#category-block-01');
+    const category02 = document.querySelector('#category-block-02');
+
+    category01.addEventListener('click', () => {
+        settings01.style.display = 'grid';
+        settings02.style.display = 'none';
+    });
+
+    category02.addEventListener('click', () => {
+        settings01.style.display = 'none';
+        settings02.style.display = 'grid';
+    });
+}
+
+function loadPool(keyword) {
     let printer = '';
+    keyword = trimWord(keyword);
+
     chrome.storage.sync.get('algorithm', (algorithm) => {
         algorithm = new Set(algorithm['algorithm']);
         const poolOrigin = document.getElementById('pool');
+        console.log(poolOrigin);
 
-        for (let i = 1; i <= Object.keys(idToAlgorithm).length; i++) {
-            printer += `
+        for (let i = 1; i <= Object.keys(db).length; i++) {
+            let word = [
+                db[i].name,
+                db[i].tag,
+                ...(db[i].alias.length > 0 ? db[i].alias : [])].map((x => trimWord(x)));
+            let found = false;
+
+            for (let i = 0; i < word.length; i++) {
+                if (word[i].indexOf(keyword) !== -1) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found || keyword === '') {
+                printer += `
                 <div class="algorithm-block">
                     <label>
-                        <span>${idToAlgorithm[i]}</span>
+                        <span>${db[i].name}</span>
                         <input class="hidden checkbox" type="checkbox" no="${i}" ${algorithm.has(i) ? 'checked' : ''}/>
                         <span class="checkbox-visual"></span>
                     </label>
                 </div>
             `;
+            }
         }
 
         poolOrigin.innerHTML = printer;
@@ -43,6 +87,18 @@ function loadPool() {
                 updateAlgorithmData(parseInt(item.getAttribute('no')), item.checked);
             });
         });
+    });
+}
+
+function makePoolSearchListener() {
+    const poolSearcher = document.querySelector('#pool-search');
+    poolSearcher.addEventListener('keydown', e => {
+        if (e.keyCode === 27)
+            poolSearcher.value = '';
+    });
+
+    poolSearcher.addEventListener('keyup', () => {
+        loadPool(poolSearcher.value);
     });
 }
 
@@ -103,7 +159,6 @@ function updateSettingsData(name, value, state) {
         console.log('before', loaded);
         if (['predict', 'lock', 'theme', 'font'].indexOf(name) === -1) {
             loaded = resetSettings;
-            console.log('invaild request!! aborting.');
             return;
         }
 
@@ -197,9 +252,45 @@ function loadLinks() {
     });
 }
 
+function loadToggler() {
+    console.log('toggler loaded')
+    const toggler = document.querySelector('#toggler');
+    const leftFrag = document.querySelector('#left-frag');
+    const rightFrag = document.querySelector('#right-frag');
+    const easyRandomMenu = document.querySelector('#easy-random-menu');
+    const manualRandomMenu = document.querySelector('#manual-random-menu');
+    let state = 'left';
+
+    leftFrag.addEventListener('click', () => {
+        if (state === 'right') {
+            state = 'left';
+            easyRandomMenu.classList.remove('none');
+            manualRandomMenu.classList.add('none');
+            toggler.setAttribute('activated', 'left');
+        }
+    });
+
+    rightFrag.addEventListener('click', () => {
+        if (state === 'left') {
+            state = 'right';
+            easyRandomMenu.classList.add('none');
+            manualRandomMenu.classList.remove('none');
+            toggler.setAttribute('activated', 'right');
+        }
+    });
+}
+
 window.onload = () => {
-    loadPool();
+    console.log('[Start] Settings Load Start');
+    makeCategoryListener();
+    loadPool('');
     loadSettings();
+    makePoolSearchListener();
     loadTimer();
-    loadLinks();
+    // loadLinks();
+    loadToggler();
+    loadSliderModule();
+    loadSlotAndSearcherModule();
+    loadHistory();
+    console.log('[Success] Settings loaded!');
 }

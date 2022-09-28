@@ -119,7 +119,6 @@ const algorithmToId = {
     "Utf-8 Inputs": 194,
 }
 
-
 const resetSettings = {
     'predict': 'click',
     'lock': 'click',
@@ -129,14 +128,27 @@ const resetSettings = {
 
 let allKnow = true;
 let isLocked = false;
+let isRandomBusy = false;
 
 function setData(key, value) {
-    chrome.storage.sync.set({ [key]: value }, () => { });
+    chrome.storage.sync.set({ [key]: value });
 }
 
 function sleep(ms) {
     const wakeUpTime = Date.now() + ms;
     while (Date.now() < wakeUpTime) { }
+}
+
+function getFullDate() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+    const day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    const hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    const minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+    const second = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
 
 function getProblemNo() {
@@ -199,6 +211,9 @@ function createWidget() {
             <div class="ttj-menu-item" id="ttj-themebtn">
                 <img class="ttj-menu-image" src="${chrome.runtime.getURL('images/theme.png')}" />
             </div>
+            <div class="ttj-menu-item" id="ttj-randombtn">
+                <img class="ttj-menu-image" id="ttj-randomimg" src="${chrome.runtime.getURL('images/dice.png')}" />
+            </div>
             <div class="ttj-menu-item" id="ttj-checkbtn">
                 <img class="ttj-menu-image" id="ttj-checkimg" src="${chrome.runtime.getURL('images/check.png')}" />
             </div>
@@ -236,7 +251,7 @@ function createTopButtonListener() {
     topBtn.addEventListener('contextmenu', (event) => {
         topBtn.classList.toggle('open');
         if (topBtn.classList.contains('open')) {
-            menu.style.height = '180px';
+            menu.style.height = '215px';
         }
         else {
             menu.style.height = '40px';
@@ -273,6 +288,73 @@ function createThemeButtonListener() {
                 chrome.runtime.sendMessage({ msg: 'themeOn' });
             }
         });
+    });
+}
+
+function createRandomButtonListener() {
+    const randomBtn = document.querySelector('#ttj-randombtn');
+    randomBtn.addEventListener('click', () => {
+        console.log('Random Button Clicked');
+        doRandomDefense(-1);
+    });
+}
+
+function doRandomDefense(key) {
+    console.log('Random Defense Loading...');
+
+    chrome.runtime.sendMessage({ msg: 'getDefenseQuery', no: key }, (res) => {
+        console.log('RES:', res);
+
+        if (res.result === 'FAIL') {
+            console.log('해당 슬롯의 값이 비어있습니다!!');
+            return;
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `https://solved.ac/api/v3/search/problem?query=${res.query}&sort=random`);
+        xhr.send();
+
+        xhr.onload = () => {
+            console.log(xhr.status);
+            if (xhr.status === 400) {
+                console.log('잘못된 쿼리를 입력하여 서버로부터 정보를 받아오지 못 했습니다. 올바른 쿼리를 입력하셨는지 확인해 주시겠어요?');
+                isRandomBusy = false;
+                return;
+            }
+
+            if (xhr.status === 429) {
+                console.log('짧은 시간 동안 너무 많은 요청을 전송했습니다. 잠시 후 다시 시도해 주시겠어요?');
+                isRandomBusy = false;
+                return;
+            }
+
+            if (xhr.status === 500 || xhr.status === 503) {
+                console.log('서버에 문제가 생겨 정보를 받아오지 못 했습니다. 잠시 후 다시 시도해 주시겠어요?');
+                isRandomBusy = false;
+                return;
+            }
+
+            const chosen = JSON.parse(xhr.responseText).items[0];
+            if (chosen !== undefined) {
+                console.log('CHOSEN', chosen);
+
+                chrome.runtime.sendMessage({
+                    msg: 'logQueryHistory',
+                    data: {
+                        no: chosen.problemId,
+                        tier: ((chosen.isLevelLocked && chosen.level === 0) ? 31 : chosen.level),
+                        title: chosen.titleKo,
+                        date: getFullDate()
+                    }
+                });
+
+                location.href = `https://acmicpc.net/problem/${chosen.problemId}`;
+            }
+            else {
+                console.log('검색 결과가 없습니다!');
+                isRandomBusy = false;
+            }
+        }
     });
 }
 
@@ -455,13 +537,24 @@ function applyFont() {
     });
 }
 
-window.onload = () => {
+onload = () => {
     applyFont();
     createPopup();
     createWidget();
     createTopButtonListener();
     createOptionButtonListener();
     createThemeButtonListener();
+    createRandomButtonListener();
     createCheckButtonListener();
     createLockButtonListener();
+}
+
+// Random Defense Hotkey Listener (Alt + {num})
+let isPressed = {};
+onkeydown = onkeyup = (e) => {
+    isPressed[e.key] = e.type === 'keydown';
+    if (!isNaN(e.key) && isPressed['Alt'] && !isRandomBusy) {
+        isRandomBusy = true;
+        doRandomDefense(e.key);
+    }
 }

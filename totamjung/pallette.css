@@ -24,6 +24,7 @@
     --glyphicon-like-color: rgb(0, 255, 98);
     --glyphicon-unlike-color: rgb(255, 0, 0);
     --default-black: rgb(30, 30, 30);
+    --settings-orange-color: rgb(237, 125, 49);
     --gradient-black: linear-gradient(to right,
             rgb(0, 0, 0, 0.4) 0%,
             rgb(0, 0, 0, 0.4) 35%,
@@ -72,7 +73,6 @@
     --filter-dark-brown: brightness(0) saturate(100%) invert(5%) sepia(26%) saturate(1245%) hue-rotate(329deg) brightness(98%) contrast(97%);
     --filter-gold: brightness(0) saturate(100%) invert(77%) sepia(25%) saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);
 
-
     --table-ac-color: rgb(0, 42, 8);
     --table-ac-secondary-color: rgb(0, 54, 9);
     --table-ac-text-color: rgb(95, 174, 95);
@@ -102,6 +102,74 @@
             rgba(26, 14, 10, 1) 100%);
 
     --opposite-streak-color: rgb(216, 233, 239);
+
+    --silver-jelly-color: rgb(200, 200, 200);
+    --empty-color: rgb(150, 150, 150);
+
+    /* Solvedac Tier Colors */
+    --tier-0: #2d2d2d;
+    --tier-1: #9d4900;
+    --tier-2: #a54f00;
+    --tier-3: #ad5600;
+    --tier-4: #b55d0a;
+    --tier-5: #c67739;
+    --tier-6: #38546e;
+    --tier-7: #3d5a74;
+    --tier-8: #435f7a;
+    --tier-9: #496580;
+    --tier-10: #4e6a86;
+    --tier-11: #d28500;
+    --tier-12: #df8f00;
+    --tier-13: #ec9a00;
+    --tier-14: #f9a518;
+    --tier-15: #ffb028;
+    --tier-16: #00c78b;
+    --tier-17: #00d497;
+    --tier-18: #27e2a4;
+    --tier-19: #3ef0b1;
+    --tier-20: #51fdbd;
+    --tier-21: #009ee5;
+    --tier-22: #00a9f0;
+    --tier-23: #00b4fc;
+    --tier-24: #2bbfff;
+    --tier-25: #41caff;
+    --tier-26: #e0004c;
+    --tier-27: #ea0053;
+    --tier-28: #f5005a;
+    --tier-29: #ff0062;
+    --tier-30: #ff3071;
+
+    --tier-button-u: #ffffff40;
+    --tier-button-b: #ad560040;
+    --tier-button-s: #3d5a7440;
+    --tier-button-g: #ec9a0040;
+    --tier-button-p: #27e2a440;
+    --tier-button-d: #00b4fc40;
+    --tier-button-r: #f5005a40;
+
+    --tier-unrated-gradient-color: linear-gradient(to right, #b9bcc3 0%, #e9edf1 100%);
+    --tier-bronze-gradient-color: linear-gradient(to right, #ad5600 0%, #e84d0b 100%);
+    --tier-silver-gradient-color: linear-gradient(to right, #5d7a95 0%, #75a8d7 100%);
+    --tier-gold-gradient-color: linear-gradient(to right, #ec9a00 0%, #ffd000 100%);
+    --tier-platinum-gradient-color: linear-gradient(to right, #27e2a4 0%, #27d9e2 100%);
+    --tier-diamond-gradient-color: linear-gradient(to right, #00b4fc 0%, #0068fc 100%);
+    --tier-ruby-gradient-color: linear-gradient(to right, #ff0062 0%, #ff0000 100%);
+
+    --tier-unrated-gradient-back1-color: linear-gradient(to right, hsl(222, 8%, 11.25%) 0%, hsl(210, 22%, 13.95%) 100%);
+    --tier-bronze-gradient-back1-color: linear-gradient(to right, hsl(30, 100%, 5.1%) 0%, hsl(18, 91%, 7.2%) 100%);
+    --tier-silver-gradient-back1-color: linear-gradient(to right, hsl(209, 23%, 7.05%) 0%, hsl(209, 55%, 9.75%) 100%);
+    --tier-gold-gradient-back1-color: linear-gradient(to right, hsl(39, 100%, 6.9%) 0%, hsl(49, 100%, 7.5%) 100%);
+    --tier-platinum-gradient-back1-color: linear-gradient(to right, hsl(160, 76%, 7.8%) 0%, hsl(183, 76%, 7.8%) 100%);
+    --tier-diamond-gradient-back1-color: linear-gradient(to right, hsl(197, 100%, 7.35%) 0%, hsl(215, 100%, 7.35%) 100%);
+    --tier-ruby-gradient-back1-color: linear-gradient(to right, hsl(337, 100%, 7.5%) 0%, hsl(0, 100%, 7.5%) 100%);
+
+    --tier-unrated-gradient-back2-color: linear-gradient(to right, hsl(222, 8%, 22.5%) 0%, hsl(210, 22%, 28%) 100%);
+    --tier-bronze-gradient-back2-color: linear-gradient(to right, hsl(30, 100%, 10.4%) 0%, hsl(18, 91%, 14.4%) 100%);
+    --tier-silver-gradient-back2-color: linear-gradient(to right, hsl(209, 23%, 14.1%) 0%, hsl(209, 55%, 19.5%) 100%);
+    --tier-gold-gradient-back2-color: linear-gradient(to right, hsl(39, 100%, 13.8%) 0%, hsl(49, 100%, 15%) 100%);
+    --tier-platinum-gradient-back2-color: linear-gradient(to right, hsl(160, 76%, 15.6%) 0%, hsl(183, 76%, 15.6%) 100%);
+    --tier-diamond-gradient-back2-color: linear-gradient(to right, hsl(197, 100%, 14.7%) 0%, hsl(215, 100%, 14.7%) 100%);
+    --tier-ruby-gradient-back2-color: linear-gradient(to right, hsl(337, 100%, 15%) 0%, hsl(0, 100%, 15%) 100%);
 
     /* Scoreboard Block Colors */
     --scoreboard-green-color: rgb(0, 171, 71);
@@ -143,6 +211,11 @@
     --label-mint-gradient-color: linear-gradient(120deg,
             rgb(18, 129, 108) 0%,
             rgb(10, 75, 63) 100%);
+
+    /* Settings Extra Colors */
+    --settings-icon-filter: brightness(0) saturate(100%) invert(33%) sepia(35%) saturate(3072%) hue-rotate(3deg) brightness(92%) contrast(92%);
+    --settings-text-color: rgb(150, 80, 10);
+    --settings-underline-color: rgba(170, 85, 0, 0.2);
 
     /* BOJ Extended Colors */
     --problem-link-ac-box-color: rgb(0, 40, 20);

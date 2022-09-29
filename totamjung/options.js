@@ -35,12 +35,16 @@ function makeCategoryListener() {
 
     category01.addEventListener('click', () => {
         settings01.style.display = 'grid';
+        category01.classList.add('category-selected');
         settings02.style.display = 'none';
+        category02.classList.remove('category-selected');
     });
 
     category02.addEventListener('click', () => {
         settings01.style.display = 'none';
+        category01.classList.remove('category-selected');
         settings02.style.display = 'grid';
+        category02.classList.add('category-selected');
     });
 }
 
@@ -51,7 +55,6 @@ function loadPool(keyword) {
     chrome.storage.sync.get('algorithm', (algorithm) => {
         algorithm = new Set(algorithm['algorithm']);
         const poolOrigin = document.getElementById('pool');
-        console.log(poolOrigin);
 
         for (let i = 1; i <= Object.keys(db).length; i++) {
             let word = [
@@ -127,14 +130,12 @@ function loadSettings() {
                 radioElement.checked = true;
             else {
                 loaded = resetSettings;
-                console.log('invaild data. reset');
             }
         });
     });
 
     document.querySelectorAll('.radio').forEach((item) => {
         item.addEventListener('change', () => {
-            console.log('value change detected!');
             updateSettingsData(
                 item.getAttribute('name'),
                 item.getAttribute('value'),
@@ -145,25 +146,21 @@ function loadSettings() {
 }
 
 function updateSettingsData(name, value, state) {
-    console.log('update start', name, value, state);
     chrome.storage.sync.get('settings', (loaded) => {
         if (!state)
             return;
 
-        console.log(loaded);
         loaded = loaded['settings'];
 
         if (loaded === undefined || Object.values(loaded).indexOf(undefined) !== -1)
             loaded = resetSettings;
 
-        console.log('before', loaded);
         if (['predict', 'lock', 'theme', 'font'].indexOf(name) === -1) {
             loaded = resetSettings;
             return;
         }
 
         loaded[name] = value;
-        console.log('after', loaded);
 
         setData('settings', {
             'predict': loaded.predict,
@@ -191,7 +188,6 @@ function loadTimer() {
 
         [hour, minute].forEach((item) => {
             item.addEventListener('change', () => {
-                console.log('timer value change detected!');
                 updateTimerData(item);
             });
         });
@@ -238,8 +234,8 @@ function updateTimerData(element) {
 }
 
 function loadLinks() {
-    const guideBtn = document.querySelector('#guideBtn');
-    const githubBtn = document.querySelector('#githubBtn');
+    const guideBtn = document.querySelector('#guide-btn');
+    const githubBtn = document.querySelector('#github-btn');
 
     guideBtn.addEventListener('click', () => {
         if (confirm('도움말 페이지를 방문하시겠습니까?'))
@@ -253,7 +249,6 @@ function loadLinks() {
 }
 
 function loadToggler() {
-    console.log('toggler loaded')
     const toggler = document.querySelector('#toggler');
     const leftFrag = document.querySelector('#left-frag');
     const rightFrag = document.querySelector('#right-frag');
@@ -281,16 +276,14 @@ function loadToggler() {
 }
 
 window.onload = () => {
-    console.log('[Start] Settings Load Start');
     makeCategoryListener();
     loadPool('');
     loadSettings();
     makePoolSearchListener();
     loadTimer();
-    // loadLinks();
+    loadLinks();
     loadToggler();
     loadSliderModule();
     loadSlotAndSearcherModule();
     loadHistory();
-    console.log('[Success] Settings loaded!');
 }

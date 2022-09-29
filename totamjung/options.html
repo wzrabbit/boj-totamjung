@@ -20,7 +20,7 @@
             </h1>
             <div class="category">
                 <ul>
-                    <li id="category-block-01">알고리즘 설정</li>
+                    <li id="category-block-01" class="category-selected">알고리즘 설정</li>
                     <li id="category-block-02">문제 추첨 설정</li>
                 </ul>
             </div>
@@ -29,7 +29,7 @@
             <img class="header-btn" id="github-btn" src="../images/github_link.png" />
         </div>
         <div class="main-wrapper">
-            <div class="settings-page-01 selected" id="sp-01">
+            <div class="settings-page-01" id="sp-01">
                 <div class="menu pool-menu">
                     <div class="title">
                         <img class="title-img" src="../images/check.png" />
@@ -355,7 +355,13 @@
                 <div class="menu slot-menu">
                     <div class="mini-title">퀵 슬롯</div>
 
-                    <div class="slot-bundle" id="slot-bundle">
+                    <div class="slot-bundle">
+                        <div class="slot-bean" id="slot-bean"></div>
+                        <p class="hotkey-info" id="hotkey-info"></p>
+                        <button class="query-delete" id="query-delete">
+                            <img class="delete-image" src="../images/trash.png" />
+                            <span class="delete-msg">추첨 삭제</span>
+                        </button>
                     </div>
 
                     <div class="slot-info">
@@ -367,7 +373,15 @@
                 </div>
                 <div class="menu history-menu">
                     <div class="mini-title">추첨 기록</div>
-                    <div class="history-top-menu"></div>
+                    <div class="history-top-menu">
+                        <p class="settings-text">티어 숨기기</p>
+                        <label>
+                            <input class="hidden checkbox" id="tier-hide-button" type="checkbox" />
+                            <span class="slide-button-visual">
+                                <span class="slide-button-thumb"></span>
+                            </span>
+                        </label>
+                    </div>
                     <div class="history-mid-menu" id="history-slot"></div>
                     <div class="history-bottom-menu">
                         <p class="settings-text">추첨 기록은 최근 300문제까지 저장됩니다.</p>

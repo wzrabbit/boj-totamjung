@@ -16,6 +16,10 @@ const setData = (key, value) => {
     chrome.storage.sync.set({ [key]: value });
 }
 
+const setLocalData = (key, value) => {
+    chrome.storage.local.set({ [key]: value });
+}
+
 const isValidQueryNo = num => {
     if (typeof num === 'number' || num % 1 === 0 && num >= 0 && num <= 9)
         return true;
@@ -97,7 +101,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         });
     }
     else if (message.msg === 'logQueryHistory') {
-        chrome.storage.sync.get('queryLog', (loaded) => {
+        chrome.storage.local.get('queryLog', (loaded) => {
             let queryLog = loaded.queryLog;
             let data = [];
             console.log('OK Query STart', message.data);
@@ -110,13 +114,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }
             catch (e) { data = [message.data]; console.log('Exception!') };
 
-            setData('queryLog', data);
+            setLocalData('queryLog', data);
         });
     }
     else if (message.msg === 'getQueryHistory') {
-        chrome.storage.sync.get(['queryLog', 'isTierVisible'], (loaded) => {
+        chrome.storage.local.get(['queryLog', 'isTierHidden'], (loaded) => {
             let queryLog = loaded.queryLog;
-            let isTierVisible = loaded.isTierVisible;
+            let isTierHidden = loaded.isTierHidden;
             let data = [];
 
             try {
@@ -152,13 +156,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }
             catch (e) { };
 
-            if (isTierVisible) isTierVisible = true;
-            else isTierVisible = false;
+            if (isTierHidden) isTierHidden = true;
+            else isTierHidden = false;
 
-            setData('queryLog', data);
-            setData('isTierVisible', isTierVisible);
-            sendResponse({ queryLog: data, isTierVisible: isTierVisible });
+            setLocalData('queryLog', data);
+            setLocalData('isTierHidden', isTierHidden);
+            sendResponse({ queryLog: data, isTierHidden: isTierHidden });
         });
+    }
+    else if (message.msg === 'setTierVisible') {
+        if (message.isTierHidden) setLocalData('isTierHidden', true);
+        else setLocalData('isTierHidden', false);
     }
     else if (message.msg === 'getSlotData') {
         chrome.storage.sync.get('query', (loaded) => {
@@ -195,7 +203,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             try {
                 let data = loaded.query;
                 data.selectedNo = message.no;
-                console.log('NEW', data);
                 setData('query', data);
                 sendResponse({ 'result': 'OK' });
             }

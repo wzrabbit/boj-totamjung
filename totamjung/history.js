@@ -1,4 +1,5 @@
 const historySlot = document.querySelector('#history-slot');
+const hideButton = document.querySelector('#tier-hide-button');
 const tierImage = [];
 
 const loadTierImage = () => {
@@ -13,6 +14,11 @@ const renderHistory = () => {
     console.log('render history');
     chrome.runtime.sendMessage({ msg: 'getQueryHistory' }, res => {
         console.log('Query Response', res);
+
+        if (res.isTierHidden) {
+            hideButton.checked = true;
+            historySlot.classList.add('gray');
+        }
 
         for (let i = res.queryLog.length - 1; i >= 0; i--) {
             let historyBlock = document.createElement('div');
@@ -57,6 +63,17 @@ const renderHistory = () => {
         }
     });
 }
+
+hideButton.addEventListener('change', (e) => {
+    if (e.currentTarget.checked) {
+        chrome.runtime.sendMessage({ msg: 'setTierVisible', isTierHidden: true });
+        historySlot.classList.add('gray');
+    }
+    else {
+        chrome.runtime.sendMessage({ msg: 'setTierVisible', isTierHidden: false });
+        historySlot.classList.remove('gray');
+    }
+});
 
 const loadHistory = () => {
     console.log('History load start');

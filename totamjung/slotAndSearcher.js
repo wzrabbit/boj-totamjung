@@ -1,8 +1,10 @@
 import db from './db.js';
 
-const slotBundle = document.querySelector('#slot-bundle');
+const slotBean = document.querySelector('#slot-bean');
 const slotName = document.querySelector('#slot-name');
 const slotQuery = document.querySelector('#slot-query');
+const hotkeyText = document.querySelector('#hotkey-info');
+const deleteButton = document.querySelector('#query-delete');
 
 const rdTitle = document.querySelector('#rd-title');
 const toggler = document.querySelector('#toggler');
@@ -20,8 +22,6 @@ const keywordDiv = document.querySelector('#query-keyword-div');
 const searchInput = document.querySelector('#query-search-input');
 const fakeDiv = document.querySelector('#fake-div');
 
-console.log('SEARCHDIV', searchDiv);
-
 let algoData = [];
 let searchResult = [];
 
@@ -31,8 +31,6 @@ const createSlot = () => {
     chrome.runtime.sendMessage({ msg: 'getSlotData' }, (res) => {
         let slotHTML = '';
 
-        console.log(res);
-
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].forEach(i => {
             slotHTML += `
             <label>
@@ -41,7 +39,7 @@ const createSlot = () => {
             </label>`;
         });
 
-        slotBundle.innerHTML = slotHTML;
+        slotBean.innerHTML = slotHTML;
 
         for (let i = 0; i <= 9; i++) {
             document.querySelector(`#slot-radio-${i}`).addEventListener('click', () => {
@@ -56,7 +54,6 @@ const createSlot = () => {
 const showInfoAndSaveNo = no => {
     chrome.runtime.sendMessage({ msg: 'getSlotData' }, (res) => {
         if (res[no].isEmpty) {
-            console.log('Query is empty!');
             slotName.innerHTML = `<span style="color: var(--empty-color)">(비어 있음)</span>`;
             slotQuery.innerHTML = `<span style="color: var(--empty-color)">(비어 있음)</span>`;
         }
@@ -65,9 +62,32 @@ const showInfoAndSaveNo = no => {
             slotQuery.innerText = res[no].query;
         }
 
+        hotkeyText.innerText = `단축키: Alt + ${no}`;
+        console.log('My hotkey', no);
+
         chrome.runtime.sendMessage({ msg: 'saveSlotNo', no: no }, (res) => {
             if (res.result === 'FAIL')
                 alert('죄송합니다. 데이터 저장 도중 문제가 발생했습니다. 페이지를 새로고침 해 주세요.');
+        });
+    });
+}
+
+deleteButton.addEventListener('click', () => {
+    deleteQuery();
+});
+
+const deleteQuery = () => {
+    chrome.runtime.sendMessage({ msg: 'getSlotData' }, (res) => {
+        const no = res.selectedNo;
+
+        slotName.innerHTML = `<span style="color: var(--empty-color)">(비어 있음)</span>`;
+        slotQuery.innerHTML = `<span style="color: var(--empty-color)">(비어 있음)</span>`;
+        document.querySelector(`#slot-radio-${res.selectedNo}`).classList.remove('ready');
+
+        chrome.runtime.sendMessage({
+            msg: 'saveQuery',
+            no: no,
+            data: { isEmpty: true, title: '', query: '' }
         });
     });
 }
@@ -104,13 +124,11 @@ const checkValid = (mode) => {
     return { result: 'OK' };
 }
 
-const saveQuery = (mode) => {
+const saveQuery = mode => {
     chrome.runtime.sendMessage({ msg: 'getSlotData' }, (res) => {
         const no = res.selectedNo;
         let title = rdTitle.value;
         let query = '';
-
-        console.log('TITLE', title);
 
         if (title.trim() === '')
             title = `추첨 ${res.selectedNo}`;
@@ -135,6 +153,7 @@ const saveQuery = (mode) => {
 
         slotName.innerText = title;
         slotQuery.innerText = query;
+        document.querySelector(`#slot-radio-${res.selectedNo}`).classList.add('ready');
 
         chrome.runtime.sendMessage({
             msg: 'saveQuery',
@@ -143,6 +162,8 @@ const saveQuery = (mode) => {
         });
     });
 }
+
+
 
 
 /* SEARCHER */
@@ -203,7 +224,6 @@ const getSearchResult = keyword => {
 
             searchBlock.addEventListener('click', () => {
                 algoData.push(searchResult[i - 1]);
-                console.log('ADded', algoData);
                 renderResult();
                 searchInput.value = '';
                 searchInput.focus();
@@ -228,7 +248,6 @@ searchDiv.addEventListener('keydown', e => {
 
 searchInput.addEventListener('keyup', e => {
     if (algoData.length >= 5) {
-        console.log('Clear');
         e.target.value = '';
     }
 
@@ -244,7 +263,6 @@ searchInput.addEventListener('keyup', e => {
         getSearchResult('');
     }
 
-    console.log('OK Set width');
     searchInput.style.width = `${(getFakeWidth(searchInput.value) + 20).toString()}px`;
     console.log(`${(getFakeWidth(searchInput.value) + 20).toString()}px`);
 });
@@ -252,7 +270,6 @@ searchInput.addEventListener('keyup', e => {
 const getFakeWidth = text => {
     text = text.replace(/ /g, 'x');
     fakeDiv.innerText = text;
-    console.log('width', fakeDiv.offsetWidth);
     return fakeDiv.offsetWidth;
 }
 
@@ -261,11 +278,9 @@ const renderResult = () => {
         x.remove();
     });
 
-    console.log('*** RENDER RESULT ***');
     for (let i = algoData.length - 1; i >= 0; i--) {
         let block = document.createElement('div');
         block.classList.add('search-algorithm-block');
-        console.log('algoBlock', algoData[i]);
         block.innerText = algoData[i].name;
         searchDiv.prepend(block);
     }
@@ -274,7 +289,6 @@ const renderResult = () => {
 
 const loadSlotAndSearcher = () => {
     createSlot();
-    console.log('[Success] Slot and Searcher Loaded!');
 }
 
 export default loadSlotAndSearcher;

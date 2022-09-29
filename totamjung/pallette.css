@@ -154,6 +154,7 @@
     --tier-platinum-gradient-color: linear-gradient(to right, #27e2a4 0%, #27d9e2 100%);
     --tier-diamond-gradient-color: linear-gradient(to right, #00b4fc 0%, #0068fc 100%);
     --tier-ruby-gradient-color: linear-gradient(to right, #ff0062 0%, #ff0000 100%);
+    --tier-gray-gradient-color: linear-gradient(to right, #919191 0%, #676767 100%);
 
     --tier-unrated-gradient-back1-color: linear-gradient(to right, hsl(222, 8%, 11.25%) 0%, hsl(210, 22%, 13.95%) 100%);
     --tier-bronze-gradient-back1-color: linear-gradient(to right, hsl(30, 100%, 5.1%) 0%, hsl(18, 91%, 7.2%) 100%);
@@ -162,6 +163,7 @@
     --tier-platinum-gradient-back1-color: linear-gradient(to right, hsl(160, 76%, 7.8%) 0%, hsl(183, 76%, 7.8%) 100%);
     --tier-diamond-gradient-back1-color: linear-gradient(to right, hsl(197, 100%, 7.35%) 0%, hsl(215, 100%, 7.35%) 100%);
     --tier-ruby-gradient-back1-color: linear-gradient(to right, hsl(337, 100%, 7.5%) 0%, hsl(0, 100%, 7.5%) 100%);
+    --tier-gray-gradient-back1-color: linear-gradient(to right, hsl(0, 0%, 8.54%) 0%, hsl(0, 0%, 6%) 100%);
 
     --tier-unrated-gradient-back2-color: linear-gradient(to right, hsl(222, 8%, 22.5%) 0%, hsl(210, 22%, 28%) 100%);
     --tier-bronze-gradient-back2-color: linear-gradient(to right, hsl(30, 100%, 10.4%) 0%, hsl(18, 91%, 14.4%) 100%);
@@ -170,6 +172,7 @@
     --tier-platinum-gradient-back2-color: linear-gradient(to right, hsl(160, 76%, 15.6%) 0%, hsl(183, 76%, 15.6%) 100%);
     --tier-diamond-gradient-back2-color: linear-gradient(to right, hsl(197, 100%, 14.7%) 0%, hsl(215, 100%, 14.7%) 100%);
     --tier-ruby-gradient-back2-color: linear-gradient(to right, hsl(337, 100%, 15%) 0%, hsl(0, 100%, 15%) 100%);
+    --tier-gray-gradient-back2-color: linear-gradient(to right, hsl(0, 0%, 17%) 0%, hsl(0, 0%, 12%) 100%);
 
     /* Scoreboard Block Colors */
     --scoreboard-green-color: rgb(0, 171, 71);

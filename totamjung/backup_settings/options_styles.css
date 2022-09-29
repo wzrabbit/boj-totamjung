@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/bg.png');
+}
+
+
+h1 {
+    display: inline-block;
+    width: 1030px;
+}
+
+p {
+    margin-bottom: 7px;
+    font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+label+p {
+    margin-top: 10px;
+}
+
+span.emphasize {
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+.title-wrapper {
+    width: 1450px;
+    display: flex;
+}
+
+.title {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 150px;
+}
+
+.widget-bundle {
+    display: inline-block;
+    margin-top: 35px;
+}
+
+.version {
+    display: inline-block;
+    color: var(--link-color);
+    font-family: 'Jua', sans-serif;
+    font-size: 24px;
+}
+
+.guide-link,
+.github-link {
+    width: 50px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    width: 1450px;
+    height: 550px;
+    margin-left: 20px;
+}
+
+.word-menu,
+.settings-menu {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.word-menu {
+    width: 780px;
+}
+
+.settings-menu {
+    width: 380px;
+}
+
+.settings-div {
+    overflow-x: visible;
+    overflow-y: scroll;
+}
+
+.section-title {
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    border-bottom: 1px dotted var(--bright-menu-line-color);
+}
+
+.section-title>span {
+    padding-bottom: 5px;
+    color: var(--title-color);
+    font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom: 3px solid var(--title-color);
+}
+
+.algorithm-pool {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--menu-color);
+    border-radius: 10px;
+    box-shadow: 0 0 13px var(--menu-color);
+    padding: 5px;
+    height: 350px;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+.algorithm-block {
+    display: inline-block;
+    padding: 0px;
+    margin: 0 6px 6px 0;
+    border-radius: 10px;
+}
+
+.algorithm-block:nth-child(odd) {
+    background-color: var(--settings-block-color);
+}
+
+.algorithm-block:nth-child(even) {
+    background-color: var(--settings-secondary-block-color);
+}
+
+.time-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.time {
+    display: inline-block;
+    width: 60px;
+    height: 45px;
+    margin-bottom: 10px;
+    background-color: var(--menu-color);
+    color: var(--title-color);
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    border: none;
+    transition: 0.2s;
+}
+
+.time+p {
+    margin: 15px 6px 0 3px;
+}
+
+.time-image {
+    height: 45px;
+    margin-right: 10px;
+}
+
+.time::-webkit-outer-spin-button,
+.time::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.time:active,
+.time:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--title-color);
+}
+
+.algorithm-block span {
+    display: inline-block;
+    padding: 5px;
+    font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
+    font-size: 16px;
+    color: var(--link-color);
+}
+
+.algorithm-block input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.choosing-bundle {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.choosing-bundle.font label:nth-child(2) .radio-text {
+    font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(3) .radio-text {
+    font-family: 'Nanum Gothic Coding', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(4) .radio-text {
+    font-family: 'Nanum Myeongjo', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(5) .radio-text {
+    font-family: 'Do Hyeon', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(6) .radio-text {
+    font-family: 'Jua', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(7) .radio-text {
+    font-family: 'Noto Serif KR', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(8) .radio-text {
+    font-family: 'Sunflower', 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+}
+
+.choosing-bundle.font label:nth-child(9) .radio-text {
+    font-family: 'Yeon Sung', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(10) .radio-text {
+    font-family: 'Cute Font', 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+}
+
+.choosing-bundle.font label:nth-child(11) .radio-text {
+    font-family: 'Gaegu', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(12) .radio-text {
+    font-family: 'Gothic A1', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(13) .radio-text {
+    font-family: 'Gowun Batang', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(14) .radio-text {
+    font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(15) .radio-text {
+    font-family: 'Hi Melody', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(16) .radio-text {
+    font-family: 'IBM Plex Sans', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(17) .radio-text {
+    font-family: 'Poor Story', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(18) .radio-text {
+    font-family: 'Single Day', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(19) .radio-text {
+    font-family: 'Song Myung', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle.font label:nth-child(20) .radio-text {
+    font-family: 'Stylish', 'Noto Sans KR', sans-serif;
+}
+
+.choosing-bundle label {
+    margin-right: 10px;
+}
+
+.radio-text {
+    margin-bottom: 5px;
+    font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
+    font-size: 16px;
+    color: var(--link-color);
+    font-weight: 400;
+}
+
+.hidden {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+span.checkbox-visual {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    margin-right: 3px;
+    top: 1.5px;
+    width: 10px;
+    height: 10px;
+    border: 3px solid var(--title-color);
+    border-radius: 10px;
+    box-shadow: 0 0 5px var(--menu-color);
+    transition: 0.15s;
+}
+
+input[type='checkbox']+span.checkbox-visual {
+    border-radius: 3px;
+}
+
+input[type='radio']:checked+span.checkbox-visual,
+input[type='checkbox']:checked+span.checkbox-visual {
+    background-color: var(--title-color);
+    box-shadow: 0 0 8px var(--title-color);
+}
+
+@keyframes breathe {
+    0% {
+        margin-top: 250px;
+        height: 331px;
+    }
+
+    50% {
+        margin-top: 260px;
+        height: 321px;
+    }
+
+    100% {
+        margin-top: 250px;
+        height: 331px;
+    }
+}
+
+.rabbit {
+    margin-top: 210px;
+    width: 250px;
+    height: 331px;
+    animation: breathe linear 3s infinite;
+}
+
+html::-webkit-scrollbar,
+html::-webkit-scrollbar-track,
+html::-webkit-scrollbar-thumb,
+.settings-div::-webkit-scrollbar,
+.settings-div::-webkit-scrollbar-track,
+.settings-div::-webkit-scrollbar-thumb,
+.algorithm-pool::-webkit-scrollbar,
+.algorithm-pool pre::-webkit-scrollbar,
+.algorithm-pool::-webkit-scrollbar-track,
+.algorithm-pool pre::-webkit-scrollbar-track,
+.algorithm-pool::-webkit-scrollbar-thumb,
+.algorithm-pool pre::-webkit-scrollbar-thumb {
+    width: 12px;
+}
+
+html::-webkit-scrollbar,
+html::-webkit-scrollbar-track,
+.settings-div::-webkit-scrollbar,
+.settings-div::-webkit-scrollbar-track,
+.algorithm-pool::-webkit-scrollbar,
+.algorithm-pool pre::-webkit-scrollbar,
+.algorithm-pool::-webkit-scrollbar-track,
+.algorithm-pool pre::-webkit-scrollbar-track {
+    background-color: var(--secondary-menu-color);
+}
+
+html::-webkit-scrollbar-thumb,
+.settings-div::-webkit-scrollbar-thumb,
+.algorithm-pool::-webkit-scrollbar-thumb,
+.algorithm-pool pre::-webkit-scrollbar-thumb {
+    background-color: var(--bright-menu-line-color);
+    border-radius: 10px;
+}

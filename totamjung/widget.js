@@ -300,13 +300,12 @@ function createRandomButtonListener() {
 }
 
 function doRandomDefense(key) {
-    console.log('Random Defense Loading...');
+    const diceImagePath = chrome.runtime.getURL('images/dice.png');
 
     chrome.runtime.sendMessage({ msg: 'getDefenseQuery', no: key }, (res) => {
         console.log('RES:', res);
 
         if (res.result === 'FAIL') {
-            console.log('해당 슬롯의 값이 비어있습니다!!');
             return;
         }
 
@@ -317,19 +316,19 @@ function doRandomDefense(key) {
         xhr.onload = () => {
             console.log(xhr.status);
             if (xhr.status === 400) {
-                console.log('잘못된 쿼리를 입력하여 서버로부터 정보를 받아오지 못 했습니다. 올바른 쿼리를 입력하셨는지 확인해 주시겠어요?');
+                showPopup('잘못된 쿼리를 입력하셨습니다.<br/>쿼리 확인 후 다시 시도해 주시겠어요?', diceImagePath);
                 isRandomBusy = false;
                 return;
             }
 
             if (xhr.status === 429) {
-                console.log('짧은 시간 동안 너무 많은 요청을 전송했습니다. 잠시 후 다시 시도해 주시겠어요?');
+                showPopup('너무 많은 추첨을 돌렸습니다.<br/>잠시 후 다시 시도해 주시겠어요?', diceImagePath);
                 isRandomBusy = false;
                 return;
             }
 
             if (xhr.status === 500 || xhr.status === 503) {
-                console.log('서버에 문제가 생겨 정보를 받아오지 못 했습니다. 잠시 후 다시 시도해 주시겠어요?');
+                showPopup('서버에 문제가 생겨, 문제 정보를 받아오지 못 했습니다.<br/>잠시 후 다시 시도해 주시겠어요?', diceImagePath);
                 isRandomBusy = false;
                 return;
             }
@@ -351,25 +350,37 @@ function doRandomDefense(key) {
                 location.href = `https://acmicpc.net/problem/${chosen.problemId}`;
             }
             else {
-                console.log('검색 결과가 없습니다!');
+                showPopup('검색된 문제가 없습니다.<br/>쿼리 확인 후 다시 시도해 주시겠어요?', diceImagePath);
                 isRandomBusy = false;
             }
         }
     });
 }
 
+function showPopup(message, imagePath) {
+    const popupIcon = document.querySelector('#ttj-result-image');
+    const popup = document.querySelector('.ttj-popup');
+    const popupText = document.querySelector('#ttj-result-text');
+
+    popupIcon.src = imagePath;
+    popupText.innerHTML = message;
+
+    popup.style.left = '20px';
+    setTimeout(() => {
+        popup.style.left = '-310px';
+    }, 3000);
+}
+
 function createCheckButtonListener() {
     const checkBtn = document.querySelector('#ttj-checkbtn');
-    const checkImg = document.querySelector('#ttj-checkimg');
     const spoilerBtn = document.querySelector('.show-spoiler');
     const algorithmElementList = document.querySelectorAll('.spoiler-link');
 
     const popup = document.querySelector('.ttj-popup');
-    const popupImage = document.querySelector('#ttj-result-image');
-    const popupText = document.querySelector('#ttj-result-text');
 
     const knowImagePath = chrome.runtime.getURL('images/know.png');
     const dontKnowImagePath = chrome.runtime.getURL('images/dontknow.png');
+    const diceImagePath = chrome.runtime.getURL('images/dice.png');
 
     const problemTitle = document.querySelector('#problem_title');
 
@@ -405,20 +416,13 @@ function createCheckButtonListener() {
 
         checkBtn.classList.add('disabled');
         if (allKnow) {
-            checkImg.src = knowImagePath;
             problemTitle.after(knowIcon);
+            showPopup('이 문제는 알고 있는 알고리즘만을<br />이용하여 풀 수 있습니다.', knowImagePath);
         }
         else {
-            checkImg.src = dontKnowImagePath;
             problemTitle.after(dontKnowIcon);
-            popupImage.src = dontKnowImagePath;
-            popupText.innerHTML = '이 문제를 풀기 위해 아직 모르는<br />알고리즘을 이용해야 할 수 있습니다.';
+            showPopup('이 문제를 풀기 위해 아직 모르는<br />알고리즘을 이용해야 할 수 있습니다.', dontKnowImagePath);
         }
-
-        popup.style.left = '20px';
-        setTimeout(() => {
-            popup.style.left = '-310px';
-        }, 2000);
     });
 
     chrome.storage.sync.get(['settings'], (loaded) => {
@@ -547,6 +551,7 @@ onload = () => {
     createRandomButtonListener();
     createCheckButtonListener();
     createLockButtonListener();
+    const diceImagePath = chrome.runtime.getURL('images/dice.png');
 }
 
 // Random Defense Hotkey Listener (Alt + {num})

@@ -1,13 +1,13 @@
 {
     "name": "토탐정",
-    "description": "토탐정은 백준 온라인 저지(BOJ)에서 사용할 수 있는 미니 확장 프로그램입니다!\n알고리즘 분류에 기능을 추가하고, 전용 테마를 제공합니다.",
+    "description": "BOJ에서 알고리즘 분류를 공개하기에 앞서, 알고 있는 알고리즘으로 풀 수 있는 지 토탐정이 알려드려요!\n그 외에 여러 유용한 기능도 제공해요.",
     "version": "1.1",
     "manifest_version": 3,
     "permissions": [
         "storage"
     ],
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "js/background.js"
     },
     "icons": {
         "128": "/images/logo.png"
@@ -19,10 +19,10 @@
             ],
             "run_at": "document_idle",
             "js": [
-                "widget.js"
+                "js/widget.js"
             ],
             "css": [
-                "widget.css"
+                "css/widget.css"
             ]
         },
         {
@@ -31,19 +31,18 @@
             ],
             "run_at": "document_start",
             "js": [
-                "loader.js"
+                "js/loader.js"
             ],
             "css": [
-                "pallette.css",
-                "theme.css"
+                "css/pallette.css",
+                "css/theme.css"
             ]
         }
     ],
     "web_accessible_resources": [
         {
             "resources": [
-                "images/*",
-                "myscript.js"
+                "images/*"
             ],
             "matches": [
                 "https://www.acmicpc.net/*"

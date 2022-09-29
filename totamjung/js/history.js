@@ -11,10 +11,7 @@ const loadTierImage = () => {
 }
 
 const renderHistory = () => {
-    console.log('render history');
     chrome.runtime.sendMessage({ msg: 'getQueryHistory' }, res => {
-        console.log('Query Response', res);
-
         if (res.isTierHidden) {
             hideButton.checked = true;
             historySlot.classList.add('gray');
@@ -76,7 +73,6 @@ hideButton.addEventListener('change', (e) => {
 });
 
 const loadHistory = () => {
-    console.log('History load start');
     loadTierImage();
     renderHistory();
 };

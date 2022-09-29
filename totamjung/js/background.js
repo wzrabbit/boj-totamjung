@@ -27,11 +27,19 @@ const isValidQueryNo = num => {
         return false;
 }
 
-chrome.runtime.onInstalled.addListener((details) => {
+chrome.runtime.onInstalled.addListener(details => {
     if (details.reason === 'install') {
-        setData('algorithm', [2]);
+        setData('algorithm', [1, 2]);
         setData('settings', resetSettings);
         setData('timer', resetTimer);
+        setData('query', {
+            selectedNo: 1,
+            1: {
+                isEmpty: false,
+                title: 'All Random',
+                query: 'tier:1..30 solvable:true'
+            }
+        });
     }
 });
 
@@ -55,7 +63,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         });
     }
     else if (message.msg === 'setTimer' || message.msg === 'deleteTimer') {
-        chrome.storage.sync.get('timer', (loaded) => {
+        chrome.storage.sync.get('timer', loaded => {
             loaded = loaded['timer'] || resetTimer;
 
             if (message.msg === 'setTimer') {
@@ -89,11 +97,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     else if (message.msg === 'getDefenseQuery') {
         const no = message.no;
 
-        chrome.storage.sync.get('query', (loaded) => {
+        chrome.storage.sync.get('query', loaded => {
             loaded = loaded.query;
 
-            if (loaded && no === -1 && loaded.selectedNo)
-                sendResponse({ 'result': 'OK', 'query': loaded[loaded.selectedNo].query })
+            if (loaded && no === -1 && loaded.selectedNo && !loaded[loaded.selectedNo].isEmpty)
+                sendResponse({ 'result': 'OK', 'query': loaded[loaded.selectedNo].query });
             else if (loaded && loaded[no] && !loaded[no].isEmpty)
                 sendResponse({ 'result': 'OK', 'query': loaded[no].query });
             else
@@ -104,7 +112,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         chrome.storage.local.get('queryLog', (loaded) => {
             let queryLog = loaded.queryLog;
             let data = [];
-            console.log('OK Query STart', message.data);
 
             try {
                 for (let i = Math.max(0, queryLog.length - 200); i < queryLog.length; i++) {
@@ -112,7 +119,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 }
                 data.push(message.data);
             }
-            catch (e) { data = [message.data]; console.log('Exception!') };
+            catch (e) { data = [message.data]; };
 
             setLocalData('queryLog', data);
         });
@@ -191,7 +198,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 } catch (e) { data[i] = { isEmpty: true, title: '', query: '' } };
             }
 
-            if (isValidQueryNo(loaded.selectedNo))
+            if (loaded && isValidQueryNo(loaded.selectedNo))
                 data.selectedNo = loaded.selectedNo;
 
             setData('query', data);
@@ -215,7 +222,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         chrome.storage.sync.get('query', (loaded) => {
             loaded = loaded.query;
             loaded[message.no] = message.data;
-            console.log('SAVE:', message.data);
             setData('query', loaded);
         });
     }

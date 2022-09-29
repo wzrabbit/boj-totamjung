@@ -192,7 +192,9 @@ const db = {
     191: { name: "도형에서의 불 연산", tag: "geometric_boolean_operations", alias: [] },
     192: { name: "현 그래프", tag: "chordal_graph", alias: [] },
     193: { name: "차수열", tag: "degree_sequence", alias: [] },
-    194: { name: "utf-8 입력 처리", tag: "utf8", alias: [] }
+    194: { name: "utf-8 입력 처리", tag: "utf8", alias: [] },
+    195: { name: "부분집합의 합 다이나믹 프로그래밍", tag: "dp_sum_over_subsets", alias: [] },
+    196: { name: "경사 하강법", tag: "gradient_descent", alias: [] }
 }
 // 제거해야 하는 기호 [, A->a 공백 _ - / tag: #]
 export default db;

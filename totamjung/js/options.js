@@ -134,7 +134,7 @@ function loadSettings() {
         });
     });
 
-    document.querySelectorAll('.radio').forEach((item) => {
+    document.querySelectorAll('.radio.settings').forEach(item => {
         item.addEventListener('change', () => {
             updateSettingsData(
                 item.getAttribute('name'),

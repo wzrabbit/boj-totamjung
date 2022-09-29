@@ -114,7 +114,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             let data = [];
 
             try {
-                for (let i = Math.max(0, queryLog.length - 200); i < queryLog.length; i++) {
+                for (let i = Math.max(0, queryLog.length - 300); i < queryLog.length; i++) {
                     data.push(queryLog[i]);
                 }
                 data.push(message.data);

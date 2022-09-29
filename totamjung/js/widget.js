@@ -336,7 +336,7 @@ function doRandomDefense(key) {
             }
 
             const chosen = JSON.parse(xhr.responseText).items[0];
-            if (chosen !== undefined) {
+            if (chosen) {
 
                 chrome.runtime.sendMessage({
                     msg: 'logQueryHistory',
@@ -410,27 +410,27 @@ function createCheckButtonListener() {
         }
     });
 
-    checkBtn.addEventListener('click', () => {
-        if ([...checkBtn.classList].includes('disabled'))
-            return;
-
-        checkBtn.classList.add('disabled');
-        if (allKnow) {
-            problemTitle.after(knowIcon);
-            if (loaded === undefined || loaded.predict !== 'always') {
-                showPopup('이 문제는 알고 있는 알고리즘만을<br />이용하여 풀 수 있습니다.', knowImagePath);
-            }
-        }
-        else {
-            problemTitle.after(dontKnowIcon);
-            if (loaded === undefined || loaded.predict !== 'always') {
-                showPopup('이 문제를 풀기 위해 아직 모르는<br />알고리즘을 이용해야 할 수 있습니다.', dontKnowImagePath);
-            }
-        }
-    });
-
     chrome.storage.sync.get(['settings'], (loaded) => {
         loaded = loaded.settings;
+
+        checkBtn.addEventListener('click', () => {
+            if ([...checkBtn.classList].includes('disabled'))
+                return;
+
+            checkBtn.classList.add('disabled');
+            if (allKnow) {
+                problemTitle.after(knowIcon);
+                if (!loaded || loaded.predict !== 'always') {
+                    showPopup('이 문제는 알고 있는 알고리즘만을<br />이용하여 풀 수 있습니다.', knowImagePath);
+                }
+            }
+            else {
+                problemTitle.after(dontKnowIcon);
+                if (!loaded || loaded.predict !== 'always') {
+                    showPopup('이 문제를 풀기 위해 아직 모르는<br />알고리즘을 이용해야 할 수 있습니다.', dontKnowImagePath);
+                }
+            }
+        });
 
         if (loaded !== undefined && loaded.predict === 'always') {
             checkBtn.click();

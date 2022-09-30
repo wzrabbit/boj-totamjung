@@ -180,9 +180,9 @@ const saveQuery = mode => {
 
             query += 'solvable:true ';
 
-            /*for (let i = 0; i < algoData.length; i++) {
-                query += ` tag:${algoData[i].tag}`;
-            }*/
+            if (algoData.length > 0) {
+                query += '(';
+            }
 
             for (let i = 0; i < algoData.length; i++) {
                 if (ORValue !== 'OR' && ORValue !== 'AND') {
@@ -199,6 +199,10 @@ const saveQuery = mode => {
                         query += '&';
                     }
                 }
+            }
+
+            if (algoData.length > 0) {
+                query += ')';
             }
         }
         else {

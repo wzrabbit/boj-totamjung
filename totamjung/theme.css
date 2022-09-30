@@ -2181,6 +2181,10 @@ html[totamjung='on'] .boj-ext-alert>.title>a {
     color: var(--link-color);
 }
 
+.boj-ext-alert {
+    right: 7em;
+}
+
 /* FOR TIERIMNIDA */
 html[totamjung='on'] .problem-list span[style="color:#000000"] {
     color: var(--text-color) !important;

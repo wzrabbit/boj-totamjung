@@ -1,7 +1,7 @@
 {
     "name": "토탐정",
     "description": "BOJ에서 알고리즘 분류를 공개하기에 앞서, 알고 있는 알고리즘으로 풀 수 있는 지 토탐정이 알려드려요!\n그 외에 여러 유용한 기능도 제공해요.",
-    "version": "1.1.0.1",
+    "version": "1.1.0.2",
     "manifest_version": 3,
     "permissions": [
         "storage"

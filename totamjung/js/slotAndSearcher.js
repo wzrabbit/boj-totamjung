@@ -284,7 +284,7 @@ const getSearchResult = keyword => {
             keywordDiv.append(searchBlock);
 
             searchBlock.addEventListener('click', () => {
-                algoData.push(searchResult[i - 1]);
+                algoData.push({ name: db[i].name, tag: db[i].tag });
                 renderResult();
                 searchInput.value = '';
                 searchInput.focus();

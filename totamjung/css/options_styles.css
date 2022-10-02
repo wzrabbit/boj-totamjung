@@ -127,7 +127,10 @@ html *::-webkit-scrollbar-thumb {
 
 .header-img {
     width: 130px;
+}
 
+.header-btn {
+    cursor: pointer;
 }
 
 .category {
@@ -163,7 +166,7 @@ html *::-webkit-scrollbar-thumb {
 }
 
 .version {
-    width: 50px;
+    width: 80px;
     font-size: 20px;
     color: var(--title-color);
     font-family: "Jua", "Noto Sans KR";

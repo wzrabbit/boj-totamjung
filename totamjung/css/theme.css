@@ -628,6 +628,15 @@ html[totamjung='on'] .table-responsive #problem-info * {
     border-top-color: var(--bright-menu-line-color);
 }
 
+html[totamjung='on'] #problem-body div[style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;"] {
+    background-color: var(--menu-color) !important;
+    border-color: var(--secondary-menu-color) !important;
+}
+
+html[totamjung='on'] #problem-body div[style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;"] * {
+    color: var(--title-color) !important;
+}
+
 html[totamjung='on'] #contest_scoreboard tr>th:nth-child(2)>a,
 html[totamjung='on'] #contest_scoreboard tr:nth-child(1)>th:nth-child(n+2)>a {
     color: var(--link-color);

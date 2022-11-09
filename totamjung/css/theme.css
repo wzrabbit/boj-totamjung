@@ -630,7 +630,7 @@ html[totamjung='on'] .table-responsive #problem-info * {
 
 html[totamjung='on'] #problem-body div[style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;"] {
     background-color: var(--menu-color) !important;
-    border-color: var(--secondary-menu-color) !important;
+    border-color: var(--table-border-color) !important;
 }
 
 html[totamjung='on'] #problem-body div[style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;"] * {

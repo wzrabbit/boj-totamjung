@@ -135,13 +135,20 @@ const checkValid = mode => {
             return { result: 'FAIL', errorMessage: '맞은 사람 수는 0 이상의 정수여야 합니다.' };
         }
 
-        if (rdMinSolved.value !== '' && rdMaxSolved.value !== '' && rdMinSolved.value > rdMaxSolved.value) {
+        // 비교 전, 맞춘 사람 수는 정수로 변환
+        const rdMinNumberValue = Number(rdMinSolved.value);
+        const rdMaxNumberValue = Number(rdMaxSolved.value);
+        console.log('Changed Test', rdMinNumberValue, rdMaxNumberValue);
+
+        if (rdMinSolved.value !== '' && rdMaxSolved.value !== '' && rdMinNumberValue > rdMaxNumberValue) {
+            console.log('Something got wrong');
+            console.log(rdMinSolved.value, rdMaxSolved.value);
             rdMinSolved.focus();
             return { result: 'FAIL', errorMessage: '맞은 사람 수의 좌변은 우변보다 클 수 없습니다.' };
         }
 
-        if (rdMinSolved.value > 100000000 || rdMaxSolved.value > 100000000) {
-            if (rdMinSolved.value > 100000000) {
+        if (rdMinNumberValue > 100000000 || rdMaxNumberValue > 100000000) {
+            if (rdMinNumberValue > 100000000) {
                 rdMinSolved.focus();
             }
             else {

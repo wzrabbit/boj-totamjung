@@ -1,3 +1,9 @@
+const editTitleInput = document.querySelector('#editTitleInput');
+const editQueryInput = document.querySelector('#editQueryInput');
+
+const slotName = document.querySelector('#slot-name');
+const slotQuery = document.querySelector('#slot-query');
+
 const loadCurrentQueryData = () => {
     chrome.runtime.sendMessage({ msg: 'getSlotData' }, (res) => {
         const isEmpty = res[res.selectedNo].isEmpty;
@@ -13,6 +19,22 @@ const loadCurrentQueryData = () => {
     });
 }
 
-const loadEditPopup = () => { }
+const saveCurrentQueryData = () => {
+    const newTitle = editTitleInput.value;
+    const newQuery = editQueryInput.value;
+
+    chrome.runtime.sendMessage({
+        msg: 'saveQuery',
+        no: selectedNo,
+        data: { isEmpty: false, title: newTitle, query: newQuery }
+    });
+
+    slotName.innerText = newTitle;
+    slotQuery.innerText = newQuery;
+}
+
+const loadEditPopup = () => {
+    loadListener();
+}
 
 export default loadEditPopup;

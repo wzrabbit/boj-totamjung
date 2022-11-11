@@ -72,6 +72,7 @@
     --filter-mid-brown: brightness(0) saturate(100%) invert(8%) sepia(7%) saturate(4167%) hue-rotate(329deg) brightness(97%) contrast(96%);
     --filter-dark-brown: brightness(0) saturate(100%) invert(5%) sepia(26%) saturate(1245%) hue-rotate(329deg) brightness(98%) contrast(97%);
     --filter-gold: brightness(0) saturate(100%) invert(77%) sepia(25%) saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);
+    --filter-gray: brightness(0) saturate(100%) invert(53%) sepia(0%) saturate(1700%) hue-rotate(218deg) brightness(94%) contrast(81%);
 
     --table-ac-color: rgb(0, 42, 8);
     --table-ac-secondary-color: rgb(0, 54, 9);
@@ -220,6 +221,7 @@
     --settings-text-color: rgb(150, 80, 10);
     --settings-underline-color: rgba(170, 85, 0, 0.2);
     --settings-warning-color: rgb(255, 192, 0);
+    --settings-edit-color: rgb(17, 191, 255);
 
     /* BOJ Extended Colors */
     --problem-link-ac-box-color: rgb(0, 40, 20);

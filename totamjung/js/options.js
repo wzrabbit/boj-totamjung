@@ -2,6 +2,7 @@ import db from './db.js';
 import loadSliderModule from './slider.js';
 import loadSlotAndSearcherModule from './slotAndSearcher.js';
 import loadHistory from './history.js';
+import loadEditPopup from './editPopup.js';
 
 const resetSettings = {
     'predict': 'click',
@@ -286,4 +287,5 @@ window.onload = () => {
     loadSliderModule();
     loadSlotAndSearcherModule();
     loadHistory();
+    loadEditPopup();
 }

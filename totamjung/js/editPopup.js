@@ -1,8 +1,42 @@
+const root = document.querySelector('#popupRoot');
+const cancelButton = document.querySelector('#cancelButton');
+const applyButton = document.querySelector('#applyButton');
+const closeButton = document.querySelector('#popupClose');
 const editTitleInput = document.querySelector('#editTitleInput');
 const editQueryInput = document.querySelector('#editQueryInput');
+const editButton = document.querySelector('#query-edit');
 
 const slotName = document.querySelector('#slot-name');
 const slotQuery = document.querySelector('#slot-query');
+
+let selectedNo = -1;
+
+const hide = () => {
+    root.style.display = 'none';
+}
+
+const show = () => {
+    root.style.display = 'block';
+}
+
+const loadListener = () => {
+    editButton.addEventListener('click', () => {
+        loadCurrentQueryData();
+    });
+
+    cancelButton.addEventListener('click', () => {
+        hide();
+    });
+
+    applyButton.addEventListener('click', () => {
+        saveCurrentQueryData();
+        hide();
+    });
+
+    closeButton.addEventListener('click', () => {
+        hide();
+    });
+}
 
 const loadCurrentQueryData = () => {
     chrome.runtime.sendMessage({ msg: 'getSlotData' }, (res) => {

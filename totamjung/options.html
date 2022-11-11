@@ -383,9 +383,13 @@
                     <div class="slot-bundle">
                         <div class="slot-bean" id="slot-bean"></div>
                         <p class="hotkey-info" id="hotkey-info"></p>
+                        <button class="query-edit" id="query-edit">
+                            <img class="delete-image" src="../images/edit.png" />
+                            <span class="edit-msg">수정</span>
+                        </button>
                         <button class="query-delete" id="query-delete">
                             <img class="delete-image" src="../images/trash.png" />
-                            <span class="delete-msg">추첨 삭제</span>
+                            <span class="delete-msg">삭제</span>
                         </button>
                     </div>
 
@@ -416,6 +420,32 @@
         </div>
         <div class="right-wrapper">
             <img class="rabbit" src="images/totamjung.png" />
+        </div>
+    </div>
+
+    <div id="popupRoot">
+        <div class="screen-blinder"></div>
+
+        <div id="editPopup">
+            <div class="edit-popup-title">추첨 수정</div>
+            <button id="popupClose"></button>
+            <div class="edit-popup-content">
+                <p class="edit-popup-text">추첨 이름</p>
+                <input class="edit-popup-input" id="editTitleInput" maxlength="30" placeholder="1 ~ 30자" />
+                <p class="edit-popup-text">쿼리</p>
+                <textarea class="edit-popup-input" id="editQueryInput" maxlength="300" placeholder="1 ~ 300자"
+                    spellcheck="false"></textarea>
+            </div>
+            <div class="button-popup-bottom">
+                <button class="popup-button" id="cancelButton">
+                    <img class="popup-button-icon" src="../images/x.png" />
+                    <p class="popup-button-text">취소</p>
+                </button>
+                <button class="popup-button" id="applyButton">
+                    <img class="popup-button-icon" src="../images/know.png" />
+                    <p class="popup-button-text">수정</p>
+                </button>
+            </div>
         </div>
     </div>
 

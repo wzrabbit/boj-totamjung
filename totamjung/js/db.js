@@ -116,7 +116,7 @@ const db = {
     115: { name: "머지 소트 트리", tag: "merge_sort_tree", alias: [] },
     116: { name: "오일러 지표 (χ=V-E+F)", tag: "euler_characteristic", alias: [] },
     117: { name: "기댓값의 선형성", tag: "linearity_of_expectation", alias: [] },
-    118: { name: "벌래캠프-매시", tag: "berlekamp_massey", alias: ["벌레캠프-매시"] },
+    118: { name: "벌리캠프-매시", tag: "berlekamp_massey", alias: ["벌레캠프-매시", "벌래캠프-매시", "벌리컴프-매시"] },
     119: { name: "볼록 다각형 내부의 점 판정", tag: "point_in_convex_polygon", alias: [] },
     120: { name: "연결 리스트", tag: "linked_list", alias: [] },
     121: { name: "링크/컷 트리", tag: "link_cut_tree", alias: ["링컷 트리"] },

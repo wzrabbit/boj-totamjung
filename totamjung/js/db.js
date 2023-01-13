@@ -11,7 +11,7 @@ const db = {
     10: { name: "정렬", tag: "sorting", alias: [] },
     11: { name: "정수론", tag: "number_theory", alias: [] },
     12: { name: "트리", tag: "trees", alias: ["tree", "나무"] },
-    13: { name: "세그먼트 트리", tag: "seg_tree", alias: ["세그트리", "segment tree", "어쩔세그"] },
+    13: { name: "세그먼트 트리", tag: "segtree", alias: ["세그트리", "segment tree", "어쩔세그"] },
     14: { name: "기하학", tag: "geometry", alias: [] },
     15: { name: "이분 탐색", tag: "binary_search", alias: ["바이너리 서치", "이진 탐색"] },
     16: { name: "너비 우선 탐색", tag: "bfs", alias: [] },

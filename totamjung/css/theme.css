@@ -562,24 +562,16 @@ html[totamjung='on'] .table-bordered>tbody>tr:nth-child(odd)>th {
     background-color: var(--menu-color);
 }
 
-html[totamjung='on'] .table-bordered>tbody>tr:nth-child(odd)>td.bg-red {
-    background-color: var(--table-wa-color);
-}
-
-html[totamjung='on'] .table-bordered>tbody>tr:nth-child(even)>td.bg-red {
-    background-color: var(--table-wa-secondary-color);
-}
-
-html[totamjung='on'] #problem-body .table-bordered tr>td,
-html[totamjung='on'] #problem-body .table-bordered tr>th {
-    border: 0.75px solid var(--table-border-color);
-}
-
 html[totamjung='on'] .table-striped>tbody>tr:nth-child(even)>td,
 html[totamjung='on'] .table-striped>tbody>tr:nth-child(even)>th,
 html[totamjung='on'] .table-bordered>tbody>tr:nth-child(even)>td,
 html[totamjung='on'] .table-bordered>tbody>tr:nth-child(even)>th {
     background-color: var(--secondary-menu-color);
+}
+
+html[totamjung='on'] #problem-body .table-bordered tr>td,
+html[totamjung='on'] #problem-body .table-bordered tr>th {
+    border: 0.75px solid var(--table-border-color);
 }
 
 html[totamjung='on'] .table-striped>tbody>tr.success:nth-of-type(odd)>td,

@@ -1,7 +1,7 @@
 {
     "name": "토탐정",
     "description": "[BOJ-Extension] 알고리즘 분류 가리개 & 랜덤 디펜스, 토탐정!",
-    "version": "1.1.1.1",
+    "version": "1.1.1.2",
     "manifest_version": 3,
     "permissions": [
         "storage"
@@ -35,7 +35,8 @@
             ],
             "css": [
                 "css/pallette.css",
-                "css/theme.css"
+                "css/theme.css",
+                "css/theme_table.css"
             ]
         }
     ],

@@ -302,59 +302,62 @@ function createRandomButtonListener() {
 function doRandomDefense(key) {
     const diceImagePath = chrome.runtime.getURL('images/dice.png');
 
-    chrome.runtime.sendMessage({ msg: 'getDefenseQuery', no: key }, (res) => {
-        res.query = encodeURIComponent(res.query);
-
-        if (res.result === 'FAIL') {
-            if (key === -1) { // 직접 버튼을 눌러 랜디를 돌린 경우에만 메시지 표시
-                showPopup('해당 슬롯이 아직 비어 있습니다.<br/>[설정]에서 선택하신 슬롯에 추첨을 만들어 주세요!', diceImagePath);
+    chrome.runtime.sendMessage({ msg: 'getDefenseResult', no: key }, (res) => {
+        if (res.result === 'FETCH_FAILED') {
+            switch (res.statusCode) {
+                case 400:
+                    showPopup('잘못된 쿼리를 입력하셨습니다.<br/>쿼리 확인 후 다시 시도해 주시겠어요?', diceImagePath);
+                    break;
+                case 429:
+                    showPopup('너무 많은 추첨을 돌렸습니다.<br/>잠시 후 다시 시도해 주시겠어요?', diceImagePath);
+                    break;
+                case 500:
+                case 503:
+                    showPopup('API 서버에 문제가 생겨, 문제 정보를 받아오지 못 했습니다.<br/>잠시 후 다시 시도해 주시겠어요?', diceImagePath);
+                default:
+                    showPopup(`문제가 발생했습니다. 응답 코드는 ${res.statusCode} 입니다.<br />계속해서 문제가 발생하면 개발자에게 문의해 주세요.`, diceImagePath)
             }
+            
+            isRandomBusy = false;
             return;
         }
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `https://solved.ac/api/v3/search/problem?query=${res.query}&sort=random`);
-        xhr.send();
-
-        xhr.onload = () => {
-            if (xhr.status === 400) {
-                showPopup('잘못된 쿼리를 입력하셨습니다.<br/>쿼리 확인 후 다시 시도해 주시겠어요?', diceImagePath);
-                isRandomBusy = false;
-                return;
-            }
-
-            if (xhr.status === 429) {
-                showPopup('너무 많은 추첨을 돌렸습니다.<br/>잠시 후 다시 시도해 주시겠어요?', diceImagePath);
-                isRandomBusy = false;
-                return;
-            }
-
-            if (xhr.status === 500 || xhr.status === 503) {
-                showPopup('서버에 문제가 생겨, 문제 정보를 받아오지 못 했습니다.<br/>잠시 후 다시 시도해 주시겠어요?', diceImagePath);
-                isRandomBusy = false;
-                return;
-            }
-
-            const chosen = JSON.parse(xhr.responseText).items[0];
-            if (chosen) {
-
-                chrome.runtime.sendMessage({
-                    msg: 'logQueryHistory',
-                    data: {
-                        no: chosen.problemId,
-                        tier: ((chosen.isLevelLocked && chosen.level === 0) ? 31 : chosen.level),
-                        title: chosen.titleKo,
-                        date: getFullDate()
-                    }
-                });
-
-                location.href = `https://acmicpc.net/problem/${chosen.problemId}`;
-            }
-            else {
-                showPopup('검색된 문제가 없습니다.<br/>쿼리 확인 후 다시 시도해 주시겠어요?', diceImagePath);
-                isRandomBusy = false;
-            }
+        
+        if (res.result === 'SYSTEM_CRASHED') {
+            showPopup(`알 수 없는 문제가 발생했습니다.<br />계속해서 문제가 발생하면 개발자에게 문의해 주세요.`, diceImagePath);
+            
+            isRandomBusy = false;
+            return;
         }
+        
+        if (res.result === 'NO_SEARCH_RESULT') {
+            showPopup('검색된 문제가 없습니다.<br/>쿼리 확인 후 다시 시도해 주시겠어요?', diceImagePath);
+            
+            isRandomBusy = false;
+            return;
+        }
+        
+        if (res.result === 'NO_QUERY') {
+            if (key === -1) {  // 직접 버튼을 눌러 랜디를 돌린 경우에만 메시지 표시
+                showPopup('해당 슬롯이 아직 비어 있습니다.<br/>[설정]에서 선택하신 슬롯에 추첨을 만들어 주세요!', diceImagePath);
+            }
+            
+            isRandomBusy = false;
+            return;
+        }
+        
+        const chosenProblem = res.chosenProblem;
+        
+        chrome.runtime.sendMessage({
+            msg: 'logQueryHistory',
+            data: {
+                no: chosenProblem.problemId,
+                tier: ((chosenProblem.isLevelLocked && chosenProblem.level === 0) ? 31 : chosenProblem.level),
+                title: chosenProblem.titleKo,
+                date: getFullDate()
+            }
+        });
+        
+        location.href = `https://acmicpc.net/problem/${chosenProblem.problemId}`
     });
 }
 
@@ -562,6 +565,7 @@ onkeydown = onkeyup = (e) => {
     isPressed[e.key] = e.type === 'keydown';
     if (!isNaN(e.key) && isPressed['Alt'] && !isRandomBusy) {
         isRandomBusy = true;
+        
         doRandomDefense(e.key);
     }
 }

@@ -27,6 +27,27 @@ const isValidQueryNo = num => {
         return false;
 }
 
+const getRandomDefenseResult = async (searchQuery) => {
+    try {
+        const response = await fetch(`https://solved.ac/api/v3/search/problem?query=${searchQuery}&sort=random`);
+        
+        if (!response.ok) {
+            return {result: 'FETCH_FAILED', statusCode: response.status};
+        }
+        
+        const responseText = await response.text();
+        const chosenProblem = JSON.parse(responseText).items[0];
+        
+        if (!chosenProblem) {
+            return {result: 'NO_SEARCH_RESULT'};
+        }
+        
+        return {result: 'OK', chosenProblem: chosenProblem};
+    } catch (error) {
+        return {result: 'SYSTEM_CRASHED'};
+    }  
+};
+
 chrome.runtime.onInstalled.addListener(details => {
     if (details.reason === 'install') {
         setData('algorithm', [1, 2]);
@@ -94,18 +115,28 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }
         });
     }
-    else if (message.msg === 'getDefenseQuery') {
+    else if (message.msg === 'getDefenseResult') {
         const no = message.no;
+        let searchQuery;
 
         chrome.storage.sync.get('query', loaded => {
             loaded = loaded.query;
-
-            if (loaded && no === -1 && loaded.selectedNo && !loaded[loaded.selectedNo].isEmpty)
-                sendResponse({ 'result': 'OK', 'query': loaded[loaded.selectedNo].query });
-            else if (loaded && loaded[no] && !loaded[no].isEmpty)
-                sendResponse({ 'result': 'OK', 'query': loaded[no].query });
-            else
-                sendResponse({ 'result': 'FAIL' });
+            
+            if (loaded && no === -1 && loaded.selectedNo && !loaded[loaded.selectedNo].isEmpty) {
+                searchQuery = loaded[loaded.selectedNo].query;
+            } else if (loaded && loaded[no] && !loaded[no].isEmpty) {
+                searchQuery = loaded[no].query;
+            } else {
+                sendResponse({ result: 'NO_QUERY' });
+                return true;
+            }
+            
+            searchQuery = encodeURIComponent(searchQuery);
+            
+            getRandomDefenseResult(searchQuery)
+                .then(requestResult => {
+                    sendResponse(requestResult);
+                });
         });
     }
     else if (message.msg === 'logQueryHistory') {

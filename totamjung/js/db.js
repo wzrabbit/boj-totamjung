@@ -21,7 +21,7 @@ const db = {
     20: { name: "조합론", tag: "combinatorics", alias: [] },
     21: { name: "애드 혹", tag: "ad_hoc", alias: [] },
     22: { name: "누적 합", tag: "prefix_sum", alias: ["cumulative sum", "프리픽스 썸", "프리픽스 섬"] },
-    23: { name: "구성적", tag: "constructive", alias: [] },
+    23: { name: "해 구성하기", tag: "constructive", alias: ["구성적"] },
     24: { name: "많은 조건 분기", tag: "case_work", alias: ["케이스 워크, 케이스 웍, 케웍, 많조분"] },
     25: { name: "비트마스킹", tag: "bitmask", alias: [] },
     26: { name: "데이크스트라", tag: "dijkstra", alias: ["다익스트라"] },
@@ -194,7 +194,11 @@ const db = {
     193: { name: "차수열", tag: "degree_sequence", alias: [] },
     194: { name: "utf-8 입력 처리", tag: "utf8", alias: [] },
     195: { name: "부분집합의 합 다이나믹 프로그래밍", tag: "dp_sum_over_subsets", alias: [] },
-    196: { name: "경사 하강법", tag: "gradient_descent", alias: [] }
+    196: { name: "경사 하강법", tag: "gradient_descent", alias: [] },
+    197: { name: "데카르트 트리", tag: "cartesian_tree", alias: [] },
+    198: { name: "다항식 보간법", tag: "polynomial_interpolation", alias: [] },
+    199: { name: "플러드 필", tag: "flood_fill", alias: [] },
+    200: { name: "함수형 그래프", tag: "functional_graph", alias: [] },
 }
 // 제거해야 하는 기호 [, A->a 공백 _ - / tag: #]
 export default db;

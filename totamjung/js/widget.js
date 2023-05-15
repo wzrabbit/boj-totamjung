@@ -3,7 +3,7 @@ const algorithmToId = {
     "문자열": 6, "그리디 알고리즘": 7, "브루트포스 알고리즘": 8, "그래프 탐색": 9,
     "정렬": 10, "정수론": 11, "트리": 12, "세그먼트 트리": 13, "기하학": 14,
     "이분 탐색": 15, "너비 우선 탐색": 16, "사칙연산": 17, "시뮬레이션": 18,
-    "깊이 우선 탐색": 19, "조합론": 20, "애드 혹": 21, "누적 합": 22, "구성적": 23,
+    "깊이 우선 탐색": 19, "조합론": 20, "애드 혹": 21, "누적 합": 22, "해 구성하기": 23,
     "많은 조건 분기": 24, "비트마스킹": 25, "데이크스트라": 26, "파싱": 27,
     "분리 집합": 28, "백트래킹": 29, "분할 정복": 30, "스위핑": 31,
     "해시를 사용한 집합과 맵": 32, "트리를 사용한 집합과 맵": 33, "우선순위 큐": 34,
@@ -54,7 +54,7 @@ const algorithmToId = {
     "서큘레이션": 184, "이산 k제곱근": 185, "다중 대입값 계산": 186, "차분 공격": 187,
     "하켄부시 게임": 188, "트리 분할": 189, "생일 문제": 190, "도형에서의 불 연산": 191,
     "현 그래프": 192, "차수열": 193, "utf-8 입력 처리": 194, "부분집합의 합 다이나믹 프로그래밍": 195,
-    "경사 하강법": 196,
+    "경사 하강법": 196, "데카르트 트리": 197, "다항식 보간법": 198, "플러드 필": 199, "함수형 그래프": 200,
 
     "Mathematics": 1, "Implementation": 2, "Dynamic Programming": 3, "Graph Theory": 4,
     "Data Structures": 5, "String": 6, "Greedy": 7, "Bruteforcing": 8,
@@ -117,7 +117,8 @@ const algorithmToId = {
     "Multipoint Evaluation": 186, "Differential Cryptanalysis": 187,
     "Hackenbush": 188, "Tree Decomposition": 189, "Birthday": 190,
     "Boolean Operations On Geometric Objects": 191, "Chordal Graph": 192, "Degree Sequence": 193,
-    "Utf-8 Inputs": 194, "Sum Over Subsets Dynamic Programming": 195, "Gradient Descent": 196
+    "Utf-8 Inputs": 194, "Sum Over Subsets Dynamic Programming": 195, "Gradient Descent": 196,
+    "Cartesian Tree": 197, "Polynomial Interpolation": 198, "Flood Fill": 199, "Functional Graph": 200,
 }
 
 const resetSettings = {

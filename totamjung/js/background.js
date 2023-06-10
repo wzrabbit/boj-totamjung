@@ -61,6 +61,10 @@ chrome.runtime.onInstalled.addListener(details => {
                 query: 'tier:1..30 solvable:true'
             }
         });
+
+        chrome.tabs.create({
+            url: "https://github.com/wzrabbit/boj-totamjung/blob/main/README.md"
+        })
     }
 });
 

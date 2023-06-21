@@ -1,456 +1,649 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Do+Hyeon&family=Gaegu&family=Gothic+A1&family=Gowun+Batang&family=Gowun+Dodum&family=Hi+Melody&family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&family=Lato&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Do+Hyeon&family=Gaegu&family=Gothic+A1&family=Gowun+Batang&family=Gowun+Dodum&family=Hi+Melody&family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&family=Lato&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/pallette.css" />
     <link rel="stylesheet" href="css/options_styles.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="wrapper">
-        <div class="header-wrapper">
-            <h1 class="header">
-                <img class="header-img" src="../images/settings_title.png" />
-            </h1>
-            <div class="category">
-                <ul>
-                    <li id="category-block-01" class="category-selected">알고리즘 설정</li>
-                    <li id="category-block-02">문제 추첨 설정</li>
-                </ul>
-            </div>
-            <div class="version">v1.1.2</div>
-            <img class="header-btn" id="guide-btn" src="../images/guide_link.png" />
-            <img class="header-btn" id="github-btn" src="../images/github_link.png" />
+      <div class="header-wrapper">
+        <h1 class="header">
+          <img class="header-img" src="../images/settings_title.png" />
+        </h1>
+        <div class="category">
+          <ul>
+            <li id="category-block-01" class="category-selected">
+              알고리즘 설정
+            </li>
+            <li id="category-block-02">문제 추첨 설정</li>
+          </ul>
         </div>
-        <div class="main-wrapper">
-            <div class="settings-page-01" id="sp-01">
-                <div class="menu pool-menu">
-                    <div class="title">
-                        <img class="title-img" src="../images/check.png" />
-                        <div class="title-text">알고리즘 추가</div>
-                        <div class="title-underline"></div>
-                    </div>
-
-                    <div class="algorithm-pool" id="pool"></div>
-
-                    <div class="pool-search-div">
-                        <input class="pool-search" id="pool-search" />
-                        <div class="pool-search-glow"></div>
-                    </div>
-                </div>
-                <div class="menu space-menu"></div>
-                <div class="menu timer-menu">
-                    <div class="title">
-                        <img class="title-img" src="../images/lock.png" />
-                        <div class="title-text">잠금 타이머 설정</div>
-                        <div class="title-underline"></div>
-                    </div>
-
-                    <div class="time-div">
-                        <img class="time-image" src="images/settings_lock.png" />
-                        <input class="time" id="hour" type="number" min="0" max="8" />
-                        <p class="settings-text">시간</p>
-                        <input class="time" id="minute" type="number" min="0" max="59" />
-                        <p class="settings-text">분</p>
-                    </div>
-                    <p class="settings-text">
-                        잠금 기능 사용 시 알고리즘 분류를 잠글 시간을 설정해 주세요. 시간은 9시간 미만이어야 합니다.
-                    </p>
-                </div>
-                <div class="menu general-menu">
-                    <div class="title">
-                        <img class="title-img" src="../images/lock.png" />
-                        <div class="title-text">기본 설정</div>
-                        <div class="title-underline"></div>
-                    </div>
-
-                    <div class="overflow-menu">
-                        <p class="settings-text">
-                            문제를 풀 수 있는지의 여부 공개 방법
-                        </p>
-                        <div class="choosing-bundle">
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="predict" value="click" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">클릭하여 공개</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="predict" value="always" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">항상 공개</span>
-                                <br />
-                            </label>
-                        </div>
-                        <p class="settings-text">
-                            알고리즘 분류 잠금 방법
-                        </p>
-                        <div class="choosing-bundle">
-                            <label>
-                                <input class="hidden radio settings settings" type="radio" name="lock" value="click" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">클릭하여 잠금</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings settings" type="radio" name="lock" value="always" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">자동으로 잠금</span>
-                                <br />
-                            </label>
-                        </div>
-                        <p class="settings-text">
-                            토탐정 테마 적용
-                        </p>
-                        <div class="choosing-bundle">
-                            <label>
-                                <input class="hidden radio settings settings" type="radio" name="theme" value="yes" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">적용</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings settings" type="radio" name="theme" value="no" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">적용하지 않음</span>
-                                <br />
-                            </label>
-                        </div>
-                        <p class="settings-text">
-                            문제 본문 폰트 설정
-                        </p>
-                        <div class="choosing-bundle font">
-                            <label>
-                                <input class="hidden radio settings settings" type="radio" name="font" value="none" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">설정하지 않음</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-1" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">나눔고딕</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-2" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">나눔고딕 코딩</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-3" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">나눔명조</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-4" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">배달의민족 도현</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-5" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">배달의민족 주아</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-6" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">본명조</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-7" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">해바라기</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-8" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">배달의민족 연성</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-9" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">Cute Font</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-10" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">Gaegu</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-11" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">고딕 A1</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-12" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">고운바탕체</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-13" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">고운돋움체</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-14" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">하이멜로디</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-15" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">IPM Plex Sans</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-16" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">푸어스토리</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-17" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">DS싱글데이</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-18" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">송명체</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio settings" type="radio" name="font" value="font-19" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">a스타일리쉬</span>
-                                <br />
-                            </label>
-                        </div>
-                    </div>
-                </div>
+        <div class="version">v1.1.2</div>
+        <img class="header-btn" id="guide-btn" src="../images/guide_link.png" />
+        <img
+          class="header-btn"
+          id="github-btn"
+          src="../images/github_link.png"
+        />
+      </div>
+      <div class="main-wrapper">
+        <div class="settings-page-01" id="sp-01">
+          <div class="menu pool-menu">
+            <div class="title">
+              <img class="title-img" src="../images/check.png" />
+              <div class="title-text">알고리즘 추가</div>
+              <div class="title-underline"></div>
             </div>
 
-            <div class="settings-page-02" id="sp-02" style="display: none">
-                <div class="menu title-menu">
-                    <div class="title">
-                        <img class="title-img" src="../images/dice.png" />
-                        <div class="title-text">문제 추첨</div>
-                        <div class="title-underline"></div>
-                    </div>
-                    <div class="warning-bundle" id="warning-bundle">
-                        <img class="warning-image" src="../images/warning.png" />
-                        <div class="warning-text" id="warning-text"></div>
-                    </div>
-                </div>
-                <div class="menu create-menu">
-                    <div class="mini-title">추첨 만들기</div>
+            <div class="algorithm-pool" id="pool"></div>
 
-                    <p class="settings-text-gold">추첨 이름</p>
-                    <input type="text" id="rd-title" maxlength="30" placeholder="1 ~ 30자" />
-                    <div class="mode-toggler" id="toggler" activated="left">
-                        <div class="left-frag" id="left-frag">간편 입력</div>
-                        <div class="right-frag" id="right-frag">직접 입력</div>
-                        <div class="mid-circle">OR</div>
-                    </div>
-
-                    <div id="easy-random-menu">
-                        <div class="settings-field">
-                            <p class="settings-text-gold">검색에서 제외할 닉네임</p>
-                            <input type="text" id="rd-nickname" maxlength="20" placeholder="3 ~ 20자" />
-                        </div>
-                        <div class="settings-field">
-                            <p class="settings-text-gold">맞은 사람 수</p>
-                            <div>
-                                <input type="number" id="rd-min-solved" />
-                                <div class="tier-solved-tlide">~</div>
-                                <input type="number" id="rd-max-solved" />
-                            </div>
-                        </div>
-
-                        <p class="settings-text-gold">난이도 범위</p>
-                        <div class="tier-component">
-                            <div class="tier-slider">
-                                <div class="tier-track" id="tier-track"></div>
-                                <input type="range" class="tier-thumb tier-thumb-1" id="left-thumb" min="0" max="30"
-                                    value="1" />
-                                <input type="range" class="tier-thumb tier-thumb-30" id="right-thumb" min="0" max="30"
-                                    value="30" />
-                            </div>
-
-                            <div class="tier-status">
-                                <img class="tier-status-img" id="min-tier" src="../images/tier/solvedac-tier-1.svg">
-                                <div class="tier-status-tlide">~</div>
-                                <img class="tier-status-img" id="max-tier" src="../images/tier/solvedac-tier-30.svg">
-                            </div>
-
-                            <div class="tier-button-bundle">
-                                <button class="tier-button" id="tier-button-u">
-                                    <span class="tier-visual"></span>
-                                </button>
-                                <button class="tier-button" id="tier-button-b">
-                                    <span class="tier-visual"></span>
-                                </button>
-                                <button class="tier-button" id="tier-button-s">
-                                    <span class="tier-visual"></span>
-                                </button>
-                                <button class="tier-button" id="tier-button-g">
-                                    <span class="tier-visual"></span>
-                                </button>
-                                <button class="tier-button" id="tier-button-p">
-                                    <span class="tier-visual"></span>
-                                </button>
-                                <button class="tier-button" id="tier-button-d">
-                                    <span class="tier-visual"></span>
-                                </button>
-                                <button class="tier-button" id="tier-button-r">
-                                    <span class="tier-visual"></span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="or-bundle">
-                            <p class="settings-text-gold or-text">검색에 포함할 알고리즘</p>
-                            <label>
-                                <input class="hidden radio or" type="radio" name="algo-options" value="AND" checked />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">AND</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio or" type="radio" name="algo-options" value="OR" />
-                                <span class="checkbox-visual"></span>
-                                <span class="radio-text">OR</span>
-                                <br />
-                            </label>
-                            <label>
-                                <input class="hidden radio or" type="radio" name="algo-options" value="NOR" />
-                                <span class=" checkbox-visual"></span>
-                                <span class="radio-text">NOR</span>
-                                <br />
-                            </label>
-                        </div>
-
-                        <label for="query-search-input" id="query-searcher" tabIndex="0">
-                            <div id="query-keyword-div" tabIndex="0"></div>
-                            <div id="query-search-div" tabIndex="0">
-                                <input id="query-search-input" tabIndex="0" />
-                            </div>
-
-                        </label>
-                        <div id="fake-div"></div>
-                    </div>
-
-                    <div class="none" id="manual-random-menu">
-                        <p class="settings-text-gold extra-margin">쿼리</p>
-                        <textarea id="rd-query" maxlength="300" placeholder="최대 300자" spellcheck="false"></textarea>
-                        <p class="settings-text" style="font-size: 14px;">solved.ac 쿼리 작성법은
-                            <a href="https://solved.ac/search" target="_blank">여기</a>에서 확인하실 수
-                            있습니다.
-                        </p>
-                    </div>
-
-                    <button id="rd-submit">
-                        <span class="submit-button-head">
-                            <img class="submit-button-image" src="../images/add_dice.png" />
-                            <span class="submit-button-title">추첨 생성</span>
-                        </span>
-                    </button>
-
-                </div>
-                <div class="menu slot-menu">
-                    <div class="mini-title">퀵 슬롯</div>
-
-                    <div class="slot-bundle">
-                        <div class="slot-bean" id="slot-bean"></div>
-                        <p class="hotkey-info" id="hotkey-info"></p>
-                        <button class="query-edit" id="query-edit">
-                            <img class="delete-image" src="../images/edit.png" />
-                            <span class="edit-msg">수정</span>
-                        </button>
-                        <button class="query-delete" id="query-delete">
-                            <img class="delete-image" src="../images/trash.png" />
-                            <span class="delete-msg">삭제</span>
-                        </button>
-                    </div>
-
-                    <div class="slot-info">
-                        <div class="slot-jelly gold">추첨 이름</div>
-                        <div id="slot-name"></div>
-                        <div class="slot-jelly silver">쿼리</div>
-                        <div id="slot-query"></div>
-                    </div>
-                </div>
-                <div class="menu history-menu">
-                    <div class="mini-title">추첨 기록</div>
-                    <div class="history-top-menu">
-                        <p class="settings-text">티어 숨기기</p>
-                        <label>
-                            <input class="hidden checkbox" id="tier-hide-button" type="checkbox" />
-                            <span class="slide-button-visual">
-                                <span class="slide-button-thumb"></span>
-                            </span>
-                        </label>
-                    </div>
-                    <div class="history-mid-menu" id="history-slot"></div>
-                    <div class="history-bottom-menu">
-                        <p class="settings-text">추첨 기록은 최근 300문제까지 저장됩니다.</p>
-                    </div>
-                </div>
+            <div class="pool-search-div">
+              <input class="pool-search" id="pool-search" />
+              <div class="pool-search-glow"></div>
             </div>
+          </div>
+          <div class="menu space-menu"></div>
+          <div class="menu timer-menu">
+            <div class="title">
+              <img class="title-img" src="../images/lock.png" />
+              <div class="title-text">잠금 타이머 설정</div>
+              <div class="title-underline"></div>
+            </div>
+
+            <div class="time-div">
+              <img class="time-image" src="images/settings_lock.png" />
+              <input class="time" id="hour" type="number" min="0" max="8" />
+              <p class="settings-text">시간</p>
+              <input class="time" id="minute" type="number" min="0" max="59" />
+              <p class="settings-text">분</p>
+            </div>
+            <p class="settings-text">
+              잠금 기능 사용 시 알고리즘 분류를 잠글 시간을 설정해 주세요.
+              시간은 9시간 미만이어야 합니다.
+            </p>
+          </div>
+          <div class="menu general-menu">
+            <div class="title">
+              <img class="title-img" src="../images/lock.png" />
+              <div class="title-text">기본 설정</div>
+              <div class="title-underline"></div>
+            </div>
+
+            <div class="overflow-menu">
+              <p class="settings-text">문제를 풀 수 있는지의 여부 공개 방법</p>
+              <div class="choosing-bundle">
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="predict"
+                    value="click"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">클릭하여 공개</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="predict"
+                    value="always"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">항상 공개</span>
+                  <br />
+                </label>
+              </div>
+              <p class="settings-text">알고리즘 분류 잠금 방법</p>
+              <div class="choosing-bundle">
+                <label>
+                  <input
+                    class="hidden radio settings settings"
+                    type="radio"
+                    name="lock"
+                    value="click"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">클릭하여 잠금</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings settings"
+                    type="radio"
+                    name="lock"
+                    value="always"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">자동으로 잠금</span>
+                  <br />
+                </label>
+              </div>
+              <p class="settings-text">토탐정 테마 적용</p>
+              <div class="choosing-bundle">
+                <label>
+                  <input
+                    class="hidden radio settings settings"
+                    type="radio"
+                    name="theme"
+                    value="yes"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">적용</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings settings"
+                    type="radio"
+                    name="theme"
+                    value="no"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">적용하지 않음</span>
+                  <br />
+                </label>
+              </div>
+              <p class="settings-text">문제 본문 폰트 설정</p>
+              <div class="choosing-bundle font">
+                <label>
+                  <input
+                    class="hidden radio settings settings"
+                    type="radio"
+                    name="font"
+                    value="none"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">설정하지 않음</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-1"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">나눔고딕</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-2"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">나눔고딕 코딩</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-3"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">나눔명조</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-4"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">배달의민족 도현</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-5"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">배달의민족 주아</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-6"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">본명조</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-7"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">해바라기</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-8"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">배달의민족 연성</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-9"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">Cute Font</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-10"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">Gaegu</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-11"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">고딕 A1</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-12"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">고운바탕체</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-13"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">고운돋움체</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-14"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">하이멜로디</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-15"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">IPM Plex Sans</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-16"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">푸어스토리</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-17"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">DS싱글데이</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-18"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">송명체</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio settings"
+                    type="radio"
+                    name="font"
+                    value="font-19"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">a스타일리쉬</span>
+                  <br />
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="right-wrapper">
-            <img class="rabbit" src="images/totamjung.png" />
+
+        <div class="settings-page-02" id="sp-02" style="display: none">
+          <div class="menu title-menu">
+            <div class="title">
+              <img class="title-img" src="../images/dice.png" />
+              <div class="title-text">문제 추첨</div>
+              <div class="title-underline"></div>
+            </div>
+            <div class="warning-bundle" id="warning-bundle">
+              <img class="warning-image" src="../images/warning.png" />
+              <div class="warning-text" id="warning-text"></div>
+            </div>
+          </div>
+          <div class="menu create-menu">
+            <div class="mini-title">추첨 만들기</div>
+
+            <p class="settings-text-gold">추첨 이름</p>
+            <input
+              type="text"
+              id="rd-title"
+              maxlength="30"
+              placeholder="1 ~ 30자"
+            />
+            <div class="mode-toggler" id="toggler" activated="left">
+              <div class="left-frag" id="left-frag">간편 입력</div>
+              <div class="right-frag" id="right-frag">직접 입력</div>
+              <div class="mid-circle">OR</div>
+            </div>
+
+            <div id="easy-random-menu">
+              <div class="settings-field">
+                <p class="settings-text-gold">검색에서 제외할 닉네임</p>
+                <input
+                  type="text"
+                  id="rd-nickname"
+                  maxlength="20"
+                  placeholder="3 ~ 20자"
+                />
+              </div>
+              <div class="settings-field">
+                <p class="settings-text-gold">맞은 사람 수</p>
+                <div>
+                  <input type="number" id="rd-min-solved" />
+                  <div class="tier-solved-tlide">~</div>
+                  <input type="number" id="rd-max-solved" />
+                </div>
+              </div>
+
+              <p class="settings-text-gold">난이도 범위</p>
+              <div class="tier-component">
+                <div class="tier-slider">
+                  <div class="tier-track" id="tier-track"></div>
+                  <input
+                    type="range"
+                    class="tier-thumb tier-thumb-1"
+                    id="left-thumb"
+                    min="0"
+                    max="30"
+                    value="1"
+                  />
+                  <input
+                    type="range"
+                    class="tier-thumb tier-thumb-30"
+                    id="right-thumb"
+                    min="0"
+                    max="30"
+                    value="30"
+                  />
+                </div>
+
+                <div class="tier-status">
+                  <img
+                    class="tier-status-img"
+                    id="min-tier"
+                    src="../images/tier/solvedac-tier-1.svg"
+                  />
+                  <div class="tier-status-tlide">~</div>
+                  <img
+                    class="tier-status-img"
+                    id="max-tier"
+                    src="../images/tier/solvedac-tier-30.svg"
+                  />
+                </div>
+
+                <div class="tier-button-bundle">
+                  <button class="tier-button" id="tier-button-u">
+                    <span class="tier-visual"></span>
+                  </button>
+                  <button class="tier-button" id="tier-button-b">
+                    <span class="tier-visual"></span>
+                  </button>
+                  <button class="tier-button" id="tier-button-s">
+                    <span class="tier-visual"></span>
+                  </button>
+                  <button class="tier-button" id="tier-button-g">
+                    <span class="tier-visual"></span>
+                  </button>
+                  <button class="tier-button" id="tier-button-p">
+                    <span class="tier-visual"></span>
+                  </button>
+                  <button class="tier-button" id="tier-button-d">
+                    <span class="tier-visual"></span>
+                  </button>
+                  <button class="tier-button" id="tier-button-r">
+                    <span class="tier-visual"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="or-bundle">
+                <p class="settings-text-gold or-text">검색에 포함할 알고리즘</p>
+                <label>
+                  <input
+                    class="hidden radio or"
+                    type="radio"
+                    name="algo-options"
+                    value="AND"
+                    checked
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">AND</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio or"
+                    type="radio"
+                    name="algo-options"
+                    value="OR"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">OR</span>
+                  <br />
+                </label>
+                <label>
+                  <input
+                    class="hidden radio or"
+                    type="radio"
+                    name="algo-options"
+                    value="NOR"
+                  />
+                  <span class="checkbox-visual"></span>
+                  <span class="radio-text">NOR</span>
+                  <br />
+                </label>
+              </div>
+
+              <label for="query-search-input" id="query-searcher" tabindex="0">
+                <div id="query-keyword-div" tabindex="0"></div>
+                <div id="query-search-div" tabindex="0">
+                  <input id="query-search-input" tabindex="0" />
+                </div>
+              </label>
+              <div id="fake-div"></div>
+            </div>
+
+            <div class="none" id="manual-random-menu">
+              <p class="settings-text-gold extra-margin">쿼리</p>
+              <textarea
+                id="rd-query"
+                maxlength="300"
+                placeholder="최대 300자"
+                spellcheck="false"
+              ></textarea>
+              <p class="settings-text" style="font-size: 14px">
+                solved.ac 쿼리 작성법은
+                <a href="https://solved.ac/search" target="_blank">여기</a>에서
+                확인하실 수 있습니다.
+              </p>
+            </div>
+
+            <button id="rd-submit">
+              <span class="submit-button-head">
+                <img class="submit-button-image" src="../images/add_dice.png" />
+                <span class="submit-button-title">추첨 생성</span>
+              </span>
+            </button>
+          </div>
+          <div class="menu slot-menu">
+            <div class="mini-title">퀵 슬롯</div>
+
+            <div class="slot-bundle">
+              <div class="slot-bean" id="slot-bean"></div>
+              <p class="hotkey-info" id="hotkey-info"></p>
+              <button class="query-edit" id="query-edit">
+                <img class="delete-image" src="../images/edit.png" />
+                <span class="edit-msg">수정</span>
+              </button>
+              <button class="query-delete" id="query-delete">
+                <img class="delete-image" src="../images/trash.png" />
+                <span class="delete-msg">삭제</span>
+              </button>
+            </div>
+
+            <div class="slot-info">
+              <div class="slot-jelly gold">추첨 이름</div>
+              <div id="slot-name"></div>
+              <div class="slot-jelly silver">쿼리</div>
+              <div id="slot-query"></div>
+            </div>
+          </div>
+          <div class="menu history-menu">
+            <div class="mini-title">추첨 기록</div>
+            <div class="history-top-menu">
+              <p class="settings-text">티어 숨기기</p>
+              <label>
+                <input
+                  class="hidden checkbox"
+                  id="tier-hide-button"
+                  type="checkbox"
+                />
+                <span class="slide-button-visual">
+                  <span class="slide-button-thumb"></span>
+                </span>
+              </label>
+            </div>
+            <div class="history-mid-menu" id="history-slot"></div>
+            <div class="history-bottom-menu">
+              <p class="settings-text">
+                추첨 기록은 최근 300문제까지 저장됩니다.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="right-wrapper">
+        <img class="rabbit" src="images/totamjung.png" />
+      </div>
     </div>
 
     <div id="popupRoot">
-        <div class="screen-blinder"></div>
+      <div class="screen-blinder"></div>
 
-        <div id="editPopup">
-            <div class="edit-popup-title">추첨 수정</div>
-            <button id="popupClose"></button>
-            <div class="edit-popup-content">
-                <p class="edit-popup-text">추첨 이름</p>
-                <input class="edit-popup-input" id="editTitleInput" maxlength="30" placeholder="1 ~ 30자" />
-                <p class="edit-popup-text">쿼리</p>
-                <textarea class="edit-popup-input" id="editQueryInput" maxlength="300" placeholder="1 ~ 300자"
-                    spellcheck="false"></textarea>
-            </div>
-            <div class="button-popup-bottom">
-                <button class="popup-button" id="cancelButton">
-                    <img class="popup-button-icon" src="../images/x.png" />
-                    <p class="popup-button-text">취소</p>
-                </button>
-                <button class="popup-button" id="applyButton">
-                    <img class="popup-button-icon" src="../images/know.png" />
-                    <p class="popup-button-text">수정</p>
-                </button>
-            </div>
+      <div id="editPopup">
+        <div class="edit-popup-title">추첨 수정</div>
+        <button id="popupClose"></button>
+        <div class="edit-popup-content">
+          <p class="edit-popup-text">추첨 이름</p>
+          <input
+            class="edit-popup-input"
+            id="editTitleInput"
+            maxlength="30"
+            placeholder="1 ~ 30자"
+          />
+          <p class="edit-popup-text">쿼리</p>
+          <textarea
+            class="edit-popup-input"
+            id="editQueryInput"
+            maxlength="300"
+            placeholder="1 ~ 300자"
+            spellcheck="false"
+          ></textarea>
         </div>
+        <div class="button-popup-bottom">
+          <button class="popup-button" id="cancelButton">
+            <img class="popup-button-icon" src="../images/x.png" />
+            <p class="popup-button-text">취소</p>
+          </button>
+          <button class="popup-button" id="applyButton">
+            <img class="popup-button-icon" src="../images/know.png" />
+            <p class="popup-button-text">수정</p>
+          </button>
+        </div>
+      </div>
     </div>
 
     <script type="module" src="./js/options.js"></script>
-
-</body>
-
+  </body>
 </html>

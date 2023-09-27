@@ -902,13 +902,24 @@ onload = () => {
   createLockButtonListener();
 };
 
-// Random Defense Hotkey Listener (Alt + {num})
-let isPressed = {};
-onkeydown = onkeyup = (e) => {
-  isPressed[e.key] = e.type === 'keydown';
-  if (!isNaN(e.key) && isPressed['Alt'] && !isRandomBusy) {
-    isRandomBusy = true;
+onkeydown = (e) => {
+  // NOTE: keyCode는 deprecated된 속성이지만 일부 환경을 고려하기 위해 사용
+  const { altKey, key, code, keyCode } = e;
+  const isDigitKey =
+    !isNaN(key) || code.startsWith('Digit') || (keyCode >= 48 && keyCode <= 57);
 
-    doRandomDefense(e.key);
+  if (altKey && isDigitKey && !isRandomBusy) {
+    let pressedNumberKey;
+
+    if (!isNaN(key)) {
+      pressedNumberKey = Number(key);
+    } else if (code.startsWith('Digit')) {
+      pressedNumberKey = code.replace('Digit', '');
+    } else {
+      pressedNumberKey = keyCode - 48;
+    }
+
+    isRandomBusy = true;
+    doRandomDefense(pressedNumberKey);
   }
 };

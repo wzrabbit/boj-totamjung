@@ -64,7 +64,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     });
 
     chrome.tabs.create({
-      url: 'https://github.com/wzrabbit/boj-totamjung/blob/main/README.md',
+      url: 'https://github.com/wzrabbit/boj-totamjung/blob/main/GUIDE.md',
     });
   }
 });

@@ -199,6 +199,8 @@ const algorithmToId = {
   '다항식 보간법': 198,
   '플러드 필': 199,
   '함수형 그래프': 200,
+  '방향 비순환 그래프': 201,
+  '최단 경로': 202,
 
   Mathematics: 1,
   Implementation: 2,
@@ -399,6 +401,8 @@ const algorithmToId = {
   'Polynomial Interpolation': 198,
   'Flood Fill': 199,
   'Functional Graph': 200,
+  'Directed Acyclic Graph': 201,
+  'Shortest Path': 202,
 };
 
 const resetSettings = {

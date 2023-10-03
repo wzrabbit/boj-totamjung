@@ -393,6 +393,8 @@ const db = {
   198: { name: '다항식 보간법', tag: 'polynomial_interpolation', alias: [] },
   199: { name: '플러드 필', tag: 'flood_fill', alias: [] },
   200: { name: '함수형 그래프', tag: 'functional_graph', alias: [] },
+  201: { name: '방향 비순환 그래프', tag: 'dag', alias: [] },
+  202: { name: '최단 경로', tag: 'shortest_path', alias: [] },
 };
 // 제거해야 하는 기호 [, A->a 공백 _ - / tag: #]
 export default db;

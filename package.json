@@ -1,0 +1,11 @@
+{
+  "name": "totamjung",
+  "version": "1.2",
+  "description": "[BOJ-Extension] 알고리즘 분류 가리개 & 랜덤 디펜스, 토탐정!",
+  "private": true,
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "wzrabbit",
+  "license": "MIT"
+}

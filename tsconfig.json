@@ -8,7 +8,19 @@
     "allowJs": true,
     "moduleResolution": "node",
     "removeComments": true,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
+      "@domains/*": ["src/domains/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@images": ["src/images/index"],
+      "@images/*": ["src/images/*"],
+      "@types": ["src/types/*"],
+      "@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"]
+    }
   },
   "include": ["src"]
 }

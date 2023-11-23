@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const EslintWebpackPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -47,6 +48,10 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [{ from: 'public' }],
+    }),
+    new EslintWebpackPlugin({
+      extensions: ['tsx', 'ts', 'js'],
+      exclude: ['/node_modules/'],
     }),
   ],
 };

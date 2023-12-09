@@ -26,6 +26,7 @@ const config: StorybookConfig = {
         '@images': resolve(__dirname, '../src/images'),
         '@types': resolve(__dirname, '../src/types'),
         '@utils': resolve(__dirname, '../src/utils'),
+        '@styles': resolve(__dirname, '../src/styles'),
       };
     }
 

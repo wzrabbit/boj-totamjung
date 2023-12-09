@@ -19,7 +19,8 @@
       "@images/*": ["src/images/*"],
       "@types": ["src/types/*"],
       "@types/*": ["src/types/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@styles/*": ["src/styles/*"]
     }
   },
   "include": ["src"]

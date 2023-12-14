@@ -1,11 +1,19 @@
 import { styled, css } from 'styled-components';
 
-export const FakeVisualCheckbox = styled.div<{ $isChecked: boolean }>`
+export const Container = styled.label`
   display: inline-block;
   position: relative;
 
   width: 16px;
   height: 16px;
+`;
+
+export const FakeVisualCheckbox = styled.div<{ $isChecked: boolean }>`
+  display: inline-block;
+  position: relative;
+
+  width: 100%;
+  height: 100%;
 
   border: 3px solid ${({ theme }) => theme.color.GOLD};
 
@@ -26,5 +34,10 @@ export const FakeVisualCheckbox = styled.div<{ $isChecked: boolean }>`
 `;
 
 export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
-  display: none;
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
 `;

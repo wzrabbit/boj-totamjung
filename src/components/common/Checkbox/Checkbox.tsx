@@ -2,17 +2,22 @@ import * as S from './Checkbox.styled';
 
 interface CheckboxProps {
   isChecked: boolean;
+  ariaLabel: string;
   onChange: () => void;
 }
 
 const Checkbox = (props: CheckboxProps) => {
-  const { isChecked, onChange } = props;
+  const { isChecked, ariaLabel, onChange } = props;
 
   return (
-    <label>
+    <S.Container>
+      <S.Checkbox
+        checked={isChecked}
+        aria-label={ariaLabel}
+        onChange={onChange}
+      />
       <S.FakeVisualCheckbox $isChecked={isChecked} />
-      <S.Checkbox checked={isChecked} onChange={onChange} />
-    </label>
+    </S.Container>
   );
 };
 

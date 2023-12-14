@@ -39,5 +39,5 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   width: 100%;
   height: 100%;
 
-  opacity: 0;
+  appearance: none;
 `;

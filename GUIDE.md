@@ -2,7 +2,7 @@
 
 # 사용 방법
 
-이 페이지는 토탐정의 기본적인 사용법을 설명합니다. 설치 방법은 [README](https://github.com/wzrabbit/boj-totamjung/edit/experimental/README.md) 페이지를 참고해 주세요.
+이 페이지에서는 토탐정의 기본적인 사용법을 설명합니다. 설치 방법은 [README](https://github.com/wzrabbit/boj-totamjung/blob/main/README.md) 페이지를 참고해 주세요.
 
 ## 필요한 초기 설정
 

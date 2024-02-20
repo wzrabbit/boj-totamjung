@@ -1,6 +1,6 @@
 import { AlgorithmInfo } from '../types/algorithm';
 
-export const algorithmInfos: AlgorithmInfo[] = [
+export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 1,
     name: '수학',
@@ -1370,3 +1370,5 @@ export const algorithmInfos: AlgorithmInfo[] = [
     alias: [],
   },
 ];
+
+export const ALGORITHMS_COUNT = ALGORITHM_INFOS.length;

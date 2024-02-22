@@ -3,3 +3,25 @@
   type="text/css"
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
 />
+<script>
+  var chrome = {
+    storage: {
+      sync: {
+        set: (data) => {
+          console.log(
+            '%c 【chrome.storage.sync.set】 호출!\n저장할 데이터:',
+            'color: #6bdaff; font-family: Pretendard',
+            data,
+          );
+        },
+
+        get: (data) =>
+          console.log(
+            '%c 【chrome.storage.sync.get】 호출!\n불러오려 했던 데이터의 키 값:',
+            'color: #ff6beb; font-family: Pretendard',
+            data,
+          ),
+      },
+    },
+  };
+</script>

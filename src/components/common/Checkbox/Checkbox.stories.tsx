@@ -25,6 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const Checked: Story = {
   args: {
     isChecked: true,
+    ariaLabel: '다이나믹 프로그래밍',
     onChange: () => {
       alert('onChange()');
     },
@@ -34,6 +35,7 @@ export const Checked: Story = {
 export const NotChecked: Story = {
   args: {
     isChecked: false,
+    ariaLabel: '다이나믹 프로그래밍',
     onChange: () => {
       alert('onChange()');
     },

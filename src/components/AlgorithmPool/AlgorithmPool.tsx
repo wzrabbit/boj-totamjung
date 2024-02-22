@@ -1,13 +1,15 @@
 import * as S from './AlgorithmPool.styled';
 import AlgorithmList from './AlgorithmList';
 import useAlgorithmPool from '@hooks/algorithm/useAlgorithmPool';
+import { SearchIcon } from '@images/svg';
+import { allCheckedIcon, allUncheckedIcon } from '@images/png';
 
 const AlgorithmPool = () => {
   const {
     keyword,
     items,
     checkedIds,
-    setKeyword,
+    handleChangeKeyword,
     toggleAlgorithm,
     checkAllAlgorithms,
     uncheckAllAlgorithms,
@@ -15,18 +17,41 @@ const AlgorithmPool = () => {
 
   return (
     <S.Container>
-      <AlgorithmList
-        items={items}
-        checkedIds={checkedIds}
-        onChange={toggleAlgorithm}
-      />
-      <input
-        placeholder="검색어를 입력해 주세요..."
-        value={keyword}
-        onChange={(event) => setKeyword(() => event.target.value)}
-      />
-      <button onClick={checkAllAlgorithms}>전체 선택</button>
-      <button onClick={uncheckAllAlgorithms}>전체 해제</button>
+      <S.AlgorithmPanel>
+        <AlgorithmList
+          items={items}
+          checkedIds={checkedIds}
+          onChange={toggleAlgorithm}
+        />
+      </S.AlgorithmPanel>
+      <S.ControlPanel>
+        <S.SearchPanelContainer>
+          <S.SearchIconWrapper>
+            <SearchIcon />
+          </S.SearchIconWrapper>
+          <S.SearchInput
+            placeholder="검색어를 입력해 주세요..."
+            value={keyword}
+            onChange={handleChangeKeyword}
+          />
+        </S.SearchPanelContainer>
+        <S.CheckButtonPanel>
+          <S.CheckButton
+            onClick={checkAllAlgorithms}
+            aria-label="알고리즘 분류 전체 선택"
+          >
+            <S.CheckButtonImage src={allCheckedIcon} />
+            <S.CheckButtonLabel>전체 선택</S.CheckButtonLabel>
+          </S.CheckButton>
+          <S.CheckButton
+            onClick={uncheckAllAlgorithms}
+            aria-label="알고리즘 분류 전체 해제"
+          >
+            <S.CheckButtonImage src={allUncheckedIcon} />
+            <S.CheckButtonLabel>전체 해제</S.CheckButtonLabel>
+          </S.CheckButton>
+        </S.CheckButtonPanel>
+      </S.ControlPanel>
     </S.Container>
   );
 };

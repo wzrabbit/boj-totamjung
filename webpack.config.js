@@ -20,7 +20,12 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack', 'url-loader'],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
         type: 'asset/resource',
       },
     ],

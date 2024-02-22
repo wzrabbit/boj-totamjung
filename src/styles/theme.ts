@@ -5,6 +5,7 @@ export const theme = {
     LIGHT_BROWN: '#412a23',
     BROWN: '#301e18',
     DARK_BROWN: '#1a0e0a',
+    WHITE: '#eeeeee',
   },
 };
 

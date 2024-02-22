@@ -1,10 +1,15 @@
 import { getSearchResults } from '@domains/algorithm/getSearchResults';
 import { ALGORITHMS_COUNT } from '@constants/algorithmInfos';
 import { useState } from 'react';
+import type { ChangeEventHandler } from 'react';
 
 const useAlgorithmPool = () => {
   const [keyword, setKeyword] = useState('');
   const [checkedIds, setCheckedIds] = useState<number[]>([]);
+
+  const handleChangeKeyword: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setKeyword(() => event.target.value);
+  };
 
   const toggleAlgorithm = (id: number) => {
     if (checkedIds.includes(id)) {
@@ -37,7 +42,7 @@ const useAlgorithmPool = () => {
     keyword,
     items,
     checkedIds,
-    setKeyword,
+    handleChangeKeyword,
     toggleAlgorithm,
     checkAllAlgorithms,
     uncheckAllAlgorithms,

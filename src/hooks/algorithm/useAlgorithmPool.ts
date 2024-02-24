@@ -1,5 +1,5 @@
-import { getSearchResults } from '@domains/algorithm/getSearchResults';
-import { ALGORITHMS_COUNT } from '@constants/algorithmInfos';
+import { getSearchResults } from '~domains/algorithm/getSearchResults';
+import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
 import { useState, useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
 

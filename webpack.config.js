@@ -33,14 +33,14 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
-      '@components': resolve(__dirname, 'src/components'),
-      '@constants': resolve(__dirname, 'src/constants'),
-      '@domains': resolve(__dirname, 'src/domains'),
-      '@hooks': resolve(__dirname, 'src/hooks'),
-      '@images': resolve(__dirname, 'src/images'),
-      '@types': resolve(__dirname, 'src/types'),
-      '@utils': resolve(__dirname, 'src/utils'),
-      '@styles': resolve(__dirname, 'src/styles'),
+      '~components': resolve(__dirname, 'src/components'),
+      '~constants': resolve(__dirname, 'src/constants'),
+      '~domains': resolve(__dirname, 'src/domains'),
+      '~hooks': resolve(__dirname, 'src/hooks'),
+      '~images': resolve(__dirname, 'src/images'),
+      '~types': resolve(__dirname, 'src/types'),
+      '~utils': resolve(__dirname, 'src/utils'),
+      '~styles': resolve(__dirname, 'src/styles'),
     },
   },
   output: {

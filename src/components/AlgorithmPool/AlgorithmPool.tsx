@@ -1,8 +1,8 @@
 import * as S from './AlgorithmPool.styled';
 import AlgorithmList from './AlgorithmList';
-import useAlgorithmPool from '@hooks/algorithm/useAlgorithmPool';
-import { SearchIcon } from '@images/svg';
-import { allCheckedIcon, allUncheckedIcon } from '@images/png';
+import useAlgorithmPool from '~hooks/algorithm/useAlgorithmPool';
+import { SearchIcon } from '~images/svg';
+import { allCheckedIcon, allUncheckedIcon } from '~images/png';
 
 const AlgorithmPool = () => {
   const {

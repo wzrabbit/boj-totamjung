@@ -1,5 +1,5 @@
 import * as S from './Test.styled';
-import { totamjungStorybookLogo } from '@images';
+import { totamjungStorybookLogo } from '~images';
 
 type TestProps = {
   message: string;

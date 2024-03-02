@@ -200,7 +200,6 @@ export const Details = styled.div`
   height: 16px;
 `;
 
-// 여기 하다 말았음
 export const ProblemId = styled.p<{
   $tier: keyof typeof solvedAcNumericTierIcons;
   $isHidden: boolean;

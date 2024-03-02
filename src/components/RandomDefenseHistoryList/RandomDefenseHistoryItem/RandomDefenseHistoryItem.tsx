@@ -20,7 +20,11 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
 
   return (
     <S.Container $tier={tier} $isHidden={isHidden}>
-      <S.LinkButton href={`https://icpc.me/${problemId}`} target="__blank">
+      <S.LinkButton
+        href={`https://icpc.me/${problemId}`}
+        target="__blank"
+        aria-label={`${problemId}번 ${title} 문제`}
+      >
         <S.TierBadge
           src={
             isHidden
@@ -52,6 +56,7 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
         onClick={() => {
           onDelete(`${problemId}-${createdAt.getTime()}`);
         }}
+        aria-label="추첨 기록에서 제거하기"
       >
         <TrashIcon />
       </S.DeleteButton>

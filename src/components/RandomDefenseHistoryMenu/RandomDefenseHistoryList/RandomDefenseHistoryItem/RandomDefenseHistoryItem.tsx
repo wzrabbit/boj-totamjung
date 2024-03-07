@@ -12,7 +12,7 @@ interface RandomDefenseHistoryItemProps {
   tier: keyof typeof solvedAcNumericTierIcons;
   createdAt: Date;
   isHidden: boolean;
-  onDelete: (id: string) => void;
+  onDelete: () => void;
 }
 
 const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
@@ -53,9 +53,7 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
       <S.DeleteButton
         $tier={tier}
         $isHidden={isHidden}
-        onClick={() => {
-          onDelete(`${problemId}-${createdAt.getTime()}`);
-        }}
+        onClick={onDelete}
         aria-label="추첨 기록에서 제거하기"
       >
         <TrashIcon />

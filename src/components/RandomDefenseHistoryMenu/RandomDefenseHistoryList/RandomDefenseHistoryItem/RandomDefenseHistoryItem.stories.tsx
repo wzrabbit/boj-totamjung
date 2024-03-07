@@ -21,8 +21,8 @@ export const Bronze: Story = {
     tier: 1,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -34,8 +34,8 @@ export const Silver: Story = {
     tier: 6,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -47,8 +47,8 @@ export const Gold: Story = {
     tier: 11,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -60,8 +60,8 @@ export const Platinum: Story = {
     tier: 16,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -73,8 +73,8 @@ export const Diamond: Story = {
     tier: 21,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -86,8 +86,8 @@ export const Ruby: Story = {
     tier: 26,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -99,8 +99,8 @@ export const Unrated: Story = {
     tier: 0,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -112,8 +112,8 @@ export const NotRatable: Story = {
     tier: 31,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -125,8 +125,8 @@ export const Hidden: Story = {
     tier: 1,
     createdAt: new Date(),
     isHidden: true,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert(`onDelete()`);
     },
   },
 };
@@ -138,8 +138,8 @@ export const LongTitle: Story = {
     tier: 15,
     createdAt: new Date(),
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
+    onDelete: () => {
+      alert('onDelete()');
     },
   },
 };

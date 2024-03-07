@@ -46,7 +46,7 @@ export const Default: Story = {
     items,
     isHidden: false,
     onDelete: (id) => {
-      alert(`onDelete(${id})`);
+      alert(`onDelete("${id}")`);
     },
   },
 };

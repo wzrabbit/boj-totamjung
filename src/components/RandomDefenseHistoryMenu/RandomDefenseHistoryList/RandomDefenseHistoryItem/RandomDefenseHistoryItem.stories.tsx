@@ -5,7 +5,7 @@ import RandomDefenseHistoryItem from './RandomDefenseHistoryItem';
  * `RandomDefenseHistoryItem`는 추첨 기록에서 추첨된 문제 하나의 정보를 보여주는 컴포넌트입니다.
  */
 const meta = {
-  title: 'RandomDefenseHistoryItem',
+  title: 'RandomDefenseHistoryMenu/RandomDefenseHistoryItem',
   component: RandomDefenseHistoryItem,
   argTypes: {},
 } satisfies Meta<typeof RandomDefenseHistoryItem>;

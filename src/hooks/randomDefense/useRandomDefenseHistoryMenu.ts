@@ -1,0 +1,61 @@
+import { useState, useEffect } from 'react';
+import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
+import { isRandomDefenseHistoryResponse } from '~types/typeGuards';
+
+const useRandomDefenseHistoryMenu = () => {
+  const [items, setItems] = useState<RandomDefenseHistoryInfo[]>([]);
+  const [isHidden, setIsHidden] = useState(true);
+
+  useEffect(() => {
+    const fetchRandomDefenseHistoryInfo = async () => {
+      const response = await chrome.runtime.sendMessage({
+        message: 'getRandomDefenseHistory',
+      });
+
+      console.log(response);
+
+      if (!isRandomDefenseHistoryResponse(response)) {
+        return;
+      }
+
+      console.log('ok valid data');
+
+      setIsHidden(() => response.isDefenseHistoryHidden);
+      setItems(() =>
+        response.randomDefenseHistory.map((history) => ({
+          ...history,
+          createdAt: new Date(history.createdAt),
+        })),
+      );
+    };
+
+    fetchRandomDefenseHistoryInfo();
+  }, []);
+
+  useEffect(() => {
+    chrome.runtime.sendMessage({
+      message: 'setRandomDefenseHistory',
+      data: { randomDefenseHistory: items, isHidden },
+    });
+  }, [items]);
+
+  const deleteHistoryById = (id: string) => {
+    const newItems = items.filter((item) => {
+      const currentItemId = `${item.problemId}-${item.createdAt.getTime()}`;
+
+      return currentItemId !== id;
+    });
+
+    setItems(() => newItems);
+  };
+
+  const clearHistory = () => {
+    if (confirm('모든 추첨 기록을 제거할까요?')) {
+      setItems(() => []);
+    }
+  };
+
+  return { items, isHidden, deleteHistoryById, clearHistory, setIsHidden };
+};
+
+export default useRandomDefenseHistoryMenu;

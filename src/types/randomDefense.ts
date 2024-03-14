@@ -16,5 +16,5 @@ export interface LocalRandomDefenseHistoryInfo {
 
 export interface RandomDefenseHistoryResponse {
   randomDefenseHistory: LocalRandomDefenseHistoryInfo[];
-  isDefenseHistoryHidden: boolean;
+  isHidden: boolean;
 }

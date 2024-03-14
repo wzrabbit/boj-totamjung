@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import type { ChangeEventHandler } from 'react';
 import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
 import { isRandomDefenseHistoryResponse } from '~types/typeGuards';
 
 const useRandomDefenseHistoryMenu = () => {
   const [items, setItems] = useState<RandomDefenseHistoryInfo[]>([]);
   const [isHidden, setIsHidden] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const fetchRandomDefenseHistoryInfo = async () => {
@@ -20,13 +22,14 @@ const useRandomDefenseHistoryMenu = () => {
 
       console.log('ok valid data');
 
-      setIsHidden(() => response.isDefenseHistoryHidden);
+      setIsHidden(() => response.isHidden);
       setItems(() =>
         response.randomDefenseHistory.map((history) => ({
           ...history,
           createdAt: new Date(history.createdAt),
         })),
       );
+      setIsLoaded(() => true);
     };
 
     fetchRandomDefenseHistoryInfo();
@@ -55,7 +58,18 @@ const useRandomDefenseHistoryMenu = () => {
     }
   };
 
-  return { items, isHidden, deleteHistoryById, clearHistory, setIsHidden };
+  const updateIsHidden: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setIsHidden(() => event.target.checked);
+  };
+
+  return {
+    items,
+    isHidden,
+    isLoaded,
+    deleteHistoryById,
+    clearHistory,
+    updateIsHidden,
+  };
 };
 
 export default useRandomDefenseHistoryMenu;

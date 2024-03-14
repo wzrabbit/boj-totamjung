@@ -1,13 +1,14 @@
+import type { ChangeEvent } from 'react';
 import * as S from './Switch.styled';
 
-interface CheckboxProps {
+interface SwitchProps {
   size: 'large' | 'medium';
   isChecked: boolean;
   ariaLabel: string;
-  onChange: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Switch = (props: CheckboxProps) => {
+const Switch = (props: SwitchProps) => {
   const { size, isChecked, ariaLabel, onChange } = props;
 
   return (
@@ -16,6 +17,7 @@ const Switch = (props: CheckboxProps) => {
         checked={isChecked}
         aria-label={ariaLabel}
         onChange={onChange}
+        value=""
       />
       <S.FakeVisualSwitch $isChecked={isChecked}>
         <S.Handle $size={size} $isChecked={isChecked} />

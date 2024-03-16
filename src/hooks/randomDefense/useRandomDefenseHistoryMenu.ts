@@ -16,13 +16,9 @@ const useRandomDefenseHistoryMenu = () => {
         message: 'getRandomDefenseHistory',
       });
 
-      console.log(response);
-
       if (!isRandomDefenseHistoryResponse(response)) {
         return;
       }
-
-      console.log('ok valid data');
 
       setIsHidden(() => response.isHidden);
       setItems(() =>

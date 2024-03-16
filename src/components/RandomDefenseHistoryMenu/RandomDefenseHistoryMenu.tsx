@@ -9,6 +9,7 @@ const RandomDefenseHistoryMenu = () => {
     items,
     isHidden,
     isLoaded,
+    isEmpty,
     deleteHistoryById,
     clearHistory,
     updateIsHidden,
@@ -36,7 +37,7 @@ const RandomDefenseHistoryMenu = () => {
               />
             </S.HistoryListContainer>
             <S.DeletePanel>
-              <button onClick={clearHistory} disabled={items.length === 0}>
+              <button onClick={clearHistory} disabled={isEmpty}>
                 모두 삭제
               </button>
             </S.DeletePanel>

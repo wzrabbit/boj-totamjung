@@ -8,6 +8,8 @@ const useRandomDefenseHistoryMenu = () => {
   const [isHidden, setIsHidden] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const isEmpty = items.length === 0;
+
   useEffect(() => {
     const fetchRandomDefenseHistoryInfo = async () => {
       const response = await chrome.runtime.sendMessage({
@@ -53,7 +55,7 @@ const useRandomDefenseHistoryMenu = () => {
   };
 
   const clearHistory = () => {
-    if (confirm('모든 추첨 기록을 제거할까요?')) {
+    if (!isEmpty && confirm('모든 추첨 기록을 제거할까요?')) {
       setItems(() => []);
     }
   };
@@ -66,6 +68,7 @@ const useRandomDefenseHistoryMenu = () => {
     items,
     isHidden,
     isLoaded,
+    isEmpty,
     deleteHistoryById,
     clearHistory,
     updateIsHidden,

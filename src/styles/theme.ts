@@ -8,6 +8,7 @@ export const theme = {
     DARK_BROWN: '#1a0e0a',
     WHITE: '#eeeeee',
     GRAY: '#808080',
+    RED: '#ff0000',
   },
 
   solvedAcTier: {

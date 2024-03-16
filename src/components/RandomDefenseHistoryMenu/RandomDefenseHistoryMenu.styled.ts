@@ -27,10 +27,9 @@ export const TierSwitchPanel = styled.div`
   height: 30px;
 `;
 
-export const DeletePanel = styled.div`
+export const HistoryManagePanel = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   column-gap: 10px;
 
   height: 36px;
@@ -67,4 +66,34 @@ export const Text = styled.p`
 
   color: ${({ theme }) => theme.color.WHITE};
   font-size: 16px;
+`;
+
+export const Indicator = styled.div`
+  display: flex;
+  column-gap: 4px;
+
+  width: 80px;
+  height: 20px;
+  margin-bottom: 16px;
+  margin-right: auto;
+`;
+
+export const IndicatorText = styled.p`
+  display: inline-block;
+
+  color: ${({ theme }) => theme.color.WHITE};
+  font-size: 14px;
+  line-height: 20px;
+`;
+
+export const PackageIconWrapper = styled.div`
+  width: 20px;
+  height: 20px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+
+    color: ${({ theme }) => theme.color.GOLD};
+  }
 `;

@@ -3,7 +3,8 @@ import useRandomDefenseHistoryMenu from '~hooks/randomDefense/useRandomDefenseHi
 import * as S from './RandomDefenseHistoryMenu.styled';
 import Switch from '~components/common/Switch';
 import NamedFrame from '~components/common/NamedFrame/NamedFrame';
-import { TrashIcon } from '~images/svg';
+import { TrashIcon, PackageIcon } from '~images/svg';
+import { MAX_HISTORY_LIMIT } from '~constants/randomDefense';
 
 const RandomDefenseHistoryMenu = () => {
   const {
@@ -37,7 +38,13 @@ const RandomDefenseHistoryMenu = () => {
                 onDelete={deleteHistoryById}
               />
             </S.HistoryListContainer>
-            <S.DeletePanel>
+            <S.HistoryManagePanel>
+              <S.Indicator>
+                <S.PackageIconWrapper>
+                  <PackageIcon />
+                </S.PackageIconWrapper>
+                <S.IndicatorText>{`${items.length} / ${MAX_HISTORY_LIMIT}`}</S.IndicatorText>
+              </S.Indicator>
               <S.Text>추첨 기록 비우기</S.Text>
               <S.DeleteButton
                 onClick={clearHistory}
@@ -46,7 +53,7 @@ const RandomDefenseHistoryMenu = () => {
               >
                 <TrashIcon />
               </S.DeleteButton>
-            </S.DeletePanel>
+            </S.HistoryManagePanel>
           </>
         )}
       </S.Container>

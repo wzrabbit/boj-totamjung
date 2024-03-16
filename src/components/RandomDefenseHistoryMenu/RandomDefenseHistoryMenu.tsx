@@ -3,6 +3,7 @@ import useRandomDefenseHistoryMenu from '~hooks/randomDefense/useRandomDefenseHi
 import * as S from './RandomDefenseHistoryMenu.styled';
 import Switch from '~components/common/Switch';
 import NamedFrame from '~components/common/NamedFrame/NamedFrame';
+import { TrashIcon } from '~images/svg';
 
 const RandomDefenseHistoryMenu = () => {
   const {
@@ -16,7 +17,7 @@ const RandomDefenseHistoryMenu = () => {
   } = useRandomDefenseHistoryMenu();
 
   return (
-    <NamedFrame width="370px" height="520px" padding="10px" title="추첨 기록">
+    <NamedFrame width="370px" height="532px" padding="10px" title="추첨 기록">
       <S.Container>
         {isLoaded && (
           <>
@@ -37,9 +38,14 @@ const RandomDefenseHistoryMenu = () => {
               />
             </S.HistoryListContainer>
             <S.DeletePanel>
-              <button onClick={clearHistory} disabled={isEmpty}>
-                모두 삭제
-              </button>
+              <S.Text>추첨 기록 비우기</S.Text>
+              <S.DeleteButton
+                onClick={clearHistory}
+                disabled={isEmpty}
+                aria-label="추첨 기록 비우기"
+              >
+                <TrashIcon />
+              </S.DeleteButton>
             </S.DeletePanel>
           </>
         )}

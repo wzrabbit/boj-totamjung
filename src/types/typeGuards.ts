@@ -4,7 +4,7 @@ import type {
 } from '~types/randomDefense';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 
-const isObject = (data: unknown): data is object => {
+export const isObject = (data: unknown): data is object => {
   return typeof data === 'object' && data !== null;
 };
 

@@ -1,6 +1,7 @@
 import { getSearchResults } from '~domains/algorithm/getSearchResults';
 import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
 import { useState, useEffect } from 'react';
+import { COMMANDS } from '~constants/commands';
 import type { ChangeEventHandler } from 'react';
 
 const useAlgorithmPool = () => {
@@ -8,17 +9,16 @@ const useAlgorithmPool = () => {
   const [checkedIds, setCheckedIds] = useState<number[]>([]);
 
   useEffect(() => {
-    chrome.storage.sync.get('algorithm', (response) => {
-      if (!response.algorithm) {
-        return;
-      }
-
-      setCheckedIds(() => response.algorithm);
-    });
+    chrome.runtime.sendMessage(
+      { command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS },
+      (response) => {
+        setCheckedIds(() => response.checkedIds);
+      },
+    );
   }, []);
 
   useEffect(() => {
-    chrome.storage.sync.set({ algorithm: checkedIds });
+    // TODO: checkedIds가 변경되면 저장 요청 메시지를 보내는 기능 구현
   }, [checkedIds]);
 
   const handleChangeKeyword: ChangeEventHandler<HTMLInputElement> = (event) => {

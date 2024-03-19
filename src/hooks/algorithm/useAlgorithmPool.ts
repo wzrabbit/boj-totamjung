@@ -18,7 +18,10 @@ const useAlgorithmPool = () => {
   }, []);
 
   useEffect(() => {
-    // TODO: checkedIds가 변경되면 저장 요청 메시지를 보내는 기능 구현
+    chrome.runtime.sendMessage({
+      command: COMMANDS.SAVE_CHECKED_ALGORITHM_IDS,
+      checkedIds,
+    });
   }, [checkedIds]);
 
   const handleChangeKeyword: ChangeEventHandler<HTMLInputElement> = (event) => {

@@ -1,6 +1,7 @@
 import { isObject } from '~types/typeGuards';
 import { COMMANDS } from '~constants/commands';
 import { fetchCheckedAlgorithmIds } from '~domains/algorithm/fetchCheckedAlgorithmIds';
+import { saveCheckedAlgorithmIds } from '~domains/algorithm/saveCheckedAlgorithmIds';
 
 chrome.runtime.onMessage.addListener(
   (message: unknown, sender, sendResponse) => {
@@ -18,6 +19,14 @@ chrome.runtime.onMessage.addListener(
       fetchCheckedAlgorithmIds().then((result) => {
         sendResponse(result);
       });
+    }
+
+    if (command === COMMANDS.SAVE_CHECKED_ALGORITHM_IDS) {
+      if (!('checkedIds' in message)) {
+        return;
+      }
+
+      saveCheckedAlgorithmIds(message.checkedIds);
     }
 
     return true;

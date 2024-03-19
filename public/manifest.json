@@ -5,5 +5,8 @@
   "manifest_version": 3,
   "permissions": ["storage"],
   "host_permissions": ["https://solved.ac/api/v3/search/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "options_page": "options.html"
 }

@@ -67,6 +67,8 @@ export const SearchInput = styled.input`
 
 export const CheckButtonPanel = styled.div`
   display: flex;
+
+  user-select: none;
 `;
 
 export const CheckButton = styled.button`

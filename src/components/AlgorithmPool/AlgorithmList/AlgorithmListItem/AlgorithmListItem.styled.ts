@@ -12,6 +12,7 @@ export const Container = styled.li<{
     $backgroundColor === 'brown' ? theme.color.BROWN : theme.color.LIGHT_BROWN};
 
   cursor: pointer;
+  user-select: none;
 `;
 
 export const Label = styled.label`

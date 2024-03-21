@@ -1,6 +1,7 @@
 import { getSearchResults } from '~domains/algorithm/getSearchResults';
 import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
 import { useState, useEffect } from 'react';
+import { COMMANDS } from '~constants/commands';
 import type { ChangeEventHandler } from 'react';
 
 const useAlgorithmPool = () => {
@@ -8,17 +9,19 @@ const useAlgorithmPool = () => {
   const [checkedIds, setCheckedIds] = useState<number[]>([]);
 
   useEffect(() => {
-    chrome.storage.sync.get('algorithm', (response) => {
-      if (!response.algorithm) {
-        return;
-      }
-
-      setCheckedIds(() => response.algorithm);
-    });
+    chrome.runtime.sendMessage(
+      { command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS },
+      (response) => {
+        setCheckedIds(() => response.checkedIds);
+      },
+    );
   }, []);
 
   useEffect(() => {
-    chrome.storage.sync.set({ algorithm: checkedIds });
+    chrome.runtime.sendMessage({
+      command: COMMANDS.SAVE_CHECKED_ALGORITHM_IDS,
+      checkedIds,
+    });
   }, [checkedIds]);
 
   const handleChangeKeyword: ChangeEventHandler<HTMLInputElement> = (event) => {

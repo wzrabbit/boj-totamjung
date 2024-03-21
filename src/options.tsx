@@ -1,12 +1,12 @@
 import { render } from 'react-dom';
 import { StrictMode } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '@styles/theme';
-import GlobalStyle from '@styles/GlobalStyle';
-import Test from '@components/Test';
+import { theme } from '~styles/theme';
+import GlobalStyle from '~styles/GlobalStyle';
+import AlgorithmPool from '~components/AlgorithmPool';
 
 const Options = () => {
-  return <Test message="와 리액뜨!!" />;
+  return <AlgorithmPool />;
 };
 
 render(

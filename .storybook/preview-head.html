@@ -25,7 +25,11 @@
     },
 
     runtime: {
-      sendMessage: async ({ message }) => {
+      sendMessage: ({ command, message }, callback) => {
+        if (command === 'fetchCheckedAlgorithmIds') {
+          callback({ checkedIds: [1, 2, 4, 8, 16, 32, 64] });
+        }
+
         if (message === 'getRandomDefenseHistory') {
           const randomDefenseHistory = [
             {
@@ -83,6 +87,8 @@
             isHidden: false,
           };
         }
+
+        return {};
       },
     },
   };

@@ -2,6 +2,10 @@ import { isObject } from '~types/typeGuards';
 import { COMMANDS } from '~constants/commands';
 import { fetchCheckedAlgorithmIds } from '~domains/algorithm/fetchCheckedAlgorithmIds';
 import { saveCheckedAlgorithmIds } from '~domains/algorithm/saveCheckedAlgorithmIds';
+import {
+  fetchRandomDefenseHistory,
+  saveRandomDefenseHistory,
+} from '~domains/algorithm/randomDefenseHistoryDataHandler';
 
 chrome.runtime.onMessage.addListener(
   (message: unknown, sender, sendResponse) => {
@@ -27,6 +31,22 @@ chrome.runtime.onMessage.addListener(
       }
 
       saveCheckedAlgorithmIds(message.checkedIds);
+    }
+
+    if (command === COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY) {
+      fetchRandomDefenseHistory().then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY) {
+      if (!('randomDefenseHistory' in message) || !('isHidden' in message)) {
+        return;
+      }
+
+      const { randomDefenseHistory, isHidden } = message;
+
+      saveRandomDefenseHistory(randomDefenseHistory, isHidden);
     }
 
     return true;

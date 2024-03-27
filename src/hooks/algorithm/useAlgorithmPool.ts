@@ -7,17 +7,23 @@ import type { ChangeEventHandler } from 'react';
 const useAlgorithmPool = () => {
   const [keyword, setKeyword] = useState('');
   const [checkedIds, setCheckedIds] = useState<number[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     chrome.runtime.sendMessage(
       { command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS },
       (response) => {
         setCheckedIds(() => response.checkedIds);
+        setIsLoaded(() => true);
       },
     );
   }, []);
 
   useEffect(() => {
+    if (!isLoaded) {
+      return;
+    }
+
     chrome.runtime.sendMessage({
       command: COMMANDS.SAVE_CHECKED_ALGORITHM_IDS,
       checkedIds,
@@ -59,6 +65,7 @@ const useAlgorithmPool = () => {
     keyword,
     items,
     checkedIds,
+    isLoaded,
     handleChangeKeyword,
     toggleAlgorithm,
     checkAllAlgorithms,

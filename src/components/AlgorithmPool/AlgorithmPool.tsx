@@ -9,6 +9,7 @@ const AlgorithmPool = () => {
     keyword,
     items,
     checkedIds,
+    isLoaded,
     handleChangeKeyword,
     toggleAlgorithm,
     checkAllAlgorithms,
@@ -18,11 +19,13 @@ const AlgorithmPool = () => {
   return (
     <S.Container>
       <S.AlgorithmPanel>
-        <AlgorithmList
-          items={items}
-          checkedIds={checkedIds}
-          onChange={toggleAlgorithm}
-        />
+        {isLoaded && (
+          <AlgorithmList
+            items={items}
+            checkedIds={checkedIds}
+            onChange={toggleAlgorithm}
+          />
+        )}
       </S.AlgorithmPanel>
       <S.ControlPanel>
         <S.SearchPanelContainer>

@@ -30,6 +30,10 @@ const useRandomDefenseHistoryMenu = () => {
   }, []);
 
   useEffect(() => {
+    if (!isLoaded) {
+      return;
+    }
+
     chrome.runtime.sendMessage({
       command: COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY,
       randomDefenseHistory: items,

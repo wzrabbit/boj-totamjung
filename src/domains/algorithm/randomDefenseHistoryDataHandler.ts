@@ -9,6 +9,7 @@ import {
   MAX_PROBLEM_NAME_LENGTH,
   MIN_TIER,
   MAX_TIER,
+  MAX_HISTORY_LIMIT,
 } from '~constants/randomDefense';
 import { isValidIsoString } from '~utils/isValidIsoString';
 import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
@@ -41,7 +42,7 @@ const sanitizeRandomDefenseHistory = (
     }
   });
 
-  return sanitizedRandomDefenseHistory;
+  return sanitizedRandomDefenseHistory.slice(0, MAX_HISTORY_LIMIT);
 };
 
 const getSortedRandomDefenseHistory = (

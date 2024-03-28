@@ -1,16 +1,24 @@
 import type {
-  LocalRandomDefenseHistoryInfo,
+  RandomDefenseHistoryInfo,
   RandomDefenseHistoryResponse,
 } from '~types/randomDefense';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
+import { IsoString } from '~types/utils';
 
 export const isObject = (data: unknown): data is object => {
   return typeof data === 'object' && data !== null;
 };
 
-const isLocalRandomDefenseHistoryInfo = (
+export const isIsoString = (data: unknown): data is IsoString => {
+  return (
+    typeof data === 'string' &&
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(data)
+  );
+};
+
+export const isRandomDefenseHistoryInfo = (
   data: unknown,
-): data is LocalRandomDefenseHistoryInfo => {
+): data is RandomDefenseHistoryInfo => {
   return (
     isObject(data) &&
     'problemId' in data &&
@@ -20,17 +28,17 @@ const isLocalRandomDefenseHistoryInfo = (
     typeof data.problemId === 'number' &&
     typeof data.title === 'string' &&
     typeof data.tier === 'number' &&
-    typeof data.createdAt === 'number' &&
-    data.tier in solvedAcNumericTierIcons
+    data.tier in solvedAcNumericTierIcons &&
+    isIsoString(data.createdAt)
   );
 };
 
-export const isLocalRandomDefenseHistoryInfos = (
+export const isRandomDefenseHistoryInfos = (
   data: unknown,
-): data is LocalRandomDefenseHistoryInfo[] => {
+): data is RandomDefenseHistoryInfo[] => {
   return (
     Array.isArray(data) &&
-    data.every((item) => isLocalRandomDefenseHistoryInfo(item))
+    data.every((item) => isRandomDefenseHistoryInfo(item))
   );
 };
 
@@ -41,7 +49,7 @@ export const isRandomDefenseHistoryResponse = (
     isObject(data) &&
     'randomDefenseHistory' in data &&
     'isHidden' in data &&
-    isLocalRandomDefenseHistoryInfos(data.randomDefenseHistory) &&
+    isRandomDefenseHistoryInfos(data.randomDefenseHistory) &&
     typeof data.isHidden === 'boolean'
   );
 };

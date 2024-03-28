@@ -20,25 +20,50 @@ const items: RandomDefenseHistoryInfo[] = [
     problemId: 27959,
     title: '초코바',
     tier: 1,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
   },
-  { problemId: 27964, title: '콰트로치즈피자', tier: 6, createdAt: new Date() },
+  {
+    problemId: 27964,
+    title: '콰트로치즈피자',
+    tier: 6,
+    createdAt: '2025-01-01T23:35:00.123Z',
+  },
   {
     problemId: 27943,
     title: '가지 사진 찾기',
     tier: 11,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
   },
-  { problemId: 27470, title: '멋진 부분집합', tier: 16, createdAt: new Date() },
+  {
+    problemId: 27470,
+    title: '멋진 부분집합',
+    tier: 16,
+    createdAt: '2025-01-01T23:35:00.123Z',
+  },
   {
     problemId: 30243,
     title: '🧩 N-Queen (Hard)',
     tier: 21,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
   },
-  { problemId: 31442, title: '좋은 수열', tier: 26, createdAt: new Date() },
-  { problemId: 1223, title: '마법의 돌', tier: 0, createdAt: new Date() },
-  { problemId: 27903, title: '인생', tier: 31, createdAt: new Date() },
+  {
+    problemId: 31442,
+    title: '좋은 수열',
+    tier: 26,
+    createdAt: '2025-01-01T23:35:00.123Z',
+  },
+  {
+    problemId: 1223,
+    title: '마법의 돌',
+    tier: 0,
+    createdAt: '2025-01-01T23:35:00.123Z',
+  },
+  {
+    problemId: 27903,
+    title: '인생',
+    tier: 31,
+    createdAt: '2025-01-01T23:35:00.123Z',
+  },
 ];
 
 export const Default: Story = {

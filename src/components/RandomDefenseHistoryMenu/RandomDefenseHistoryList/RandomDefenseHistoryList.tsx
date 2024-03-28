@@ -14,7 +14,7 @@ const RandomDefenseHistoryList = (props: RandomDefenseHistoryList) => {
   return (
     <S.Container>
       {items.map((item) => {
-        const id = `${item.problemId}-${item.createdAt.getTime()}`;
+        const id = `${item.problemId}-${item.createdAt}`;
 
         return (
           <RandomDefenseHistoryItem

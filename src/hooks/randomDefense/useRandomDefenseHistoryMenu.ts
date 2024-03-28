@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
 import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
 import { isRandomDefenseHistoryResponse } from '~types/typeGuards';
+import { COMMANDS } from '~constants/commands';
 
 const useRandomDefenseHistoryMenu = () => {
   const [items, setItems] = useState<RandomDefenseHistoryInfo[]>([]);
@@ -13,7 +14,7 @@ const useRandomDefenseHistoryMenu = () => {
   useEffect(() => {
     const fetchRandomDefenseHistoryInfo = async () => {
       const response = await chrome.runtime.sendMessage({
-        message: 'getRandomDefenseHistory',
+        command: COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY,
       });
 
       if (!isRandomDefenseHistoryResponse(response)) {
@@ -21,12 +22,7 @@ const useRandomDefenseHistoryMenu = () => {
       }
 
       setIsHidden(() => response.isHidden);
-      setItems(() =>
-        response.randomDefenseHistory.map((history) => ({
-          ...history,
-          createdAt: new Date(history.createdAt),
-        })),
-      );
+      setItems(() => response.randomDefenseHistory);
       setIsLoaded(() => true);
     };
 
@@ -34,15 +30,20 @@ const useRandomDefenseHistoryMenu = () => {
   }, []);
 
   useEffect(() => {
+    if (!isLoaded) {
+      return;
+    }
+
     chrome.runtime.sendMessage({
-      message: 'setRandomDefenseHistory',
-      data: { randomDefenseHistory: items, isHidden },
+      command: COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY,
+      randomDefenseHistory: items,
+      isHidden,
     });
-  }, [items]);
+  }, [items, isHidden]);
 
   const deleteHistoryById = (id: string) => {
     const newItems = items.filter((item) => {
-      const currentItemId = `${item.problemId}-${item.createdAt.getTime()}`;
+      const currentItemId = `${item.problemId}-${item.createdAt}`;
 
       return currentItemId !== id;
     });

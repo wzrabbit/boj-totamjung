@@ -5,7 +5,7 @@ import { saveCheckedAlgorithmIds } from '~domains/algorithm/saveCheckedAlgorithm
 import {
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
-} from '~domains/algorithm/randomDefenseHistoryDataHandler';
+} from '~domains/randomDefense/randomDefenseHistoryDataHandler';
 
 chrome.runtime.onMessage.addListener(
   (message: unknown, sender, sendResponse) => {

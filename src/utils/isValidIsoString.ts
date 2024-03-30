@@ -6,14 +6,14 @@ export const isValidIsoString = (data: unknown) => {
   }
 
   const [year, month, day, hours, minutes, seconds, milliseconds] = data
-    .split(/[-:TZ]/)
+    .split(/[-:.TZ]/)
     .map(Number);
 
   return (
     year >= 1 &&
     year <= 9999 &&
     month >= 1 &&
-    month <= 31 &&
+    month <= 12 &&
     day >= 1 &&
     day <= 31 &&
     hours >= 0 &&

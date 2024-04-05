@@ -1,4 +1,7 @@
-import { fetchRandomDefenseHistory } from './randomDefenseHistoryDataHandler';
+import {
+  fetchRandomDefenseHistory,
+  saveRandomDefenseHistory,
+} from './randomDefenseHistoryDataHandler';
 import { MAX_HISTORY_LIMIT } from '~constants/randomDefense';
 import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
 
@@ -663,4 +666,165 @@ describe('Test #5 - 구버전 추첨 기록 불러오기', () => {
       isHidden: true,
     });
   });
+});
+
+describe('Test #6 - 추첨 기록 저장하기', () => {
+  test('여러 문제가 포함된 올바른 데이터를 저장할 경우, 모든 데이터가 온전하게 저장되어야 한다.', async () => {
+    const randomDefenseHistory = [
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: 27964,
+        title: '콰트로치즈피자',
+        tier: 6,
+        createdAt: '2025-01-01T23:34:00.123Z',
+      },
+      {
+        problemId: 27943,
+        title: '가지 사진 찾기',
+        tier: 11,
+        createdAt: '2025-01-01T23:33:00.123Z',
+      },
+    ];
+
+    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    saveRandomDefenseHistory(randomDefenseHistory, true);
+
+    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+      randomDefenseHistory,
+      isTierHidden: true,
+    });
+  });
+});
+
+describe('Test #7 - 잘못된 추첨 기록 저장에 대응하기', () => {
+  test('여러 문제가 포함된, 일부가 잘못된 데이터를 저장할 경우, 올바른 데이터에 한해서만 온전하게 저장되어야 한다.', () => {
+    const randomDefenseHistory = [
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-12-01T10:00:00.000Z',
+      },
+      [1, 2, 3, 4, 5],
+      {
+        problemId: 27959,
+        title: '초코바',
+        createdAt: '2025-12-01T10:00:00.030Z',
+      },
+      {
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-12-01T10:00:00.100Z',
+      },
+      {
+        problemId: 27959,
+        title: '초코바',
+        createdAt: '2025-01-01T10:00:00.000Z',
+      },
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+      },
+      {},
+      {
+        problemId: 123456,
+        title: '콰트로치즈피자',
+        tier: 6,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: -1000,
+        title: '가지 사진 찾기',
+        tier: 11,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: 27470,
+        title: '멋진 부분집합',
+        tier: 32,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: 30243,
+        title: '🧩 N-Queen (Hard)',
+        tier: 21,
+        createdAt: '2025-06-01T23:35:00.123Z',
+      },
+      {
+        problemId: 31442,
+        title: '좋은 수열',
+        tier: 26,
+        createdAt: '2025-01-32T23:35:00.123Z',
+      },
+      {
+        problemId: 1223,
+        title: '너무 긴 문제'.repeat(500),
+        tier: 0,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: 27903,
+        title: '인생',
+        tier: 31,
+        createdAt: NaN,
+      },
+    ];
+
+    const expectedRandomDefenseHistory = [
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-12-01T10:00:00.000Z',
+      },
+      {
+        problemId: 30243,
+        title: '🧩 N-Queen (Hard)',
+        tier: 21,
+        createdAt: '2025-06-01T23:35:00.123Z',
+      },
+    ];
+
+    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    saveRandomDefenseHistory(randomDefenseHistory, true);
+
+    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+      randomDefenseHistory: expectedRandomDefenseHistory,
+      isTierHidden: true,
+    });
+  });
+
+  const testcases: unknown[] = [
+    {
+      randomDefenseHistory: [
+        {
+          problemId: 27959,
+          title: '초코바',
+          tier: 1,
+          createdAt: '2025-12-01T10:00:00.000Z',
+        },
+      ],
+    },
+    'foo Bar',
+    123,
+    null,
+    undefined,
+  ];
+
+  test.each(testcases)(
+    '저장하고자 하는 추첨 기록의 값이 %s와 같이 잘못된 형식일 경우 저장을 진행해서는 안 된다.',
+    (invalidInput) => {
+      jest.clearAllMocks();
+      jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+      saveRandomDefenseHistory(invalidInput, true);
+
+      expect(chrome.storage.local.set).not.toHaveBeenCalled();
+    },
+  );
 });

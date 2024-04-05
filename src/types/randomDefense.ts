@@ -8,6 +8,13 @@ export interface RandomDefenseHistoryInfo {
   createdAt: IsoString;
 }
 
+export interface LegacyRandomDefenseHistoryInfo {
+  no: number;
+  title: string;
+  tier: keyof typeof solvedAcNumericTierIcons;
+  date: string;
+}
+
 export interface RandomDefenseHistoryResponse {
   randomDefenseHistory: RandomDefenseHistoryInfo[];
   isHidden: boolean;

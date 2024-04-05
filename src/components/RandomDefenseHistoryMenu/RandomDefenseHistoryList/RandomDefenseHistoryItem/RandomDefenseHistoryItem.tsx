@@ -46,7 +46,7 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
             >{`#${problemId}`}</S.ProblemId>
             <S.CreatedAtContainer>
               <ClockIcon />
-              <S.CreatedAt>{formatDate(createdAt)}</S.CreatedAt>
+              <S.CreatedAt>{formatDate(new Date(createdAt))}</S.CreatedAt>
             </S.CreatedAtContainer>
           </S.Details>
         </S.InformationContainer>

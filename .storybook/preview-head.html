@@ -5,80 +5,61 @@
 />
 <script>
   var chrome = {
-    storage: {
-      sync: {
-        set: (data) => {
-          console.log(
-            '%c 【chrome.storage.sync.set】 호출!\n저장할 데이터:',
-            'color: #6bdaff; font-family: Pretendard',
-            data,
-          );
-        },
-
-        get: (data) =>
-          console.log(
-            '%c 【chrome.storage.sync.get】 호출!\n불러오려 했던 데이터의 키 값:',
-            'color: #ff6beb; font-family: Pretendard',
-            data,
-          ),
-      },
-    },
-
     runtime: {
       sendMessage: ({ command, message }, callback) => {
         if (command === 'fetchCheckedAlgorithmIds') {
           callback({ checkedIds: [1, 2, 4, 8, 16, 32, 64] });
         }
 
-        if (message === 'getRandomDefenseHistory') {
+        if (command === 'fetchRandomDefenseHistory') {
           const randomDefenseHistory = [
             {
               problemId: 27959,
               title: '초코바',
               tier: 1,
-              createdAt: 1709514000000,
+              createdAt: '2024-03-04T01:00:00.000Z',
             },
             {
               problemId: 27964,
               title: '콰트로치즈피자',
               tier: 6,
-              createdAt: 1709359450000,
+              createdAt: '2024-03-02T06:04:10.000Z',
             },
             {
               problemId: 27943,
               title: '가지 사진 찾기',
               tier: 11,
-              createdAt: 1709244753040,
+              createdAt: '2024-02-29T22:12:33.040Z',
             },
             {
               problemId: 27470,
               title: '멋진 부분집합',
               tier: 16,
-              createdAt: 1709244633127,
+              createdAt: '2024-02-29T22:10:33.127Z',
             },
             {
               problemId: 30243,
               title: '🧩 N-Queen (Hard)',
               tier: 21,
-              createdAt: 1673432444790,
+              createdAt: '2023-01-11T10:20:44.790Z',
             },
             {
               problemId: 31442,
               title: '좋은 수열',
               tier: 26,
-              createdAt: 1673432444789,
+              createdAt: '2023-01-11T10:20:44.789Z',
             },
             {
               problemId: 1223,
               title: '마법의 돌',
               tier: 0,
-              createdAt: 1647540040000,
+              createdAt: '2022-03-17T18:00:40.000Z',
             },
             {
               problemId: 27903,
               title: '인생',
               tier: 31,
-              createdAt: 1647302400000,
+              createdAt: '2022-03-15T00:00:00.000Z',
             },
           ];
 

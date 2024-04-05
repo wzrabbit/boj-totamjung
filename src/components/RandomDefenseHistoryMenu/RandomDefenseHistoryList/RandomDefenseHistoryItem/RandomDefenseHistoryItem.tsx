@@ -5,12 +5,13 @@ import {
 } from '~images/svg/tier';
 import { ClockIcon, TrashIcon } from '~images/svg';
 import { formatDate } from '~utils/formatDate';
+import type { IsoString } from '~types/utils';
 
 interface RandomDefenseHistoryItemProps {
   problemId: number;
   title: string;
   tier: keyof typeof solvedAcNumericTierIcons;
-  createdAt: Date;
+  createdAt: IsoString;
   isHidden: boolean;
   onDelete: () => void;
 }
@@ -45,7 +46,7 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
             >{`#${problemId}`}</S.ProblemId>
             <S.CreatedAtContainer>
               <ClockIcon />
-              <S.CreatedAt>{formatDate(createdAt)}</S.CreatedAt>
+              <S.CreatedAt>{formatDate(new Date(createdAt))}</S.CreatedAt>
             </S.CreatedAtContainer>
           </S.Details>
         </S.InformationContainer>

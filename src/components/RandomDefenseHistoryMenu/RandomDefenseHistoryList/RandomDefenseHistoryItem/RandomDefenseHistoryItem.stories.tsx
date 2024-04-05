@@ -19,7 +19,7 @@ export const Bronze: Story = {
     problemId: 27959,
     title: '초코바',
     tier: 1,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert(`onDelete()`);
@@ -32,7 +32,7 @@ export const Silver: Story = {
     problemId: 27964,
     title: '콰트로치즈피자',
     tier: 6,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert(`onDelete()`);
@@ -45,7 +45,7 @@ export const Gold: Story = {
     problemId: 27943,
     title: '가지 사진 찾기',
     tier: 11,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert(`onDelete()`);
@@ -58,7 +58,7 @@ export const Platinum: Story = {
     problemId: 27470,
     title: '멋진 부분집합',
     tier: 16,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert(`onDelete()`);
@@ -71,7 +71,7 @@ export const Diamond: Story = {
     problemId: 30243,
     title: '🧩 N-Queen (Hard)',
     tier: 21,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert(`onDelete()`);
@@ -84,7 +84,7 @@ export const Ruby: Story = {
     problemId: 31442,
     title: '좋은 수열',
     tier: 26,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert(`onDelete()`);
@@ -97,7 +97,7 @@ export const Unrated: Story = {
     problemId: 1223,
     title: '마법의 돌',
     tier: 0,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert(`onDelete()`);
@@ -110,7 +110,7 @@ export const NotRatable: Story = {
     problemId: 27903,
     title: '인생',
     tier: 31,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert(`onDelete()`);
@@ -123,7 +123,7 @@ export const Hidden: Story = {
     problemId: 29727,
     title: '선이 하나 더ㅠㅠ',
     tier: 1,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: true,
     onDelete: () => {
       alert(`onDelete()`);
@@ -136,7 +136,7 @@ export const LongTitle: Story = {
     problemId: 15898,
     title: '피아의 아틀리에 ~신비한 대회의 연금술사~',
     tier: 15,
-    createdAt: new Date(),
+    createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
     onDelete: () => {
       alert('onDelete()');

@@ -1,20 +1,21 @@
 import type { solvedAcNumericTierIcons } from '~images/svg/tier';
+import type { IsoString } from '~types/utils';
 
 export interface RandomDefenseHistoryInfo {
   problemId: number;
   title: string;
   tier: keyof typeof solvedAcNumericTierIcons;
-  createdAt: Date;
+  createdAt: IsoString;
 }
 
-export interface LocalRandomDefenseHistoryInfo {
-  problemId: number;
+export interface LegacyRandomDefenseHistoryInfo {
+  no: number;
   title: string;
   tier: keyof typeof solvedAcNumericTierIcons;
-  createdAt: number;
+  date: string;
 }
 
 export interface RandomDefenseHistoryResponse {
-  randomDefenseHistory: LocalRandomDefenseHistoryInfo[];
+  randomDefenseHistory: RandomDefenseHistoryInfo[];
   isHidden: boolean;
 }

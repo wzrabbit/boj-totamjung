@@ -4,9 +4,15 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '~styles/theme';
 import GlobalStyle from '~styles/GlobalStyle';
 import AlgorithmPool from '~components/AlgorithmPool';
+import RandomDefenseHistoryMenu from '~components/RandomDefenseHistoryMenu';
 
 const Options = () => {
-  return <AlgorithmPool />;
+  return (
+    <div style={{ display: 'flex', columnGap: '10px' }}>
+      <AlgorithmPool />
+      <RandomDefenseHistoryMenu />
+    </div>
+  );
 };
 
 render(

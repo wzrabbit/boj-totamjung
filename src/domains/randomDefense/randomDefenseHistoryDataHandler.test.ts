@@ -503,3 +503,164 @@ describe('Test #4 - 추첨 기록 티어 활성화 여부 불러오기', () => {
     });
   });
 });
+
+describe('Test #5 - 구버전 추첨 기록 불러오기', () => {
+  test('추첨 기록이 존재하지 않으나, 구버전의 추첨 기록이 존재할 경우에는 구버전의 추첨 기록을 가공하여 반환해야 한다.', async () => {
+    const legacyDefenseHistory = [
+      {
+        date: '2023-09-29 02:58:21',
+        no: 22861,
+        tier: 15,
+      },
+      {
+        date: '2023-09-27 21:35:30',
+        no: 24811,
+        tier: 123,
+        title: 'Touchdown!',
+      },
+      {
+        date: '2023-09-29 01:48:47',
+        no: 8098,
+        tier: 11,
+        title: 'Lecture Halls Reservation',
+      },
+      { date: '2023-09-27 21:35:26', no: 16128, tier: 21, title: '스눕시티' },
+      {
+        date: '2023-09-29 02:13:29',
+        no: null,
+        tier: 12,
+        title: 'XOR Necklace',
+      },
+      {
+        date: '2023-09-29 02:58:04',
+        no: 14765,
+        tier: 12,
+        title: 'Studying For Exams',
+      },
+    ];
+
+    const expectedResult = [
+      {
+        problemId: 14765,
+        title: 'Studying For Exams',
+        tier: 12,
+        createdAt: new Date('2023-09-29 02:58:04').toISOString(),
+      },
+      {
+        problemId: 8098,
+        title: 'Lecture Halls Reservation',
+        tier: 11,
+        createdAt: new Date('2023-09-29 01:48:47').toISOString(),
+      },
+      {
+        problemId: 16128,
+        title: '스눕시티',
+        tier: 21,
+        createdAt: new Date('2023-09-27 21:35:26').toISOString(),
+      },
+    ];
+
+    jest
+      .spyOn(chrome.storage.local, 'get')
+      .mockImplementation(async (_, callback) => {
+        callback({ queryLog: legacyDefenseHistory, isTierHidden: true });
+      });
+
+    expect(await fetchRandomDefenseHistory()).toEqual({
+      randomDefenseHistory: expectedResult,
+      isHidden: true,
+    });
+  });
+
+  test('추첨 기록과 구버전의 추첨 기록이 모두 존재할 경우에는 최신 추첨 기록을 채택하여 반환해야 한다.', async () => {
+    const latestRandomDefenseHistory = [
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: 27964,
+        title: '콰트로치즈피자',
+        tier: 6,
+        createdAt: '2025-01-01T23:34:00.123Z',
+      },
+      {
+        problemId: 27943,
+        title: '가지 사진 찾기',
+        tier: 11,
+        createdAt: '2025-01-01T23:33:00.123Z',
+      },
+    ];
+
+    const legacyDefenseHistory = [
+      {
+        date: '2023-09-29 02:58:21',
+        no: 22861,
+        tier: 15,
+      },
+      {
+        date: '2023-09-27 21:35:30',
+        no: 24811,
+        tier: 123,
+        title: 'Touchdown!',
+      },
+      {
+        date: '2023-09-29 01:48:47',
+        no: 8098,
+        tier: 11,
+        title: 'Lecture Halls Reservation',
+      },
+      { date: '2023-09-27 21:35:26', no: 16128, tier: 21, title: '스눕시티' },
+      {
+        date: '2023-09-29 02:13:29',
+        no: null,
+        tier: 12,
+        title: 'XOR Necklace',
+      },
+      {
+        date: '2023-09-29 02:58:04',
+        no: 14765,
+        tier: 12,
+        title: 'Studying For Exams',
+      },
+    ];
+
+    const expectedResult = [
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: 27964,
+        title: '콰트로치즈피자',
+        tier: 6,
+        createdAt: '2025-01-01T23:34:00.123Z',
+      },
+      {
+        problemId: 27943,
+        title: '가지 사진 찾기',
+        tier: 11,
+        createdAt: '2025-01-01T23:33:00.123Z',
+      },
+    ];
+
+    jest
+      .spyOn(chrome.storage.local, 'get')
+      .mockImplementation(async (_, callback) => {
+        callback({
+          randomDefenseHistory: latestRandomDefenseHistory,
+          queryLog: legacyDefenseHistory,
+          isTierHidden: true,
+        });
+      });
+
+    expect(await fetchRandomDefenseHistory()).toEqual({
+      randomDefenseHistory: expectedResult,
+      isHidden: true,
+    });
+  });
+});

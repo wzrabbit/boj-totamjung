@@ -2,7 +2,11 @@ import {
   LEGACY_LOCAL_STORAGE_KEY,
   LOCAL_STORAGE_KEY,
 } from '~constants/commands';
-import { isRandomDefenseHistoryInfo } from '~types/typeGuards';
+import {
+  isRandomDefenseHistoryInfo,
+  isLegacyRandomDefenseHistoryInfo,
+  isIsoString,
+} from '~types/typeGuards';
 import {
   MIN_PROBLEM_ID,
   MAX_PROBLEM_ID,
@@ -12,7 +16,11 @@ import {
   MAX_HISTORY_LIMIT,
 } from '~constants/randomDefense';
 import { isValidIsoString } from '~utils/isValidIsoString';
-import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
+import { isValidDate } from '~utils/isValidDate';
+import type {
+  RandomDefenseHistoryInfo,
+  LegacyRandomDefenseHistoryInfo,
+} from '~types/randomDefense';
 
 const isValidRandomDefenseHistoryInfo = (item: unknown) => {
   return (
@@ -22,6 +30,20 @@ const isValidRandomDefenseHistoryInfo = (item: unknown) => {
     item.problemId <= MAX_PROBLEM_ID &&
     item.title.length <= MAX_PROBLEM_NAME_LENGTH &&
     isValidIsoString(item.createdAt) &&
+    item.tier % 1 === 0 &&
+    item.tier >= MIN_TIER &&
+    item.tier <= MAX_TIER
+  );
+};
+
+const isValidLegacyRandomDefenseHistoryInfo = (item: unknown) => {
+  return (
+    isLegacyRandomDefenseHistoryInfo(item) &&
+    item.no % 1 === 0 &&
+    item.no >= MIN_PROBLEM_ID &&
+    item.no <= MAX_PROBLEM_ID &&
+    item.title.length <= MAX_PROBLEM_NAME_LENGTH &&
+    isValidDate(item.date) &&
     item.tier % 1 === 0 &&
     item.tier >= MIN_TIER &&
     item.tier <= MAX_TIER
@@ -45,6 +67,45 @@ const sanitizeRandomDefenseHistory = (
   return sanitizedRandomDefenseHistory.slice(0, MAX_HISTORY_LIMIT);
 };
 
+const sanitizeLegacyRandomDefenseHistory = (
+  legacyRandomDefenseHistory: unknown[],
+): LegacyRandomDefenseHistoryInfo[] => {
+  const sanitizedLegacyRandomDefenseHistory: LegacyRandomDefenseHistoryInfo[] =
+    [];
+
+  legacyRandomDefenseHistory.forEach((item) => {
+    if (
+      isLegacyRandomDefenseHistoryInfo(item) &&
+      isValidLegacyRandomDefenseHistoryInfo(item)
+    ) {
+      sanitizedLegacyRandomDefenseHistory.push(item);
+    }
+  });
+
+  return sanitizedLegacyRandomDefenseHistory.slice(0, MAX_HISTORY_LIMIT);
+};
+
+const convertLegacyToLatestRandomDefenseHistory = (
+  legacyRandomDefenseHistory: LegacyRandomDefenseHistoryInfo[],
+): RandomDefenseHistoryInfo[] => {
+  const latestRandomDefenseHistory: RandomDefenseHistoryInfo[] = [];
+
+  legacyRandomDefenseHistory.forEach(({ no, title, tier, date }) => {
+    const isoStringifiedDate = new Date(date).toISOString();
+
+    if (isIsoString(isoStringifiedDate)) {
+      latestRandomDefenseHistory.push({
+        problemId: no,
+        title,
+        tier,
+        createdAt: isoStringifiedDate,
+      });
+    }
+  });
+
+  return latestRandomDefenseHistory;
+};
+
 const getSortedRandomDefenseHistory = (
   randomDefenseHistory: RandomDefenseHistoryInfo[],
 ) => {
@@ -62,16 +123,29 @@ export const fetchRandomDefenseHistory = async () => {
         LEGACY_LOCAL_STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
       ],
       (data: Record<string, unknown>) => {
-        const rawRandomDefenseHistory = Array.isArray(data.randomDefenseHistory)
-          ? data.randomDefenseHistory
-          : Array.isArray(data.queryLog)
-            ? data.queryLog
-            : [];
+        const rawRandomDefenseHistory =
+          data[LOCAL_STORAGE_KEY.RANDOM_DEFENSE_HISTORY];
+        const rawLegacyRandomDefenseHistory =
+          data[LEGACY_LOCAL_STORAGE_KEY.RANDOM_DEFENSE_HISTORY];
 
-        const isRandomDefenseHistoryHidden = data.isTierHidden ?? false;
+        let selectedRandomDefenseHistory: RandomDefenseHistoryInfo[] = [];
+
+        if (Array.isArray(rawRandomDefenseHistory)) {
+          selectedRandomDefenseHistory = rawRandomDefenseHistory;
+        } else if (Array.isArray(rawLegacyRandomDefenseHistory)) {
+          const sanitizedLegacyRandomDefenseHistory =
+            sanitizeLegacyRandomDefenseHistory(rawLegacyRandomDefenseHistory);
+          selectedRandomDefenseHistory =
+            convertLegacyToLatestRandomDefenseHistory(
+              sanitizedLegacyRandomDefenseHistory,
+            );
+        }
+
+        const isRandomDefenseHistoryHidden =
+          data[LOCAL_STORAGE_KEY.IS_TIER_HIDDEN] ?? false;
 
         const sanitizedRandomDefenseHistory = sanitizeRandomDefenseHistory(
-          rawRandomDefenseHistory,
+          selectedRandomDefenseHistory,
         );
         const sortedRandomDefenseHistory = getSortedRandomDefenseHistory(
           sanitizedRandomDefenseHistory,

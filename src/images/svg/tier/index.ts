@@ -73,7 +73,7 @@ export const solvedAcNumericTierIcons = {
   31: solvedAcTierIconNotRatable,
 };
 
-export const solvedAcSpecialTierIcons = {
+export const solvedAcRankIcons = {
   bronze: solvedAcTierIconBronze,
   silver: solvedAcTierIconSilver,
   gold: solvedAcTierIconGold,

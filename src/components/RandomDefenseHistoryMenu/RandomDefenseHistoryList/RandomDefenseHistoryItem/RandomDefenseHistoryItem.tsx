@@ -1,8 +1,5 @@
 import * as S from './RandomDefenseHistoryItem.styled';
-import {
-  solvedAcNumericTierIcons,
-  solvedAcSpecialTierIcons,
-} from '~images/svg/tier';
+import { solvedAcNumericTierIcons, solvedAcRankIcons } from '~images/svg/tier';
 import { ClockIcon, TrashIcon } from '~images/svg';
 import { formatDate } from '~utils/formatDate';
 import type { IsoString } from '~types/utils';
@@ -28,9 +25,7 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
       >
         <S.TierBadge
           src={
-            isHidden
-              ? solvedAcSpecialTierIcons.hidden
-              : solvedAcNumericTierIcons[tier]
+            isHidden ? solvedAcRankIcons.hidden : solvedAcNumericTierIcons[tier]
           }
           alt=""
           draggable={false}

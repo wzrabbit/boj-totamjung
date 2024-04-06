@@ -1,10 +1,10 @@
 import * as S from './TierPresetButton.styled';
-import { Rank } from '~types/randomDefense';
+import type { Rank, TierWithoutNotRatable } from '~types/randomDefense';
 import { solvedAcRankIcons } from '~images/svg/tier';
 
 interface TierPresetButtonProps {
   rank: Rank;
-  onClick: (start: number, end: number) => void;
+  onClick: (start: TierWithoutNotRatable, end: TierWithoutNotRatable) => void;
 }
 
 const ARIA_LABEL_TEXTS = {

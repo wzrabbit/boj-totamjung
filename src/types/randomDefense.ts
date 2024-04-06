@@ -28,3 +28,7 @@ export type Rank =
   | 'platinum'
   | 'diamond'
   | 'ruby';
+
+export type Tier = keyof typeof solvedAcNumericTierIcons;
+
+export type TierWithoutNotRatable = Exclude<Tier, 31>;

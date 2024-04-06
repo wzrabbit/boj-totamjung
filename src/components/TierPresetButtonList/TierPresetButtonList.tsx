@@ -1,8 +1,9 @@
 import * as S from './TierPresetButtonList.styled';
 import TierPresetButton from './TierPresetButton';
+import { TierWithoutNotRatable } from '~types/randomDefense';
 
 interface TierPresetButtonListProps {
-  onClick: (start: number, end: number) => void;
+  onClick: (start: TierWithoutNotRatable, end: TierWithoutNotRatable) => void;
 }
 
 const RANK_NAMES = [

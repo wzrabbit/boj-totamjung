@@ -74,6 +74,7 @@ export const solvedAcNumericTierIcons = {
 };
 
 export const solvedAcRankIcons = {
+  unrated: solvedAcTierIcon0,
   bronze: solvedAcTierIconBronze,
   silver: solvedAcTierIconSilver,
   gold: solvedAcTierIconGold,

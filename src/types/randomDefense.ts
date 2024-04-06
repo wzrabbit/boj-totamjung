@@ -19,3 +19,12 @@ export interface RandomDefenseHistoryResponse {
   randomDefenseHistory: RandomDefenseHistoryInfo[];
   isHidden: boolean;
 }
+
+export type Rank =
+  | 'unrated'
+  | 'bronze'
+  | 'silver'
+  | 'gold'
+  | 'platinum'
+  | 'diamond'
+  | 'ruby';

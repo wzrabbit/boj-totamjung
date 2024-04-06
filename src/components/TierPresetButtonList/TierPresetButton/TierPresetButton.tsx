@@ -36,7 +36,7 @@ const TIER_RANGE = {
     diamond: 25,
     ruby: 30,
   },
-};
+} as const;
 
 const TierPresetButtonProps = (props: TierPresetButtonProps) => {
   const { rank, onClick } = props;

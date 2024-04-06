@@ -4,7 +4,8 @@ import type {
   RandomDefenseHistoryResponse,
 } from '~types/randomDefense';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
-import { IsoString } from '~types/utils';
+import type { IsoString } from '~types/utils';
+import type { Tier, TierWithoutNotRatable } from '~types/randomDefense';
 
 export const isObject = (data: unknown): data is object => {
   return typeof data === 'object' && data !== null;
@@ -70,4 +71,14 @@ export const isRandomDefenseHistoryResponse = (
     isRandomDefenseHistoryInfos(data.randomDefenseHistory) &&
     typeof data.isHidden === 'boolean'
   );
+};
+
+export const isTier = (data: unknown): data is Tier => {
+  return typeof data === 'number' && data % 1 === 0 && data >= 0 && data <= 31;
+};
+
+export const isTierWithoutNotRatable = (
+  data: unknown,
+): data is TierWithoutNotRatable => {
+  return isTier(data) && data !== 31;
 };

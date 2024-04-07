@@ -7,6 +7,7 @@ export const theme = {
     BROWN: '#301e18',
     DARK_BROWN: '#1a0e0a',
     WHITE: '#eeeeee',
+    TRANSPARENT_FAINT_WHITE: '#eeeeee20',
     GRAY: '#808080',
     RED: '#ff0000',
   },

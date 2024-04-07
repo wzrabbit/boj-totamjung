@@ -48,6 +48,8 @@ export const Button = styled.button<{ $rank: Rank }>`
 
   background: transparent;
 
+  user-select: none;
+
   &:hover {
     background: ${({ theme, $rank }) =>
       `linear-gradient(to top, ${getRankColor(

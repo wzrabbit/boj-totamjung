@@ -50,7 +50,7 @@ const TierPresetButtonProps = (props: TierPresetButtonProps) => {
           onClick(TIER_RANGE.START[rank], TIER_RANGE.END[rank]);
         }}
       >
-        <S.TierBadge src={solvedAcRankIcons[rank]} />
+        <S.TierBadge src={solvedAcRankIcons[rank]} alt="" />
       </S.Button>
     </S.Container>
   );

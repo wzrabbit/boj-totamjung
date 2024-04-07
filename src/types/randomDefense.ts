@@ -19,3 +19,16 @@ export interface RandomDefenseHistoryResponse {
   randomDefenseHistory: RandomDefenseHistoryInfo[];
   isHidden: boolean;
 }
+
+export type Rank =
+  | 'unrated'
+  | 'bronze'
+  | 'silver'
+  | 'gold'
+  | 'platinum'
+  | 'diamond'
+  | 'ruby';
+
+export type Tier = keyof typeof solvedAcNumericTierIcons;
+
+export type TierWithoutNotRatable = Exclude<Tier, 31>;

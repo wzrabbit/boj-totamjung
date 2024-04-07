@@ -1,6 +1,7 @@
 import type { ChangeEvent } from 'react';
 import * as S from './TierSlider.styled';
 import type { TierWithoutNotRatable } from '~types/randomDefense';
+import { isTierWithoutNotRatable } from '~types/typeGuards';
 
 interface TierSliderProps {
   startTier: TierWithoutNotRatable;
@@ -20,9 +21,12 @@ const TierSlider = (props: TierSliderProps) => {
         max={30}
         value={startTier}
         aria-label="시작 범위 티어 설정하기"
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          // Should be fixed: 불필요한 타입 단언 사용
-          onChange(Number(e.target.value) as TierWithoutNotRatable, endTier);
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          const newStartTier = Number(event.target.value);
+
+          if (isTierWithoutNotRatable(newStartTier)) {
+            onChange(newStartTier, endTier);
+          }
         }}
       />
       <S.Thumb
@@ -31,9 +35,12 @@ const TierSlider = (props: TierSliderProps) => {
         max={30}
         value={endTier}
         aria-label="끝 범위 티어 설정하기"
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          // Should be fixed: 불필요한 타입 단언 사용
-          onChange(startTier, Number(e.target.value) as TierWithoutNotRatable);
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          const newEndTier = Number(event.target.value);
+
+          if (isTierWithoutNotRatable(newEndTier)) {
+            onChange(startTier, newEndTier);
+          }
         }}
       />
     </S.Container>

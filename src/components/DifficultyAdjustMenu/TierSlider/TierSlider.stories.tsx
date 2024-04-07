@@ -20,7 +20,7 @@ export const Default: Story = {
     startTier: 1,
     endTier: 30,
     onChange: (start: TierWithoutNotRatable, end: TierWithoutNotRatable) => {
-      alert(`onChange(${start})`);
+      alert(`onChange(${start}, ${end})`);
     },
   },
 };

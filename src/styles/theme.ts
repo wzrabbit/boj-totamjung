@@ -1,6 +1,7 @@
 export const theme = {
   color: {
     LEMON: '#fff2c8',
+    TRANSPARENT_LEMON: '#fff2c87f',
     GOLD: '#d1b072',
     LIGHTER_BROWN: '#694132',
     LIGHT_BROWN: '#412a23',

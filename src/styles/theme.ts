@@ -11,6 +11,8 @@ export const theme = {
     TRANSPARENT_FAINT_WHITE: '#eeeeee20',
     GRAY: '#808080',
     RED: '#ff0000',
+    MAGENTA: '#ff005d',
+    AZURE_BLUE: '#007bff',
   },
 
   solvedAcTier: {

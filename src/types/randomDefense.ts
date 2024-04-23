@@ -32,3 +32,5 @@ export type Rank =
 export type Tier = keyof typeof solvedAcNumericTierIcons;
 
 export type TierWithoutNotRatable = Exclude<Tier, 31>;
+
+export type Hotkey = 'Alt' | 'F2';

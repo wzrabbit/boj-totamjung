@@ -4,3 +4,6 @@ export { ReactComponent as TrashIcon } from './trash.svg';
 export { ReactComponent as PackageIcon } from './package.svg';
 export { ReactComponent as LinkIcon } from './link.svg';
 export { ReactComponent as CloseIcon } from './close.svg';
+export { ReactComponent as CloseSmallIcon } from './close-small.svg';
+export { ReactComponent as CloseCircleIcon } from './close-circle.svg';
+export { ReactComponent as CheckCircleIcon } from './check-circle.svg';

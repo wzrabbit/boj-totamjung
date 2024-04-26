@@ -23,6 +23,16 @@ export const Backdrop = styled.div`
   height: 100vh;
 
   backdrop-filter: blur(5px);
+  animation: fadeIn 0.2s forwards;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const Modal = styled.div`
@@ -35,6 +45,17 @@ export const Modal = styled.div`
 
   box-shadow: 0 0 30px ${({ theme }) => theme.color.GOLD};
   background-color: ${({ theme }) => theme.color.DARK_BROWN};
+
+  animation: zoomIn 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.7);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
 `;
 
 export const Header = styled.div`

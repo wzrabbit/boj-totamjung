@@ -49,6 +49,10 @@ const GlobalStyle = createGlobalStyle`
     -moz-appearance: textfield;
     appearance: textfield;
   }
+
+  body:has([role="dialog"]) {
+    overflow: hidden;
+  }
 `;
 
 export default GlobalStyle;

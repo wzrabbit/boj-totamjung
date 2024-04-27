@@ -1,6 +1,6 @@
 import * as S from './MiniAlgorithmButton.styled';
 import type { Algorithm } from '~types/algorithm';
-import { CloseIcon } from '~images/svg';
+import { CloseSmallIcon } from '~images/svg';
 
 interface MiniAlgorithmButtonProps {
   id: number;
@@ -27,7 +27,7 @@ const MiniAlgorithmButton = (props: MiniAlgorithmButtonProps) => {
         <S.Text>{name}</S.Text>
         {mode === 'delete' && (
           <S.CloseIconWrapper>
-            <CloseIcon />
+            <CloseSmallIcon />
           </S.CloseIconWrapper>
         )}
       </S.Button>

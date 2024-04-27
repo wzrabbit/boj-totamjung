@@ -20,7 +20,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
         <S.Modal open={open} role="dialog">
           <S.Header>
             <S.Title>{title}</S.Title>
-            <S.CloseButton onClick={onClose}>
+            <S.CloseButton onClick={onClose} aria-label="모달 닫기">
               <CloseIcon />
             </S.CloseButton>
           </S.Header>

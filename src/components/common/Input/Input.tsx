@@ -1,8 +1,10 @@
+import type { ChangeEvent } from 'react';
+import type { CSSProperties } from 'styled-components';
 import * as S from './Input.styled';
 
 interface InputProps {
   type: 'text' | 'number';
-  width: number;
+  width: CSSProperties['width'];
   value: string;
   minLength?: number;
   maxLength?: number;

@@ -1,12 +1,13 @@
 import { styled } from 'styled-components';
+import type { CSSProperties } from 'styled-components';
 
 export const Textarea = styled.textarea<{
-  $width: number;
-  $height: number;
+  $width: CSSProperties['width'];
+  $height: CSSProperties['height'];
   $hasError: boolean;
 }>`
-  width: ${({ $width }) => $width}px;
-  height: ${({ $height }) => $height}px;
+  width: ${({ $width }) => $width};
+  height: ${({ $height }) => $height};
   padding: 6px;
 
   border: 1.5px solid ${({ theme }) => theme.color.LIGHTER_BROWN};

@@ -1,11 +1,12 @@
 import { styled } from 'styled-components';
+import type { CSSProperties } from 'styled-components';
 
 export const Input = styled.input<{
-  $width: number;
+  $width: CSSProperties['width'];
   $hasError: boolean;
   $textAlign: 'left' | 'center';
 }>`
-  width: ${({ $width }) => $width}px;
+  width: ${({ $width }) => $width};
   height: 30px;
   padding: 0 6px;
 

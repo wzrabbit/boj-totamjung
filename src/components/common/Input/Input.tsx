@@ -10,8 +10,7 @@ interface InputProps {
   placeholder: string;
   hasError: boolean;
   ariaLabel: string;
-
-  onChange: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = (props: InputProps) => {

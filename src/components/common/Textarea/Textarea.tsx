@@ -9,7 +9,7 @@ interface TextareaProps {
   placeholder: string;
   hasError: boolean;
   ariaLabel: string;
-  onChange: () => void;
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const Textarea = (props: TextareaProps) => {

@@ -4,7 +4,7 @@ import { SwitchIcon } from '~images/svg';
 import type { Hotkey } from '~types/randomDefense';
 
 interface HotkeySwitcherProps {
-  selectedSlotNumber: number;
+  selectedSlotNo: number;
   hotkey: Hotkey;
   onClick: () => void;
 }
@@ -12,13 +12,13 @@ interface HotkeySwitcherProps {
 const isMac = navigator.userAgent.toLowerCase().indexOf('mac') !== -1;
 
 const HotkeySwitcher = (props: HotkeySwitcherProps) => {
-  const { selectedSlotNumber, hotkey, onClick } = props;
+  const { selectedSlotNo, hotkey, onClick } = props;
 
   return (
     <S.Container>
       <Text type="primary" fontSize="16px">{`단축키: ${
         hotkey === 'Alt' ? (isMac ? 'Option' : 'Alt') : 'F2'
-      } + ${selectedSlotNumber}`}</Text>
+      } + ${selectedSlotNo}`}</Text>
       <S.SwitchButton aria-label="단축키 전환하기" onClick={onClick}>
         <SwitchIcon />
       </S.SwitchButton>

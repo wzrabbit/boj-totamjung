@@ -9,7 +9,7 @@ export const Container = styled.div`
   height: 100%;
 `;
 
-export const SlotNumberPanel = styled.div`
+export const SlotNoPanel = styled.div`
   display: flex;
   column-gap: 10px;
 

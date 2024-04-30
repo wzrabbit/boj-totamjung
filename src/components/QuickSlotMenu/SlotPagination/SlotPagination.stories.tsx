@@ -16,10 +16,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    selectedSlotNumber: 1,
-    occupiedSlotNumbers: [2, 8, 4],
-    onChange: (slotNumber: number) => {
-      alert(`onChange(${slotNumber})`);
+    selectedSlotNo: 1,
+    occupiedSlotNos: [2, 8, 4],
+    onChange: (slotNo: number) => {
+      alert(`onChange(${slotNo})`);
     },
   },
 };

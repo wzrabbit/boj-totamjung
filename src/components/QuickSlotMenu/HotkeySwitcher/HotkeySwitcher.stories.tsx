@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    selectedSlotNumber: 3,
+    selectedSlotNo: 3,
     hotkey: 'Alt',
     onClick: () => {
       alert('onClick()');

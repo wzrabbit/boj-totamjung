@@ -9,23 +9,24 @@ import { CopyIcon, EditIcon, TrashIcon } from '~images/svg';
 import { theme } from '~styles/theme';
 
 const QuickSlotMenu = () => {
-  const { selectedSlotNumber, hotkey, updateSelectedSlotNumber, switchHotkey } =
+  const { selectedSlotNo, hotkey, updateSelectedSlotNo, switchHotkey } =
     useQuickSlotMenu();
+
   return (
     <NamedFrame width="650px" height="176px" padding="10px" title="퀵 슬롯">
       <S.Container>
-        <S.SlotNumberPanel>
+        <S.SlotNoPanel>
           <SlotPagination
-            selectedSlotNumber={selectedSlotNumber}
-            occupiedSlotNumbers={[2, 4, 8]}
-            onChange={updateSelectedSlotNumber}
+            selectedSlotNo={selectedSlotNo}
+            occupiedSlotNos={[2, 4, 8]}
+            onChange={updateSelectedSlotNo}
           />
           <HotkeySwitcher
-            selectedSlotNumber={selectedSlotNumber}
+            selectedSlotNo={selectedSlotNo}
             hotkey={hotkey}
             onClick={switchHotkey}
           />
-        </S.SlotNumberPanel>
+        </S.SlotNoPanel>
         <SlotInfo isEmpty={true} />
         <S.SlotControlPanel>
           <IconButton

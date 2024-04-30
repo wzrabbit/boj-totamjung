@@ -2,11 +2,11 @@ import { useState } from 'react';
 import type { Hotkey } from '~types/randomDefense';
 
 const useQuickSlotMenu = () => {
-  const [selectedSlotNumber, setSelectedSlotNumber] = useState(1);
+  const [selectedSlotNo, setSelectedSlotNo] = useState(1);
   const [hotkey, setHotkey] = useState<Hotkey>('Alt');
 
-  const updateSelectedSlotNumber = (newSlotNumber: number) => {
-    setSelectedSlotNumber(() => newSlotNumber);
+  const updateSelectedSlotNo = (newSlotNo: number) => {
+    setSelectedSlotNo(() => newSlotNo);
   };
 
   const switchHotkey = () => {
@@ -14,9 +14,9 @@ const useQuickSlotMenu = () => {
   };
 
   return {
-    selectedSlotNumber,
+    selectedSlotNo,
     hotkey,
-    updateSelectedSlotNumber,
+    updateSelectedSlotNo,
     switchHotkey,
   };
 };

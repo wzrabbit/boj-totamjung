@@ -1,33 +1,31 @@
 import * as S from './SlotPagination.styled';
 
 interface SlotPaginationProps {
-  selectedSlotNumber: number;
-  occupiedSlotNumbers: number[];
-  onChange: (slotNumber: number) => void;
+  selectedSlotNo: number;
+  occupiedSlotNos: number[];
+  onChange: (slotNo: number) => void;
 }
 
 const SLOT_PAGE_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 const SlotPagination = (props: SlotPaginationProps) => {
-  const { selectedSlotNumber, occupiedSlotNumbers, onChange } = props;
+  const { selectedSlotNo, occupiedSlotNos, onChange } = props;
 
   return (
     <S.Container>
-      {SLOT_PAGE_NUMBERS.map((slotNumber) => (
+      {SLOT_PAGE_NUMBERS.map((slotNo) => (
         <S.CircleSlotButtonWrapper>
           <S.CircleSlotButton
-            $isSelected={slotNumber === selectedSlotNumber}
-            $isOccupied={occupiedSlotNumbers.includes(slotNumber)}
+            $isSelected={slotNo === selectedSlotNo}
+            $isOccupied={occupiedSlotNos.includes(slotNo)}
             onClick={() => {
-              onChange(slotNumber);
+              onChange(slotNo);
             }}
-            aria-label={`${slotNumber}번 슬롯 선택하기. ${
-              slotNumber === selectedSlotNumber
-                ? '이미 선택되어 있는 슬롯입니다'
-                : ''
+            aria-label={`${slotNo}번 슬롯 선택하기. ${
+              slotNo === selectedSlotNo ? '이미 선택되어 있는 슬롯입니다' : ''
             }`}
           >
-            {slotNumber}
+            {slotNo}
           </S.CircleSlotButton>
         </S.CircleSlotButtonWrapper>
       ))}

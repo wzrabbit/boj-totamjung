@@ -15,8 +15,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    width: 560,
-    height: 140,
+    width: '560px',
+    height: '140px',
     value: '',
     placeholder: '마음가는 대로 입력해 보세요',
     hasError: false,
@@ -26,8 +26,8 @@ export const Default: Story = {
 
 export const Error: Story = {
   args: {
-    width: 560,
-    height: 140,
+    width: '560px',
+    height: '140px',
     value: '',
     placeholder: '사람은 누구나 실수를 하죠',
     hasError: true,

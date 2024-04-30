@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     type: 'text',
-    width: 240,
+    width: '240px',
     value: '',
     textAlign: 'left',
     placeholder: '마음가는 대로 입력해 보세요',
@@ -28,7 +28,7 @@ export const Default: Story = {
 export const Error: Story = {
   args: {
     type: 'text',
-    width: 240,
+    width: '240px',
     value: '',
     textAlign: 'left',
     placeholder: '사람은 누구나 실수를 하죠',

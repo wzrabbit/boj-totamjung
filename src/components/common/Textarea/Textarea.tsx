@@ -1,15 +1,17 @@
+import type { ChangeEvent } from 'react';
+import type { CSSProperties } from 'styled-components';
 import * as S from './Textarea.styled';
 
 interface TextareaProps {
-  width: number;
-  height: number;
+  width: CSSProperties['width'];
+  height: CSSProperties['height'];
   value: string;
   minLength?: number;
   maxLength?: number;
   placeholder: string;
   hasError: boolean;
   ariaLabel: string;
-  onChange: () => void;
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const Textarea = (props: TextareaProps) => {

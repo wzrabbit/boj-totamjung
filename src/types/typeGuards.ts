@@ -2,6 +2,8 @@ import type {
   RandomDefenseHistoryInfo,
   LegacyRandomDefenseHistoryInfo,
   RandomDefenseHistoryResponse,
+  Slot,
+  QuickSlotsResponse,
 } from '~types/randomDefense';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 import type { IsoString } from '~types/utils';
@@ -89,4 +91,56 @@ export const isTierWithoutNotRatable = (
   data: unknown,
 ): data is TierWithoutNotRatable => {
   return isTier(data) && data !== 31;
+};
+
+const isSlot = (data: unknown): data is Slot => {
+  if (
+    !isObject(data) ||
+    !('isEmpty' in data) ||
+    typeof data.isEmpty !== 'boolean'
+  ) {
+    return false;
+  }
+
+  if (data.isEmpty) {
+    return true;
+  }
+
+  return (
+    'slotName' in data &&
+    'query' in data &&
+    typeof data.slotName === 'string' &&
+    typeof data.query === 'string'
+  );
+};
+
+export const isQuickSlotsResponse = (
+  data: unknown,
+): data is QuickSlotsResponse => {
+  if (
+    !(
+      isObject(data) &&
+      'hotkey' in data &&
+      'selectedSlotNo' in data &&
+      'slots' in data &&
+      typeof data.hotkey === 'string' &&
+      ['Alt', 'F2'].includes(data.hotkey) &&
+      typeof data.selectedSlotNo === 'number' &&
+      data.selectedSlotNo % 1 === 0 &&
+      data.selectedSlotNo >= 0 &&
+      data.selectedSlotNo <= 9
+    )
+  ) {
+    return false;
+  }
+
+  const { slots } = data;
+
+  if (!isNumericObject(slots)) {
+    return false;
+  }
+
+  return Array.from({ length: 10 }).every(
+    (_, key) => key in slots && isSlot(slots[key]),
+  );
 };

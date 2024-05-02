@@ -11,6 +11,14 @@ export const isObject = (data: unknown): data is object => {
   return typeof data === 'object' && data !== null;
 };
 
+export const isNumericObject = (
+  data: unknown,
+): data is Record<number, unknown> => {
+  return (
+    isObject(data) && Object.keys(data).every((key) => !isNaN(Number(key)))
+  );
+};
+
 export const isIsoString = (data: unknown): data is IsoString => {
   return (
     typeof data === 'string' &&

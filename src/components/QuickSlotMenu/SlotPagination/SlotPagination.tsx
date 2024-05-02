@@ -1,20 +1,21 @@
+import type { SlotNo } from '~types/randomDefense';
 import * as S from './SlotPagination.styled';
 
 interface SlotPaginationProps {
-  selectedSlotNo: number;
-  occupiedSlotNos: number[];
-  onChange: (slotNo: number) => void;
+  selectedSlotNo: SlotNo;
+  occupiedSlotNos: SlotNo[];
+  onChange: (slotNo: SlotNo) => void;
 }
 
-const SLOT_PAGE_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const SLOT_NOS: SlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 const SlotPagination = (props: SlotPaginationProps) => {
   const { selectedSlotNo, occupiedSlotNos, onChange } = props;
 
   return (
     <S.Container>
-      {SLOT_PAGE_NUMBERS.map((slotNo) => (
-        <S.CircleSlotButtonWrapper>
+      {SLOT_NOS.map((slotNo) => (
+        <S.CircleSlotButtonWrapper key={slotNo}>
           <S.CircleSlotButton
             $isSelected={slotNo === selectedSlotNo}
             $isOccupied={occupiedSlotNos.includes(slotNo)}

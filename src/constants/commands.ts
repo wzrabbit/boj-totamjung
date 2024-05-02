@@ -3,10 +3,13 @@ export const COMMANDS = {
   SAVE_CHECKED_ALGORITHM_IDS: 'saveCheckedAlgorithmIds',
   FETCH_RANDOM_DEFENSE_HISTORY: 'fetchRandomDefenseHistory',
   SAVE_RANDOM_DEFENSE_HISTORY: 'saveRandomDefenseHistory',
+  FETCH_QUICK_SLOTS: 'fetchQuickSlots',
+  SAVE_QUICK_SLOTS: 'saveQuickSlots',
 } as const;
 
 export const SYNC_STORAGE_KEY = {
   CHECKED_ALGORITHM_IDS: 'checkedAlgorithmIds',
+  QUICK_SLOTS: 'quickSlots',
 } as const;
 
 export const LOCAL_STORAGE_KEY = {
@@ -21,6 +24,7 @@ export const LOCAL_STORAGE_KEY = {
  */
 export const LEGACY_SYNC_STORAGE_KEY = {
   CHECKED_ALGORITHM_IDS: 'algorithm',
+  QUICK_SLOTS: 'query',
 } as const;
 
 export const LEGACY_LOCAL_STORAGE_KEY = {

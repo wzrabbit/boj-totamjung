@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { theme } from '~styles/theme';
 import Modal, { ModalActionButtonsContainer } from '~components/common/Modal';
 import IconButton from '~components/common/IconButton';
@@ -9,17 +9,22 @@ import { CloseCircleIcon, CheckCircleIcon } from '~images/svg';
 import * as S from './SlotEditModal.styled';
 
 interface SlotEditModalProps {
-  name: string;
+  slotName: string;
   query: string;
   open: boolean;
   onClose: () => void;
-  onSlotChange: (name: string, query: string) => void;
+  onSlotChange: (slotName: string, query: string) => void;
 }
 
 const SlotEditModal = (props: SlotEditModalProps) => {
-  const { name, query, open, onClose, onSlotChange } = props;
-  const [newName, setNewName] = useState(name);
+  const { slotName, query, open, onClose, onSlotChange } = props;
+  const [newSlotName, setNewSlotName] = useState(slotName);
   const [newQuery, setNewQuery] = useState(query);
+
+  useEffect(() => {
+    setNewSlotName(slotName);
+    setNewQuery(query);
+  }, [slotName, query]);
 
   return (
     <Modal title="추첨 수정" open={open} onClose={onClose}>
@@ -31,14 +36,14 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           <Input
             type="text"
             width="100%"
-            value={newName}
+            value={newSlotName}
             textAlign="left"
             maxLength={30}
             placeholder="0 ~ 30자"
             hasError={false}
             ariaLabel="새로운 추첨 이름을 입력해주세요"
             onChange={(event) => {
-              setNewName(() => event.target.value);
+              setNewSlotName(event.target.value);
             }}
           />
         </S.Label>
@@ -54,7 +59,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
             hasError={false}
             ariaLabel="새로운 쿼리를 입력해주세요"
             onChange={(event) => {
-              setNewQuery(() => event.target.value);
+              setNewQuery(event.target.value);
             }}
           />
         </S.Label>
@@ -79,7 +84,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           disabled={false}
           ariaLabel="확인"
           onClick={() => {
-            onSlotChange(newName, newQuery);
+            onSlotChange(newSlotName, newQuery);
           }}
         />
       </ModalActionButtonsContainer>

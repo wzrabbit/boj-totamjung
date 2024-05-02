@@ -56,10 +56,6 @@ const useQuickSlotMenu = () => {
     });
   }, [slots, selectedSlotNo, hotkey]);
 
-  const updateSelectedSlotNo = (newSlotNo: SlotNo) => {
-    setSelectedSlotNo(newSlotNo);
-  };
-
   const switchHotkey = () => {
     setHotkey((prev) => (prev === 'Alt' ? 'F2' : 'Alt'));
   };
@@ -84,7 +80,7 @@ const useQuickSlotMenu = () => {
     occupiedSlotNos: getOccupiedSlotNos(),
     hotkey,
     isLoaded,
-    updateSelectedSlotNo,
+    setSelectedSlotNo,
     switchHotkey,
   };
 };

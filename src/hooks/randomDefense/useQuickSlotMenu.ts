@@ -43,6 +43,19 @@ const useQuickSlotMenu = () => {
     fetchQuickSlots();
   }, []);
 
+  useEffect(() => {
+    if (!isLoaded) {
+      return;
+    }
+
+    chrome.runtime.sendMessage({
+      command: COMMANDS.SAVE_QUICK_SLOTS,
+      slots,
+      selectedSlotNo,
+      hotkey,
+    });
+  }, [slots, selectedSlotNo, hotkey]);
+
   const updateSelectedSlotNo = (newSlotNo: SlotNo) => {
     setSelectedSlotNo(newSlotNo);
   };

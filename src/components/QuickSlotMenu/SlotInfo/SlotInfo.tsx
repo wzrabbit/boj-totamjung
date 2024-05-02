@@ -1,19 +1,8 @@
 import * as S from './SlotInfo.styled';
 import Text from '~components/common/Text';
+import type { Slot } from '~types/randomDefense';
 
-interface FilledSlotInfo {
-  isEmpty: false;
-  name: string;
-  query: string;
-}
-
-interface EmptySlotInfo {
-  isEmpty: true;
-}
-
-type SlotInfoProps = FilledSlotInfo | EmptySlotInfo;
-
-const SlotInfo = (props: SlotInfoProps) => {
+const SlotInfo = (props: Slot) => {
   return (
     <S.Container>
       <S.NamePanel>
@@ -23,7 +12,7 @@ const SlotInfo = (props: SlotInfoProps) => {
             <S.NameEmptyText>{'(비어 있음)'}</S.NameEmptyText>
           ) : (
             <Text type="primary" fontSize="16px">
-              {props.name}
+              {props.slotName}
             </Text>
           )}
         </S.NameTextWrapper>

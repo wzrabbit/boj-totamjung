@@ -22,7 +22,6 @@ export const MediumWithSvgIcon: Story = {
   args: {
     name: '버튼',
     size: 'medium',
-    width: '70px',
     color: '#49aaff',
     iconSrc: <PackageIcon />,
     disabled: false,
@@ -37,7 +36,6 @@ export const MediumWithSvgIconDisabled: Story = {
   args: {
     name: '버튼',
     size: 'medium',
-    width: '70px',
     color: '#49aaff',
     iconSrc: <PackageIcon />,
     disabled: true,
@@ -52,7 +50,6 @@ export const LargeWithSvgIcon: Story = {
   args: {
     name: '버튼',
     size: 'large',
-    width: '90px',
     color: '#49aaff',
     iconSrc: <PackageIcon />,
     disabled: false,
@@ -67,7 +64,6 @@ export const MediumWithImageIcon: Story = {
   args: {
     name: '버튼',
     size: 'medium',
-    width: '70px',
     color: '#ff4949',
     iconSrc: YOUTUBE_IMAGE_ICON_SRC,
     disabled: false,
@@ -82,7 +78,6 @@ export const LargeWithImageIcon: Story = {
   args: {
     name: '버튼',
     size: 'large',
-    width: '90px',
     color: '#ff4949',
     iconSrc: YOUTUBE_IMAGE_ICON_SRC,
     disabled: false,
@@ -97,7 +92,6 @@ export const MediumWithNoIcon: Story = {
   args: {
     name: '버튼',
     size: 'medium',
-    width: '40px',
     color: '#d9d9d9',
     disabled: false,
     ariaLabel: '테스트용 버튼',
@@ -111,7 +105,6 @@ export const LargeWithNoIcon: Story = {
   args: {
     name: '버튼',
     size: 'large',
-    width: '52px',
     color: '#d9d9d9',
     disabled: false,
     ariaLabel: '테스트용 버튼',

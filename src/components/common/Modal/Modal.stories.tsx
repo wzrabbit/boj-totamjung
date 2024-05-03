@@ -61,7 +61,6 @@ export const TextModal: Story = {
         <IconButton
           name="모달 열기"
           size="large"
-          width="90px"
           color="#a15eff"
           disabled={false}
           ariaLabel="모달 열기"
@@ -106,7 +105,6 @@ export const TextModal: Story = {
  *     <IconButton
  *       name="취소"
  *       size="medium"
- *       width="70px"
  *       color="#ff665e"
  *       iconSrc={<CloseCircleIcon />}
  *       disabled={false}
@@ -119,7 +117,6 @@ export const TextModal: Story = {
  *     <IconButton
  *       name="확인"
  *       size="medium"
- *       width="70px"
  *       color="#5eff69"
  *       iconSrc={<CheckCircleIcon />}
  *       disabled={false}
@@ -161,7 +158,6 @@ export const TextWithControlButtons: Story = {
             <IconButton
               name="취소"
               size="medium"
-              width="70px"
               color="#ff665e"
               iconSrc={<CloseCircleIcon />}
               disabled={false}
@@ -174,7 +170,6 @@ export const TextWithControlButtons: Story = {
             <IconButton
               name="확인"
               size="medium"
-              width="70px"
               color="#5eff69"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
@@ -189,7 +184,6 @@ export const TextWithControlButtons: Story = {
         <IconButton
           name="모달 열기"
           size="large"
-          width="90px"
           color="#a15eff"
           disabled={false}
           ariaLabel="모달 열기"
@@ -240,7 +234,6 @@ export const VeryLongTitle: Story = {
             <IconButton
               name="그렇군요"
               size="medium"
-              width="96px"
               color="#a3a3a3"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
@@ -254,7 +247,6 @@ export const VeryLongTitle: Story = {
         <IconButton
           name="모달 열기"
           size="large"
-          width="90px"
           color="#a15eff"
           disabled={false}
           ariaLabel="모달 열기"

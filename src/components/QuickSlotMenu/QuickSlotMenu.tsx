@@ -22,6 +22,7 @@ const QuickSlotMenu = () => {
     openEditModal,
     closeEditModal,
     updateSlot,
+    deleteSlot,
   } = useQuickSlotMenu();
 
   return (
@@ -73,9 +74,9 @@ const QuickSlotMenu = () => {
               width="72px"
               color={theme.color.RED}
               iconSrc={<TrashIcon />}
-              disabled={false}
-              onClick={() => {}}
+              disabled={slot.isEmpty}
               ariaLabel="슬롯 삭제하기"
+              onClick={deleteSlot}
             />
           </S.SlotControlPanel>
         </S.Container>

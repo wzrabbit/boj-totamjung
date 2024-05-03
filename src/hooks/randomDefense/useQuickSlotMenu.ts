@@ -89,6 +89,17 @@ const useQuickSlotMenu = () => {
     closeEditModal();
   };
 
+  const deleteSlot = () => {
+    if (
+      confirm(`${selectedSlotNo}번 슬롯에 저장되어 있는 쿼리를 삭제할까요?`)
+    ) {
+      setSlots((prev) => ({
+        ...prev,
+        [selectedSlotNo]: { isEmpty: true },
+      }));
+    }
+  };
+
   const slot = slots[selectedSlotNo];
 
   return {
@@ -103,6 +114,7 @@ const useQuickSlotMenu = () => {
     openEditModal,
     closeEditModal,
     updateSlot,
+    deleteSlot,
   };
 };
 

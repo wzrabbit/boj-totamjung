@@ -25,7 +25,6 @@ export const Default: Story = {
         <IconButton
           name="모달 열기"
           size="large"
-          width="90px"
           color="#d1b072"
           disabled={false}
           ariaLabel="모달 열기"
@@ -34,7 +33,7 @@ export const Default: Story = {
           }}
         />
         <SlotEditModal
-          name="기존 추첨 이름"
+          slotName="기존 추첨 이름"
           query="tier:g5..g1 solvable:true"
           open={isOpen}
           onClose={() => {
@@ -54,7 +53,7 @@ export const Default: Story = {
     );
   },
   args: {
-    name: '',
+    slotName: '',
     query: '',
     open: false,
     onClose: () => {},

@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     isEmpty: false,
-    name: '골드 랜덤 디펜스',
+    slotName: '골드 랜덤 디펜스',
     query: 's#100.. *g solvable:true',
   },
 };
@@ -25,7 +25,8 @@ export const Default: Story = {
 export const TooLongQuery: Story = {
   args: {
     isEmpty: false,
-    name: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto eligendi nemo, expedita vitae vero corrupti deserunt? Expedita dolor, quo labore vero, at molestias sed quis reiciendis similique illum in corporis.',
+    slotName:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto eligendi nemo, expedita vitae vero corrupti deserunt? Expedita dolor, quo labore vero, at molestias sed quis reiciendis similique illum in corporis.',
     query:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto eligendi nemo, expedita vitae vero corrupti deserunt? Expedita dolor, quo labore vero, at molestias sed quis reiciendis similique illum in corporis.',
   },

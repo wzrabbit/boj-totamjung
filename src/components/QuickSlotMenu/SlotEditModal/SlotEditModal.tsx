@@ -68,7 +68,6 @@ const SlotEditModal = (props: SlotEditModalProps) => {
         <IconButton
           name="취소"
           size="medium"
-          width="70px"
           iconSrc={<CloseCircleIcon />}
           color={theme.color.LIGHT_GRAY}
           disabled={false}
@@ -78,7 +77,6 @@ const SlotEditModal = (props: SlotEditModalProps) => {
         <IconButton
           name="확인"
           size="medium"
-          width="70px"
           iconSrc={<CheckCircleIcon />}
           color={theme.color.GOLD}
           disabled={false}

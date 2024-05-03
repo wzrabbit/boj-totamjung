@@ -26,7 +26,7 @@ const QuickSlotMenu = () => {
   } = useQuickSlotMenu();
 
   return (
-    <NamedFrame width="650px" height="176px" padding="10px" title="퀵 슬롯">
+    <NamedFrame width="650px" height="168px" padding="10px" title="퀵 슬롯">
       {isLoaded && (
         <S.Container>
           <S.SlotNoPanel>
@@ -46,7 +46,6 @@ const QuickSlotMenu = () => {
             <IconButton
               name="쿼리 복사"
               size="medium"
-              width="98px"
               color={theme.color.LIGHT_GRAY}
               iconSrc={<CopyIcon />}
               disabled={slot.isEmpty}
@@ -61,7 +60,6 @@ const QuickSlotMenu = () => {
             <IconButton
               name="수정"
               size="medium"
-              width="72px"
               color={theme.color.SKY_BLUE}
               iconSrc={<EditIcon />}
               disabled={slot.isEmpty}
@@ -71,7 +69,6 @@ const QuickSlotMenu = () => {
             <IconButton
               name="삭제"
               size="medium"
-              width="72px"
               color={theme.color.RED}
               iconSrc={<TrashIcon />}
               disabled={slot.isEmpty}

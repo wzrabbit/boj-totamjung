@@ -64,7 +64,7 @@ const QuickSlotMenu = () => {
               color={theme.color.SKY_BLUE}
               iconSrc={<EditIcon />}
               disabled={slot.isEmpty}
-              ariaLabel="쿼리 수정하기"
+              ariaLabel="슬롯 수정하기"
               onClick={openEditModal}
             />
             <IconButton
@@ -74,8 +74,8 @@ const QuickSlotMenu = () => {
               color={theme.color.RED}
               iconSrc={<TrashIcon />}
               disabled={false}
-              ariaLabel="쿼리 삭제하기"
               onClick={() => {}}
+              ariaLabel="슬롯 삭제하기"
             />
           </S.SlotControlPanel>
         </S.Container>

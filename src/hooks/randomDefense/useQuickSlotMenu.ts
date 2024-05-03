@@ -23,6 +23,7 @@ const useQuickSlotMenu = () => {
   const [selectedSlotNo, setSelectedSlotNo] = useState<SlotNo>(1);
   const [hotkey, setHotkey] = useState<Hotkey>('Alt');
   const [isLoaded, setIsLoaded] = useState(false);
+  const [shouldEditModalShow, setShouldEditModalShow] = useState(false);
 
   useEffect(() => {
     const fetchQuickSlots = async () => {
@@ -72,6 +73,22 @@ const useQuickSlotMenu = () => {
     return occupiedSlotNos;
   };
 
+  const openEditModal = () => {
+    setShouldEditModalShow(true);
+  };
+
+  const closeEditModal = () => {
+    setShouldEditModalShow(false);
+  };
+
+  const updateSlot = (slotName: string, query: string) => {
+    setSlots((prev) => ({
+      ...prev,
+      [selectedSlotNo]: { isEmpty: false, slotName, query },
+    }));
+    closeEditModal();
+  };
+
   const slot = slots[selectedSlotNo];
 
   return {
@@ -79,9 +96,13 @@ const useQuickSlotMenu = () => {
     selectedSlotNo,
     occupiedSlotNos: getOccupiedSlotNos(),
     hotkey,
+    shouldEditModalShow,
     isLoaded,
     setSelectedSlotNo,
     switchHotkey,
+    openEditModal,
+    closeEditModal,
+    updateSlot,
   };
 };
 

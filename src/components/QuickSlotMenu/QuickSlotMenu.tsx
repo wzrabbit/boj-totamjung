@@ -5,6 +5,7 @@ import SlotInfo from './SlotInfo';
 import HotkeySwitcher from './HotkeySwitcher';
 import IconButton from '~components/common/IconButton';
 import useQuickSlotMenu from '~hooks/randomDefense/useQuickSlotMenu';
+import SlotEditModal from './SlotEditModal';
 import { CopyIcon, EditIcon, TrashIcon } from '~images/svg';
 import { theme } from '~styles/theme';
 
@@ -14,9 +15,13 @@ const QuickSlotMenu = () => {
     selectedSlotNo,
     occupiedSlotNos,
     hotkey,
+    shouldEditModalShow,
     isLoaded,
-    updateSelectedSlotNo,
+    setSelectedSlotNo,
     switchHotkey,
+    openEditModal,
+    closeEditModal,
+    updateSlot,
   } = useQuickSlotMenu();
 
   return (
@@ -27,7 +32,7 @@ const QuickSlotMenu = () => {
             <SlotPagination
               selectedSlotNo={selectedSlotNo}
               occupiedSlotNos={occupiedSlotNos}
-              onChange={updateSelectedSlotNo}
+              onChange={setSelectedSlotNo}
             />
             <HotkeySwitcher
               selectedSlotNo={selectedSlotNo}
@@ -58,9 +63,9 @@ const QuickSlotMenu = () => {
               width="72px"
               color={theme.color.SKY_BLUE}
               iconSrc={<EditIcon />}
-              disabled={false}
+              disabled={slot.isEmpty}
               ariaLabel="쿼리 수정하기"
-              onClick={() => {}}
+              onClick={openEditModal}
             />
             <IconButton
               name="삭제"
@@ -75,6 +80,13 @@ const QuickSlotMenu = () => {
           </S.SlotControlPanel>
         </S.Container>
       )}
+      <SlotEditModal
+        slotName={slot.isEmpty ? '' : slot.slotName}
+        query={slot.isEmpty ? '' : slot.query}
+        open={shouldEditModalShow}
+        onClose={closeEditModal}
+        onSlotChange={updateSlot}
+      />
     </NamedFrame>
   );
 };

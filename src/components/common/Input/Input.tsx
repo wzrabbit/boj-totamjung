@@ -16,13 +16,14 @@ interface InputProps {
 }
 
 const Input = (props: InputProps) => {
-  const { width, hasError, textAlign, ...rest } = props;
+  const { width, hasError, textAlign, ariaLabel, ...rest } = props;
 
   return (
     <S.Input
       $width={width}
       $hasError={hasError}
       $textAlign={textAlign}
+      aria-label={ariaLabel}
       {...rest}
     />
   );

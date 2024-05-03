@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 12px;
 
   width: 100%;
   height: 100%;
@@ -14,6 +13,7 @@ export const SlotNoPanel = styled.div`
   column-gap: 10px;
 
   height: 26px;
+  margin-bottom: 12px;
 `;
 
 export const SlotControlPanel = styled.div`
@@ -22,4 +22,5 @@ export const SlotControlPanel = styled.div`
   column-gap: 8px;
 
   height: 32px;
+  margin-top: 4px;
 `;

@@ -1,11 +1,9 @@
 import * as S from './IconButton.styled';
 import { SVGProps } from 'react';
-import type { CSSProperties } from 'styled-components';
 
 interface IconButtonProps {
   name: string;
   size: 'large' | 'medium';
-  width: CSSProperties['width'];
   color: string;
   iconSrc?: string | SVGProps<SVGSVGElement>;
   disabled: boolean;
@@ -14,13 +12,11 @@ interface IconButtonProps {
 }
 
 const IconButton = (props: IconButtonProps) => {
-  const { name, size, width, color, iconSrc, disabled, ariaLabel, onClick } =
-    props;
+  const { name, size, color, iconSrc, disabled, ariaLabel, onClick } = props;
 
   return (
     <S.Button
       $size={size}
-      $width={width}
       $color={color}
       aria-label={ariaLabel}
       disabled={disabled}

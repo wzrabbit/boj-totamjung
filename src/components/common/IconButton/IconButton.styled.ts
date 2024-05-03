@@ -2,7 +2,6 @@ import { styled } from 'styled-components';
 
 export const Button = styled.button<{
   $size: 'large' | 'medium';
-  $width: string;
   $color: string;
 }>`
   display: flex;
@@ -11,7 +10,7 @@ export const Button = styled.button<{
   align-items: center;
   justify-content: space-between;
 
-  width: ${({ $width }) => $width};
+  width: auto;
   height: ${({ $size }) => ($size === 'large' ? '40px' : '32px')};
   padding: ${({ $size }) => ($size === 'large' ? '4px 6px' : '2px 4px')};
 
@@ -23,7 +22,7 @@ export const Button = styled.button<{
   color: ${({ $color }) => $color};
 
   &:disabled {
-    opacity: 0.75;
+    opacity: 0.6;
   }
 
   &:not([disabled]):hover {

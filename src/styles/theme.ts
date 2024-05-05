@@ -11,6 +11,7 @@ export const theme = {
     TRANSPARENT_FAINT_WHITE: '#eeeeee20',
     GRAY: '#808080',
     RED: '#ff0000',
+    LIGHT_RED: '#ff5454',
     MAGENTA: '#ff005d',
     AZURE_BLUE: '#007bff',
   },

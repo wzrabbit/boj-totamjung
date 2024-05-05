@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import type { ChangeEvent } from 'react';
 import type { CSSProperties } from 'styled-components';
 import * as S from './Textarea.styled';
@@ -14,7 +15,7 @@ interface TextareaProps {
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const Textarea = (props: TextareaProps) => {
+const Textarea = forwardRef((props: TextareaProps, ref) => {
   const { width, height, hasError, ariaLabel, ...rest } = props;
 
   return (
@@ -23,9 +24,10 @@ const Textarea = (props: TextareaProps) => {
       $height={height}
       $hasError={hasError}
       aria-label={ariaLabel}
+      ref={ref}
       {...rest}
     />
   );
-};
+});
 
 export default Textarea;

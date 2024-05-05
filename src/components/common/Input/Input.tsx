@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import type { ChangeEvent } from 'react';
 import type { CSSProperties } from 'styled-components';
 import * as S from './Input.styled';
@@ -15,7 +16,7 @@ interface InputProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = (props: InputProps) => {
+const Input = forwardRef((props: InputProps, ref) => {
   const { width, hasError, textAlign, ariaLabel, ...rest } = props;
 
   return (
@@ -24,9 +25,10 @@ const Input = (props: InputProps) => {
       $hasError={hasError}
       $textAlign={textAlign}
       aria-label={ariaLabel}
+      ref={ref}
       {...rest}
     />
   );
-};
+});
 
 export default Input;

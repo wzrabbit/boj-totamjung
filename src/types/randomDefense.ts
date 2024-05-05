@@ -67,3 +67,15 @@ export interface QuickSlotsResponse {
   selectedSlotNo: SlotNo;
   slots: QuickSlots;
 }
+
+interface SlotValidVerdict {
+  isValid: true;
+}
+
+interface SlotInvalidVerdict {
+  isValid: false;
+  errorMessage: string;
+  focusElementName?: string;
+}
+
+export type SlotVerdict = SlotValidVerdict | SlotInvalidVerdict;

@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 12px;
 
   width: 600px;
   max-width: 100%;

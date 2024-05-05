@@ -10,9 +10,11 @@ export const theme = {
     WHITE: '#eeeeee',
     TRANSPARENT_FAINT_WHITE: '#eeeeee20',
     GRAY: '#808080',
+    LIGHT_GRAY: '#aaaaaa',
     RED: '#ff0000',
     LIGHT_RED: '#ff5454',
     MAGENTA: '#ff005d',
+    SKY_BLUE: '#00a1ff',
     AZURE_BLUE: '#007bff',
   },
 

@@ -32,3 +32,50 @@ export type Rank =
 export type Tier = keyof typeof solvedAcNumericTierIcons;
 
 export type TierWithoutNotRatable = Exclude<Tier, 31>;
+
+export type Hotkey = 'Alt' | 'F2';
+
+interface FilledSlot {
+  isEmpty: false;
+  slotName: string;
+  query: string;
+}
+
+interface EmptySlot {
+  isEmpty: true;
+}
+
+export type Slot = FilledSlot | EmptySlot;
+
+export type QuickSlots = {
+  1: Slot;
+  2: Slot;
+  3: Slot;
+  4: Slot;
+  5: Slot;
+  6: Slot;
+  7: Slot;
+  8: Slot;
+  9: Slot;
+  0: Slot;
+};
+
+export type SlotNo = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0;
+
+export interface QuickSlotsResponse {
+  hotkey: Hotkey;
+  selectedSlotNo: SlotNo;
+  slots: QuickSlots;
+}
+
+interface SlotValidVerdict {
+  isValid: true;
+}
+
+interface SlotInvalidVerdict {
+  isValid: false;
+  errorMessage: string;
+  focusElementName?: string;
+}
+
+export type SlotVerdict = SlotValidVerdict | SlotInvalidVerdict;

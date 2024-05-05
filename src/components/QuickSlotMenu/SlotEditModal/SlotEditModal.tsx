@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { theme } from '~styles/theme';
 import Modal, { ModalActionButtonsContainer } from '~components/common/Modal';
 import IconButton from '~components/common/IconButton';
 import Text from '~components/common/Text';
 import Textarea from '~components/common/Textarea';
 import Input from '~components/common/Input';
+import ErrorText from '~components/common/ErrorText';
+import useSlotEditModal from '~hooks/randomDefense/useSlotEditModal';
 import { CloseCircleIcon, CheckCircleIcon } from '~images/svg';
 import * as S from './SlotEditModal.styled';
 
@@ -17,14 +19,31 @@ interface SlotEditModalProps {
 }
 
 const SlotEditModal = (props: SlotEditModalProps) => {
-  const { slotName, query, open, onClose, onSlotChange } = props;
-  const [newSlotName, setNewSlotName] = useState(slotName);
-  const [newQuery, setNewQuery] = useState(query);
-
-  useEffect(() => {
-    setNewSlotName(slotName);
-    setNewQuery(query);
-  }, [slotName, query]);
+  const {
+    slotName: initSlotName,
+    query: initQuery,
+    open,
+    onClose,
+    onSlotChange,
+  } = props;
+  const slotNameRef = useRef(null);
+  const queryRef = useRef(null);
+  const {
+    slotName,
+    query,
+    errorMessage,
+    isSlotNameElementHasErrors,
+    isQueryElementHasErrors,
+    setQuery,
+    setSlotName,
+    submitSlotInfo,
+  } = useSlotEditModal({
+    initSlotName,
+    initQuery,
+    slotNameRef,
+    queryRef,
+    onSlotChange,
+  });
 
   return (
     <Modal title="추첨 수정" open={open} onClose={onClose}>
@@ -36,14 +55,15 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           <Input
             type="text"
             width="100%"
-            value={newSlotName}
+            value={slotName}
+            ref={slotNameRef}
             textAlign="left"
             maxLength={30}
             placeholder="0 ~ 30자"
-            hasError={false}
+            hasError={isSlotNameElementHasErrors}
             ariaLabel="새로운 추첨 이름을 입력해주세요"
             onChange={(event) => {
-              setNewSlotName(event.target.value);
+              setSlotName(event.target.value);
             }}
           />
         </S.Label>
@@ -54,15 +74,18 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           <Textarea
             width="100%"
             height="150px"
-            value={newQuery}
+            value={query}
+            ref={queryRef}
+            maxLength={300}
             placeholder="1 ~ 300자"
-            hasError={false}
+            hasError={isQueryElementHasErrors}
             ariaLabel="새로운 쿼리를 입력해주세요"
             onChange={(event) => {
-              setNewQuery(event.target.value);
+              setQuery(event.target.value);
             }}
           />
         </S.Label>
+        <ErrorText fontSize="14px" errorMessage={errorMessage} />
       </S.ModalContent>
       <ModalActionButtonsContainer>
         <IconButton
@@ -82,7 +105,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           disabled={false}
           ariaLabel="확인"
           onClick={() => {
-            onSlotChange(newSlotName, newQuery);
+            submitSlotInfo();
           }}
         />
       </ModalActionButtonsContainer>

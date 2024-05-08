@@ -22,7 +22,7 @@ const TierPresetButtonList = (props: TierPresetButtonListProps) => {
   return (
     <S.Container>
       {RANK_NAMES.map((rankName) => (
-        <TierPresetButton rank={rankName} onClick={onClick} />
+        <TierPresetButton key={rankName} rank={rankName} onClick={onClick} />
       ))}
     </S.Container>
   );

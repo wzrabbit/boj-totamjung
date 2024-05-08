@@ -3,16 +3,17 @@ import { LinkIcon } from '~images/svg';
 
 interface TextLinkProps {
   href: string;
+  fontSize: '16px' | '14px' | '13px';
   children: string;
 }
 
 const TextLink = (props: TextLinkProps) => {
-  const { href, children } = props;
+  const { href, fontSize, children } = props;
 
   return (
     <S.Container href={href} target="__blank" rel="noopener">
-      <S.TextLink>{children}</S.TextLink>
-      <S.LinkIconWrapper>
+      <S.TextLink $fontSize={fontSize}>{children}</S.TextLink>
+      <S.LinkIconWrapper $fontSize={fontSize}>
         <LinkIcon />
       </S.LinkIconWrapper>
     </S.Container>

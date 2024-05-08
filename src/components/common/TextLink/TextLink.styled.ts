@@ -9,6 +9,8 @@ export const Container = styled.a`
 `;
 
 export const TextLink = styled.p`
+export const TextLink = styled.span<{ $fontSize: '16px' | '14px' | '13px' }>`
+  font-size: ${({ $fontSize }) => $fontSize};
   text-decoration: underline 2px dotted;
   -webkit-text-decoration-color: ${({ theme }) =>
     theme.color.TRANSPARENT_LEMON};

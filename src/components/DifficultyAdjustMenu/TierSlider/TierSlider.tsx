@@ -23,9 +23,13 @@ const TierSlider = (props: TierSliderProps) => {
         aria-label="시작 범위 티어 설정하기"
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const newStartTier = Number(event.target.value);
+          const newEndTier = Math.max(Number(newStartTier), endTier);
 
-          if (isTierWithoutNotRatable(newStartTier)) {
-            onChange(newStartTier, endTier);
+          if (
+            isTierWithoutNotRatable(newStartTier) &&
+            isTierWithoutNotRatable(newEndTier)
+          ) {
+            onChange(newStartTier, newEndTier);
           }
         }}
       />
@@ -37,9 +41,13 @@ const TierSlider = (props: TierSliderProps) => {
         aria-label="끝 범위 티어 설정하기"
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const newEndTier = Number(event.target.value);
+          const newStartTier = Math.min(Number(newEndTier), startTier);
 
-          if (isTierWithoutNotRatable(newEndTier)) {
-            onChange(startTier, newEndTier);
+          if (
+            isTierWithoutNotRatable(newStartTier) &&
+            isTierWithoutNotRatable(newEndTier)
+          ) {
+            onChange(newStartTier, newEndTier);
           }
         }}
       />

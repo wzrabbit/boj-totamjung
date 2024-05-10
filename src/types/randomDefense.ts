@@ -79,3 +79,16 @@ interface SlotInvalidVerdict {
 }
 
 export type SlotVerdict = SlotValidVerdict | SlotInvalidVerdict;
+
+export interface RandomDefenseFormData {
+  mode: 'easy' | 'manual';
+  title: string;
+  handle: string;
+  solvedMin: string;
+  solvedMax: string;
+  startTier: TierWithoutNotRatable;
+  endTier: TierWithoutNotRatable;
+  algorithmOperator: 'or' | 'and' | 'nor';
+  algorithmIds: number[];
+  customQuery: string;
+}

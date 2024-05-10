@@ -20,6 +20,7 @@ const YOUTUBE_IMAGE_ICON_SRC =
 
 export const MediumWithSvgIcon: Story = {
   args: {
+    type: 'button',
     name: '버튼',
     size: 'medium',
     color: '#49aaff',
@@ -34,6 +35,7 @@ export const MediumWithSvgIcon: Story = {
 
 export const MediumWithSvgIconDisabled: Story = {
   args: {
+    type: 'button',
     name: '버튼',
     size: 'medium',
     color: '#49aaff',
@@ -48,6 +50,7 @@ export const MediumWithSvgIconDisabled: Story = {
 
 export const LargeWithSvgIcon: Story = {
   args: {
+    type: 'button',
     name: '버튼',
     size: 'large',
     color: '#49aaff',
@@ -62,6 +65,7 @@ export const LargeWithSvgIcon: Story = {
 
 export const MediumWithImageIcon: Story = {
   args: {
+    type: 'button',
     name: '버튼',
     size: 'medium',
     color: '#ff4949',
@@ -76,6 +80,7 @@ export const MediumWithImageIcon: Story = {
 
 export const LargeWithImageIcon: Story = {
   args: {
+    type: 'button',
     name: '버튼',
     size: 'large',
     color: '#ff4949',
@@ -90,6 +95,7 @@ export const LargeWithImageIcon: Story = {
 
 export const MediumWithNoIcon: Story = {
   args: {
+    type: 'button',
     name: '버튼',
     size: 'medium',
     color: '#d9d9d9',
@@ -103,6 +109,7 @@ export const MediumWithNoIcon: Story = {
 
 export const LargeWithNoIcon: Story = {
   args: {
+    type: 'button',
     name: '버튼',
     size: 'large',
     color: '#d9d9d9',

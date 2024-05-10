@@ -59,6 +59,7 @@ export const TextModal: Story = {
           </div>
         </Modal>
         <IconButton
+          type="button"
           name="모달 열기"
           size="large"
           color="#a15eff"
@@ -103,6 +104,7 @@ export const TextModal: Story = {
  *   </div>
  *   <ModalActionButtonsContainer>
  *     <IconButton
+ *       type="button"
  *       name="취소"
  *       size="medium"
  *       color="#ff665e"
@@ -115,6 +117,7 @@ export const TextModal: Story = {
  *       }}
  *     />
  *     <IconButton
+ *       type="button"
  *       name="확인"
  *       size="medium"
  *       color="#5eff69"
@@ -156,6 +159,7 @@ export const TextWithControlButtons: Story = {
           </div>
           <ModalActionButtonsContainer>
             <IconButton
+              type="button"
               name="취소"
               size="medium"
               color="#ff665e"
@@ -168,6 +172,7 @@ export const TextWithControlButtons: Story = {
               }}
             />
             <IconButton
+              type="button"
               name="확인"
               size="medium"
               color="#5eff69"
@@ -182,6 +187,7 @@ export const TextWithControlButtons: Story = {
           </ModalActionButtonsContainer>
         </Modal>
         <IconButton
+          type="button"
           name="모달 열기"
           size="large"
           color="#a15eff"
@@ -232,6 +238,7 @@ export const VeryLongTitle: Story = {
           </div>
           <ModalActionButtonsContainer>
             <IconButton
+              type="button"
               name="그렇군요"
               size="medium"
               color="#a3a3a3"
@@ -245,6 +252,7 @@ export const VeryLongTitle: Story = {
           </ModalActionButtonsContainer>
         </Modal>
         <IconButton
+          type="button"
           name="모달 열기"
           size="large"
           color="#a15eff"

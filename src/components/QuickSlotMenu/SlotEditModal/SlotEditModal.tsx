@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { theme } from '~styles/theme';
 import Modal, { ModalActionButtonsContainer } from '~components/common/Modal';
 import IconButton from '~components/common/IconButton';
@@ -26,8 +25,6 @@ const SlotEditModal = (props: SlotEditModalProps) => {
     onClose,
     onSlotChange,
   } = props;
-  const slotNameRef = useRef(null);
-  const queryRef = useRef(null);
   const {
     slotName,
     query,
@@ -37,17 +34,17 @@ const SlotEditModal = (props: SlotEditModalProps) => {
     setQuery,
     setSlotName,
     submitSlotInfo,
+    slotNameRef,
+    queryRef,
   } = useSlotEditModal({
     initSlotName,
     initQuery,
-    slotNameRef,
-    queryRef,
     onSlotChange,
   });
 
   return (
     <Modal title="추첨 수정" open={open} onClose={onClose}>
-      <S.ModalContent>
+      <S.Form>
         <S.Label>
           <Text type="primary" fontSize="16px">
             추첨 이름
@@ -55,6 +52,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           <Input
             type="text"
             width="100%"
+            name="title"
             value={slotName}
             ref={slotNameRef}
             textAlign="left"
@@ -74,6 +72,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           <Textarea
             width="100%"
             height="150px"
+            name="query"
             value={query}
             ref={queryRef}
             maxLength={300}
@@ -86,9 +85,10 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           />
         </S.Label>
         <ErrorText fontSize="14px" errorMessage={errorMessage} />
-      </S.ModalContent>
+      </S.Form>
       <ModalActionButtonsContainer>
         <IconButton
+          type="button"
           name="취소"
           size="medium"
           iconSrc={<CloseCircleIcon />}
@@ -98,15 +98,14 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           onClick={onClose}
         />
         <IconButton
+          type="button"
           name="확인"
           size="medium"
           iconSrc={<CheckCircleIcon />}
           color={theme.color.GOLD}
           disabled={false}
           ariaLabel="확인"
-          onClick={() => {
-            submitSlotInfo();
-          }}
+          onClick={submitSlotInfo}
         />
       </ModalActionButtonsContainer>
     </Modal>

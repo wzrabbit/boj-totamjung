@@ -44,6 +44,7 @@ const QuickSlotMenu = () => {
           <SlotInfo {...slot} />
           <S.SlotControlPanel>
             <IconButton
+              type="button"
               name="쿼리 복사"
               size="medium"
               color={theme.color.LIGHT_GRAY}
@@ -58,6 +59,7 @@ const QuickSlotMenu = () => {
               }}
             />
             <IconButton
+              type="button"
               name="수정"
               size="medium"
               color={theme.color.SKY_BLUE}
@@ -67,6 +69,7 @@ const QuickSlotMenu = () => {
               onClick={openEditModal}
             />
             <IconButton
+              type="button"
               name="삭제"
               size="medium"
               color={theme.color.RED}

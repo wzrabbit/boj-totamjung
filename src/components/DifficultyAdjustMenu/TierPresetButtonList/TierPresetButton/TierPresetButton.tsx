@@ -44,6 +44,7 @@ const TierPresetButtonProps = (props: TierPresetButtonProps) => {
   return (
     <S.Container>
       <S.Button
+        type="button"
         $rank={rank}
         aria-label={ARIA_LABEL_TEXTS[rank]}
         onClick={() => {

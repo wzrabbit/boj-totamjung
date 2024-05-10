@@ -40,6 +40,7 @@ const AlgorithmPool = () => {
         </S.SearchPanelContainer>
         <S.CheckButtonPanel>
           <S.CheckButton
+            type="button"
             onClick={checkAllAlgorithms}
             aria-label="알고리즘 분류 전체 선택"
           >
@@ -47,6 +48,7 @@ const AlgorithmPool = () => {
             <S.CheckButtonLabel>전체 선택</S.CheckButtonLabel>
           </S.CheckButton>
           <S.CheckButton
+            type="button"
             onClick={uncheckAllAlgorithms}
             aria-label="알고리즘 분류 전체 해제"
           >

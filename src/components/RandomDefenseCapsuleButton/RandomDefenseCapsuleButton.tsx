@@ -12,6 +12,7 @@ const RandomDefenseCapsuleButton = (props: RandomDefenseCapsuleButtonProps) => {
   return (
     <S.Container>
       <S.LeftButton
+        type="button"
         $isActivated={mode === 'easy'}
         onClick={() => {
           onClick('easy');
@@ -21,6 +22,7 @@ const RandomDefenseCapsuleButton = (props: RandomDefenseCapsuleButtonProps) => {
         간편 입력
       </S.LeftButton>
       <S.RightButton
+        type="button"
         $isActivated={mode === 'manual'}
         onClick={() => {
           onClick('manual');

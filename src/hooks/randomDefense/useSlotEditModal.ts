@@ -1,24 +1,22 @@
-import { useState, useEffect } from 'react';
-import type { RefObject } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { validateSlot } from '~domains/randomDefense/slotValidator';
 
 interface UseSlotEditModalParams {
   initSlotName: string;
   initQuery: string;
-  slotNameRef: RefObject<HTMLInputElement>;
-  queryRef: RefObject<HTMLTextAreaElement>;
   onSlotChange: (slotName: string, query: string) => void;
 }
 
 const useSlotEditModal = (params: UseSlotEditModalParams) => {
-  const { initSlotName, initQuery, slotNameRef, queryRef, onSlotChange } =
-    params;
+  const { initSlotName, initQuery, onSlotChange } = params;
   const [slotName, setSlotName] = useState(initSlotName);
   const [query, setQuery] = useState(initQuery);
   const [errorMessage, setErrorMessage] = useState('');
   const [errorElementName, setErrorElementName] = useState<string | undefined>(
     undefined,
   );
+  const slotNameRef = useRef<HTMLInputElement>(null);
+  const queryRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     setSlotName(initSlotName);
@@ -64,6 +62,8 @@ const useSlotEditModal = (params: UseSlotEditModalParams) => {
     setQuery,
     setSlotName,
     submitSlotInfo,
+    slotNameRef,
+    queryRef,
   };
 };
 

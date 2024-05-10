@@ -6,6 +6,7 @@ import * as S from './Input.styled';
 interface InputProps {
   type: 'text' | 'number';
   width: CSSProperties['width'];
+  name?: string;
   value: string;
   minLength?: number;
   maxLength?: number;

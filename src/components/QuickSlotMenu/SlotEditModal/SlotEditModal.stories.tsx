@@ -23,6 +23,7 @@ export const Default: Story = {
     return (
       <>
         <IconButton
+          type="button"
           name="모달 열기"
           size="large"
           color="#d1b072"

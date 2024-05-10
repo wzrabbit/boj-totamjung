@@ -6,6 +6,7 @@ import * as S from './Textarea.styled';
 interface TextareaProps {
   width: CSSProperties['width'];
   height: CSSProperties['height'];
+  name?: string;
   value: string;
   minLength?: number;
   maxLength?: number;

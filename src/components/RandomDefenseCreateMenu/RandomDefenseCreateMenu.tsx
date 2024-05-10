@@ -6,30 +6,54 @@ import TextLink from '~components/common/TextLink';
 import Text from '~components/common/Text';
 import DifficultyAdjustMenu from '~components/DifficultyAdjustMenu';
 import AlgorithmSearchInput from '~components/AlgorithmSearchInput';
+import useRandomDefenseCreateMenu from '~hooks/randomDefense/useRandomDefenseCreateMenu';
 import * as S from './RandomDefenseCreateMenu.styled';
 
 const RandomDefenseCreateMenu = () => {
-  const mode = 'easy';
+  const {
+    mode,
+    title,
+    handle,
+    solvedMin,
+    solvedMax,
+    startTier,
+    endTier,
+    algorithmOperator,
+    algorithmIds,
+    customQuery,
+    setMode,
+    setRandomDefenseInputValue,
+    setTierRange,
+    setAlgorithmIds,
+    titleRef,
+    handleRef,
+    solvedMinRef,
+    solvedMaxRef,
+    customQueryRef,
+  } = useRandomDefenseCreateMenu();
 
   return (
     <NamedFrame width="650px" height="386px" padding="10px" title="추첨 만들기">
       <S.Container>
         <S.RandomDefenseCapsuleButtonWrapper>
-          <RandomDefenseCapsuleButton mode={mode} onClick={() => {}} />
+          <RandomDefenseCapsuleButton mode={mode} onClick={setMode} />
         </S.RandomDefenseCapsuleButtonWrapper>
         <S.Label $width="380px">
           <Text type="primary" fontSize="16px">
             추첨 이름
           </Text>
           <Input
+            ref={titleRef}
             type="text"
             width="100%"
             textAlign="left"
             placeholder="0 ~ 30자"
             ariaLabel="추첨 이름"
-            value=""
+            name="title"
+            value={title}
+            maxLength={30}
             hasError={false}
-            onChange={() => {}}
+            onChange={setRandomDefenseInputValue}
           />
         </S.Label>
         {mode === 'easy' ? (
@@ -40,14 +64,18 @@ const RandomDefenseCreateMenu = () => {
                   검색에서 제외할 닉네임
                 </Text>
                 <Input
+                  ref={handleRef}
                   type="text"
                   width="100%"
                   textAlign="left"
                   placeholder="3 ~ 20자"
                   ariaLabel="검색에서 제외할 닉네임"
-                  value=""
+                  name="handle"
+                  value={handle}
+                  minLength={3}
+                  maxLength={20}
                   hasError={false}
-                  onChange={() => {}}
+                  onChange={setRandomDefenseInputValue}
                 />
               </S.Label>
               <S.PanelContainer $width="166px">
@@ -56,27 +84,31 @@ const RandomDefenseCreateMenu = () => {
                 </Text>
                 <S.SolvedRangeInputsContainer>
                   <Input
+                    ref={solvedMinRef}
                     type="number"
                     width="70px"
                     textAlign="center"
                     placeholder=""
                     ariaLabel="맞은 사람 수의 하한"
-                    value=""
+                    name="solvedMin"
+                    value={solvedMin}
                     hasError={false}
-                    onChange={() => {}}
+                    onChange={setRandomDefenseInputValue}
                   />
                   <Text type="primary" fontSize="16px">
                     ~
                   </Text>
                   <Input
+                    ref={solvedMaxRef}
                     type="number"
                     width="70px"
                     textAlign="center"
                     placeholder=""
                     ariaLabel="맞은 사람 수의 상한"
-                    value=""
+                    name="solvedMax"
+                    value={solvedMax}
                     hasError={false}
-                    onChange={() => {}}
+                    onChange={setRandomDefenseInputValue}
                   />
                 </S.SolvedRangeInputsContainer>
               </S.PanelContainer>
@@ -87,21 +119,23 @@ const RandomDefenseCreateMenu = () => {
               </Text>
               <S.DifficultyAdjustMenuWrapper>
                 <DifficultyAdjustMenu
-                  startTier={1}
-                  endTier={30}
-                  onChange={() => {}}
+                  startTier={startTier}
+                  endTier={endTier}
+                  onChange={setTierRange}
                 />
               </S.DifficultyAdjustMenuWrapper>
             </S.PanelContainer>
-            <S.Label $width="446px">
+            <S.PanelContainer $width="446px">
               <Text type="primary" fontSize="16px">
                 검색에 포함할 알고리즘
               </Text>
               <AlgorithmSearchInput
-                selectedAlgorithms={[]}
-                onChange={() => {}}
+                selectedAlgorithmIds={algorithmIds}
+                onChange={(foo) => {
+                  setAlgorithmIds(foo);
+                }}
               />
-            </S.Label>
+            </S.PanelContainer>
           </>
         ) : (
           <>
@@ -110,13 +144,17 @@ const RandomDefenseCreateMenu = () => {
                 쿼리
               </Text>
               <Textarea
+                ref={customQueryRef}
                 width="100%"
                 height="150px"
-                value=""
+                name="customQuery"
+                value={customQuery}
                 placeholder="1 ~ 300자"
+                minLength={1}
+                maxLength={300}
                 hasError={false}
                 ariaLabel="쿼리"
-                onChange={() => {}}
+                onChange={setRandomDefenseInputValue}
               />
             </S.Label>
             <Text type="normal" fontSize="14px">

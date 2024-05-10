@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import type { CSSProperties } from 'react';
 
-export const Container = styled.div`
+export const Container = styled.form`
   display: flex;
   flex-direction: column;
   row-gap: 12px;

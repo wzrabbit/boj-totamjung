@@ -1,27 +1,32 @@
 import * as S from './IconButton.styled';
 import { SVGProps } from 'react';
 
-interface IconButtonProps {
+interface CommonIconButtonProps {
   name: string;
   size: 'large' | 'medium';
   color: string;
   iconSrc?: string | SVGProps<SVGSVGElement>;
   disabled: boolean;
   ariaLabel: string;
+}
+
+interface ButtonTypeProps {
+  type: 'submit';
+}
+
+interface SubmitTypeProps {
+  type: 'button';
   onClick: () => void;
 }
 
+type IconButtonProps = CommonIconButtonProps &
+  (ButtonTypeProps | SubmitTypeProps);
+
 const IconButton = (props: IconButtonProps) => {
-  const { name, size, color, iconSrc, disabled, ariaLabel, onClick } = props;
+  const { name, size, color, iconSrc, ariaLabel, ...rest } = props;
 
   return (
-    <S.Button
-      $size={size}
-      $color={color}
-      aria-label={ariaLabel}
-      disabled={disabled}
-      onClick={onClick}
-    >
+    <S.Button $size={size} $color={color} aria-label={ariaLabel} {...rest}>
       {iconSrc &&
         (typeof iconSrc === 'string' ? (
           <S.IconImage src={iconSrc} alt={name} $size={size} />

@@ -1,45 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getSearchResults } from '~domains/algorithm/getSearchResults';
 import { MAX_SEARCH_ALGORITHM_COUNT } from '~constants/randomDefense';
-import type { Algorithm } from '~types/algorithm';
-import type {
-  ChangeEventHandler,
-  KeyboardEventHandler,
-  RefObject,
-} from 'react';
+import type { ChangeEventHandler, KeyboardEventHandler } from 'react';
 
 interface UseAlgorithmSearchInputParams {
-  containerRef: RefObject<HTMLDivElement>;
-  inputRef: RefObject<HTMLInputElement>;
-  selectedAlgorithms: Algorithm[];
-  onChange: (algorithms: Algorithm[]) => void;
+  selectedAlgorithmIds: number[];
+  onChange: (algorithmIds: number[]) => void;
 }
 
 const useAlgorithmSearchInput = (params: UseAlgorithmSearchInputParams) => {
-  const { containerRef, inputRef, selectedAlgorithms, onChange } = params;
+  const { selectedAlgorithmIds, onChange } = params;
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const updateInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setInputValue(() => event.target.value);
+    setInputValue(event.target.value);
   };
 
-  const selectedAlgorithmIds = selectedAlgorithms.map(({ id }) => id);
-  const searchedAlgorithms =
-    selectedAlgorithms.length < MAX_SEARCH_ALGORITHM_COUNT
-      ? getSearchResults(inputValue).filter(
-          ({ id }) => !selectedAlgorithmIds.includes(id),
-        )
+  const searchedAlgorithmIds =
+    selectedAlgorithmIds.length < MAX_SEARCH_ALGORITHM_COUNT
+      ? getSearchResults(inputValue)
+          .filter(({ id }) => !selectedAlgorithmIds.includes(id))
+          .map(({ id }) => id)
       : [];
 
   const processActionIfKeyPress: KeyboardEventHandler = (event) => {
     if (event.key === 'Enter') {
-      if (searchedAlgorithms.length === 0) {
+      if (searchedAlgorithmIds.length === 0) {
         return;
       }
 
-      onChange([...selectedAlgorithms, searchedAlgorithms[0]]);
-      setInputValue(() => '');
+      onChange([...selectedAlgorithmIds, searchedAlgorithmIds[0]]);
+      setInputValue('');
     }
 
     if (event.key === 'Backspace') {
@@ -47,17 +41,17 @@ const useAlgorithmSearchInput = (params: UseAlgorithmSearchInputParams) => {
         return;
       }
 
-      onChange(selectedAlgorithms.slice(0, -1));
+      onChange(selectedAlgorithmIds.slice(0, -1));
     }
   };
 
-  const addAlgorithm = (algorithm: Algorithm) => {
-    onChange([...selectedAlgorithms, algorithm]);
-    setInputValue(() => '');
+  const addAlgorithmId = (algorithmId: number) => {
+    onChange([...selectedAlgorithmIds, algorithmId]);
+    setInputValue('');
   };
 
-  const deleteAlgorithm = (algorithm: Algorithm) => {
-    onChange(selectedAlgorithms.filter(({ id }) => id !== algorithm.id));
+  const deleteAlgorithmId = (algorithmId: number) => {
+    onChange(selectedAlgorithmIds.filter((id) => id !== algorithmId));
   };
 
   useEffect(() => {
@@ -99,11 +93,13 @@ const useAlgorithmSearchInput = (params: UseAlgorithmSearchInputParams) => {
   return {
     isOpen,
     inputValue,
-    searchedAlgorithms,
+    searchedAlgorithmIds,
     updateInputValue,
     processActionIfKeyPress,
-    addAlgorithm,
-    deleteAlgorithm,
+    addAlgorithmId,
+    deleteAlgorithmId,
+    containerRef,
+    inputRef,
   };
 };
 

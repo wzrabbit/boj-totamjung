@@ -29,17 +29,9 @@ export const Default: Story = {
     },
   ],
   args: {
-    selectedAlgorithms: [
-      { id: 8, name: '브루트포스 알고리즘' },
-      { id: 35, name: '트리에서의 다이나믹 프로그래밍' },
-      { id: 82, name: '가장 긴 증가하는 부분 수열 O(log n)' },
-    ],
-    onChange: (algorithms) => {
-      alert(
-        `onChange([${algorithms.map(
-          ({ id, name }) => `\n  ${JSON.stringify({ id, name })}`,
-        )}])`,
-      );
+    selectedAlgorithmIds: [8, 35, 82],
+    onChange: (algorithmIds) => {
+      alert(`onChange([${algorithmIds.join(', ')}])`);
     },
   },
 };
@@ -63,19 +55,9 @@ export const ReachedLimit: Story = {
     },
   ],
   args: {
-    selectedAlgorithms: [
-      { id: 8, name: '브루트포스 알고리즘' },
-      { id: 35, name: '트리에서의 다이나믹 프로그래밍' },
-      { id: 82, name: '가장 긴 증가하는 부분 수열 O(log n)' },
-      { id: 127, name: '덱을 이용한 다이나믹 프로그래밍' },
-      { id: 40, name: '느리게 갱신되는 세그먼트 트리' },
-    ],
-    onChange: (algorithms) => {
-      alert(
-        `onChange([${algorithms.map(
-          ({ id, name }) => `\n  ${JSON.stringify({ id, name })}`,
-        )}])`,
-      );
+    selectedAlgorithmIds: [8, 35, 82, 127, 40],
+    onChange: (algorithmIds) => {
+      alert(`onChange([${algorithmIds.join(', ')}])`);
     },
   },
 };

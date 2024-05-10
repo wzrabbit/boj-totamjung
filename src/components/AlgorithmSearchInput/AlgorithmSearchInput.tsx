@@ -1,30 +1,27 @@
-import { useRef } from 'react';
 import * as S from './AlgorithmSearchInput.styled';
 import MiniAlgorithmButton from './MiniAlgorithmButton';
 import useAlgorithmSearchInput from '~hooks/randomDefense/useAlgorithmSearchInput';
-import type { Algorithm } from '~types/algorithm';
+import { ALGORITHM_INFOS } from '~constants/algorithmInfos';
 
 interface AlgorithmSearchInputProps {
-  selectedAlgorithms: Algorithm[];
-  onChange: (selectedAlgorithms: Algorithm[]) => void;
+  selectedAlgorithmIds: number[];
+  onChange: (selectedAlgorithmIds: number[]) => void;
 }
 
 const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
-  const { selectedAlgorithms, onChange } = props;
-  const containerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const { selectedAlgorithmIds, onChange } = props;
   const {
     isOpen,
     inputValue,
-    searchedAlgorithms,
+    searchedAlgorithmIds,
     updateInputValue,
     processActionIfKeyPress,
-    addAlgorithm,
-    deleteAlgorithm,
-  } = useAlgorithmSearchInput({
+    addAlgorithmId,
+    deleteAlgorithmId,
     containerRef,
     inputRef,
-    selectedAlgorithms,
+  } = useAlgorithmSearchInput({
+    selectedAlgorithmIds,
     onChange,
   });
 
@@ -32,15 +29,24 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
     <S.Container ref={containerRef} $isOpen={isOpen} tabIndex={-1}>
       <S.InputPanel tabIndex={-1}>
         <>
-          {selectedAlgorithms.map(({ id, name }) => (
-            <MiniAlgorithmButton
-              key={id}
-              mode="delete"
-              id={id}
-              name={name}
-              onClick={deleteAlgorithm}
-            />
-          ))}
+          {selectedAlgorithmIds.map((selectedId) => {
+            const searchedAlgorithm = ALGORITHM_INFOS.find(
+              ({ id }) => id === selectedId,
+            );
+            const searchedName = searchedAlgorithm
+              ? searchedAlgorithm.name
+              : '';
+
+            return (
+              <MiniAlgorithmButton
+                key={selectedId}
+                mode="delete"
+                id={selectedId}
+                name={searchedName}
+                onClick={deleteAlgorithmId}
+              />
+            );
+          })}
           <S.SearchInput
             ref={inputRef}
             maxLength={100}
@@ -53,15 +59,22 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
         </>
       </S.InputPanel>
       <S.SearchResultPanel $isOpen={isOpen} tabIndex={-1}>
-        {searchedAlgorithms.map(({ id, name }) => (
-          <MiniAlgorithmButton
-            key={id}
-            mode="add"
-            id={id}
-            name={name}
-            onClick={addAlgorithm}
-          />
-        ))}
+        {searchedAlgorithmIds.map((selectedId) => {
+          const searchedAlgorithm = ALGORITHM_INFOS.find(
+            ({ id }) => id === selectedId,
+          );
+          const searchedName = searchedAlgorithm ? searchedAlgorithm.name : '';
+
+          return (
+            <MiniAlgorithmButton
+              key={selectedId}
+              mode="add"
+              id={selectedId}
+              name={searchedName}
+              onClick={addAlgorithmId}
+            />
+          );
+        })}
       </S.SearchResultPanel>
     </S.Container>
   );

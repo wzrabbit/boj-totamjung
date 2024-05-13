@@ -59,6 +59,12 @@ export const DifficultyAdjustMenuWrapper = styled.div`
   justify-content: center;
 `;
 
+export const InformationTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+`;
+
 export const RandomDefenseCreateButtonWrapper = styled.div`
   position: absolute;
   bottom: 0;

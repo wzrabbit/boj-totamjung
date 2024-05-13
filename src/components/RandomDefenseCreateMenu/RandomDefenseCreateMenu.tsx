@@ -179,13 +179,19 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                 onChange={setRandomDefenseInputValue}
               />
             </S.Label>
-            <Text type="normal" fontSize="14px">
-              solved.ac 검색 쿼리 작성법을 모르신다면,{' '}
-              <TextLink href="https://solved.ac/search" fontSize="14px">
-                solved.ac 문제 고급 검색
-              </TextLink>{' '}
-              페이지를 확인해 보세요!
-            </Text>
+            <S.InformationTextContainer>
+              <Text type="normal" fontSize="14px">
+                solved.ac 검색 쿼리 작성법을 모르신다면,{' '}
+                <TextLink href="https://solved.ac/search" fontSize="14px">
+                  solved.ac 문제 고급 검색
+                </TextLink>{' '}
+                페이지를 확인해 보세요!
+              </Text>
+              <Text type="normal" fontSize="14px">
+                추첨은 비로그인 상태에서 진행되므로, 서포터 전용 쿼리는 사용할
+                수 없음에 유의해 주세요.
+              </Text>
+            </S.InformationTextContainer>
           </>
         )}
         <S.RandomDefenseCreateButtonWrapper>

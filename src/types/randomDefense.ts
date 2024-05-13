@@ -80,6 +80,8 @@ interface SlotInvalidVerdict {
 
 export type SlotVerdict = SlotValidVerdict | SlotInvalidVerdict;
 
+export type SearchOperator = 'OR' | 'AND' | 'NOR';
+
 export interface RandomDefenseFormData {
   mode: 'easy' | 'manual';
   title: string;
@@ -88,7 +90,7 @@ export interface RandomDefenseFormData {
   solvedMax: string;
   startTier: TierWithoutNotRatable;
   endTier: TierWithoutNotRatable;
-  algorithmOperator: 'or' | 'and' | 'nor';
+  searchOperator: SearchOperator;
   algorithmIds: number[];
   customQuery: string;
 }

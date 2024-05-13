@@ -31,6 +31,9 @@ const useRandomDefenseCreateMenu = (
   const [randomDefenseFormData, setRandomDefenseFormData] =
     useState<RandomDefenseFormData>(initialRandomDefenseFormData);
   const [errorMessage, setErrorMessage] = useState('');
+  const [errorElementName, setErrorElementName] = useState<string | undefined>(
+    undefined,
+  );
   const {
     mode,
     title,
@@ -55,6 +58,7 @@ const useRandomDefenseCreateMenu = (
       mode,
     }));
     setErrorMessage('');
+    setErrorElementName(undefined);
   };
 
   const setRandomDefenseInputValue: ChangeEventHandler<
@@ -113,10 +117,32 @@ const useRandomDefenseCreateMenu = (
     if (validationResult.isValid) {
       onSubmit(randomDefenseFormData);
       setErrorMessage('');
+      setErrorElementName(undefined);
       return;
     }
 
     setErrorMessage(validationResult.errorMessage);
+    setErrorElementName(validationResult.focusElementName);
+
+    const focusElementName = validationResult.focusElementName;
+
+    switch (focusElementName) {
+      case 'title':
+        titleRef.current?.select();
+        break;
+      case 'handle':
+        handleRef.current?.select();
+        break;
+      case 'solvedMin':
+        solvedMinRef.current?.select();
+        break;
+      case 'solvedMax':
+        solvedMaxRef.current?.select();
+        break;
+      case 'customQuery':
+        customQueryRef.current?.select();
+        break;
+    }
   };
 
   return {
@@ -130,13 +156,14 @@ const useRandomDefenseCreateMenu = (
     searchOperator,
     algorithmIds,
     customQuery,
+    errorMessage,
+    errorElementName,
     setMode,
     setRandomDefenseInputValue,
     setTierRange,
     setSearchOperator,
     setAlgorithmIds,
     submitRandomDefense,
-    errorMessage,
     titleRef,
     handleRef,
     solvedMinRef,

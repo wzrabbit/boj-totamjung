@@ -31,6 +31,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     algorithmIds,
     customQuery,
     errorMessage,
+    errorElementName,
     setMode,
     setRandomDefenseInputValue,
     setTierRange,
@@ -67,7 +68,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             name="title"
             value={title}
             maxLength={30}
-            hasError={false}
+            hasError={errorElementName === 'title'}
             onChange={setRandomDefenseInputValue}
           />
         </S.Label>
@@ -89,7 +90,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                   value={handle}
                   minLength={3}
                   maxLength={20}
-                  hasError={false}
+                  hasError={errorElementName === 'handle'}
                   onChange={setRandomDefenseInputValue}
                 />
               </S.Label>
@@ -107,7 +108,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                     ariaLabel="맞은 사람 수의 하한"
                     name="solvedMin"
                     value={solvedMin}
-                    hasError={false}
+                    hasError={errorElementName === 'solvedMin'}
                     onChange={setRandomDefenseInputValue}
                   />
                   <Text type="primary" fontSize="16px">
@@ -122,7 +123,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                     ariaLabel="맞은 사람 수의 상한"
                     name="solvedMax"
                     value={solvedMax}
-                    hasError={false}
+                    hasError={errorElementName === 'solvedMax'}
                     onChange={setRandomDefenseInputValue}
                   />
                 </S.SolvedRangeInputsContainer>
@@ -173,7 +174,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                 placeholder="1 ~ 300자"
                 minLength={1}
                 maxLength={300}
-                hasError={false}
+                hasError={errorElementName === 'customQuery'}
                 ariaLabel="쿼리"
                 onChange={setRandomDefenseInputValue}
               />

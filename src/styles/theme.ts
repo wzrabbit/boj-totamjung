@@ -16,6 +16,8 @@ export const theme = {
     MAGENTA: '#ff005d',
     SKY_BLUE: '#00a1ff',
     AZURE_BLUE: '#007bff',
+    ORANGE: '#ff8533',
+    DARK_ORANGE: '#bb4b00',
   },
 
   solvedAcTier: {

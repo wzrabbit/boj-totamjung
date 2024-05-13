@@ -11,4 +11,5 @@ export { ReactComponent as SwitchIcon } from './switch.svg';
 export { ReactComponent as CopyIcon } from './copy.svg';
 export { ReactComponent as EditIcon } from './edit.svg';
 export { ReactComponent as WarningIcon } from './warning.svg';
+export { ReactComponent as DiceIcon } from './dice.svg';
 export { ReactComponent as CheckIcon } from './check.svg';

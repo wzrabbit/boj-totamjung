@@ -5,6 +5,7 @@ import Textarea from '~components/common/Textarea';
 import TextLink from '~components/common/TextLink';
 import Text from '~components/common/Text';
 import DifficultyAdjustMenu from '~components/DifficultyAdjustMenu';
+import SearchOperatorSelect from '~components/SearchOperatorSelect';
 import AlgorithmSearchInput from '~components/AlgorithmSearchInput';
 import useRandomDefenseCreateMenu from '~hooks/randomDefense/useRandomDefenseCreateMenu';
 import RandomDefenseCreateButton from '~components/RandomDefenseCreateButton';
@@ -33,6 +34,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     setMode,
     setRandomDefenseInputValue,
     setTierRange,
+    setSearchOperator,
     setAlgorithmIds,
     submitRandomDefense,
     titleRef,
@@ -139,9 +141,15 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               </S.DifficultyAdjustMenuWrapper>
             </S.PanelContainer>
             <S.PanelContainer $width="446px">
-              <Text type="primary" fontSize="16px">
-                검색에 포함할 알고리즘
-              </Text>
+              <S.Row $columnGap="110px">
+                <Text type="primary" fontSize="16px">
+                  검색에 포함할 알고리즘
+                </Text>
+                <SearchOperatorSelect
+                  searchOperator={searchOperator}
+                  onClick={setSearchOperator}
+                />
+              </S.Row>
               <AlgorithmSearchInput
                 selectedAlgorithmIds={algorithmIds}
                 onChange={(foo) => {

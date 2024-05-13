@@ -1,9 +1,15 @@
 import { useState, useRef } from 'react';
-import type { ChangeEventHandler } from 'react';
+import { isRandomDefenseFormData } from '~types/typeGuards';
+import { validateRandomDefenseFormData } from '~domains/randomDefense/validateRandomDefenseFormData';
+import type { ChangeEventHandler, MouseEventHandler } from 'react';
 import type {
   RandomDefenseFormData,
   TierWithoutNotRatable,
 } from '~types/randomDefense';
+
+interface UseRandomDefenseCreateMenuParams {
+  onSubmit: (randomDefenseFormData: RandomDefenseFormData) => void;
+}
 
 const initialRandomDefenseFormData: RandomDefenseFormData = {
   mode: 'easy',
@@ -18,9 +24,13 @@ const initialRandomDefenseFormData: RandomDefenseFormData = {
   customQuery: '',
 };
 
-const useRandomDefenseCreateMenu = () => {
+const useRandomDefenseCreateMenu = (
+  params: UseRandomDefenseCreateMenuParams,
+) => {
+  const { onSubmit } = params;
   const [randomDefenseFormData, setRandomDefenseFormData] =
     useState<RandomDefenseFormData>(initialRandomDefenseFormData);
+  const [errorMessage, setErrorMessage] = useState('');
   const {
     mode,
     title,
@@ -44,6 +54,7 @@ const useRandomDefenseCreateMenu = () => {
       ...prev,
       mode,
     }));
+    setErrorMessage('');
   };
 
   const setRandomDefenseInputValue: ChangeEventHandler<
@@ -90,6 +101,24 @@ const useRandomDefenseCreateMenu = () => {
     }));
   };
 
+  const submitRandomDefense: MouseEventHandler = () => {
+    if (!isRandomDefenseFormData(randomDefenseFormData)) {
+      return;
+    }
+
+    const validationResult = validateRandomDefenseFormData(
+      randomDefenseFormData,
+    );
+
+    if (validationResult.isValid) {
+      onSubmit(randomDefenseFormData);
+      setErrorMessage('');
+      return;
+    }
+
+    setErrorMessage(validationResult.errorMessage);
+  };
+
   return {
     mode,
     title,
@@ -106,6 +135,8 @@ const useRandomDefenseCreateMenu = () => {
     setTierRange,
     setSearchOperator,
     setAlgorithmIds,
+    submitRandomDefense,
+    errorMessage,
     titleRef,
     handleRef,
     solvedMinRef,

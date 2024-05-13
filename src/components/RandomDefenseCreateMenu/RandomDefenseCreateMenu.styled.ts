@@ -11,9 +11,16 @@ export const Container = styled.form`
   padding-top: 6px;
 `;
 
-export const RandomDefenseCapsuleButtonWrapper = styled.div`
+export const ErrorTextWrapper = styled.div`
   position: absolute;
-  top: 28px;
+  top: -32px;
+  right: 0;
+`;
+
+export const RandomDefenseCapsuleButtonWrapper = styled.div`
+  display: flex;
+  position: absolute;
+  top: 26px;
   right: 0;
 `;
 
@@ -49,4 +56,10 @@ export const SolvedRangeInputsContainer = styled.div`
 export const DifficultyAdjustMenuWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const RandomDefenseCreateButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
 `;

@@ -7,9 +7,17 @@ import Text from '~components/common/Text';
 import DifficultyAdjustMenu from '~components/DifficultyAdjustMenu';
 import AlgorithmSearchInput from '~components/AlgorithmSearchInput';
 import useRandomDefenseCreateMenu from '~hooks/randomDefense/useRandomDefenseCreateMenu';
+import RandomDefenseCreateButton from '~components/RandomDefenseCreateButton';
+import ErrorText from '~components/common/ErrorText';
 import * as S from './RandomDefenseCreateMenu.styled';
+import { RandomDefenseFormData } from '~types/randomDefense';
 
-const RandomDefenseCreateMenu = () => {
+interface RandomDefenseCreateMenuProps {
+  onSubmit: (randomDefenseFormData: RandomDefenseFormData) => void;
+}
+
+const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
+  const { onSubmit } = props;
   const {
     mode,
     title,
@@ -21,20 +29,25 @@ const RandomDefenseCreateMenu = () => {
     searchOperator,
     algorithmIds,
     customQuery,
+    errorMessage,
     setMode,
     setRandomDefenseInputValue,
     setTierRange,
     setAlgorithmIds,
+    submitRandomDefense,
     titleRef,
     handleRef,
     solvedMinRef,
     solvedMaxRef,
     customQueryRef,
-  } = useRandomDefenseCreateMenu();
+  } = useRandomDefenseCreateMenu({ onSubmit });
 
   return (
     <NamedFrame width="650px" height="386px" padding="10px" title="추첨 만들기">
-      <S.Container>
+      <S.Form>
+        <S.ErrorTextWrapper>
+          <ErrorText errorMessage={errorMessage} fontSize="14px" />
+        </S.ErrorTextWrapper>
         <S.RandomDefenseCapsuleButtonWrapper>
           <RandomDefenseCapsuleButton mode={mode} onClick={setMode} />
         </S.RandomDefenseCapsuleButtonWrapper>
@@ -166,7 +179,13 @@ const RandomDefenseCreateMenu = () => {
             </Text>
           </>
         )}
-      </S.Container>
+        <S.RandomDefenseCreateButtonWrapper>
+          <RandomDefenseCreateButton
+            selectedSlotNo={0}
+            onClick={submitRandomDefense}
+          />
+        </S.RandomDefenseCreateButtonWrapper>
+      </S.Form>
     </NamedFrame>
   );
 };

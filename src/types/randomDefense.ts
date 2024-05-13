@@ -94,3 +94,17 @@ export interface RandomDefenseFormData {
   algorithmIds: number[];
   customQuery: string;
 }
+
+export type RandomDefenseFormDataVerdict =
+  | RandomDefenseFormDataValidVerdict
+  | RandomDefenseFormDataInvalidVerdict;
+
+interface RandomDefenseFormDataValidVerdict {
+  isValid: true;
+}
+
+interface RandomDefenseFormDataInvalidVerdict {
+  isValid: false;
+  errorMessage: string;
+  focusElementName?: string;
+}

@@ -13,7 +13,7 @@ const initialRandomDefenseFormData: RandomDefenseFormData = {
   solvedMax: '',
   startTier: 1,
   endTier: 30,
-  algorithmOperator: 'or',
+  searchOperator: 'OR',
   algorithmIds: [],
   customQuery: '',
 };
@@ -29,7 +29,7 @@ const useRandomDefenseCreateMenu = () => {
     solvedMax,
     startTier,
     endTier,
-    algorithmOperator,
+    searchOperator,
     algorithmIds,
     customQuery,
   } = randomDefenseFormData;
@@ -72,12 +72,12 @@ const useRandomDefenseCreateMenu = () => {
     }));
   };
 
-  const setAlgorithmOperator = (
-    algorithmOperator: RandomDefenseFormData['algorithmOperator'],
+  const setSearchOperator = (
+    searchOperator: RandomDefenseFormData['searchOperator'],
   ) => {
     setRandomDefenseFormData((prev) => ({
       ...prev,
-      algorithmOperator,
+      searchOperator,
     }));
   };
 
@@ -98,13 +98,13 @@ const useRandomDefenseCreateMenu = () => {
     solvedMax,
     startTier,
     endTier,
-    algorithmOperator,
+    searchOperator,
     algorithmIds,
     customQuery,
     setMode,
     setRandomDefenseInputValue,
     setTierRange,
-    setAlgorithmOperator,
+    setSearchOperator,
     setAlgorithmIds,
     titleRef,
     handleRef,

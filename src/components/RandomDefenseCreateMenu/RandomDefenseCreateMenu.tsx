@@ -18,7 +18,7 @@ const RandomDefenseCreateMenu = () => {
     solvedMax,
     startTier,
     endTier,
-    algorithmOperator,
+    searchOperator,
     algorithmIds,
     customQuery,
     setMode,

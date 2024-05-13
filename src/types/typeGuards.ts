@@ -21,6 +21,12 @@ export const isNumericObject = (
   );
 };
 
+export const isNumericArray = (data: unknown): data is number[] => {
+  return (
+    Array.isArray(data) && data.every((value) => typeof value === 'number')
+  );
+};
+
 export const isIsoString = (data: unknown): data is IsoString => {
   return (
     typeof data === 'string' &&

@@ -17,5 +17,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     selectedSlotNo: 1,
+    onClick: () => {
+      alert('onClick()');
+    },
   },
 };

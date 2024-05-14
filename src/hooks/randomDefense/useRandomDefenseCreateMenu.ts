@@ -4,11 +4,13 @@ import { validateRandomDefenseFormData } from '~domains/randomDefense/validateRa
 import type { ChangeEventHandler, MouseEventHandler } from 'react';
 import type {
   RandomDefenseFormData,
+  Slot,
   TierWithoutNotRatable,
 } from '~types/randomDefense';
+import { generateRandomDefenseQuery } from './generateRandomDefenseQuery';
 
 interface UseRandomDefenseCreateMenuParams {
-  onSubmit: (randomDefenseFormData: RandomDefenseFormData) => void;
+  onSubmit: (slot: Omit<Slot, 'isEmpty'>) => void;
 }
 
 const initialRandomDefenseFormData: RandomDefenseFormData = {
@@ -115,7 +117,12 @@ const useRandomDefenseCreateMenu = (
     );
 
     if (validationResult.isValid) {
-      onSubmit(randomDefenseFormData);
+      const generatedSlot = {
+        title: randomDefenseFormData.title,
+        query: generateRandomDefenseQuery(randomDefenseFormData),
+      };
+
+      onSubmit(generatedSlot);
       setErrorMessage('');
       setErrorElementName(undefined);
       return;

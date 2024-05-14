@@ -11,10 +11,10 @@ import useRandomDefenseCreateMenu from '~hooks/randomDefense/useRandomDefenseCre
 import RandomDefenseCreateButton from '~components/RandomDefenseCreateButton';
 import ErrorText from '~components/common/ErrorText';
 import * as S from './RandomDefenseCreateMenu.styled';
-import { RandomDefenseFormData } from '~types/randomDefense';
+import type { Slot } from '~types/randomDefense';
 
 interface RandomDefenseCreateMenuProps {
-  onSubmit: (randomDefenseFormData: RandomDefenseFormData) => void;
+  onSubmit: (generatedSlot: Omit<Slot, 'isEmpty'>) => void;
 }
 
 const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {

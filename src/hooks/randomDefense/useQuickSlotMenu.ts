@@ -81,13 +81,12 @@ const useQuickSlotMenu = () => {
     setShouldEditModalShow(false);
   };
 
-  const updateSlot = (slotName: string, query: string) => {
-    const finalSlotName =
-      slotName.trim() === '' ? `연습 ${selectedSlotNo}` : slotName;
+  const updateSlot = (title: string, query: string) => {
+    const finalTitle = title.trim() === '' ? `연습 ${selectedSlotNo}` : title;
 
     setSlots((prev) => ({
       ...prev,
-      [selectedSlotNo]: { isEmpty: false, slotName: finalSlotName, query },
+      [selectedSlotNo]: { isEmpty: false, title: finalTitle, query },
     }));
     closeEditModal();
   };

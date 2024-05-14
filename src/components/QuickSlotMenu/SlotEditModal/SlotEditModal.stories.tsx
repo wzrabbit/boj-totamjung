@@ -34,7 +34,7 @@ export const Default: Story = {
           }}
         />
         <SlotEditModal
-          slotName="기존 추첨 이름"
+          title="기존 추첨 이름"
           query="tier:g5..g1 solvable:true"
           open={isOpen}
           onClose={() => {
@@ -54,7 +54,7 @@ export const Default: Story = {
     );
   },
   args: {
-    slotName: '',
+    title: '',
     query: '',
     open: false,
     onClose: () => {},

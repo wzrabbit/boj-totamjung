@@ -2,44 +2,44 @@ import { useState, useEffect, useRef } from 'react';
 import { validateSlot } from '~domains/randomDefense/slotValidator';
 
 interface UseSlotEditModalParams {
-  initSlotName: string;
+  initTitle: string;
   initQuery: string;
-  onSlotChange: (slotName: string, query: string) => void;
+  onSlotChange: (title: string, query: string) => void;
 }
 
 const useSlotEditModal = (params: UseSlotEditModalParams) => {
-  const { initSlotName, initQuery, onSlotChange } = params;
-  const [slotName, setSlotName] = useState(initSlotName);
+  const { initTitle, initQuery, onSlotChange } = params;
+  const [title, setTitle] = useState(initTitle);
   const [query, setQuery] = useState(initQuery);
   const [errorMessage, setErrorMessage] = useState('');
   const [errorElementName, setErrorElementName] = useState<string | undefined>(
     undefined,
   );
-  const slotNameRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLInputElement>(null);
   const queryRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    setSlotName(initSlotName);
+    setTitle(initTitle);
     setQuery(initQuery);
     setErrorMessage('');
     setErrorElementName(undefined);
-  }, [initSlotName, initQuery]);
+  }, [initTitle, initQuery]);
 
   const submitSlotInfo = () => {
-    const slotValidationResult = validateSlot(slotName, query);
+    const slotValidationResult = validateSlot(title, query);
 
     if (slotValidationResult.isValid) {
-      onSlotChange(slotName, query);
+      onSlotChange(title, query);
       setErrorMessage('');
       return;
     }
 
-    const slotNameElement = slotNameRef.current;
+    const titleElement = titleRef.current;
     const queryElement = queryRef.current;
     const { focusElementName } = slotValidationResult;
 
-    if (focusElementName === 'slotName') {
-      slotNameElement?.select();
+    if (focusElementName === 'title') {
+      titleElement?.select();
     }
 
     if (focusElementName === 'query') {
@@ -50,19 +50,19 @@ const useSlotEditModal = (params: UseSlotEditModalParams) => {
     setErrorMessage(slotValidationResult.errorMessage);
   };
 
-  const isSlotNameElementHasErrors = errorElementName === 'slotName';
+  const isTitleElementHasErrors = errorElementName === 'title';
   const isQueryElementHasErrors = errorElementName === 'query';
 
   return {
-    slotName,
+    title,
     query,
     errorMessage,
-    isSlotNameElementHasErrors,
+    isTitleElementHasErrors,
     isQueryElementHasErrors,
     setQuery,
-    setSlotName,
+    setTitle,
     submitSlotInfo,
-    slotNameRef,
+    titleRef,
     queryRef,
   };
 };

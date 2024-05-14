@@ -1,12 +1,12 @@
 import type { SlotVerdict } from '~types/randomDefense';
 
-export const validateSlot = (slotName: string, query: string): SlotVerdict => {
-  if (slotName.length > 30) {
+export const validateSlot = (title: string, query: string): SlotVerdict => {
+  if (title.length > 30) {
     return {
       isValid: false,
       errorMessage:
         '추첨 이름의 길이가 너무 길어요. 30자 이하가 되도록 줄여 주세요.',
-      focusElementName: 'slotName',
+      focusElementName: 'title',
     };
   }
 

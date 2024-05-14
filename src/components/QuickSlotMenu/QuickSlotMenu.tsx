@@ -82,7 +82,7 @@ const QuickSlotMenu = () => {
         </S.Container>
       )}
       <SlotEditModal
-        slotName={slot.isEmpty ? '' : slot.slotName}
+        title={slot.isEmpty ? '' : slot.title}
         query={slot.isEmpty ? '' : slot.query}
         open={shouldEditModalShow}
         onClose={closeEditModal}

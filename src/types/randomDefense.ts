@@ -37,7 +37,7 @@ export type Hotkey = 'Alt' | 'F2';
 
 interface FilledSlot {
   isEmpty: false;
-  slotName: string;
+  title: string;
   query: string;
 }
 

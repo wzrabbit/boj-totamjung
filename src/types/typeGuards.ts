@@ -114,9 +114,9 @@ const isSlot = (data: unknown): data is Slot => {
   }
 
   return (
-    'slotName' in data &&
+    'title' in data &&
     'query' in data &&
-    typeof data.slotName === 'string' &&
+    typeof data.title === 'string' &&
     typeof data.query === 'string'
   );
 };

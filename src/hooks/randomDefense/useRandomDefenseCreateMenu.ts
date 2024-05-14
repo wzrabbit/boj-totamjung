@@ -5,11 +5,13 @@ import type { ChangeEventHandler, MouseEventHandler } from 'react';
 import type {
   RandomDefenseFormData,
   Slot,
+  SlotNo,
   TierWithoutNotRatable,
 } from '~types/randomDefense';
 import { generateRandomDefenseQuery } from './generateRandomDefenseQuery';
 
 interface UseRandomDefenseCreateMenuParams {
+  selectedSlotNo: SlotNo;
   onSubmit: (slot: Omit<Slot, 'isEmpty'>) => void;
 }
 
@@ -29,7 +31,7 @@ const initialRandomDefenseFormData: RandomDefenseFormData = {
 const useRandomDefenseCreateMenu = (
   params: UseRandomDefenseCreateMenuParams,
 ) => {
-  const { onSubmit } = params;
+  const { selectedSlotNo, onSubmit } = params;
   const [randomDefenseFormData, setRandomDefenseFormData] =
     useState<RandomDefenseFormData>(initialRandomDefenseFormData);
   const [errorMessage, setErrorMessage] = useState('');
@@ -118,7 +120,10 @@ const useRandomDefenseCreateMenu = (
 
     if (validationResult.isValid) {
       const generatedSlot = {
-        title: randomDefenseFormData.title,
+        title:
+          randomDefenseFormData.title.trim() === ''
+            ? `추첨 ${selectedSlotNo}`
+            : randomDefenseFormData.title,
         query: generateRandomDefenseQuery(randomDefenseFormData),
       };
 

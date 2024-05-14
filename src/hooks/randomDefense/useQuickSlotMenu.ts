@@ -82,7 +82,7 @@ const useQuickSlotMenu = () => {
   };
 
   const updateSlot = (title: string, query: string) => {
-    const finalTitle = title.trim() === '' ? `연습 ${selectedSlotNo}` : title;
+    const finalTitle = title.trim() === '' ? `추첨 ${selectedSlotNo}` : title;
 
     setSlots((prev) => ({
       ...prev,

@@ -11,14 +11,15 @@ import useRandomDefenseCreateMenu from '~hooks/randomDefense/useRandomDefenseCre
 import RandomDefenseCreateButton from '~components/RandomDefenseCreateButton';
 import ErrorText from '~components/common/ErrorText';
 import * as S from './RandomDefenseCreateMenu.styled';
-import type { Slot } from '~types/randomDefense';
+import type { Slot, SlotNo } from '~types/randomDefense';
 
 interface RandomDefenseCreateMenuProps {
+  selectedSlotNo: SlotNo;
   onSubmit: (generatedSlot: Omit<Slot, 'isEmpty'>) => void;
 }
 
 const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
-  const { onSubmit } = props;
+  const { selectedSlotNo, onSubmit } = props;
   const {
     mode,
     title,
@@ -43,7 +44,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     solvedMinRef,
     solvedMaxRef,
     customQueryRef,
-  } = useRandomDefenseCreateMenu({ onSubmit });
+  } = useRandomDefenseCreateMenu({ selectedSlotNo, onSubmit });
 
   return (
     <NamedFrame width="650px" height="386px" padding="10px" title="추첨 만들기">
@@ -196,7 +197,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
         )}
         <S.RandomDefenseCreateButtonWrapper>
           <RandomDefenseCreateButton
-            selectedSlotNo={0}
+            selectedSlotNo={selectedSlotNo}
             onClick={submitRandomDefense}
           />
         </S.RandomDefenseCreateButtonWrapper>

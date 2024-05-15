@@ -8,7 +8,7 @@ import type {
   SlotNo,
   TierWithoutNotRatable,
 } from '~types/randomDefense';
-import { generateRandomDefenseQuery } from '~domains/randomDefense/generateRandomDefenseQuery';
+import { generateRandomDefenseQuery } from '~domains/randomDefense/randomDefenseQueryGenerator';
 
 interface UseRandomDefenseCreateMenuParams {
   selectedSlotNo: SlotNo;

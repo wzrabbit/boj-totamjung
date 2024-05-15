@@ -5,7 +5,7 @@ import TierPresetButton from './TierPresetButton';
  * `TierPresetButton`은 무작위 추첨에서 티어를 설정할 때, 티어를 특정 범위로 빠르게 지정할 수 있는 버튼입니다.
  */
 const meta = {
-  title: 'DifficultyAdjustMenu/TierPresetButton',
+  title: 'RandomDefenseCreateMenu/DifficultyAdjustMenu/TierPresetButton',
   component: TierPresetButton,
   argTypes: {},
 } satisfies Meta<typeof TierPresetButton>;

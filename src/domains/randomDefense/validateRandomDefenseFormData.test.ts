@@ -212,3 +212,103 @@ describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
     });
   });
 });
+
+describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => {
+  test('맞은 사람 수의 하한이 음수일 경우 관련 오류 메시지를 반환해야 한다.', () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      solvedMin: '-3000',
+      solvedMax: '',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: '맞은 사람 수의 하한은 양의 정수 또는 0이어야 해요.',
+      focusElementName: 'solvedMin',
+    });
+  });
+
+  test('맞은 사람 수의 하한이 정수가 아닐 경우 관련 오류 메시지를 반환해야 한다.', () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      solvedMin: '14.3',
+      solvedMax: '6',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: '맞은 사람 수의 하한은 양의 정수 또는 0이어야 해요.',
+      focusElementName: 'solvedMin',
+    });
+  });
+
+  test('맞은 사람 수의 상한이 음수일 경우 관련 오류 메시지를 반환해야 한다.', () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      solvedMin: '30',
+      solvedMax: '-30',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: '맞은 사람 수의 상한은 양의 정수 또는 0이어야 해요.',
+      focusElementName: 'solvedMax',
+    });
+  });
+
+  test('하한과 상한 모두 잘못된 값인 경우에는, 하한에 관련된 오류 메시지를 우선적으로 반환해야 한다.', () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      solvedMin: 'Hello, World!',
+      solvedMax: '뷁',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: '맞은 사람 수의 하한은 양의 정수 또는 0이어야 해요.',
+      focusElementName: 'solvedMin',
+    });
+  });
+
+  test(`하한이 ${MAX_SOLVED_COUNT.toLocaleString()}명을 초과할 경우, 관련 오류 메시지를 반환해야 한다.`, () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      solvedMin: '100000001',
+      solvedMax: '149382301',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: `맞은 사람 수는 ${MAX_SOLVED_COUNT.toLocaleString()}명 이하여야 해요.`,
+      focusElementName: 'solvedMin',
+    });
+  });
+
+  test(`상한이 ${MAX_SOLVED_COUNT.toLocaleString()}명을 초과할 경우, 관련 오류 메시지를 반환해야 한다.`, () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      solvedMin: '99999999',
+      solvedMax: '100000001',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: `맞은 사람 수는 ${MAX_SOLVED_COUNT.toLocaleString()}명 이하여야 해요.`,
+      focusElementName: 'solvedMax',
+    });
+  });
+
+  test('하한이 상한보다 클 경우, 관련 오류 메시지를 반환해야 한다.', () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      solvedMin: '700',
+      solvedMax: '200',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: '맞은 사람 수의 하한은 상한보다 클 수 없어요.',
+      focusElementName: 'solvedMin',
+    });
+  });
+});

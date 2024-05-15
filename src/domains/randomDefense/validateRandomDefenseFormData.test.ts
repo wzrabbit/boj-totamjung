@@ -1,5 +1,10 @@
+import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
 import { validateRandomDefenseFormData } from './validateRandomDefenseFormData';
-import { MAX_SOLVED_COUNT, TITLE_MAX_LENGTH } from '~constants/randomDefense';
+import {
+  MAX_SEARCH_ALGORITHM_COUNT,
+  MAX_SOLVED_COUNT,
+  TITLE_MAX_LENGTH,
+} from '~constants/randomDefense';
 import type { RandomDefenseFormData } from '~types/randomDefense';
 
 const emptyValidFormData: RandomDefenseFormData = {
@@ -324,6 +329,49 @@ describe('# Test 5 - 잘못된 난이도 범위에 대응하기', () => {
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
       errorMessage: '난이도의 범위는 하한보다 상한이 더 낮을 수 없어요.',
+    });
+  });
+});
+
+describe('# Test 6 - 잘못된 알고리즘 분류 아이디에 대응하기', () => {
+  test(`알고리즘 분류 아이디의 개수가 상한인 ${MAX_SEARCH_ALGORITHM_COUNT}개를 넘을 경우, 관련 오류 메시지를 반환해야 한다.`, () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      algorithmIds: [1, 3, 9, 20, 176, 24],
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: `추첨에 사용할 알고리즘의 개수는 ${MAX_SEARCH_ALGORITHM_COUNT.toLocaleString()}개 이하여야 해요.`,
+    });
+  });
+
+  describe('잘못된 알고리즘 분류 아이디가 포함되어 있을 경우, 관련 오류 메시지를 반환해야 한다.', () => {
+    const testcases: RandomDefenseFormData[] = [
+      {
+        ...emptyValidFormData,
+        algorithmIds: [0, 1, 2, 3, 4],
+      },
+      {
+        ...emptyValidFormData,
+        algorithmIds: [ALGORITHMS_COUNT + 1, 8],
+      },
+      {
+        ...emptyValidFormData,
+        algorithmIds: [9, 2.5, 45, 10, 2],
+      },
+      {
+        ...emptyValidFormData,
+        algorithmIds: [10000000000000000],
+      },
+    ];
+
+    test.each(testcases)('#%#', (randomDefenseFormData) => {
+      expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+        isValid: false,
+        errorMessage:
+          '잘못된 알고리즘이 포함되어 있는 것 같습니다. 페이지 새로고침 후 다시 시도해 주세요.',
+      });
     });
   });
 });

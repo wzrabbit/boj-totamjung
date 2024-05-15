@@ -24,6 +24,7 @@ const Textarea = forwardRef((props: TextareaProps, ref) => {
       $width={width}
       $height={height}
       $hasError={hasError}
+      spellCheck={false}
       aria-label={ariaLabel}
       ref={ref}
       {...rest}

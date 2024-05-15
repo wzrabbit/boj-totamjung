@@ -1,5 +1,5 @@
 import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
-import { validateRandomDefenseFormData } from './validateRandomDefenseFormData';
+import { validateRandomDefenseFormData } from './randomDefenseFormDataValidator';
 import {
   MAX_SEARCH_ALGORITHM_COUNT,
   MAX_SOLVED_COUNT,

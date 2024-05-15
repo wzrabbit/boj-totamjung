@@ -135,3 +135,18 @@ describe('# Test 1 - 정상 추첨 판정', () => {
     });
   });
 });
+
+describe('# Test 2 - 잘못된 추첨명에 대응하기', () => {
+  test(`추첨명이 ${TITLE_MAX_LENGTH}글자를 넘을 경우, 관련 오류 메시지를 반환해야 한다.`, () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      title: '1231231231231231231231231231231',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: `추첨 이름은 ${TITLE_MAX_LENGTH}자 이하여야 해요.`,
+      focusElementName: 'title',
+    });
+  });
+});

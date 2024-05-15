@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { getSearchResults } from '~domains/algorithm/getSearchResults';
-import { MAX_SEARCH_ALGORITHM_COUNT } from '~constants/randomDefense';
+import { MAX_SEARCH_ALGORITHMS_COUNT } from '~constants/randomDefense';
 import type { ChangeEventHandler, KeyboardEventHandler } from 'react';
 
 interface UseAlgorithmSearchInputParams {
@@ -20,7 +20,7 @@ const useAlgorithmSearchInput = (params: UseAlgorithmSearchInputParams) => {
   };
 
   const searchedAlgorithmIds =
-    selectedAlgorithmIds.length < MAX_SEARCH_ALGORITHM_COUNT
+    selectedAlgorithmIds.length < MAX_SEARCH_ALGORITHMS_COUNT
       ? getSearchResults(inputValue)
           .filter(({ id }) => !selectedAlgorithmIds.includes(id))
           .map(({ id }) => id)

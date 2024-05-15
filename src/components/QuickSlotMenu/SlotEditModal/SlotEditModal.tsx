@@ -10,34 +10,34 @@ import { CloseCircleIcon, CheckCircleIcon } from '~images/svg';
 import * as S from './SlotEditModal.styled';
 
 interface SlotEditModalProps {
-  slotName: string;
+  title: string;
   query: string;
   open: boolean;
   onClose: () => void;
-  onSlotChange: (slotName: string, query: string) => void;
+  onSlotChange: (title: string, query: string) => void;
 }
 
 const SlotEditModal = (props: SlotEditModalProps) => {
   const {
-    slotName: initSlotName,
+    title: initTitle,
     query: initQuery,
     open,
     onClose,
     onSlotChange,
   } = props;
   const {
-    slotName,
+    title,
     query,
     errorMessage,
-    isSlotNameElementHasErrors,
+    isTitleElementHasErrors,
     isQueryElementHasErrors,
     setQuery,
-    setSlotName,
+    setTitle,
     submitSlotInfo,
-    slotNameRef,
+    titleRef,
     queryRef,
   } = useSlotEditModal({
-    initSlotName,
+    initTitle,
     initQuery,
     onSlotChange,
   });
@@ -53,15 +53,15 @@ const SlotEditModal = (props: SlotEditModalProps) => {
             type="text"
             width="100%"
             name="title"
-            value={slotName}
-            ref={slotNameRef}
+            value={title}
+            ref={titleRef}
             textAlign="left"
             maxLength={30}
             placeholder="0 ~ 30자"
-            hasError={isSlotNameElementHasErrors}
+            hasError={isTitleElementHasErrors}
             ariaLabel="새로운 추첨 이름을 입력해주세요"
             onChange={(event) => {
-              setSlotName(event.target.value);
+              setTitle(event.target.value);
             }}
           />
         </S.Label>

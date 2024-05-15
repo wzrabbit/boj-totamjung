@@ -14,7 +14,7 @@ const SearchOperatorSelect = (props: SearchOperatorSelectProps) => {
   return (
     <S.Container>
       {OPERATORS.map((operator) => (
-        <S.ButtonContainer>
+        <S.ButtonContainer key={operator}>
           {operator === searchOperator && (
             <S.CheckIconWrapper>
               <CheckIcon />

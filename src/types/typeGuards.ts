@@ -4,6 +4,7 @@ import type {
   RandomDefenseHistoryResponse,
   Slot,
   QuickSlotsResponse,
+  RandomDefenseFormData,
 } from '~types/randomDefense';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 import type { IsoString } from '~types/utils';
@@ -18,6 +19,12 @@ export const isNumericObject = (
 ): data is Record<number, unknown> => {
   return (
     isObject(data) && Object.keys(data).every((key) => !isNaN(Number(key)))
+  );
+};
+
+export const isNumericArray = (data: unknown): data is number[] => {
+  return (
+    Array.isArray(data) && data.every((value) => typeof value === 'number')
   );
 };
 
@@ -107,9 +114,9 @@ const isSlot = (data: unknown): data is Slot => {
   }
 
   return (
-    'slotName' in data &&
+    'title' in data &&
     'query' in data &&
-    typeof data.slotName === 'string' &&
+    typeof data.title === 'string' &&
     typeof data.query === 'string'
   );
 };
@@ -142,5 +149,35 @@ export const isQuickSlotsResponse = (
 
   return Array.from({ length: 10 }).every(
     (_, key) => key in slots && isSlot(slots[key]),
+  );
+};
+
+export const isRandomDefenseFormData = (
+  data: unknown,
+): data is RandomDefenseFormData => {
+  return (
+    isObject(data) &&
+    'mode' in data &&
+    'title' in data &&
+    'handle' in data &&
+    'solvedMin' in data &&
+    'solvedMax' in data &&
+    'startTier' in data &&
+    'endTier' in data &&
+    'searchOperator' in data &&
+    'algorithmIds' in data &&
+    'customQuery' in data &&
+    typeof data.mode === 'string' &&
+    ['easy', 'manual'].includes(data.mode) &&
+    typeof data.title === 'string' &&
+    typeof data.handle === 'string' &&
+    typeof data.solvedMin === 'string' &&
+    typeof data.solvedMax === 'string' &&
+    isNumericArray(data.algorithmIds) &&
+    isTierWithoutNotRatable(data.startTier) &&
+    isTierWithoutNotRatable(data.endTier) &&
+    typeof data.searchOperator === 'string' &&
+    ['OR', 'AND', 'NOR'].includes(data.searchOperator) &&
+    typeof data.customQuery === 'string'
   );
 };

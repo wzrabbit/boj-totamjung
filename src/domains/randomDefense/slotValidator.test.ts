@@ -9,8 +9,8 @@ describe('Test #1 - 올바른 데이터 판정 테스트', () => {
 
   test.each(testcases)(
     `아래의 데이터는 올바른 데이터로 판정되어야 한다.\n\t슬롯 이름: "%s"\n\t쿼리: "%s"\n`,
-    (slotName, query) => {
-      expect(validateSlot(slotName, query)).toEqual({
+    (title, query) => {
+      expect(validateSlot(title, query)).toEqual({
         isValid: true,
       });
     },
@@ -19,7 +19,7 @@ describe('Test #1 - 올바른 데이터 판정 테스트', () => {
 
 describe('Test #2 - 잘못된 데이터 판정 테스트', () => {
   const testcases = {
-    tooLongSlotName: [
+    tooLongTitle: [
       [
         '이 문자열의 길이는 45입니다. xxxxxxxxxxxxxxxxxxxxxxxxxxx',
         'tier: g5..g1',
@@ -43,22 +43,22 @@ describe('Test #2 - 잘못된 데이터 판정 테스트', () => {
       ['a'.repeat(30), 'a'.repeat(301)],
     ],
   };
-  test.each(testcases.tooLongSlotName)(
+  test.each(testcases.tooLongTitle)(
     `아래의 데이터는 잘못된 데이터로 판정되어야 하며, 사유는 "슬롯 이름의 글자수가 너무 길어서" 여야 한다. 또한 슬롯 이름 입력창에 포커스를 주도록 데이터를 반환해야 한다.\n\t슬롯 이름: "%s"\n\t쿼리: "%s"`,
-    (slotName, query) => {
-      expect(validateSlot(slotName, query)).toEqual({
+    (title, query) => {
+      expect(validateSlot(title, query)).toEqual({
         isValid: false,
         errorMessage:
           '추첨 이름의 길이가 너무 길어요. 30자 이하가 되도록 줄여 주세요.',
-        focusElementName: 'slotName',
+        focusElementName: 'title',
       });
     },
   );
 
   test.each(testcases.emptyQuery)(
     `아래의 데이터는 잘못된 데이터로 판정되어야 하며, 사유는 "쿼리가 비어서" 여야 한다. 또한 쿼리 입력창에 포커스를 주도록 데이터를 반환해야 한다.\n\t슬롯 이름: "%s"\n\t쿼리: "%s"`,
-    (slotName, query) => {
-      expect(validateSlot(slotName, query)).toEqual({
+    (title, query) => {
+      expect(validateSlot(title, query)).toEqual({
         isValid: false,
         errorMessage: '쿼리는 비워둘 수 없어요. 쿼리를 입력해 주세요.',
         focusElementName: 'query',
@@ -68,8 +68,8 @@ describe('Test #2 - 잘못된 데이터 판정 테스트', () => {
 
   test.each(testcases.tooLongQuery)(
     `아래의 데이터는 잘못된 데이터로 판정되어야 하며, 사유는 "쿼리의 길이가 너무 길어서" 여야 한다. 또한 쿼리 입력창에 포커스를 주도록 데이터를 반환해야 한다.\n\t슬롯 이름: "%s"\n\t쿼리: "%s"`,
-    (slotName, query) => {
-      expect(validateSlot(slotName, query)).toEqual({
+    (title, query) => {
+      expect(validateSlot(title, query)).toEqual({
         isValid: false,
         errorMessage:
           '쿼리의 길이가 너무 길어요. 300자 이하가 되도록 줄여 주세요.',

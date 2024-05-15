@@ -5,7 +5,7 @@ import TierRange from './TierRange';
  * `TierRange`는 현재 선택된 난이도의 범위를 시각적으로 보여주는 컴포넌트입니다. `DifficultyAdjustMenu`를 이루는 컴포넌트이기도 합니다.
  */
 const meta = {
-  title: 'DifficultyAdjustMenu/TierRange',
+  title: 'RandomDefenseCreateMenu/DifficultyAdjustMenu/TierRange',
   component: TierRange,
   argTypes: {},
 } satisfies Meta<typeof TierRange>;

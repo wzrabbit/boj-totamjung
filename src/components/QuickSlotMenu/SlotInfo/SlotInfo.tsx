@@ -12,7 +12,7 @@ const SlotInfo = (props: Slot) => {
             <S.NameEmptyText>{'(비어 있음)'}</S.NameEmptyText>
           ) : (
             <Text type="primary" fontSize="16px">
-              {props.slotName}
+              {props.title}
             </Text>
           )}
         </S.NameTextWrapper>

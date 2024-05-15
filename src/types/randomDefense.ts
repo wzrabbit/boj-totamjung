@@ -37,7 +37,7 @@ export type Hotkey = 'Alt' | 'F2';
 
 interface FilledSlot {
   isEmpty: false;
-  slotName: string;
+  title: string;
   query: string;
 }
 
@@ -79,3 +79,32 @@ interface SlotInvalidVerdict {
 }
 
 export type SlotVerdict = SlotValidVerdict | SlotInvalidVerdict;
+
+export type SearchOperator = 'OR' | 'AND' | 'NOR';
+
+export interface RandomDefenseFormData {
+  mode: 'easy' | 'manual';
+  title: string;
+  handle: string;
+  solvedMin: string;
+  solvedMax: string;
+  startTier: TierWithoutNotRatable;
+  endTier: TierWithoutNotRatable;
+  searchOperator: SearchOperator;
+  algorithmIds: number[];
+  customQuery: string;
+}
+
+export type RandomDefenseFormDataVerdict =
+  | RandomDefenseFormDataValidVerdict
+  | RandomDefenseFormDataInvalidVerdict;
+
+interface RandomDefenseFormDataValidVerdict {
+  isValid: true;
+}
+
+interface RandomDefenseFormDataInvalidVerdict {
+  isValid: false;
+  errorMessage: string;
+  focusElementName?: string;
+}

@@ -26,6 +26,7 @@ const Input = forwardRef((props: InputProps, ref) => {
       $hasError={hasError}
       $textAlign={textAlign}
       aria-label={ariaLabel}
+      spellCheck={false}
       ref={ref}
       {...rest}
     />

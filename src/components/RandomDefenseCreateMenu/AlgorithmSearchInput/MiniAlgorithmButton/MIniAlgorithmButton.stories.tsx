@@ -5,7 +5,7 @@ import MiniAlgorithmButton from './MiniAlgorithmButton';
  * `MiniAlgorithmButton`는 검색에 사용할 알고리즘을 정하는 `AlgorithmSearchInput` 컴포넌트의 하위 컴포넌트입니다. 클릭 시 용도에 따라 새로운 알고리즘을 추가하거나, 이미 지정된 알고리즘을 목록에서 제거하는 기능을 수행합니다.
  */
 const meta = {
-  title: 'AlgorithmSearchInput/MiniAlgorithmButton',
+  title: 'RandomDefenseCreateMenu/AlgorithmSearchInput/MiniAlgorithmButton',
   component: MiniAlgorithmButton,
 } satisfies Meta<typeof MiniAlgorithmButton>;
 

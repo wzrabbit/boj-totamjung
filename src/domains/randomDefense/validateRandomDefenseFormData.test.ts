@@ -150,3 +150,65 @@ describe('# Test 2 - 잘못된 추첨명에 대응하기', () => {
     });
   });
 });
+
+describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
+  test('핸들 이름이 비어있지 않으면서, 핸들명이 3자 미만으로 너무 짧을 경우 관련 오류 메시지를 반환해야 한다.', () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      handle: 'ab',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: '핸들(닉네임)은 3자 이상 20자 이하여야 해요.',
+      focusElementName: 'handle',
+    });
+  });
+
+  test('핸들 이름이 비어있지 않으면서, 핸들명이 20자 초과로 너무 길 경우 관련 오류 메시지를 반환해야 한다.', () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      handle: 'too_looooooooooooooooong_handle',
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: '핸들(닉네임)은 3자 이상 20자 이하여야 해요.',
+      focusElementName: 'handle',
+    });
+  });
+
+  describe(`핸들 이름이 비어있지 않으면서, 핸들명의 형식이 올바르지 않을 경우 관련 오류 메시지를 반환해야 한다.`, () => {
+    const testcases: RandomDefenseFormData[] = [
+      {
+        ...emptyValidFormData,
+        handle: '★Stardust★',
+      },
+      {
+        ...emptyValidFormData,
+        handle: 'Lorem Ipsum',
+      },
+      {
+        ...emptyValidFormData,
+        handle: '엄준식',
+      },
+      {
+        ...emptyValidFormData,
+        handle: '(Test_User)',
+      },
+      {
+        ...emptyValidFormData,
+        handle: 'user.name',
+      },
+    ];
+
+    test.each(testcases)('#%#', (randomDefenseFormData) => {
+      expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+        isValid: false,
+        focusElementName: 'handle',
+        errorMessage:
+          '핸들(닉네임)은 영문자, 숫자, 언더바(_), 하이픈(-)으로만 이루어져야 해요.',
+      });
+    });
+  });
+});

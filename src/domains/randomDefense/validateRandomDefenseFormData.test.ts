@@ -312,3 +312,18 @@ describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => 
     });
   });
 });
+
+describe('# Test 5 - 잘못된 난이도 범위에 대응하기', () => {
+  test('티어의 하한이 상한보다 높을 경우, 관련 오류 메시지를 반환해야 한다.', () => {
+    const randomDefenseFormData: RandomDefenseFormData = {
+      ...emptyValidFormData,
+      startTier: 15,
+      endTier: 14,
+    };
+
+    expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
+      isValid: false,
+      errorMessage: '난이도의 범위는 하한보다 상한이 더 낮을 수 없어요.',
+    });
+  });
+});

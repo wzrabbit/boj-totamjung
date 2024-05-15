@@ -164,24 +164,6 @@ const validateDifficulty = (
   const numerizedDifficultyMin = Number(startTier);
   const numerizedDifficultyMax = Number(endTier);
 
-  if (
-    !NUMBER_REGEX.test(String(startTier)) ||
-    !NUMBER_REGEX.test(String(endTier))
-  ) {
-    return {
-      isValid: false,
-      errorMessage: '난이도는 양의 정수 또는 0이어야 해요.',
-    };
-  }
-
-  if (numerizedDifficultyMin > MAX_TIER || numerizedDifficultyMax > MAX_TIER) {
-    return {
-      isValid: false,
-      errorMessage:
-        '난이도의 범위가 잘못되었습니다. 새로고침 후 다시 시도해 주세요.',
-    };
-  }
-
   if (numerizedDifficultyMin > numerizedDifficultyMax) {
     return {
       isValid: false,

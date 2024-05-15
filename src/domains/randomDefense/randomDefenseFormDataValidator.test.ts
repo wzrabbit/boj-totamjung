@@ -1,7 +1,7 @@
 import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
 import { validateRandomDefenseFormData } from './randomDefenseFormDataValidator';
 import {
-  MAX_SEARCH_ALGORITHM_COUNT,
+  MAX_SEARCH_ALGORITHMS_COUNT,
   MAX_SOLVED_COUNT,
   TITLE_MAX_LENGTH,
 } from '~constants/randomDefense';
@@ -334,7 +334,7 @@ describe('# Test 5 - 잘못된 난이도 범위에 대응하기', () => {
 });
 
 describe('# Test 6 - 잘못된 알고리즘 분류 아이디에 대응하기', () => {
-  test(`알고리즘 분류 아이디의 개수가 상한인 ${MAX_SEARCH_ALGORITHM_COUNT}개를 넘을 경우, 관련 오류 메시지를 반환해야 한다.`, () => {
+  test(`알고리즘 분류 아이디의 개수가 상한인 ${MAX_SEARCH_ALGORITHMS_COUNT}개를 넘을 경우, 관련 오류 메시지를 반환해야 한다.`, () => {
     const randomDefenseFormData: RandomDefenseFormData = {
       ...emptyValidFormData,
       algorithmIds: [1, 3, 9, 20, 176, 24],
@@ -342,7 +342,7 @@ describe('# Test 6 - 잘못된 알고리즘 분류 아이디에 대응하기', (
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: `추첨에 사용할 알고리즘의 개수는 ${MAX_SEARCH_ALGORITHM_COUNT.toLocaleString()}개 이하여야 해요.`,
+      errorMessage: `추첨에 사용할 알고리즘의 개수는 ${MAX_SEARCH_ALGORITHMS_COUNT.toLocaleString()}개 이하여야 해요.`,
     });
   });
 

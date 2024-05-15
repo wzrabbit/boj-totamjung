@@ -3,8 +3,7 @@ import {
   HANDLE_REGEX,
   NUMBER_REGEX,
   MAX_SOLVED_COUNT,
-  MAX_SEARCH_ALGORITHM_COUNT,
-  MAX_TIER,
+  MAX_SEARCH_ALGORITHMS_COUNT,
   MAX_CUSTOM_QUERY_LENGTH,
 } from '~constants/randomDefense';
 import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
@@ -179,10 +178,10 @@ const validateDifficulty = (
 const validateAlgorithmIds = (
   algorithmIds: RandomDefenseFormData['algorithmIds'],
 ): RandomDefenseFormDataVerdict => {
-  if (algorithmIds.length > MAX_SEARCH_ALGORITHM_COUNT) {
+  if (algorithmIds.length > MAX_SEARCH_ALGORITHMS_COUNT) {
     return {
       isValid: false,
-      errorMessage: `추첨에 사용할 알고리즘의 개수는 ${MAX_SEARCH_ALGORITHM_COUNT.toLocaleString()}개 이하여야 해요.`,
+      errorMessage: `추첨에 사용할 알고리즘의 개수는 ${MAX_SEARCH_ALGORITHMS_COUNT.toLocaleString()}개 이하여야 해요.`,
     };
   }
   const isAlgorithmIdsValid = algorithmIds.every(

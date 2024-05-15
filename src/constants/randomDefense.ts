@@ -10,7 +10,7 @@ export const MAX_PROBLEM_NAME_LENGTH = 500;
 
 export const MAX_HISTORY_LIMIT = 300;
 
-export const MAX_SEARCH_ALGORITHM_COUNT = 5;
+export const MAX_SEARCH_ALGORITHMS_COUNT = 5;
 
 export const TITLE_MAX_LENGTH = 30;
 

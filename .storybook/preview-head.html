@@ -11,9 +11,15 @@
 />
 
 <script>
+  const delay = (milliseconds) => {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  };
+
   var chrome = {
     runtime: {
-      sendMessage: ({ command, message }, callback) => {
+      sendMessage: async ({ command, message }, callback) => {
+        await sleep(2000);
+
         if (command === 'fetchCheckedAlgorithmIds') {
           return {
             checkedIds: [1, 2, 3],

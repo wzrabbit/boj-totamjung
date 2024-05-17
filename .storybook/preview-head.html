@@ -18,7 +18,7 @@
   var chrome = {
     runtime: {
       sendMessage: async ({ command, message }, callback) => {
-        await sleep(2000);
+        await delay(2000);
 
         if (command === 'fetchCheckedAlgorithmIds') {
           return {

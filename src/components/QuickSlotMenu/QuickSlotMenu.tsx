@@ -6,28 +6,40 @@ import HotkeySwitcher from './HotkeySwitcher';
 import IconButton from '~components/common/IconButton';
 import useQuickSlotMenu from '~hooks/randomDefense/useQuickSlotMenu';
 import SlotEditModal from './SlotEditModal';
+import Loading from '~components/common/Loading';
 import { CopyIcon, EditIcon, TrashIcon } from '~images/svg';
+import type { QuickSlotsResponse, SlotNo, Hotkey } from '~types/randomDefense';
 import { theme } from '~styles/theme';
 
-const QuickSlotMenu = () => {
+interface QuickSlotMenuProps {
+  quickSlotsInfo: QuickSlotsResponse;
+  isLoaded: boolean;
+  onHotkeyChange: (hotkey: Hotkey) => void;
+  onSlotChange: (title: string, query: string) => void;
+  onSlotDelete: () => void;
+  onSlotNoChange: (slotNo: SlotNo) => void;
+}
+
+const QuickSlotMenu = (props: QuickSlotMenuProps) => {
+  const { isLoaded } = props;
+
   const {
     slot,
     selectedSlotNo,
-    occupiedSlotNos,
     hotkey,
+    occupiedSlotNos,
     shouldEditModalShow,
-    isLoaded,
     setSelectedSlotNo,
     switchHotkey,
     openEditModal,
     closeEditModal,
     updateSlot,
     deleteSlot,
-  } = useQuickSlotMenu();
+  } = useQuickSlotMenu(props);
 
   return (
     <NamedFrame width="650px" height="168px" padding="10px" title="퀵 슬롯">
-      {isLoaded && (
+      {isLoaded ? (
         <S.Container>
           <S.SlotNoPanel>
             <SlotPagination
@@ -80,6 +92,8 @@ const QuickSlotMenu = () => {
             />
           </S.SlotControlPanel>
         </S.Container>
+      ) : (
+        <Loading />
       )}
       <SlotEditModal
         title={slot.isEmpty ? '' : slot.title}

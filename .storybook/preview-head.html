@@ -11,11 +11,19 @@
 />
 
 <script>
+  const delay = (milliseconds) => {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  };
+
   var chrome = {
     runtime: {
-      sendMessage: ({ command, message }, callback) => {
+      sendMessage: async ({ command, message }, callback) => {
+        await delay(2000);
+
         if (command === 'fetchCheckedAlgorithmIds') {
-          callback({ checkedIds: [1, 2, 4, 8, 16, 32, 64] });
+          return {
+            checkedIds: [1, 2, 3],
+          };
         }
 
         if (command === 'fetchRandomDefenseHistory') {

@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     selectedSlotNo: 1,
-    isLoading: false,
+    isLoaded: true,
     onClick: () => {
       alert('onClick()');
     },
@@ -30,7 +30,7 @@ export const Default: Story = {
 export const Loading: Story = {
   args: {
     selectedSlotNo: 1,
-    isLoading: true,
+    isLoaded: false,
     onClick: () => {
       alert('onClick()');
     },

@@ -9,6 +9,10 @@ export const Button = styled.button`
   background: none;
 
   user-select: none;
+
+  &:disabled {
+    opacity: 0.6;
+  }
 `;
 
 const buttonSide = css`
@@ -36,7 +40,7 @@ export const UpperSide = styled.div`
   transform: translateY(-10px);
   z-index: 1;
 
-  ${Button}:active > & {
+  ${Button}:not([disabled]):active > & {
     transform: translateY(-4px);
   }
 `;

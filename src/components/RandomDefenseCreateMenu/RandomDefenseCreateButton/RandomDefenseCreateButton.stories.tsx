@@ -17,6 +17,20 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     selectedSlotNo: 1,
+    isLoading: false,
+    onClick: () => {
+      alert('onClick()');
+    },
+  },
+};
+
+/**
+ * 아직 슬롯의 번호를 부모 컴포넌트에서 불러오지 못해, 로딩 중일 경우에 보여주는 UI입니다. 버튼은 비활성화 되어 있습니다.
+ */
+export const Loading: Story = {
+  args: {
+    selectedSlotNo: 1,
+    isLoading: true,
     onClick: () => {
       alert('onClick()');
     },

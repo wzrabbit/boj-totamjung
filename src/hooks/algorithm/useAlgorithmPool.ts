@@ -10,13 +10,17 @@ const useAlgorithmPool = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    chrome.runtime.sendMessage(
-      { command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS },
-      (response) => {
-        setCheckedIds(() => response.checkedIds);
-        setIsLoaded(() => true);
-      },
-    );
+    const fetchAlgorithmPool = async () => {
+      const response = await chrome.runtime.sendMessage({
+        command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
+      });
+
+      console.log('ok response', response);
+      setCheckedIds(() => response.checkedIds);
+      setIsLoaded(() => true);
+    };
+
+    fetchAlgorithmPool();
   }, []);
 
   useEffect(() => {

@@ -15,7 +15,9 @@
     runtime: {
       sendMessage: ({ command, message }, callback) => {
         if (command === 'fetchCheckedAlgorithmIds') {
-          callback({ checkedIds: [1, 2, 4, 8, 16, 32, 64] });
+          return {
+            checkedIds: [1, 2, 3],
+          };
         }
 
         if (command === 'fetchRandomDefenseHistory') {

@@ -15,7 +15,6 @@ const useAlgorithmPool = () => {
         command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
       });
 
-      console.log('ok response', response);
       setCheckedIds(() => response.checkedIds);
       setIsLoaded(() => true);
     };

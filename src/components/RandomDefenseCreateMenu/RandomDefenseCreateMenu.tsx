@@ -11,15 +11,16 @@ import SearchOperatorSelect from './SearchOperatorSelect';
 import AlgorithmSearchInput from './AlgorithmSearchInput';
 import useRandomDefenseCreateMenu from '~hooks/randomDefense/useRandomDefenseCreateMenu';
 import * as S from './RandomDefenseCreateMenu.styled';
-import type { Slot, SlotNo } from '~types/randomDefense';
+import type { SlotNo } from '~types/randomDefense';
 
 interface RandomDefenseCreateMenuProps {
   selectedSlotNo: SlotNo;
-  onSubmit: (generatedSlot: Omit<Slot, 'isEmpty'>) => void;
+  isLoaded: boolean;
+  onSubmit: (title: string, query: string) => void;
 }
 
 const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
-  const { selectedSlotNo, onSubmit } = props;
+  const { selectedSlotNo, isLoaded, onSubmit } = props;
   const {
     mode,
     title,
@@ -197,6 +198,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
         )}
         <S.RandomDefenseCreateButtonWrapper>
           <RandomDefenseCreateButton
+            isLoaded={isLoaded}
             selectedSlotNo={selectedSlotNo}
             onClick={submitRandomDefense}
           />

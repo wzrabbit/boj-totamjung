@@ -1,5 +1,9 @@
 ![토탐정_배너](https://user-images.githubusercontent.com/87642422/162562353-f28461f1-e563-4121-8187-493af1ee150e.png)
 
+**여러분의 건의를 더 빨리 받아들이고, 사용하기 쉬운 확장 프로그램을 만들기 위해 토탐정을 [처음부터 다시 만들고 있습니다](https://github.com/wzrabbit/boj-totamjung/tree/totamjung-react). 이에 따라 핫픽스를 제외한 건의 반영이 많이 늦어질 수 있습니다. 죄송합니다.**
+
+**건의는 여전히 제 이메일인 curious.wzrabbit@gmail.com, 또는 [이슈](https://github.com/wzrabbit/boj-totamjung/issues)를 통해 받으며, 하나도 빠짐없이 모두 기록하고, 신중하게 반영하도록 하겠습니다. 건의해 주셔서 감사합니다.**
+
 # 토탐정
 
 **토탐정**은 백준 온라인 저지(BOJ)에서 사용할 수 있는 미니 확장 프로그램입니다!

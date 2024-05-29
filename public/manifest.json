@@ -8,5 +8,18 @@
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["https://www.acmicpc.net/*"],
+      "run_at": "document_idle",
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["/*"],
+      "matches": ["https://www.acmicpc.net/*"]
+    }
+  ],
   "options_page": "options.html"
 }

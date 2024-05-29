@@ -432,3 +432,16 @@ describe('Test #3 - 구버전 퀵슬롯 정보를 불러오는 경우를 대응�
     expect(await fetchQuickSlots()).toEqual(EMPTY_VALID_QUICK_SLOTS_RESPONSE);
   });
 });
+
+describe('Test #4 - 퀵슬롯 정보 저장하기', () => {
+  test('유효한 형태의 퀵슬롯을 저장해야 할 경우, 모든 데이터가 온전하게 저장되어야 한다.', async () => {
+    jest.spyOn(chrome.storage.sync, 'set').mockImplementation(() => {});
+    const { selectedSlotNo, slots, hotkey } = validQuickSlots;
+
+    saveQuickSlots(selectedSlotNo, slots, hotkey);
+
+    expect(chrome.storage.sync.set).toHaveBeenCalledWith({
+      quickSlots: validQuickSlots,
+    });
+  });
+});

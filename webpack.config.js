@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     options: './src/options.tsx',
     background: './src/background.ts',
+    contentScript: './src/contentScript.tsx',
   },
   module: {
     rules: [
@@ -52,6 +53,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/options.html',
       filename: 'options.html',
+      chunks: ['options'],
     }),
     new CopyWebpackPlugin({
       patterns: [{ from: 'public' }],

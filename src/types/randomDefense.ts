@@ -68,6 +68,10 @@ export interface QuickSlotsResponse {
   slots: QuickSlots;
 }
 
+export type LegacyQuickSlotsResponse = {
+  selectedNo: SlotNo;
+} & QuickSlots;
+
 interface SlotValidVerdict {
   isValid: true;
 }
@@ -107,4 +111,32 @@ interface RandomDefenseFormDataInvalidVerdict {
   isValid: false;
   errorMessage: string;
   focusElementName?: string;
+}
+
+/**
+ * RepairableLegacyQuickSlotsResponse 타입은, LegacyQuickSlotsResponse보다 넓은 범위의 타입으로써, 구버전의 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
+ * LegacyQuickSlotsResponse가 아니지만, RepairableLegacyQuickSlotsResponse에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
+ */
+export interface RepairableLegacyQuickSlotsResponse {
+  1: unknown;
+  2: unknown;
+  3: unknown;
+  4: unknown;
+  5: unknown;
+  6: unknown;
+  7: unknown;
+  8: unknown;
+  9: unknown;
+  0: unknown;
+  selectedNo?: unknown;
+}
+
+/**
+ * RepairableQuickSlotsResponse 타입은, QuickSlotsResponse보다 넓은 범위의 타입으로써, 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
+ * QuickSlotsResponse가 아니지만, RepairableQuickSlotsResponse에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
+ */
+export interface RepairableQuickSlotsResponse {
+  slots: Omit<RepairableLegacyQuickSlotsResponse, 'selectedNo'>;
+  hotkey?: unknown;
+  selectedSlotNo?: unknown;
 }

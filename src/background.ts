@@ -3,6 +3,10 @@ import { COMMANDS } from '~constants/commands';
 import { fetchCheckedAlgorithmIds } from '~domains/algorithm/fetchCheckedAlgorithmIds';
 import { saveCheckedAlgorithmIds } from '~domains/algorithm/saveCheckedAlgorithmIds';
 import {
+  fetchQuickSlots,
+  saveQuickSlots,
+} from '~domains/randomDefense/quickSlotsDataHandler';
+import {
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from '~domains/randomDefense/randomDefenseHistoryDataHandler';
@@ -47,6 +51,26 @@ chrome.runtime.onMessage.addListener(
       const { randomDefenseHistory, isHidden } = message;
 
       saveRandomDefenseHistory(randomDefenseHistory, isHidden);
+    }
+
+    if (command === COMMANDS.FETCH_QUICK_SLOTS) {
+      fetchQuickSlots().then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.SAVE_QUICK_SLOTS) {
+      if (
+        !('selectedSlotNo' in message) ||
+        !('slots' in message) ||
+        !('hotkey' in message)
+      ) {
+        return;
+      }
+
+      const { selectedSlotNo, slots, hotkey } = message;
+
+      saveQuickSlots(selectedSlotNo, slots, hotkey);
     }
 
     return true;

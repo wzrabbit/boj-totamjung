@@ -2,9 +2,14 @@ import type {
   RandomDefenseHistoryInfo,
   LegacyRandomDefenseHistoryInfo,
   RandomDefenseHistoryResponse,
+  Hotkey,
   Slot,
   QuickSlotsResponse,
+  LegacyQuickSlotsResponse,
   RandomDefenseFormData,
+  RepairableQuickSlotsResponse,
+  RepairableLegacyQuickSlotsResponse,
+  SlotNo,
 } from '~types/randomDefense';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 import type { IsoString } from '~types/utils';
@@ -100,7 +105,11 @@ export const isTierWithoutNotRatable = (
   return isTier(data) && data !== 31;
 };
 
-const isSlot = (data: unknown): data is Slot => {
+export const isHotkey = (data: unknown): data is Hotkey => {
+  return data === 'Alt' || data === 'F2';
+};
+
+export const isSlot = (data: unknown): data is Slot => {
   if (
     !isObject(data) ||
     !('isEmpty' in data) ||
@@ -121,6 +130,14 @@ const isSlot = (data: unknown): data is Slot => {
   );
 };
 
+export const isSlotNo = (data: unknown): data is SlotNo => {
+  if (typeof data !== 'number') {
+    return false;
+  }
+
+  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].includes(data);
+};
+
 export const isQuickSlotsResponse = (
   data: unknown,
 ): data is QuickSlotsResponse => {
@@ -132,10 +149,7 @@ export const isQuickSlotsResponse = (
       'slots' in data &&
       typeof data.hotkey === 'string' &&
       ['Alt', 'F2'].includes(data.hotkey) &&
-      typeof data.selectedSlotNo === 'number' &&
-      data.selectedSlotNo % 1 === 0 &&
-      data.selectedSlotNo >= 0 &&
-      data.selectedSlotNo <= 9
+      isSlotNo(data.selectedSlotNo)
     )
   ) {
     return false;
@@ -179,5 +193,56 @@ export const isRandomDefenseFormData = (
     typeof data.searchOperator === 'string' &&
     ['OR', 'AND', 'NOR'].includes(data.searchOperator) &&
     typeof data.customQuery === 'string'
+  );
+};
+
+export const isLegacyQuickSlotsResponse = (
+  data: unknown,
+): data is LegacyQuickSlotsResponse => {
+  if (
+    !(
+      isObject(data) &&
+      'selectedNo' in data &&
+      typeof data.selectedNo === 'number'
+    )
+  ) {
+    return false;
+  }
+
+  const { selectedNo, ...slots } = data;
+
+  if (!(selectedNo % 1 === 0 && selectedNo >= 0 && selectedNo <= 9)) {
+    return false;
+  }
+
+  if (!isNumericObject(slots)) {
+    return false;
+  }
+
+  return Array.from({ length: 10 }).every(
+    (_, key) => key in slots && isSlot(slots[key]),
+  );
+};
+
+export const isRepairableLegacyQuickSlotsResponse = (
+  data: unknown,
+): data is RepairableLegacyQuickSlotsResponse => {
+  return (
+    isObject(data) && Array.from({ length: 10 }).every((_, key) => key in data)
+  );
+};
+
+export const isRepairableQuickSlotsResponse = (
+  data: unknown,
+): data is RepairableQuickSlotsResponse => {
+  if (!isObject(data) || !('slots' in data)) {
+    return false;
+  }
+
+  const { slots } = data;
+
+  return (
+    isObject(slots) &&
+    Array.from({ length: 10 }).every((_, key) => key in slots)
   );
 };

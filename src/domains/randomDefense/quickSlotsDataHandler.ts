@@ -165,3 +165,21 @@ export const fetchQuickSlots = () => {
     );
   });
 };
+
+export const saveQuickSlots = (
+  selectedSlotNo: unknown,
+  slots: unknown,
+  hotkey: unknown,
+) => {
+  const quickSlotsData = { selectedSlotNo, slots, hotkey };
+
+  if (!isRepairableQuickSlotsResponse(quickSlotsData)) {
+    return;
+  }
+
+  const sanitizedQuickSlots = sanitizeQuickSlots(quickSlotsData);
+
+  chrome.storage.sync.set({
+    [SYNC_STORAGE_KEY.QUICK_SLOTS]: sanitizedQuickSlots,
+  });
+};

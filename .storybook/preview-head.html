@@ -17,6 +17,7 @@
 
   var chrome = {
     runtime: {
+      getURL: (path) => path,
       sendMessage: async ({ command, message }, callback) => {
         await delay(2000);
 

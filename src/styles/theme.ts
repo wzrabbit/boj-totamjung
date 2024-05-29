@@ -8,6 +8,7 @@ export const theme = {
     BROWN: '#301e18',
     DARK_BROWN: '#1a0e0a',
     WHITE: '#eeeeee',
+    PURE_WHITE: '#ffffff',
     TRANSPARENT_FAINT_WHITE: '#eeeeee20',
     GRAY: '#808080',
     LIGHT_GRAY: '#aaaaaa',
@@ -16,6 +17,9 @@ export const theme = {
     MAGENTA: '#ff005d',
     SKY_BLUE: '#00a1ff',
     AZURE_BLUE: '#007bff',
+    BOJ_BLUE: '#0076c0',
+    BOJ_BLUE_TRANSPARENT: '#0076c050',
+    BLACK_TRANSPARENT: '#00000050',
     ORANGE: '#ff8533',
     DARK_ORANGE: '#bb4b00',
   },
@@ -106,6 +110,13 @@ export const theme = {
       'linear-gradient(to right, #00364b 0%, #001f4b 100%)',
     RUBY_DARK_GRADIENT200:
       'linear-gradient(to right, #4d001d 0%, #4d0000 100%)',
+  },
+
+  filter: {
+    BOJ_BLUE_FILTER:
+      'brightness(0) saturate(100%) invert(29%) sepia(66%) saturate(1717%) hue-rotate(179deg) brightness(101%) contrast(101%)',
+    LIGHT_BROWN_FILTER:
+      'brightness(0) saturate(100%) invert(49%) sepia(26%) saturate(568%) hue-rotate(330deg) brightness(93%) contrast(86%)',
   },
 };
 

@@ -445,3 +445,81 @@ describe('Test #4 - 퀵슬롯 정보 저장하기', () => {
     });
   });
 });
+
+describe('Test #5 - 유효하지 않은 퀵슬롯 정보 저장에 대응하기', () => {
+  test('일부 데이터가 유효하지 않은 퀵슬롯을 저장해야 할 경우, 올바른 데이터에 한해서만 저장해야 한다.', async () => {
+    jest.spyOn(chrome.storage.sync, 'set').mockImplementation(() => {});
+    const partiallyInvalidQuickSlots = {
+      selectedSlotNo: 3,
+      hotkey: 'Enter',
+      slots: {
+        ...validQuickSlots.slots,
+        4: {},
+        5: {
+          isEmpty: false,
+          title: 'a'.repeat(999),
+          query: 'Too Long Title, But Valid Query',
+        },
+        7: 'Invalid',
+        8: {
+          isEmpty: false,
+          query: '',
+          title: 'Invalid Query',
+        },
+      },
+    };
+
+    const expected = {
+      selectedSlotNo: 3,
+      hotkey: 'Alt',
+      slots: {
+        ...validQuickSlots.slots,
+        4: { isEmpty: true },
+        5: {
+          isEmpty: false,
+          title: '추첨 5',
+          query: 'Too Long Title, But Valid Query',
+        },
+        7: { isEmpty: true },
+        8: { isEmpty: true },
+      },
+    };
+    const { selectedSlotNo, slots, hotkey } = partiallyInvalidQuickSlots;
+
+    saveQuickSlots(selectedSlotNo, slots, hotkey);
+
+    expect(chrome.storage.sync.set).toHaveBeenCalledWith({
+      quickSlots: expected,
+    });
+  });
+
+  test('복구가 불가능할 정도로 유효하지 않은 퀵슬롯을 저장해야 할 경우, 저장을 진행해서는 안 된다.', async () => {
+    const invalidQuickSlots = {
+      slots: {
+        1: {},
+        2: {},
+        3: {},
+        4: {},
+        5: {
+          isEmpty: false,
+          title: '이 데이터는 보존되지 말아야 합니다',
+          query: '8번 슬롯이 누락되어 있습니다',
+        },
+        6: {},
+        7: {},
+        9: {},
+        0: {},
+      },
+      hotkey: 'Alt',
+      selectedSlotNo: 0,
+    };
+    const { selectedSlotNo, slots, hotkey } = invalidQuickSlots;
+
+    jest.clearAllMocks();
+    jest.spyOn(chrome.storage.sync, 'set').mockImplementation(() => {});
+
+    saveQuickSlots(selectedSlotNo, slots, hotkey);
+
+    expect(chrome.storage.sync.set).not.toHaveBeenCalled();
+  });
+});

@@ -84,3 +84,17 @@ const validLegacyQuickSlots = {
   ...validQuickSlots.slots,
   selectedNo: validQuickSlots.selectedSlotNo,
 };
+
+describe('Test #1 - 퀵슬롯 정보 불러오기', () => {
+  test('올바른 퀵슬롯이 저장되어 있다면, 이를 그대로 불러온 값을 반환해야 한다.', async () => {
+    jest
+      .spyOn(chrome.storage.sync, 'get')
+      .mockImplementation(async (_, callback) => {
+        callback({
+          [SYNC_STORAGE_KEY.QUICK_SLOTS]: validQuickSlots,
+        });
+      });
+
+    expect(await fetchQuickSlots()).toEqual(validQuickSlots);
+  });
+});

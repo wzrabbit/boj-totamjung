@@ -139,3 +139,29 @@ const convertLegacyToLatestQuickSlots = (
     hotkey: 'Alt',
   };
 };
+
+export const fetchQuickSlots = () => {
+  return new Promise((resolve) => {
+    chrome.storage.sync.get(
+      [SYNC_STORAGE_KEY.QUICK_SLOTS, LEGACY_SYNC_STORAGE_KEY.QUICK_SLOTS],
+      (data: Record<string, unknown>) => {
+        const rawQuickSlots = data[SYNC_STORAGE_KEY.QUICK_SLOTS];
+        const rawLegacyQuickSlots = data[LEGACY_SYNC_STORAGE_KEY.QUICK_SLOTS];
+
+        if (!rawQuickSlots && rawLegacyQuickSlots) {
+          const sanitizedLegacyQuickSlots =
+            sanitizeLegacyQuickSlots(rawLegacyQuickSlots);
+          const sanitizedQuickSlots = convertLegacyToLatestQuickSlots(
+            sanitizedLegacyQuickSlots,
+          );
+
+          resolve(sanitizedQuickSlots);
+          return;
+        }
+
+        const sanitizedQuickSlots = sanitizeQuickSlots(rawQuickSlots);
+        resolve(sanitizedQuickSlots);
+      },
+    );
+  });
+};

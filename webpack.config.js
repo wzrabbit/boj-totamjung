@@ -56,7 +56,10 @@ module.exports = {
       chunks: ['options'],
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: 'public' }],
+      patterns: [
+        { from: 'public' },
+        { from: './src/styles/*.css', to: '[name][ext]' },
+      ],
     }),
     new EslintWebpackPlugin({
       extensions: ['tsx', 'ts', 'js'],

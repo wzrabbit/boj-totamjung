@@ -13,6 +13,11 @@
       "matches": ["https://www.acmicpc.net/*"],
       "run_at": "document_idle",
       "js": ["contentScript.js"]
+    },
+    {
+      "matches": ["https://www.acmicpc.net/*"],
+      "run_at": "document_start",
+      "css": ["palette.css", "totamjungTheme.css", "problemTheme.css"]
     }
   ],
   "web_accessible_resources": [

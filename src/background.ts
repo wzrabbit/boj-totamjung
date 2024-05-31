@@ -10,6 +10,10 @@ import {
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from '~domains/randomDefense/randomDefenseHistoryDataHandler';
+import {
+  fetchTotamjungTheme,
+  saveTotamjungTheme,
+} from '~domains/totamjungTheme/totamjungThemeDataHandler';
 
 chrome.runtime.onMessage.addListener(
   (message: unknown, sender, sendResponse) => {
@@ -71,6 +75,20 @@ chrome.runtime.onMessage.addListener(
       const { selectedSlotNo, slots, hotkey } = message;
 
       saveQuickSlots(selectedSlotNo, slots, hotkey);
+    }
+
+    if (command === COMMANDS.FETCH_TOTAMJUNG_THEME) {
+      fetchTotamjungTheme().then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.SAVE_TOTAMJUNG_THEME) {
+      if (!('totamjungTheme' in message)) {
+        return;
+      }
+
+      saveTotamjungTheme(message.totamjungTheme);
     }
 
     return true;

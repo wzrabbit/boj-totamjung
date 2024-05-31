@@ -42,7 +42,7 @@ const bounceTop = keyframes`
 `;
 
 export const TopButton = styled.button<{
-  $widgetTheme: 'normal' | 'totamjung';
+  $widgetTheme: 'none' | 'totamjung';
 }>`
   display: flex;
   justify-content: center;
@@ -54,15 +54,19 @@ export const TopButton = styled.button<{
 
   border-radius: 20px !important;
   background-color: ${({ theme, $widgetTheme }) =>
-    $widgetTheme === 'normal'
+    $widgetTheme === 'none'
       ? theme.color.BOJ_BLUE
-      : theme.color.LIGHTER_BROWN};
+      : theme.color.LIGHTEST_BROWN};
 
   transition:
     0.3s transform,
     0.1s outline;
   z-index: 1;
-  outline: 0px solid ${({ theme }) => theme.color.BOJ_BLUE_TRANSPARENT} !important;
+  outline: 0px solid
+    ${({ theme, $widgetTheme }) =>
+      $widgetTheme === 'totamjung'
+        ? theme.color.LIGHTEST_BROWN_TRANSPARENT
+        : theme.color.BOJ_BLUE_TRANSPARENT} !important;
 
   &:active {
     transform: scale(0.93);
@@ -70,12 +74,16 @@ export const TopButton = styled.button<{
 
   &:hover,
   &:active {
-    outline: 4px solid ${({ theme }) => theme.color.BOJ_BLUE_TRANSPARENT} !important;
+    outline: 4px solid
+      ${({ theme, $widgetTheme }) =>
+        $widgetTheme === 'totamjung'
+          ? theme.color.LIGHTEST_BROWN_TRANSPARENT
+          : theme.color.BOJ_BLUE_TRANSPARENT} !important;
   }
 
   & span {
     background-color: ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'normal' ? theme.color.PURE_WHITE : theme.color.BROWN};
+      $widgetTheme === 'none' ? theme.color.PURE_WHITE : theme.color.BROWN};
   }
 `;
 
@@ -107,7 +115,7 @@ export const TopIconFrag = styled.span<{ $direction: 'left' | 'right' }>`
 `;
 
 export const DropdownMenu = styled.ul<{
-  $widgetTheme: 'normal' | 'totamjung';
+  $widgetTheme: 'none' | 'totamjung';
   $isExpanded: boolean;
 }>`
   display: flex;
@@ -121,17 +129,19 @@ export const DropdownMenu = styled.ul<{
 
   border: 2px solid
     ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'normal'
+      $widgetTheme === 'none'
         ? theme.color.BOJ_BLUE
-        : theme.color.LIGHTER_BROWN};
+        : theme.color.LIGHTEST_BROWN};
   border-radius: 20px !important;
   background-color: ${({ theme, $widgetTheme }) =>
-    $widgetTheme === 'normal' ? 'transparent' : theme.color.BLACK_TRANSPARENT};
+    $widgetTheme === 'none' ? 'transparent' : theme.color.BLACK_TRANSPARENT};
 
   backdrop-filter: blur(5px);
   transform-origin: center bottom;
 
-  transition: 0.3s;
+  transition:
+    height 0.3s,
+    scale 0.3s;
 
   ${TopButton}:active + & {
     scale: 0.93;
@@ -144,7 +154,7 @@ export const DropdownMenuItem = styled.li`
 `;
 
 export const DropdownMenuButton = styled.button<{
-  $widgetTheme: 'normal' | 'totamjung';
+  $widgetTheme: 'none' | 'totamjung';
 }>`
   display: flex;
   justify-content: center;
@@ -159,7 +169,7 @@ export const DropdownMenuButton = styled.button<{
 
   & > img {
     filter: ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'normal'
+      $widgetTheme === 'none'
         ? theme.filter.BOJ_BLUE_FILTER
         : theme.filter.LIGHT_BROWN_FILTER};
   }
@@ -169,7 +179,7 @@ export const DropdownButtonIcon = styled.img`
   width: auto;
   height: 26px;
 
-  transition: 0.1s;
+  transition: transform 0.1s;
 
   &:hover {
     transform: scale(1.1);

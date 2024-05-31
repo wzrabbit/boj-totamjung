@@ -1,0 +1,62 @@
+/* 2468, 2499 - Gray */
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(odd)
+  > td.b,
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(odd)
+  > td.bg-2468 {
+  background-color: var(--cell-gray-color);
+}
+
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(even)
+  > td.b,
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(even)
+  > td.bg-2468 {
+  background-color: var(--cell-gray-secondary-color);
+}
+
+/* 18823 - Black */
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(odd)
+  > td.kipa-table-cell.kipa-filled {
+  background-color: var(--cell-black-color);
+  border: 2px solid var(--cell-white-border) !important;
+}
+
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(even)
+  > td.kipa-table-cell.kipa-filled {
+  background-color: var(--cell-black-secondary-color);
+  border: 2.5px solid var(--cell-white-border) !important;
+}
+
+/* 21609, 21690 - Red */
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(odd)
+  > td.bg-red {
+  background-color: var(--cell-red-color);
+}
+
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(even)
+  > td.bg-red {
+  background-color: var(--cell-red-secondary-color);
+}

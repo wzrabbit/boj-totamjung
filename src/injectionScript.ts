@@ -17,7 +17,9 @@ const injectFontsAndThemes = () => {
 
       if (totamjungTheme === 'totamjung') {
         $html.style.backgroundColor = TOTAMJUNG_THEME_BACKGROUND_COLOR;
-        $html.setAttribute('totamjung', 'on');
+        $html.setAttribute('totamjungTheme', 'totamjung');
+      } else {
+        $html.setAttribute('totamjungTheme', 'none');
       }
     });
 

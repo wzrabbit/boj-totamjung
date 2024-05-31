@@ -37,7 +37,7 @@ const useWidget = () => {
     }
 
     const $html = document.documentElement;
-    $html.setAttribute('totamjung', widgetTheme === 'totamjung' ? 'on' : 'off');
+    $html.setAttribute('totamjungTheme', widgetTheme);
 
     chrome.runtime.sendMessage({
       command: COMMANDS.SAVE_TOTAMJUNG_THEME,

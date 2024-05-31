@@ -3,6 +3,8 @@ export const theme = {
     LEMON: '#fff2c8',
     TRANSPARENT_LEMON: '#fff2c87f',
     GOLD: '#d1b072',
+    LIGHTEST_BROWN: '#a17362',
+    LIGHTEST_BROWN_TRANSPARENT: '#a1736280',
     LIGHTER_BROWN: '#694132',
     LIGHT_BROWN: '#412a23',
     BROWN: '#301e18',

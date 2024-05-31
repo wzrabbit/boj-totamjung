@@ -11,6 +11,7 @@ import type {
   RepairableLegacyQuickSlotsResponse,
   SlotNo,
 } from '~types/randomDefense';
+import type { TotamjungThemeResponse } from '~types/totamjungTheme';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 import type { IsoString } from '~types/utils';
 import type { Tier, TierWithoutNotRatable } from '~types/randomDefense';
@@ -244,5 +245,16 @@ export const isRepairableQuickSlotsResponse = (
   return (
     isObject(slots) &&
     Array.from({ length: 10 }).every((_, key) => key in slots)
+  );
+};
+
+export const isTotamjungThemeResponse = (
+  data: unknown,
+): data is TotamjungThemeResponse => {
+  return (
+    isObject(data) &&
+    'totamjungTheme' in data &&
+    typeof data.totamjungTheme === 'string' &&
+    ['none', 'totamjung'].includes(data.totamjungTheme)
   );
 };

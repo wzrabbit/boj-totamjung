@@ -42,7 +42,7 @@ const bounceTop = keyframes`
 `;
 
 export const TopButton = styled.button<{
-  $widgetTheme: 'normal' | 'totamjung';
+  $widgetTheme: 'none' | 'totamjung';
 }>`
   display: flex;
   justify-content: center;
@@ -54,7 +54,7 @@ export const TopButton = styled.button<{
 
   border-radius: 20px !important;
   background-color: ${({ theme, $widgetTheme }) =>
-    $widgetTheme === 'normal'
+    $widgetTheme === 'none'
       ? theme.color.BOJ_BLUE
       : theme.color.LIGHTER_BROWN};
 
@@ -75,7 +75,7 @@ export const TopButton = styled.button<{
 
   & span {
     background-color: ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'normal' ? theme.color.PURE_WHITE : theme.color.BROWN};
+      $widgetTheme === 'none' ? theme.color.PURE_WHITE : theme.color.BROWN};
   }
 `;
 
@@ -107,7 +107,7 @@ export const TopIconFrag = styled.span<{ $direction: 'left' | 'right' }>`
 `;
 
 export const DropdownMenu = styled.ul<{
-  $widgetTheme: 'normal' | 'totamjung';
+  $widgetTheme: 'none' | 'totamjung';
   $isExpanded: boolean;
 }>`
   display: flex;
@@ -121,12 +121,12 @@ export const DropdownMenu = styled.ul<{
 
   border: 2px solid
     ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'normal'
+      $widgetTheme === 'none'
         ? theme.color.BOJ_BLUE
         : theme.color.LIGHTER_BROWN};
   border-radius: 20px !important;
   background-color: ${({ theme, $widgetTheme }) =>
-    $widgetTheme === 'normal' ? 'transparent' : theme.color.BLACK_TRANSPARENT};
+    $widgetTheme === 'none' ? 'transparent' : theme.color.BLACK_TRANSPARENT};
 
   backdrop-filter: blur(5px);
   transform-origin: center bottom;
@@ -144,7 +144,7 @@ export const DropdownMenuItem = styled.li`
 `;
 
 export const DropdownMenuButton = styled.button<{
-  $widgetTheme: 'normal' | 'totamjung';
+  $widgetTheme: 'none' | 'totamjung';
 }>`
   display: flex;
   justify-content: center;
@@ -159,7 +159,7 @@ export const DropdownMenuButton = styled.button<{
 
   & > img {
     filter: ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'normal'
+      $widgetTheme === 'none'
         ? theme.filter.BOJ_BLUE_FILTER
         : theme.filter.LIGHT_BROWN_FILTER};
   }

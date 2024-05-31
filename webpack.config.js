@@ -9,6 +9,7 @@ module.exports = {
     options: './src/options.tsx',
     background: './src/background.ts',
     contentScript: './src/contentScript.tsx',
+    injectionScript: './src/injectionScript.ts',
   },
   module: {
     rules: [

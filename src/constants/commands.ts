@@ -1,4 +1,5 @@
 export const COMMANDS = {
+  OPEN_OPTIONS_PAGE: 'openOptionsPage',
   FETCH_CHECKED_ALGORITHM_IDS: 'fetchCheckedAlgorithmIds',
   SAVE_CHECKED_ALGORITHM_IDS: 'saveCheckedAlgorithmIds',
   FETCH_RANDOM_DEFENSE_HISTORY: 'fetchRandomDefenseHistory',

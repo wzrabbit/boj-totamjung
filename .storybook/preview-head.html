@@ -15,6 +15,11 @@
     runtime: {
       getURL: (path) => path,
       sendMessage: async ({ command, message }, callback) => {
+        if (command === 'openOptionsPage') {
+          alert(
+            '이 alert가 뜬다면, 실제 실행 환경에서는 설정 페이지가 뜰 것입니다.',
+          );
+        }
 
         if (command === 'fetchCheckedAlgorithmIds') {
           return {

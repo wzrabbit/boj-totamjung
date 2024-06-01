@@ -27,6 +27,10 @@ chrome.runtime.onMessage.addListener(
 
     const { command } = message;
 
+    if (command === COMMANDS.OPEN_OPTIONS_PAGE) {
+      chrome.runtime.openOptionsPage();
+    }
+
     if (command === COMMANDS.FETCH_CHECKED_ALGORITHM_IDS) {
       fetchCheckedAlgorithmIds().then((result) => {
         sendResponse(result);

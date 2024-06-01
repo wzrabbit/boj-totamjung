@@ -71,6 +71,10 @@ const useWidget = () => {
     setIsExpanded((prev) => !prev);
   };
 
+  const openOptionsPage = () => {
+    chrome.runtime.sendMessage({ command: COMMANDS.OPEN_OPTIONS_PAGE });
+  };
+
   const toggleTotamjungTheme = () => {
     setWidgetTheme((prev) => (prev === 'totamjung' ? 'none' : 'totamjung'));
   };
@@ -83,6 +87,7 @@ const useWidget = () => {
     scrollToTop,
     endScrollingAnimation,
     toggleWidgetOpen,
+    openOptionsPage,
     toggleTotamjungTheme,
   };
 };

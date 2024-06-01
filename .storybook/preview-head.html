@@ -11,15 +11,15 @@
 />
 
 <script>
-  const delay = (milliseconds) => {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
-  };
-
   var chrome = {
     runtime: {
       getURL: (path) => path,
       sendMessage: async ({ command, message }, callback) => {
-        await delay(2000);
+        if (command === 'openOptionsPage') {
+          alert(
+            '이 alert가 뜬다면, 실제 실행 환경에서는 설정 페이지가 뜰 것입니다.',
+          );
+        }
 
         if (command === 'fetchCheckedAlgorithmIds') {
           return {

@@ -10,6 +10,7 @@ const Widget = () => {
     scrollToTop,
     endScrollingAnimation,
     toggleWidgetOpen,
+    openOptionsPage,
     toggleTotamjungTheme,
   } = useWidget();
 
@@ -32,7 +33,12 @@ const Widget = () => {
           </S.TopButton>
           <S.DropdownMenu $widgetTheme={widgetTheme} $isExpanded={isExpanded}>
             <S.DropdownMenuItem>
-              <S.DropdownMenuButton type="button" $widgetTheme={widgetTheme}>
+              <S.DropdownMenuButton
+                type="button"
+                $widgetTheme={widgetTheme}
+                aria-label="토탐정 설정 페이지로 이동"
+                onClick={openOptionsPage}
+              >
                 <S.DropdownButtonIcon
                   src={chrome.runtime.getURL('settings.png')}
                 />

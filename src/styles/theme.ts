@@ -24,6 +24,7 @@ export const theme = {
     BLACK_TRANSPARENT: '#00000050',
     ORANGE: '#ff8533',
     DARK_ORANGE: '#bb4b00',
+    ORANGE_TRANSPARENT: '#ff853340',
   },
 
   solvedAcTier: {
@@ -119,6 +120,8 @@ export const theme = {
       'brightness(0) saturate(100%) invert(29%) sepia(66%) saturate(1717%) hue-rotate(179deg) brightness(101%) contrast(101%)',
     LIGHT_BROWN_FILTER:
       'brightness(0) saturate(100%) invert(49%) sepia(26%) saturate(568%) hue-rotate(330deg) brightness(93%) contrast(86%)',
+    ORANGE_FILTER:
+      'brightness(0) saturate(100%) invert(49%) sepia(34%) saturate(983%) hue-rotate(339deg) brightness(115%) contrast(101%)',
   },
 };
 

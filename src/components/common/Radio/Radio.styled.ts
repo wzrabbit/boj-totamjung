@@ -1,7 +1,16 @@
 import { styled, css } from 'styled-components';
 
-export const FakeVisualRadio = styled.div<{ $isChecked: boolean }>`
+export const Label = styled.label`
+  width: 16px;
+  height: 16px;
+`;
+
+export const FakeVisualRadio = styled.div<{
+  $checked: boolean;
+  $disabled: boolean;
+}>`
   display: inline-block;
+  flex-shrink: 0;
   position: relative;
 
   width: 16px;
@@ -11,10 +20,10 @@ export const FakeVisualRadio = styled.div<{ $isChecked: boolean }>`
 
   border-radius: 8px;
   transition: 0.15s;
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
 
-  ${({ theme, $isChecked }) =>
-    $isChecked
+  ${({ theme, $checked }) =>
+    $checked
       ? css`
           box-shadow: 0 0 8px ${theme.color.GOLD};
           background-color: ${theme.color.GOLD};

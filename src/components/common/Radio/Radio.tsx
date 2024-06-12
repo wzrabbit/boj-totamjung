@@ -1,19 +1,40 @@
 import * as S from './Radio.styled';
 
-interface RadioProps {
+type RadioProps = RadioWithValue | RadioWithoutValue;
+
+interface RadioWithValue {
   name: string;
-  isChecked: boolean;
+  value: string;
+  checked: boolean;
+  disabled?: boolean;
+  onChange: (value: string) => void;
+}
+
+interface RadioWithoutValue {
+  name: string;
+  checked: boolean;
+  disabled?: boolean;
   onChange: () => void;
 }
 
 const Radio = (props: RadioProps) => {
-  const { name, isChecked, onChange } = props;
+  const { checked, disabled } = props;
 
   return (
-    <label>
-      <S.FakeVisualRadio $isChecked={isChecked} />
-      <S.Radio name={name} checked={isChecked} onChange={onChange} />
-    </label>
+    <S.Label>
+      <S.Radio
+        {...props}
+        onChange={() => {
+          if ('value' in props) {
+            props.onChange(props.value);
+            return;
+          }
+
+          props.onChange();
+        }}
+      />
+      <S.FakeVisualRadio $checked={checked} $disabled={disabled} />
+    </S.Label>
   );
 };
 

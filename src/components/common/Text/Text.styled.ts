@@ -1,7 +1,7 @@
 import { styled, css } from 'styled-components';
 
 export const Text = styled.p<{
-  $type: 'primary' | 'normal' | 'code';
+  $type: 'primary' | 'semiPrimary' | 'normal' | 'code';
   $fontSize: '16px' | '14px' | '13px';
 }>`
   font-size: ${({ $fontSize }) => $fontSize};
@@ -11,6 +11,12 @@ export const Text = styled.p<{
       return css`
         color: ${theme.color.GOLD};
         font-weight: 600;
+      `;
+    }
+
+    if ($type === 'semiPrimary') {
+      return css`
+        color: ${theme.color.LEMON};
       `;
     }
 

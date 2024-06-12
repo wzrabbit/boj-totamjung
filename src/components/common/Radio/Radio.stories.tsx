@@ -8,7 +8,7 @@ const meta = {
   title: 'common/Radio',
   component: Radio,
   argTypes: {
-    isChecked: {
+    checked: {
       description: '라디오의 체크 여부를 의미합니다.',
     },
     onChange: {
@@ -27,20 +27,34 @@ type Story = StoryObj<typeof meta>;
  */
 export const Checked: Story = {
   args: {
-    name: 'option-name',
-    isChecked: true,
-    onChange: () => {
-      alert('onChange()');
+    name: 'optionName',
+    value: 'optionValue',
+    checked: true,
+    onChange: (value) => {
+      alert(`onChange('${value}')`);
     },
   },
 };
 
 export const NotChecked: Story = {
   args: {
-    name: 'option-name',
-    isChecked: false,
-    onChange: () => {
-      alert('onChange()');
+    name: 'optionName',
+    value: 'optionValue',
+    checked: false,
+    onChange: (value) => {
+      alert(`onChange('${value}')`);
+    },
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    name: 'optionName',
+    value: 'optionValue',
+    checked: false,
+    disabled: true,
+    onChange: (value) => {
+      alert(`onChange('${value}')`);
     },
   },
 };

@@ -38,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
   ul, ol, li {
     list-style: none;
   }
+
+  fieldset {
+    border: 0;
+  }
   
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {

@@ -258,3 +258,7 @@ export const isTotamjungThemeResponse = (
     ['none', 'totamjung'].includes(data.totamjungTheme)
   );
 };
+
+export const isRatedTier = (data: unknown): data is RatedTier => {
+  return isTier(data) && data !== 0 && data !== 31;
+};

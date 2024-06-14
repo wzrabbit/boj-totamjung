@@ -262,3 +262,27 @@ export const isTotamjungThemeResponse = (
 export const isRatedTier = (data: unknown): data is RatedTier => {
   return isTier(data) && data !== 0 && data !== 31;
 };
+
+export const isHiderOptionsResponse = (
+  data: unknown,
+): data is HiderOptionsResponse => {
+  return (
+    isObject(data) &&
+    'problemTagLockDuration' in data &&
+    'shouldHideTier' in data &&
+    'warnTier' in data &&
+    'algorithmHiderUsage' in data &&
+    'problemTagLockUsage' in data &&
+    isObject(data.problemTagLockDuration) &&
+    'hours' in data.problemTagLockDuration &&
+    'minutes' in data.problemTagLockDuration &&
+    typeof data.problemTagLockDuration.hours === 'number' &&
+    typeof data.problemTagLockDuration.minutes === 'number' &&
+    typeof data.shouldHideTier === 'boolean' &&
+    (data.warnTier === 'none' || isRatedTier(data.warnTier)) &&
+    typeof data.algorithmHiderUsage === 'string' &&
+    ['click', 'auto'].includes(data.algorithmHiderUsage) &&
+    typeof data.problemTagLockUsage === 'string' &&
+    ['click', 'auto'].includes(data.problemTagLockUsage)
+  );
+};

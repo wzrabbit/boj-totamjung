@@ -15,6 +15,8 @@ import type { TotamjungThemeResponse } from '~types/totamjungTheme';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 import type { IsoString } from '~types/utils';
 import type { Tier, TierWithoutNotRatable } from '~types/randomDefense';
+import type { HiderOptionsResponse } from '~types/algorithm';
+import type { RatedTier } from '~types/tierHider';
 
 export const isObject = (data: unknown): data is object => {
   return typeof data === 'object' && data !== null;

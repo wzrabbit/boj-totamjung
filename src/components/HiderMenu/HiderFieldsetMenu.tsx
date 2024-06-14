@@ -6,16 +6,37 @@ import ProblemTagLockTimer from '~components/ProblemTagLockTimer';
 import TextLink from '~components/common/TextLink';
 import { ToolsIcon } from '~images/svg';
 import { hiddenTierBadgeIcon } from '~images/png';
+import useHiderFieldsetMenu from '~hooks/algorithm/useHiderFieldsetMenu';
 import * as S from './HiderFieldsetMenu.styled';
 
 const HiderFieldsetMenu = () => {
+  const {
+    problemTagLockDuration,
+    shouldHideTier,
+    shouldWarnHighTier,
+    warnTier,
+    algorithmHiderUsage,
+    problemTagLockUsage,
+    updateProblemTagLockDuration,
+    updateShouldHideTier,
+    updateShouldWarnHighTier,
+    updateWarnTier,
+    updateAlgorithmHiderUsage,
+    updateProblemTagLockUsage,
+  } = useHiderFieldsetMenu();
+  const { hours, minutes } = problemTagLockDuration;
+
   return (
     <S.Container>
       <MenuTitle
         title="잠금 시간 설정"
         iconSrc={chrome.runtime.getURL('lock.png')}
       />
-      <ProblemTagLockTimer hours={1} minutes={30} onChange={() => {}} />
+      <ProblemTagLockTimer
+        hours={hours}
+        minutes={minutes}
+        onChange={updateProblemTagLockDuration}
+      />
       <MenuTitle title="티어 가리개 설정" iconSrc={hiddenTierBadgeIcon} />
       <Fieldset
         legend="맞추지 않은 문제의 난이도 숨기기"
@@ -24,30 +45,35 @@ const HiderFieldsetMenu = () => {
           { label: '숨기기', value: 'true' },
           { label: '숨기지 않기', value: 'false' },
         ]}
-        checkedValue="true"
-        onChange={() => {}}
+        checkedValue={
+          shouldHideTier ? 'true' : shouldHideTier === undefined ? '' : 'false'
+        }
+        onChange={updateShouldHideTier}
       />
       <Fieldset
         legend="어려운 문제 경고"
-        name="warnTier"
+        name="shouldWarnHighTier"
         isVertical={true}
-        disabled={true}
+        disabled={!shouldHideTier}
         options={[
-          { label: '사용하지 않음', value: 'none' },
+          { label: '사용하지 않음', value: 'false' },
           {
             label: (
               <S.WarningTierLabel>
-                <TierDropdown selectedTier={1} onChange={() => {}} />
+                <TierDropdown
+                  selectedTier={warnTier}
+                  onChange={updateWarnTier}
+                />
                 <Text type="semiPrimary" fontSize="16px">
                   이상 난이도일 경우 경고
                 </Text>
               </S.WarningTierLabel>
             ),
-            value: '1',
+            value: 'true',
           },
         ]}
-        checkedValue="true"
-        onChange={() => {}}
+        checkedValue={shouldWarnHighTier ? 'true' : 'false'}
+        onChange={updateShouldWarnHighTier}
       />
       <Text type="normal" fontSize="14px">
         티어 가리개를 사용하기 위해서는 백준의{' '}
@@ -64,8 +90,8 @@ const HiderFieldsetMenu = () => {
           { label: '클릭하여 공개', value: 'click' },
           { label: '항상 공개', value: 'auto' },
         ]}
-        checkedValue="click"
-        onChange={() => {}}
+        checkedValue={algorithmHiderUsage ?? ''}
+        onChange={updateAlgorithmHiderUsage}
       />
       <Fieldset
         legend="알고리즘 분류 잠금 방법"
@@ -74,8 +100,8 @@ const HiderFieldsetMenu = () => {
           { label: '클릭하여 잠금', value: 'click' },
           { label: '자동으로 잠금', value: 'auto' },
         ]}
-        checkedValue="auto"
-        onChange={() => {}}
+        checkedValue={problemTagLockUsage ?? ''}
+        onChange={updateProblemTagLockUsage}
       />
     </S.Container>
   );

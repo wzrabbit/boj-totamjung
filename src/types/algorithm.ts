@@ -19,7 +19,8 @@ export interface HiderOptionsResponse {
     minutes: number;
   };
   shouldHideTier: boolean;
-  warnTier: RatedTier | 'none';
+  shouldWarnHighTier: boolean;
+  warnTier: RatedTier;
   algorithmHiderUsage: 'click' | 'auto';
   problemTagLockUsage: 'click' | 'auto';
 }

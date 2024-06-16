@@ -88,7 +88,7 @@ const HiderFieldsetMenu = () => {
         name="algorithmHiderUsage"
         options={[
           { label: '클릭하여 공개', value: 'click' },
-          { label: '항상 공개', value: 'auto' },
+          { label: '항상 공개', value: 'always' },
         ]}
         checkedValue={algorithmHiderUsage ?? ''}
         onChange={updateAlgorithmHiderUsage}

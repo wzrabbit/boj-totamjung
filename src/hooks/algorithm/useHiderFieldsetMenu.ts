@@ -119,7 +119,7 @@ const useHiderFieldsetMenu = () => {
   };
 
   const updateAlgorithmHiderUsage = (usage: string) => {
-    if (usage !== 'click' && usage !== 'auto') {
+    if (usage !== 'click' && usage !== 'always') {
       return;
     }
 

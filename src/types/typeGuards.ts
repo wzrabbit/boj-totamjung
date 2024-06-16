@@ -285,7 +285,7 @@ export const isHiderOptionsResponse = (
     typeof data.shouldWarnHighTier === 'boolean' &&
     isRatedTier(data.warnTier) &&
     typeof data.algorithmHiderUsage === 'string' &&
-    ['click', 'auto'].includes(data.algorithmHiderUsage) &&
+    ['click', 'always'].includes(data.algorithmHiderUsage) &&
     typeof data.problemTagLockUsage === 'string' &&
     ['click', 'auto'].includes(data.problemTagLockUsage)
   );

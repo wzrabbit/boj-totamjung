@@ -318,3 +318,47 @@ export const isLegacyTimer = (data: unknown): data is LegacyTimer => {
     isNumericStringAllowsLeadingZeroes(data.minute)
   );
 };
+
+export const isLegacyHiderSettings = (
+  data: unknown,
+): data is LegacyHiderSettings => {
+  if (
+    !(
+      isObject(data) &&
+      'font' in data &&
+      'lock' in data &&
+      'predict' in data &&
+      'theme' in data &&
+      typeof data.font === 'string' &&
+      typeof data.lock === 'string' &&
+      typeof data.predict === 'string' &&
+      typeof data.theme === 'string' &&
+      typeof data.lock === 'string' &&
+      ['click', 'always'].includes(data.lock) &&
+      typeof data.predict === 'string' &&
+      ['click', 'always'].includes(data.predict) &&
+      typeof data.theme === 'string' &&
+      ['yes', 'no'].includes(data.theme)
+    )
+  ) {
+    return false;
+  }
+
+  if (data.font === 'none') {
+    return true;
+  }
+
+  if (!/^font-\d+$/.test(data.font)) {
+    return false;
+  }
+
+  const fontNoString = data.font.split('-')[1];
+
+  if (!isNumericString(fontNoString)) {
+    return false;
+  }
+
+  const fontNo = Number(fontNoString);
+
+  return fontNo >= 1 && fontNo <= 19;
+};

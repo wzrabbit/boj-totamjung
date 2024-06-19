@@ -14,6 +14,10 @@ import {
   fetchTotamjungTheme,
   saveTotamjungTheme,
 } from '~domains/totamjungTheme/totamjungThemeDataHandler';
+import {
+  fetchHiderOptions,
+  saveHiderOptions,
+} from '~domains/algorithm/hiderOptionsDataHandler';
 
 chrome.runtime.onMessage.addListener(
   (message: unknown, sender, sendResponse) => {
@@ -93,6 +97,16 @@ chrome.runtime.onMessage.addListener(
       }
 
       saveTotamjungTheme(message.totamjungTheme);
+    }
+
+    if (command === COMMANDS.FETCH_HIDER_OPTIONS) {
+      fetchHiderOptions().then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.SAVE_HIDER_OPTIONS) {
+      saveHiderOptions(message);
     }
 
     return true;

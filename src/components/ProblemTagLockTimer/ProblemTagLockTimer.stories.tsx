@@ -18,5 +18,14 @@ export const Default: Story = {
   args: {
     hours: 0,
     minutes: 20,
+    disabled: false,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    hours: 0,
+    minutes: 20,
+    disabled: true,
   },
 };

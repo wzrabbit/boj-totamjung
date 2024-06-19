@@ -122,6 +122,20 @@
           return 'none';
         }
 
+        if (command === 'fetchHiderOptions') {
+          return {
+            problemTagLockDuration: {
+              hours: 1,
+              minutes: 30,
+            },
+            shouldHideTier: true,
+            shouldWarnHighTier: true,
+            warnTier: 16,
+            algorithmHiderUsage: 'always',
+            problemTagLockUsage: 'click',
+          };
+        }
+
         return {};
       },
     },

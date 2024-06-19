@@ -15,6 +15,8 @@ import type { TotamjungThemeResponse } from '~types/totamjungTheme';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 import type { IsoString } from '~types/utils';
 import type { Tier, TierWithoutNotRatable } from '~types/randomDefense';
+import type { HiderOptionsResponse } from '~types/algorithm';
+import type { RatedTier } from '~types/tierHider';
 
 export const isObject = (data: unknown): data is object => {
   return typeof data === 'object' && data !== null;
@@ -256,5 +258,35 @@ export const isTotamjungThemeResponse = (
     'totamjungTheme' in data &&
     typeof data.totamjungTheme === 'string' &&
     ['none', 'totamjung'].includes(data.totamjungTheme)
+  );
+};
+
+export const isRatedTier = (data: unknown): data is RatedTier => {
+  return isTier(data) && data !== 0 && data !== 31;
+};
+
+export const isHiderOptionsResponse = (
+  data: unknown,
+): data is HiderOptionsResponse => {
+  return (
+    isObject(data) &&
+    'problemTagLockDuration' in data &&
+    'shouldHideTier' in data &&
+    'shouldWarnHighTier' in data &&
+    'warnTier' in data &&
+    'algorithmHiderUsage' in data &&
+    'problemTagLockUsage' in data &&
+    isObject(data.problemTagLockDuration) &&
+    'hours' in data.problemTagLockDuration &&
+    'minutes' in data.problemTagLockDuration &&
+    typeof data.problemTagLockDuration.hours === 'number' &&
+    typeof data.problemTagLockDuration.minutes === 'number' &&
+    typeof data.shouldHideTier === 'boolean' &&
+    typeof data.shouldWarnHighTier === 'boolean' &&
+    isRatedTier(data.warnTier) &&
+    typeof data.algorithmHiderUsage === 'string' &&
+    ['click', 'always'].includes(data.algorithmHiderUsage) &&
+    typeof data.problemTagLockUsage === 'string' &&
+    ['click', 'auto'].includes(data.problemTagLockUsage)
   );
 };

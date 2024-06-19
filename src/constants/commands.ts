@@ -8,12 +8,15 @@ export const COMMANDS = {
   SAVE_QUICK_SLOTS: 'saveQuickSlots',
   FETCH_TOTAMJUNG_THEME: 'fetchTotamjungTheme',
   SAVE_TOTAMJUNG_THEME: 'saveTotamjungTheme',
+  FETCH_HIDER_OPTIONS: 'fetchHiderOptions',
+  SAVE_HIDER_OPTIONS: 'saveHiderOptions',
 } as const;
 
 export const SYNC_STORAGE_KEY = {
   CHECKED_ALGORITHM_IDS: 'checkedAlgorithmIds',
   QUICK_SLOTS: 'quickSlots',
   TOTAMJUNG_THEME: 'totamjungTheme',
+  HIDER_OPTIONS: 'hiderOptions',
 } as const;
 
 export const LOCAL_STORAGE_KEY = {

@@ -3,9 +3,12 @@ import { styled } from 'styled-components';
 export const Container = styled.div`
   display: inline-flex;
   flex-direction: column;
+  align-self: flex-start;
+  position: relative;
 
   width: auto;
   max-width: 100%;
+  height: 32px;
 
   user-select: none;
 `;
@@ -54,8 +57,8 @@ export const Title = styled.h2`
 `;
 
 export const Underline = styled.div`
-  position: relative;
-  bottom: 10px;
+  position: absolute;
+  bottom: 0;
 
   width: calc(100% + 6px);
   margin-left: -3px;

@@ -7,11 +7,12 @@ import { MAX_HOURS, MAX_MINUTES } from '~constants/tagLock';
 interface ProblemTagLockTimerProps {
   hours: number;
   minutes: number;
+  disabled?: boolean;
   onChange: (hours: number, minutes: number) => void;
 }
 
 const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
-  const { hours: initHours, minutes: initMinutes, onChange } = props;
+  const { hours: initHours, minutes: initMinutes, disabled, onChange } = props;
   const {
     hours,
     minutes,
@@ -29,6 +30,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         min={0}
         max={MAX_HOURS}
         value={hours}
+        disabled={disabled}
         onChange={updateHours}
         onBlur={submitHours}
         aria-label="시간"
@@ -42,6 +44,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         min={0}
         max={MAX_MINUTES}
         value={minutes}
+        disabled={disabled}
         onChange={updateMinutes}
         onBlur={submitMinutes}
         aria-label="분"

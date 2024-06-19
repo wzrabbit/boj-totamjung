@@ -25,9 +25,15 @@ export const Input = styled.input`
 
   transition: outline 0.05s;
 
-  &:focus,
-  &:active {
+  &:focus:not(:disabled),
+  &:active:not(:disabled) {
     border: 2px solid ${({ theme }) => theme.color.LEMON};
     outline: 3px solid ${({ theme }) => theme.color.LEMON}70;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
   }
 `;

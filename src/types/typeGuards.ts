@@ -15,8 +15,16 @@ import type { TotamjungThemeResponse } from '~types/totamjungTheme';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 import type { IsoString } from '~types/utils';
 import type { Tier, TierWithoutNotRatable } from '~types/randomDefense';
-import type { HiderOptionsResponse } from '~types/algorithm';
+import type {
+  HiderOptionsResponse,
+  LegacyTimer,
+  LegacyHiderSettings,
+} from '~types/algorithm';
 import type { RatedTier } from '~types/tierHider';
+import {
+  isNumericString,
+  isNumericStringAllowsLeadingZeroes,
+} from '~utils/numericStringChecker';
 
 export const isObject = (data: unknown): data is object => {
   return typeof data === 'object' && data !== null;
@@ -288,5 +296,25 @@ export const isHiderOptionsResponse = (
     ['click', 'always'].includes(data.algorithmHiderUsage) &&
     typeof data.problemTagLockUsage === 'string' &&
     ['click', 'auto'].includes(data.problemTagLockUsage)
+  );
+};
+
+export const isLegacyTimer = (data: unknown): data is LegacyTimer => {
+  return (
+    isObject(data) &&
+    'expire' in data &&
+    'hour' in data &&
+    'minute' in data &&
+    'problem' in data &&
+    typeof data.expire === 'number' &&
+    typeof data.hour === 'string' &&
+    typeof data.minute === 'string' &&
+    typeof data.problem === 'number' &&
+    data.hour.length >= 1 &&
+    data.hour.length <= 2 &&
+    isNumericStringAllowsLeadingZeroes(data.hour) &&
+    data.minute.length >= 1 &&
+    data.minute.length <= 2 &&
+    isNumericStringAllowsLeadingZeroes(data.minute)
   );
 };

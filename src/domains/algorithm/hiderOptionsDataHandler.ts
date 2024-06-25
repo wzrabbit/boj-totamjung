@@ -66,13 +66,6 @@ export const fetchHiderOptions = async () => {
         const isLegacy = !hiderOptions && (legacyTimer || legacyHiderSettings);
 
         if (isLegacy) {
-          console.log(
-            'legacy',
-            generateLatestHiderOptionsByLegacyData(
-              legacyTimer,
-              legacyHiderSettings,
-            ),
-          );
           resolve(
             generateLatestHiderOptionsByLegacyData(
               legacyTimer,
@@ -82,12 +75,6 @@ export const fetchHiderOptions = async () => {
           return;
         }
 
-        console.log(
-          'normal',
-          isHiderOptionsResponse(hiderOptions)
-            ? hiderOptions
-            : DEFAULT_HIDER_OPTIONS,
-        );
         resolve(
           isHiderOptionsResponse(hiderOptions)
             ? hiderOptions

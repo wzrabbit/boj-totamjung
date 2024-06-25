@@ -18,7 +18,7 @@ import type { Tier, TierWithoutNotRatable } from '~types/randomDefense';
 import type {
   HiderOptionsResponse,
   LegacyTimer,
-  LegacyHiderSettings,
+  LegacyHiderOptions,
 } from '~types/algorithm';
 import type { RatedTier } from '~types/tierHider';
 import {
@@ -321,7 +321,7 @@ export const isLegacyTimer = (data: unknown): data is LegacyTimer => {
 
 export const isLegacyHiderSettings = (
   data: unknown,
-): data is LegacyHiderSettings => {
+): data is LegacyHiderOptions => {
   if (
     !(
       isObject(data) &&

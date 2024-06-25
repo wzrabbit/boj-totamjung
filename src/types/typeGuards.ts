@@ -276,26 +276,41 @@ export const isRatedTier = (data: unknown): data is RatedTier => {
 export const isHiderOptionsResponse = (
   data: unknown,
 ): data is HiderOptionsResponse => {
+  if (
+    !(
+      isObject(data) &&
+      'problemTagLockDuration' in data &&
+      'shouldHideTier' in data &&
+      'shouldWarnHighTier' in data &&
+      'warnTier' in data &&
+      'algorithmHiderUsage' in data &&
+      'problemTagLockUsage' in data &&
+      isObject(data.problemTagLockDuration) &&
+      'hours' in data.problemTagLockDuration &&
+      'minutes' in data.problemTagLockDuration &&
+      typeof data.problemTagLockDuration.hours === 'number' &&
+      typeof data.problemTagLockDuration.minutes === 'number' &&
+      typeof data.shouldHideTier === 'boolean' &&
+      typeof data.shouldWarnHighTier === 'boolean' &&
+      isRatedTier(data.warnTier) &&
+      typeof data.algorithmHiderUsage === 'string' &&
+      ['click', 'always'].includes(data.algorithmHiderUsage) &&
+      typeof data.problemTagLockUsage === 'string' &&
+      ['click', 'auto'].includes(data.problemTagLockUsage)
+    )
+  ) {
+    return false;
+  }
+
+  const { hours, minutes } = data.problemTagLockDuration;
+
   return (
-    isObject(data) &&
-    'problemTagLockDuration' in data &&
-    'shouldHideTier' in data &&
-    'shouldWarnHighTier' in data &&
-    'warnTier' in data &&
-    'algorithmHiderUsage' in data &&
-    'problemTagLockUsage' in data &&
-    isObject(data.problemTagLockDuration) &&
-    'hours' in data.problemTagLockDuration &&
-    'minutes' in data.problemTagLockDuration &&
-    typeof data.problemTagLockDuration.hours === 'number' &&
-    typeof data.problemTagLockDuration.minutes === 'number' &&
-    typeof data.shouldHideTier === 'boolean' &&
-    typeof data.shouldWarnHighTier === 'boolean' &&
-    isRatedTier(data.warnTier) &&
-    typeof data.algorithmHiderUsage === 'string' &&
-    ['click', 'always'].includes(data.algorithmHiderUsage) &&
-    typeof data.problemTagLockUsage === 'string' &&
-    ['click', 'auto'].includes(data.problemTagLockUsage)
+    hours >= 0 &&
+    hours < 100 &&
+    minutes >= 0 &&
+    minutes < 60 &&
+    hours % 1 === 0 &&
+    minutes % 1 === 0
   );
 };
 

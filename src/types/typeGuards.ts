@@ -12,6 +12,7 @@ import type {
   SlotNo,
 } from '~types/randomDefense';
 import type { TotamjungThemeResponse } from '~types/totamjungTheme';
+import type { FontNoResponse } from '~types/font';
 import { solvedAcNumericTierIcons } from '~images/svg/tier';
 import type { IsoString } from '~types/utils';
 import type { Tier, TierWithoutNotRatable } from '~types/randomDefense';
@@ -376,4 +377,8 @@ export const isLegacyHiderSettings = (
   const fontNo = Number(fontNoString);
 
   return fontNo >= 1 && fontNo <= 19;
+};
+
+export const isFontNoResponse = (data: unknown): data is FontNoResponse => {
+  return isObject(data) && 'fontNo' in data && typeof data.fontNo === 'number';
 };

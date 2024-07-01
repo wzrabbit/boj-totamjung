@@ -127,7 +127,9 @@
         }
 
         if (command === 'fetchTotamjungTheme') {
-          return 'none';
+          return {
+            totamjungTheme: 'none',
+          };
         }
 
         if (command === 'fetchHiderOptions') {
@@ -141,6 +143,12 @@
             warnTier: 16,
             algorithmHiderUsage: 'always',
             problemTagLockUsage: 'click',
+          };
+        }
+
+        if (command === 'fetchFontNo') {
+          return {
+            fontNo: 10,
           };
         }
 

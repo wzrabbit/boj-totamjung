@@ -10,6 +10,8 @@ export const COMMANDS = {
   SAVE_TOTAMJUNG_THEME: 'saveTotamjungTheme',
   FETCH_HIDER_OPTIONS: 'fetchHiderOptions',
   SAVE_HIDER_OPTIONS: 'saveHiderOptions',
+  FETCH_FONT_NO: 'fetchFontNo',
+  SAVE_FONT_NO: 'saveFontNo',
 } as const;
 
 export const SYNC_STORAGE_KEY = {
@@ -17,6 +19,7 @@ export const SYNC_STORAGE_KEY = {
   QUICK_SLOTS: 'quickSlots',
   TOTAMJUNG_THEME: 'totamjungTheme',
   HIDER_OPTIONS: 'hiderOptions',
+  FONT_NO: 'fontNo',
 } as const;
 
 export const LOCAL_STORAGE_KEY = {

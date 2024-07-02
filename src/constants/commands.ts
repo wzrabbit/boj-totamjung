@@ -12,20 +12,23 @@ export const COMMANDS = {
   SAVE_HIDER_OPTIONS: 'saveHiderOptions',
 } as const;
 
-export const SYNC_STORAGE_KEY = {
+/**
+ * 현재 버전(v1.2) 이후 쓰일 키 값들입니다.
+ * 모든 키는 `chrome.storage.local`의 키들입니다.
+ * 이는 데이터의 크기가 `chrome.storage.sync`에 저장할 수 있는 한도를 넘기 때문입니다.
+ */
+export const STORAGE_KEY = {
   CHECKED_ALGORITHM_IDS: 'checkedAlgorithmIds',
   QUICK_SLOTS: 'quickSlots',
   TOTAMJUNG_THEME: 'totamjungTheme',
   HIDER_OPTIONS: 'hiderOptions',
-} as const;
-
-export const LOCAL_STORAGE_KEY = {
   RANDOM_DEFENSE_HISTORY: 'randomDefenseHistory',
   IS_TIER_HIDDEN: 'isTierHidden',
-} as const;
+  DATA_VERSION: 'dataVersion',
+};
 
 /**
- * LEGACY가 변수명으로 붙은 키들의 경우 v1.1.*까지의 이전 버전에서 사용되던 키들입니다.
+ * LEGACY가 변수명으로 붙은 키들의 경우 이전 버전(~v1.1.2.2)에서 사용되던 키들입니다.
  * v1.2부터는 사용되지 않지만, 이전 버전에서 업데이트를 한 유저를 위해 데이터를 옮겨야 하므로
  * 필요한 키들입니다.
  */

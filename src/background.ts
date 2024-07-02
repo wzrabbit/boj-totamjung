@@ -1,23 +1,25 @@
 import { isObject } from '~types/typeGuards';
 import { COMMANDS } from '~constants/commands';
-import { fetchCheckedAlgorithmIds } from '~domains/algorithm/fetchCheckedAlgorithmIds';
-import { saveCheckedAlgorithmIds } from '~domains/algorithm/saveCheckedAlgorithmIds';
+import {
+  fetchCheckedAlgorithmIds,
+  saveCheckedAlgorithmIds,
+} from '~domains/dataHandlers/checkedAlgorithmsHandler';
 import {
   fetchQuickSlots,
   saveQuickSlots,
-} from '~domains/randomDefense/quickSlotsDataHandler';
+} from '~domains/dataHandlers/quickSlotsDataHandler';
 import {
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
-} from '~domains/randomDefense/randomDefenseHistoryDataHandler';
+} from '~domains/dataHandlers/randomDefenseHistoryDataHandler';
 import {
   fetchTotamjungTheme,
   saveTotamjungTheme,
-} from '~domains/totamjungTheme/totamjungThemeDataHandler';
+} from '~domains/dataHandlers/totamjungThemeDataHandler';
 import {
   fetchHiderOptions,
   saveHiderOptions,
-} from '~domains/algorithm/hiderOptionsDataHandler';
+} from '~domains/dataHandlers/hiderOptionsDataHandler';
 
 chrome.runtime.onMessage.addListener(
   (message: unknown, sender, sendResponse) => {

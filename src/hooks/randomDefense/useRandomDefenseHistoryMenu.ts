@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
 import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
-import { isRandomDefenseHistoryResponse } from '~types/typeGuards';
+import { isRandomDefenseHistoryResponse } from '~domains/dataHandlers/validators/randomDefenseHistoryValidator';
 import { COMMANDS } from '~constants/commands';
 
 const useRandomDefenseHistoryMenu = () => {

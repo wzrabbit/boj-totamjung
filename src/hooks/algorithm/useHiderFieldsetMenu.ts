@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { isHiderOptionsResponse } from '~types/typeGuards';
+import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
 import type { HiderOptionsResponse } from '~types/algorithm';
 import { COMMANDS } from '~constants/commands';
 import { RatedTier } from '~types/tierHider';

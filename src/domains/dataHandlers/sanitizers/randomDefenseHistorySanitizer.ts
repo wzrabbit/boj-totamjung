@@ -16,6 +16,7 @@ import {
 } from '~types/randomDefense';
 import { isValidIsoString } from '~utils/isValidIsoString';
 import { isValidDate } from '~utils/isValidDate';
+import { DEFAULT_RANDOM_DEFENSE_HISTORY } from '~constants/defaultValues';
 
 const isValidRandomDefenseHistoryInfo = (item: unknown) => {
   return (

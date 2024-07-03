@@ -1,4 +1,7 @@
-import { isLegacyTimer, isLegacyHiderOptions } from '~types/typeGuards';
+import {
+  isLegacyTimer,
+  isLegacyHiderOptions,
+} from '../validators/hiderOptionsValidator';
 import { DEFAULT_HIDER_OPTIONS } from '~constants/defaultValues';
 import type { HiderOptionsResponse } from '~types/algorithm';
 

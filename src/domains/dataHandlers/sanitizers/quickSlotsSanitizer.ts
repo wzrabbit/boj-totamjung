@@ -6,7 +6,7 @@ import {
   isQuickSlotsResponse,
   isSlotNo,
   isLegacyQuickSlotsResponse,
-} from '~types/typeGuards';
+} from '../validators/quickSlotsValidator';
 import {
   DEFAULT_QUICK_SLOTS_RESPONSE,
   DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE,

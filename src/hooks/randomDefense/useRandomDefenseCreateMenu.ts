@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { isRandomDefenseFormData } from '~types/typeGuards';
+import { isRandomDefenseFormData } from '~domains/randomDefense/randomDefenseFormDataValidator';
 import { validateRandomDefenseFormData } from '~domains/randomDefense/randomDefenseFormDataValidator';
 import type { ChangeEventHandler, MouseEventHandler } from 'react';
 import type {

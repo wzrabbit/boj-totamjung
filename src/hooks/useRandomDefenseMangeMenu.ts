@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { isQuickSlotsResponse } from '~types/typeGuards';
+import { isQuickSlotsResponse } from '~domains/dataHandlers/validators/quickSlotsValidator';
 import { COMMANDS } from '~constants/commands';
 import type { QuickSlots, SlotNo, Hotkey } from '~types/randomDefense';
 

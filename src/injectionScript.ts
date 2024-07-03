@@ -1,5 +1,5 @@
 import { COMMANDS } from '~constants/commands';
-import { isTotamjungThemeResponse } from '~types/typeGuards';
+import { isTotamjungThemeResponse } from '~domains/dataHandlers/validators/totamjungThemeValidator';
 
 const TOTAMJUNG_THEME_BACKGROUND_COLOR = '#1a0e0a';
 

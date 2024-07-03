@@ -1,6 +1,6 @@
 import { STORAGE_KEY } from '~constants/commands';
 import { DEFAULT_HIDER_OPTIONS } from '~constants/defaultValues';
-import { isHiderOptionsResponse } from '~types/typeGuards';
+import { isHiderOptionsResponse } from './validators/hiderOptionsValidator';
 
 export const fetchHiderOptions = async () => {
   const data = await chrome.storage.local.get(STORAGE_KEY.HIDER_OPTIONS);

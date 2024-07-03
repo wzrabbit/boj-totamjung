@@ -7,10 +7,45 @@ import {
   MAX_CUSTOM_QUERY_LENGTH,
 } from '~constants/randomDefense';
 import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
+import {
+  isNumericArray,
+  isObject,
+  isTierWithoutNotRatable,
+} from '~types/typeGuards';
 import type {
   RandomDefenseFormData,
   RandomDefenseFormDataVerdict,
 } from '~types/randomDefense';
+
+export const isRandomDefenseFormData = (
+  data: unknown,
+): data is RandomDefenseFormData => {
+  return (
+    isObject(data) &&
+    'mode' in data &&
+    'title' in data &&
+    'handle' in data &&
+    'solvedMin' in data &&
+    'solvedMax' in data &&
+    'startTier' in data &&
+    'endTier' in data &&
+    'searchOperator' in data &&
+    'algorithmIds' in data &&
+    'customQuery' in data &&
+    typeof data.mode === 'string' &&
+    ['easy', 'manual'].includes(data.mode) &&
+    typeof data.title === 'string' &&
+    typeof data.handle === 'string' &&
+    typeof data.solvedMin === 'string' &&
+    typeof data.solvedMax === 'string' &&
+    isNumericArray(data.algorithmIds) &&
+    isTierWithoutNotRatable(data.startTier) &&
+    isTierWithoutNotRatable(data.endTier) &&
+    typeof data.searchOperator === 'string' &&
+    ['OR', 'AND', 'NOR'].includes(data.searchOperator) &&
+    typeof data.customQuery === 'string'
+  );
+};
 
 export const validateRandomDefenseFormData = (
   randomDefenseFormData: RandomDefenseFormData,

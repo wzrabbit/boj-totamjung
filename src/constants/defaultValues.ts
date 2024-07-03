@@ -42,4 +42,8 @@ export const DEFAULT_HIDER_OPTIONS = {
   problemTagLockUsage: 'click',
 } as const;
 
+export const DEFAULT_TOTAMJUNG_THEME = 'none';
+
 export const DEFAULT_IS_TIER_HIDDEN = false;
+
+export const DEFAULT_RANDOM_DEFENSE_HISTORY = [];

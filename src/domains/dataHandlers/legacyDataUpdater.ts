@@ -13,7 +13,9 @@ import { convertLegacyToLatestHiderOptions } from './converters/legacyToLatestHi
 import { convertLegacyToLatestTotamjungTheme } from './converters/legacyToLatestTotamjungThemeConverter';
 
 export const updateAllLegacyData = async () => {
-  const { dataVersion } = await chrome.storage.local.get('dataVersion');
+  const { dataVersion } = await chrome.storage.local.get(
+    STORAGE_KEY.DATA_VERSION,
+  );
 
   if (dataVersion === 'v1.2') {
     return;
@@ -24,7 +26,9 @@ export const updateAllLegacyData = async () => {
     chrome.storage.local.get(Object.values(LEGACY_LOCAL_STORAGE_KEY)),
   ]);
 
-  const legacyQuickSlots = sanitizeLegacyQuickSlots(legacySyncData.quickSlots);
+  const legacyQuickSlots = sanitizeLegacyQuickSlots(
+    legacySyncData[LEGACY_SYNC_STORAGE_KEY.QUICK_SLOTS],
+  );
   const legacyRandomDefenseHistory = sanitizeLegacyRandomDefenseHistory(
     legacyLocalData[LEGACY_LOCAL_STORAGE_KEY.RANDOM_DEFENSE_HISTORY],
   );

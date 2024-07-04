@@ -29,17 +29,15 @@ const sanitizeSlot = (slot: unknown, slotNo: SlotNo): Slot => {
     return { isEmpty: true };
   }
 
-  if (
-    !slot.isEmpty &&
-    (slot.query.trim() === '' || slot.query.length > MAX_CUSTOM_QUERY_LENGTH)
-  ) {
+  if (slot.isEmpty) {
     return { isEmpty: true };
   }
 
-  if (
-    !slot.isEmpty &&
-    (slot.title.trim() === '' || slot.title.length > TITLE_MAX_LENGTH)
-  ) {
+  if (slot.query.trim() === '' || slot.query.length > MAX_CUSTOM_QUERY_LENGTH) {
+    return { isEmpty: true };
+  }
+
+  if (slot.title.trim() === '' || slot.title.length > TITLE_MAX_LENGTH) {
     return {
       ...slot,
       isEmpty: false,

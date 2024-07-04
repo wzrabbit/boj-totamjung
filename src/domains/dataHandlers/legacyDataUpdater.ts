@@ -13,7 +13,7 @@ import { convertLegacyToLatestHiderOptions } from './converters/legacyToLatestHi
 import { convertLegacyToLatestTotamjungTheme } from './converters/legacyToLatestTotamjungThemeConverter';
 
 export const updateAllLegacyData = async () => {
-  const { dataVersion } = await chrome.storage.sync.get(['dataVersion']);
+  const { dataVersion } = await chrome.storage.local.get('dataVersion');
 
   if (dataVersion === 'v1.2') {
     return;

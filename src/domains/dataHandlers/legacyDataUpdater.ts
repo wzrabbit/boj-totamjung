@@ -30,7 +30,7 @@ export const updateAllLegacyData = async () => {
   );
 
   const checkedAlgorithmIds = sanitizeCheckedAlgorithmIds(
-    legacySyncData.algorithm,
+    legacySyncData[LEGACY_SYNC_STORAGE_KEY.CHECKED_ALGORITHM_IDS],
   );
   const totamjungTheme = convertLegacyToLatestTotamjungTheme(
     legacySyncData[LEGACY_SYNC_STORAGE_KEY.TOTAMJUNG_THEME],

@@ -20,6 +20,19 @@ import {
   fetchHiderOptions,
   saveHiderOptions,
 } from '~domains/dataHandlers/hiderOptionsDataHandler';
+import { initializeDataOnFirstInstall } from '~domains/dataHandlers/dataInitializer';
+import { updateAllLegacyData } from '~domains/dataHandlers/legacyDataUpdater';
+
+chrome.runtime.onInstalled.addListener(({ reason }) => {
+  if (reason === 'install') {
+    initializeDataOnFirstInstall();
+    return;
+  }
+
+  if (reason === 'update') {
+    updateAllLegacyData();
+  }
+});
 
 chrome.runtime.onMessage.addListener(
   (message: unknown, sender, sendResponse) => {

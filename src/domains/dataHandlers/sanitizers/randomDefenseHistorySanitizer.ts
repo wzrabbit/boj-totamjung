@@ -68,8 +68,12 @@ export const sanitizeRandomDefenseHistory = (
 };
 
 export const sanitizeLegacyRandomDefenseHistory = (
-  legacyRandomDefenseHistory: unknown[],
+  legacyRandomDefenseHistory: unknown,
 ): LegacyRandomDefenseHistoryInfo[] => {
+  if (!Array.isArray(legacyRandomDefenseHistory)) {
+    return DEFAULT_RANDOM_DEFENSE_HISTORY;
+  }
+
   const sanitizedLegacyRandomDefenseHistory: LegacyRandomDefenseHistoryInfo[] =
     [];
 

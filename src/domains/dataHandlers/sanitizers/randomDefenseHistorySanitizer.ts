@@ -50,7 +50,7 @@ export const sanitizeRandomDefenseHistory = (
   randomDefenseHistory: unknown,
 ): RandomDefenseHistoryInfo[] => {
   if (!Array.isArray(randomDefenseHistory)) {
-    return [];
+    return DEFAULT_RANDOM_DEFENSE_HISTORY;
   }
 
   const sanitizedRandomDefenseHistory: RandomDefenseHistoryInfo[] = [];

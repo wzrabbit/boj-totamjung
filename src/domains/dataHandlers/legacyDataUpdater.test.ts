@@ -1,3 +1,4 @@
+import { STORAGE_KEY } from '~constants/commands';
 import { updateAllLegacyData } from './legacyDataUpdater';
 import {
   DEFAULT_CHECKED_ALGORITHM_IDS,
@@ -225,5 +226,276 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
     await updateAllLegacyData();
 
     expect(chrome.storage.local.set).toHaveBeenCalledWith(expected);
+  });
+});
+
+describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
+  test('구버전 데이터가 일부 손상되어 있다면, 복구 가능한 범위 내에서 복구한 후 저장을 진행해야 한다.', async () => {
+    const legacySyncData = {
+      algorithm: [
+        1,
+        2,
+        4,
+        7,
+        14,
+        null,
+        1.5,
+        171,
+        194,
+        200,
+        1234,
+        undefined,
+        'Oh no',
+      ],
+      query: {
+        1: 'bla bla',
+        2: {
+          isEmpty: false,
+          query:
+            'tier:1..30 solvable:true (tag:number_theory|tag:dp|tag:bruteforcing|tag:arithmetic|tag:data_structures)',
+          title: '대충 만든 추첨',
+        },
+        3: null,
+        4: {
+          isEmpty: false,
+          query: 'tier:0..0 solvable:true ',
+          title: '추첨 4',
+        },
+        5: {
+          isEmpty: false,
+          query: 'tier:s1..g4 ratable:true solvable:true 수열',
+          title: '직접 만든 쿼리',
+        },
+        6: { isEmpty: true, query: 'a'.repeat(456), title: 'Test' },
+        7: {},
+        8: { isEmpty: false },
+        9: { isEmpty: false, query: '', title: '' },
+        0: { isEmpty: false, query: '' },
+        selectedNo: 3,
+      },
+      settings: {
+        font: 'font-3',
+        lock: 'always',
+        predict: 'always',
+        theme: 'no',
+      },
+      timer: { expire: -1, hour: '1', minute: undefined, problem: -1 },
+    };
+
+    const legacyLocalData = {
+      isTierHidden: true,
+      queryLog: [
+        {
+          date: 'Invalid Date',
+          no: 24141,
+          tier: 12,
+          title: 'インフルエンザ (Flu)',
+        },
+        { date: '2024-06-12 20:26:43', no: 15494, tier: 4, title: 'Davor' },
+        {
+          date: '2024-06-12 19:23:40',
+          no: 24819,
+          tier: 10,
+          title: 'Escape Wall Maria',
+        },
+        {
+          no: 5751,
+          tier: 3,
+          title: 'Head or Tail',
+        },
+        {},
+        {
+          date: '2024-06-12 21:49:04',
+          no: 23912,
+          tier: 18,
+          title: 'Locked Doors',
+        },
+        'unexpected value',
+        null,
+        {
+          date: '2024-06-12 22:51:23',
+          no: -93923942,
+          tier: 18,
+          title: 'Kind Baker',
+        },
+        {
+          date: '2024-06-28 20:33:36',
+          no: 29063,
+          tier: 25.5,
+          title: 'Телепорты',
+        },
+        { date: '2024-06-30 22:34:10', no: 1036, tier: 31, title: '36진수' },
+        {
+          date: '2024-06-30 22:34:11',
+          no: 1000.1111111111111,
+          tier: 31,
+          title: 'asdf',
+        },
+      ],
+    };
+
+    const expected = {
+      checkedAlgorithmIds: [1, 2, 4, 7, 14, 171, 194, 200, 1234],
+      dataVersion: 'v1.2',
+      hiderOptions: {
+        algorithmHiderUsage: 'always',
+        problemTagLockDuration: { hours: 0, minutes: 20 },
+        problemTagLockUsage: 'auto',
+        shouldHideTier: false,
+        shouldWarnHighTier: false,
+        warnTier: 1,
+      },
+      isTierHidden: false,
+      quickSlots: {
+        hotkey: 'Alt',
+        selectedSlotNo: 3,
+        slots: {
+          1: {
+            isEmpty: true,
+          },
+          2: {
+            isEmpty: false,
+            query:
+              'tier:1..30 solvable:true (tag:number_theory|tag:dp|tag:bruteforcing|tag:arithmetic|tag:data_structures)',
+            title: '대충 만든 추첨',
+          },
+          3: { isEmpty: true },
+          4: {
+            isEmpty: false,
+            query: 'tier:0..0 solvable:true ',
+            title: '추첨 4',
+          },
+          '5': {
+            isEmpty: false,
+            query: 'tier:s1..g4 ratable:true solvable:true 수열',
+            title: '직접 만든 쿼리',
+          },
+          6: { isEmpty: true },
+          7: { isEmpty: true },
+          8: { isEmpty: true },
+          9: { isEmpty: true },
+          0: { isEmpty: true },
+        },
+      },
+      randomDefenseHistory: [
+        {
+          createdAt: '2024-06-12T11:26:43.000Z',
+          problemId: 15494,
+          tier: 4,
+          title: 'Davor',
+        },
+        {
+          createdAt: '2024-06-12T10:23:40.000Z',
+          problemId: 24819,
+          tier: 10,
+          title: 'Escape Wall Maria',
+        },
+        {
+          createdAt: '2024-06-12T12:49:04.000Z',
+          problemId: 23912,
+          tier: 18,
+          title: 'Locked Doors',
+        },
+      ],
+      totamjungTheme: 'none',
+    };
+
+    jest.clearAllMocks();
+    jest
+      .spyOn(chrome.storage.sync, 'get')
+      .mockImplementation(() => legacySyncData);
+    jest
+      .spyOn(chrome.storage.local, 'get')
+      .mockImplementation(() => legacyLocalData);
+    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+
+    await updateAllLegacyData();
+
+    expect(chrome.storage.local.set).toHaveBeenCalledWith(expected);
+  });
+
+  test('구버전 데이터가 복구가 불가능할 정도로 손상되어 있다면, 복구 불가능한 데이터 그룹은 초기화 후 저장을 진행해야 한다.', async () => {
+    const legacySyncData = {
+      query: {
+        2: {
+          isEmpty: false,
+          query:
+            'tier:1..30 solvable:true (tag:number_theory|tag:dp|tag:bruteforcing|tag:arithmetic|tag:data_structures)',
+          title: '대충 만든 추첨',
+        },
+        3: null,
+        4: {
+          isEmpty: false,
+          query: 'tier:0..0 solvable:true ',
+          title: '추첨 4',
+        },
+        8: { isEmpty: false },
+        9: { isEmpty: false, query: '', title: '' },
+        0: { isEmpty: false, query: '' },
+        selectedNo: 0,
+      },
+      settings: {
+        font: 'zzzzzzzzzzzzzzzzzz',
+        lock: 'always',
+        predict: 'always',
+        theme: 'yes',
+      },
+      timer: { expire: -1, hour: '1', minute: '30', problem: -1 },
+    };
+
+    const legacyLocalData = {
+      isTierHidden: true,
+      queryLog: undefined,
+    };
+
+    const expected = {
+      checkedAlgorithmIds: DEFAULT_CHECKED_ALGORITHM_IDS,
+      dataVersion: 'v1.2',
+      hiderOptions: {
+        algorithmHiderUsage: 'click',
+        problemTagLockDuration: { hours: 1, minutes: 30 },
+        problemTagLockUsage: 'click',
+        shouldHideTier: false,
+        shouldWarnHighTier: false,
+        warnTier: 1,
+      },
+      isTierHidden: DEFAULT_IS_TIER_HIDDEN,
+      quickSlots: DEFAULT_QUICK_SLOTS_RESPONSE,
+      randomDefenseHistory: DEFAULT_RANDOM_DEFENSE_HISTORY,
+      totamjungTheme: DEFAULT_TOTAMJUNG_THEME,
+    };
+
+    jest.clearAllMocks();
+    jest
+      .spyOn(chrome.storage.sync, 'get')
+      .mockImplementation(() => legacySyncData);
+    jest
+      .spyOn(chrome.storage.local, 'get')
+      .mockImplementation(() => legacyLocalData);
+    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+
+    await updateAllLegacyData();
+
+    expect(chrome.storage.local.set).toHaveBeenCalledWith(expected);
+  });
+
+  test('구버전 데이터가 빈 오브젝트여도 런타임 에러 없이 기본 데이터로 저장을 진행해야 한다.', async () => {
+    jest.clearAllMocks();
+    jest.spyOn(chrome.storage.sync, 'get').mockImplementation(() => ({}));
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({}));
+    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+
+    await updateAllLegacyData();
+
+    expect(chrome.storage.local.get).not.toThrow();
+    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+      [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: DEFAULT_CHECKED_ALGORITHM_IDS,
+      [STORAGE_KEY.QUICK_SLOTS]: DEFAULT_QUICK_SLOTS_RESPONSE,
+      [STORAGE_KEY.TOTAMJUNG_THEME]: DEFAULT_TOTAMJUNG_THEME,
+      [STORAGE_KEY.HIDER_OPTIONS]: DEFAULT_HIDER_OPTIONS,
+      [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: DEFAULT_RANDOM_DEFENSE_HISTORY,
+      [STORAGE_KEY.IS_TIER_HIDDEN]: DEFAULT_IS_TIER_HIDDEN,
+      [STORAGE_KEY.DATA_VERSION]: 'v1.2',
+    });
   });
 });

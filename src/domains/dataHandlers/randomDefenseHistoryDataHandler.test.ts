@@ -16,11 +16,10 @@ describe('Test #1 - 추첨 기록 불러오기', () => {
       },
     ];
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory,
@@ -50,11 +49,10 @@ describe('Test #1 - 추첨 기록 불러오기', () => {
       },
     ];
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory,
@@ -64,11 +62,10 @@ describe('Test #1 - 추첨 기록 불러오기', () => {
 
   test('비어 있는 올바른 추첨 기록이 저장되어 있다면, 이를 그대로 불러온 값을 반환해야 한다.', async () => {
     const randomDefenseHistory: RandomDefenseHistoryInfo[] = [];
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory,
@@ -167,11 +164,10 @@ describe('Test #2 - 잘못된 추첨 기록에 대응하기', () => {
       },
     ];
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: expectedResult,
@@ -233,11 +229,10 @@ describe('Test #2 - 잘못된 추첨 기록에 대응하기', () => {
 
     const expectedResult: RandomDefenseHistoryInfo[] = [];
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: expectedResult,
@@ -266,11 +261,10 @@ describe('Test #2 - 잘못된 추첨 기록에 대응하기', () => {
   test.each(testcases)(
     '추첨 기록의 값이 %s와 같이 잘못된 형식일 경우 추첨 기록으로 빈 배열을 반환해야 한다.',
     async (invalidInput) => {
-      jest
-        .spyOn(chrome.storage.local, 'get')
-        .mockImplementation(async (_, callback) => {
-          callback({ randomDefenseHistory: invalidInput, isTierHidden: false });
-        });
+      jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+        randomDefenseHistory: invalidInput,
+        isTierHidden: false,
+      }));
 
       expect(await fetchRandomDefenseHistory()).toEqual({
         randomDefenseHistory: [],
@@ -355,11 +349,10 @@ describe('Test #3 - 추첨 기록 정렬', () => {
       },
     ];
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: expectedResult,
@@ -381,11 +374,10 @@ describe('Test #3 - 추첨 기록 한도 대응', () => {
 
     const expectedResult = randomDefenseHistory.slice();
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: expectedResult,
@@ -405,11 +397,10 @@ describe('Test #3 - 추첨 기록 한도 대응', () => {
 
     const expectedResult = randomDefenseHistory.slice();
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: expectedResult,
@@ -429,11 +420,10 @@ describe('Test #3 - 추첨 기록 한도 대응', () => {
 
     const expectedResult = randomDefenseHistory.slice(0, -1);
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: expectedResult,
@@ -453,11 +443,10 @@ describe('Test #3 - 추첨 기록 한도 대응', () => {
 
     const expectedResult = randomDefenseHistory.slice(0, -123).reverse();
 
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory, isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory,
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: expectedResult,
@@ -468,11 +457,10 @@ describe('Test #3 - 추첨 기록 한도 대응', () => {
 
 describe('Test #4 - 추첨 기록 티어 활성화 여부 불러오기', () => {
   test('추첨 기록의 티어 활성화 여부가 활성화되어 있다면, true를 반환해야 한다.', async () => {
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory: [], isTierHidden: true });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory: [],
+      isTierHidden: true,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: [],
@@ -481,11 +469,10 @@ describe('Test #4 - 추첨 기록 티어 활성화 여부 불러오기', () => {
   });
 
   test('추첨 기록의 티어 활성화 여부가 활성화되어 있지 않다면, false를 반환해야 한다.', async () => {
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory: [], isTierHidden: false });
-      });
+    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      randomDefenseHistory: [],
+      isTierHidden: false,
+    }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: [],
@@ -496,9 +483,7 @@ describe('Test #4 - 추첨 기록 티어 활성화 여부 불러오기', () => {
   test('추첨 기록의 티어 활성화 여부에 해당하는 값이 손실되었다면, false로 초기화하여 반환해야 한다.', async () => {
     jest
       .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ randomDefenseHistory: [] });
-      });
+      .mockImplementation(() => ({ randomDefenseHistory: [] }));
 
     expect(await fetchRandomDefenseHistory()).toEqual({
       randomDefenseHistory: [],
@@ -507,168 +492,7 @@ describe('Test #4 - 추첨 기록 티어 활성화 여부 불러오기', () => {
   });
 });
 
-describe('Test #5 - 구버전 추첨 기록 불러오기', () => {
-  test('추첨 기록이 존재하지 않으나, 구버전의 추첨 기록이 존재할 경우에는 구버전의 추첨 기록을 가공하여 반환해야 한다.', async () => {
-    const legacyDefenseHistory = [
-      {
-        date: '2023-09-29 02:58:21',
-        no: 22861,
-        tier: 15,
-      },
-      {
-        date: '2023-09-27 21:35:30',
-        no: 24811,
-        tier: 123,
-        title: 'Touchdown!',
-      },
-      {
-        date: '2023-09-29 01:48:47',
-        no: 8098,
-        tier: 11,
-        title: 'Lecture Halls Reservation',
-      },
-      { date: '2023-09-27 21:35:26', no: 16128, tier: 21, title: '스눕시티' },
-      {
-        date: '2023-09-29 02:13:29',
-        no: null,
-        tier: 12,
-        title: 'XOR Necklace',
-      },
-      {
-        date: '2023-09-29 02:58:04',
-        no: 14765,
-        tier: 12,
-        title: 'Studying For Exams',
-      },
-    ];
-
-    const expectedResult = [
-      {
-        problemId: 14765,
-        title: 'Studying For Exams',
-        tier: 12,
-        createdAt: new Date('2023-09-29 02:58:04').toISOString(),
-      },
-      {
-        problemId: 8098,
-        title: 'Lecture Halls Reservation',
-        tier: 11,
-        createdAt: new Date('2023-09-29 01:48:47').toISOString(),
-      },
-      {
-        problemId: 16128,
-        title: '스눕시티',
-        tier: 21,
-        createdAt: new Date('2023-09-27 21:35:26').toISOString(),
-      },
-    ];
-
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({ queryLog: legacyDefenseHistory, isTierHidden: true });
-      });
-
-    expect(await fetchRandomDefenseHistory()).toEqual({
-      randomDefenseHistory: expectedResult,
-      isHidden: true,
-    });
-  });
-
-  test('추첨 기록과 구버전의 추첨 기록이 모두 존재할 경우에는 최신 추첨 기록을 채택하여 반환해야 한다.', async () => {
-    const latestRandomDefenseHistory = [
-      {
-        problemId: 27959,
-        title: '초코바',
-        tier: 1,
-        createdAt: '2025-01-01T23:35:00.123Z',
-      },
-      {
-        problemId: 27964,
-        title: '콰트로치즈피자',
-        tier: 6,
-        createdAt: '2025-01-01T23:34:00.123Z',
-      },
-      {
-        problemId: 27943,
-        title: '가지 사진 찾기',
-        tier: 11,
-        createdAt: '2025-01-01T23:33:00.123Z',
-      },
-    ];
-
-    const legacyDefenseHistory = [
-      {
-        date: '2023-09-29 02:58:21',
-        no: 22861,
-        tier: 15,
-      },
-      {
-        date: '2023-09-27 21:35:30',
-        no: 24811,
-        tier: 123,
-        title: 'Touchdown!',
-      },
-      {
-        date: '2023-09-29 01:48:47',
-        no: 8098,
-        tier: 11,
-        title: 'Lecture Halls Reservation',
-      },
-      { date: '2023-09-27 21:35:26', no: 16128, tier: 21, title: '스눕시티' },
-      {
-        date: '2023-09-29 02:13:29',
-        no: null,
-        tier: 12,
-        title: 'XOR Necklace',
-      },
-      {
-        date: '2023-09-29 02:58:04',
-        no: 14765,
-        tier: 12,
-        title: 'Studying For Exams',
-      },
-    ];
-
-    const expectedResult = [
-      {
-        problemId: 27959,
-        title: '초코바',
-        tier: 1,
-        createdAt: '2025-01-01T23:35:00.123Z',
-      },
-      {
-        problemId: 27964,
-        title: '콰트로치즈피자',
-        tier: 6,
-        createdAt: '2025-01-01T23:34:00.123Z',
-      },
-      {
-        problemId: 27943,
-        title: '가지 사진 찾기',
-        tier: 11,
-        createdAt: '2025-01-01T23:33:00.123Z',
-      },
-    ];
-
-    jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(async (_, callback) => {
-        callback({
-          randomDefenseHistory: latestRandomDefenseHistory,
-          queryLog: legacyDefenseHistory,
-          isTierHidden: true,
-        });
-      });
-
-    expect(await fetchRandomDefenseHistory()).toEqual({
-      randomDefenseHistory: expectedResult,
-      isHidden: true,
-    });
-  });
-});
-
-describe('Test #6 - 추첨 기록 저장하기', () => {
+describe('Test #5 - 추첨 기록 저장하기', () => {
   test('여러 문제가 포함된 올바른 데이터를 저장할 경우, 모든 데이터가 온전하게 저장되어야 한다.', async () => {
     const randomDefenseHistory = [
       {
@@ -701,7 +525,7 @@ describe('Test #6 - 추첨 기록 저장하기', () => {
   });
 });
 
-describe('Test #7 - 잘못된 추첨 기록 저장에 대응하기', () => {
+describe('Test #6 - 잘못된 추첨 기록 저장에 대응하기', () => {
   test('여러 문제가 포함된, 일부가 잘못된 데이터를 저장할 경우, 올바른 데이터에 한해서만 온전하게 저장되어야 한다.', () => {
     const randomDefenseHistory = [
       {

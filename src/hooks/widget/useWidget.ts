@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { MouseEvent } from 'react';
 import { COMMANDS } from '~constants/commands';
-import { isTotamjungThemeResponse } from '~types/typeGuards';
+import { isTotamjungThemeResponse } from '~domains/dataHandlers/validators/totamjungThemeValidator';
 import type { TotamjungTheme } from '~types/totamjungTheme';
 
 const useWidget = () => {

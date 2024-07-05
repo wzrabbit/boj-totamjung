@@ -499,3 +499,31 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
     });
   });
 });
+
+describe('Test #3 - 구버전 데이터가 아닌 경우(변환을 하면 안 되는 경우)에 대응하기', () => {
+  test('데이터에 버전 정보가 들어있고, 그 버전이 "v1.2"인 경우 구버전 데이터로 보지 않아야 하고, 변환을 진행하지 않아야 한다.', async () => {
+    jest.clearAllMocks();
+    jest.spyOn(chrome.storage.sync, 'get').mockImplementation(() => ({}));
+    jest
+      .spyOn(chrome.storage.local, 'get')
+      .mockImplementation(() => ({ dataVersion: 'v1.2' }));
+    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+
+    await updateAllLegacyData();
+
+    expect(chrome.storage.local.set).not.toHaveBeenCalled();
+  });
+
+  test('데이터에 버전 정보가 들어있더라도, 그 버전이 정해둔 최신 버전과 일치하지 않는 경우 구버전 데이터로 보고 변환을 진행해야 한다.', async () => {
+    jest.clearAllMocks();
+    jest.spyOn(chrome.storage.sync, 'get').mockImplementation(() => ({}));
+    jest
+      .spyOn(chrome.storage.local, 'get')
+      .mockImplementation(() => ({ dataVersion: 'some old version' }));
+    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+
+    await updateAllLegacyData();
+
+    expect(chrome.storage.local.set).toHaveBeenCalled();
+  });
+});

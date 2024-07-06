@@ -51,7 +51,7 @@ const AppearanceFieldsetMenu = () => {
         legend="토탐정 테마 사용 여부"
         name="shouldHideTier"
         options={[
-          { label: '사용', value: 'totamjungTheme' },
+          { label: '사용', value: 'totamjung' },
           { label: '사용하지 않음', value: 'none' },
         ]}
         checkedValue={'none'}

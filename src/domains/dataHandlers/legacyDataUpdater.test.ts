@@ -2,9 +2,9 @@ import { STORAGE_KEY } from '~constants/commands';
 import { updateAllLegacyData } from './legacyDataUpdater';
 import {
   DEFAULT_CHECKED_ALGORITHM_IDS,
+  DEFAULT_FONT_NO,
   DEFAULT_HIDER_OPTIONS,
   DEFAULT_IS_TIER_HIDDEN,
-  DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE,
   DEFAULT_QUICK_SLOTS_RESPONSE,
   DEFAULT_RANDOM_DEFENSE_HISTORY,
   DEFAULT_TOTAMJUNG_THEME,
@@ -212,6 +212,7 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
         },
       ],
       totamjungTheme: 'none',
+      fontNo: 19,
     };
 
     jest.clearAllMocks();
@@ -398,6 +399,7 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
         },
       ],
       totamjungTheme: 'none',
+      fontNo: 3,
     };
 
     jest.clearAllMocks();
@@ -463,6 +465,7 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
       quickSlots: DEFAULT_QUICK_SLOTS_RESPONSE,
       randomDefenseHistory: DEFAULT_RANDOM_DEFENSE_HISTORY,
       totamjungTheme: DEFAULT_TOTAMJUNG_THEME,
+      fontNo: DEFAULT_FONT_NO,
     };
 
     jest.clearAllMocks();
@@ -495,6 +498,7 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
       [STORAGE_KEY.HIDER_OPTIONS]: DEFAULT_HIDER_OPTIONS,
       [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: DEFAULT_RANDOM_DEFENSE_HISTORY,
       [STORAGE_KEY.IS_TIER_HIDDEN]: DEFAULT_IS_TIER_HIDDEN,
+      [STORAGE_KEY.FONT_NO]: DEFAULT_FONT_NO,
       [STORAGE_KEY.DATA_VERSION]: 'v1.2',
     });
   });

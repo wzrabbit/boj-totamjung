@@ -11,6 +11,7 @@ import { convertLegacyToLatestQuickSlots } from './converters/legacyToLatestQuic
 import { convertLegacyToLatestRandomDefenseHistory } from './converters/legacyToLatestRandomDefenseHistory';
 import { convertLegacyToLatestHiderOptions } from './converters/legacyToLatestHiderOptionsConverter';
 import { convertLegacyToLatestTotamjungTheme } from './converters/legacyToLatestTotamjungThemeConverter';
+import { convertLegacyToLatestFontNoBySettings } from './converters/legacyToLatestFontNo';
 
 export const updateAllLegacyData = async () => {
   const { dataVersion } = await chrome.storage.local.get(
@@ -50,6 +51,9 @@ export const updateAllLegacyData = async () => {
   const isTierHidden = sanitizeIsTierHidden(
     legacySyncData[STORAGE_KEY.IS_TIER_HIDDEN],
   );
+  const fontNo = convertLegacyToLatestFontNoBySettings(
+    legacySyncData[LEGACY_SYNC_STORAGE_KEY.SETTINGS],
+  );
 
   chrome.storage.local.set({
     [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIds,
@@ -58,6 +62,7 @@ export const updateAllLegacyData = async () => {
     [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: randomDefenseHistory,
     [STORAGE_KEY.IS_TIER_HIDDEN]: isTierHidden,
+    [STORAGE_KEY.FONT_NO]: fontNo,
     [STORAGE_KEY.DATA_VERSION]: 'v1.2',
   });
 };

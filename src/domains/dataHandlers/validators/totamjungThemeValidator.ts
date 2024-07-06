@@ -1,5 +1,5 @@
 import { isObject } from '~types/typeGuards';
-import { TotamjungThemeResponse } from '~types/totamjungTheme';
+import { TotamjungTheme, TotamjungThemeResponse } from '~types/totamjungTheme';
 
 export const isTotamjungThemeResponse = (
   data: unknown,
@@ -7,7 +7,10 @@ export const isTotamjungThemeResponse = (
   return (
     isObject(data) &&
     'totamjungTheme' in data &&
-    typeof data.totamjungTheme === 'string' &&
-    ['none', 'totamjung'].includes(data.totamjungTheme)
+    isTotamjungTheme(data.totamjungTheme)
   );
+};
+
+export const isTotamjungTheme = (data: unknown): data is TotamjungTheme => {
+  return data === 'none' || data === 'totamjung';
 };

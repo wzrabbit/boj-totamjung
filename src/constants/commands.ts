@@ -10,6 +10,8 @@ export const COMMANDS = {
   SAVE_TOTAMJUNG_THEME: 'saveTotamjungTheme',
   FETCH_HIDER_OPTIONS: 'fetchHiderOptions',
   SAVE_HIDER_OPTIONS: 'saveHiderOptions',
+  FETCH_FONT_NO: 'fetchFontNo',
+  SAVE_FONT_NO: 'saveFontNo',
 } as const;
 
 /**

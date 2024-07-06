@@ -1,6 +1,7 @@
 import MenuTitle from '~components/MenuTitle';
 import Fieldset from '~components/common/Fieldset';
 import { FontIcon } from '~images/svg';
+import UseAppearanceFieldsetMenu from '~hooks/appearance/useAppearanceFieldsetMenu';
 import * as S from './AppearanceFieldsetMenu.styled';
 
 const FONT_INFOS = [
@@ -41,6 +42,9 @@ const FONT_INFOS = [
 ];
 
 const AppearanceFieldsetMenu = () => {
+  const { totamjungTheme, fontNo, updateTotamjungTheme, updateFontNo } =
+    UseAppearanceFieldsetMenu();
+
   return (
     <S.Container>
       <MenuTitle
@@ -54,8 +58,8 @@ const AppearanceFieldsetMenu = () => {
           { label: '사용', value: 'totamjung' },
           { label: '사용하지 않음', value: 'none' },
         ]}
-        checkedValue={'none'}
-        onChange={() => {}}
+        checkedValue={totamjungTheme ?? ''}
+        onChange={updateTotamjungTheme}
       />
       <MenuTitle title="폰트 설정" iconSrc={<FontIcon />} />
       <Fieldset
@@ -69,8 +73,8 @@ const AppearanceFieldsetMenu = () => {
           ),
           value: String(index),
         }))}
-        checkedValue={'6'}
-        onChange={() => {}}
+        checkedValue={fontNo === undefined ? '' : String(fontNo)}
+        onChange={updateFontNo}
       />
     </S.Container>
   );

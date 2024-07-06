@@ -21,6 +21,10 @@ import {
   saveHiderOptions,
 } from '~domains/dataHandlers/hiderOptionsDataHandler';
 import { initializeDataOnFirstInstall } from '~domains/dataHandlers/dataInitializer';
+import {
+  fetchFontNo,
+  saveFontNo,
+} from '~domains/dataHandlers/fontNoDataHandler';
 import { updateAllLegacyData } from '~domains/dataHandlers/legacyDataUpdater';
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
@@ -122,6 +126,21 @@ chrome.runtime.onMessage.addListener(
 
     if (command === COMMANDS.SAVE_HIDER_OPTIONS) {
       saveHiderOptions(message);
+    }
+
+    if (command === COMMANDS.FETCH_FONT_NO) {
+      fetchFontNo().then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.SAVE_FONT_NO) {
+      if (!('fontNo' in message)) {
+        return;
+      }
+
+      const { fontNo } = message;
+      saveFontNo(fontNo);
     }
 
     return true;

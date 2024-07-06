@@ -26,6 +26,7 @@ export const STORAGE_KEY = {
   HIDER_OPTIONS: 'hiderOptions',
   RANDOM_DEFENSE_HISTORY: 'randomDefenseHistory',
   IS_TIER_HIDDEN: 'isTierHidden',
+  FONT_NO: 'fontNo',
   DATA_VERSION: 'dataVersion',
 };
 

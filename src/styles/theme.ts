@@ -25,6 +25,7 @@ export const theme = {
     ORANGE: '#ff8533',
     DARK_ORANGE: '#bb4b00',
     ORANGE_TRANSPARENT: '#ff853340',
+    BEIGE: '#c8aaa0',
   },
 
   solvedAcTier: {

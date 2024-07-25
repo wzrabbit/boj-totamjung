@@ -186,7 +186,7 @@ const db = {
   79: { name: '3차원 기하학', tag: 'geometry_3d', alias: [] },
   80: { name: '스프라그-그런디 정리', tag: 'sprague_grundy', alias: [] },
   81: { name: '오일러 경로 테크닉', tag: 'euler_tour_technique', alias: [] },
-  82: { name: '가장 긴 증가하는 부분 수열: O(log n)', tag: 'lis', alias: [] },
+  82: { name: '가장 긴 증가하는 부분 수열: O(n log n)', tag: 'lis', alias: [] },
   83: { name: '선분 교차 판정', tag: 'line_intersection', alias: [] },
   84: { name: '센트로이드', tag: 'centroid', alias: [] },
   85: { name: '센트로이드 분할', tag: 'centorid_decomposition', alias: [] },

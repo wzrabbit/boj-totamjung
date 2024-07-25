@@ -201,7 +201,10 @@ const algorithmToId = {
   '함수형 그래프': 200,
   '방향 비순환 그래프': 201,
   '최단 경로': 202,
-
+  '린드스트롬–게셀–비엔노 보조정리': 203,
+  '지수승강 보조정리': 204,
+  '유리 등차수열의 내림 합': 205,
+  '자릿수를 이용한 다이나믹 프로그래밍': 206,
   Mathematics: 1,
   Implementation: 2,
   'Dynamic Programming': 3,
@@ -403,6 +406,10 @@ const algorithmToId = {
   'Functional Graph': 200,
   'Directed Acyclic Graph': 201,
   'Shortest Path': 202,
+  'Lindström–gessel–viennot Lemma': 203,
+  'Lifting The Exponent Lemma': 204,
+  'Sum Of Floor Of Rational Arithmetic Sequence': 205,
+  'Digit Dp': 206,
 };
 
 const resetSettings = {

@@ -395,6 +395,14 @@ const db = {
   200: { name: '함수형 그래프', tag: 'functional_graph', alias: [] },
   201: { name: '방향 비순환 그래프', tag: 'dag', alias: [] },
   202: { name: '최단 경로', tag: 'shortest_path', alias: [] },
+  203: { name: '린드스트롬-게셀-비엔노 보조정리', tag: 'lgv', alias: [] },
+  204: { name: '지수승강 보조정리', tag: 'lte', alias: [] },
+  205: { name: '유리 등차수열의 내림 합', tag: 'floor_sum', alias: [] },
+  206: {
+    name: '자릿수를 이용한 다이나믹 프로그래밍',
+    tag: 'dp_digit',
+    alias: [],
+  },
 };
 // 제거해야 하는 기호 [, A->a 공백 _ - / tag: #]
 export default db;

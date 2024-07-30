@@ -4,12 +4,24 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '~styles/theme';
 import GlobalStyle from '~styles/GlobalStyle';
 import AlgorithmPool from '~components/AlgorithmPool';
+import HiderFieldsetMenu from '~components/HiderMenu';
+import RandomDefenseManageMenu from '~components/RandomDefenseManageMenu/RandomDefenseManageMenu';
 import RandomDefenseHistoryMenu from '~components/RandomDefenseHistoryMenu';
 
 const Options = () => {
   return (
-    <div style={{ display: 'flex', columnGap: '10px' }}>
+    <div
+      style={{
+        display: 'flex',
+        columnGap: '50px',
+        width: '3000px',
+        background: chrome.runtime.getURL('background.webp'),
+        backgroundRepeat: 'repeat',
+      }}
+    >
       <AlgorithmPool />
+      <HiderFieldsetMenu />
+      <RandomDefenseManageMenu />
       <RandomDefenseHistoryMenu />
     </div>
   );

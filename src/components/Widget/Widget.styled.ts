@@ -1,9 +1,6 @@
 import { styled, keyframes } from 'styled-components';
-import { contentScriptStyle } from '~styles/contentScriptStyle';
 
 export const Container = styled.div`
-  ${contentScriptStyle}
-
   padding-top: 10px;
   color: blue;
 

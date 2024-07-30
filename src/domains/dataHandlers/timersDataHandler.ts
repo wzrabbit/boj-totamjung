@@ -63,6 +63,15 @@ export const saveAndGetRemainingLockTimeByProblemId = async (
   return lockTimesInMilliseconds;
 };
 
+export const removeSingleTimerByProblemId = async (problemId: number) => {
+  const { timers } = await fetchTimers();
+  const newTimers = timers.filter((timer) => timer.problemId !== problemId);
+
+  chrome.storage.local.set({
+    [STORAGE_KEY.TIMERS]: newTimers,
+  });
+};
+
 const addSingleTimer = async (timer: Timer) => {
   const { timers } = await fetchTimers();
   const newTimers = [...timers, timer];

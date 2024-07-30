@@ -22,5 +22,10 @@ export const Default: Story = {
       </div>
     ),
   ],
-  args: {},
+  args: {
+    theme: 'none',
+    onChangeTheme: () => {
+      alert('onChangeTheme()');
+    },
+  },
 };

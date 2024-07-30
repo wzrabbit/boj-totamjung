@@ -49,3 +49,5 @@ export const DEFAULT_IS_TIER_HIDDEN = false;
 export const DEFAULT_RANDOM_DEFENSE_HISTORY = [];
 
 export const DEFAULT_FONT_NO = 0;
+
+export const DEFAULT_TIMERS = [];

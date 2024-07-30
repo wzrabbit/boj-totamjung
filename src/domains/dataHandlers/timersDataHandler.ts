@@ -25,3 +25,51 @@ export const saveTimers = async (timers: unknown) => {
     [STORAGE_KEY.TIMERS]: timers,
   });
 };
+
+export const saveAndGetRemainingLockTimeByProblemId = async (
+  problemId: number,
+) => {
+  const { timers } = await fetchTimers();
+  const expiryIsoTime = timers.find((timer) => timer.problemId === problemId)
+    ?.expiresAt;
+  const expiryNumericTime = expiryIsoTime
+    ? Date.parse(expiryIsoTime)
+    : undefined;
+  const now = Date.now();
+
+  if (expiryNumericTime && expiryNumericTime > now) {
+    return Math.max(0, expiryNumericTime - now);
+  }
+
+  const { problemTagLockDuration, problemTagLockUsage } =
+    await fetchHiderOptions();
+
+  if (problemTagLockUsage === 'click') {
+    return 0;
+  }
+
+  const lockTimesInMilliseconds =
+    problemTagLockDuration.hours * 3_600_000 +
+    problemTagLockDuration.minutes * 60_000;
+  const expiresAt = new Date(now + lockTimesInMilliseconds).toISOString();
+
+  if (isValidIsoString(expiresAt)) {
+    addSingleTimer({
+      problemId,
+      expiresAt,
+    });
+  }
+
+  return lockTimesInMilliseconds;
+};
+
+const addSingleTimer = async (timer: Timer) => {
+  const { timers } = await fetchTimers();
+  const newTimers = [...timers, timer];
+
+  const sanitizedNewTimers = sanitizeTimers(newTimers);
+
+  chrome.storage.local.set({
+    [STORAGE_KEY.TIMERS]: sanitizedNewTimers,
+  });
+};

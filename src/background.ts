@@ -26,6 +26,12 @@ import {
   saveFontNo,
 } from '~domains/dataHandlers/fontNoDataHandler';
 import { updateAllLegacyData } from '~domains/dataHandlers/legacyDataUpdater';
+import {
+  fetchTimers,
+  saveTimers,
+  saveAndGetRemainingLockTimeByProblemId,
+  removeSingleTimerByProblemId,
+} from '~domains/dataHandlers/timersDataHandler';
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === 'install') {
@@ -141,6 +147,53 @@ chrome.runtime.onMessage.addListener(
 
       const { fontNo } = message;
       saveFontNo(fontNo);
+    }
+
+    if (command === COMMANDS.FETCH_TIMERS) {
+      fetchTimers().then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.SAVE_TIMERS) {
+      if (!('timers' in message)) {
+        return;
+      }
+
+      const { timers } = message;
+      saveTimers(timers);
+    }
+
+    if (command === COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME) {
+      const matchedProblemId = sender.url?.match(
+        /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
+      );
+
+      if (!matchedProblemId) {
+        return;
+      }
+
+      console.log(matchedProblemId);
+
+      const problemId = Number(matchedProblemId[0]);
+
+      saveAndGetRemainingLockTimeByProblemId(problemId).then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.REMOVE_SINGLE_TIMER) {
+      const matchedProblemId = sender.url?.match(
+        /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
+      );
+
+      if (!matchedProblemId) {
+        return;
+      }
+
+      const problemId = Number(matchedProblemId[0]);
+      console.log('ok lets clear', problemId);
+      removeSingleTimerByProblemId(problemId);
     }
 
     return true;

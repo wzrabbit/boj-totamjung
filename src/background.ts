@@ -173,8 +173,6 @@ chrome.runtime.onMessage.addListener(
         return;
       }
 
-      console.log(matchedProblemId);
-
       const problemId = Number(matchedProblemId[0]);
 
       saveAndGetRemainingLockTimeByProblemId(problemId).then((result) => {
@@ -192,7 +190,6 @@ chrome.runtime.onMessage.addListener(
       }
 
       const problemId = Number(matchedProblemId[0]);
-      console.log('ok lets clear', problemId);
       removeSingleTimerByProblemId(problemId);
     }
 

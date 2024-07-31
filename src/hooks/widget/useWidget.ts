@@ -22,14 +22,15 @@ const useWidget = (params: UseWidgetParams) => {
   const [hiderOptions, setHiderOptions] = useState<
     HiderOptionsResponse | undefined
   >(undefined);
-  const [shouldShowInspectIcon, setShouldShowInspectIcon] = useState(false);
+  const [inspectIconState, setInspectIconState] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
     useInjectedProblemTags({ checkedIds, hiderOptions });
 
   const isInspectButtonDisabled =
-    !isSpoilerExist || isSpoilerOpened || shouldShowInspectIcon;
+    !isSpoilerExist || isSpoilerOpened || inspectIconState;
   const isLockButtonDisabled = !isSpoilerExist || isSpoilerOpened;
+  const shouldShowInspectIcon = isSpoilerExist && inspectIconState;
 
   useEffect(() => {
     const loadWidgetData = async () => {
@@ -54,7 +55,7 @@ const useWidget = (params: UseWidgetParams) => {
       const { algorithmHiderUsage } = hiderOptionsResponse;
 
       if (algorithmHiderUsage === 'always') {
-        setShouldShowInspectIcon(true);
+        setInspectIconState(true);
       }
 
       setCheckedIds(checkedIds);
@@ -106,7 +107,7 @@ const useWidget = (params: UseWidgetParams) => {
       return;
     }
 
-    setShouldShowInspectIcon(true);
+    setInspectIconState(true);
 
     if (hasUnknownAlgorithms) {
       onToast(

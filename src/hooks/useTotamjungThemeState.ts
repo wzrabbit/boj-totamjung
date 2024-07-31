@@ -11,7 +11,7 @@ const useTotamjungThemeState = () => {
     changes: { [key: string]: chrome.storage.StorageChange },
     areaName: chrome.storage.AreaName,
   ) => {
-    if (areaName !== 'local') {
+    if (areaName !== 'local' || !('totamjungTheme' in changes)) {
       return;
     }
 

@@ -25,6 +25,7 @@ export const theme = {
     ORANGE: '#ff8533',
     DARK_ORANGE: '#bb4b00',
     ORANGE_TRANSPARENT: '#ff853340',
+    BEIGE: '#c8aaa0',
   },
 
   solvedAcTier: {
@@ -122,6 +123,12 @@ export const theme = {
       'brightness(0) saturate(100%) invert(49%) sepia(26%) saturate(568%) hue-rotate(330deg) brightness(93%) contrast(86%)',
     ORANGE_FILTER:
       'brightness(0) saturate(100%) invert(49%) sepia(34%) saturate(983%) hue-rotate(339deg) brightness(115%) contrast(101%)',
+    GOLD_FILTER:
+      'brightness(0) saturate(100%) invert(77%) sepia(25%) saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);',
+    WHITE_FILTER:
+      'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(342deg) brightness(102%) contrast(102%)',
+    LIGHTEST_BROWN_FILTER:
+      'brightness(0) saturate(100%) invert(52%) sepia(15%) saturate(936%) hue-rotate(330deg) brightness(89%) contrast(88%);',
   },
 };
 

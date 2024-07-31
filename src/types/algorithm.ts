@@ -1,4 +1,5 @@
-import { RatedTier } from '~types/tierHider';
+import type { IsoString } from '~types/utils';
+import type { RatedTier } from '~types/tierHider';
 
 export interface Algorithm {
   id: number;
@@ -37,4 +38,17 @@ export interface LegacyHiderOptions {
   lock: 'click' | 'always';
   predict: 'click' | 'always';
   theme: 'yes' | 'no';
+}
+
+export interface CheckedAlgorithmIdsResponse {
+  checkedIds: number[];
+}
+
+export interface Timer {
+  problemId: number;
+  expiresAt: IsoString;
+}
+
+export interface TimersResponse {
+  timers: Timer[];
 }

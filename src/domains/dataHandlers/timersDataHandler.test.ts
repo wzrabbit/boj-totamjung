@@ -3,7 +3,7 @@ import { DEFAULT_TIMERS } from '~constants/defaultValues';
 import {
   fetchTimers,
   saveTimers,
-  saveAndGetRemainingLockTimeByProblemId,
+  getRemainingLockTimeByProblemId,
   removeSingleTimerByProblemId,
 } from './timersDataHandler';
 import type { HiderOptionsResponse, Timer } from '~types/algorithm';
@@ -283,7 +283,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T23:00:00.000Z'));
 
-    const lockTime = await saveAndGetRemainingLockTimeByProblemId(1234);
+    const lockTime = await getRemainingLockTimeByProblemId(1234);
     await Promise.resolve();
 
     expect(chrome.storage.local.set).not.toHaveBeenCalled();
@@ -333,7 +333,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T23:00:00.000Z'));
 
-    const lockTime = await saveAndGetRemainingLockTimeByProblemId(1234);
+    const lockTime = await getRemainingLockTimeByProblemId(1234);
     await Promise.resolve();
 
     expect(chrome.storage.local.set).toHaveBeenCalledWith({
@@ -375,7 +375,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T23:00:00.000Z'));
 
-    const lockTime = await saveAndGetRemainingLockTimeByProblemId(2000);
+    const lockTime = await getRemainingLockTimeByProblemId(2000);
     await Promise.resolve();
 
     expect(chrome.storage.local.set).not.toHaveBeenCalled();
@@ -415,7 +415,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T23:00:00.000Z'));
 
-    const lockTime = await saveAndGetRemainingLockTimeByProblemId(8000);
+    const lockTime = await getRemainingLockTimeByProblemId(8000);
     await Promise.resolve();
 
     expect(chrome.storage.local.set).not.toHaveBeenCalled();
@@ -461,7 +461,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2023-04-01T00:00:00.500Z'));
 
-    const lockTime = await saveAndGetRemainingLockTimeByProblemId(30000);
+    const lockTime = await getRemainingLockTimeByProblemId(30000);
     await Promise.resolve();
 
     expect(chrome.storage.local.set).toHaveBeenCalledWith({

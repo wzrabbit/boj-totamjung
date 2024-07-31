@@ -4,6 +4,7 @@ import { $, $$ } from '~utils/querySelector';
 import useLockTimer from './useLockTimer';
 import { ALGORITHM_INFOS } from '~constants/algorithmInfos';
 import { COMMANDS } from '~constants/commands';
+import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
 
 interface UseInjectedProblemTags {
   checkedIds: number[] | undefined;
@@ -32,7 +33,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
   useEffect(() => {
     const fetchRemainingTime = async () => {
       const remainingTime = await chrome.runtime.sendMessage({
-        command: COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME,
+        command: COMMANDS.GET_REMAINING_LOCK_TIME,
       });
 
       if (typeof remainingTime !== 'number' || remainingTime === 0) {
@@ -153,11 +154,19 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
       return;
     }
 
-    const remainingTime = await chrome.runtime.sendMessage({
-      command: COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME,
+    chrome.runtime.sendMessage({ command: COMMANDS.ADD_SINGLE_TIMER });
+    const hiderOptions = await chrome.runtime.sendMessage({
+      command: COMMANDS.FETCH_HIDER_OPTIONS,
     });
 
-    setTimerByDuration(remainingTime);
+    if (!isHiderOptionsResponse(hiderOptions)) {
+      return;
+    }
+
+    const { hours, minutes } = hiderOptions.problemTagLockDuration;
+    const lockTime = hours * 3_600_000 + minutes * 60_000;
+
+    setTimerByDuration(lockTime);
   };
 
   return {

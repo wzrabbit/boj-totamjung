@@ -29,7 +29,8 @@ import { updateAllLegacyData } from '~domains/dataHandlers/legacyDataUpdater';
 import {
   fetchTimers,
   saveTimers,
-  saveAndGetRemainingLockTimeByProblemId,
+  getRemainingLockTimeByProblemId,
+  addSingleTimerByProblemId,
   removeSingleTimerByProblemId,
 } from '~domains/dataHandlers/timersDataHandler';
 
@@ -164,7 +165,7 @@ chrome.runtime.onMessage.addListener(
       saveTimers(timers);
     }
 
-    if (command === COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME) {
+    if (command === COMMANDS.GET_REMAINING_LOCK_TIME) {
       const matchedProblemId = sender.url?.match(
         /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
       );
@@ -175,9 +176,22 @@ chrome.runtime.onMessage.addListener(
 
       const problemId = Number(matchedProblemId[0]);
 
-      saveAndGetRemainingLockTimeByProblemId(problemId).then((result) => {
+      getRemainingLockTimeByProblemId(problemId).then((result) => {
         sendResponse(result);
       });
+    }
+
+    if (command === COMMANDS.ADD_SINGLE_TIMER) {
+      const matchedProblemId = sender.url?.match(
+        /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
+      );
+
+      if (!matchedProblemId) {
+        return;
+      }
+
+      const problemId = Number(matchedProblemId[0]);
+      addSingleTimerByProblemId(problemId);
     }
 
     if (command === COMMANDS.REMOVE_SINGLE_TIMER) {

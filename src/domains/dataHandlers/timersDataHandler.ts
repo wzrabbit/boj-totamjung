@@ -2,8 +2,6 @@ import { STORAGE_KEY } from '~constants/commands';
 import { sanitizeTimers } from './sanitizers/timersSanitizer';
 import { fetchHiderOptions } from './hiderOptionsDataHandler';
 import { isTimers } from './validators/isTimersValidator';
-import { isValidIsoString } from '~utils/isValidIsoString';
-import type { Timer } from '~types/algorithm';
 
 export const fetchTimers = async () => {
   const data = await chrome.storage.local.get(STORAGE_KEY.TIMERS);
@@ -26,9 +24,7 @@ export const saveTimers = async (timers: unknown) => {
   });
 };
 
-export const saveAndGetRemainingLockTimeByProblemId = async (
-  problemId: number,
-) => {
+export const getRemainingLockTimeByProblemId = async (problemId: number) => {
   const { timers } = await fetchTimers();
   const expiryIsoTime = timers.find((timer) => timer.problemId === problemId)
     ?.expiresAt;
@@ -51,16 +47,29 @@ export const saveAndGetRemainingLockTimeByProblemId = async (
   const lockTimesInMilliseconds =
     problemTagLockDuration.hours * 3_600_000 +
     problemTagLockDuration.minutes * 60_000;
-  const expiresAt = new Date(now + lockTimesInMilliseconds).toISOString();
 
-  if (isValidIsoString(expiresAt)) {
-    addSingleTimer({
-      problemId,
-      expiresAt,
-    });
-  }
+  addSingleTimerByProblemId(problemId);
 
   return lockTimesInMilliseconds;
+};
+
+export const addSingleTimerByProblemId = async (problemId: number) => {
+  const { timers } = await fetchTimers();
+  const { problemTagLockDuration } = await fetchHiderOptions();
+
+  const lockTimesInMilliseconds =
+    problemTagLockDuration.hours * 3_600_000 +
+    problemTagLockDuration.minutes * 60_000;
+  const expiresAt = new Date(
+    Date.now() + lockTimesInMilliseconds,
+  ).toISOString();
+
+  const newTimers = [...timers, { problemId, expiresAt }];
+  const sanitizedNewTimers = sanitizeTimers(newTimers);
+
+  chrome.storage.local.set({
+    [STORAGE_KEY.TIMERS]: sanitizedNewTimers,
+  });
 };
 
 export const removeSingleTimerByProblemId = async (problemId: number) => {
@@ -69,16 +78,5 @@ export const removeSingleTimerByProblemId = async (problemId: number) => {
 
   chrome.storage.local.set({
     [STORAGE_KEY.TIMERS]: newTimers,
-  });
-};
-
-const addSingleTimer = async (timer: Timer) => {
-  const { timers } = await fetchTimers();
-  const newTimers = [...timers, timer];
-
-  const sanitizedNewTimers = sanitizeTimers(newTimers);
-
-  chrome.storage.local.set({
-    [STORAGE_KEY.TIMERS]: sanitizedNewTimers,
   });
 };

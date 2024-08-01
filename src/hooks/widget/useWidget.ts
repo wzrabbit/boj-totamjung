@@ -1,49 +1,70 @@
 import { useState, useEffect } from 'react';
 import type { MouseEvent } from 'react';
 import { COMMANDS } from '~constants/commands';
-import { isTotamjungThemeResponse } from '~domains/dataHandlers/validators/totamjungThemeValidator';
+import { isValidCheckedAlgorithmIdsResponse } from '~domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
+import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
+import useInjectedProblemTags from './useInjectedProblemTags';
+import type { ToastInfo } from '~types/toast';
 import type { TotamjungTheme } from '~types/totamjungTheme';
+import type { HiderOptionsResponse } from '~types/algorithm';
 
-const useWidget = () => {
+interface UseWidgetParams {
+  theme: TotamjungTheme;
+  onChangeTheme: (theme: TotamjungTheme) => void;
+  onToast: (toastInfo: ToastInfo, duration: number) => void;
+}
+
+const useWidget = (params: UseWidgetParams) => {
+  const { theme, onChangeTheme, onToast } = params;
   const [isScrollingToTop, setIsScrollingToTop] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [widgetTheme, setWidgetTheme] = useState<TotamjungTheme>('none');
+  const [checkedIds, setCheckedIds] = useState<number[] | undefined>(undefined);
+  const [hiderOptions, setHiderOptions] = useState<
+    HiderOptionsResponse | undefined
+  >(undefined);
+  const [inspectIconState, setInspectIconState] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
+    useInjectedProblemTags({ checkedIds, hiderOptions });
+
+  const isInspectButtonDisabled =
+    !isSpoilerExist || isSpoilerOpened || inspectIconState;
+  const isLockButtonDisabled = !isSpoilerExist || isSpoilerOpened;
+  const shouldShowInspectIcon = isSpoilerExist && inspectIconState;
 
   useEffect(() => {
-    const loadTotamjungTheme = async () => {
-      const response = await chrome.runtime.sendMessage({
-        command: COMMANDS.FETCH_TOTAMJUNG_THEME,
-      });
+    const loadWidgetData = async () => {
+      const [checkedAlgorithmIdsResponse, hiderOptionsResponse] =
+        await Promise.all([
+          chrome.runtime.sendMessage({
+            command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
+          }),
+          chrome.runtime.sendMessage({
+            command: COMMANDS.FETCH_HIDER_OPTIONS,
+          }),
+        ]);
 
-      if (!isTotamjungThemeResponse(response)) {
-        setWidgetTheme('none');
-        setIsLoaded(true);
+      if (
+        !isValidCheckedAlgorithmIdsResponse(checkedAlgorithmIdsResponse) ||
+        !isHiderOptionsResponse(hiderOptionsResponse)
+      ) {
         return;
       }
 
-      const { totamjungTheme: currentTheme } = response;
+      const { checkedIds } = checkedAlgorithmIdsResponse;
+      const { algorithmHiderUsage } = hiderOptionsResponse;
 
-      setWidgetTheme(currentTheme);
+      if (algorithmHiderUsage === 'always') {
+        setInspectIconState(true);
+      }
+
+      setCheckedIds(checkedIds);
+      setHiderOptions(hiderOptionsResponse);
       setIsLoaded(true);
     };
 
-    loadTotamjungTheme();
+    loadWidgetData();
   }, []);
-
-  useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
-
-    const $html = document.documentElement;
-    $html.setAttribute('totamjungTheme', widgetTheme);
-
-    chrome.runtime.sendMessage({
-      command: COMMANDS.SAVE_TOTAMJUNG_THEME,
-      totamjungTheme: widgetTheme,
-    });
-  }, [widgetTheme]);
 
   const scrollToTop = () => {
     if (isScrollingToTop) {
@@ -76,19 +97,53 @@ const useWidget = () => {
   };
 
   const toggleTotamjungTheme = () => {
-    setWidgetTheme((prev) => (prev === 'totamjung' ? 'none' : 'totamjung'));
+    if (isLoaded) {
+      onChangeTheme(theme === 'totamjung' ? 'none' : 'totamjung');
+    }
+  };
+
+  const showInspectResultUsingPopup = () => {
+    if (isInspectButtonDisabled) {
+      return;
+    }
+
+    setInspectIconState(true);
+
+    if (hasUnknownAlgorithms) {
+      onToast(
+        {
+          title:
+            '이 문제를 풀기 위해서는 모르는 알고리즘을 사용해야 할 수 있습니다.',
+          mainIconSrc: chrome.runtime.getURL('inspect-result-question.png'),
+        },
+        3500,
+      );
+    } else {
+      onToast(
+        {
+          title: '이 문제는 알고 있는 알고리즘만으로 풀 수 있습니다.',
+          mainIconSrc: chrome.runtime.getURL('inspect-result-check.png'),
+        },
+        3500,
+      );
+    }
   };
 
   return {
     isExpanded,
     isScrollingToTop,
-    widgetTheme,
+    hasUnknownAlgorithms,
+    isInspectButtonDisabled,
+    isLockButtonDisabled,
+    shouldShowInspectIcon,
     isLoaded,
     scrollToTop,
     endScrollingAnimation,
     toggleWidgetOpen,
     openOptionsPage,
     toggleTotamjungTheme,
+    showInspectResultUsingPopup,
+    toggleTimer,
   };
 };
 

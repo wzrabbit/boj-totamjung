@@ -12,6 +12,11 @@ export const COMMANDS = {
   SAVE_HIDER_OPTIONS: 'saveHiderOptions',
   FETCH_FONT_NO: 'fetchFontNo',
   SAVE_FONT_NO: 'saveFontNo',
+  FETCH_TIMERS: 'fetchTimers',
+  SAVE_TIMERS: 'saveTimers',
+  GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
+  ADD_SINGLE_TIMER: 'addSingleTimer',
+  REMOVE_SINGLE_TIMER: 'removeSingleTimer',
 } as const;
 
 /**
@@ -28,6 +33,7 @@ export const STORAGE_KEY = {
   IS_TIER_HIDDEN: 'isTierHidden',
   FONT_NO: 'fontNo',
   DATA_VERSION: 'dataVersion',
+  TIMERS: 'timers',
 };
 
 /**

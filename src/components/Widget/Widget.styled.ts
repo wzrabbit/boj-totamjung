@@ -1,9 +1,6 @@
 import { styled, keyframes } from 'styled-components';
-import { contentScriptStyle } from '~styles/contentScriptStyle';
 
 export const Container = styled.div`
-  ${contentScriptStyle}
-
   padding-top: 10px;
   color: blue;
 
@@ -181,11 +178,15 @@ export const DropdownButtonIcon = styled.img`
 
   transition: transform 0.1s;
 
-  &:hover {
+  button:disabled > & {
+    opacity: 0.6;
+  }
+
+  button:not(:disabled) > &:hover {
     transform: scale(1.1);
   }
 
-  &:active {
+  button:not(:disabled) > &:active {
     transform: scale(1);
   }
 `;

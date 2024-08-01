@@ -24,11 +24,7 @@ const injectFontsAndThemes = () => {
     });
 
   const headInjectionObserver = new MutationObserver(() => {
-    const headElement = document.querySelector('headElement');
-
-    if (!headElement || !(headElement instanceof HTMLHeadElement)) {
-      return;
-    }
+    const headElement = document.head;
 
     const pretendardLinkElement = Object.assign(
       document.createElement('link'),

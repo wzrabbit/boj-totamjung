@@ -76,3 +76,15 @@ html[hideTier='true'] .nav.nav-pills.no-print.problem-menu:not(:has(a[href^="htt
   .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
   content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
+
+/**
+ * 출처 페이지의 문제 목록 메뉴 내부의 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .row:has(li[class='active'] > a[href='/category'])
+  ~ .row
+  .table.table-bordered.table-striped
+  td:nth-child(3):not(:has(.result-ac))
+  > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}

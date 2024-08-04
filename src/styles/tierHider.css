@@ -35,3 +35,13 @@ html[hideTier='true']
   .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
   content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
+
+/**
+ * 채점 현황 페이지에서 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  #status-table
+  td:nth-child(3):not(:has(.result-ac))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}

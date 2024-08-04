@@ -88,3 +88,16 @@ html[hideTier='true']
   > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
   content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
+
+/**
+ * 문제집 페이지에서 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .col-md-12:has(a[href='/workbook/top'])
+  ~ .col-md-12
+  .table.table-bordered.table-striped
+  tr:not(:has(.problem-label-ac))
+  td:nth-child(2)
+  > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}

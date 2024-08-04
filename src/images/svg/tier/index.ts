@@ -37,6 +37,7 @@ import solvedAcTierIconDiamond from './solvedac-tier-d.svg';
 import solvedAcTierIconRuby from './solvedac-tier-r.svg';
 import solvedAcTierIconHidden from './solvedac-tier-hidden.svg';
 import solvedAcTierIconNotRatable from './solvedac-tier-notratable.svg';
+import solvedAcTierIconWarn from './solvedac-tier-warn.svg';
 
 export const solvedAcNumericTierIcons = {
   0: solvedAcTierIcon0,
@@ -83,4 +84,5 @@ export const solvedAcRankIcons = {
   ruby: solvedAcTierIconRuby,
   hidden: solvedAcTierIconHidden,
   notratable: solvedAcTierIconNotRatable,
+  warn: solvedAcTierIconWarn,
 };

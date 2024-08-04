@@ -25,3 +25,13 @@ html[hideTier='true']
   color: #b72929;
   content: '어려운 문제 경고';
 }
+
+/**
+ * 문제 목록 페이지에서 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  #problemset
+  tr:not(:has(.problem-label-ac))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}

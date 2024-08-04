@@ -68,3 +68,11 @@ html[hideTier='true']
   > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
   content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
+
+/**
+ * 네비게이션 메뉴 내부의 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true'] .nav.nav-pills.no-print.problem-menu:not(:has(a[href^="https://solved.ac/contribute/"]))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}

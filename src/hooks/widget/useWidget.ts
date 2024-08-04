@@ -4,6 +4,7 @@ import { COMMANDS } from '~constants/commands';
 import { isValidCheckedAlgorithmIdsResponse } from '~domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
 import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
+import { changeNormalToWarnTier } from '~domains/tierHider/normalToWarnTierChanger';
 import type { ToastInfo } from '~types/toast';
 import type { TotamjungTheme } from '~types/totamjungTheme';
 import type { HiderOptionsResponse } from '~types/algorithm';
@@ -52,7 +53,16 @@ const useWidget = (params: UseWidgetParams) => {
       }
 
       const { checkedIds } = checkedAlgorithmIdsResponse;
-      const { algorithmHiderUsage } = hiderOptionsResponse;
+      const {
+        algorithmHiderUsage,
+        shouldHideTier,
+        shouldWarnHighTier,
+        warnTier,
+      } = hiderOptionsResponse;
+
+      if (shouldHideTier && shouldWarnHighTier) {
+        changeNormalToWarnTier(warnTier);
+      }
 
       if (algorithmHiderUsage === 'always') {
         setInspectIconState(true);

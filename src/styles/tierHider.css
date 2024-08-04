@@ -45,3 +45,15 @@ html[hideTier='true']
   .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
   content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
+
+/**
+ * 게시판에서의 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .col-md-12:has(a[href='/board/list/solvedac'])
+  ~ .col-md-12
+  .table.table-bordered.table-striped
+  td:nth-child(2):not(:has(.result-ac))
+  > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}

@@ -1,0 +1,8 @@
+/**
+ * 문제 페이지에 있는 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .page-header:has(#problem_title):not(:has(.problem-label-ac))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}

@@ -101,3 +101,16 @@ html[hideTier='true']
   > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
   content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
+
+/**
+ * BOJ Extended의 유저 프로필 페이지에서 맞추지 않은 문제의 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .problem-link-style-box:not(.result-ac):not([data-tier='0'])::before {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg') !important;
+}
+
+html[hideTier='true']
+  .problem-link-style-box.warn:not(.result-ac):not([data-tier='0'])::before {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-warn.svg') !important;
+}

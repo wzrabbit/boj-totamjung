@@ -1,4 +1,5 @@
 import { COMMANDS } from '~constants/commands';
+import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
 import { isTotamjungThemeResponse } from '~domains/dataHandlers/validators/totamjungThemeValidator';
 
 const TOTAMJUNG_THEME_BACKGROUND_COLOR = '#1a0e0a';
@@ -23,6 +24,21 @@ const injectFontsAndThemes = () => {
       }
     });
 
+  chrome.runtime
+    .sendMessage({ command: COMMANDS.FETCH_HIDER_OPTIONS })
+    .then((response) => {
+      if (!isHiderOptionsResponse(response)) {
+        return;
+      }
+
+      const { shouldHideTier } = response;
+
+      if (shouldHideTier) {
+        htmlElement.setAttribute('hideTier', 'true');
+      } else {
+        htmlElement.setAttribute('hideTier', 'false');
+      }
+    });
   const headInjectionObserver = new MutationObserver(() => {
     const headElement = document.head;
 

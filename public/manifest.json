@@ -18,7 +18,12 @@
       "matches": ["https://www.acmicpc.net/*"],
       "run_at": "document_start",
       "js": ["injectionScript.js"],
-      "css": ["palette.css", "totamjungTheme.css", "problemTheme.css"]
+      "css": [
+        "palette.css",
+        "tierHider.css",
+        "totamjungTheme.css",
+        "problemTheme.css"
+      ]
     }
   ],
   "web_accessible_resources": [

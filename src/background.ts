@@ -33,6 +33,7 @@ import {
   addSingleTimerByProblemId,
   removeSingleTimerByProblemId,
 } from '~domains/dataHandlers/timersDataHandler';
+import { isUserSolvedProblem } from '~domains/tierHider/userSolvedChecker';
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === 'install') {
@@ -205,6 +206,25 @@ chrome.runtime.onMessage.addListener(
 
       const problemId = Number(matchedProblemId[0]);
       removeSingleTimerByProblemId(problemId);
+    }
+
+    if (command === COMMANDS.IS_USER_SOLVED_PROBLEM) {
+      if (
+        !(
+          'handle' in message &&
+          'problemId' in message &&
+          typeof message.handle === 'string' &&
+          typeof message.problemId === 'number'
+        )
+      ) {
+        return;
+      }
+
+      const { handle, problemId } = message;
+
+      isUserSolvedProblem(handle, problemId).then((result) => {
+        sendResponse(result);
+      });
     }
 
     return true;

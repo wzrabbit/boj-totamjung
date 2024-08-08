@@ -17,6 +17,7 @@ export const COMMANDS = {
   GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
   ADD_SINGLE_TIMER: 'addSingleTimer',
   REMOVE_SINGLE_TIMER: 'removeSingleTimer',
+  IS_USER_SOLVED_PROBLEM: 'isUserSolvedProblem',
 } as const;
 
 /**

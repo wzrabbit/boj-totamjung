@@ -18,6 +18,7 @@ export const COMMANDS = {
   ADD_SINGLE_TIMER: 'addSingleTimer',
   REMOVE_SINGLE_TIMER: 'removeSingleTimer',
   IS_USER_SOLVED_PROBLEM: 'isUserSolvedProblem',
+  GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
 } as const;
 
 /**

@@ -34,6 +34,7 @@ import {
   removeSingleTimerByProblemId,
 } from '~domains/dataHandlers/timersDataHandler';
 import { isUserSolvedProblem } from '~domains/tierHider/userSolvedChecker';
+import { getRandomDefenseResult } from '~domains/randomDefense/randomDefenseProblemChooser';
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === 'install') {
@@ -223,6 +224,16 @@ chrome.runtime.onMessage.addListener(
       const { handle, problemId } = message;
 
       isUserSolvedProblem(handle, problemId).then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.GET_RANDOM_DEFENSE_RESULT) {
+      if (!('query' in message) || typeof message.query !== 'string') {
+        return;
+      }
+
+      getRandomDefenseResult(message.query).then((result) => {
         sendResponse(result);
       });
     }

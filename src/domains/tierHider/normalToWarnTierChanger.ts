@@ -34,11 +34,17 @@ const TIER_TEXT_CSS_SELECTOR =
 const BOJ_EXTENDED_PROBLEM_LINK_BOX_CSS_SELECTOR =
   ".problem-link-style-box:not(.result-ac):not([data-tier='0'])";
 
-export const changeNormalToWarnTier = (warnTier: RatedTier) => {
+export const changeNormalToWarnTier = (
+  warnTier: RatedTier,
+  shouldWarnHighTier: boolean,
+) => {
   changeBoardBlockquoteBadgeTier(warnTier);
-  changeRegularBadgeTier(warnTier);
-  changeTierText(warnTier);
-  changeBojExtendedProblemLinkBox(warnTier);
+
+  if (shouldWarnHighTier) {
+    changeRegularBadgeTier(warnTier);
+    changeTierText(warnTier);
+    changeBojExtendedProblemLinkBox(warnTier);
+  }
 };
 
 const changeBoardBlockquoteBadgeTier = async (warnTier: RatedTier) => {

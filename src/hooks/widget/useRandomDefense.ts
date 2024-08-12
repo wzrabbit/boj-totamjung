@@ -194,7 +194,17 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     }
 
     const { problemInfo } = randomDefenseResultResponse;
-    const { problemId } = problemInfo;
+    const { problemId, titleKo, level } = problemInfo;
+
+    chrome.runtime.sendMessage({
+      command: COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO,
+      randomDefenseHistoryInfo: {
+        problemId,
+        title: titleKo,
+        tier: level,
+        createdAt: new Date().toISOString(),
+      },
+    });
 
     location.href = `https://acmicpc.net/problem/${problemId}`;
   };

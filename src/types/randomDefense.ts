@@ -150,7 +150,7 @@ interface RandomDefenseFailureResult {
   success: false;
   statusCode?: number;
   errorMessage: string;
-  errorDescriptions: string | string[];
+  errorDescriptions?: string | string[];
 }
 
 interface RandomDefenseSuccessResult {

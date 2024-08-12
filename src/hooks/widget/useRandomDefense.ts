@@ -95,7 +95,6 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     }
 
     if (hotkey === 'Alt' && altPressed) {
-      console.log('perform random defense', currentNumberKey);
       performRandomDefense(currentNumberKey, 'keydown');
       return;
     }
@@ -111,15 +110,12 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
 
     pressedKeysRef.current.delete(key);
     pressedCodesRef.current.delete(code);
-
-    console.log(pressedKeysRef.current, pressedCodesRef.current);
   };
 
   const performRandomDefense = async (
     selectedSlotNo: SlotNo,
     method: 'keydown' | 'click',
   ) => {
-    console.log('enter', isRandomDefenseAvailableRef.current);
     if (!isRandomDefenseAvailableRef.current) {
       return;
     }
@@ -127,14 +123,8 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     isRandomDefenseAvailableRef.current = false;
     setIsRandomDefenseAvailable(false);
 
-    console.log('start', quickSlotsResponseRef.current);
-
     const { slots } = quickSlotsResponseRef.current;
-
-    console.log('slots', slots);
     const selectedSlot = slots[selectedSlotNo];
-
-    console.log('selectedSlot', selectedSlot);
 
     if (selectedSlot.isEmpty) {
       if (method === 'click') {
@@ -170,7 +160,6 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
         },
         8000,
       );
-      console.log(randomDefenseResultResponse);
       isRandomDefenseAvailableRef.current = true;
       setIsRandomDefenseAvailable(true);
       return;

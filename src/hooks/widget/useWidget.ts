@@ -66,8 +66,8 @@ const useWidget = (params: UseWidgetParams) => {
         warnTier,
       } = hiderOptionsResponse;
 
-      if (shouldHideTier && shouldWarnHighTier) {
-        changeNormalToWarnTier(warnTier);
+      if (shouldHideTier) {
+        changeNormalToWarnTier(warnTier, shouldWarnHighTier);
       }
 
       if (algorithmHiderUsage === 'always') {

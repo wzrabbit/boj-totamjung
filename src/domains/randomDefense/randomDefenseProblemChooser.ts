@@ -76,11 +76,10 @@ export const getRandomDefenseResult = async (
     if (count === 0) {
       return {
         success: false,
-        errorMessage: '',
+        errorMessage: '해당 추첨의 쿼리를 만족하는 문제가 없습니다.',
         errorDescriptions: [
-          ' ',
-          '토탐정의 구현이 잘못되었을 확률이 높으며, 솔브드에서 API 형식을 바꾼 경우에도 이 문제가 발생할 수 있습니다.',
-          '이 문제는 일시적일 문제일 확률이 낮습니다. 개발자에게 이 에러가 발생했음을 제보해주시기를 부탁드리겠습니다.',
+          '쿼리에 오타가 있는 지 확인해 보세요.',
+          '다른 주제의 쿼리나, 좀 더 넓은 검색범위의 쿼리를 사용해 보세요.',
         ],
       };
     }

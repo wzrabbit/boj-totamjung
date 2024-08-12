@@ -9,6 +9,7 @@ import {
   saveQuickSlots,
 } from '~domains/dataHandlers/quickSlotsDataHandler';
 import {
+  appendRandomDefenseInfoToHistory,
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from '~domains/dataHandlers/randomDefenseHistoryDataHandler';
@@ -236,6 +237,14 @@ chrome.runtime.onMessage.addListener(
       getRandomDefenseResult(message.query).then((result) => {
         sendResponse(result);
       });
+    }
+
+    if (command === COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO) {
+      if (!('randomDefenseHistoryInfo' in message)) {
+        return;
+      }
+
+      appendRandomDefenseInfoToHistory(message.randomDefenseHistoryInfo);
     }
 
     return true;

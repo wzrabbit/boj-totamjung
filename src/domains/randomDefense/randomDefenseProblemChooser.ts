@@ -6,7 +6,9 @@ export const getRandomDefenseResult = async (
 ): Promise<RandomDefenseResultResponse> => {
   try {
     const response = await fetch(
-      `https://solved.ac/api/v3/search/problem?query=${query}&sort=random`,
+      `https://solved.ac/api/v3/search/problem?query=${encodeURIComponent(
+        query,
+      )}&sort=random`,
     );
 
     if (!response.ok) {

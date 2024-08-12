@@ -1,4 +1,5 @@
 import type { solvedAcNumericTierIcons } from '~images/svg/tier';
+import type { SolvedAcSearchProblemInfo } from '~types/solvedAcApi';
 import type { IsoString } from '~types/utils';
 
 export interface RandomDefenseHistoryInfo {
@@ -139,4 +140,20 @@ export interface RepairableQuickSlotsResponse {
   slots: Omit<RepairableLegacyQuickSlotsResponse, 'selectedNo'>;
   hotkey?: unknown;
   selectedSlotNo?: unknown;
+}
+
+export type RandomDefenseResultResponse =
+  | RandomDefenseFailureResult
+  | RandomDefenseSuccessResult;
+
+interface RandomDefenseFailureResult {
+  success: false;
+  statusCode?: number;
+  errorMessage: string;
+  errorDescriptions?: string | string[];
+}
+
+interface RandomDefenseSuccessResult {
+  success: true;
+  problemInfo: SolvedAcSearchProblemInfo;
 }

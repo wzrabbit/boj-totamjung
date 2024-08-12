@@ -1,7 +1,7 @@
 import { STORAGE_KEY } from '~constants/commands';
 import { sanitizeRandomDefenseHistory } from './sanitizers/randomDefenseHistorySanitizer';
 import { sanitizeIsTierHidden } from './sanitizers/isTierHiddenSanitizer';
-import { RandomDefenseHistoryInfo } from '~types/randomDefense';
+import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
 
 const getSortedRandomDefenseHistory = (
   randomDefenseHistory: RandomDefenseHistoryInfo[],
@@ -49,4 +49,15 @@ export const saveRandomDefenseHistory = (
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: sortedRandomDefenseHistory,
     [STORAGE_KEY.IS_TIER_HIDDEN]: isHidden,
   });
+};
+
+export const appendRandomDefenseInfoToHistory = async (
+  randomDefenseHistoryInfo: unknown,
+) => {
+  const { randomDefenseHistory, isHidden } = await fetchRandomDefenseHistory();
+
+  saveRandomDefenseHistory(
+    [...randomDefenseHistory, randomDefenseHistoryInfo],
+    isHidden,
+  );
 };

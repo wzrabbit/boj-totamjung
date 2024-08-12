@@ -9,6 +9,7 @@ import {
   saveQuickSlots,
 } from '~domains/dataHandlers/quickSlotsDataHandler';
 import {
+  appendRandomDefenseInfoToHistory,
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from '~domains/dataHandlers/randomDefenseHistoryDataHandler';
@@ -34,6 +35,7 @@ import {
   removeSingleTimerByProblemId,
 } from '~domains/dataHandlers/timersDataHandler';
 import { isUserSolvedProblem } from '~domains/tierHider/userSolvedChecker';
+import { getRandomDefenseResult } from '~domains/randomDefense/randomDefenseProblemChooser';
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === 'install') {
@@ -225,6 +227,24 @@ chrome.runtime.onMessage.addListener(
       isUserSolvedProblem(handle, problemId).then((result) => {
         sendResponse(result);
       });
+    }
+
+    if (command === COMMANDS.GET_RANDOM_DEFENSE_RESULT) {
+      if (!('query' in message) || typeof message.query !== 'string') {
+        return;
+      }
+
+      getRandomDefenseResult(message.query).then((result) => {
+        sendResponse(result);
+      });
+    }
+
+    if (command === COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO) {
+      if (!('randomDefenseHistoryInfo' in message)) {
+        return;
+      }
+
+      appendRandomDefenseInfoToHistory(message.randomDefenseHistoryInfo);
     }
 
     return true;

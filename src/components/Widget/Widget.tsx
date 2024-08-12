@@ -18,6 +18,7 @@ const Widget = (props: WidgetProps) => {
     isExpanded,
     isScrollingToTop,
     hasUnknownAlgorithms,
+    isRandomDefenseButtonDisabled,
     isInspectButtonDisabled,
     isLockButtonDisabled,
     shouldShowInspectIcon,
@@ -27,6 +28,7 @@ const Widget = (props: WidgetProps) => {
     toggleWidgetOpen,
     openOptionsPage,
     toggleTotamjungTheme,
+    performRandomDefenseByClick,
     showInspectResultUsingPopup,
     toggleTimer,
   } = useWidget(props);
@@ -77,7 +79,13 @@ const Widget = (props: WidgetProps) => {
               </S.DropdownMenuButton>
             </S.DropdownMenuItem>
             <S.DropdownMenuItem>
-              <S.DropdownMenuButton type="button" $widgetTheme={theme}>
+              <S.DropdownMenuButton
+                type="button"
+                $widgetTheme={theme}
+                aria-label="무작위 문제 추첨하기"
+                disabled={isRandomDefenseButtonDisabled}
+                onClick={performRandomDefenseByClick}
+              >
                 <S.DropdownButtonIcon src={chrome.runtime.getURL('dice.png')} />
               </S.DropdownMenuButton>
             </S.DropdownMenuItem>

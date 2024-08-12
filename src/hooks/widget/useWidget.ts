@@ -4,6 +4,7 @@ import { COMMANDS } from '~constants/commands';
 import { isValidCheckedAlgorithmIdsResponse } from '~domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
 import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
+import useRandomDefense from './useRandomDefense';
 import { changeNormalToWarnTier } from '~domains/tierHider/normalToWarnTierChanger';
 import type { ToastInfo } from '~types/toast';
 import type { TotamjungTheme } from '~types/totamjungTheme';
@@ -27,7 +28,12 @@ const useWidget = (params: UseWidgetParams) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
     useInjectedProblemTags({ checkedIds, hiderOptions });
+  const { isRandomDefenseAvailable, performRandomDefenseByClick } =
+    useRandomDefense({
+      onToast,
+    });
 
+  const isRandomDefenseButtonDisabled = !isRandomDefenseAvailable;
   const isInspectButtonDisabled =
     !isSpoilerExist || isSpoilerOpened || inspectIconState;
   const isLockButtonDisabled = !isSpoilerExist || isSpoilerOpened;
@@ -143,6 +149,7 @@ const useWidget = (params: UseWidgetParams) => {
     isExpanded,
     isScrollingToTop,
     hasUnknownAlgorithms,
+    isRandomDefenseButtonDisabled,
     isInspectButtonDisabled,
     isLockButtonDisabled,
     shouldShowInspectIcon,
@@ -152,6 +159,7 @@ const useWidget = (params: UseWidgetParams) => {
     toggleWidgetOpen,
     openOptionsPage,
     toggleTotamjungTheme,
+    performRandomDefenseByClick,
     showInspectResultUsingPopup,
     toggleTimer,
   };

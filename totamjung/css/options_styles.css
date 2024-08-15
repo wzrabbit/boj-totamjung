@@ -1008,7 +1008,8 @@ html *::-webkit-scrollbar-thumb {
 
 .slot-bundle {
     display: flex;
-    width: 570px;
+    column-gap: 6px;
+    width: 100%;
     align-items: center;
 }
 
@@ -1068,14 +1069,15 @@ html *::-webkit-scrollbar-thumb {
 }
 
 .slot-bean {
-    margin-right: auto;
+    display: flex;
+    column-gap: 2px;
 }
 
 .hotkey-info {
     color: var(--title-color);
     font-family: "Do Hyeon", "Noto Sans KR";
     font-size: 18px;
-    margin-right: 7px;
+    margin-left: 12px;
 }
 
 .query-edit,
@@ -1090,7 +1092,6 @@ html *::-webkit-scrollbar-thumb {
     cursor: pointer;
     border-radius: 5px;
     transition: 0.2s;
-    margin-left: 4px;
 }
 
 .query-edit {
@@ -1170,6 +1171,7 @@ html *::-webkit-scrollbar-thumb {
     font-family: 'Consolas', 'Noto Sans KR';
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     overflow: hidden;
     text-overflow: ellipsis;
 }

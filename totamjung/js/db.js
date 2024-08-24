@@ -403,6 +403,11 @@ const db = {
     tag: 'dp_digit',
     alias: [],
   },
+  207: {
+    name: "덱을 이용한 구간 최댓값 트릭",
+    tag: "deque_trick",
+    alias: ['덱 트릭'],
+  },
 };
 // 제거해야 하는 기호 [, A->a 공백 _ - / tag: #]
 export default db;

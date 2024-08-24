@@ -205,6 +205,7 @@ const algorithmToId = {
   '지수승강 보조정리': 204,
   '유리 등차수열의 내림 합': 205,
   '자릿수를 이용한 다이나믹 프로그래밍': 206,
+  '덱을 이용한 구간 최댓값 트릭': 207,
   Mathematics: 1,
   Implementation: 2,
   'Dynamic Programming': 3,
@@ -410,6 +411,7 @@ const algorithmToId = {
   'Lifting The Exponent Lemma': 204,
   'Sum Of Floor Of Rational Arithmetic Sequence': 205,
   'Digit Dp': 206,
+  'Deque Range Maximum Trick': 207,
 };
 
 const resetSettings = {

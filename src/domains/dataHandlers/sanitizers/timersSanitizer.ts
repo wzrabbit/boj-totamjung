@@ -1,9 +1,10 @@
 import { DEFAULT_TIMERS } from '~constants/defaultValues';
 import { isTimer } from '../validators/isTimersValidator';
+import type { Timer } from '~types/algorithm';
 
 const MAX_TIMER_LENGTH = 300;
 
-export const sanitizeTimers = (timers: unknown) => {
+export const sanitizeTimers = (timers: unknown): Timer[] => {
   if (!Array.isArray(timers)) {
     return DEFAULT_TIMERS;
   }

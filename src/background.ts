@@ -136,7 +136,11 @@ chrome.runtime.onMessage.addListener(
     }
 
     if (command === COMMANDS.SAVE_HIDER_OPTIONS) {
-      saveHiderOptions(message);
+      if (!('hiderOptions' in message)) {
+        return;
+      }
+
+      saveHiderOptions(message.hiderOptions);
     }
 
     if (command === COMMANDS.FETCH_FONT_NO) {

@@ -4,6 +4,7 @@ import { SVGProps } from 'react';
 interface CommonIconButtonProps {
   name: string;
   size: 'large' | 'medium';
+  width?: string;
   color: string;
   iconSrc?: string | SVGProps<SVGSVGElement>;
   disabled: boolean;
@@ -23,10 +24,16 @@ type IconButtonProps = CommonIconButtonProps &
   (ButtonTypeProps | SubmitTypeProps);
 
 const IconButton = (props: IconButtonProps) => {
-  const { name, size, color, iconSrc, ariaLabel, ...rest } = props;
+  const { name, size, width, color, iconSrc, ariaLabel, ...rest } = props;
 
   return (
-    <S.Button $size={size} $color={color} aria-label={ariaLabel} {...rest}>
+    <S.Button
+      $size={size}
+      $width={width}
+      $color={color}
+      aria-label={ariaLabel}
+      {...rest}
+    >
       {iconSrc &&
         (typeof iconSrc === 'string' ? (
           <S.IconImage src={iconSrc} alt={name} $size={size} />

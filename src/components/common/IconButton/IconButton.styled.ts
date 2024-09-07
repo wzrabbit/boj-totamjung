@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 
 export const Button = styled.button<{
   $size: 'large' | 'medium';
+  $width?: string;
   $color: string;
 }>`
   display: flex;
@@ -10,7 +11,7 @@ export const Button = styled.button<{
   align-items: center;
   justify-content: space-between;
 
-  width: auto;
+  width: ${({ $width }) => ($width ? $width : 'auto')};
   height: ${({ $size }) => ($size === 'large' ? '40px' : '32px')};
   padding: ${({ $size }) => ($size === 'large' ? '4px 6px' : '2px 4px')};
 
@@ -32,9 +33,11 @@ export const Button = styled.button<{
   transition: 0.2s;
 `;
 
-export const Text = styled.p<{ $size: 'large' | 'medium'; $color: string }>`
+export const Text = styled.span<{ $size: 'large' | 'medium'; $color: string }>`
   font-size: ${({ $size }) => ($size === 'large' ? '20px' : '16px')};
   font-weight: 600;
+  text-align: center;
+  flex-grow: 1;
   white-space: nowrap;
 `;
 

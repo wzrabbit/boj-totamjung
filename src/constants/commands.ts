@@ -14,6 +14,7 @@ export const COMMANDS = {
   SAVE_FONT_NO: 'saveFontNo',
   FETCH_TIMERS: 'fetchTimers',
   SAVE_TIMERS: 'saveTimers',
+  FETCH_OPTIONS_DATA: 'fetchOptionsData',
   GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
   ADD_SINGLE_TIMER: 'addSingleTimer',
   REMOVE_SINGLE_TIMER: 'removeSingleTimer',

@@ -173,6 +173,12 @@ chrome.runtime.onMessage.addListener(
       saveTimers(timers);
     }
 
+    if (command === COMMANDS.FETCH_OPTIONS_DATA) {
+      fetchOptionsData().then((result) => {
+        sendResponse(result);
+      });
+    }
+
     if (command === COMMANDS.GET_REMAINING_LOCK_TIME) {
       const matchedProblemId = sender.url?.match(
         /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,

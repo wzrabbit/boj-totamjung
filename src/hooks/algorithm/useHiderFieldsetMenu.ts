@@ -64,7 +64,7 @@ const useHiderFieldsetMenu = () => {
 
     chrome.runtime.sendMessage({
       command: COMMANDS.SAVE_HIDER_OPTIONS,
-      ...hiderOptionsWithoutLoadingParam,
+      hiderOptions: hiderOptionsWithoutLoadingParam,
     });
   }, [hiderOptionsState]);
 

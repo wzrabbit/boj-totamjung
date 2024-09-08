@@ -17,3 +17,7 @@ export { ReactComponent as LoadingIcon } from './loading.svg';
 export { ReactComponent as ArrowDownTriangleIcon } from './arrow-down-triangle.svg';
 export { ReactComponent as ToolsIcon } from './tools.svg';
 export { ReactComponent as FontIcon } from './font.svg';
+export { ReactComponent as SaveIcon } from './save.svg';
+export { ReactComponent as FileUploadIcon } from './file-upload.svg';
+export { ReactComponent as FileDownloadIcon } from './file-download.svg';
+export { ReactComponent as FileDeleteIcon } from './file-delete.svg';

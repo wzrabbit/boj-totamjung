@@ -7,6 +7,7 @@ import AlgorithmPool from '~components/AlgorithmPool';
 import HiderFieldsetMenu from '~components/HiderMenu';
 import RandomDefenseManageMenu from '~components/RandomDefenseManageMenu/RandomDefenseManageMenu';
 import RandomDefenseHistoryMenu from '~components/RandomDefenseHistoryMenu';
+import OptionsDataManageMenu from '~components/OptionsDataManageMenu';
 
 const Options = () => {
   return (
@@ -23,6 +24,7 @@ const Options = () => {
       <HiderFieldsetMenu />
       <RandomDefenseManageMenu />
       <RandomDefenseHistoryMenu />
+      <OptionsDataManageMenu />
     </div>
   );
 };

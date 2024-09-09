@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import IconButton from '~components/common/IconButton';
-import OptionsDataUploadModal from './OptionsDataUploadModal';
+import OptionsDataResetModal from './OptionsDataResetModal';
 import { useState } from 'react';
 
 /**
- * `OptionsDataUploadModal`
+ * `OptionsDataResetModal`는 토탐정 설정 데이터의 전체 초기화를 진행하기 전, 사용자에게 확인차로 초기화를 진행할 것인지를 묻는 모달입니다.
  */
 const meta = {
-  title: 'components/OptionsDataUploadModal',
-  component: OptionsDataUploadModal,
+  title: 'components/OptionsDataManageMenu/OptionsDataResetModal',
+  component: OptionsDataResetModal,
   argTypes: {},
-} satisfies Meta<typeof OptionsDataUploadModal>;
+} satisfies Meta<typeof OptionsDataResetModal>;
 
 export default meta;
 
@@ -33,7 +33,7 @@ export const Default: Story = {
             setIsOpen(() => true);
           }}
         />
-        <OptionsDataUploadModal
+        <OptionsDataResetModal
           open={isOpen}
           onClose={() => {
             alert(
@@ -41,9 +41,9 @@ export const Default: Story = {
             );
             setIsOpen(() => false);
           }}
-          onUpload={() => {
+          onReset={() => {
             alert(
-              'onUpload()을 실행시켰습니다. 이는 사용자가 초기화를 수락한 경우입니다.',
+              'onReset()을 실행시켰습니다. 이는 사용자가 초기화를 수락한 경우입니다.',
             );
             setIsOpen(() => false);
           }}
@@ -54,6 +54,6 @@ export const Default: Story = {
   args: {
     open: false,
     onClose: () => {},
-    onUpload: () => {},
+    onReset: () => {},
   },
 };

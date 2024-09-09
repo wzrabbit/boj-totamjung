@@ -1,6 +1,6 @@
 import * as S from './OptionsDataManageMenu.styled';
-import OptionsDataResetModal from '~components/OptionsDataResetModal';
-import OptionsDataUploadModal from '~components/OptionsDataUploadModal';
+import OptionsDataResetModal from './OptionsDataResetModal';
+import OptionsDataUploadModal from './OptionsDataUploadModal';
 import MenuTitle from '~components/MenuTitle';
 import IconButton from '~components/common/IconButton';
 import SimpleModal from '~components/common/SimpleModal';

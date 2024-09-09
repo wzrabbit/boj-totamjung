@@ -2,8 +2,9 @@ import { STORAGE_KEY } from '~constants/commands';
 import { sanitizeTimers } from './sanitizers/timersSanitizer';
 import { fetchHiderOptions } from './hiderOptionsDataHandler';
 import { isTimers } from './validators/isTimersValidator';
+import type { TimersResponse } from '~types/algorithm';
 
-export const fetchTimers = async () => {
+export const fetchTimers = async (): Promise<TimersResponse> => {
   const data = await chrome.storage.local.get(STORAGE_KEY.TIMERS);
   const timers = data[STORAGE_KEY.TIMERS];
 

@@ -1,7 +1,10 @@
 import { STORAGE_KEY } from '~constants/commands';
 import { sanitizeRandomDefenseHistory } from './sanitizers/randomDefenseHistorySanitizer';
 import { sanitizeIsTierHidden } from './sanitizers/isTierHiddenSanitizer';
-import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
+import type {
+  RandomDefenseHistoryInfo,
+  RandomDefenseHistoryResponse,
+} from '~types/randomDefense';
 
 const getSortedRandomDefenseHistory = (
   randomDefenseHistory: RandomDefenseHistoryInfo[],
@@ -11,25 +14,26 @@ const getSortedRandomDefenseHistory = (
   );
 };
 
-export const fetchRandomDefenseHistory = async () => {
-  const data = await chrome.storage.local.get([
-    STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
-    STORAGE_KEY.IS_TIER_HIDDEN,
-  ]);
-  const randomDefenseHistory = data[STORAGE_KEY.RANDOM_DEFENSE_HISTORY];
-  const isTierHidden = data[STORAGE_KEY.IS_TIER_HIDDEN];
-  const sanitizedRandomDefenseHistory =
-    sanitizeRandomDefenseHistory(randomDefenseHistory);
-  const sortedRandomDefenseHistory = getSortedRandomDefenseHistory(
-    sanitizedRandomDefenseHistory,
-  );
-  const sanitizedIsTierHidden = sanitizeIsTierHidden(isTierHidden);
+export const fetchRandomDefenseHistory =
+  async (): Promise<RandomDefenseHistoryResponse> => {
+    const data = await chrome.storage.local.get([
+      STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
+      STORAGE_KEY.IS_TIER_HIDDEN,
+    ]);
+    const randomDefenseHistory = data[STORAGE_KEY.RANDOM_DEFENSE_HISTORY];
+    const isTierHidden = data[STORAGE_KEY.IS_TIER_HIDDEN];
+    const sanitizedRandomDefenseHistory =
+      sanitizeRandomDefenseHistory(randomDefenseHistory);
+    const sortedRandomDefenseHistory = getSortedRandomDefenseHistory(
+      sanitizedRandomDefenseHistory,
+    );
+    const sanitizedIsTierHidden = sanitizeIsTierHidden(isTierHidden);
 
-  return {
-    randomDefenseHistory: sortedRandomDefenseHistory,
-    isHidden: sanitizedIsTierHidden,
+    return {
+      randomDefenseHistory: sortedRandomDefenseHistory,
+      isHidden: sanitizedIsTierHidden,
+    };
   };
-};
 
 export const saveRandomDefenseHistory = (
   randomDefenseHistory: unknown,

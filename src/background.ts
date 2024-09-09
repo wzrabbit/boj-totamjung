@@ -21,7 +21,6 @@ import {
   fetchHiderOptions,
   saveHiderOptions,
 } from '~domains/dataHandlers/hiderOptionsDataHandler';
-import { initializeDataOnFirstInstall } from '~domains/dataHandlers/dataInitializer';
 import {
   fetchFontNo,
   saveFontNo,
@@ -34,12 +33,14 @@ import {
   addSingleTimerByProblemId,
   removeSingleTimerByProblemId,
 } from '~domains/dataHandlers/timersDataHandler';
+import { fetchOptionsData } from '~domains/dataHandlers/optionsDataHandler';
 import { isUserSolvedProblem } from '~domains/tierHider/userSolvedChecker';
 import { getRandomDefenseResult } from '~domains/randomDefense/randomDefenseProblemChooser';
+import { DEFAULT_INITIAL_DATA } from '~constants/defaultValues';
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === 'install') {
-    initializeDataOnFirstInstall();
+    chrome.storage.local.set(DEFAULT_INITIAL_DATA);
     return;
   }
 
@@ -135,7 +136,11 @@ chrome.runtime.onMessage.addListener(
     }
 
     if (command === COMMANDS.SAVE_HIDER_OPTIONS) {
-      saveHiderOptions(message);
+      if (!('hiderOptions' in message)) {
+        return;
+      }
+
+      saveHiderOptions(message.hiderOptions);
     }
 
     if (command === COMMANDS.FETCH_FONT_NO) {
@@ -166,6 +171,12 @@ chrome.runtime.onMessage.addListener(
 
       const { timers } = message;
       saveTimers(timers);
+    }
+
+    if (command === COMMANDS.FETCH_OPTIONS_DATA) {
+      fetchOptionsData().then((result) => {
+        sendResponse(result);
+      });
     }
 
     if (command === COMMANDS.GET_REMAINING_LOCK_TIME) {

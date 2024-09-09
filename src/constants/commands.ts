@@ -14,6 +14,7 @@ export const COMMANDS = {
   SAVE_FONT_NO: 'saveFontNo',
   FETCH_TIMERS: 'fetchTimers',
   SAVE_TIMERS: 'saveTimers',
+  FETCH_OPTIONS_DATA: 'fetchOptionsData',
   GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
   ADD_SINGLE_TIMER: 'addSingleTimer',
   REMOVE_SINGLE_TIMER: 'removeSingleTimer',
@@ -28,6 +29,7 @@ export const COMMANDS = {
  * 이는 데이터의 크기가 `chrome.storage.sync`에 저장할 수 있는 한도를 넘기 때문입니다.
  */
 export const STORAGE_KEY = {
+  DATA_VERSION: 'dataVersion',
   CHECKED_ALGORITHM_IDS: 'checkedAlgorithmIds',
   QUICK_SLOTS: 'quickSlots',
   TOTAMJUNG_THEME: 'totamjungTheme',
@@ -35,9 +37,8 @@ export const STORAGE_KEY = {
   RANDOM_DEFENSE_HISTORY: 'randomDefenseHistory',
   IS_TIER_HIDDEN: 'isTierHidden',
   FONT_NO: 'fontNo',
-  DATA_VERSION: 'dataVersion',
   TIMERS: 'timers',
-};
+} as const;
 
 /**
  * LEGACY가 변수명으로 붙은 키들의 경우 이전 버전(~v1.1.2.2)에서 사용되던 키들입니다.

@@ -1,4 +1,5 @@
 import { COMMANDS } from '~constants/commands';
+import { isFontNoResponse } from '~domains/dataHandlers/validators/fontNoValidator';
 import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
 import { isTotamjungThemeResponse } from '~domains/dataHandlers/validators/totamjungThemeValidator';
 
@@ -39,6 +40,19 @@ const injectFontsAndThemes = () => {
         htmlElement.setAttribute('hideTier', 'false');
       }
     });
+
+  chrome.runtime
+    .sendMessage({ command: COMMANDS.FETCH_FONT_NO })
+    .then((response) => {
+      if (!isFontNoResponse(response)) {
+        return;
+      }
+
+      const { fontNo } = response;
+
+      htmlElement.setAttribute('fontNo', String(fontNo));
+    });
+
   const headInjectionObserver = new MutationObserver(() => {
     const headElement = document.head;
 

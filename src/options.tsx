@@ -8,6 +8,7 @@ import HiderFieldsetMenu from '~components/HiderMenu';
 import RandomDefenseManageMenu from '~components/RandomDefenseManageMenu/RandomDefenseManageMenu';
 import RandomDefenseHistoryMenu from '~components/RandomDefenseHistoryMenu';
 import OptionsDataManageMenu from '~components/OptionsDataManageMenu';
+import AppearanceFieldsetMenu from '~components/AppearanceFieldsetMenu';
 
 const Options = () => {
   return (
@@ -24,6 +25,7 @@ const Options = () => {
       <HiderFieldsetMenu />
       <RandomDefenseManageMenu />
       <RandomDefenseHistoryMenu />
+      <AppearanceFieldsetMenu />
       <OptionsDataManageMenu />
     </div>
   );

@@ -2298,90 +2298,115 @@ html[totamjungTheme='totamjung'] .nav-pills > .active > a > .badge {
   color: var(--text-color);
 }
 
-#problem-body.font-1 .problem-text {
-  font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif !important;
+html[fontNo='1'] #problem-body .problem-text {
+  font-family: 'Nanum Gothic', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-2 .problem-text {
-  font-family: 'Nanum Gothic Coding', 'Noto Sans KR', sans-serif !important;
+html[fontNo='2'] #problem-body .problem-text {
+  font-family: 'Nanum Gothic Coding', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-3 .problem-text {
-  font-family: 'Nanum Myeongjo', 'Noto Sans KR', sans-serif !important;
+html[fontNo='3'] #problem-body .problem-text {
+  font-family: 'Nanum Myeongjo', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-4 .problem-text {
-  font-family: 'Do Hyeon', 'Noto Sans KR', sans-serif !important;
+html[fontNo='4'] #problem-body .problem-text {
+  font-family: 'Do Hyeon', 'Open Sans', sans-serif !important;
   font-size: 18px;
 }
 
-#problem-body.font-5 .problem-text {
-  font-family: 'Jua', 'Noto Sans KR', sans-serif !important;
+html[fontNo='5'] #problem-body .problem-text {
+  font-family: 'Jua', 'Open Sans', sans-serif !important;
   font-size: 18px;
 }
 
-#problem-body.font-6 .problem-text {
-  font-family: 'Noto Serif KR', 'Noto Sans KR', sans-serif !important;
+html[fontNo='6'] #problem-body .problem-text {
+  font-family: 'Noto Serif KR', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-7 .problem-text {
-  font-family: 'Sunflower', 'Noto Sans KR', sans-serif !important;
+html[fontNo='7'] #problem-body .problem-text {
+  font-family: 'Sunflower', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-8 .problem-text {
-  font-family: 'Yeon Sung', 'Noto Sans KR', sans-serif !important;
+html[fontNo='8'] #problem-body .problem-text {
+  font-family: 'Yeon Sung', 'Open Sans', sans-serif !important;
   font-size: 20px;
 }
 
-#problem-body.font-9 .problem-text {
-  font-family: 'Cute Font', 'Noto Sans KR', sans-serif !important;
+html[fontNo='9'] #problem-body .problem-text {
+  font-family: 'Cute Font', 'Open Sans', sans-serif !important;
   font-size: 22px;
 }
 
-#problem-body.font-10 .problem-text {
-  font-family: 'Gaegu', 'Noto Sans KR', sans-serif !important;
+html[fontNo='10'] #problem-body .problem-text {
+  font-family: 'Gaegu', 'Open Sans', sans-serif !important;
   font-size: 20px;
 }
 
-#problem-body.font-11 .problem-text {
-  font-family: 'Gothic A1', 'Noto Sans KR', sans-serif !important;
+html[fontNo='11'] #problem-body .problem-text {
+  font-family: 'Gothic A1', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-12 .problem-text {
-  font-family: 'Gowun Batang', 'Noto Sans KR', sans-serif !important;
+html[fontNo='12'] #problem-body .problem-text {
+  font-family: 'Gowun Batang', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-13 .problem-text {
-  font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif !important;
+html[fontNo='13'] #problem-body .problem-text {
+  font-family: 'Gowun Dodum', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-14 .problem-text {
-  font-family: 'Hi Melody', 'Noto Sans KR', sans-serif !important;
+html[fontNo='14'] #problem-body .problem-text {
+  font-family: 'Hi Melody', 'Open Sans', sans-serif !important;
   font-size: 20px;
 }
 
-#problem-body.font-15 .problem-text {
-  font-family: 'IPM Plex Sans', 'Noto Sans KR', sans-serif !important;
+html[fontNo='15'] #problem-body .problem-text {
+  font-family: 'IBM Plex Sans KR', 'Open Sans', sans-serif !important;
 }
 
-#problem-body.font-16 .problem-text {
-  font-family: 'Poor Story', 'Noto Sans KR', sans-serif !important;
+html[fontNo='16'] #problem-body .problem-text {
+  font-family: 'Poor Story', 'Open Sans', sans-serif !important;
   font-size: 18px;
 }
 
-#problem-body.font-17 .problem-text {
-  font-family: 'Single Day', 'Noto Sans KR', sans-serif !important;
+html[fontNo='17'] #problem-body .problem-text {
+  font-family: 'Single Day', 'Open Sans', sans-serif !important;
   font-size: 18px;
 }
 
-#problem-body.font-18 .problem-text {
-  font-family: 'Song Myung', 'Noto Sans KR', sans-serif !important;
+html[fontNo='18'] #problem-body .problem-text {
+  font-family: 'Song Myung', 'Open Sans', sans-serif !important;
   font-size: 18px;
 }
 
-#problem-body.font-19 .problem-text {
-  font-family: 'Stylish', 'Noto Sans KR', sans-serif !important;
+html[fontNo='19'] #problem-body .problem-text {
+  font-family: 'Stylish', 'Open Sans', sans-serif !important;
   font-size: 20px;
+}
+
+html[fontNo='20'] #problem-body .problem-text {
+  font-family: 'Pretendard', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='21'] #problem-body .problem-text {
+  font-family: 'DungGeunMo', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='22'] #problem-body .problem-text {
+  font-family: 'Spoqa Han Sans Neo', 'Open Sans', sans-serif !important;
+  font-size: 15px;
+}
+
+html[fontNo='23'] #problem-body .problem-text {
+  font-family: 'Noto Serif KR', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='24'] #problem-body .problem-text {
+  font-family: 'Hahmlet', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='25'] #problem-body .problem-text {
+  font-family: 'Diphylleia', 'Open Sans', sans-serif !important;
 }
 
 /* FOR BOJ EXTENDED */

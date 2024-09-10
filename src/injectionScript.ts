@@ -78,15 +78,16 @@ const injectFontsAndThemes = () => {
         href: 'https://fonts.gstatic.com',
       },
     );
+
     const fontsLinkElement = Object.assign(document.createElement('link'), {
       rel: 'stylesheet',
       href: 'https://fonts.googleapis.com/css2?family=Cute+Font&family=Do+Hyeon&family=Gaegu&family=Gothic+A1&family=Gowun+Batang&family=Gowun+Dodum&family=Hi+Melody&family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&family=IBM+Plex+Mono&family=Hahmlet&family=Diphylleia&family=Oxanium:wght@200..800&display=swap',
     });
-    const dungGeonMoLinkElement = Object.assign(
+    const dunggeunmoNeoLinkElement = Object.assign(
       document.createElement('link'),
       {
         rel: 'stylesheet',
-        href: 'https://webfontworld.github.io/DungGeunMo/DungGeunMo.css',
+        href: 'https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css',
       },
     );
     const spoqaHanSansNeoLinkElement = Object.assign(
@@ -103,7 +104,7 @@ const injectFontsAndThemes = () => {
       googleApisLinkElement,
       googleStaticLinkElement,
       fontsLinkElement,
-      dungGeonMoLinkElement,
+      dunggeunmoNeoLinkElement,
       spoqaHanSansNeoLinkElement,
     ].forEach((element) => {
       headElement.appendChild(element);

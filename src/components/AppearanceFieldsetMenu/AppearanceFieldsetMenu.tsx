@@ -30,7 +30,7 @@ const FONT_INFOS = [
   { name: '송명체', fontFamily: 'Song Myung' },
   { name: 'a스타일리쉬', fontFamily: 'Stylish' },
   { name: 'Pretendard', fontFamily: 'Pretendard' },
-  { name: '둥근모꼴', fontFamily: 'DungGeunMo' },
+  { name: '둥근모꼴 Neo', fontFamily: 'NeoDunggeunmo' },
   {
     name: 'Spoqa Han Sans Neo',
     fontFamily: 'Spoqa Han Sans Neo',

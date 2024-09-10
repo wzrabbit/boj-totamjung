@@ -94,7 +94,7 @@ const injectFontsAndThemes = () => {
       document.createElement('link'),
       {
         rel: 'stylesheet',
-        href: '//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css',
+        href: 'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css',
         type: 'text/css',
       },
     );

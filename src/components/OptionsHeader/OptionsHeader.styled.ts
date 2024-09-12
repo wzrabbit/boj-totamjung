@@ -5,7 +5,9 @@ export const Container = styled.header`
   align-items: flex-end;
   column-gap: 20px;
 
-  height: 85px;
+  height: 75px;
+
+  user-select: none;
 
   & > * {
     flex-shrink: 0;

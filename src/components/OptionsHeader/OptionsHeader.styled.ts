@@ -25,16 +25,25 @@ export const OptionsLogoImage = styled.img`
 
 export const ButtonPanel = styled.div`
   display: flex;
+  align-items: flex-end;
   column-gap: 6px;
 
-  width: 106px;
   height: 50px;
 
   margin-left: auto;
 `;
 
+export const VersionText = styled.span`
+  margin-bottom: 10px;
+  margin-left: auto;
+
+  font-size: 18px;
+  font-family: 'Jua';
+  color: ${({ theme }) => theme.color.GOLD};
+`;
+
 export const Button = styled.button`
-  width: 50px;
+  width: 51.5px;
   height: 50px;
 
   background: none;

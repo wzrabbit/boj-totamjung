@@ -21,6 +21,9 @@ const OptionsHeader = (props: OptionsHeaderProps) => {
         onChange={onCategoryChange}
       />
       <S.ButtonPanel>
+        <S.VersionText>{`v${
+          chrome.runtime.getManifest().version
+        }`}</S.VersionText>
         <S.Button type="button" aria-label="도움말">
           <S.ButtonImage src={guidebookButton} alt="" />
         </S.Button>

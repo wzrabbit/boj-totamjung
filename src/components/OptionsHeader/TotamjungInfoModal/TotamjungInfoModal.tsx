@@ -54,8 +54,8 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
         </S.IntroductoryContainer>
         <S.InfoContainer>
           <Text type="normal" fontSize="14px" textAlign="center">
-            버전: <b>v{chrome.runtime.getManifest().version}</b> / 2024년 9월
-            14일 빌드
+            버전: <b>v{chrome.runtime.getManifest().version}</b>{' '}
+            {process.env.BUILD_DATE ? `/ ${process.env.BUILD_DATE} 빌드` : ''}
           </Text>
           <Text type="normal" fontSize="14px" textAlign="center">
             개발: <b>요술토끼</b>(

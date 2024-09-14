@@ -66,5 +66,10 @@ module.exports = {
       extensions: ['tsx', 'ts', 'js'],
       exclude: ['/node_modules/'],
     }),
+    new webpack.DefinePlugin({
+      'process.env.BUILD_DATE': JSON.stringify(
+        new Date().toLocaleDateString('ko-KR'),
+      ),
+    }),
   ],
 };

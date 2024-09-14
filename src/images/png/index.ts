@@ -5,3 +5,5 @@ export { default as hiddenTierBadgeIcon } from './hidden-tier-badge.png';
 export { default as settingsTitle } from './settings-title.png';
 export { default as guidebookButton } from './guidebook-button.png';
 export { default as infoButton } from './info-button.png';
+export { default as totamjung } from './totamjung.png';
+export { default as logoSquare } from './logo-square.png';

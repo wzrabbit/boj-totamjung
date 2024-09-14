@@ -21,3 +21,5 @@ export { ReactComponent as SaveIcon } from './save.svg';
 export { ReactComponent as FileUploadIcon } from './file-upload.svg';
 export { ReactComponent as FileDownloadIcon } from './file-download.svg';
 export { ReactComponent as FileDeleteIcon } from './file-delete.svg';
+export { ReactComponent as StickyNoteIcon } from './sticky-note.svg';
+export { ReactComponent as GithubIcon } from './github.svg';

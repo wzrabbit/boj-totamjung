@@ -90,14 +90,32 @@ const injectFontsAndThemes = () => {
         href: 'https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css',
       },
     );
-    const spoqaHanSansNeoLinkElement = Object.assign(
-      document.createElement('link'),
-      {
-        rel: 'stylesheet',
-        href: 'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css',
-        type: 'text/css',
-      },
-    );
+    const spoqaHanSansNeoStyleElement = document.createElement('style');
+    spoqaHanSansNeoStyleElement.innerHTML = `
+      @font-face {
+        font-family: 'Spoqa Han Sans Neo';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff')
+          format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Spoqa Han Sans Neo';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Medium.woff')
+          format('woff');
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Spoqa Han Sans Neo';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Bold.woff')
+          format('woff');
+        font-weight: 700;
+        font-style: normal;
+      }
+    `;
 
     [
       pretendardLinkElement,
@@ -105,7 +123,7 @@ const injectFontsAndThemes = () => {
       googleStaticLinkElement,
       fontsLinkElement,
       dunggeunmoNeoLinkElement,
-      spoqaHanSansNeoLinkElement,
+      spoqaHanSansNeoStyleElement,
     ].forEach((element) => {
       headElement.appendChild(element);
     });

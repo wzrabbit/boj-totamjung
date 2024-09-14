@@ -52,4 +52,10 @@ export const Button = styled.button`
 export const ButtonImage = styled.img`
   width: 100%;
   height: 100%;
+
+  transition: 0.2s;
+
+  &:hover {
+    filter: brightness(140%);
+  }
 `;

@@ -22,6 +22,7 @@
   var chrome = {
     runtime: {
       getURL: (path) => path,
+      getManifest: () => ({ version: 'Test' }),
       sendMessage: async ({ command, message }, callback) => {
         if (command === 'openOptionsPage') {
           alert(

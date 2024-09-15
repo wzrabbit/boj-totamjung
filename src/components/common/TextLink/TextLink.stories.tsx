@@ -6,7 +6,7 @@ import TextLink from './TextLink';
  * `TextLink`는 텍스트 형태의 링크를 작성할 때 쓰이는 공용 링크 컴포넌트입니다.
  */
 const meta = {
-  title: 'common/TextLink',
+  title: 'components/common/TextLink',
   component: TextLink,
 } satisfies Meta<typeof TextLink>;
 

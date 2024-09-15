@@ -5,7 +5,7 @@ import NamedFrame from './NamedFrame';
  * `NamedFrame`는 레이아웃을 제작하기 위한 기본 레이아웃 컴포넌트입니다. 이름을 지정할 수 있으며, 내부에 사용자에게 기능을 제공하기 위한 메뉴들을 자유롭게 사용할 수 있습니다.
  */
 const meta = {
-  title: 'common/NamedFrame',
+  title: 'components/common/NamedFrame',
   component: NamedFrame,
   argTypes: {},
 } satisfies Meta<typeof NamedFrame>;

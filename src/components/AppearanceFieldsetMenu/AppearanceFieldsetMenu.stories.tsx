@@ -9,7 +9,7 @@ import AppearanceFieldsetMenu from './AppearanceFieldsetMenu';
  * 2. 문제 본문 폰트 설정
  */
 const meta = {
-  title: 'AppearanceFieldsetMenu',
+  title: 'components/AppearanceFieldsetMenu',
   component: AppearanceFieldsetMenu,
 } satisfies Meta<typeof AppearanceFieldsetMenu>;
 

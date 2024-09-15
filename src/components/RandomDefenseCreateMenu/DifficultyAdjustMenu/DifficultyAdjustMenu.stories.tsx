@@ -5,7 +5,7 @@ import DifficultyAdjustMenu from './DifficultyAdjustMenu';
  * `DifficultyAdjustMenu`는 무작위 추첨에서 난이도의 범위를 설정할 수 있는 메뉴형 컴포넌트입니다.
  */
 const meta = {
-  title: 'RandomDefenseCreateMenu/DifficultyAdjustMenu',
+  title: 'components/RandomDefenseCreateMenu/DifficultyAdjustMenu',
   component: DifficultyAdjustMenu,
   argTypes: {},
 } satisfies Meta<typeof DifficultyAdjustMenu>;

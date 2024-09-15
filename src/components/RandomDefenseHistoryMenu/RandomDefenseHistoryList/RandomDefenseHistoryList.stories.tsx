@@ -6,7 +6,7 @@ import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
  * `RandomDefenseHistoryList`는 추첨 기록에서 추첨된 문제 여러 개의 정보를 리스트 형태로 보여주는 컴포넌트입니다.
  */
 const meta = {
-  title: 'RandomDefenseHistoryMenu/RandomDefenseHistoryList',
+  title: 'components/RandomDefenseHistoryMenu/RandomDefenseHistoryList',
   component: RandomDefenseHistoryList,
   argTypes: {},
 } satisfies Meta<typeof RandomDefenseHistoryList>;

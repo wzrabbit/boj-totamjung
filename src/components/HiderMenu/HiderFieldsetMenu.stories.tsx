@@ -11,7 +11,7 @@ import HiderFieldsetMenu from './HiderFieldsetMenu';
  * 4. 잠금 타이머 실행 설정
  */
 const meta = {
-  title: 'HiderFieldsetMenu',
+  title: 'components/HiderFieldsetMenu',
   component: HiderFieldsetMenu,
 } satisfies Meta<typeof HiderFieldsetMenu>;
 

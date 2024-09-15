@@ -6,7 +6,7 @@ import { CopyIcon } from '~images/svg';
  * `LeftSlideToast`는 사용자에게 특정 내용을 알리기 위한, 좌측에서 등장하는 토스트입니다.
  */
 const meta = {
-  title: 'LeftSlideToast',
+  title: 'components/LeftSlideToast',
   component: LeftSlideToast,
   argTypes: {
     progress: {

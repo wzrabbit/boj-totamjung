@@ -6,7 +6,7 @@ import MenuTitle from './MenuTitle';
  * `MenuTitle`는 설정 페이지의 메뉴의 역할을 나타나는 데 사용할 수 있는 제목 컴포넌트입니다.
  */
 const meta = {
-  title: 'MenuTitle',
+  title: 'components/MenuTitle',
   component: MenuTitle,
   argTypes: {},
 } satisfies Meta<typeof MenuTitle>;

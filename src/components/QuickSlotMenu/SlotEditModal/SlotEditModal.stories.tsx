@@ -7,7 +7,7 @@ import { useState } from 'react';
  * `SlotEditModal`는 슬롯에 있는 연습 이름과 쿼리 내용을 변경할 수 있는 기능을 제공하는 모달입니다.
  */
 const meta = {
-  title: 'QuickSlotMenu/SlotEditModal',
+  title: 'components/QuickSlotMenu/SlotEditModal',
   component: SlotEditModal,
   argTypes: {},
 } satisfies Meta<typeof SlotEditModal>;

@@ -5,7 +5,7 @@ import RandomDefenseCreateMenu from './RandomDefenseCreateMenu';
  * `RandomDefenseCreateMenu`는 추첨 생성을 위한 메뉴입니다.
  */
 const meta = {
-  title: 'RandomDefenseCreateMenu',
+  title: 'components/RandomDefenseCreateMenu',
   component: RandomDefenseCreateMenu,
   argTypes: {},
 } satisfies Meta<typeof RandomDefenseCreateMenu>;

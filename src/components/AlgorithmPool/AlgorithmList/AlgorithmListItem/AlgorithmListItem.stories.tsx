@@ -5,7 +5,7 @@ import AlgorithmListItem from './AlgorithmListItem';
  * `AlgorithmListItem`는 하나의 알고리즘 분류에 대한 체크 여부를 설정할 수 있는 컴포넌트입니다.
  */
 const meta = {
-  title: 'AlgorithmPool/AlgorithmListItem',
+  title: 'components/AlgorithmPool/AlgorithmListItem',
   component: AlgorithmListItem,
   argTypes: {},
 } satisfies Meta<typeof AlgorithmListItem>;

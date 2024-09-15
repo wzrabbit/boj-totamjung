@@ -9,7 +9,7 @@ import { CheckCircleIcon, CloseCircleIcon } from '~images/svg';
  * `Modal`은 범용적으로 사용할 수 있는 모달 컴포넌트입니다.
  */
 const meta = {
-  title: 'common/Modal',
+  title: 'components/common/Modal',
   component: Modal,
   argTypes: {},
 } satisfies Meta<typeof Modal>;

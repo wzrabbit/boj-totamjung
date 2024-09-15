@@ -5,7 +5,7 @@ import InspectResultIcon from './InspectResultIcon';
  * `InspectResultIcon`는 사용자가 알고 있는 알고리즘만으로 해당 문제를 풀 수 있는지의 여부를 문제 제목 옆에 나타내주는 아이콘입니다.
  */
 const meta = {
-  title: 'InspectResultIcon',
+  title: 'components/InspectResultIcon',
   component: InspectResultIcon,
 } satisfies Meta<typeof InspectResultIcon>;
 

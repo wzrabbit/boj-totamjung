@@ -4,7 +4,7 @@ export const Container = styled.div<{ $isOpen: boolean }>`
   position: relative;
 
   width: 446px;
-  height: 93px;
+  height: 64px;
 
   ${({ theme, $isOpen }) =>
     $isOpen &&
@@ -36,7 +36,7 @@ export const InputPanel = styled.ul`
 
   position: relative;
 
-  height: 93px;
+  height: 64px;
 
   z-index: 1;
   cursor: text;
@@ -76,12 +76,12 @@ export const SearchResultPanel = styled.ul<{ $isOpen: boolean }>`
 
   position: absolute;
 
-  height: 93px;
+  height: ${({ $isOpen }) => ($isOpen ? '90px' : '64px')};
 
   transform: ${({ $isOpen }) =>
-    $isOpen ? 'translateY(0)' : 'translateY(-93px)'};
+    $isOpen ? 'translateY(0)' : 'translateY(-64px)'};
 
   font-size: 13px;
 
-  transition: transform 0.3s;
+  transition: 0.3s;
 `;

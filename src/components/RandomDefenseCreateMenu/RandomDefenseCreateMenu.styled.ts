@@ -66,6 +66,8 @@ export const InformationTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+
+  width: 495px;
 `;
 
 export const RandomDefenseCreateButtonWrapper = styled.div`

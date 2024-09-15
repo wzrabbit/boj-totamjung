@@ -6,7 +6,7 @@ import type { Algorithm } from '~types/algorithm';
  * `AlgorithmList`는 여러 알고리즘 분류에 대한 체크 여부를 설정할 수 있는 목록입니다.
  */
 const meta = {
-  title: 'AlgorithmPool/AlgorithmList',
+  title: 'components/AlgorithmPool/AlgorithmList',
   component: AlgorithmList,
   argTypes: {},
 } satisfies Meta<typeof AlgorithmList>;

@@ -5,7 +5,7 @@ import SlotInfo from './SlotInfo';
  * `SlotInfo`는 단일 슬롯에 해당하는 연습의 이름과 쿼리 내용을 표시할 때 사용하는 컴포넌트입니다.
  */
 const meta = {
-  title: 'QuickSlotMenu/SlotInfo',
+  title: 'components/QuickSlotMenu/SlotInfo',
   component: SlotInfo,
   argTypes: {},
 } satisfies Meta<typeof SlotInfo>;

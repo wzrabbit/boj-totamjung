@@ -6,7 +6,7 @@ import type { QuickSlotsResponse } from '~types/randomDefense';
  * `QuickSlotMenu`는 추첨 생성 폼을 통해 생성된 연습 쿼리들을 관리할 수 있는 메뉴 형태의 컴포넌트입니다.
  */
 const meta = {
-  title: 'QuickSlotMenu',
+  title: 'components/QuickSlotMenu',
   component: QuickSlotMenu,
   argTypes: {},
 } satisfies Meta<typeof QuickSlotMenu>;

@@ -5,7 +5,7 @@ import CircleProgressBar from './CircleProgressBar';
  * `CircleProgressBar`는 진행 상황을 시각적으로 보여주는 컴포넌트입니다.
  */
 const meta = {
-  title: 'CircleProgressBar',
+  title: 'components/CircleProgressBar',
   component: CircleProgressBar,
   argTypes: {
     progress: {

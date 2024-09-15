@@ -5,7 +5,7 @@ import Switch from './Switch';
  * `Switch`는 공용 스위치 컴포넌트입니다.
  */
 const meta = {
-  title: 'common/Switch',
+  title: 'components/common/Switch',
   component: Switch,
   argTypes: {
     isChecked: {

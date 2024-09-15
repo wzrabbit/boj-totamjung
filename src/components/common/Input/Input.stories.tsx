@@ -5,7 +5,7 @@ import Input from './Input';
  * `Input`는 공통 인풋 컴포넌트입니다.
  */
 const meta = {
-  title: 'common/Input',
+  title: 'components/common/Input',
   component: Input,
 } satisfies Meta<typeof Input>;
 

@@ -5,7 +5,7 @@ import Checkbox from './Checkbox';
  * `Checkbox`는 공용 체크박스 컴포넌트입니다. 크기가 작기 때문에 단독으로 쓰이기보다는 다른 요소들과 같이 쓰입니다.
  */
 const meta = {
-  title: 'common/Checkbox',
+  title: 'components/common/Checkbox',
   component: Checkbox,
   argTypes: {
     isChecked: {

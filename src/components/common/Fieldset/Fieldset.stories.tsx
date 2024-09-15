@@ -6,7 +6,7 @@ import Input from '../Input';
  * `Fieldset`는 어느 하나의 주제에 대해 사용자가 원하는 옵션을 선택할 수 있도록 해주는 컴포넌트입니다. 각 옵션에는 평범하게 `string`을 사용하거나, `ReactNode`와 같은 컴포넌트를 사용할 수 있습니다.
  */
 const meta = {
-  title: 'common/Fieldset',
+  title: 'components/common/Fieldset',
   component: Fieldset,
 } satisfies Meta<typeof Fieldset>;
 

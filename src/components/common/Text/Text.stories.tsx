@@ -5,7 +5,7 @@ import Text from './Text';
  * `Text`는 내용을 작성할 때 쓰이는 공용 텍스트 컴포넌트입니다.
  */
 const meta = {
-  title: 'common/Text',
+  title: 'components/common/Text',
   component: Text,
 } satisfies Meta<typeof Text>;
 

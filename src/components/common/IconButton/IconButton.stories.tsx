@@ -6,7 +6,7 @@ import { PackageIcon } from '~images/svg';
  * `IconButton`은 범용적으로 사용할 수 있는 버튼 컴포넌트입니다. 일반 이미지 형태의 아이콘과 svg 형태의 아이콘 중 원하는 것을 골라 사용할 수 있으며, 사용하지 않고 텍스트만 표시되는 버튼으로도 사용할 수 있습니다.
  */
 const meta = {
-  title: 'common/IconButton',
+  title: 'components/common/IconButton',
   component: IconButton,
   argTypes: {},
 } satisfies Meta<typeof IconButton>;

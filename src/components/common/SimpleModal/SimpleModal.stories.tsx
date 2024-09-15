@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
  * `SimpleModal`는 자주 쓰이는 간단한 형태의 모달을 더 쉽게 구현할 수 있도록 고안된 공용 컴포넌트입니다.
  */
 const meta = {
-  title: 'common/SimpleModal',
+  title: 'components/common/SimpleModal',
   component: SimpleModal,
 } satisfies Meta<typeof SimpleModal>;
 

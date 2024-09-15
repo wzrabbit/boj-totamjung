@@ -5,7 +5,7 @@ import Textarea from './Textarea';
  * `Textarea`는 사용자가 여러 줄의 내용을 작성할 수 있는 텍스트 입력 영역 컴포넌트입니다.
  */
 const meta = {
-  title: 'common/Textarea',
+  title: 'components/common/Textarea',
   component: Textarea,
 } satisfies Meta<typeof Textarea>;
 

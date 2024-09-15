@@ -7,7 +7,7 @@ import ErrorText from './ErrorText';
  * 본 컴포넌트의 에러 메시지를 공백으로 지정한 경우에는 에러 메시지가 보여지지 않으며, 공간만 차지하게 됩니다.
  */
 const meta = {
-  title: 'common/ErrorText',
+  title: 'components/common/ErrorText',
   component: ErrorText,
 } satisfies Meta<typeof ErrorText>;
 

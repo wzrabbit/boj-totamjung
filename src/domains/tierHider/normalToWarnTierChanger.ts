@@ -38,7 +38,7 @@ export const changeNormalToWarnTier = (
   warnTier: RatedTier,
   shouldWarnHighTier: boolean,
 ) => {
-  changeBoardBlockquoteBadgeTier(warnTier);
+  changeBoardBlockquoteBadgeTier(warnTier, shouldWarnHighTier);
 
   if (shouldWarnHighTier) {
     changeRegularBadgeTier(warnTier);
@@ -47,7 +47,10 @@ export const changeNormalToWarnTier = (
   }
 };
 
-const changeBoardBlockquoteBadgeTier = async (warnTier: RatedTier) => {
+const changeBoardBlockquoteBadgeTier = async (
+  warnTier: RatedTier,
+  shouldWarnHighTier: boolean,
+) => {
   const boardBlockquoteTierBadgeElement = $(
     BOARD_BLOCKQUOTE_TIER_BADGE_CSS_SELECTOR,
   );
@@ -98,7 +101,7 @@ const changeBoardBlockquoteBadgeTier = async (warnTier: RatedTier) => {
     return;
   }
 
-  if (tier >= warnTier) {
+  if (tier >= warnTier && shouldWarnHighTier) {
     boardBlockquoteTierBadgeElement.style.content = `url(${solvedAcRankIcons.warn})`;
   }
 };

@@ -1,0 +1,51 @@
+"use strict";(self.webpackChunktotamjung=self.webpackChunktotamjung||[]).push([[699],{"./src/components/ProblemTagLockTimer/ProblemTagLockTimer.stories.tsx":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{var _Default$parameters,_Default$parameters2,_Disabled$parameters,_Disabled$parameters2;__webpack_require__.r(__webpack_exports__),__webpack_require__.d(__webpack_exports__,{Default:()=>Default,Disabled:()=>Disabled,__namedExportsOrder:()=>__namedExportsOrder,default:()=>__WEBPACK_DEFAULT_EXPORT__});const __WEBPACK_DEFAULT_EXPORT__={title:"components/ProblemTagLockTimer",component:__webpack_require__("./src/components/ProblemTagLockTimer/ProblemTagLockTimer.tsx").A,argTypes:{},parameters:{docs:{description:{component:"`ProblemTagLockTimer`는 알고리즘 분류를 잠글 시, 잠금 시간을 설정할 수 있는 타이머 컴포넌트입니다."}}}},Default={args:{hours:0,minutes:20,disabled:!1}},Disabled={args:{hours:0,minutes:20,disabled:!0}};Default.parameters={...Default.parameters,docs:{...null===(_Default$parameters=Default.parameters)||void 0===_Default$parameters?void 0:_Default$parameters.docs,source:{originalSource:"{\n  args: {\n    hours: 0,\n    minutes: 20,\n    disabled: false\n  }\n}",...null===(_Default$parameters2=Default.parameters)||void 0===_Default$parameters2||null===(_Default$parameters2=_Default$parameters2.docs)||void 0===_Default$parameters2?void 0:_Default$parameters2.source}}},Disabled.parameters={...Disabled.parameters,docs:{...null===(_Disabled$parameters=Disabled.parameters)||void 0===_Disabled$parameters?void 0:_Disabled$parameters.docs,source:{originalSource:"{\n  args: {\n    hours: 0,\n    minutes: 20,\n    disabled: true\n  }\n}",...null===(_Disabled$parameters2=Disabled.parameters)||void 0===_Disabled$parameters2||null===(_Disabled$parameters2=_Disabled$parameters2.docs)||void 0===_Disabled$parameters2?void 0:_Disabled$parameters2.source}}};const __namedExportsOrder=["Default","Disabled"]},"./src/components/ProblemTagLockTimer/ProblemTagLockTimer.tsx":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.d(__webpack_exports__,{A:()=>ProblemTagLockTimer_ProblemTagLockTimer});var styled_components_browser_esm=__webpack_require__("./node_modules/styled-components/dist/styled-components.browser.esm.js");const Container=styled_components_browser_esm.I4.div`
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  width: 250px;
+  height: 46px;
+`,Input=styled_components_browser_esm.I4.input`
+  width: 60px;
+  height: 46px;
+
+  border: none;
+  border-radius: 10px;
+  background-color: ${({theme})=>theme.color.DARK_BROWN};
+
+  font-size: 26px;
+  font-weight: 800;
+  text-align: center;
+  color: ${({theme})=>theme.color.GOLD};
+  border: 2px solid ${({theme})=>theme.color.LIGHT_BROWN};
+
+  transition: outline 0.05s;
+
+  &:focus:not(:disabled),
+  &:active:not(:disabled) {
+    border: 2px solid ${({theme})=>theme.color.LEMON};
+    outline: 3px solid ${({theme})=>theme.color.LEMON}70;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+  }
+`;var png=__webpack_require__("./src/images/png/index.ts"),Text=__webpack_require__("./src/components/common/Text/index.ts"),react=__webpack_require__("./node_modules/react/index.js");const NUMERIC_STRING_REGEX=/^\d+$/,tagLock_useProblemTagLockTimer=params=>{const{initHours,initMinutes,onChange}=params,[hours,setHours]=(0,react.useState)(String(initHours)),[minutes,setMinutes]=(0,react.useState)(String(initMinutes));(0,react.useEffect)((()=>{setHours(String(initHours)),setMinutes(String(initMinutes))}),[initHours,initMinutes]);return{hours,minutes,updateHours:event=>{const newHours=event.target.value;newHours.length>=3||setHours(newHours)},updateMinutes:event=>{const newMinutes=event.target.value;newMinutes.length>=3||setMinutes(newMinutes)},submitHours:()=>{(hours=>NUMERIC_STRING_REGEX.test(hours)&&Number(hours)>=0&&Number(hours)<=99)(hours)&&Number(hours)!==initHours?(setHours(String(Number(hours))),onChange(Number(hours),Number(minutes))):setHours(String(initHours))},submitMinutes:()=>{(minutes=>NUMERIC_STRING_REGEX.test(minutes)&&Number(minutes)>=0&&Number(minutes)<=59)(minutes)&&Number(minutes)!==initMinutes?(setMinutes(String(Number(minutes))),onChange(Number(hours),Number(minutes))):setMinutes(String(initMinutes))}}};var jsx_runtime=__webpack_require__("./node_modules/react/jsx-runtime.js");const ProblemTagLockTimer=props=>{const{hours:initHours,minutes:initMinutes,disabled,onChange}=props,{hours,minutes,updateHours,updateMinutes,submitHours,submitMinutes}=tagLock_useProblemTagLockTimer({initHours,initMinutes,onChange});return(0,jsx_runtime.jsxs)(Container,{children:[(0,jsx_runtime.jsx)("img",{src:png.XR,width:"54px",height:"46px",alt:""}),(0,jsx_runtime.jsx)(Input,{name:"hours",type:"number",min:0,max:99,value:hours,disabled,onChange:updateHours,onBlur:submitHours,"aria-label":"시간"}),(0,jsx_runtime.jsx)(Text.A,{type:"normal",fontSize:"16px",children:"시간"}),(0,jsx_runtime.jsx)(Input,{name:"minutes",type:"number",min:0,max:59,value:minutes,disabled,onChange:updateMinutes,onBlur:submitMinutes,"aria-label":"분"}),(0,jsx_runtime.jsx)(Text.A,{type:"normal",fontSize:"16px",children:"분"})]})};ProblemTagLockTimer.displayName="ProblemTagLockTimer";const ProblemTagLockTimer_ProblemTagLockTimer=ProblemTagLockTimer;try{ProblemTagLockTimer.displayName="ProblemTagLockTimer",ProblemTagLockTimer.__docgenInfo={description:"",displayName:"ProblemTagLockTimer",props:{hours:{defaultValue:null,description:"",name:"hours",required:!0,type:{name:"number"}},minutes:{defaultValue:null,description:"",name:"minutes",required:!0,type:{name:"number"}},disabled:{defaultValue:null,description:"",name:"disabled",required:!1,type:{name:"boolean"}},onChange:{defaultValue:null,description:"",name:"onChange",required:!0,type:{name:"(hours: number, minutes: number) => void"}}}},"undefined"!=typeof STORYBOOK_REACT_CLASSES&&(STORYBOOK_REACT_CLASSES["src/components/ProblemTagLockTimer/ProblemTagLockTimer.tsx#ProblemTagLockTimer"]={docgenInfo:ProblemTagLockTimer.__docgenInfo,name:"ProblemTagLockTimer",path:"src/components/ProblemTagLockTimer/ProblemTagLockTimer.tsx#ProblemTagLockTimer"})}catch(__react_docgen_typescript_loader_error){}},"./src/components/common/Text/Text.tsx":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.d(__webpack_exports__,{A:()=>common_Text_Text});var styled_components_browser_esm=__webpack_require__("./node_modules/styled-components/dist/styled-components.browser.esm.js");const Text=styled_components_browser_esm.I4.p`
+  text-align: ${({$textAlign})=>$textAlign};
+  font-size: ${({$fontSize})=>$fontSize};
+
+  ${({theme,$type})=>"primary"===$type?styled_components_browser_esm.AH`
+        color: ${theme.color.GOLD};
+        font-weight: 600;
+      `:"semiPrimary"===$type?styled_components_browser_esm.AH`
+        color: ${theme.color.LEMON};
+      `:"code"===$type?styled_components_browser_esm.AH`
+        font-family: 'IBM Plex Mono', Consolas, Pretendard;
+        color: ${theme.color.WHITE};
+      `:styled_components_browser_esm.AH`
+      color: ${theme.color.WHITE};
+    `}
+`;var jsx_runtime=__webpack_require__("./node_modules/react/jsx-runtime.js");const Text_Text=props=>{const{type,fontSize,textAlign="left",children}=props;return(0,jsx_runtime.jsx)(Text,{$type:type,$fontSize:fontSize,$textAlign:textAlign,children})};Text_Text.displayName="Text";const common_Text_Text=Text_Text;try{Text_Text.displayName="Text",Text_Text.__docgenInfo={description:"",displayName:"Text",props:{type:{defaultValue:null,description:"",name:"type",required:!0,type:{name:"enum",value:[{value:'"primary"'},{value:'"semiPrimary"'},{value:'"normal"'},{value:'"code"'}]}},fontSize:{defaultValue:null,description:"",name:"fontSize",required:!0,type:{name:"enum",value:[{value:'"16px"'},{value:'"14px"'},{value:'"13px"'}]}},textAlign:{defaultValue:null,description:"",name:"textAlign",required:!1,type:{name:"enum",value:[{value:'"left"'},{value:'"center"'},{value:'"right"'}]}}}},"undefined"!=typeof STORYBOOK_REACT_CLASSES&&(STORYBOOK_REACT_CLASSES["src/components/common/Text/Text.tsx#Text"]={docgenInfo:Text_Text.__docgenInfo,name:"Text",path:"src/components/common/Text/Text.tsx#Text"})}catch(__react_docgen_typescript_loader_error){}},"./src/components/common/Text/index.ts":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.d(__webpack_exports__,{A:()=>__WEBPACK_DEFAULT_EXPORT__});const __WEBPACK_DEFAULT_EXPORT__=__webpack_require__("./src/components/common/Text/Text.tsx").A},"./src/images/png/index.ts":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.d(__webpack_exports__,{e_:()=>all_checked_namespaceObject,F_:()=>all_unchecked_namespaceObject,jr:()=>bug_namespaceObject,w6:()=>guidebook_button_namespaceObject,Rm:()=>hidden_tier_badge_namespaceObject,$T:()=>info_button_namespaceObject,XR:()=>lock_with_clock_namespaceObject,H3:()=>logo_square_namespaceObject,uj:()=>settings_title_namespaceObject,e:()=>totamjung_namespaceObject});const all_checked_namespaceObject=__webpack_require__.p+"static/media/all-checked.202b1c06.png",all_unchecked_namespaceObject=__webpack_require__.p+"static/media/all-unchecked.36d4a64c.png",lock_with_clock_namespaceObject=__webpack_require__.p+"static/media/lock-with-clock.523093d4.png",hidden_tier_badge_namespaceObject=__webpack_require__.p+"static/media/hidden-tier-badge.52045d37.png",settings_title_namespaceObject=__webpack_require__.p+"static/media/settings-title.e0051888.png",guidebook_button_namespaceObject=__webpack_require__.p+"static/media/guidebook-button.1af2254a.png",info_button_namespaceObject=__webpack_require__.p+"static/media/info-button.b89374dc.png",totamjung_namespaceObject=__webpack_require__.p+"static/media/totamjung.d0c8aa44.png",logo_square_namespaceObject=__webpack_require__.p+"static/media/logo-square.7625446d.png",bug_namespaceObject=__webpack_require__.p+"static/media/bug.66b34cbf.png"}}]);
+//# sourceMappingURL=components-ProblemTagLockTimer-ProblemTagLockTimer-stories.d53fe5c6.iframe.bundle.js.map

@@ -48,7 +48,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
   } = useRandomDefenseCreateMenu({ selectedSlotNo, onSubmit });
 
   return (
-    <NamedFrame width="650px" height="386px" padding="10px" title="추첨 만들기">
+    <NamedFrame width="650px" height="357px" padding="10px" title="추첨 만들기">
       <S.Form>
         <S.ErrorTextWrapper>
           <ErrorText errorMessage={errorMessage} fontSize="14px" />
@@ -170,7 +170,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               <Textarea
                 ref={customQueryRef}
                 width="100%"
-                height="150px"
+                height="160px"
                 name="customQuery"
                 value={customQuery}
                 placeholder="1 ~ 300자"

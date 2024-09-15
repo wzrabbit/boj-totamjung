@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
 export const Container = styled.div`
+  flex-shrink: 0;
+
   width: 700px;
   height: 490px;
 

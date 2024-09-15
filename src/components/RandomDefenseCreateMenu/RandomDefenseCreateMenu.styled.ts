@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   row-gap: 12px;
   position: relative;
 
@@ -65,6 +66,8 @@ export const InformationTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+
+  width: 495px;
 `;
 
 export const RandomDefenseCreateButtonWrapper = styled.div`

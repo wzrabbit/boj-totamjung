@@ -14,7 +14,7 @@ const MenuTitle = (props: MenuTitleProps) => {
       <S.ContentContainer>
         {iconSrc &&
           (typeof iconSrc === 'string' ? (
-            <S.IconImage src={iconSrc} alt={title} />
+            <S.IconImage src={iconSrc} alt="" />
           ) : (
             <S.IconWrapper>{iconSrc}</S.IconWrapper>
           ))}

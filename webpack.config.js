@@ -7,9 +7,9 @@ const EslintWebpackPlugin = require('eslint-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    options: './src/options.tsx',
+    options: './src/optionsEntry.tsx',
+    contentScript: './src/contentScriptEntry.tsx',
     background: './src/background.ts',
-    contentScript: './src/contentScript.tsx',
     injectionScript: './src/injectionScript.ts',
   },
   module: {

@@ -18,7 +18,7 @@ const RandomDefenseHistoryMenu = () => {
   } = useRandomDefenseHistoryMenu();
 
   return (
-    <NamedFrame width="370px" height="532px" padding="10px" title="추첨 기록">
+    <NamedFrame width="370px" height="537px" padding="10px" title="추첨 기록">
       <S.Container>
         {isLoaded && (
           <>

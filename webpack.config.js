@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const EslintWebpackPlugin = require('eslint-webpack-plugin');
@@ -65,6 +66,11 @@ module.exports = {
     new EslintWebpackPlugin({
       extensions: ['tsx', 'ts', 'js'],
       exclude: ['/node_modules/'],
+    }),
+    new webpack.DefinePlugin({
+      'process.env.BUILD_DATE': JSON.stringify(
+        new Date().toLocaleDateString('ko-KR'),
+      ),
     }),
   ],
 };

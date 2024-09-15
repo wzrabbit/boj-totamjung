@@ -28,6 +28,7 @@ export const theme = {
     ORANGE_TRANSPARENT: '#ff853340',
     BEIGE: '#c8aaa0',
     LIME: '#00ed28',
+    LIGHT_PURPLE: '#dcbfff',
   },
 
   solvedAcTier: {
@@ -116,6 +117,10 @@ export const theme = {
       'linear-gradient(to right, #00364b 0%, #001f4b 100%)',
     RUBY_DARK_GRADIENT200:
       'linear-gradient(to right, #4d001d 0%, #4d0000 100%)',
+  },
+
+  gradient: {
+    BROWN_GRADIENT: 'linear-gradient(to top, #1a0e0a 0%, transparent 100%)',
   },
 
   filter: {

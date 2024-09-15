@@ -3,7 +3,9 @@ import { styled, css } from 'styled-components';
 export const Text = styled.p<{
   $type: 'primary' | 'semiPrimary' | 'normal' | 'code';
   $fontSize: '16px' | '14px' | '13px';
+  $textAlign: 'left' | 'center' | 'right';
 }>`
+  text-align: ${({ $textAlign }) => $textAlign};
   font-size: ${({ $fontSize }) => $fontSize};
 
   ${({ theme, $type }) => {

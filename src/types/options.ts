@@ -18,3 +18,8 @@ export interface OptionsDataResponse {
   [STORAGE_KEY.TIMERS]: TimersResponse['timers'];
   [STORAGE_KEY.DATA_VERSION]: 'v1.2';
 }
+
+export type OptionsNavCategory =
+  | 'algorithmHider'
+  | 'randomDefense'
+  | 'appearanceAndDataManage';

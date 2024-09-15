@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   row-gap: 12px;
   position: relative;
 

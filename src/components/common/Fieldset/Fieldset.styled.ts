@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const Fieldset = styled.fieldset`
   width: 100%;
-  height: 100%;
+  height: auto;
 
   user-select: none;
 
@@ -12,6 +12,7 @@ export const Fieldset = styled.fieldset`
 `;
 
 export const Legend = styled.legend`
+  font-size: 16px;
   color: ${({ theme }) => theme.color.WHITE};
   margin-bottom: 6px;
 `;

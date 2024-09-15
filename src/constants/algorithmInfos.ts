@@ -726,7 +726,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 109,
     name: '벨만-포드',
-    englishName: 'Bellman–ford',
+    englishName: 'Bellman-ford',
     tag: 'bellman_ford',
     alias: [],
   },
@@ -789,7 +789,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 118,
     name: '벌리캠프-매시',
-    englishName: 'Berlekamp–massey',
+    englishName: 'Berlekamp-massey',
     tag: 'berlekamp_massey',
     alias: ['벌레캠프-매시', '벌래캠프-매시', '벌리컴프-매시'],
   },
@@ -824,7 +824,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 123,
     name: '라빈-카프',
-    englishName: 'Rabin–karp',
+    englishName: 'Rabin-karp',
     tag: 'rabin_karp',
     alias: [],
   },
@@ -901,7 +901,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 134,
     name: '밀러-라빈 소수 판별법',
-    englishName: 'Miller–rabin',
+    englishName: 'Miller-rabin',
     tag: 'miller_rabin',
     alias: [],
   },
@@ -1113,7 +1113,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 166,
     name: '스토어-바그너',
-    englishName: 'Stoer–wagner',
+    englishName: 'Stoer-wagner',
     tag: 'stoer_wagner',
     alias: [],
   },
@@ -1197,7 +1197,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 178,
     name: '보이어-무어 다수결 투표',
-    englishName: 'Boyer–moore Majority Vote',
+    englishName: 'Boyer-moore Majority Vote',
     tag: 'majority_vote',
     alias: [],
   },

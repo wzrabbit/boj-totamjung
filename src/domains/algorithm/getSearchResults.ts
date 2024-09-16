@@ -3,7 +3,7 @@ import { ALGORITHM_INFOS } from '~constants/algorithmInfos';
 
 const trimWord = (word: string) => {
   const loweredWord = word.toLowerCase();
-  const trimmedWord = loweredWord.replace(/^(tag:|#)|[ ,_/-]/g, '');
+  const trimmedWord = loweredWord.replace(/^(tag:|#)|[ ,_/-]|\u2013/g, '');
 
   return trimmedWord;
 };

@@ -64,6 +64,7 @@ const testcases: [string, Algorithm[]][] = [
       },
     ],
   ],
+  ['플로이드\u2013워셜', [{ id: 60, name: '플로이드-워셜' }]],
 ];
 
 describe('Test #1 - 검색 테스트', () => {

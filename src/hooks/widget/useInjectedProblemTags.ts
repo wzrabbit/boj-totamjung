@@ -80,8 +80,8 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
     const inspectAndHighlightUnknownAlgorithms = () => {
       const algorithmElements = $$('.spoiler-link');
 
-      const problemAlgorithmNames = algorithmElements.map(
-        (algorithmElement) => algorithmElement.innerText,
+      const problemAlgorithmNames = algorithmElements.map((algorithmElement) =>
+        algorithmElement.innerText.replace(/\u2013/g, '-'),
       );
 
       let hasUnknownAlgorithms = false;

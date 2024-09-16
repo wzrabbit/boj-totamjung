@@ -84,7 +84,8 @@ html[hideTier='true']
   .row:has(li[class='active'] > a[href='/category'])
   ~ .row
   .table.table-bordered.table-striped
-  td:nth-child(3):not(:has(.result-ac))
+  tr:not(:has(.problem-label-ac))
+  > td:nth-child(3)
   > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
   content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }

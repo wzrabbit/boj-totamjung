@@ -1,5 +1,5 @@
 export const convertLegacyToLatestTotamjungTheme = (
   legacyTotamjungTheme: unknown,
 ) => {
-  return legacyTotamjungTheme === 'on' ? 'totamjung' : 'none';
+  return legacyTotamjungTheme === 'yes' ? 'totamjung' : 'none';
 };

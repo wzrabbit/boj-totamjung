@@ -9,6 +9,7 @@ interface CommonIconButtonProps {
   iconSrc?: string | SVGProps<SVGSVGElement>;
   disabled: boolean;
   ariaLabel: string;
+  autoFocus?: boolean;
 }
 
 interface ButtonTypeProps {

@@ -7,9 +7,11 @@ import IconButton from '~components/common/IconButton';
 import useQuickSlotMenu from '~hooks/randomDefense/useQuickSlotMenu';
 import SlotEditModal from './SlotEditModal';
 import Loading from '~components/common/Loading';
+import useModal from '~hooks/useModal';
 import { CopyIcon, EditIcon, TrashIcon } from '~images/svg';
 import type { QuickSlotsResponse, SlotNo, Hotkey } from '~types/randomDefense';
 import { theme } from '~styles/theme';
+import SimpleModal from '~components/common/SimpleModal';
 
 interface QuickSlotMenuProps {
   quickSlotsInfo: QuickSlotsResponse;
@@ -22,7 +24,7 @@ interface QuickSlotMenuProps {
 
 const QuickSlotMenu = (props: QuickSlotMenuProps) => {
   const { isLoaded } = props;
-
+  const { activeModalName, openModal, closeModal } = useModal<'copiedQuery'>();
   const {
     slot,
     selectedSlotNo,
@@ -66,7 +68,7 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
               onClick={() => {
                 if (!slot.isEmpty) {
                   navigator.clipboard.writeText(slot.query);
-                  alert('쿼리를 복사했어요!');
+                  openModal('copiedQuery');
                 }
               }}
             />
@@ -101,6 +103,15 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
         open={shouldEditModalShow}
         onClose={closeEditModal}
         onSlotChange={updateSlot}
+      />
+      <SimpleModal
+        actionType="confirm"
+        width="350px"
+        height="auto"
+        open={activeModalName === 'copiedQuery'}
+        onClose={closeModal}
+        title="쿼리 복사 완료"
+        message="쿼리를 클립보드에 복사했어요!"
       />
     </NamedFrame>
   );

@@ -49,17 +49,13 @@ const useAlgorithmPool = () => {
   };
 
   const checkAllAlgorithms = () => {
-    if (confirm('모든 알고리즘 분류를 체크 설정할까요?')) {
-      setCheckedIds(() =>
-        Array.from({ length: ALGORITHMS_COUNT }).map((_, index) => index + 1),
-      );
-    }
+    setCheckedIds(() =>
+      Array.from({ length: ALGORITHMS_COUNT }).map((_, index) => index + 1),
+    );
   };
 
   const uncheckAllAlgorithms = () => {
-    if (confirm('모든 알고리즘 분류를 체크 해제할까요?')) {
-      setCheckedIds(() => []);
-    }
+    setCheckedIds(() => []);
   };
 
   const items = getSearchResults(keyword);

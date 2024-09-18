@@ -78,6 +78,7 @@ const ConfirmButton = (props: Omit<ConfirmModalProps, 'actionType'>) => {
       disabled={false}
       ariaLabel="확인"
       onClick={onClose}
+      autoFocus={true}
     />
   );
 };

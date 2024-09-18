@@ -1,6 +1,8 @@
 import * as S from './AlgorithmPool.styled';
 import AlgorithmList from './AlgorithmList';
+import SimpleModal from '~components/common/SimpleModal';
 import useAlgorithmPool from '~hooks/algorithm/useAlgorithmPool';
+import useModal from '~hooks/useModal';
 import { SearchIcon } from '~images/svg';
 import { allCheckedIcon, allUncheckedIcon } from '~images/png';
 
@@ -15,6 +17,9 @@ const AlgorithmPool = () => {
     checkAllAlgorithms,
     uncheckAllAlgorithms,
   } = useAlgorithmPool();
+  const { activeModalName, openModal, closeModal } = useModal<
+    'checkAll' | 'uncheckAll'
+  >();
 
   return (
     <S.Container>
@@ -41,7 +46,9 @@ const AlgorithmPool = () => {
         <S.CheckButtonPanel>
           <S.CheckButton
             type="button"
-            onClick={checkAllAlgorithms}
+            onClick={() => {
+              openModal('checkAll');
+            }}
             aria-label="알고리즘 분류 전체 선택"
           >
             <S.CheckButtonImage src={allCheckedIcon} />
@@ -49,7 +56,9 @@ const AlgorithmPool = () => {
           </S.CheckButton>
           <S.CheckButton
             type="button"
-            onClick={uncheckAllAlgorithms}
+            onClick={() => {
+              openModal('uncheckAll');
+            }}
             aria-label="알고리즘 분류 전체 해제"
           >
             <S.CheckButtonImage src={allUncheckedIcon} />
@@ -57,6 +66,32 @@ const AlgorithmPool = () => {
           </S.CheckButton>
         </S.CheckButtonPanel>
       </S.ControlPanel>
+      <SimpleModal
+        title="알고리즘 분류 전체 선택 확인"
+        actionType="yesNo"
+        width="350px"
+        height="auto"
+        open={activeModalName === 'checkAll'}
+        message="모든 알고리즘 분류를 선택할까요?"
+        onYesSelect={() => {
+          checkAllAlgorithms();
+          closeModal();
+        }}
+        onNoSelect={closeModal}
+      />
+      <SimpleModal
+        title="알고리즘 분류 전체 해제 확인"
+        actionType="yesNo"
+        width="350px"
+        height="auto"
+        open={activeModalName === 'uncheckAll'}
+        message="모든 알고리즘 분류를 선택 해제할까요?"
+        onYesSelect={() => {
+          uncheckAllAlgorithms();
+          closeModal();
+        }}
+        onNoSelect={closeModal}
+      />
     </S.Container>
   );
 };

@@ -38,17 +38,17 @@ const useRandomDefenseHistoryMenu = () => {
       return currentItemId !== id;
     });
 
-    setItems(() => newItems);
+    setItems(newItems);
   };
 
   const clearHistory = () => {
     if (!isEmpty && confirm('모든 추첨 기록을 제거할까요?')) {
-      setItems(() => []);
+      setItems([]);
     }
   };
 
   const updateIsHidden: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setIsHidden(() => event.target.checked);
+    setIsHidden(event.target.checked);
   };
 
   return {

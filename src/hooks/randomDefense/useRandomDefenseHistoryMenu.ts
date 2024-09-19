@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
 import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
-import { isRandomDefenseHistoryResponse } from '~domains/dataHandlers/validators/randomDefenseHistoryValidator';
-import { COMMANDS } from '~constants/commands';
+import {
+  fetchRandomDefenseHistory,
+  saveRandomDefenseHistory,
+} from '~domains/dataHandlers/randomDefenseHistoryDataHandler';
 
 const useRandomDefenseHistoryMenu = () => {
   const [items, setItems] = useState<RandomDefenseHistoryInfo[]>([]);
@@ -12,21 +14,13 @@ const useRandomDefenseHistoryMenu = () => {
   const isEmpty = items.length === 0;
 
   useEffect(() => {
-    const fetchRandomDefenseHistoryInfo = async () => {
-      const response = await chrome.runtime.sendMessage({
-        command: COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY,
-      });
+    (async () => {
+      const response = await fetchRandomDefenseHistory();
 
-      if (!isRandomDefenseHistoryResponse(response)) {
-        return;
-      }
-
-      setIsHidden(() => response.isHidden);
-      setItems(() => response.randomDefenseHistory);
-      setIsLoaded(() => true);
-    };
-
-    fetchRandomDefenseHistoryInfo();
+      setIsHidden(response.isHidden);
+      setItems(response.randomDefenseHistory);
+      setIsLoaded(true);
+    })();
   }, []);
 
   useEffect(() => {
@@ -34,11 +28,7 @@ const useRandomDefenseHistoryMenu = () => {
       return;
     }
 
-    chrome.runtime.sendMessage({
-      command: COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY,
-      randomDefenseHistory: items,
-      isHidden,
-    });
+    saveRandomDefenseHistory(items, isHidden);
   }, [items, isHidden]);
 
   const deleteHistoryById = (id: string) => {
@@ -48,17 +38,17 @@ const useRandomDefenseHistoryMenu = () => {
       return currentItemId !== id;
     });
 
-    setItems(() => newItems);
+    setItems(newItems);
   };
 
   const clearHistory = () => {
     if (!isEmpty && confirm('모든 추첨 기록을 제거할까요?')) {
-      setItems(() => []);
+      setItems([]);
     }
   };
 
   const updateIsHidden: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setIsHidden(() => event.target.checked);
+    setIsHidden(event.target.checked);
   };
 
   return {

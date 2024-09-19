@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
 import type { HiderOptionsResponse } from '~types/algorithm';
-import { COMMANDS } from '~constants/commands';
 import { RatedTier } from '~types/tierHider';
+import {
+  fetchHiderOptions,
+  saveHiderOptions,
+} from '~domains/dataHandlers/hiderOptionsDataHandler';
 
 const fallbackHiderOptions = {
   problemTagLockDuration: {
@@ -37,22 +39,14 @@ const useHiderFieldsetMenu = () => {
   );
 
   useEffect(() => {
-    const fetchHiderOptions = async () => {
-      const response = await chrome.runtime.sendMessage({
-        command: COMMANDS.FETCH_HIDER_OPTIONS,
-      });
-
-      if (!isHiderOptionsResponse(response)) {
-        return;
-      }
+    (async () => {
+      const response = await fetchHiderOptions();
 
       setHiderOptionsState({
         ...response,
         isLoaded: true,
       });
-    };
-
-    fetchHiderOptions();
+    })();
   }, []);
 
   useEffect(() => {
@@ -62,10 +56,7 @@ const useHiderFieldsetMenu = () => {
       return;
     }
 
-    chrome.runtime.sendMessage({
-      command: COMMANDS.SAVE_HIDER_OPTIONS,
-      hiderOptions: hiderOptionsWithoutLoadingParam,
-    });
+    saveHiderOptions(hiderOptionsWithoutLoadingParam);
   }, [hiderOptionsState]);
 
   const updateProblemTagLockDuration = (hours: number, minutes: number) => {

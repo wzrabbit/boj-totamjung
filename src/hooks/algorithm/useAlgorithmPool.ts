@@ -1,8 +1,11 @@
 import { getSearchResults } from '~domains/algorithm/getSearchResults';
 import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
 import { useState, useEffect } from 'react';
-import { COMMANDS } from '~constants/commands';
 import type { ChangeEventHandler } from 'react';
+import {
+  fetchCheckedAlgorithmIds,
+  saveCheckedAlgorithmIds,
+} from '~domains/dataHandlers/checkedAlgorithmsHandler';
 
 const useAlgorithmPool = () => {
   const [keyword, setKeyword] = useState('');
@@ -10,16 +13,12 @@ const useAlgorithmPool = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const fetchAlgorithmPool = async () => {
-      const response = await chrome.runtime.sendMessage({
-        command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
-      });
+    (async () => {
+      const response = await fetchCheckedAlgorithmIds();
 
-      setCheckedIds(() => response.checkedIds);
-      setIsLoaded(() => true);
-    };
-
-    fetchAlgorithmPool();
+      setCheckedIds(response.checkedIds);
+      setIsLoaded(true);
+    })();
   }, []);
 
   useEffect(() => {
@@ -27,10 +26,7 @@ const useAlgorithmPool = () => {
       return;
     }
 
-    chrome.runtime.sendMessage({
-      command: COMMANDS.SAVE_CHECKED_ALGORITHM_IDS,
-      checkedIds,
-    });
+    saveCheckedAlgorithmIds(checkedIds);
   }, [checkedIds]);
 
   const handleChangeKeyword: ChangeEventHandler<HTMLInputElement> = (event) => {

@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { COMMANDS } from '~constants/commands';
-import {
-  isTotamjungTheme,
-  isTotamjungThemeResponse,
-} from '~domains/dataHandlers/validators/totamjungThemeValidator';
-import { isFontNoResponse } from '~domains/dataHandlers/validators/fontNoValidator';
+import { isTotamjungTheme } from '~domains/dataHandlers/validators/totamjungThemeValidator';
 import { TotamjungTheme } from '~types/totamjungTheme';
+import {
+  fetchTotamjungTheme,
+  saveTotamjungTheme,
+} from '~domains/dataHandlers/totamjungThemeDataHandler';
+import {
+  fetchFontNo,
+  saveFontNo,
+} from '~domains/dataHandlers/fontNoDataHandler';
 
 const UseAppearanceFieldsetMenu = () => {
   const [totamjungTheme, setTotamjungTheme] = useState<
@@ -17,20 +20,9 @@ const UseAppearanceFieldsetMenu = () => {
   useEffect(() => {
     const loadAppearanceFieldsetMenuData = async () => {
       const [totamjungThemeResponse, fontNoResponse] = await Promise.all([
-        chrome.runtime.sendMessage({
-          command: COMMANDS.FETCH_TOTAMJUNG_THEME,
-        }),
-        chrome.runtime.sendMessage({
-          command: COMMANDS.FETCH_FONT_NO,
-        }),
+        fetchTotamjungTheme(),
+        fetchFontNo(),
       ]);
-      if (!isTotamjungThemeResponse(totamjungThemeResponse)) {
-        return;
-      }
-
-      if (!isFontNoResponse(fontNoResponse)) {
-        return;
-      }
 
       const { totamjungTheme: currentTheme } = totamjungThemeResponse;
       const { fontNo: currentFontNo } = fontNoResponse;
@@ -48,10 +40,7 @@ const UseAppearanceFieldsetMenu = () => {
       return;
     }
 
-    chrome.runtime.sendMessage({
-      command: COMMANDS.SAVE_TOTAMJUNG_THEME,
-      totamjungTheme,
-    });
+    saveTotamjungTheme(totamjungTheme);
   }, [totamjungTheme]);
 
   useEffect(() => {
@@ -59,10 +48,7 @@ const UseAppearanceFieldsetMenu = () => {
       return;
     }
 
-    chrome.runtime.sendMessage({
-      command: COMMANDS.SAVE_FONT_NO,
-      fontNo,
-    });
+    saveFontNo(fontNo);
   }, [fontNo]);
 
   const updateTotamjungTheme = (totamjungTheme: string) => {

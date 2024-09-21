@@ -1,8 +1,8 @@
 {
-  "name": "wxt-react-starter",
-  "description": "manifest.json description",
+  "name": "boj-totamjung",
+  "description": "[BOJ-Extension / WXT] 알고리즘 분류 가리개 & 랜덤 디펜스, 토탐정!",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.2",
   "type": "module",
   "scripts": {
     "dev": "wxt",

@@ -1,0 +1,117 @@
+/**
+ * 문제 페이지에 있는 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .page-header:has(#problem_title):not(:has(.problem-label-ac))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}
+
+/**
+ * 문제 페이지에 있는 티어 텍스트에 적힌 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .row:has(#problem_title):not(:has(.problem-label-ac))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg'])
+  + span::after {
+  color: #a4a4a4;
+  content: '난이도 숨겨짐';
+}
+
+html[hideTier='true']
+  .row:has(#problem_title):not(:has(.problem-label-ac))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg'])
+  + span.warn::after {
+  color: #b72929;
+  content: '어려운 문제 경고';
+}
+
+/**
+ * 문제 목록 페이지에서 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  #problemset
+  tr:not(:has(.problem-label-ac))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}
+
+/**
+ * 채점 현황 페이지에서 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  #status-table
+  td:nth-child(3):not(:has(.result-ac))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}
+
+/**
+ * 게시판에서의 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .col-md-12:has(a[href='/board/list/solvedac'])
+  ~ .col-md-12
+  .table.table-bordered.table-striped
+  td:nth-child(2):not(:has(.result-ac))
+  > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}
+
+/**
+ * 게시글에서의 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .col-md-12:has(a[href='/board/list/solvedac'])
+  ~ .col-md-12
+  blockquote
+  > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}
+
+/**
+ * 네비게이션 메뉴 내부의 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true'] .nav.nav-pills.no-print.problem-menu:not(:has(a[href^="https://solved.ac/contribute/"]))
+  .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}
+
+/**
+ * 출처 페이지의 문제 목록 메뉴 내부의 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .row:has(li[class='active'] > a[href='/category'])
+  ~ .row
+  .table.table-bordered.table-striped
+  tr:not(:has(.problem-label-ac))
+  > td:nth-child(3)
+  > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}
+
+/**
+ * 문제집 페이지에서 문제 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .col-md-12:has(a[href='/workbook/top'])
+  ~ .col-md-12
+  .table.table-bordered.table-striped
+  tr:not(:has(.problem-label-ac))
+  td:nth-child(2)
+  > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+}
+
+/**
+ * BOJ Extended의 유저 프로필 페이지에서 맞추지 않은 문제의 티어를 가리기 위한 스타일입니다.
+ */
+html[hideTier='true']
+  .problem-link-style-box:not(.result-ac):not([data-tier='0'])::before {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg') !important;
+}
+
+html[hideTier='true']
+  .problem-link-style-box.warn:not(.result-ac):not([data-tier='0'])::before {
+  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-warn.svg') !important;
+}

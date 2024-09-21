@@ -1,0 +1,400 @@
+:root {
+  --bg-first-color: rgb(51, 23, 15);
+  --bg-second-color: rgb(68, 32, 23);
+  --secondary-menu-color: rgb(39, 22, 16);
+  --table-border-color: rgb(53, 30, 21);
+  --menu-color: rgb(26, 14, 10);
+  --dark-menu-color: rgb(20, 10, 7);
+  --disabled-menu-color: rgb(26, 14, 10, 0.6);
+  --text-color: rgb(221, 217, 213);
+  --link-color: rgb(255, 242, 200);
+  --blurred-link-color: rgb(255, 242, 200, 0.5);
+  --title-color: rgb(209, 176, 114);
+  --tab-hover-color: rgb(209, 176, 114, 0.6);
+  --menu-line-color: rgb(105, 65, 50);
+  --bright-menu-line-color: rgb(161, 115, 98);
+  --button-red: rgb(105, 42, 42);
+  --button-dark: rgb(51, 32, 63);
+  --button-darkblue: rgb(34, 32, 63);
+  --button-mint: rgb(39, 73, 70);
+  --table-notice-color-light: rgb(0, 49, 8);
+  --table-notice-color-dark: rgb(0, 34, 6);
+  --table-contest-color-light: rgb(4, 0, 58);
+  --table-contest-color-dark: rgb(2, 0, 37);
+  --glyphicon-like-color: rgb(0, 255, 98);
+  --glyphicon-unlike-color: rgb(255, 0, 0);
+  --default-black: rgb(30, 30, 30);
+  --settings-orange-color: rgb(237, 125, 49);
+  --gradient-black: linear-gradient(
+    to right,
+    rgb(0, 0, 0, 0.4) 0%,
+    rgb(0, 0, 0, 0.4) 35%,
+    transparent 80%
+  );
+
+  --settings-block-color: rgb(48, 30, 24);
+  --settings-secondary-block-color: rgb(65, 42, 35);
+
+  --tc-red: rgb(238, 0, 0);
+  --tc-yellow: rgb(221, 204, 0);
+  --tc-blue: rgb(102, 102, 255);
+  --tc-green: rgb(0, 169, 0);
+  --tc-gray: rgb(153, 153, 153);
+
+  --cf-admin: white;
+  --cf-legendary: rgb(250, 125, 125);
+  --cf-red: red;
+  --cf-orange: rgb(255, 140, 0);
+  --cf-purple: rgb(170, 0, 170);
+  --cf-blue: blue;
+  --cf-mint: rgb(3, 168, 158);
+  --cf-green: green;
+  --cf-gray: gray;
+
+  --at-red: red;
+  --at-orange: rgb(255, 128, 0);
+  --at-yellow: rgb(192, 192, 0);
+  --at-blue: blue;
+  --at-mint: rgb(0, 192, 192);
+  --at-green: rgb(0, 128, 0);
+  --at-brown: rgb(128, 64, 0);
+  --at-gray: gray;
+
+  --normal-main-color: rgb(0, 118, 192);
+  --normal-sub-color: rgb(255, 255, 255);
+  --normal-hover-color: rgb(182, 210, 228);
+  --translucent-white-color: rgb(255, 255, 255, 0.1);
+  --ttj-hover-color: rgb(114, 75, 61, 0.75);
+  --translucent-dark-color: rgb(0, 0, 0, 0.3);
+  --shadow-color: rgb(0, 0, 0, 0.35);
+
+  --filter-blue: brightness(0) saturate(100%) invert(29%) sepia(66%)
+    saturate(1717%) hue-rotate(179deg) brightness(101%) contrast(101%);
+  --filter-white: brightness(0) saturate(100%) invert(99%) sepia(94%)
+    saturate(2%) hue-rotate(358deg) brightness(109%) contrast(100%);
+  --filter-light-brown: brightness(0) saturate(100%) invert(49%) sepia(26%)
+    saturate(568%) hue-rotate(330deg) brightness(93%) contrast(86%);
+  --filter-mid-brown: brightness(0) saturate(100%) invert(8%) sepia(7%)
+    saturate(4167%) hue-rotate(329deg) brightness(97%) contrast(96%);
+  --filter-dark-brown: brightness(0) saturate(100%) invert(5%) sepia(26%)
+    saturate(1245%) hue-rotate(329deg) brightness(98%) contrast(97%);
+  --filter-gold: brightness(0) saturate(100%) invert(77%) sepia(25%)
+    saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);
+  --filter-gray: brightness(0) saturate(100%) invert(53%) sepia(0%)
+    saturate(1700%) hue-rotate(218deg) brightness(94%) contrast(81%);
+
+  --table-ac-color: rgb(0, 42, 8);
+  --table-ac-secondary-color: rgb(0, 54, 9);
+  --table-ac-text-color: rgb(95, 174, 95);
+  --table-wa-color: rgb(67, 1, 21);
+  --table-wa-secondary-color: rgb(87, 2, 27);
+  --table-wa-text-color: rgb(199, 110, 110);
+
+  --light-gradient-color: linear-gradient(
+    60deg,
+    var(--secondary-menu-color) 0%,
+    var(--secondary-menu-color) 10%,
+    rgba(56, 24, 0, 1) 14%,
+    var(--secondary-menu-color) 18%,
+    rgba(49, 20, 0, 1) 65%,
+    rgba(61, 39, 0, 1) 72%,
+    var(--secondary-menu-color) 79%,
+    var(--secondary-menu-color) 92%,
+    rgba(56, 24, 0, 1) 94%,
+    var(--secondary-menu-color) 96%
+  );
+
+  --dark-gradient-color: linear-gradient(
+    60deg,
+    rgba(26, 14, 10, 1) 0%,
+    rgba(21, 6, 0, 1) 49%,
+    rgba(36, 14, 6, 1) 61%,
+    rgba(26, 14, 10, 1) 75%,
+    rgba(52, 17, 0, 1) 83%,
+    rgba(26, 14, 10, 1) 90%,
+    rgba(26, 14, 10, 1) 100%
+  );
+
+  --opposite-streak-color: rgb(216, 233, 239);
+
+  --silver-jelly-color: rgb(200, 200, 200);
+  --empty-color: rgb(150, 150, 150);
+
+  /* Solvedac Tier Colors */
+  --tier-0: #2d2d2d;
+  --tier-1: #9d4900;
+  --tier-2: #a54f00;
+  --tier-3: #ad5600;
+  --tier-4: #b55d0a;
+  --tier-5: #c67739;
+  --tier-6: #38546e;
+  --tier-7: #3d5a74;
+  --tier-8: #435f7a;
+  --tier-9: #496580;
+  --tier-10: #4e6a86;
+  --tier-11: #d28500;
+  --tier-12: #df8f00;
+  --tier-13: #ec9a00;
+  --tier-14: #f9a518;
+  --tier-15: #ffb028;
+  --tier-16: #00c78b;
+  --tier-17: #00d497;
+  --tier-18: #27e2a4;
+  --tier-19: #3ef0b1;
+  --tier-20: #51fdbd;
+  --tier-21: #009ee5;
+  --tier-22: #00a9f0;
+  --tier-23: #00b4fc;
+  --tier-24: #2bbfff;
+  --tier-25: #41caff;
+  --tier-26: #e0004c;
+  --tier-27: #ea0053;
+  --tier-28: #f5005a;
+  --tier-29: #ff0062;
+  --tier-30: #ff3071;
+
+  --tier-button-u: #ffffff40;
+  --tier-button-b: #ad560040;
+  --tier-button-s: #3d5a7440;
+  --tier-button-g: #ec9a0040;
+  --tier-button-p: #27e2a440;
+  --tier-button-d: #00b4fc40;
+  --tier-button-r: #f5005a40;
+
+  --tier-unrated-gradient-color: linear-gradient(
+    to right,
+    #b9bcc3 0%,
+    #e9edf1 100%
+  );
+  --tier-bronze-gradient-color: linear-gradient(
+    to right,
+    #ad5600 0%,
+    #e84d0b 100%
+  );
+  --tier-silver-gradient-color: linear-gradient(
+    to right,
+    #5d7a95 0%,
+    #75a8d7 100%
+  );
+  --tier-gold-gradient-color: linear-gradient(
+    to right,
+    #ec9a00 0%,
+    #ffd000 100%
+  );
+  --tier-platinum-gradient-color: linear-gradient(
+    to right,
+    #27e2a4 0%,
+    #27d9e2 100%
+  );
+  --tier-diamond-gradient-color: linear-gradient(
+    to right,
+    #00b4fc 0%,
+    #0068fc 100%
+  );
+  --tier-ruby-gradient-color: linear-gradient(
+    to right,
+    #ff0062 0%,
+    #ff0000 100%
+  );
+  --tier-gray-gradient-color: linear-gradient(
+    to right,
+    #919191 0%,
+    #676767 100%
+  );
+
+  --tier-unrated-gradient-back1-color: linear-gradient(
+    to right,
+    hsl(222, 8%, 11.25%) 0%,
+    hsl(210, 22%, 13.95%) 100%
+  );
+  --tier-bronze-gradient-back1-color: linear-gradient(
+    to right,
+    hsl(30, 100%, 5.1%) 0%,
+    hsl(18, 91%, 7.2%) 100%
+  );
+  --tier-silver-gradient-back1-color: linear-gradient(
+    to right,
+    hsl(209, 23%, 7.05%) 0%,
+    hsl(209, 55%, 9.75%) 100%
+  );
+  --tier-gold-gradient-back1-color: linear-gradient(
+    to right,
+    hsl(39, 100%, 6.9%) 0%,
+    hsl(49, 100%, 7.5%) 100%
+  );
+  --tier-platinum-gradient-back1-color: linear-gradient(
+    to right,
+    hsl(160, 76%, 7.8%) 0%,
+    hsl(183, 76%, 7.8%) 100%
+  );
+  --tier-diamond-gradient-back1-color: linear-gradient(
+    to right,
+    hsl(197, 100%, 7.35%) 0%,
+    hsl(215, 100%, 7.35%) 100%
+  );
+  --tier-ruby-gradient-back1-color: linear-gradient(
+    to right,
+    hsl(337, 100%, 7.5%) 0%,
+    hsl(0, 100%, 7.5%) 100%
+  );
+  --tier-gray-gradient-back1-color: linear-gradient(
+    to right,
+    hsl(0, 0%, 8.54%) 0%,
+    hsl(0, 0%, 6%) 100%
+  );
+
+  --tier-unrated-gradient-back2-color: linear-gradient(
+    to right,
+    hsl(222, 8%, 22.5%) 0%,
+    hsl(210, 22%, 28%) 100%
+  );
+  --tier-bronze-gradient-back2-color: linear-gradient(
+    to right,
+    hsl(30, 100%, 10.4%) 0%,
+    hsl(18, 91%, 14.4%) 100%
+  );
+  --tier-silver-gradient-back2-color: linear-gradient(
+    to right,
+    hsl(209, 23%, 14.1%) 0%,
+    hsl(209, 55%, 19.5%) 100%
+  );
+  --tier-gold-gradient-back2-color: linear-gradient(
+    to right,
+    hsl(39, 100%, 13.8%) 0%,
+    hsl(49, 100%, 15%) 100%
+  );
+  --tier-platinum-gradient-back2-color: linear-gradient(
+    to right,
+    hsl(160, 76%, 15.6%) 0%,
+    hsl(183, 76%, 15.6%) 100%
+  );
+  --tier-diamond-gradient-back2-color: linear-gradient(
+    to right,
+    hsl(197, 100%, 14.7%) 0%,
+    hsl(215, 100%, 14.7%) 100%
+  );
+  --tier-ruby-gradient-back2-color: linear-gradient(
+    to right,
+    hsl(337, 100%, 15%) 0%,
+    hsl(0, 100%, 15%) 100%
+  );
+  --tier-gray-gradient-back2-color: linear-gradient(
+    to right,
+    hsl(0, 0%, 17%) 0%,
+    hsl(0, 0%, 12%) 100%
+  );
+
+  /* Scoreboard Block Colors */
+  --scoreboard-green-color: rgb(0, 171, 71);
+  --scoreboard-green-bg-color: rgba(0, 33, 14, 0.6);
+  --scoreboard-mint-color: rgb(0, 137, 175);
+  --scoreboard-mint-bg-color: rgba(0, 32, 41, 0.6);
+  --scoreboard-blue-color: rgb(0, 44, 175);
+  --scoreboard-blue-bg-color: rgba(0, 12, 41, 0.6);
+  --scoreboard-yellow-color: rgb(185, 136, 0);
+  --scoreboard-yellow-bg-color: rgba(41, 27, 0, 0.6);
+  --scoreboard-red-color: rgb(184, 0, 28);
+  --scoreboard-red-bg-color: rgba(33, 0, 0, 0.6);
+
+  /* AC Label Colors */
+  --label-green-gradient-color: linear-gradient(
+    120deg,
+    rgb(43, 100, 60) 0%,
+    rgb(13, 49, 23) 100%
+  );
+
+  --label-red-gradient-color: linear-gradient(
+    120deg,
+    rgb(186, 44, 40) 0%,
+    rgb(102, 23, 21) 100%
+  );
+
+  --label-yellow-gradient-color: linear-gradient(
+    120deg,
+    rgb(219, 162, 20) 0%,
+    rgb(102, 76, 10) 100%
+  );
+
+  --label-sky-gradient-color: linear-gradient(
+    120deg,
+    rgb(35, 141, 174) 0%,
+    rgb(17, 68, 84) 100%
+  );
+
+  --label-gray-gradient-color: linear-gradient(
+    120deg,
+    rgb(75, 75, 75) 0%,
+    rgb(35, 35, 35) 100%
+  );
+
+  --label-blue-gradient-color: linear-gradient(
+    120deg,
+    rgb(54, 77, 122) 0%,
+    rgb(29, 42, 66) 100%
+  );
+
+  --label-mint-gradient-color: linear-gradient(
+    120deg,
+    rgb(18, 129, 108) 0%,
+    rgb(10, 75, 63) 100%
+  );
+
+  /* Settings Extra Colors */
+  --settings-icon-filter: brightness(0) saturate(100%) invert(33%) sepia(35%)
+    saturate(3072%) hue-rotate(3deg) brightness(92%) contrast(92%);
+  --settings-text-color: rgb(150, 80, 10);
+  --settings-underline-color: rgba(170, 85, 0, 0.2);
+  --settings-warning-color: rgb(255, 192, 0);
+  --settings-edit-color: rgb(17, 191, 255);
+
+  /* BOJ Extended Colors */
+  --problem-link-ac-box-color: rgb(0, 40, 20);
+  --problem-link-pac-box-color: rgb(60, 50, 0);
+  --problem-link-wa-box-color: rgb(60, 0, 0);
+  --problem-link-ac-color: rgb(136, 232, 178);
+  --problem-link-pac-color: rgb(236, 222, 115);
+  --problem-link-wa-color: rgb(238, 123, 123);
+  --vs-gradient-color: linear-gradient(
+    60deg,
+    rgb(40, 18, 4) 15%,
+    rgb(83, 30, 8) 30%,
+    rgb(124, 84, 36) 45%,
+    rgb(44, 19, 5) 60%,
+    rgb(22, 11, 4) 75%,
+    rgb(99, 46, 12) 90%
+  );
+
+  --scoreboard-gold-gradient-color: linear-gradient(
+    150deg,
+    rgba(250, 240, 170, 1) 0%,
+    rgba(250, 220, 70, 1) 18%,
+    rgba(200, 150, 20, 1) 41%,
+    rgba(216, 142, 12, 1) 64%,
+    rgba(150, 90, 10, 1) 88%
+  );
+  --scoreboard-silver-gradient-color: linear-gradient(
+    150deg,
+    rgba(227, 227, 227, 1) 0%,
+    rgba(167, 167, 167, 1) 15%,
+    rgba(129, 129, 129, 1) 38%,
+    rgba(93, 93, 98, 1) 74%,
+    rgba(138, 136, 146, 1) 100%
+  );
+  --scoreboard-bronze-gradient-color: linear-gradient(
+    150deg,
+    rgba(227, 199, 182, 1) 0%,
+    rgba(209, 140, 98, 1) 15%,
+    rgba(162, 97, 57, 1) 40%,
+    rgba(159, 86, 40, 1) 74%,
+    rgba(208, 89, 29, 1) 100%
+  );
+
+  /* Custom Table Colors */
+  --cell-gray-color: rgb(60, 60, 60);
+  --cell-gray-secondary-color: rgb(80, 80, 80);
+  --cell-black-color: rgb(0, 0, 0);
+  --cell-black-secondary-color: rgb(0, 0, 0);
+  --cell-red-color: rgb(67, 1, 21);
+  --cell-red-secondary-color: rgb(87, 2, 27);
+  --cell-white-border: rgb(170, 170, 170);
+}

@@ -1,3 +1,5 @@
+import executeBackground from './main';
+
 export default defineBackground(() => {
-  console.log('Hello background!', { id: browser.runtime.id });
+  executeBackground();
 });

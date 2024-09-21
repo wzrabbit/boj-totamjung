@@ -1,0 +1,2567 @@
+html[totamjungTheme='totamjung'] p,
+html[totamjungTheme='totamjung'] div,
+html[totamjungTheme='totamjung'] li,
+html[totamjungTheme='totamjung'] li a,
+html[totamjungTheme='totamjung'] label,
+html[totamjungTheme='totamjung'] pre:not(.CodeMirror-line) {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] a,
+html[totamjungTheme='totamjung'] .btn-link {
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] li a.highlight {
+  color: var(--link-color) !important;
+}
+
+html[totamjungTheme='totamjung'] h1,
+html[totamjungTheme='totamjung'] h2,
+html[totamjungTheme='totamjung'] h3,
+html[totamjungTheme='totamjung'] h4,
+html[totamjungTheme='totamjung'] h5,
+html[totamjungTheme='totamjung'] h6 {
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+html[totamjungTheme='totamjung'] input,
+html[totamjungTheme='totamjung'] select,
+html[totamjungTheme='totamjung'] textarea {
+  background-color: var(--menu-color) !important;
+  border-color: var(--bright-menu-line-color) !important;
+  color: var(--text-color) !important;
+}
+
+html[totamjungTheme='totamjung'] textarea:focus {
+  box-shadow: 0 0 7px var(--bright-menu-line-color) !important;
+}
+
+html[totamjungTheme='totamjung'] input[type='checkbox'],
+html[totamjungTheme='totamjung'] input[type='radio'] {
+  filter: invert(110%) hue-rotate(18deg) brightness(1.2);
+}
+
+html[totamjungTheme='totamjung'] kbd {
+  background-color: var(--dark-menu-color);
+  border-color: var(--menu-line-color);
+  color: var(--dark-menu-color);
+}
+
+html[totamjungTheme='totamjung'] button[type='submit'],
+html[totamjungTheme='totamjung'] button[type='submit']:hover,
+html[totamjungTheme='totamjung'] button[type='submit']:focus,
+html[totamjungTheme='totamjung'] button.btn.btn-primary,
+html[totamjungTheme='totamjung'] button.btn.btn-lg,
+html[totamjungTheme='totamjung'] button.navbar-toggle,
+html[totamjungTheme='totamjung'] a.btn:not(.btn-link),
+html[totamjungTheme='totamjung'] .btn.btn-default,
+html[totamjungTheme='totamjung'] .btn-u {
+  background-color: var(--menu-line-color);
+  border: none;
+  box-shadow: 0 0 13px var(--menu-color);
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .pace-progress {
+  background: var(--title-color);
+  box-shadow: 0 0 20px var(--title-color);
+  transition: 0.1s;
+}
+
+html[totamjungTheme='totamjung'] .btn {
+  border: none;
+  box-shadow: 0 0 13px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .btn.btn-link.copy-button {
+  box-shadow: none;
+}
+
+html[totamjungTheme='totamjung'] blockquote {
+  background: var(--gradient-black);
+  border-left-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] #logo-header {
+  content: url('chrome-extension://__MSG_@@extension_id__/boj-logo.webp');
+}
+
+html[totamjungTheme='totamjung'] .datepicker {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .datepicker span:hover {
+  background-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .datepicker span.active {
+  background: none !important;
+  background-color: var(--bright-menu-line-color) !important;
+}
+
+html[totamjungTheme='totamjung'] .datepicker::after {
+  border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form {
+  font-family: 'Noto Sans KR';
+  box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form .icon-append {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form .inline-group > label {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form .selectize-input {
+  background-color: var(--menu-color);
+  border: 3px solid var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form .selectize-input div.item {
+  border-width: 1px;
+  border-color: var(--menu-line-color);
+  background-color: var(--secondary-menu-color);
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form .selectize-dropdown {
+  background-color: var(--menu-color);
+  border-width: 1px;
+  border-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form .selectize-dropdown .option.active {
+  background-color: var(--menu-line-color);
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form label > i {
+  background-color: var(--secondary-menu-color);
+  border-color: var(--title-color);
+  border-width: 2px;
+}
+
+html[totamjungTheme='totamjung'] .sky-form label.radio > i::after {
+  width: 10px;
+  height: 10px;
+  transform: translateX(-35%) translateY(-35%);
+  background-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form label.checkbox > i::after {
+  width: 15px;
+  height: 15px;
+  transform: translateX(-10%) translateY(-10%);
+  background-color: transparent;
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form label:hover > i {
+  border-color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form .radio input:checked + i,
+html[totamjungTheme='totamjung'] .sky-form .checkbox input:checked + i,
+html[totamjungTheme='totamjung'] .sky-form .toggle input:checked + i {
+  box-shadow: 0 0 5px var(--title-color);
+  border-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .sky-form footer {
+  background-color: var(--secondary-menu-color);
+  border-top: 1px solid var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .header .navbar-toggle:hover,
+html[totamjungTheme='totamjung'] .header .navbar-toggle:focus {
+  background: var(--menu-line-color) !important;
+}
+
+html[totamjungTheme='totamjung'] input:disabled {
+  background-color: var(--disabled-menu-color);
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] input:focus,
+html[totamjungTheme='totamjung'] select:focus {
+  border-color: var(--title-color);
+  box-shadow: 0 0 6px var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] form {
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] form fieldset {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] hr,
+html[totamjungTheme='totamjung'] legend {
+  border-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] legend {
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+html[totamjungTheme='totamjung'] body,
+html[totamjungTheme='totamjung'] .wrapper,
+html[totamjungTheme='totamjung'] .gray-bg {
+  background: transparent;
+  background-color: transparent;
+}
+
+html[totamjungTheme='totamjung'] {
+  background-color: var(--dark-menu-color);
+}
+
+html[totamjungTheme='totamjung']::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('chrome-extension://__MSG_@@extension_id__/background.webp');
+  background-size: 1500px;
+  background-attachment: fixed;
+  z-index: -1;
+  will-change: transform;
+}
+
+html[totamjungTheme='totamjung'] .header,
+html[totamjungTheme='totamjung'] .footer {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .header {
+  border-bottom-color: var(--menu-line-color);
+  box-shadow: 0px 10px 20px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .footer {
+  border-bottom: 0px;
+  border-top-color: var(--menu-line-color);
+  box-shadow: 10px 0px 30px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .mega-menu-content {
+  border-top-color: var(--menu-link-color);
+}
+
+html[totamjungTheme='totamjung']
+  .mega-menu-content
+  > .container
+  > .row.equal-height {
+  border-top: 2px solid var(--link-color);
+}
+
+html[totamjungTheme='totamjung']
+  .mega-menu-content
+  .equal-height-in:nth-child(odd) {
+  border: none;
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung']
+  .mega-menu-content
+  .equal-height-in:nth-child(even) {
+  border: none;
+  background-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .mega-menu-content .equal-height-in a:hover {
+  background-color: var(--menu-line-color) !important;
+}
+
+html[totamjungTheme='totamjung'] ul.dropdown-menu {
+  border: none;
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .dropdown-menu .divider {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .dropdown-menu > li {
+  box-shadow: 0 0 13px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .dropdown-menu > li > a {
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung'] .dropdown-menu > li > a:hover,
+html[totamjungTheme='totamjung'] .dropdown-menu > li > a:focus {
+  color: var(--menu-color);
+  text-decoration: none;
+  background-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .header .dropdown-menu li a {
+  background-color: transparent;
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .nav.navbar-nav > li > a {
+  transition: 0.3s;
+}
+
+html[totamjungTheme='totamjung'] .header .navbar-default .navbar-nav > li > a {
+  color: var(--bright-menu-line-color);
+}
+
+@media (max-width: 991px) {
+  html[totamjungTheme='totamjung'] .header .navbar-default .navbar-nav > li a {
+    border-bottom-color: var(--menu-line-color);
+  }
+
+  html[totamjungTheme='totamjung']
+    .header
+    .navbar-default
+    .navbar-nav
+    > .active
+    > a,
+  html[totamjungTheme='totamjung']
+    .header
+    .navbar-default
+    .navbar-nav
+    > .active
+    > a:hover,
+  html[totamjungTheme='totamjung']
+    .header
+    .navbar-default
+    .navbar-nav
+    > .active
+    > a:focus {
+    background-color: var(--menu-line-color);
+  }
+}
+
+html[totamjungTheme='totamjung']
+  .header
+  .navbar-default
+  .navbar-nav
+  > li:hover
+  > a,
+html[totamjungTheme='totamjung']
+  .header
+  .navbar-default
+  .navbar-nav
+  > li:active
+  > a,
+html[totamjungTheme='totamjung']
+  .header
+  .navbar-default
+  .navbar-nav
+  > li:focus
+  > a,
+html[totamjungTheme='totamjung']
+  .header
+  .navbar-default
+  .navbar-nav
+  > li.active
+  > a {
+  color: var(--title-color);
+  border-bottom-color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .header .topbar ul.loginbar > li > a,
+html[totamjungTheme='totamjung'] .header .topbar ul.loginbar > li > a:hover,
+html[totamjungTheme='totamjung'] .header .topbar ul.loginbar .fa:before {
+  color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .header .topbar ul.loginbar .topbar-devider {
+  border-right-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .page-header {
+  border-bottom-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .panel {
+  border: none;
+  box-shadow: 0 0 13px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .panel-heading {
+  background-color: var(--dark-menu-color);
+  border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .panel-body {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .panel-body > .content > pre {
+  background-color: var(--dark-menu-color);
+  border: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] #heatmap rect:not(rect[fill='#ffffff']),
+html[totamjungTheme='totamjung'] #heatmap g > path:first-child {
+  filter: hue-rotate(80deg) invert(100%) saturate(70%) brightness(150%)
+    sepia(50%);
+}
+
+html[totamjungTheme='totamjung'] #heatmap rect[fill='#ffffff'] {
+  filter: invert(100%);
+}
+
+html[totamjungTheme='totamjung'] #heatmap rect[fill='#ffffff'] {
+  fill-opacity: 1;
+  fill: var(--opposite-streak-color);
+}
+
+html[totamjungTheme='totamjung'] #heatmap path[stroke='#c9c9c9'] {
+  stroke: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] #heatmap path[stroke='#000000'] {
+  stroke: var(--title-color);
+  stroke-width: 2;
+}
+
+html[totamjungTheme='totamjung'] #heatmap path:focus {
+  stroke: blue;
+  stroke-width: 2;
+}
+
+html[totamjungTheme='totamjung'] #heatmap g:nth-child(2) text {
+  font-family: 'Noto Sans KR';
+  fill: var(--link-color);
+}
+
+html[totamjungTheme='totamjung']
+  #heatmap
+  g:nth-child(2)
+  text:nth-child(8n + 16) {
+  font-weight: 800;
+  fill: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .nav-pills > li > a {
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung'] .nav-pills > li.active > a {
+  background-color: var(--title-color);
+  box-shadow: 0 0 13px var(--menu-color);
+  color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .nav-pills > li > a:hover,
+html[totamjungTheme='totamjung'] .nav-pills > li > a:focus,
+html[totamjungTheme='totamjung'] .nav-pills > li > a:active,
+html[totamjungTheme='totamjung'] .nav .open > a,
+html[totamjungTheme='totamjung'] .nav .open > a:hover,
+html[totamjungTheme='totamjung'] .nav .open > a:focus {
+  background-color: var(--tab-hover-color);
+}
+
+html[totamjungTheme='totamjung'] pre:not(.CodeMirror-line) {
+  background-color: var(--menu-color);
+  border-color: var(--menu-color);
+  box-shadow: 0px 0px 5px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .CodeMirror {
+  box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] pre.CodeMirror-line {
+  box-shadow: none;
+}
+
+html[totamjungTheme='totamjung'] .breadcrumbs {
+  background-image: none;
+  background: var(--light-gradient-color);
+  box-shadow: 0px 5px 10px var(--secondary-menu-color);
+  border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .parallax-counter-v1 {
+  filter: invert(6%) sepia(14%) saturate(500%) hue-rotate(331deg)
+    brightness(70%) contrast(100%);
+}
+
+html[totamjungTheme='totamjung'] .headline {
+  border-bottom-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .headline h2,
+html[totamjungTheme='totamjung'] .headline h3,
+html[totamjungTheme='totamjung'] .headline h4 {
+  border-bottom: 3px solid var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .blog-twitter-inner {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .blog-twitter-inner a:nth-child(2) {
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .blog-twitter-inner a:nth-child(3) {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .blog-twitter-inner::before {
+  border-bottom-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .blog-twitter-inner::after {
+  border-top-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .blog-twitter-inner:hover::before {
+  border-bottom: 25px solid var(--secondary-menu-color);
+  border-left: 25px solid transparent;
+}
+
+html[totamjungTheme='totamjung'] .blog-twitter-inner:hover::after {
+  border-top-color: var(--title-color);
+  border-top: 25px solid var(--title-color);
+  border-right: 25px solid transparent;
+}
+
+html[totamjungTheme='totamjung'] .result-ac {
+  color: rgb(0, 152, 116);
+}
+
+html[totamjungTheme='totamjung'] .result-pac {
+  color: rgb(239, 192, 80);
+}
+
+html[totamjungTheme='totamjung'] .result-wa {
+  color: rgb(221, 65, 36);
+}
+
+html[totamjungTheme='totamjung'] #favorite_button,
+html[totamjungTheme='totamjung'] #lang-select-button,
+html[totamjungTheme='totamjung'] #like-button,
+html[totamjungTheme='totamjung'] #unlike-button {
+  background-color: var(--menu-color);
+  color: var(--text-color);
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] #favorite_button[data-favorite='1'] {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] #like-button.btn-primary {
+  color: var(--glyphicon-like-color);
+}
+
+html[totamjungTheme='totamjung'] #unlike-button.btn-danger {
+  color: var(--glyphicon-unlike-color);
+}
+
+html[totamjungTheme='totamjung'] .table.table-hover > tbody > tr:hover > td,
+html[totamjungTheme='totamjung'] .table.table-hover > tbody > tr:hover > th {
+  background-color: transparent !important;
+}
+
+html[totamjungTheme='totamjung'] .table-hover th,
+html[totamjungTheme='totamjung'] .table-hover td {
+  border-top-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .tab-v2 .nav-tabs {
+  background-color: transparent;
+}
+
+html[totamjungTheme='totamjung'] .tab-v2 .nav-tabs li.active a {
+  background-color: var(--bright-menu-line-color);
+  border: none;
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .table-striped > thead > tr,
+html[totamjungTheme='totamjung'] .table-bordered > thead > tr {
+  background-color: var(--dark-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .table-striped,
+html[totamjungTheme='totamjung'] .table-striped th,
+html[totamjungTheme='totamjung'] .table-striped tr,
+html[totamjungTheme='totamjung'] .table-striped td,
+html[totamjungTheme='totamjung'] .table-bordered,
+html[totamjungTheme='totamjung'] .table-bordered th,
+html[totamjungTheme='totamjung'] .table-bordered tr,
+html[totamjungTheme='totamjung'] .table-bordered td {
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] .table-striped,
+html[totamjungTheme='totamjung'] .table-bordered {
+  box-shadow: 0 0 15px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr:nth-child(odd)
+  > td,
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr:nth-child(odd)
+  > th,
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(odd)
+  > td,
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(odd)
+  > th {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr:nth-child(even)
+  > td,
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr:nth-child(even)
+  > th,
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(even)
+  > td,
+html[totamjungTheme='totamjung']
+  .table-bordered
+  > tbody
+  > tr:nth-child(even)
+  > th {
+  background-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] #problem-body .table-bordered tr > td,
+html[totamjungTheme='totamjung'] #problem-body .table-bordered tr > th {
+  border: 0.75px solid var(--table-border-color);
+}
+
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr.success:nth-of-type(odd)
+  > td,
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr.success:nth-of-type(odd)
+  > th {
+  background-color: var(--table-notice-color-dark);
+}
+
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr.success:nth-of-type(even)
+  > td,
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr.success:nth-of-type(even)
+  > th {
+  background-color: var(--table-notice-color-light);
+}
+
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr.info:nth-of-type(odd)
+  > td,
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr.info:nth-of-type(odd)
+  > th {
+  background-color: var(--table-contest-color-dark);
+}
+
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr.info:nth-of-type(even)
+  > td,
+html[totamjungTheme='totamjung']
+  .table-striped
+  > tbody
+  > tr.info:nth-of-type(even)
+  > th {
+  background-color: var(--table-contest-color-light);
+}
+
+html[totamjungTheme='totamjung'] .table-condensed th,
+html[totamjungTheme='totamjung'] .table-condensed td {
+  border-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .table-condensed th {
+  color: var(--title-color);
+}
+
+@media screen and (max-width: 767px) {
+  html[totamjungTheme='totamjung'] .table-responsive {
+    border: none;
+    box-shadow: 0 0 13px var(--menu-color);
+  }
+}
+
+html[totamjungTheme='totamjung'] .table-responsive #problem-info thead {
+  color: var(--title-color);
+  border-bottom-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .table-responsive #problem-info * {
+  border-top-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung']
+  #problem-body
+  div[style='background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;'] {
+  background-color: var(--menu-color) !important;
+  border-color: var(--table-border-color) !important;
+}
+
+html[totamjungTheme='totamjung']
+  #problem-body
+  div[style='background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;']
+  * {
+  color: var(--title-color) !important;
+}
+
+html[totamjungTheme='totamjung'] #contest_scoreboard tr > th:nth-child(2) > a,
+html[totamjungTheme='totamjung']
+  #contest_scoreboard
+  tr:nth-child(1)
+  > th:nth-child(n + 2)
+  > a {
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] #contest_scoreboard tr > td.accepted {
+  color: var(--table-ac-text-color);
+}
+
+html[totamjungTheme='totamjung']
+  #contest_scoreboard
+  tr:nth-child(odd)
+  > td.accepted {
+  background-color: var(--table-ac-color) !important;
+  font-weight: 800;
+}
+
+html[totamjungTheme='totamjung']
+  #contest_scoreboard
+  tr:nth-child(even)
+  > td.accepted {
+  background-color: var(--table-ac-secondary-color) !important;
+  font-weight: 800;
+}
+
+html[totamjungTheme='totamjung'] #contest_scoreboard tr > td.wronganswer {
+  color: var(--table-wa-text-color);
+}
+
+html[totamjungTheme='totamjung']
+  #contest_scoreboard
+  tr:nth-child(odd)
+  > td.wronganswer {
+  background-color: var(--table-wa-color) !important;
+}
+
+html[totamjungTheme='totamjung']
+  #contest_scoreboard
+  tr:nth-child(even)
+  > td.wronganswer {
+  background-color: var(--table-wa-secondary-color) !important;
+}
+
+html[totamjungTheme='totamjung'] #problem-memo-edit {
+  box-shadow: 0 0 14px var(--menu-color);
+  margin-bottom: 20px;
+}
+
+html[totamjungTheme='totamjung'] #problem-memo-edit div {
+  box-shadow: none;
+}
+
+html[totamjungTheme='totamjung'] .editor-toolbar,
+html[totamjungTheme='totamjung'] .redactor-toolbar,
+html[totamjungTheme='totamjung'] .editor-statusbar {
+  background-color: var(--secondary-menu-color);
+  opacity: 1;
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] .cm-s-default.CodeMirror,
+html[totamjungTheme='totamjung'] .cm-s-paper.CodeMirror {
+  background: var(--menu-color);
+  border-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .cm-s-paper.CodeMirror-fullscreen {
+  z-index: 1000000;
+}
+
+html[totamjungTheme='totamjung'] .editor-toolbar.fullscreen::before,
+html[totamjungTheme='totamjung'] .editor-toolbar.fullscreen::after {
+  background: none;
+}
+
+html[totamjungTheme='totamjung'] .editor-toolbar a {
+  color: var(--title-color) !important;
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung'] .editor-toolbar a:hover,
+html[totamjungTheme='totamjung'] .editor-toolbar a.active {
+  background-color: var(--menu-line-color) !important;
+  border-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung']
+  .editor-toolbar.disabled-for-preview
+  .fa:not(.no-disable) {
+  background-color: transparent;
+  opacity: 0.5;
+}
+
+html[totamjungTheme='totamjung'] .editor-toolbar i.separator {
+  border-left-width: 0;
+  border-right-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-paper.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .editor-preview {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .editor-preview-side {
+  background-color: var(--menu-line-color);
+  border: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-box.redactor-styles-on {
+  background-color: var(--menu-color);
+  box-shadow: 0 0 13px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-focus.redactor-styles-on,
+html[totamjungTheme='totamjung'] .redactor-focus:focus.redactor-styles-on {
+  border-color: var(--menu-color) !important;
+}
+
+html[totamjungTheme='totamjung'] .redactor-toolbar .re-button:nth-child(odd) {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-toolbar .re-button:nth-child(even) {
+  background-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-statusbar {
+  background-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-styles pre {
+  background-color: var(--dark-menu-color);
+  border-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown a {
+  background-color: var(--secondary-menu-color);
+  border-bottom: 1px solid var(--menu-line-color);
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown a:hover {
+  background-color: var(--menu-line-color) !important;
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-disabled span {
+  color: var(--blurred-link-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-source-view {
+  background-color: black !important;
+}
+
+html[totamjungTheme='totamjung'] .redactor-styles code {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-p span,
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-pre span {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-h1,
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-h2,
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-h3,
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-h4,
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-h5,
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-h6 {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-blockquote {
+  background-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-styles mark,
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-marked span {
+  background-color: var(--menu-line-color);
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-variable span {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-shortcut span {
+  background-color: var(--dark-menu-color);
+  border-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-dropdown-item-blockquote span,
+html[totamjungTheme='totamjung'] .redactor-styles blockquote {
+  background-color: transparent;
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-styles td {
+  border: solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-modal-header,
+html[totamjungTheme='totamjung'] .redactor-modal-footer {
+  background-color: var(--dark-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-modal-header {
+  border-bottom: 1px solid var(--menu-line-color);
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-modal-footer {
+  border-top: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .modal-video-input {
+  background-color: black !important;
+}
+
+html[totamjungTheme='totamjung'] .redactor-modal-body {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-modal button[data-command='insert'] {
+  background-color: transparent;
+  border: 2px solid var(--title-color);
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .redactor-modal button[data-command='cancel'] {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .progress {
+  background-color: var(--dark-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .progress-bar {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .alert {
+  background: var(--dark-gradient-color);
+  box-shadow: 0 0 13px var(--menu-color);
+  border: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .pagination > li > a {
+  background-color: var(--menu-color);
+  border: none;
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung'] .pagination > li:hover > a {
+  background-color: var(--tab-hover-color);
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] .pagination > li.active > a {
+  background-color: var(--title-color);
+  color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .pagination > li > a:focus {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .close {
+  opacity: 1;
+  color: var(--title-color);
+  text-shadow: none;
+  transition: 0.15s;
+}
+
+html[totamjungTheme='totamjung'] .close:hover {
+  text-shadow: 0 0 7px var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .coderTextRed {
+  text-shadow: 0 0 10px var(--tc-red);
+}
+
+html[totamjungTheme='totamjung'] .coderTextYellow {
+  text-shadow: 0 0 10px var(--tc-yellow);
+}
+
+html[totamjungTheme='totamjung'] .coderTextBlue {
+  text-shadow: 0 0 10px var(--tc-blue);
+}
+
+html[totamjungTheme='totamjung'] .coderTextGreen {
+  text-shadow: 0 0 10px var(--tc-green);
+}
+
+html[totamjungTheme='totamjung'] .coderTextGray {
+  text-shadow: 0 0 10px var(--tc-gray);
+}
+
+html[totamjungTheme='totamjung'] .user-admin {
+  text-shadow: 0 0 10px var(--cf-admin);
+}
+
+html[totamjungTheme='totamjung'] .user-legendary,
+html[totamjungTheme='totamjung'] .user-red {
+  text-shadow: 0 0 10px var(--cf-red);
+}
+
+html[totamjungTheme='totamjung'] .user-admin {
+  color: var(--cf-admin) !important;
+}
+
+html[totamjungTheme='totamjung'] .user-legendary-first-letter {
+  color: var(--cf-legendary) !important;
+}
+
+html[totamjungTheme='totamjung'] .user-orange {
+  text-shadow: 0 0 10px var(--cf-orange);
+}
+
+html[totamjungTheme='totamjung'] .user-violet {
+  text-shadow: 0 0 10px var(--cf-purple);
+}
+
+html[totamjungTheme='totamjung'] .user-blue {
+  text-shadow: 0 0 10px var(--cf-blue);
+}
+
+html[totamjungTheme='totamjung'] .user-cyan {
+  text-shadow: 0 0 10px var(--cf-mint);
+}
+
+html[totamjungTheme='totamjung'] .user-green {
+  text-shadow: 0 0 10px var(--cf-green);
+}
+
+html[totamjungTheme='totamjung'] .user-gray {
+  text-shadow: 0 0 10px var(--cf-gray);
+}
+
+html[totamjungTheme='totamjung'] .atcoder-red {
+  text-shadow: 0 0 10px var(--at-red);
+}
+
+html[totamjungTheme='totamjung'] .atcoder-orange {
+  text-shadow: 0 0 10px var(--at-orange);
+}
+
+html[totamjungTheme='totamjung'] .atcoder-yellow {
+  text-shadow: 0 0 10px var(--at-yellow);
+}
+
+html[totamjungTheme='totamjung'] .atcoder-blue {
+  text-shadow: 0 0 10px var(--at-blue);
+}
+
+html[totamjungTheme='totamjung'] .atcoder-cyan {
+  text-shadow: 0 0 10px var(--at-mint);
+}
+
+html[totamjungTheme='totamjung'] .atcoder-green {
+  text-shadow: 0 0 10px var(--at-green);
+}
+
+html[totamjungTheme='totamjung'] .atcoder-brown {
+  text-shadow: 0 0 10px var(--at-brown);
+}
+
+html[totamjungTheme='totamjung'] .atcoder-gray {
+  text-shadow: 0 0 10px var(--at-gray);
+}
+
+html[totamjungTheme='totamjung'] .thumbnail {
+  background-color: var(--menu-color);
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] .thumbnail,
+html[totamjungTheme='totamjung'] .thumbnail:hover {
+  box-shadow: 0px 0px 15px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .hover-effect,
+html[totamjungTheme='totamjung'] .hover-effect:hover {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .hover-effect:hover {
+  text-shadow: 0 0 13px var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .error-v1 span {
+  color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .error-v1 span.error-v1-title {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .funny-boxes {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .funny-boxes .btn-u:hover,
+html[totamjungTheme='totamjung'] .funny-boxes .btn-u:active,
+html[totamjungTheme='totamjung'] .funny-boxes .btn-u:focus,
+html[totamjungTheme='totamjung'] form fieldset .btn-u:hover,
+html[totamjungTheme='totamjung'] form fieldset .btn-u:active,
+html[totamjungTheme='totamjung'] form fieldset .btn-u:focus {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .btn-success {
+  background-color: var(--table-notice-color-light);
+}
+
+html[totamjungTheme='totamjung'] .btn-u-red,
+html[totamjungTheme='totamjung'] .btn-u-red:hover,
+html[totamjungTheme='totamjung'] .btn-u-red:focus,
+html[totamjungTheme='totamjung'] .btn-u-red:active,
+html[totamjungTheme='totamjung'] .btn-danger,
+html[totamjungTheme='totamjung'] .btn-danger:hover,
+html[totamjungTheme='totamjung'] .btn-danger:focus,
+html[totamjungTheme='totamjung'] .btn-danger:active {
+  background-color: var(--button-red);
+}
+
+html[totamjungTheme='totamjung'] .btn-u-dark,
+html[totamjungTheme='totamjung'] .btn-u-dark:hover,
+html[totamjungTheme='totamjung'] .btn-u-dark:focus,
+html[totamjungTheme='totamjung'] .btn-u-dark:active {
+  background-color: var(--button-dark);
+}
+
+html[totamjungTheme='totamjung'] .btn-u-dark-blue,
+html[totamjungTheme='totamjung'] .btn-u-dark-blue:hover,
+html[totamjungTheme='totamjung'] .btn-u-dark-blue:focus,
+html[totamjungTheme='totamjung'] .btn-u-dark-blue:active {
+  background-color: var(--button-darkblue);
+}
+
+html[totamjungTheme='totamjung'] .btn-u-light-green,
+html[totamjungTheme='totamjung'] .btn-u-light-green:hover,
+html[totamjungTheme='totamjung'] .btn-u-light-green:focus,
+html[totamjungTheme='totamjung'] .btn-u-light-green:active {
+  background-color: var(--button-mint);
+}
+
+html[totamjungTheme='totamjung'] .funny-boxes-top-sea {
+  border-top-color: var(--link-color);
+  box-shadow: 0 0 13px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .posts .dl-horizontal a,
+html[totamjungTheme='totamjung'] .posts .dl-horizontal:hover a,
+html[totamjungTheme='totamjung'] .posts .dl-horizontal a:hover {
+  transition: 0.2s;
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .blog h2 a {
+  color: var(--title-color);
+  transition: 0.3s;
+}
+
+html[totamjungTheme='totamjung'] .blog h2 a:hover {
+  text-shadow: 0 0 13px var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .blog-post-tags {
+  border-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .blog-content a {
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] code.hljs {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] ul.tagit {
+  background: var(--menu-color);
+  box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] ul.tagit li.tagit-choice,
+html[totamjungTheme='totamjung'] .ui-widget-content {
+  background: var(--secondary-menu-color);
+  background-color: var(--secondary-menu-color);
+  border-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] ul.tagit li.tagit-choice .tagit-label {
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .list-group.sidebar-nav-v1 {
+  box-shadow: 0 0 13px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .list-group {
+  box-shadow: 0 0 13px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .list-group-item {
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] .list-group-item:nth-child(odd) {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .list-group-item:nth-child(even) {
+  background-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .list-group.sidebar-nav-v1 > .list-group-item {
+  border: none;
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung']
+  .list-group.sidebar-nav-v1
+  > .list-group-item:nth-child(odd) {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung']
+  .list-group.sidebar-nav-v1
+  > .list-group-item:nth-child(even) {
+  background-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung']
+  .list-group.sidebar-nav-v1
+  > .list-group-item.active {
+  background-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung']
+  .list-group.sidebar-nav-v1
+  > .list-group-item.active
+  > a {
+  color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung']
+  .list-group.sidebar-nav-v1
+  > .list-group-item:hover {
+  background-color: var(--tab-hover-color);
+}
+
+html[totamjungTheme='totamjung'] .ibox-content {
+  background-color: var(--menu-color);
+  border-top-color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .row.team:first-child .ibox-content {
+  background: var(--scoreboard-gold-gradient-color);
+  color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .row.team:nth-child(2) .ibox-content {
+  background: var(--scoreboard-silver-gradient-color);
+  color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .row.team:nth-child(3) .ibox-content {
+  background: var(--scoreboard-bronze-gradient-color);
+  color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung']
+  .row.team:first-child
+  .ibox-content
+  .team-name-link,
+html[totamjungTheme='totamjung']
+  .row.team:nth-child(2)
+  .ibox-content
+  .team-name-link,
+html[totamjungTheme='totamjung']
+  .row.team:nth-child(3)
+  .ibox-content
+  .team-name-link {
+  color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] #spinner {
+  filter: var(--filter-gold);
+}
+
+html[totamjungTheme='totamjung'] .top-navigation .navbar-brand {
+  background-color: var(--secondary-menu-color);
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+html[totamjungTheme='totamjung'] .top-navigation .nav > li > a {
+  color: var(--title-color);
+  transition: background-color 0.3s;
+}
+
+html[totamjungTheme='totamjung'] .top-navigation .nav > li a:hover,
+html[totamjungTheme='totamjung'] .top-navigation .nav > li a:focus {
+  color: var(--title-color);
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .row.border-bottom.white-bg,
+html[totamjungTheme='totamjung'] .navbar-collapse {
+  border-bottom-color: var(--menu-line-color) !important;
+}
+
+html[totamjungTheme='totamjung'] .white-bg {
+  background-color: transparent;
+}
+
+html[totamjungTheme='totamjung'] .irs-bar,
+html[totamjungTheme='totamjung'] .irs-bar-edge,
+html[totamjungTheme='totamjung'] .irs-slider {
+  filter: var(--filter-gold);
+}
+
+html[totamjungTheme='totamjung'] .irs-line-left,
+html[totamjungTheme='totamjung'] .irs-line-mid,
+html[totamjungTheme='totamjung'] .irs-line-right {
+  filter: var(--filter-mid-brown);
+}
+
+html[totamjungTheme='totamjung'] .irs-min,
+html[totamjungTheme='totamjung'] .irs-max {
+  background-color: var(--secondary-menu-color);
+  border: 0.5px solid var(--menu-line-color);
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .irs-single {
+  background-color: var(--title-color);
+  color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .irs-single:after {
+  border-top-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .irs-grid .irs-grid-pol {
+  background: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .irs-grid .irs-grid-text {
+  color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] #right-sidebar .sidebar-title {
+  background-color: var(--menu-color);
+  border-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .sidebar-container ul.sidebar-list li {
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] #right-sidebar {
+  background-color: var(--menu-color);
+  border-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung']
+  #right-sidebar
+  li.sidebar-success:nth-child(2n) {
+  background-color: var(--table-ac-color);
+}
+
+html[totamjungTheme='totamjung']
+  #right-sidebar
+  li.sidebar-success:nth-child(2n + 1) {
+  background-color: var(--table-ac-secondary-color);
+  color: var(--table-ac-text-color);
+}
+
+html[totamjungTheme='totamjung'] #right-sidebar li.sidebar-success h4 {
+  color: var(--table-ac-text-color);
+}
+
+html[totamjungTheme='totamjung'] #right-sidebar li.sidebar-fail:nth-child(2n) {
+  background-color: var(--table-wa-color);
+}
+
+html[totamjungTheme='totamjung']
+  #right-sidebar
+  li.sidebar-fail:nth-child(2n + 1) {
+  background-color: var(--table-wa-secondary-color);
+  color: var(--table-wa-text-color);
+}
+
+html[totamjungTheme='totamjung'] #right-sidebar li.sidebar-fail h4 {
+  color: var(--table-wa-text-color);
+}
+
+html[totamjungTheme='totamjung'] .modal-content {
+  border: none;
+}
+
+html[totamjungTheme='totamjung'] .inmodal .modal-header {
+  background-color: var(--dark-menu-color);
+  border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .inmodal .modal-body {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .inmodal .modal-footer {
+  background-color: var(--dark-menu-color);
+  border-top-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .inmodal button.btn.btn-white {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .inmodal .tab-content {
+  border: 1px;
+}
+
+html[totamjungTheme='totamjung'] .top-navigation .nav > li.active {
+  background: transparent;
+}
+
+html[totamjungTheme='totamjung'] .tabs-container .nav-tabs > li.active > a,
+html[totamjungTheme='totamjung']
+  .tabs-container
+  .nav-tabs
+  > li.active
+  > a:hover,
+html[totamjungTheme='totamjung']
+  .tabs-container
+  .nav-tabs
+  > li.active
+  > a:focus {
+  background-color: var(--secondary-menu-color);
+  border-color: var(--menu-line-color) var(--menu-line-color) transparent
+    var(--menu-line-color);
+  z-index: 1;
+}
+
+html[totamjungTheme='totamjung'] .tabs-container .panel-body {
+  background-color: var(--secondary-menu-color);
+  border: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .tabs-container .panel-body > .table th {
+  border-bottom-color: var(--menu-line-color);
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .tabs-container .panel-body > .table td {
+  border-top-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.navy-bg {
+  background-color: var(--scoreboard-green-bg-color);
+  border: 2px solid var(--scoreboard-green-color);
+  box-shadow: 0 0 6px var(--scoreboard-green-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.lazur-bg {
+  background-color: var(--scoreboard-mint-bg-color);
+  border: 2px solid var(--scoreboard-mint-color);
+  box-shadow: 0 0 6px var(--scoreboard-mint-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.blue-bg {
+  background-color: var(--scoreboard-blue-bg-color);
+  border: 2px solid var(--scoreboard-blue-color);
+  box-shadow: 0 0 6px var(--scoreboard-blue-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.yellow-bg {
+  background-color: var(--scroeboard-yellow-bg-color);
+  border: 2px solid var(--scoreboard-yellow-color);
+  box-shadow: 0 0 6px var(--scoreboard-yellow-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.red-bg {
+  background: var(--scoreboard-red-bg-color);
+  border: 2px solid var(--scoreboard-red-color);
+  box-shadow: 0 0 6px var(--scoreboard-red-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.navy-bg h2 {
+  color: var(--scoreboard-green-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.lazur-bg h2 {
+  color: var(--scoreboard-mint-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.blue-bg h2 {
+  color: var(--scoreboard-blue-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.yellow-bg h2 {
+  color: var(--scoreboard-yellow-color);
+}
+
+html[totamjungTheme='totamjung'] .widget.style1.text-center.red-bg h2 {
+  color: var(--scoreboard-red-color);
+}
+
+html[totamjungTheme='totamjung'] .s-results .inner-results h3 a,
+html[totamjungTheme='totamjung'] .s-results .related-search h3 {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .s-results .down-ul li a,
+html[totamjungTheme='totamjung'] .s-results .related-search li a {
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .search-block-v2 {
+  background: none;
+  background: var(--light-gradient-color);
+  box-shadow: 0 0 20px var(--secondary-menu-color);
+  border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .related-search {
+  border-bottom-color: var(--bright-menu-line-color);
+  border-right-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .footer-v3 .thumb-headline h2 {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .footer-v3 .simple-list a {
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .tab-content {
+  border: 3px solid var(--bright-menu-line-color);
+  margin-top: -2px;
+}
+
+html[totamjungTheme='totamjung'] .chosen-container .chosen-container-single,
+html[totamjungTheme='totamjung'] .chosen-drop {
+  background: none;
+  background-color: var(--menu-color) !important;
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .media-object {
+  filter: brightness(45%) sepia(80%) hue-rotate(-24deg);
+}
+
+html[totamjungTheme='totamjung'] ::-webkit-scrollbar,
+html[totamjungTheme='totamjung'] pre::-webkit-scrollbar,
+html[totamjungTheme='totamjung'] ::-webkit-scrollbar-track,
+html[totamjungTheme='totamjung'] pre::-webkit-scrollbar-track,
+html[totamjungTheme='totamjung']::-webkit-scrollbar-thumb,
+html[totamjungTheme='totamjung'] pre::-webkit-scrollbar-thumb,
+html[totamjungTheme='totamjung'] .table-responsive::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+html[totamjungTheme='totamjung'] ::-webkit-scrollbar,
+html[totamjungTheme='totamjung'] pre::-webkit-scrollbar,
+html[totamjungTheme='totamjung'] ::-webkit-scrollbar-track,
+html[totamjungTheme='totamjung'] pre::-webkit-scrollbar-track,
+html[totamjungTheme='totamjung'] .table-responsive::-webkit-scrollbar-track {
+  background-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] ::-webkit-scrollbar-thumb,
+html[totamjungTheme='totamjung'] pre::-webkit-scrollbar-thumb,
+html[totamjungTheme='totamjung'] .table-responsive::-webkit-scrollbar-thumb {
+  background-color: var(--bright-menu-line-color);
+  border-radius: 10px;
+}
+
+html[totamjungTheme='totamjung'] ::selection,
+html[totamjungTheme='totamjung'] .CodeMirror-selected,
+html[totamjungTheme='totamjung'] .CodeMirror-line::selection,
+html[totamjungTheme='totamjung'] .CodeMirror-line > span::selection,
+html[totamjungTheme='totamjung'] .CodeMirror-line > span > span::selection {
+  color: var(--dark-menu-color);
+  background: var(--blurred-link-color);
+}
+
+html[totamjungTheme='totamjung'] .chosen-container-single .chosen-single {
+  background: var(--menu-color);
+  color: var(--text-color);
+  border: none;
+  box-shadow: 0 0 5px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .active-result.result-selected.highlighted,
+html[totamjungTheme='totamjung']
+  .chosen-container
+  .chosen-results
+  html[totamjungTheme='totamjung']
+  .active-result.group-option.highlighted {
+  background: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .reg-page {
+  background-color: var(--menu-color);
+  box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .reg-header {
+  border-bottom-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] span.input-group-addon {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+html[totamjungTheme='totamjung'] span.input-group-addon i {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] span.solvedac-tier-name-0:after,
+html[totamjungTheme='totamjung'] span.solvedac-tier-name--1:after {
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .uploadcare--dialog div {
+  color: var(--dark-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .CodeMirror-line > span {
+  color: var(--dark-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .CodeMirror-cursor {
+  border-left: 1px solid var(--text-color);
+}
+
+/* Temp: Group CSS */
+html[totamjungTheme='totamjung'] .toastui-editor-defaultUI {
+  background-color: var(--menu-color);
+  border: 1px transparent;
+  box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-defaultUI input:focus {
+  outline: none;
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-md-tab-container,
+html[totamjungTheme='totamjung'] .toastui-editor-defaultUI-toolbar {
+  background-color: var(--secondary-menu-color);
+  border-bottom-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-md-tab-container
+  > .toastui-editor-tabs
+  .tab-item {
+  margin-top: 12px;
+  background-color: transparent;
+  border: none;
+  border: 0 0 1px 0 solid var(--menu-line-color);
+  color: var(--blurred-link-color);
+}
+
+html[totamjungTheme='totamjung'] .tab-item:nth-child(2) {
+  margin-left: 1px;
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-md-tab-container
+  > .toastui-editor-tabs
+  .tab-item.active {
+  background-color: var(--menu-color);
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-color: var(--menu-line-color);
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-toolbar-icons {
+  border: none;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-defaultUI-toolbar
+  button:not(:disabled):hover {
+  background-color: transparent;
+  border: none;
+  opacity: 1;
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-toolbar-icons {
+  filter: var(--filter-gold);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-popup {
+  background: none;
+  border-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-popup-body {
+  z-index: 10;
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-popup-body ul {
+  padding: 0;
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-popup-body li {
+  background-color: var(--secondary-menu-color);
+  border-bottom: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-popup-body li:hover {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-toolbar-divider {
+  background-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-popup-body,
+html[totamjungTheme='totamjung'] .toastui-editor-dropdown-toolbar {
+  top: 44px !important;
+  background-color: var(--secondary-menu-color);
+  border-width: 0 1px 1px 1px;
+  border-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-mode-switch {
+  background-color: var(--secondary-menu-color);
+  border-top-color: var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-mode-switch > .tab-item {
+  background-color: var(--secondary-menu-color);
+  border-color: var(--menu-line-color) transparent transparent transparent;
+  color: var(--blurred-link-color);
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-mode-switch
+  > .tab-item.active {
+  background-color: var(--menu-color);
+  border-color: transparent var(--menu-line-color) var(--menu-line-color)
+    var(--menu-line-color);
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-md-code-block-line-background {
+  background-color: transparent;
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-md-link.toastui-editor-md-link-desc.toastui-editor-md-marked-text,
+html[totamjungTheme='totamjung']
+  .toastui-editor-md-list-item-style.toastui-editor-md-list-item-odd {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .ProseMirror.toastui-editor-contents {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-contents h1,
+html[totamjungTheme='totamjung'] .toastui-editor-contents h2,
+html[totamjungTheme='totamjung'] .toastui-editor-contents h3,
+html[totamjungTheme='totamjung'] .toastui-editor-contents h4,
+html[totamjungTheme='totamjung'] .toastui-editor-contents h5,
+html[totamjungTheme='totamjung'] .toastui-editor-contents h6 {
+  border-bottom-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-popup-add-table
+  .toastui-editor-table-cell {
+  background-color: var(--disabled-menu-color);
+  border-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-table-selection-layer {
+  margin: 0px 0 0 0px;
+  border-color: var(--title-color);
+  background-color: var(--blurred-link-color);
+  box-shadow: 0 0 5px var(--title-color);
+  opacity: 0.5;
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-popup.toastui-editor-popup-add-image,
+html[totamjungTheme='totamjung']
+  .toastui-editor-popup.toastui-editor-popup-add-link {
+  background-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-table-description {
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-tabs[aria-role='tabpanel']
+  .tab-item {
+  border-bottom-color: var(--blurred-link-color);
+  color: var(--blurred-link-color);
+}
+
+html[totamjungTheme='totamjung']
+  .toastui-editor-tabs[aria-role='tabpanel']
+  .tab-item.active {
+  border-bottom-color: var(--title-color);
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-file-name,
+html[totamjungTheme='totamjung'] .toastui-editor-file-name.has-file {
+  background-color: var(--dark-menu-color);
+  border-color: var(--bright-menu-line-color);
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-file-select-button,
+html[totamjungTheme='totamjung'] .toastui-editor-close-button,
+html[totamjungTheme='totamjung'] .toastui-editor-ok-button {
+  background-color: var(--menu-line-color);
+  border-color: var(--menu-line-color);
+  border-width: 1px !important;
+  box-shadow: 0 0 14px var(--menu-color);
+  color: var(--text-color);
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung'] .toastui-editor-file-select-button:hover,
+html[totamjungTheme='totamjung'] .toastui-editor-close-button:hover,
+html[totamjungTheme='totamjung'] .toastui-editor-ok-button:hover {
+  background-color: var(--menu-line-color);
+  border-color: var(--menu-line-color);
+}
+
+/* End of Group CSS */
+
+/* Start of Scoreboard CSS */
+html[totamjungTheme='totamjung'] .navbar.navbar-static-top {
+  background-color: var(--menu-color);
+  border-bottom: none;
+}
+
+html[totamjungTheme='totamjung']
+  .uploadcare--widget__button.uploadcare--widget__button_type_open {
+  background-color: var(--menu-line-color);
+  cursor: pointer;
+  box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .CodeMirror.cm-s-default {
+  background-color: #fff;
+}
+
+html[totamjungTheme='totamjung'] .CodeMirror.cm-s-default .CodeMirror-selected {
+  background-color: #d9d9d9;
+}
+
+html[totamjungTheme='totamjung'] .cm-s-default .CodeMirror-cursor {
+  border-left: 1px solid black;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-the-matrix.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #0f0;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-solarized.cm-s-light.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #657b83;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-solarized.cm-s-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #839496;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-mdn-like.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #999;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-icecoder.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #666;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-duotone-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #6c6783;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-bespin.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #9d9b97;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-pastel-on-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #8f938f;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-shadowfox.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #b1b1b3;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-duotone-light.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #b29762;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-gruvbox-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #bdae93;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-yeti-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #d1c9c0;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-paraiso-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #b9b6b0;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-tomorrow-night-eighties.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #ccc;
+}
+
+html[totamjungTheme='totamjung'] .cm-s-yeti.CodeMirror .CodeMirror-line > span,
+html[totamjungTheme='totamjung'] .cm-s-seti.CodeMirror .CodeMirror-line > span {
+  color: #cfd2d1;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-midnight.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #d1edff;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-yonce.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #d4d4d4;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-zenburn.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #dcdccc;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-3024-night.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-base16-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #d6d5d4;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-darcula.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-hopscotch.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-abcdef.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-ambiance.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #d7d4f0;
+}
+
+html[totamjungTheme='totamjung'] .cm-s-nord.CodeMirror .CodeMirror-line > span {
+  color: #d8dee9;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-isotope.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #e0e0e0;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-panda-syntax.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #e6e6e6;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-lesser-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #ebefe7;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-tomorrow-night-bright.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #eaeaea;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-lesser-dark.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-railscasts.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #f4f1ed;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-twilight.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #f5f5f5;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-erlang-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #f7f7f7;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-material.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #eff;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-blackboard.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-colorforth.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-dracula.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung'] .cm-s-night.CodeMirror .CodeMirror-line > span,
+html[totamjungTheme='totamjung']
+  .cm-s-xq-dark.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #f8f8f8;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-lucario.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-monokai.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-oceanic-next.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #f8f8f2;
+}
+
+html[totamjungTheme='totamjung'] .cm-s-mbo.CodeMirror .CodeMirror-line > span {
+  color: #ffffec;
+}
+
+html[totamjungTheme='totamjung']
+  .cm-s-cobalt.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-liquibyte.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-rubyblue.CodeMirror
+  .CodeMirror-line
+  > span,
+html[totamjungTheme='totamjung']
+  .cm-s-vibrant-ink.CodeMirror
+  .CodeMirror-line
+  > span {
+  color: #ffffff;
+}
+
+html[totamjungTheme='totamjung'] .ttj-dropdown-menu {
+  background-color: var(--translucent-dark-color);
+  border-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .ttj-topbtn {
+  background-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] .ttj-topbtn > span {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .ttj-menu-image,
+html[totamjungTheme='totamjung'] .ttj-result-icon,
+html[totamjungTheme='totamjung'] .ttj-result-img {
+  filter: var(--filter-light-brown);
+}
+
+html[totamjungTheme='totamjung'] .ttj-popup {
+  background-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] #ttj-result-image {
+  filter: var(--filter-dark-brown);
+}
+
+html[totamjungTheme='totamjung'] #ttj-result-text {
+  color: var(--menu-color);
+  border-left-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .ttj-menu-item:hover {
+  background-color: var(--ttj-hover-color);
+}
+
+html[totamjungTheme='totamjung'] .problem-label {
+  box-shadow: 0 0 3px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] .problem-label.problem-label-ac,
+html[totamjungTheme='totamjung'] .label.label-success,
+html[totamjungTheme='totamjung'] .btn-more.hover-effect.registration-open {
+  background: var(--label-green-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] .problem-label.problem-label-pac,
+html[totamjungTheme='totamjung'] .problem-label-preparing {
+  background: var(--label-yellow-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] .problem-label.problem-label-wa {
+  background: var(--label-red-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] .problem-label.problem-label-spj,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-partial,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-func,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-interactive,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-two-steps,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-full,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-class,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-feedback,
+html[totamjungTheme='totamjung'] .label.label-primary,
+html[totamjungTheme='totamjung'] .problem-label-challenging {
+  background: var(--label-sky-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] .problem-label.problem-label-multilang,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-bookmark,
+html[totamjungTheme='totamjung'] .problem-label.problem-label-subtask,
+html[totamjungTheme='totamjung'] .problem-label.label-default {
+  background: var(--label-gray-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] .problem-label.problem-label-unofficial {
+  background: var(--label-mint-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] .problem-label.problem-label-language-restrict,
+html[totamjungTheme='totamjung'] .badge.badge-blue.problem-label,
+html[totamjungTheme='totamjung'] .badge.rounded-score.badge-blue {
+  background: var(--label-blue-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] span.badge-red {
+  background: var(--label-red-gradient-color);
+  color: var(--text-color);
+}
+
+html[totamjungTheme='totamjung'] .list-group-item.active > .badge,
+html[totamjungTheme='totamjung'] .nav-pills > .active > a > .badge {
+  background: var(--secondary-menu-color);
+  color: var(--text-color);
+}
+
+html[fontNo='1'] #problem-body .problem-text {
+  font-family: 'Nanum Gothic', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='2'] #problem-body .problem-text {
+  font-family: 'Nanum Gothic Coding', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='3'] #problem-body .problem-text {
+  font-family: 'Nanum Myeongjo', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='4'] #problem-body .problem-text {
+  font-family: 'Do Hyeon', 'Open Sans', sans-serif !important;
+  font-size: 18px;
+}
+
+html[fontNo='5'] #problem-body .problem-text {
+  font-family: 'Jua', 'Open Sans', sans-serif !important;
+  font-size: 18px;
+}
+
+html[fontNo='6'] #problem-body .problem-text {
+  font-family: 'Noto Serif KR', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='7'] #problem-body .problem-text {
+  font-family: 'Sunflower', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='8'] #problem-body .problem-text {
+  font-family: 'Yeon Sung', 'Open Sans', sans-serif !important;
+  font-size: 20px;
+}
+
+html[fontNo='9'] #problem-body .problem-text {
+  font-family: 'Cute Font', 'Open Sans', sans-serif !important;
+  font-size: 22px;
+}
+
+html[fontNo='10'] #problem-body .problem-text {
+  font-family: 'Gaegu', 'Open Sans', sans-serif !important;
+  font-size: 20px;
+}
+
+html[fontNo='11'] #problem-body .problem-text {
+  font-family: 'Gothic A1', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='12'] #problem-body .problem-text {
+  font-family: 'Gowun Batang', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='13'] #problem-body .problem-text {
+  font-family: 'Gowun Dodum', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='14'] #problem-body .problem-text {
+  font-family: 'Hi Melody', 'Open Sans', sans-serif !important;
+  font-size: 20px;
+}
+
+html[fontNo='15'] #problem-body .problem-text {
+  font-family: 'IBM Plex Sans KR', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='16'] #problem-body .problem-text {
+  font-family: 'Poor Story', 'Open Sans', sans-serif !important;
+  font-size: 18px;
+}
+
+html[fontNo='17'] #problem-body .problem-text {
+  font-family: 'Single Day', 'Open Sans', sans-serif !important;
+  font-size: 18px;
+}
+
+html[fontNo='18'] #problem-body .problem-text {
+  font-family: 'Song Myung', 'Open Sans', sans-serif !important;
+  font-size: 18px;
+}
+
+html[fontNo='19'] #problem-body .problem-text {
+  font-family: 'Stylish', 'Open Sans', sans-serif !important;
+  font-size: 20px;
+}
+
+html[fontNo='20'] #problem-body .problem-text {
+  font-family: 'Pretendard', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='21'] #problem-body .problem-text {
+  font-family: 'NeoDunggeunmo', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='22'] #problem-body .problem-text {
+  font-family: 'Spoqa Han Sans Neo', 'Open Sans', sans-serif !important;
+  font-size: 15px;
+}
+
+html[fontNo='23'] #problem-body .problem-text {
+  font-family: 'Noto Serif KR', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='24'] #problem-body .problem-text {
+  font-family: 'Hahmlet', 'Open Sans', sans-serif !important;
+}
+
+html[fontNo='25'] #problem-body .problem-text {
+  font-family: 'Diphylleia', 'Open Sans', sans-serif !important;
+}
+
+/* FOR BOJ EXTENDED */
+html[totamjungTheme='totamjung']
+  .table
+  > thead
+  > tr.result-mine
+  > td:first-child,
+html[totamjungTheme='totamjung']
+  .table
+  > tbody
+  > tr.result-mine
+  > td:first-child,
+html[totamjungTheme='totamjung']
+  .table
+  > tfoot
+  > tr.result-mine
+  > td:first-child {
+  border-left-color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .panel-footer {
+  background-color: var(--secondary-menu-color);
+  border-top-color: var(--menu-line-color);
+  color: var(--link-color);
+}
+
+html[totamjungTheme='totamjung'] .dropdown-menu {
+  background-color: var(--menu-color) !important;
+  box-shadow: 0 0 14px var(--menu-color);
+}
+
+html[totamjungTheme='totamjung']
+  #problem-timer
+  .dropdown-menu
+  input.timer-number {
+  outline: none;
+}
+
+html[totamjungTheme='totamjung'] #quick-search .tabs .tab {
+  color: var(--menu-line-color);
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung'] #quick-search .tabs .tab.active,
+html[totamjungTheme='totamjung'] #quick-search .tabs .tab:hover,
+html[totamjungTheme='totamjung'] #quick-search .tabs .tab:active {
+  background-color: var(--menu-color);
+  border-color: var(--secondary-menu-color);
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] #quick-search .form-control {
+  background-color: var(--dark-menu-color);
+  box-shadow: none;
+}
+
+html[totamjungTheme='totamjung'] #quick-search .results {
+  background-color: var(--menu-color);
+}
+
+html[totamjungTheme='totamjung'] #quick-search .results .quick-search-item {
+  border-bottom-color: var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] #quick-search .form-control,
+html[totamjungTheme='totamjung'] #quick-search .results {
+  border-color: var(--secondary-menu-color) !important;
+}
+
+#quick-search .results::-webkit-scrollbar-thumb {
+  background: var(--menu-line-color);
+}
+
+#quick-search .results::-webkit-scrollbar-thumb:hover {
+  background: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] a[href^='/problem'].problem-link-style-box {
+  background-color: var(--secondary-menu-color);
+  color: var(--bright-menu-line-color);
+  transition: 0.2s;
+}
+
+html[totamjungTheme='totamjung']
+  a[href^='/problem'].problem-link-style-box:hover {
+  border-color: var(--bright-menu-line-color);
+}
+
+html[totamjungTheme='totamjung']
+  a[href^='/problem'].problem-link-style-box.result-ac {
+  background-color: var(--problem-link-ac-box-color);
+  color: var(--problem-link-ac-color);
+}
+
+html[totamjungTheme='totamjung']
+  a[href^='/problem'].problem-link-style-box.result-ac:hover {
+  border-color: var(--problem-link-ac-color);
+}
+
+html[totamjungTheme='totamjung']
+  a[href^='/problem'].problem-link-style-box.result-pac {
+  background-color: var(--problem-link-pac-box-color);
+  color: var(--problem-link-pac-color);
+}
+
+html[totamjungTheme='totamjung']
+  a[href^='/problem'].problem-link-style-box.result-pac:hover {
+  border-color: var(--problem-link-pac-color);
+}
+
+html[totamjungTheme='totamjung']
+  a[href^='/problem'].problem-link-style-box.result-wa {
+  background-color: var(--problem-link-wa-box-color);
+  color: var(--problem-link-wa-color);
+}
+
+html[totamjungTheme='totamjung']
+  a[href^='/problem'].problem-link-style-box.result-wa:hover {
+  border-color: var(--problem-link-wa-color);
+}
+
+html[totamjungTheme='totamjung'] .btn-vs {
+  background-image: var(--vs-gradient-color);
+  background-size: 200%;
+  transition: all 0.4s ease-in-out;
+  font-weight: 800;
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .boj-ext-alert {
+  background-color: var(--menu-color);
+  border: 1px solid var(--secondary-menu-color);
+}
+
+html[totamjungTheme='totamjung'] .boj-ext-alert > .title {
+  color: var(--title-color);
+}
+
+html[totamjungTheme='totamjung'] .boj-ext-alert > .title > a {
+  color: var(--link-color);
+}
+
+.boj-ext-alert {
+  right: 6em;
+}
+
+/* FOR TIERIMNIDA */
+html[totamjungTheme='totamjung'] .problem-list span[style='color:#000000'] {
+  color: var(--text-color) !important;
+}

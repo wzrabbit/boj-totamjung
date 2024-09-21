@@ -1,3 +1,4 @@
+import executeContentScript from './main';
 import '~/assets/css/palette.css';
 import '~/assets/css/totamjungTheme.css';
 import '~/assets/css/tierHider.css';
@@ -7,6 +8,6 @@ export default defineContentScript({
   matches: ['https://www.acmicpc.net/*'],
   runAt: 'document_idle',
   main() {
-    console.log('Content Script!');
+    executeContentScript();
   },
 });

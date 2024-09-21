@@ -1,8 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { render } from 'react-dom';
+import { StrictMode } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '~styles/theme';
+import GlobalStyle from '~styles/GlobalStyle';
+import Options from '~components/core/Options';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <p>Hello, WXT!</p>
-  </React.StrictMode>
+render(
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Options />
+    </ThemeProvider>
+  </StrictMode>,
+  document.getElementById('root')
 );

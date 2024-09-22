@@ -1,5 +1,5 @@
-import { isObject } from '~types/typeGuards';
-import type { CheckedAlgorithmIdsResponse } from '~types/algorithm';
+import { isObject } from '@/types/typeGuards';
+import type { CheckedAlgorithmIdsResponse } from '@/types/algorithm';
 
 export const isValidCheckedAlgorithmIds = (data: unknown): data is number[] => {
   if (!Array.isArray(data)) {

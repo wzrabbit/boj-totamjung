@@ -1,8 +1,8 @@
-import Modal, { ModalActionButtonsContainer } from '~components/common/Modal';
-import IconButton from '~components/common/IconButton';
-import Text from '~components/common/Text';
-import { theme } from '~styles/theme';
-import { CheckCircleIcon, CloseCircleIcon } from '~images/svg';
+import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
+import IconButton from '@/components/common/IconButton';
+import Text from '@/components/common/Text';
+import { theme } from '@/styles/theme';
+import { CheckCircleIcon, CloseCircleIcon } from '@/images/svg';
 import * as S from './SimpleModal.styled';
 
 type SimpleModalProps = {

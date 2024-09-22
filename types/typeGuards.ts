@@ -1,6 +1,6 @@
-import type { IsoString } from '~types/utils';
-import type { Tier, TierWithoutNotRatable } from '~types/randomDefense';
-import { RatedTier } from '~types/tierHider';
+import type { IsoString } from '@/types/utils';
+import type { Tier, TierWithoutNotRatable } from '@/types/randomDefense';
+import { RatedTier } from '@/types/tierHider';
 
 export const isObject = (data: unknown): data is object => {
   return typeof data === 'object' && data !== null;

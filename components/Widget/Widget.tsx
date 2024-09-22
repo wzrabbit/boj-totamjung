@@ -1,10 +1,10 @@
-import useWidget from '~hooks/widget/useWidget';
-import InspectResultIcon from '~components/InspectResultIcon/InspectResultIcon';
+import useWidget from '@/hooks/widget/useWidget';
+import InspectResultIcon from '@/components/InspectResultIcon/InspectResultIcon';
 import * as S from './Widget.styled';
-import type { TotamjungTheme } from '~types/totamjungTheme';
-import type { ToastInfo } from '~types/toast';
+import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { ToastInfo } from '@/types/toast';
 import { createPortal } from 'react-dom';
-import { $ } from '~utils/querySelector';
+import { $ } from '@/utils/querySelector';
 
 interface WidgetProps {
   theme: TotamjungTheme;

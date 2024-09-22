@@ -1,7 +1,7 @@
-import { STORAGE_KEY } from '~constants/commands';
-import { isTotamjungThemeResponse } from '~domains/dataHandlers/validators/totamjungThemeValidator';
+import { STORAGE_KEY } from '@/constants/commands';
+import { isTotamjungThemeResponse } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
 import { sanitizeTotamjungTheme } from './sanitizers/totamjungThemeSanitizer';
-import type { TotamjungThemeResponse } from '~types/totamjungTheme';
+import type { TotamjungThemeResponse } from '@/types/totamjungTheme';
 
 export const fetchTotamjungTheme =
   async (): Promise<TotamjungThemeResponse> => {

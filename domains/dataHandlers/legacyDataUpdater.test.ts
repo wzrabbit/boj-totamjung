@@ -1,4 +1,4 @@
-import { STORAGE_KEY } from '~constants/commands';
+import { STORAGE_KEY } from '@/constants/commands';
 import { updateAllLegacyData } from './legacyDataUpdater';
 import {
   DEFAULT_CHECKED_ALGORITHM_IDS,
@@ -8,7 +8,7 @@ import {
   DEFAULT_QUICK_SLOTS_RESPONSE,
   DEFAULT_RANDOM_DEFENSE_HISTORY,
   DEFAULT_TOTAMJUNG_THEME,
-} from '~constants/defaultValues';
+} from '@/constants/defaultValues';
 
 describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하기', () => {
   test('구버전 데이터가 올바를 경우 온전하게 최신 버전 데이터로 변환하여 저장을 진행해야 한다.', async () => {

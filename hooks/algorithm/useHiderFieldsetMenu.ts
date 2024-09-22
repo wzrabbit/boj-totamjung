@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import type { HiderOptionsResponse } from '~types/algorithm';
-import { RatedTier } from '~types/tierHider';
+import type { HiderOptionsResponse } from '@/types/algorithm';
+import { RatedTier } from '@/types/tierHider';
 import {
   fetchHiderOptions,
   saveHiderOptions,
-} from '~domains/dataHandlers/hiderOptionsDataHandler';
+} from '@/domains/dataHandlers/hiderOptionsDataHandler';
 
 const fallbackHiderOptions = {
   problemTagLockDuration: {

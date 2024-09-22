@@ -1,10 +1,10 @@
 import * as S from './AlgorithmPool.styled';
 import AlgorithmList from './AlgorithmList';
-import SimpleModal from '~components/common/SimpleModal';
-import useAlgorithmPool from '~hooks/algorithm/useAlgorithmPool';
-import useModal from '~hooks/useModal';
-import { SearchIcon } from '~images/svg';
-import { allCheckedIcon, allUncheckedIcon } from '~images/png';
+import SimpleModal from '@/components/common/SimpleModal';
+import useAlgorithmPool from '@/hooks/algorithm/useAlgorithmPool';
+import useModal from '@/hooks/useModal';
+import { SearchIcon } from '@/images/svg';
+import { allCheckedIcon, allUncheckedIcon } from '@/images/png';
 
 const AlgorithmPool = () => {
   const {

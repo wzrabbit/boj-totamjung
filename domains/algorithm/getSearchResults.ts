@@ -1,5 +1,5 @@
-import { Algorithm } from '~types/algorithm';
-import { ALGORITHM_INFOS } from '~constants/algorithmInfos';
+import { Algorithm } from '@/types/algorithm';
+import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
 
 const trimWord = (word: string) => {
   const loweredWord = word.toLowerCase();

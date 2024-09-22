@@ -1,10 +1,10 @@
 import RandomDefenseHistoryList from './RandomDefenseHistoryList';
-import useRandomDefenseHistoryMenu from '~hooks/randomDefense/useRandomDefenseHistoryMenu';
+import useRandomDefenseHistoryMenu from '@/hooks/randomDefense/useRandomDefenseHistoryMenu';
 import * as S from './RandomDefenseHistoryMenu.styled';
-import Switch from '~components/common/Switch';
-import NamedFrame from '~components/common/NamedFrame/NamedFrame';
-import { TrashIcon, PackageIcon } from '~images/svg';
-import { MAX_HISTORY_LIMIT } from '~constants/randomDefense';
+import Switch from '@/components/common/Switch';
+import NamedFrame from '@/components/common/NamedFrame/NamedFrame';
+import { TrashIcon, PackageIcon } from '@/images/svg';
+import { MAX_HISTORY_LIMIT } from '@/constants/randomDefense';
 
 const RandomDefenseHistoryMenu = () => {
   const {

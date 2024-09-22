@@ -1,6 +1,6 @@
-import type { solvedAcNumericTierIcons } from '~images/svg/tier';
-import type { SolvedAcSearchProblemInfo } from '~types/solvedAcApi';
-import type { IsoString } from '~types/utils';
+import type { solvedAcNumericTierIcons } from '@/images/svg/tier';
+import type { SolvedAcSearchProblemInfo } from '@/types/solvedAcApi';
+import type { IsoString } from '@/types/utils';
 
 export interface RandomDefenseHistoryInfo {
   problemId: number;

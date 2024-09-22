@@ -1,6 +1,6 @@
 import * as S from './Fieldset.styled';
-import Radio from '~components/common/Radio';
-import Text from '~components/common/Text';
+import Radio from '@/components/common/Radio';
+import Text from '@/components/common/Text';
 import type { ReactNode } from 'react';
 
 interface FieldsetProps {

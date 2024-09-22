@@ -1,8 +1,8 @@
 import * as S from './LeftSlideToast.styled';
-import { CheckIcon, CloseIcon } from '~images/svg';
+import { CheckIcon, CloseIcon } from '@/images/svg';
 import type { SVGProps } from 'react';
-import { TotamjungTheme } from '~types/totamjungTheme';
-import CircleProgressBar from '~components/common/CircleProgressBar';
+import { TotamjungTheme } from '@/types/totamjungTheme';
+import CircleProgressBar from '@/components/common/CircleProgressBar';
 
 interface LeftSlideToastProps {
   mainIconSrc: string | SVGProps<SVGSVGElement>;

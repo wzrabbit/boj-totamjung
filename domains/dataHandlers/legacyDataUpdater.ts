@@ -2,7 +2,7 @@ import {
   LEGACY_SYNC_STORAGE_KEY,
   LEGACY_LOCAL_STORAGE_KEY,
   STORAGE_KEY,
-} from '~constants/commands';
+} from '@/constants/commands';
 import { sanitizeCheckedAlgorithmIds } from './sanitizers/checkedAlgorithmIdsSanitizer';
 import { sanitizeLegacyQuickSlots } from './sanitizers/quickSlotsSanitizer';
 import { sanitizeLegacyRandomDefenseHistory } from './sanitizers/randomDefenseHistorySanitizer';

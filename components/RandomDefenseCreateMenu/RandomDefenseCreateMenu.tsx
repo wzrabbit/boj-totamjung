@@ -1,17 +1,17 @@
-import NamedFrame from '~components/common/NamedFrame';
-import Input from '~components/common/Input';
-import Textarea from '~components/common/Textarea';
-import TextLink from '~components/common/TextLink';
-import ErrorText from '~components/common/ErrorText';
-import Text from '~components/common/Text';
+import NamedFrame from '@/components/common/NamedFrame';
+import Input from '@/components/common/Input';
+import Textarea from '@/components/common/Textarea';
+import TextLink from '@/components/common/TextLink';
+import ErrorText from '@/components/common/ErrorText';
+import Text from '@/components/common/Text';
 import RandomDefenseCreateButton from './RandomDefenseCreateButton';
 import RandomDefenseCapsuleButton from './RandomDefenseCapsuleButton';
 import DifficultyAdjustMenu from './DifficultyAdjustMenu';
 import SearchOperatorSelect from './SearchOperatorSelect';
 import AlgorithmSearchInput from './AlgorithmSearchInput';
-import useRandomDefenseCreateMenu from '~hooks/randomDefense/useRandomDefenseCreateMenu';
+import useRandomDefenseCreateMenu from '@/hooks/randomDefense/useRandomDefenseCreateMenu';
 import * as S from './RandomDefenseCreateMenu.styled';
-import type { SlotNo } from '~types/randomDefense';
+import type { SlotNo } from '@/types/randomDefense';
 
 interface RandomDefenseCreateMenuProps {
   selectedSlotNo: SlotNo;

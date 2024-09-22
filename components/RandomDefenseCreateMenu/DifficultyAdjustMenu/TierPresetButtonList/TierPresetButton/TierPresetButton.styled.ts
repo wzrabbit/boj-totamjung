@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
-import { Theme } from '~styles/theme';
-import type { Rank } from '~types/randomDefense';
+import { Theme } from '@/styles/theme';
+import type { Rank } from '@/types/randomDefense';
 
 const getRankColor = (theme: Theme, rank: Rank) => {
   if (rank === 'bronze') {

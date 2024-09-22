@@ -1,6 +1,6 @@
 import { getSearchResults } from './getSearchResults';
-import { ALGORITHM_INFOS } from '~constants/algorithmInfos';
-import type { Algorithm } from '~types/algorithm';
+import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
+import type { Algorithm } from '@/types/algorithm';
 
 const allAlgorithms = ALGORITHM_INFOS.map(({ id, name }) => ({ id, name }));
 

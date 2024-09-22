@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import OptionsNav from './OptionsNav';
-import SimpleModal from '~components/common/SimpleModal';
+import SimpleModal from '@/components/common/SimpleModal';
 import TotamjungInfoModal from './TotamjungInfoModal';
-import { settingsTitle, guidebookButton, infoButton } from '~images/png';
-import type { OptionsNavCategory } from '~types/options';
+import { settingsTitle, guidebookButton, infoButton } from '@/images/png';
+import type { OptionsNavCategory } from '@/types/options';
 import * as S from './OptionsHeader.styled';
 
 interface OptionsHeaderProps {

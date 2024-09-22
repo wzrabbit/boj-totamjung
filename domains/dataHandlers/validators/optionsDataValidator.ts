@@ -5,9 +5,9 @@ import { isHiderOptionsResponse } from './hiderOptionsValidator';
 import { isRandomDefenseHistoryInfos } from './randomDefenseHistoryValidator';
 import { isFontNo } from './fontNoValidator';
 import { isTimers } from './isTimersValidator';
-import { STORAGE_KEY } from '~constants/commands';
-import { isObject } from '~types/typeGuards';
-import type { OptionsDataResponse } from '~types/options';
+import { STORAGE_KEY } from '@/constants/commands';
+import { isObject } from '@/types/typeGuards';
+import type { OptionsDataResponse } from '@/types/options';
 
 export const isOptionsDataResponse = (
   data: unknown,

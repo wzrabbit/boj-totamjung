@@ -1,6 +1,6 @@
 import * as S from './AlgorithmList.styled';
 import AlgorithmListItem from './AlgorithmListItem';
-import type { Algorithm } from '~types/algorithm';
+import type { Algorithm } from '@/types/algorithm';
 
 interface AlgorithmListProps {
   items: Algorithm[];

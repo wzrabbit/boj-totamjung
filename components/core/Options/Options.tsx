@@ -1,9 +1,9 @@
-import OptionsHeader from '~components/OptionsHeader';
-import HiderSection from '~components/sections/HiderSection';
-import RandomDefenseSection from '~components/sections/RandomDefenseSection';
-import AppearanceAndDataManageSection from '~components/sections/AppearanceAndDataManageSection';
-import useOptionsPage from '~hooks/options/useOptionsPage';
-import { totamjung } from '~images/png';
+import OptionsHeader from '@/components/OptionsHeader';
+import HiderSection from '@/components/sections/HiderSection';
+import RandomDefenseSection from '@/components/sections/RandomDefenseSection';
+import AppearanceAndDataManageSection from '@/components/sections/AppearanceAndDataManageSection';
+import useOptionsPage from '@/hooks/options/useOptionsPage';
+import { totamjung } from '@/images/png';
 import * as S from './Options.styled';
 
 const Options = () => {

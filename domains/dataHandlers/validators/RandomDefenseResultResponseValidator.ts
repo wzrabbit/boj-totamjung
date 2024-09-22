@@ -1,6 +1,6 @@
-import { isObject } from '~types/typeGuards';
+import { isObject } from '@/types/typeGuards';
 import { isSolvedAcSearchProblemInfo } from './solvedAcSearchProblemResponseValidator';
-import type { RandomDefenseResultResponse } from '~types/randomDefense';
+import type { RandomDefenseResultResponse } from '@/types/randomDefense';
 
 export const isRandomDefenseResultResponse = (
   data: unknown,

@@ -5,18 +5,18 @@ import {
   MAX_TIER,
   MIN_PROBLEM_ID,
   MIN_TIER,
-} from '~constants/randomDefense';
+} from '@/constants/randomDefense';
 import {
   isLegacyRandomDefenseHistoryInfo,
   isRandomDefenseHistoryInfo,
-} from '~domains/dataHandlers/validators/randomDefenseHistoryValidator';
+} from '@/domains/dataHandlers/validators/randomDefenseHistoryValidator';
 import {
   LegacyRandomDefenseHistoryInfo,
   RandomDefenseHistoryInfo,
-} from '~types/randomDefense';
-import { isValidIsoString } from '~utils/isValidIsoString';
-import { isValidDate } from '~utils/isValidDate';
-import { DEFAULT_RANDOM_DEFENSE_HISTORY } from '~constants/defaultValues';
+} from '@/types/randomDefense';
+import { isValidIsoString } from '@/utils/isValidIsoString';
+import { isValidDate } from '@/utils/isValidDate';
+import { DEFAULT_RANDOM_DEFENSE_HISTORY } from '@/constants/defaultValues';
 
 const isValidRandomDefenseHistoryInfo = (item: unknown) => {
   return (

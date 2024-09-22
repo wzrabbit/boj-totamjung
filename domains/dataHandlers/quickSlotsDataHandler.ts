@@ -1,4 +1,4 @@
-import { STORAGE_KEY } from '~constants/commands';
+import { STORAGE_KEY } from '@/constants/commands';
 import { sanitizeQuickSlots } from './sanitizers/quickSlotsSanitizer';
 import { isRepairableQuickSlotsResponse } from './validators/quickSlotsValidator';
 

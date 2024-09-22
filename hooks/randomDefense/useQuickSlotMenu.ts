@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { SlotNo, Hotkey, QuickSlotsResponse } from '~types/randomDefense';
+import type { SlotNo, Hotkey, QuickSlotsResponse } from '@/types/randomDefense';
 
 interface UseQuickSlotMenuParams {
   quickSlotsInfo: QuickSlotsResponse;

@@ -1,6 +1,6 @@
-import { extractToTextFileByString } from '~utils/extractToTextFileByString';
-import { COMMANDS } from '~constants/commands';
-import { formatDate } from '~utils/formatDate';
+import { extractToTextFileByString } from '@/utils/extractToTextFileByString';
+import { COMMANDS } from '@/constants/commands';
+import { formatDate } from '@/utils/formatDate';
 
 export const extractTotamjungDataFile = async () => {
   const optionsData = await chrome.runtime.sendMessage({

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import IconButton from '~components/common/IconButton';
+import IconButton from '@/components/common/IconButton';
 import SimpleModal from './SimpleModal';
 import type { Meta, StoryObj } from '@storybook/react';
 

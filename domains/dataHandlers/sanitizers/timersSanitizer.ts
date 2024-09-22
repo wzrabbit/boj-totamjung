@@ -1,6 +1,6 @@
-import { DEFAULT_TIMERS } from '~constants/defaultValues';
+import { DEFAULT_TIMERS } from '@/constants/defaultValues';
 import { isTimer } from '../validators/isTimersValidator';
-import type { Timer } from '~types/algorithm';
+import type { Timer } from '@/types/algorithm';
 
 const MAX_TIMER_LENGTH = 300;
 

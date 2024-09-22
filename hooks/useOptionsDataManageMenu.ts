@@ -2,11 +2,11 @@ import { useState } from 'react';
 import {
   saveOptionsData,
   deleteOptionsData,
-} from '~domains/dataHandlers/optionsDataHandler';
+} from '@/domains/dataHandlers/optionsDataHandler';
 import type { ChangeEventHandler } from 'react';
-import { extractTotamjungDataFile } from '~domains/extractTotamjungDataFile';
-import { isOptionsDataResponse } from '~domains/dataHandlers/validators/optionsDataValidator';
-import type { OptionsDataResponse } from '~types/options';
+import { extractTotamjungDataFile } from '@/domains/extractTotamjungDataFile';
+import { isOptionsDataResponse } from '@/domains/dataHandlers/validators/optionsDataValidator';
+import type { OptionsDataResponse } from '@/types/options';
 
 interface ErrorInfo {
   errorTitle: string;

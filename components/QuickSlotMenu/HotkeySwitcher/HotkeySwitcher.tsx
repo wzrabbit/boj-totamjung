@@ -1,7 +1,7 @@
 import * as S from './HotkeySwitcher.styled';
-import Text from '~components/common/Text';
-import { SwitchIcon } from '~images/svg';
-import type { Hotkey } from '~types/randomDefense';
+import Text from '@/components/common/Text';
+import { SwitchIcon } from '@/images/svg';
+import type { Hotkey } from '@/types/randomDefense';
 
 interface HotkeySwitcherProps {
   selectedSlotNo: number;

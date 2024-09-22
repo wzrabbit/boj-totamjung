@@ -1,4 +1,4 @@
-import { AlgorithmInfo } from '~types/algorithm';
+import { AlgorithmInfo } from '@/types/algorithm';
 
 export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {

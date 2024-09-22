@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { COMMANDS } from '~constants/commands';
-import { DEFAULT_QUICK_SLOTS_RESPONSE } from '~constants/defaultValues';
+import { COMMANDS } from '@/constants/commands';
+import { DEFAULT_QUICK_SLOTS_RESPONSE } from '@/constants/defaultValues';
 import {
   isQuickSlotsResponse,
   isSlotNo,
-} from '~domains/dataHandlers/validators/quickSlotsValidator';
-import type { ToastInfo } from '~types/toast';
-import type { QuickSlotsResponse, SlotNo } from '~types/randomDefense';
-import { isRandomDefenseResultResponse } from '~domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
+} from '@/domains/dataHandlers/validators/quickSlotsValidator';
+import type { ToastInfo } from '@/types/toast';
+import type { QuickSlotsResponse, SlotNo } from '@/types/randomDefense';
+import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
 
 interface UseRandomDefenseParams {
   onToast: (toastInfo: ToastInfo, duration: number) => void;

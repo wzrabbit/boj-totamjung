@@ -1,5 +1,5 @@
-import { theme as styledTheme } from '~styles/theme';
-import type { TotamjungTheme } from '~types/totamjungTheme';
+import { theme as styledTheme } from '@/styles/theme';
+import type { TotamjungTheme } from '@/types/totamjungTheme';
 
 interface InspectResultIconProps {
   theme: TotamjungTheme;

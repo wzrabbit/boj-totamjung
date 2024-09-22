@@ -1,5 +1,5 @@
 import * as S from './AlgorithmListItem.styled';
-import Checkbox from '~components/common/Checkbox';
+import Checkbox from '@/components/common/Checkbox';
 
 interface AlgorithmListItemProps {
   id: number;

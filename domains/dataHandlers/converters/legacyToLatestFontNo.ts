@@ -1,4 +1,4 @@
-import { isObject } from '~types/typeGuards';
+import { isObject } from '@/types/typeGuards';
 import { isLegacyFontNo } from '../validators/fontNoValidator';
 
 export const convertLegacyToLatestFontNoBySettings = (

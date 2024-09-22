@@ -2,8 +2,8 @@ import {
   isLegacyTimer,
   isLegacyHiderOptions,
 } from '../validators/hiderOptionsValidator';
-import { DEFAULT_HIDER_OPTIONS } from '~constants/defaultValues';
-import type { HiderOptionsResponse } from '~types/algorithm';
+import { DEFAULT_HIDER_OPTIONS } from '@/constants/defaultValues';
+import type { HiderOptionsResponse } from '@/types/algorithm';
 
 interface HiderOptionsUsage {
   algorithmHiderUsage: 'click' | 'always';

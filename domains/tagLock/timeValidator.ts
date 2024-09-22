@@ -1,4 +1,4 @@
-import { MAX_HOURS, MAX_MINUTES } from '~constants/tagLock';
+import { MAX_HOURS, MAX_MINUTES } from '@/constants/tagLock';
 
 const NUMERIC_STRING_REGEX = /^\d+$/;
 

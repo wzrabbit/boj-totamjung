@@ -1,4 +1,4 @@
-import { CheckIcon } from '~images/svg';
+import { CheckIcon } from '@/images/svg';
 import * as S from './SearchOperatorSelect.styled';
 
 interface SearchOperatorSelectProps {

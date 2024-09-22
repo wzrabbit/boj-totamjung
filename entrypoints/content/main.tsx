@@ -1,9 +1,9 @@
 import { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
-import GlobalStyle from '~styles/GlobalStyle';
-import { theme } from '~styles/theme';
-import ContentScript from '~components/core/ContentScript';
+import GlobalStyle from '@/styles/GlobalStyle';
+import { theme } from '@/styles/theme';
+import ContentScript from '@/components/core/ContentScript';
 
 const executeContentScript = () => {
   const wrapper = document.createElement('div');
@@ -33,7 +33,7 @@ const executeContentScript = () => {
         </ThemeProvider>
       </StyleSheetManager>
     </StrictMode>,
-    appContainer
+    appContainer,
   );
 };
 

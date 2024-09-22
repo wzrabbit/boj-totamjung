@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import RandomDefenseHistoryList from './RandomDefenseHistoryList';
-import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
+import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
 
 /**
  * `RandomDefenseHistoryList`는 추첨 기록에서 추첨된 문제 여러 개의 정보를 리스트 형태로 보여주는 컴포넌트입니다.

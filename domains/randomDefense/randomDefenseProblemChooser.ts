@@ -1,5 +1,5 @@
-import { isSolvedAcSearchProblemResponse } from '~domains/dataHandlers/validators/solvedAcSearchProblemResponseValidator';
-import { RandomDefenseResultResponse } from '~types/randomDefense';
+import { isSolvedAcSearchProblemResponse } from '@/domains/dataHandlers/validators/solvedAcSearchProblemResponseValidator';
+import { RandomDefenseResultResponse } from '@/types/randomDefense';
 
 export const getRandomDefenseResult = async (
   query: string,

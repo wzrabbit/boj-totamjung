@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import AlgorithmList from './AlgorithmList';
-import type { Algorithm } from '~types/algorithm';
+import type { Algorithm } from '@/types/algorithm';
 
 /**
  * `AlgorithmList`는 여러 알고리즘 분류에 대한 체크 여부를 설정할 수 있는 목록입니다.

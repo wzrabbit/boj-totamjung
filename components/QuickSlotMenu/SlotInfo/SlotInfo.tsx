@@ -1,6 +1,6 @@
 import * as S from './SlotInfo.styled';
-import Text from '~components/common/Text';
-import type { Slot } from '~types/randomDefense';
+import Text from '@/components/common/Text';
+import type { Slot } from '@/types/randomDefense';
 
 const SlotInfo = (props: Slot) => {
   return (

@@ -1,5 +1,5 @@
-import type { IsoString } from '~types/utils';
-import type { RatedTier } from '~types/tierHider';
+import type { IsoString } from '@/types/utils';
+import type { RatedTier } from '@/types/tierHider';
 
 export interface Algorithm {
   id: number;

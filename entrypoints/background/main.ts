@@ -1,42 +1,42 @@
-import { isObject } from '~types/typeGuards';
-import { COMMANDS } from '~constants/commands';
+import { isObject } from '@/types/typeGuards';
+import { COMMANDS } from '@/constants/commands';
 import {
   fetchCheckedAlgorithmIds,
   saveCheckedAlgorithmIds,
-} from '~domains/dataHandlers/checkedAlgorithmsHandler';
+} from '@/domains/dataHandlers/checkedAlgorithmsHandler';
 import {
   fetchQuickSlots,
   saveQuickSlots,
-} from '~domains/dataHandlers/quickSlotsDataHandler';
+} from '@/domains/dataHandlers/quickSlotsDataHandler';
 import {
   appendRandomDefenseInfoToHistory,
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
-} from '~domains/dataHandlers/randomDefenseHistoryDataHandler';
+} from '@/domains/dataHandlers/randomDefenseHistoryDataHandler';
 import {
   fetchTotamjungTheme,
   saveTotamjungTheme,
-} from '~domains/dataHandlers/totamjungThemeDataHandler';
+} from '@/domains/dataHandlers/totamjungThemeDataHandler';
 import {
   fetchHiderOptions,
   saveHiderOptions,
-} from '~domains/dataHandlers/hiderOptionsDataHandler';
+} from '@/domains/dataHandlers/hiderOptionsDataHandler';
 import {
   fetchFontNo,
   saveFontNo,
-} from '~domains/dataHandlers/fontNoDataHandler';
-import { updateAllLegacyData } from '~domains/dataHandlers/legacyDataUpdater';
+} from '@/domains/dataHandlers/fontNoDataHandler';
+import { updateAllLegacyData } from '@/domains/dataHandlers/legacyDataUpdater';
 import {
   fetchTimers,
   saveTimers,
   getRemainingLockTimeByProblemId,
   addSingleTimerByProblemId,
   removeSingleTimerByProblemId,
-} from '~domains/dataHandlers/timersDataHandler';
-import { fetchOptionsData } from '~domains/dataHandlers/optionsDataHandler';
-import { isUserSolvedProblem } from '~domains/tierHider/userSolvedChecker';
-import { getRandomDefenseResult } from '~domains/randomDefense/randomDefenseProblemChooser';
-import { DEFAULT_INITIAL_DATA } from '~constants/defaultValues';
+} from '@/domains/dataHandlers/timersDataHandler';
+import { fetchOptionsData } from '@/domains/dataHandlers/optionsDataHandler';
+import { isUserSolvedProblem } from '@/domains/tierHider/userSolvedChecker';
+import { getRandomDefenseResult } from '@/domains/randomDefense/randomDefenseProblemChooser';
+import { DEFAULT_INITIAL_DATA } from '@/constants/defaultValues';
 
 const executeBackground = () => {
   chrome.runtime.onInstalled.addListener(({ reason }) => {
@@ -182,7 +182,7 @@ const executeBackground = () => {
 
       if (command === COMMANDS.GET_REMAINING_LOCK_TIME) {
         const matchedProblemId = sender.url?.match(
-          /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/
+          /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
         );
 
         if (!matchedProblemId) {
@@ -198,7 +198,7 @@ const executeBackground = () => {
 
       if (command === COMMANDS.ADD_SINGLE_TIMER) {
         const matchedProblemId = sender.url?.match(
-          /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/
+          /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
         );
 
         if (!matchedProblemId) {
@@ -211,7 +211,7 @@ const executeBackground = () => {
 
       if (command === COMMANDS.REMOVE_SINGLE_TIMER) {
         const matchedProblemId = sender.url?.match(
-          /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/
+          /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
         );
 
         if (!matchedProblemId) {
@@ -260,7 +260,7 @@ const executeBackground = () => {
       }
 
       return true;
-    }
+    },
   );
 };
 

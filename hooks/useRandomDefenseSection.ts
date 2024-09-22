@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { isQuickSlotsResponse } from '~domains/dataHandlers/validators/quickSlotsValidator';
-import { COMMANDS } from '~constants/commands';
-import type { QuickSlots, SlotNo, Hotkey } from '~types/randomDefense';
+import { isQuickSlotsResponse } from '@/domains/dataHandlers/validators/quickSlotsValidator';
+import { COMMANDS } from '@/constants/commands';
+import type { QuickSlots, SlotNo, Hotkey } from '@/types/randomDefense';
 
 const emptySlots: QuickSlots = {
   1: { isEmpty: true },

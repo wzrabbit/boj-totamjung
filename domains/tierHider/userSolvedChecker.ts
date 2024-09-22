@@ -1,4 +1,4 @@
-import { isSolvedAcSearchProblemResponse } from '~domains/dataHandlers/validators/solvedAcSearchProblemResponseValidator';
+import { isSolvedAcSearchProblemResponse } from '@/domains/dataHandlers/validators/solvedAcSearchProblemResponseValidator';
 
 export const isUserSolvedProblem = async (
   handle: string,

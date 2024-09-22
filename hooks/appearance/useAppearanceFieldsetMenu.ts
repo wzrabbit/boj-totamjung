@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { isTotamjungTheme } from '~domains/dataHandlers/validators/totamjungThemeValidator';
-import { TotamjungTheme } from '~types/totamjungTheme';
+import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
+import { TotamjungTheme } from '@/types/totamjungTheme';
 import {
   fetchTotamjungTheme,
   saveTotamjungTheme,
-} from '~domains/dataHandlers/totamjungThemeDataHandler';
+} from '@/domains/dataHandlers/totamjungThemeDataHandler';
 import {
   fetchFontNo,
   saveFontNo,
-} from '~domains/dataHandlers/fontNoDataHandler';
+} from '@/domains/dataHandlers/fontNoDataHandler';
 
 const UseAppearanceFieldsetMenu = () => {
   const [totamjungTheme, setTotamjungTheme] = useState<

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { getSearchResults } from '~domains/algorithm/getSearchResults';
-import { MAX_SEARCH_ALGORITHMS_COUNT } from '~constants/randomDefense';
+import { getSearchResults } from '@/domains/algorithm/getSearchResults';
+import { MAX_SEARCH_ALGORITHMS_COUNT } from '@/constants/randomDefense';
 import type { ChangeEventHandler, KeyboardEventHandler } from 'react';
 
 interface UseAlgorithmSearchInputParams {

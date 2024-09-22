@@ -1,8 +1,8 @@
-import { $, $$ } from '~utils/querySelector';
-import { solvedAcNumericTierIcons, solvedAcRankIcons } from '~images/svg/tier';
-import { isTierWithoutNotRatable } from '~types/typeGuards';
-import type { RatedTier } from '~types/tierHider';
-import { COMMANDS } from '~constants/commands';
+import { $, $$ } from '@/utils/querySelector';
+import { solvedAcNumericTierIcons, solvedAcRankIcons } from '@/images/svg/tier';
+import { isTierWithoutNotRatable } from '@/types/typeGuards';
+import type { RatedTier } from '@/types/tierHider';
+import { COMMANDS } from '@/constants/commands';
 
 const TIER_FROM_SRC_REGEX = /\d+(?=\.svg$)/;
 

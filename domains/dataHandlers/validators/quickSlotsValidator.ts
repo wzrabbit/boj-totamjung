@@ -1,4 +1,4 @@
-import { isNumericObject, isObject } from '~types/typeGuards';
+import { isNumericObject, isObject } from '@/types/typeGuards';
 import type {
   Hotkey,
   LegacyQuickSlotsResponse,
@@ -7,7 +7,7 @@ import type {
   RepairableQuickSlotsResponse,
   Slot,
   SlotNo,
-} from '~types/randomDefense';
+} from '@/types/randomDefense';
 
 export const isHotkey = (data: unknown): data is Hotkey => {
   return data === 'Alt' || data === 'F2';

@@ -1,10 +1,10 @@
-import { solvedAcNumericTierIcons } from '~images/svg/tier';
+import { solvedAcNumericTierIcons } from '@/images/svg/tier';
 import type {
   LegacyRandomDefenseHistoryInfo,
   RandomDefenseHistoryInfo,
   RandomDefenseHistoryResponse,
-} from '~types/randomDefense';
-import { isIsoString, isObject } from '~types/typeGuards';
+} from '@/types/randomDefense';
+import { isIsoString, isObject } from '@/types/typeGuards';
 
 export const isRandomDefenseHistoryInfo = (
   data: unknown,

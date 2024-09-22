@@ -1,5 +1,5 @@
 import * as S from './OptionsNav.styled';
-import type { OptionsNavCategory } from '~types/options';
+import type { OptionsNavCategory } from '@/types/options';
 
 interface OptionsNavProps {
   selectedCategory: OptionsNavCategory;

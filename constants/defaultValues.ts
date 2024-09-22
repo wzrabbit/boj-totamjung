@@ -2,7 +2,7 @@ import type {
   QuickSlots,
   QuickSlotsResponse,
   LegacyQuickSlotsResponse,
-} from '~types/randomDefense';
+} from '@/types/randomDefense';
 import { STORAGE_KEY } from './commands';
 
 export const DEFAULT_CHECKED_ALGORITHM_IDS = [1, 2];

@@ -1,8 +1,8 @@
 import * as S from './RandomDefenseHistoryItem.styled';
-import { solvedAcNumericTierIcons, solvedAcRankIcons } from '~images/svg/tier';
-import { ClockIcon, TrashIcon } from '~images/svg';
-import { formatDate } from '~utils/formatDate';
-import type { IsoString } from '~types/utils';
+import { solvedAcNumericTierIcons, solvedAcRankIcons } from '@/images/svg/tier';
+import { ClockIcon, TrashIcon } from '@/images/svg';
+import { formatDate } from '@/utils/formatDate';
+import type { IsoString } from '@/types/utils';
 
 interface RandomDefenseHistoryItemProps {
   problemId: number;

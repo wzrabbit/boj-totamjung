@@ -1,12 +1,12 @@
-import MenuTitle from '~components/MenuTitle';
-import Fieldset from '~components/common/Fieldset';
-import TierDropdown from '~components/TierDropdown';
-import Text from '~components/common/Text';
-import ProblemTagLockTimer from '~components/ProblemTagLockTimer';
-import TextLink from '~components/common/TextLink';
-import { ToolsIcon } from '~images/svg';
-import { hiddenTierBadgeIcon } from '~images/png';
-import useHiderFieldsetMenu from '~hooks/algorithm/useHiderFieldsetMenu';
+import MenuTitle from '@/components/MenuTitle';
+import Fieldset from '@/components/common/Fieldset';
+import TierDropdown from '@/components/TierDropdown';
+import Text from '@/components/common/Text';
+import ProblemTagLockTimer from '@/components/ProblemTagLockTimer';
+import TextLink from '@/components/common/TextLink';
+import { ToolsIcon } from '@/images/svg';
+import { hiddenTierBadgeIcon } from '@/images/png';
+import useHiderFieldsetMenu from '@/hooks/algorithm/useHiderFieldsetMenu';
 import * as S from './HiderFieldsetMenu.styled';
 
 const HiderFieldsetMenu = () => {

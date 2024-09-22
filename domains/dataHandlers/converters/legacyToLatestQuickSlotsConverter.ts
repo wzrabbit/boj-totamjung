@@ -1,7 +1,7 @@
 import type {
   QuickSlotsResponse,
   LegacyQuickSlotsResponse,
-} from '~types/randomDefense';
+} from '@/types/randomDefense';
 
 export const convertLegacyToLatestQuickSlots = (
   legacyQuickSlots: LegacyQuickSlotsResponse,

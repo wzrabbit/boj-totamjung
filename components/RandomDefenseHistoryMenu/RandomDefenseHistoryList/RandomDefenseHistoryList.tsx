@@ -1,6 +1,6 @@
 import * as S from './RandomDefenseHistoryList.styled';
 import RandomDefenseHistoryItem from './RandomDefenseHistoryItem';
-import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
+import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
 
 interface RandomDefenseHistoryList {
   items: RandomDefenseHistoryInfo[];

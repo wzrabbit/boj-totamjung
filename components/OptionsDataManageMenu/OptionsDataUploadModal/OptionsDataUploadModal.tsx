@@ -1,10 +1,10 @@
-import Modal, { ModalActionButtonsContainer } from '~components/common/Modal';
-import IconButton from '~components/common/IconButton';
-import Text from '~components/common/Text';
-import Input from '~components/common/Input';
-import useConfirmInput from '~hooks/useConfirmInput';
-import { theme } from '~styles/theme';
-import { CloseCircleIcon, FileUploadIcon } from '~images/svg';
+import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
+import IconButton from '@/components/common/IconButton';
+import Text from '@/components/common/Text';
+import Input from '@/components/common/Input';
+import useConfirmInput from '@/hooks/useConfirmInput';
+import { theme } from '@/styles/theme';
+import { CloseCircleIcon, FileUploadIcon } from '@/images/svg';
 import * as S from './OptionsDataUploadModal.styled';
 
 interface OptionsDataUploadModalProps {

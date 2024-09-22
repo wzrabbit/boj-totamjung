@@ -1,7 +1,7 @@
 import * as S from './AlgorithmSearchInput.styled';
 import MiniAlgorithmButton from './MiniAlgorithmButton';
-import useAlgorithmSearchInput from '~hooks/randomDefense/useAlgorithmSearchInput';
-import { ALGORITHM_INFOS } from '~constants/algorithmInfos';
+import useAlgorithmSearchInput from '@/hooks/randomDefense/useAlgorithmSearchInput';
+import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
 
 interface AlgorithmSearchInputProps {
   selectedAlgorithmIds: number[];

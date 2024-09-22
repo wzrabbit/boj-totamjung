@@ -1,4 +1,4 @@
-import { DEFAULT_IS_TIER_HIDDEN } from '~constants/defaultValues';
+import { DEFAULT_IS_TIER_HIDDEN } from '@/constants/defaultValues';
 
 export const sanitizeIsTierHidden = (isTierHidden: unknown) => {
   return typeof isTierHidden === 'boolean'

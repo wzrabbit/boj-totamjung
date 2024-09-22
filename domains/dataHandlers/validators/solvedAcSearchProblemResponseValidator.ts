@@ -1,9 +1,9 @@
-import { isObject } from '~types/typeGuards';
-import { isTierWithoutNotRatable } from '~types/typeGuards';
+import { isObject } from '@/types/typeGuards';
+import { isTierWithoutNotRatable } from '@/types/typeGuards';
 import type {
   SolvedAcSearchProblemResponse,
   SolvedAcSearchProblemInfo,
-} from '~types/solvedAcApi';
+} from '@/types/solvedAcApi';
 
 export const isSolvedAcSearchProblemResponse = (
   data: unknown,

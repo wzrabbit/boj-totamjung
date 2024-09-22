@@ -1,8 +1,8 @@
-import { ALGORITHM_INFOS } from '~constants/algorithmInfos';
+import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
 import type {
   RandomDefenseFormData,
   SearchOperator,
-} from '~types/randomDefense';
+} from '@/types/randomDefense';
 
 export const generateRandomDefenseQuery = (
   randomDefenseFormData: RandomDefenseFormData,

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { ToastInfo } from '~types/toast';
+import type { ToastInfo } from '@/types/toast';
 
 interface ToastState extends ToastInfo {
   open: boolean;

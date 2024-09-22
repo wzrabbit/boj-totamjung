@@ -1,12 +1,12 @@
-import { STORAGE_KEY } from '~constants/commands';
-import { DEFAULT_TIMERS } from '~constants/defaultValues';
+import { STORAGE_KEY } from '@/constants/commands';
+import { DEFAULT_TIMERS } from '@/constants/defaultValues';
 import {
   fetchTimers,
   saveTimers,
   getRemainingLockTimeByProblemId,
   removeSingleTimerByProblemId,
 } from './timersDataHandler';
-import type { HiderOptionsResponse, Timer } from '~types/algorithm';
+import type { HiderOptionsResponse, Timer } from '@/types/algorithm';
 
 describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
   test('정상적인 타이머 리스트를 불러올 경우, 타이머 리스트를 그대로 불러온 결과를 반환해야 한다.', async () => {

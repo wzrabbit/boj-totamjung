@@ -5,17 +5,17 @@ import {
   MAX_SOLVED_COUNT,
   MAX_SEARCH_ALGORITHMS_COUNT,
   MAX_CUSTOM_QUERY_LENGTH,
-} from '~constants/randomDefense';
-import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
+} from '@/constants/randomDefense';
+import { ALGORITHMS_COUNT } from '@/constants/algorithmInfos';
 import {
   isNumericArray,
   isObject,
   isTierWithoutNotRatable,
-} from '~types/typeGuards';
+} from '@/types/typeGuards';
 import type {
   RandomDefenseFormData,
   RandomDefenseFormDataVerdict,
-} from '~types/randomDefense';
+} from '@/types/randomDefense';
 
 export const isRandomDefenseFormData = (
   data: unknown,

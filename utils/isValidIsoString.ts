@@ -1,5 +1,5 @@
-import { IsoString } from '~types/utils';
-import { isIsoString } from '~types/typeGuards';
+import { IsoString } from '@/types/utils';
+import { isIsoString } from '@/types/typeGuards';
 
 export const isValidIsoString = (data: unknown): data is IsoString => {
   if (!isIsoString(data)) {

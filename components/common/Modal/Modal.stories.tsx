@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import Modal, { ModalActionButtonsContainer } from './Modal';
-import IconButton from '~components/common/IconButton';
-import Text from '~components/common/Text';
-import { CheckCircleIcon, CloseCircleIcon } from '~images/svg';
+import IconButton from '@/components/common/IconButton';
+import Text from '@/components/common/Text';
+import { CheckCircleIcon, CloseCircleIcon } from '@/images/svg';
 
 /**
  * `Modal`은 범용적으로 사용할 수 있는 모달 컴포넌트입니다.

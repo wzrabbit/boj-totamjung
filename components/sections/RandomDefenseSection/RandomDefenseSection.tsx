@@ -1,10 +1,10 @@
-import RandomDefenseCreateMenu from '~components/RandomDefenseCreateMenu';
-import QuickSlotMenu from '~components/QuickSlotMenu';
-import useRandomDefenseSection from '~hooks/useRandomDefenseSection';
-import RandomDefenseHistoryMenu from '~components/RandomDefenseHistoryMenu';
-import MenuTitle from '~components/MenuTitle';
+import RandomDefenseCreateMenu from '@/components/RandomDefenseCreateMenu';
+import QuickSlotMenu from '@/components/QuickSlotMenu';
+import useRandomDefenseSection from '@/hooks/useRandomDefenseSection';
+import RandomDefenseHistoryMenu from '@/components/RandomDefenseHistoryMenu';
+import MenuTitle from '@/components/MenuTitle';
 import * as S from './RandomDefenseSection.styled';
-import type { OptionsSectionProps } from '~types/options';
+import type { OptionsSectionProps } from '@/types/options';
 
 const RandomDefenseSection = (props: OptionsSectionProps) => {
   const {

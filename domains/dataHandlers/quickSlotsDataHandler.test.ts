@@ -1,14 +1,14 @@
 import {
   MAX_CUSTOM_QUERY_LENGTH,
   TITLE_MAX_LENGTH,
-} from '~constants/randomDefense';
-import { STORAGE_KEY } from '~constants/commands';
+} from '@/constants/randomDefense';
+import { STORAGE_KEY } from '@/constants/commands';
 import {
   fetchQuickSlots,
   saveQuickSlots,
 } from '../dataHandlers/quickSlotsDataHandler';
-import { DEFAULT_QUICK_SLOTS_RESPONSE } from '~constants/defaultValues';
-import type { QuickSlotsResponse } from '~types/randomDefense';
+import { DEFAULT_QUICK_SLOTS_RESPONSE } from '@/constants/defaultValues';
+import type { QuickSlotsResponse } from '@/types/randomDefense';
 
 const validQuickSlots: QuickSlotsResponse = {
   slots: {

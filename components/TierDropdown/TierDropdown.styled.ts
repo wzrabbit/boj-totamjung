@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components';
-import type { RatedTier } from '~types/tierHider';
+import type { RatedTier } from '@/types/tierHider';
 
 export const Container = styled.div`
   overflow: visible;

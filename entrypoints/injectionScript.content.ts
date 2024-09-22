@@ -1,7 +1,7 @@
-import { COMMANDS } from '~constants/commands';
-import { isFontNoResponse } from '~domains/dataHandlers/validators/fontNoValidator';
-import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
-import { isTotamjungThemeResponse } from '~domains/dataHandlers/validators/totamjungThemeValidator';
+import { COMMANDS } from '@/constants/commands';
+import { isFontNoResponse } from '@/domains/dataHandlers/validators/fontNoValidator';
+import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import { isTotamjungThemeResponse } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
 
 export default defineContentScript({
   matches: ['https://www.acmicpc.net/*'],

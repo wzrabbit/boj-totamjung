@@ -1,5 +1,5 @@
 import * as S from './DifficultyAdjustMenu.styled';
-import type { TierWithoutNotRatable } from '~types/randomDefense';
+import type { TierWithoutNotRatable } from '@/types/randomDefense';
 import TierSlider from './TierSlider';
 import TierRange from './TierRange';
 import TierPresetButtonList from './TierPresetButtonList';

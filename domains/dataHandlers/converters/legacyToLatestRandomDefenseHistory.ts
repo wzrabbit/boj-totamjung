@@ -1,8 +1,8 @@
-import { isIsoString } from '~types/typeGuards';
+import { isIsoString } from '@/types/typeGuards';
 import {
   LegacyRandomDefenseHistoryInfo,
   RandomDefenseHistoryInfo,
-} from '~types/randomDefense';
+} from '@/types/randomDefense';
 
 export const convertLegacyToLatestRandomDefenseHistory = (
   legacyRandomDefenseHistory: LegacyRandomDefenseHistoryInfo[],

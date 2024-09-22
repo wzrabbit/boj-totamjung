@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
-import { TierWithoutNotRatable } from '~types/randomDefense';
-import { isTierWithoutNotRatable } from '~types/typeGuards';
+import { TierWithoutNotRatable } from '@/types/randomDefense';
+import { isTierWithoutNotRatable } from '@/types/typeGuards';
 
 const TIER_COUNT = 31;
 

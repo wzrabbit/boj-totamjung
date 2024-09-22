@@ -1,10 +1,10 @@
-import { STORAGE_KEY } from '~constants/commands';
+import { STORAGE_KEY } from '@/constants/commands';
 import { sanitizeRandomDefenseHistory } from './sanitizers/randomDefenseHistorySanitizer';
 import { sanitizeIsTierHidden } from './sanitizers/isTierHiddenSanitizer';
 import type {
   RandomDefenseHistoryInfo,
   RandomDefenseHistoryResponse,
-} from '~types/randomDefense';
+} from '@/types/randomDefense';
 
 const getSortedRandomDefenseHistory = (
   randomDefenseHistory: RandomDefenseHistoryInfo[],

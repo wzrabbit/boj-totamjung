@@ -1,6 +1,6 @@
-import RandomDefenseCreateMenu from '~components/RandomDefenseCreateMenu';
-import QuickSlotMenu from '~components/QuickSlotMenu';
-import useRandomDefenseManageMenu from '~hooks/useRandomDefenseSection';
+import RandomDefenseCreateMenu from '@/components/RandomDefenseCreateMenu';
+import QuickSlotMenu from '@/components/QuickSlotMenu';
+import useRandomDefenseManageMenu from '@/hooks/useRandomDefenseSection';
 import * as S from './RandomDefenseManageMenu.styled';
 
 const RandomDefenseManageMenu = () => {

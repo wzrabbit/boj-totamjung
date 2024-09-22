@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import type { MouseEvent } from 'react';
-import { COMMANDS } from '~constants/commands';
-import { isValidCheckedAlgorithmIdsResponse } from '~domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
-import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
+import { COMMANDS } from '@/constants/commands';
+import { isValidCheckedAlgorithmIdsResponse } from '@/domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
+import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
-import { changeNormalToWarnTier } from '~domains/tierHider/normalToWarnTierChanger';
-import type { ToastInfo } from '~types/toast';
-import type { TotamjungTheme } from '~types/totamjungTheme';
-import type { HiderOptionsResponse } from '~types/algorithm';
+import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
+import type { ToastInfo } from '@/types/toast';
+import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { HiderOptionsResponse } from '@/types/algorithm';
 
 interface UseWidgetParams {
   theme: TotamjungTheme;

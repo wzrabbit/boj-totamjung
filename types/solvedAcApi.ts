@@ -1,4 +1,4 @@
-import { TierWithoutNotRatable } from '~types/randomDefense';
+import { TierWithoutNotRatable } from '@/types/randomDefense';
 
 /**
  * `solved.ac/api/v3/search/problem`으로 solved.ac API에 쿼리 요청을 했을 경우 예상되는 정상 응답값입니다.

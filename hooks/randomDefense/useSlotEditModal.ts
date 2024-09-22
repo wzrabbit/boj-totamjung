@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { validateSlot } from '~domains/randomDefense/slotValidator';
+import { validateSlot } from '@/domains/randomDefense/slotValidator';
 
 interface UseSlotEditModalParams {
   initTitle: string;

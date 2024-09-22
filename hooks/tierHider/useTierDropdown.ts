@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import type { RatedTier } from '~types/tierHider';
+import type { RatedTier } from '@/types/tierHider';
 
 interface UseTierDropdownProps {
   initSelectedTier: RatedTier;

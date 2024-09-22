@@ -1,7 +1,7 @@
-import Widget from '~components/Widget';
-import LeftSlideToast from '~components/LeftSlideToast/LeftSlideToast';
-import useTotamjungThemeState from '~hooks/useTotamjungThemeState';
-import useToastState from '~hooks/useToastState';
+import Widget from '@/components/Widget';
+import LeftSlideToast from '@/components/LeftSlideToast/LeftSlideToast';
+import useTotamjungThemeState from '@/hooks/useTotamjungThemeState';
+import useToastState from '@/hooks/useToastState';
 
 const ContentScript = () => {
   const { totamjungTheme, isLoaded, updateTotamjungTheme } =

@@ -1,17 +1,17 @@
 import * as S from './QuickSlotMenu.styled';
-import NamedFrame from '~components/common/NamedFrame';
+import NamedFrame from '@/components/common/NamedFrame';
 import SlotPagination from './SlotPagination';
 import SlotInfo from './SlotInfo';
 import HotkeySwitcher from './HotkeySwitcher';
-import IconButton from '~components/common/IconButton';
-import useQuickSlotMenu from '~hooks/randomDefense/useQuickSlotMenu';
+import IconButton from '@/components/common/IconButton';
+import useQuickSlotMenu from '@/hooks/randomDefense/useQuickSlotMenu';
 import SlotEditModal from './SlotEditModal';
-import Loading from '~components/common/Loading';
-import useModal from '~hooks/useModal';
-import { CopyIcon, EditIcon, TrashIcon } from '~images/svg';
-import type { QuickSlotsResponse, SlotNo, Hotkey } from '~types/randomDefense';
-import { theme } from '~styles/theme';
-import SimpleModal from '~components/common/SimpleModal';
+import Loading from '@/components/common/Loading';
+import useModal from '@/hooks/useModal';
+import { CopyIcon, EditIcon, TrashIcon } from '@/images/svg';
+import type { QuickSlotsResponse, SlotNo, Hotkey } from '@/types/randomDefense';
+import { theme } from '@/styles/theme';
+import SimpleModal from '@/components/common/SimpleModal';
 
 interface QuickSlotMenuProps {
   quickSlotsInfo: QuickSlotsResponse;

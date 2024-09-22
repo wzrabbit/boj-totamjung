@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import IconButton from '~components/common/IconButton';
+import IconButton from '@/components/common/IconButton';
 import OptionsDataUploadModal from './OptionsDataUploadModal';
 import { useState } from 'react';
 

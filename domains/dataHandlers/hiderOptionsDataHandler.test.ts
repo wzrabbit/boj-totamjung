@@ -1,6 +1,6 @@
-import { STORAGE_KEY } from '~constants/commands';
+import { STORAGE_KEY } from '@/constants/commands';
 import { fetchHiderOptions, saveHiderOptions } from './hiderOptionsDataHandler';
-import { DEFAULT_HIDER_OPTIONS } from '~constants/defaultValues';
+import { DEFAULT_HIDER_OPTIONS } from '@/constants/defaultValues';
 
 describe('Test #1 - 가리개 관련 설정 불러오기', () => {
   describe('올바른 가리개 설정이 저장되어 있다면, 이를 그대로 불러온 값을 반환해야 한다.', () => {

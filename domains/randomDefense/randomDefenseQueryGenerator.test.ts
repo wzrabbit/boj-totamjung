@@ -1,5 +1,5 @@
 import { generateRandomDefenseQuery } from './randomDefenseQueryGenerator';
-import type { RandomDefenseFormData } from '~types/randomDefense';
+import type { RandomDefenseFormData } from '@/types/randomDefense';
 
 describe('#Test 1 - 쿼리 생성 테스트', () => {
   const testcases: [RandomDefenseFormData, string][] = [

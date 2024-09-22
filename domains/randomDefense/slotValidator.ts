@@ -1,4 +1,4 @@
-import type { SlotVerdict } from '~types/randomDefense';
+import type { SlotVerdict } from '@/types/randomDefense';
 
 export const validateSlot = (title: string, query: string): SlotVerdict => {
   if (title.length > 30) {

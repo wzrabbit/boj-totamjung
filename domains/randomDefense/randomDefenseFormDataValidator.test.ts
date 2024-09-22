@@ -1,11 +1,11 @@
-import { ALGORITHMS_COUNT } from '~constants/algorithmInfos';
+import { ALGORITHMS_COUNT } from '@/constants/algorithmInfos';
 import { validateRandomDefenseFormData } from './randomDefenseFormDataValidator';
 import {
   MAX_SEARCH_ALGORITHMS_COUNT,
   MAX_SOLVED_COUNT,
   TITLE_MAX_LENGTH,
-} from '~constants/randomDefense';
-import type { RandomDefenseFormData } from '~types/randomDefense';
+} from '@/constants/randomDefense';
+import type { RandomDefenseFormData } from '@/types/randomDefense';
 
 const emptyValidFormData: RandomDefenseFormData = {
   mode: 'easy',

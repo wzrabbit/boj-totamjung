@@ -1,13 +1,13 @@
-import { isObject, isRatedTier } from '~types/typeGuards';
+import { isObject, isRatedTier } from '@/types/typeGuards';
 import type {
   HiderOptionsResponse,
   LegacyHiderOptions,
   LegacyTimer,
-} from '~types/algorithm';
+} from '@/types/algorithm';
 import {
   isNumericString,
   isNumericStringAllowsLeadingZeroes,
-} from '~utils/numericStringChecker';
+} from '@/utils/numericStringChecker';
 
 export const isHiderOptionsResponse = (
   data: unknown,

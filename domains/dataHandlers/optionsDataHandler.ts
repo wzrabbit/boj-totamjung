@@ -1,4 +1,4 @@
-import { STORAGE_KEY } from '~constants/commands';
+import { STORAGE_KEY } from '@/constants/commands';
 import { fetchCheckedAlgorithmIds } from './checkedAlgorithmsHandler';
 import { fetchQuickSlots } from './quickSlotsDataHandler';
 import { fetchTotamjungTheme } from './totamjungThemeDataHandler';
@@ -6,8 +6,8 @@ import { fetchHiderOptions } from './hiderOptionsDataHandler';
 import { fetchRandomDefenseHistory } from './randomDefenseHistoryDataHandler';
 import { fetchFontNo } from './fontNoDataHandler';
 import { fetchTimers } from './timersDataHandler';
-import type { OptionsDataResponse } from '~types/options';
-import { DEFAULT_INITIAL_DATA } from '~constants/defaultValues';
+import type { OptionsDataResponse } from '@/types/options';
+import { DEFAULT_INITIAL_DATA } from '@/constants/defaultValues';
 import { isOptionsDataResponse } from './validators/optionsDataValidator';
 
 export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {

@@ -1,4 +1,4 @@
-import type { SlotNo } from '~types/randomDefense';
+import type { SlotNo } from '@/types/randomDefense';
 import * as S from './SlotPagination.styled';
 
 interface SlotPaginationProps {

@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components';
-import type { TotamjungTheme } from '~types/totamjungTheme';
+import type { TotamjungTheme } from '@/types/totamjungTheme';
 
 export const Container = styled.div<{
   $open: boolean;

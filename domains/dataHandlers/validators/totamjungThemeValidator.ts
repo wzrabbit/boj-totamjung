@@ -1,5 +1,5 @@
-import { isObject } from '~types/typeGuards';
-import { TotamjungTheme, TotamjungThemeResponse } from '~types/totamjungTheme';
+import { isObject } from '@/types/typeGuards';
+import { TotamjungTheme, TotamjungThemeResponse } from '@/types/totamjungTheme';
 
 export const isTotamjungThemeResponse = (
   data: unknown,

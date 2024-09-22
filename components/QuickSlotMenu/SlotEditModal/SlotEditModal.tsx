@@ -1,12 +1,12 @@
-import { theme } from '~styles/theme';
-import Modal, { ModalActionButtonsContainer } from '~components/common/Modal';
-import IconButton from '~components/common/IconButton';
-import Text from '~components/common/Text';
-import Textarea from '~components/common/Textarea';
-import Input from '~components/common/Input';
-import ErrorText from '~components/common/ErrorText';
-import useSlotEditModal from '~hooks/randomDefense/useSlotEditModal';
-import { CloseCircleIcon, CheckCircleIcon } from '~images/svg';
+import { theme } from '@/styles/theme';
+import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
+import IconButton from '@/components/common/IconButton';
+import Text from '@/components/common/Text';
+import Textarea from '@/components/common/Textarea';
+import Input from '@/components/common/Input';
+import ErrorText from '@/components/common/ErrorText';
+import useSlotEditModal from '@/hooks/randomDefense/useSlotEditModal';
+import { CloseCircleIcon, CheckCircleIcon } from '@/images/svg';
 import * as S from './SlotEditModal.styled';
 
 interface SlotEditModalProps {

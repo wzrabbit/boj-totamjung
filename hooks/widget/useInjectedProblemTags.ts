@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import type { HiderOptionsResponse } from '~types/algorithm';
-import { $, $$ } from '~utils/querySelector';
+import type { HiderOptionsResponse } from '@/types/algorithm';
+import { $, $$ } from '@/utils/querySelector';
 import useLockTimer from './useLockTimer';
-import { ALGORITHM_INFOS } from '~constants/algorithmInfos';
-import { COMMANDS } from '~constants/commands';
-import { isHiderOptionsResponse } from '~domains/dataHandlers/validators/hiderOptionsValidator';
+import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
+import { COMMANDS } from '@/constants/commands';
+import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 
 interface UseInjectedProblemTags {
   checkedIds: number[] | undefined;

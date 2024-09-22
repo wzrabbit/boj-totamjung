@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
-import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
+import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
 import {
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
-} from '~domains/dataHandlers/randomDefenseHistoryDataHandler';
+} from '@/domains/dataHandlers/randomDefenseHistoryDataHandler';
 
 const useRandomDefenseHistoryMenu = () => {
   const [items, setItems] = useState<RandomDefenseHistoryInfo[]>([]);

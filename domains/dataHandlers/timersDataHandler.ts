@@ -1,8 +1,8 @@
-import { STORAGE_KEY } from '~constants/commands';
+import { STORAGE_KEY } from '@/constants/commands';
 import { sanitizeTimers } from './sanitizers/timersSanitizer';
 import { fetchHiderOptions } from './hiderOptionsDataHandler';
 import { isTimers } from './validators/isTimersValidator';
-import type { TimersResponse } from '~types/algorithm';
+import type { TimersResponse } from '@/types/algorithm';
 
 export const fetchTimers = async (): Promise<TimersResponse> => {
   const data = await chrome.storage.local.get(STORAGE_KEY.TIMERS);
@@ -27,8 +27,9 @@ export const saveTimers = async (timers: unknown) => {
 
 export const getRemainingLockTimeByProblemId = async (problemId: number) => {
   const { timers } = await fetchTimers();
-  const expiryIsoTime = timers.find((timer) => timer.problemId === problemId)
-    ?.expiresAt;
+  const expiryIsoTime = timers.find(
+    (timer) => timer.problemId === problemId,
+  )?.expiresAt;
   const expiryNumericTime = expiryIsoTime
     ? Date.parse(expiryIsoTime)
     : undefined;

@@ -1,12 +1,12 @@
 import * as S from './OptionsDataManageMenu.styled';
 import OptionsDataResetModal from './OptionsDataResetModal';
 import OptionsDataUploadModal from './OptionsDataUploadModal';
-import MenuTitle from '~components/MenuTitle';
-import IconButton from '~components/common/IconButton';
-import SimpleModal from '~components/common/SimpleModal';
-import Text from '~components/common/Text';
-import { SaveIcon, FileDownloadIcon, FileDeleteIcon } from '~images/svg';
-import useOptionsDataManageMenu from '~hooks/useOptionsDataManageMenu';
+import MenuTitle from '@/components/MenuTitle';
+import IconButton from '@/components/common/IconButton';
+import SimpleModal from '@/components/common/SimpleModal';
+import Text from '@/components/common/Text';
+import { SaveIcon, FileDownloadIcon, FileDeleteIcon } from '@/images/svg';
+import useOptionsDataManageMenu from '@/hooks/useOptionsDataManageMenu';
 import DataFileUploadButton from './DataFileUploadButton';
 
 const OptionsDataManageMenu = () => {

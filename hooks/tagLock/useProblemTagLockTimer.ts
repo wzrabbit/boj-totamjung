@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent } from 'react';
-import { isHoursValid, isMinutesValid } from '~domains/tagLock/timeValidator';
+import { isHoursValid, isMinutesValid } from '@/domains/tagLock/timeValidator';
 
 interface UseProblemTagLockTimerParams {
   initHours: number;

@@ -2,8 +2,8 @@ import {
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from './randomDefenseHistoryDataHandler';
-import { MAX_HISTORY_LIMIT } from '~constants/randomDefense';
-import type { RandomDefenseHistoryInfo } from '~types/randomDefense';
+import { MAX_HISTORY_LIMIT } from '@/constants/randomDefense';
+import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
 
 describe('Test #1 - 추첨 기록 불러오기', () => {
   test('한 문제가 들어 있는 올바른 추첨 기록이 저장되어 있다면, 이를 그대로 불러온 값을 반환해야 한다.', async () => {

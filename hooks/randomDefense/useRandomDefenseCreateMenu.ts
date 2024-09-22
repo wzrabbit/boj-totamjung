@@ -1,13 +1,13 @@
 import { useState, useRef } from 'react';
-import { isRandomDefenseFormData } from '~domains/randomDefense/randomDefenseFormDataValidator';
-import { validateRandomDefenseFormData } from '~domains/randomDefense/randomDefenseFormDataValidator';
+import { isRandomDefenseFormData } from '@/domains/randomDefense/randomDefenseFormDataValidator';
+import { validateRandomDefenseFormData } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import type { ChangeEventHandler, MouseEventHandler } from 'react';
 import type {
   RandomDefenseFormData,
   SlotNo,
   TierWithoutNotRatable,
-} from '~types/randomDefense';
-import { generateRandomDefenseQuery } from '~domains/randomDefense/randomDefenseQueryGenerator';
+} from '@/types/randomDefense';
+import { generateRandomDefenseQuery } from '@/domains/randomDefense/randomDefenseQueryGenerator';
 
 interface UseRandomDefenseCreateMenuParams {
   selectedSlotNo: SlotNo;

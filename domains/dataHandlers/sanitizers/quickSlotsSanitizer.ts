@@ -10,17 +10,17 @@ import {
 import {
   DEFAULT_QUICK_SLOTS_RESPONSE,
   DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE,
-} from '~constants/defaultValues';
+} from '@/constants/defaultValues';
 import {
   MAX_CUSTOM_QUERY_LENGTH,
   TITLE_MAX_LENGTH,
-} from '~constants/randomDefense';
+} from '@/constants/randomDefense';
 import type {
   QuickSlotsResponse,
   LegacyQuickSlotsResponse,
   SlotNo,
   Slot,
-} from '~types/randomDefense';
+} from '@/types/randomDefense';
 
 const SLOT_NOS: SlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 

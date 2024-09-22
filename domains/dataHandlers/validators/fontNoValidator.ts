@@ -1,9 +1,9 @@
-import { isObject } from '~types/typeGuards';
+import { isObject } from '@/types/typeGuards';
 import {
   FontNoResponse,
   LegacyFontNo,
   LegacyFontNoResponse,
-} from '~types/font';
+} from '@/types/font';
 
 const LEGACY_FONT_REGEX = /^(none|font-\d{1,2})$/;
 

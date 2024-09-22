@@ -1,4 +1,4 @@
-import { LoadingIcon } from '~images/svg';
+import { LoadingIcon } from '@/images/svg';
 import * as S from './Loading.styled';
 
 const Loading = () => {

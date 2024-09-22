@@ -1,5 +1,5 @@
 import * as S from './MiniAlgorithmButton.styled';
-import { CloseSmallIcon } from '~images/svg';
+import { CloseSmallIcon } from '@/images/svg';
 
 interface MiniAlgorithmButtonProps {
   id: number;

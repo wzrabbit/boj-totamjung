@@ -1,7 +1,7 @@
-import { STORAGE_KEY } from '~constants/commands';
+import { STORAGE_KEY } from '@/constants/commands';
 import { isValidCheckedAlgorithmIds } from './validators/checkedAlgorithmIdsValidator';
-import { sanitizeCheckedAlgorithmIds } from '~domains/dataHandlers/sanitizers/checkedAlgorithmIdsSanitizer';
-import type { CheckedAlgorithmIdsResponse } from '~types/algorithm';
+import { sanitizeCheckedAlgorithmIds } from '@/domains/dataHandlers/sanitizers/checkedAlgorithmIdsSanitizer';
+import type { CheckedAlgorithmIdsResponse } from '@/types/algorithm';
 
 export const fetchCheckedAlgorithmIds =
   async (): Promise<CheckedAlgorithmIdsResponse> => {

@@ -1,4 +1,4 @@
-import { DEFAULT_CHECKED_ALGORITHM_IDS } from '~constants/defaultValues';
+import { DEFAULT_CHECKED_ALGORITHM_IDS } from '@/constants/defaultValues';
 
 export const sanitizeCheckedAlgorithmIds = (
   checkedAlgorithmIds: unknown,

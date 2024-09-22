@@ -1,7 +1,7 @@
 import type { ChangeEvent } from 'react';
 import * as S from './TierSlider.styled';
-import type { TierWithoutNotRatable } from '~types/randomDefense';
-import { isTierWithoutNotRatable } from '~types/typeGuards';
+import type { TierWithoutNotRatable } from '@/types/randomDefense';
+import { isTierWithoutNotRatable } from '@/types/typeGuards';
 
 interface TierSliderProps {
   startTier: TierWithoutNotRatable;

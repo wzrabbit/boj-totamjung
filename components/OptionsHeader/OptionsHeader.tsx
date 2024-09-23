@@ -28,7 +28,7 @@ const OptionsHeader = (props: OptionsHeaderProps) => {
       />
       <S.ButtonPanel>
         <S.VersionText>{`v${
-          chrome.runtime.getManifest().version
+          browser.runtime.getManifest().version
         }`}</S.VersionText>
         <S.Button
           type="button"

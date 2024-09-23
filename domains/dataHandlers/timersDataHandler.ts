@@ -5,7 +5,7 @@ import { isTimers } from './validators/isTimersValidator';
 import type { TimersResponse } from '@/types/algorithm';
 
 export const fetchTimers = async (): Promise<TimersResponse> => {
-  const data = await chrome.storage.local.get(STORAGE_KEY.TIMERS);
+  const data = await browser.storage.local.get(STORAGE_KEY.TIMERS);
   const timers = data[STORAGE_KEY.TIMERS];
 
   const sanitizedTimers = sanitizeTimers(timers);
@@ -20,7 +20,7 @@ export const saveTimers = async (timers: unknown) => {
     return;
   }
 
-  chrome.storage.local.set({
+  browser.storage.local.set({
     [STORAGE_KEY.TIMERS]: timers,
   });
 };
@@ -69,7 +69,7 @@ export const addSingleTimerByProblemId = async (problemId: number) => {
   const newTimers = [...timers, { problemId, expiresAt }];
   const sanitizedNewTimers = sanitizeTimers(newTimers);
 
-  chrome.storage.local.set({
+  browser.storage.local.set({
     [STORAGE_KEY.TIMERS]: sanitizedNewTimers,
   });
 };
@@ -78,7 +78,7 @@ export const removeSingleTimerByProblemId = async (problemId: number) => {
   const { timers } = await fetchTimers();
   const newTimers = timers.filter((timer) => timer.problemId !== problemId);
 
-  chrome.storage.local.set({
+  browser.storage.local.set({
     [STORAGE_KEY.TIMERS]: newTimers,
   });
 };

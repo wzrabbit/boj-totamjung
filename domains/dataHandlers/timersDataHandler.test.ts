@@ -25,7 +25,7 @@ describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
       },
     ];
 
-    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+    jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
       timers,
     }));
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
@@ -58,7 +58,7 @@ describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
       },
     ];
 
-    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+    jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
       timers,
     }));
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
@@ -79,7 +79,7 @@ describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
       expiresAt: '2025-01-01T03:00:00.000Z',
     }));
 
-    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+    jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
       timers,
     }));
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
@@ -138,7 +138,7 @@ describe('Test #2 - 잘못된 타이머 리스트 데이터에 대응하기', ()
       },
     ];
 
-    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+    jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
       timers,
     }));
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
@@ -151,7 +151,7 @@ describe('Test #2 - 잘못된 타이머 리스트 데이터에 대응하기', ()
   test('타이머의 데이터 형식 자체가 잘못되어 복구가 불가능한 경우에는, 기본값을 반환한다.', async () => {
     const timers = 'not even a timer';
 
-    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+    jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
       timers,
     }));
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
@@ -179,12 +179,12 @@ describe('Test #3 - 타이머 리스트 저장하기', () => {
       },
     ];
 
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
     saveTimers(timers);
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+    expect(browser.storage.local.set).toHaveBeenCalledWith({
       [STORAGE_KEY.TIMERS]: timers,
     });
   });
@@ -228,24 +228,24 @@ describe('Test #4 - 잘못된 타이머 리스트 저장에 대응하기', () =>
     ];
 
     jest.clearAllMocks();
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
     saveTimers(timers);
 
-    expect(chrome.storage.local.set).not.toHaveBeenCalled();
+    expect(browser.storage.local.set).not.toHaveBeenCalled();
   });
 
   test('저장할 데이터가 잘못된 형식인 경우, 런타임 에러 없이 저장을 진행하지 말아야 한다.', async () => {
     const timers = {};
 
     jest.clearAllMocks();
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
     saveTimers(timers);
 
-    expect(chrome.storage.local.set).not.toHaveBeenCalled();
+    expect(browser.storage.local.set).not.toHaveBeenCalled();
   });
 });
 
@@ -268,7 +268,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'click',
     };
-    const chromeLocalStorage: {
+    const browserLocalStorage: {
       timers: Timer[];
       hiderOptions: HiderOptionsResponse;
     } = {
@@ -278,15 +278,15 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(() => chromeLocalStorage);
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+      .spyOn(browser.storage.local, 'get')
+      .mockImplementation(() => browserLocalStorage);
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T23:00:00.000Z'));
 
     const lockTime = await getRemainingLockTimeByProblemId(1234);
     await Promise.resolve();
 
-    expect(chrome.storage.local.set).not.toHaveBeenCalled();
+    expect(browser.storage.local.set).not.toHaveBeenCalled();
     expect(lockTime).toBe(0);
   });
 
@@ -308,7 +308,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'auto',
     };
-    const chromeLocalStorage: {
+    const browserLocalStorage: {
       timers: Timer[];
       hiderOptions: HiderOptionsResponse;
     } = {
@@ -328,15 +328,15 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(() => chromeLocalStorage);
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+      .spyOn(browser.storage.local, 'get')
+      .mockImplementation(() => browserLocalStorage);
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T23:00:00.000Z'));
 
     const lockTime = await getRemainingLockTimeByProblemId(1234);
     await Promise.resolve();
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+    expect(browser.storage.local.set).toHaveBeenCalledWith({
       [STORAGE_KEY.TIMERS]: expected,
     });
     expect(lockTime).toBe(20 * 60 * 1_000);
@@ -360,7 +360,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'click',
     };
-    const chromeLocalStorage: {
+    const browserLocalStorage: {
       timers: Timer[];
       hiderOptions: HiderOptionsResponse;
     } = {
@@ -370,15 +370,15 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(() => chromeLocalStorage);
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+      .spyOn(browser.storage.local, 'get')
+      .mockImplementation(() => browserLocalStorage);
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T23:00:00.000Z'));
 
     const lockTime = await getRemainingLockTimeByProblemId(2000);
     await Promise.resolve();
 
-    expect(chrome.storage.local.set).not.toHaveBeenCalled();
+    expect(browser.storage.local.set).not.toHaveBeenCalled();
     expect(lockTime).toBe(180 * 60 * 1_000);
   });
 
@@ -400,7 +400,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'click',
     };
-    const chromeLocalStorage: {
+    const browserLocalStorage: {
       timers: Timer[];
       hiderOptions: HiderOptionsResponse;
     } = {
@@ -410,15 +410,15 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(() => chromeLocalStorage);
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+      .spyOn(browser.storage.local, 'get')
+      .mockImplementation(() => browserLocalStorage);
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T23:00:00.000Z'));
 
     const lockTime = await getRemainingLockTimeByProblemId(8000);
     await Promise.resolve();
 
-    expect(chrome.storage.local.set).not.toHaveBeenCalled();
+    expect(browser.storage.local.set).not.toHaveBeenCalled();
     expect(lockTime).toBe(0);
   });
 
@@ -440,7 +440,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
       algorithmHiderUsage: 'click',
       problemTagLockUsage: 'auto',
     };
-    const chromeLocalStorage: {
+    const browserLocalStorage: {
       timers: Timer[];
       hiderOptions: HiderOptionsResponse;
     } = {
@@ -456,15 +456,15 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.local, 'get')
-      .mockImplementation(() => chromeLocalStorage);
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+      .spyOn(browser.storage.local, 'get')
+      .mockImplementation(() => browserLocalStorage);
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2023-04-01T00:00:00.500Z'));
 
     const lockTime = await getRemainingLockTimeByProblemId(30000);
     await Promise.resolve();
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+    expect(browser.storage.local.set).toHaveBeenCalledWith({
       [STORAGE_KEY.TIMERS]: expected,
     });
     expect(lockTime).toBe(270 * 60 * 1_000);
@@ -500,14 +500,14 @@ describe('Test #6 - 하나의 타이머를 제거하기', () => {
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.local, 'get')
+      .spyOn(browser.storage.local, 'get')
       .mockImplementation(() => ({ [STORAGE_KEY.TIMERS]: timers }));
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2023-01-01T00:00:00.000Z'));
 
     await removeSingleTimerByProblemId(2000);
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+    expect(browser.storage.local.set).toHaveBeenCalledWith({
       [STORAGE_KEY.TIMERS]: expected,
     });
   });
@@ -544,14 +544,14 @@ describe('Test #6 - 하나의 타이머를 제거하기', () => {
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.local, 'get')
+      .spyOn(browser.storage.local, 'get')
       .mockImplementation(() => ({ [STORAGE_KEY.TIMERS]: timers }));
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     jest.useFakeTimers().setSystemTime(new Date('2023-01-01T00:00:00.000Z'));
 
     await removeSingleTimerByProblemId(2000);
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+    expect(browser.storage.local.set).toHaveBeenCalledWith({
       [STORAGE_KEY.TIMERS]: expected,
     });
   });

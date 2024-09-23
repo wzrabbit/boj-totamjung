@@ -39,9 +39,9 @@ import { getRandomDefenseResult } from '@/domains/randomDefense/randomDefensePro
 import { DEFAULT_INITIAL_DATA } from '@/constants/defaultValues';
 
 const executeBackground = () => {
-  chrome.runtime.onInstalled.addListener(({ reason }) => {
+  browser.runtime.onInstalled.addListener(({ reason }) => {
     if (reason === 'install') {
-      chrome.storage.local.set(DEFAULT_INITIAL_DATA);
+      browser.storage.local.set(DEFAULT_INITIAL_DATA);
       return;
     }
 
@@ -50,7 +50,7 @@ const executeBackground = () => {
     }
   });
 
-  chrome.runtime.onMessage.addListener(
+  browser.runtime.onMessage.addListener(
     (message: unknown, sender, sendResponse) => {
       if (
         !isObject(message) ||
@@ -63,7 +63,7 @@ const executeBackground = () => {
       const { command } = message;
 
       if (command === COMMANDS.OPEN_OPTIONS_PAGE) {
-        chrome.runtime.openOptionsPage();
+        browser.runtime.openOptionsPage();
       }
 
       if (command === COMMANDS.FETCH_CHECKED_ALGORITHM_IDS) {

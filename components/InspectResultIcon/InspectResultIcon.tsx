@@ -14,8 +14,8 @@ const InspectResultIcon = (props: InspectResultIconProps) => {
   const { theme, icon } = props;
   const iconSrc =
     icon === 'check'
-      ? chrome.runtime.getURL('inspect-result-check.png')
-      : chrome.runtime.getURL('inspect-result-question.png');
+      ? browser.runtime.getURL('inspect-result-check.png')
+      : browser.runtime.getURL('inspect-result-question.png');
   const alt =
     icon === 'check'
       ? '이 문제는 알고 있는 알고리즘만으로 풀 수 있는 문제입니다.'

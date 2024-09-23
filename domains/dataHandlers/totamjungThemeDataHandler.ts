@@ -5,7 +5,7 @@ import type { TotamjungThemeResponse } from '@/types/totamjungTheme';
 
 export const fetchTotamjungTheme =
   async (): Promise<TotamjungThemeResponse> => {
-    const data = await chrome.storage.local.get(STORAGE_KEY.TOTAMJUNG_THEME);
+    const data = await browser.storage.local.get(STORAGE_KEY.TOTAMJUNG_THEME);
     const totamjungTheme = data[STORAGE_KEY.TOTAMJUNG_THEME];
 
     const sanitizedTotamjungTheme = sanitizeTotamjungTheme(totamjungTheme);
@@ -20,7 +20,7 @@ export const saveTotamjungTheme = (totamjungTheme: unknown) => {
     return;
   }
 
-  chrome.storage.local.set({
+  browser.storage.local.set({
     [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,
   });
 };

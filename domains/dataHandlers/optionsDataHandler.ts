@@ -48,13 +48,13 @@ export const saveOptionsData = async (data: unknown) => {
     return false;
   }
 
-  await chrome.storage.local.set(data);
+  await browser.storage.local.set(data);
 
   return true;
 };
 
 export const deleteOptionsData = async () => {
-  await chrome.storage.local.set(DEFAULT_INITIAL_DATA);
+  await browser.storage.local.set(DEFAULT_INITIAL_DATA);
 
   return true;
 };

@@ -8,8 +8,8 @@ const useTotamjungThemeState = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const updateTotamjungThemeIfLocalChanged = (
-    changes: { [key: string]: chrome.storage.StorageChange },
-    areaName: chrome.storage.AreaName,
+    changes: { [key: string]: browser.storage.StorageChange },
+    areaName: browser.storage.AreaName,
   ) => {
     if (areaName !== 'local' || !('totamjungTheme' in changes)) {
       return;
@@ -32,7 +32,7 @@ const useTotamjungThemeState = () => {
       return;
     }
 
-    chrome.runtime.sendMessage({
+    browser.runtime.sendMessage({
       command: COMMANDS.SAVE_TOTAMJUNG_THEME,
       totamjungTheme,
     });
@@ -40,7 +40,7 @@ const useTotamjungThemeState = () => {
 
   useEffect(() => {
     const fetchTotamjungTheme = async () => {
-      const { totamjungTheme } = await chrome.runtime.sendMessage({
+      const { totamjungTheme } = await browser.runtime.sendMessage({
         command: COMMANDS.FETCH_TOTAMJUNG_THEME,
       });
 
@@ -53,10 +53,10 @@ const useTotamjungThemeState = () => {
     };
 
     fetchTotamjungTheme();
-    chrome.storage.onChanged.addListener(updateTotamjungThemeIfLocalChanged);
+    browser.storage.onChanged.addListener(updateTotamjungThemeIfLocalChanged);
 
     return () => {
-      chrome.storage.onChanged.removeListener(
+      browser.storage.onChanged.removeListener(
         updateTotamjungThemeIfLocalChanged,
       );
     };

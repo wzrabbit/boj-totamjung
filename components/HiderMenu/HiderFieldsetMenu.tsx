@@ -30,7 +30,7 @@ const HiderFieldsetMenu = () => {
     <S.Container>
       <MenuTitle
         title="잠금 시간 설정"
-        iconSrc={chrome.runtime.getURL('lock.png')}
+        iconSrc={browser.runtime.getURL('lock.png')}
       />
       <ProblemTagLockTimer
         hours={hours}

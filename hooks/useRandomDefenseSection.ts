@@ -24,7 +24,7 @@ const useRandomDefenseManageMenu = () => {
 
   useEffect(() => {
     const fetchQuickSlots = async () => {
-      const response = await chrome.runtime.sendMessage({
+      const response = await browser.runtime.sendMessage({
         command: COMMANDS.FETCH_QUICK_SLOTS,
       });
 
@@ -46,7 +46,7 @@ const useRandomDefenseManageMenu = () => {
       return;
     }
 
-    chrome.runtime.sendMessage({
+    browser.runtime.sendMessage({
       command: COMMANDS.SAVE_QUICK_SLOTS,
       slots,
       selectedSlotNo,

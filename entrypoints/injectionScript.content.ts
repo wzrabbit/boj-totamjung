@@ -17,7 +17,7 @@ const executeInjectionScript = () => {
   const injectFontsAndThemes = () => {
     const htmlElement = document.documentElement;
 
-    chrome.runtime
+    browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_TOTAMJUNG_THEME })
       .then((response) => {
         if (!isTotamjungThemeResponse(response)) {
@@ -34,7 +34,7 @@ const executeInjectionScript = () => {
         }
       });
 
-    chrome.runtime
+    browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_HIDER_OPTIONS })
       .then((response) => {
         if (!isHiderOptionsResponse(response)) {
@@ -50,7 +50,7 @@ const executeInjectionScript = () => {
         }
       });
 
-    chrome.runtime
+    browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_FONT_NO })
       .then((response) => {
         if (!isFontNoResponse(response)) {

@@ -217,16 +217,16 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.sync, 'get')
+      .spyOn(browser.storage.sync, 'get')
       .mockImplementation(() => legacySyncData);
     jest
-      .spyOn(chrome.storage.local, 'get')
+      .spyOn(browser.storage.local, 'get')
       .mockImplementation(() => legacyLocalData);
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
 
     await updateAllLegacyData();
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith(expected);
+    expect(browser.storage.local.set).toHaveBeenCalledWith(expected);
   });
 });
 
@@ -404,16 +404,16 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.sync, 'get')
+      .spyOn(browser.storage.sync, 'get')
       .mockImplementation(() => legacySyncData);
     jest
-      .spyOn(chrome.storage.local, 'get')
+      .spyOn(browser.storage.local, 'get')
       .mockImplementation(() => legacyLocalData);
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
 
     await updateAllLegacyData();
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith(expected);
+    expect(browser.storage.local.set).toHaveBeenCalledWith(expected);
   });
 
   test('구버전 데이터가 복구가 불가능할 정도로 손상되어 있다면, 복구 불가능한 데이터 그룹은 초기화 후 저장을 진행해야 한다.', async () => {
@@ -470,28 +470,28 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
 
     jest.clearAllMocks();
     jest
-      .spyOn(chrome.storage.sync, 'get')
+      .spyOn(browser.storage.sync, 'get')
       .mockImplementation(() => legacySyncData);
     jest
-      .spyOn(chrome.storage.local, 'get')
+      .spyOn(browser.storage.local, 'get')
       .mockImplementation(() => legacyLocalData);
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
 
     await updateAllLegacyData();
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith(expected);
+    expect(browser.storage.local.set).toHaveBeenCalledWith(expected);
   });
 
   test('구버전 데이터가 빈 오브젝트여도 런타임 에러 없이 기본 데이터로 저장을 진행해야 한다.', async () => {
     jest.clearAllMocks();
-    jest.spyOn(chrome.storage.sync, 'get').mockImplementation(() => ({}));
-    jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({}));
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.sync, 'get').mockImplementation(() => ({}));
+    jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({}));
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
 
     await updateAllLegacyData();
 
-    expect(chrome.storage.local.get).not.toThrow();
-    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+    expect(browser.storage.local.get).not.toThrow();
+    expect(browser.storage.local.set).toHaveBeenCalledWith({
       [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: DEFAULT_CHECKED_ALGORITHM_IDS,
       [STORAGE_KEY.QUICK_SLOTS]: DEFAULT_QUICK_SLOTS_RESPONSE,
       [STORAGE_KEY.TOTAMJUNG_THEME]: DEFAULT_TOTAMJUNG_THEME,
@@ -507,27 +507,27 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
 describe('Test #3 - 구버전 데이터가 아닌 경우(변환을 하면 안 되는 경우)에 대응하기', () => {
   test('데이터에 버전 정보가 들어있고, 그 버전이 "v1.2"인 경우 구버전 데이터로 보지 않아야 하고, 변환을 진행하지 않아야 한다.', async () => {
     jest.clearAllMocks();
-    jest.spyOn(chrome.storage.sync, 'get').mockImplementation(() => ({}));
+    jest.spyOn(browser.storage.sync, 'get').mockImplementation(() => ({}));
     jest
-      .spyOn(chrome.storage.local, 'get')
+      .spyOn(browser.storage.local, 'get')
       .mockImplementation(() => ({ dataVersion: 'v1.2' }));
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
 
     await updateAllLegacyData();
 
-    expect(chrome.storage.local.set).not.toHaveBeenCalled();
+    expect(browser.storage.local.set).not.toHaveBeenCalled();
   });
 
   test('데이터에 버전 정보가 들어있더라도, 그 버전이 정해둔 최신 버전과 일치하지 않는 경우 구버전 데이터로 보고 변환을 진행해야 한다.', async () => {
     jest.clearAllMocks();
-    jest.spyOn(chrome.storage.sync, 'get').mockImplementation(() => ({}));
+    jest.spyOn(browser.storage.sync, 'get').mockImplementation(() => ({}));
     jest
-      .spyOn(chrome.storage.local, 'get')
+      .spyOn(browser.storage.local, 'get')
       .mockImplementation(() => ({ dataVersion: 'some old version' }));
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
 
     await updateAllLegacyData();
 
-    expect(chrome.storage.local.set).toHaveBeenCalled();
+    expect(browser.storage.local.set).toHaveBeenCalled();
   });
 });

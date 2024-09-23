@@ -16,7 +16,7 @@ const getSortedRandomDefenseHistory = (
 
 export const fetchRandomDefenseHistory =
   async (): Promise<RandomDefenseHistoryResponse> => {
-    const data = await chrome.storage.local.get([
+    const data = await browser.storage.local.get([
       STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
       STORAGE_KEY.IS_TIER_HIDDEN,
     ]);
@@ -49,7 +49,7 @@ export const saveRandomDefenseHistory = (
     sanitizedRandomDefenseHistory,
   );
 
-  chrome.storage.local.set({
+  browser.storage.local.set({
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: sortedRandomDefenseHistory,
     [STORAGE_KEY.IS_TIER_HIDDEN]: isHidden,
   });

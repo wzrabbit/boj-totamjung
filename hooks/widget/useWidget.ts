@@ -43,10 +43,10 @@ const useWidget = (params: UseWidgetParams) => {
     const loadWidgetData = async () => {
       const [checkedAlgorithmIdsResponse, hiderOptionsResponse] =
         await Promise.all([
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
             command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
           }),
-          chrome.runtime.sendMessage({
+          browser.runtime.sendMessage({
             command: COMMANDS.FETCH_HIDER_OPTIONS,
           }),
         ]);
@@ -109,7 +109,7 @@ const useWidget = (params: UseWidgetParams) => {
   };
 
   const openOptionsPage = () => {
-    chrome.runtime.sendMessage({ command: COMMANDS.OPEN_OPTIONS_PAGE });
+    browser.runtime.sendMessage({ command: COMMANDS.OPEN_OPTIONS_PAGE });
   };
 
   const toggleTotamjungTheme = () => {
@@ -130,7 +130,7 @@ const useWidget = (params: UseWidgetParams) => {
         {
           title:
             '이 문제를 풀기 위해서는 모르는 알고리즘을 사용해야 할 수 있습니다.',
-          mainIconSrc: chrome.runtime.getURL('inspect-result-question.png'),
+          mainIconSrc: browser.runtime.getURL('inspect-result-question.png'),
         },
         3500,
       );
@@ -138,7 +138,7 @@ const useWidget = (params: UseWidgetParams) => {
       onToast(
         {
           title: '이 문제는 알고 있는 알고리즘만으로 풀 수 있습니다.',
-          mainIconSrc: chrome.runtime.getURL('inspect-result-check.png'),
+          mainIconSrc: browser.runtime.getURL('inspect-result-check.png'),
         },
         3500,
       );

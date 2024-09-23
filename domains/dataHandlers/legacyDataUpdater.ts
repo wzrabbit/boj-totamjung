@@ -14,7 +14,7 @@ import { convertLegacyToLatestTotamjungTheme } from './converters/legacyToLatest
 import { convertLegacyToLatestFontNoBySettings } from './converters/legacyToLatestFontNo';
 
 export const updateAllLegacyData = async () => {
-  const { dataVersion } = await chrome.storage.local.get(
+  const { dataVersion } = await browser.storage.local.get(
     STORAGE_KEY.DATA_VERSION,
   );
 
@@ -23,8 +23,8 @@ export const updateAllLegacyData = async () => {
   }
 
   const [legacySyncData, legacyLocalData] = await Promise.all([
-    chrome.storage.sync.get(Object.values(LEGACY_SYNC_STORAGE_KEY)),
-    chrome.storage.local.get(Object.values(LEGACY_LOCAL_STORAGE_KEY)),
+    browser.storage.sync.get(Object.values(LEGACY_SYNC_STORAGE_KEY)),
+    browser.storage.local.get(Object.values(LEGACY_LOCAL_STORAGE_KEY)),
   ]);
 
   const legacyQuickSlots = sanitizeLegacyQuickSlots(
@@ -55,7 +55,7 @@ export const updateAllLegacyData = async () => {
     legacySyncData[LEGACY_SYNC_STORAGE_KEY.SETTINGS],
   );
 
-  chrome.storage.local.set({
+  browser.storage.local.set({
     [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIds,
     [STORAGE_KEY.QUICK_SLOTS]: quickSlots,
     [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,

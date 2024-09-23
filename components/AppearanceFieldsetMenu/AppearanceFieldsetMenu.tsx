@@ -49,7 +49,7 @@ const AppearanceFieldsetMenu = () => {
     <S.Container>
       <MenuTitle
         title="테마 설정"
-        iconSrc={chrome.runtime.getURL('palette.png')}
+        iconSrc={browser.runtime.getURL('palette.png')}
       />
       <Fieldset
         legend="토탐정 테마 사용 여부"

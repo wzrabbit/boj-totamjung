@@ -3,7 +3,7 @@ import { COMMANDS } from '@/constants/commands';
 import { formatDate } from '@/utils/formatDate';
 
 export const extractTotamjungDataFile = async () => {
-  const optionsData = await chrome.runtime.sendMessage({
+  const optionsData = await browser.runtime.sendMessage({
     command: COMMANDS.FETCH_OPTIONS_DATA,
   });
 

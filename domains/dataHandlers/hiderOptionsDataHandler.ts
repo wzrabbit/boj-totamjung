@@ -4,7 +4,7 @@ import { isHiderOptionsResponse } from './validators/hiderOptionsValidator';
 import type { HiderOptionsResponse } from '@/types/algorithm';
 
 export const fetchHiderOptions = async (): Promise<HiderOptionsResponse> => {
-  const data = await chrome.storage.local.get(STORAGE_KEY.HIDER_OPTIONS);
+  const data = await browser.storage.local.get(STORAGE_KEY.HIDER_OPTIONS);
   const hiderOptions = data[STORAGE_KEY.HIDER_OPTIONS];
 
   return isHiderOptionsResponse(hiderOptions)
@@ -17,7 +17,7 @@ export const saveHiderOptions = (hiderOptions: unknown) => {
     return;
   }
 
-  chrome.storage.local.set({
+  browser.storage.local.set({
     [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
   });
 };

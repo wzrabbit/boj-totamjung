@@ -4,7 +4,7 @@
 html[hideTier='true']
   .page-header:has(#problem_title):not(:has(.problem-label-ac))
   .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
 
 /**
@@ -33,7 +33,7 @@ html[hideTier='true']
   #problemset
   tr:not(:has(.problem-label-ac))
   .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
 
 /**
@@ -43,7 +43,7 @@ html[hideTier='true']
   #status-table
   td:nth-child(3):not(:has(.result-ac))
   .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
 
 /**
@@ -55,7 +55,7 @@ html[hideTier='true']
   .table.table-bordered.table-striped
   td:nth-child(2):not(:has(.result-ac))
   > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
 
 /**
@@ -66,7 +66,7 @@ html[hideTier='true']
   ~ .col-md-12
   blockquote
   > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
 
 /**
@@ -74,7 +74,7 @@ html[hideTier='true']
  */
 html[hideTier='true'] .nav.nav-pills.no-print.problem-menu:not(:has(a[href^="https://solved.ac/contribute/"]))
   .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
 
 /**
@@ -87,7 +87,7 @@ html[hideTier='true']
   tr:not(:has(.problem-label-ac))
   > td:nth-child(3)
   > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
 
 /**
@@ -100,7 +100,7 @@ html[hideTier='true']
   tr:not(:has(.problem-label-ac))
   td:nth-child(2)
   > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg']) {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg');
 }
 
 /**
@@ -108,10 +108,10 @@ html[hideTier='true']
  */
 html[hideTier='true']
   .problem-link-style-box:not(.result-ac):not([data-tier='0'])::before {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg') !important;
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-hidden.svg') !important;
 }
 
 html[hideTier='true']
   .problem-link-style-box.warn:not(.result-ac):not([data-tier='0'])::before {
-  content: url('chrome-extension://__MSG_@@extension_id__/solvedac-tier-warn.svg') !important;
+  content: url('browser-extension://__MSG_@@extension_id__/solvedac-tier-warn.svg') !important;
 }

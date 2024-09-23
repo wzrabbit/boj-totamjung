@@ -25,8 +25,8 @@ export const COMMANDS = {
 
 /**
  * 현재 버전(v1.2) 이후 쓰일 키 값들입니다.
- * 모든 키는 `chrome.storage.local`의 키들입니다.
- * 이는 데이터의 크기가 `chrome.storage.sync`에 저장할 수 있는 한도를 넘기 때문입니다.
+ * 모든 키는 `browser.storage.local`의 키들입니다.
+ * 이는 데이터의 크기가 `browser.storage.sync`에 저장할 수 있는 한도를 넘기 때문입니다.
  */
 export const STORAGE_KEY = {
   DATA_VERSION: 'dataVersion',

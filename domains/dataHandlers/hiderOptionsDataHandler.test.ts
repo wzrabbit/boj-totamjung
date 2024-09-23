@@ -31,7 +31,7 @@ describe('Test #1 - 가리개 관련 설정 불러오기', () => {
     ];
 
     test.each(testcases)('#%#', async (hiderOptions) => {
-      jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
         [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
       }));
 
@@ -83,7 +83,7 @@ describe('Test #2 - 유효하지 않은 가리개 관련 설정 데이터를 불
     ];
 
     test.each(testcases)('#%#', async (hiderOptions) => {
-      jest.spyOn(chrome.storage.local, 'get').mockImplementation(() => ({
+      jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
         [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
       }));
 
@@ -106,10 +106,10 @@ describe('Test #3 - 가리개 관련 설정 저장하기', () => {
       problemTagLockUsage: 'auto',
     };
 
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
     saveHiderOptions(hiderOptions);
 
-    expect(chrome.storage.local.set).toHaveBeenCalledWith({
+    expect(browser.storage.local.set).toHaveBeenCalledWith({
       [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
     });
   });
@@ -127,10 +127,10 @@ describe('Test #4 - 유효하지 않은 가리개 관련 설정 데이터를 저
     };
 
     jest.clearAllMocks();
-    jest.spyOn(chrome.storage.local, 'set').mockImplementation(() => {});
+    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
 
     saveHiderOptions(hiderOptions);
 
-    expect(chrome.storage.local.set).not.toHaveBeenCalled();
+    expect(browser.storage.local.set).not.toHaveBeenCalled();
   });
 });

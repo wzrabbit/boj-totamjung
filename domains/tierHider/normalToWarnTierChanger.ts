@@ -85,7 +85,7 @@ const changeBoardBlockquoteBadgeTier = async (
     return;
   }
 
-  const isUserSolved = await chrome.runtime.sendMessage({
+  const isUserSolved = await browser.runtime.sendMessage({
     command: COMMANDS.IS_USER_SOLVED_PROBLEM,
     handle,
     problemId,

@@ -32,7 +32,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
 
   useEffect(() => {
     const fetchRemainingTime = async () => {
-      const remainingTime = await chrome.runtime.sendMessage({
+      const remainingTime = await browser.runtime.sendMessage({
         command: COMMANDS.GET_REMAINING_LOCK_TIME,
       });
 
@@ -150,12 +150,12 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
   const toggleTimer = async () => {
     if (isTimerRunning) {
       clearTimer();
-      chrome.runtime.sendMessage({ command: COMMANDS.REMOVE_SINGLE_TIMER });
+      browser.runtime.sendMessage({ command: COMMANDS.REMOVE_SINGLE_TIMER });
       return;
     }
 
-    chrome.runtime.sendMessage({ command: COMMANDS.ADD_SINGLE_TIMER });
-    const hiderOptions = await chrome.runtime.sendMessage({
+    browser.runtime.sendMessage({ command: COMMANDS.ADD_SINGLE_TIMER });
+    const hiderOptions = await browser.runtime.sendMessage({
       command: COMMANDS.FETCH_HIDER_OPTIONS,
     });
 

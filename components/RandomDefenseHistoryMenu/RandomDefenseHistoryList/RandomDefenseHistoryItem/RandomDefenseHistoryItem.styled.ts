@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components';
-import { solvedAcNumericTierIcons } from '@/images/svg/tier';
+import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type { DefaultTheme } from 'styled-components/dist/types';
 
 const getTierColor = (

@@ -1,6 +1,6 @@
 import * as S from './TierDropdown.styled';
-import { CheckIcon, ArrowDownTriangleIcon } from '@/images/svg';
-import { solvedAcNumericTierIcons } from '@/images/svg/tier';
+import { CheckIcon, ArrowDownTriangleIcon } from '@/assets/svg';
+import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import useTierDropdown from '@/hooks/tierHider/useTierDropdown';
 import type { RatedTier } from '@/types/tierHider';
 

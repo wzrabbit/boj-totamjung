@@ -1,6 +1,6 @@
 import * as S from './Modal.styled';
 import useEscKey from '@/hooks/useEscKey';
-import { CloseIcon } from '@/images/svg';
+import { CloseIcon } from '@/assets/svg';
 import { createPortal } from 'react-dom';
 import type { PropsWithChildren } from 'react';
 

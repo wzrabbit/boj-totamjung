@@ -1,5 +1,5 @@
 import * as S from './TextLink.styled';
-import { LinkIcon } from '@/images/svg';
+import { LinkIcon } from '@/assets/svg';
 
 interface TextLinkProps {
   href: string;

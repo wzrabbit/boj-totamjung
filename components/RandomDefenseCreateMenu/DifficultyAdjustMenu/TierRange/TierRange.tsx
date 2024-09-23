@@ -1,6 +1,6 @@
 import * as S from './TierRange.styled';
 import type { TierWithoutNotRatable } from '@/types/randomDefense';
-import { solvedAcNumericTierIcons } from '@/images/svg/tier';
+import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 
 interface TierRangeProps {
   startTier: TierWithoutNotRatable;

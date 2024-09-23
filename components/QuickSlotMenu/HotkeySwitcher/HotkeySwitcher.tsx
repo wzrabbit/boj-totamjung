@@ -1,6 +1,6 @@
 import * as S from './HotkeySwitcher.styled';
 import Text from '@/components/common/Text';
-import { SwitchIcon } from '@/images/svg';
+import { SwitchIcon } from '@/assets/svg';
 import type { Hotkey } from '@/types/randomDefense';
 
 interface HotkeySwitcherProps {

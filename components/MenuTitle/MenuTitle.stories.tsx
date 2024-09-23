@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CopyIcon } from '@/images/svg';
+import { CopyIcon } from '@/assets/svg';
 import MenuTitle from './MenuTitle';
 
 /**

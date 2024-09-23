@@ -1,5 +1,5 @@
 import { SlotNo } from '@/types/randomDefense';
-import { DiceIcon } from '@/images/svg';
+import { DiceIcon } from '@/assets/svg';
 import type { MouseEvent } from 'react';
 import * as S from './RandomDefenseCreateButton.styled';
 

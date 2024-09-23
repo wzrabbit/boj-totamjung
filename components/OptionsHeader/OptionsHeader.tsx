@@ -2,7 +2,7 @@ import { useState } from 'react';
 import OptionsNav from './OptionsNav';
 import SimpleModal from '@/components/common/SimpleModal';
 import TotamjungInfoModal from './TotamjungInfoModal';
-import { settingsTitle, guidebookButton, infoButton } from '@/images/png';
+import { settingsTitle, guidebookButton, infoButton } from '@/assets/png';
 import type { OptionsNavCategory } from '@/types/options';
 import * as S from './OptionsHeader.styled';
 

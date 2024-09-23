@@ -4,8 +4,8 @@ import TierDropdown from '@/components/TierDropdown';
 import Text from '@/components/common/Text';
 import ProblemTagLockTimer from '@/components/ProblemTagLockTimer';
 import TextLink from '@/components/common/TextLink';
-import { ToolsIcon } from '@/images/svg';
-import { hiddenTierBadgeIcon } from '@/images/png';
+import { ToolsIcon } from '@/assets/svg';
+import { hiddenTierBadgeIcon } from '@/assets/png';
 import useHiderFieldsetMenu from '@/hooks/algorithm/useHiderFieldsetMenu';
 import * as S from './HiderFieldsetMenu.styled';
 

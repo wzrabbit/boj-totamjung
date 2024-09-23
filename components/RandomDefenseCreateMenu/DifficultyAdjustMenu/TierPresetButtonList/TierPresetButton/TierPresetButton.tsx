@@ -1,6 +1,6 @@
 import * as S from './TierPresetButton.styled';
 import type { Rank, TierWithoutNotRatable } from '@/types/randomDefense';
-import { solvedAcRankIcons } from '@/images/svg/tier';
+import { solvedAcRankIcons } from '@/assets/svg/tier';
 
 interface TierPresetButtonProps {
   rank: Rank;

@@ -3,8 +3,8 @@ import Text from '@/components/common/Text';
 import IconButton from '@/components/common/IconButton';
 import useTypewriterText from '@/hooks/options/useTypewriterText';
 import { useEffect } from 'react';
-import { bug, logoSquare } from '@/images/png';
-import { StickyNoteIcon, GithubIcon } from '@/images/svg';
+import { bug, logoSquare } from '@/assets/png';
+import { StickyNoteIcon, GithubIcon } from '@/assets/svg';
 import { theme } from '@/styles/theme';
 import * as S from './TotamjungInfoModal.styled';
 

@@ -1,6 +1,6 @@
 import MenuTitle from '@/components/MenuTitle';
 import Fieldset from '@/components/common/Fieldset';
-import { FontIcon } from '@/images/svg';
+import { FontIcon } from '@/assets/svg';
 import UseAppearanceFieldsetMenu from '@/hooks/appearance/useAppearanceFieldsetMenu';
 import * as S from './AppearanceFieldsetMenu.styled';
 

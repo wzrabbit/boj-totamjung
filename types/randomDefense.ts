@@ -1,4 +1,4 @@
-import type { solvedAcNumericTierIcons } from '@/images/svg/tier';
+import type { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type { SolvedAcSearchProblemInfo } from '@/types/solvedAcApi';
 import type { IsoString } from '@/types/utils';
 

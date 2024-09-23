@@ -8,7 +8,7 @@ import useQuickSlotMenu from '@/hooks/randomDefense/useQuickSlotMenu';
 import SlotEditModal from './SlotEditModal';
 import Loading from '@/components/common/Loading';
 import useModal from '@/hooks/useModal';
-import { CopyIcon, EditIcon, TrashIcon } from '@/images/svg';
+import { CopyIcon, EditIcon, TrashIcon } from '@/assets/svg';
 import type { QuickSlotsResponse, SlotNo, Hotkey } from '@/types/randomDefense';
 import { theme } from '@/styles/theme';
 import SimpleModal from '@/components/common/SimpleModal';

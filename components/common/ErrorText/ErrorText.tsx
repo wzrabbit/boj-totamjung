@@ -1,5 +1,5 @@
 import * as S from './ErrorText.styled';
-import { WarningIcon } from '@/images/svg';
+import { WarningIcon } from '@/assets/svg';
 import type { CSSProperties } from 'styled-components';
 
 interface ErrorTextProps {

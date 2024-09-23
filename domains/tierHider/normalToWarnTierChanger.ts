@@ -1,5 +1,5 @@
 import { $, $$ } from '@/utils/querySelector';
-import { solvedAcNumericTierIcons, solvedAcRankIcons } from '@/images/svg/tier';
+import { solvedAcNumericTierIcons, solvedAcRankIcons } from '@/assets/svg/tier';
 import { isTierWithoutNotRatable } from '@/types/typeGuards';
 import type { RatedTier } from '@/types/tierHider';
 import { COMMANDS } from '@/constants/commands';

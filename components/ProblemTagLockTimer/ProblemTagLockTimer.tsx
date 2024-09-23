@@ -1,5 +1,5 @@
 import * as S from './ProblemTagLockTimer.styled';
-import { lockWithClockIcon } from '@/images/png';
+import { lockWithClockIcon } from '@/assets/png';
 import Text from '@/components/common/Text';
 import useProblemTagLockTimer from '@/hooks/tagLock/useProblemTagLockTimer';
 import { MAX_HOURS, MAX_MINUTES } from '@/constants/tagLock';

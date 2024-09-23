@@ -1,4 +1,4 @@
-import { solvedAcNumericTierIcons } from '@/images/svg/tier';
+import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type {
   LegacyRandomDefenseHistoryInfo,
   RandomDefenseHistoryInfo,

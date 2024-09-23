@@ -4,7 +4,7 @@ import Text from '@/components/common/Text';
 import Input from '@/components/common/Input';
 import useConfirmInput from '@/hooks/useConfirmInput';
 import { theme } from '@/styles/theme';
-import { CloseCircleIcon, TrashIcon } from '@/images/svg';
+import { CloseCircleIcon, TrashIcon } from '@/assets/svg';
 import * as S from './OptionsDataResetModal.styled';
 
 interface OptionsDataResetModalProps {

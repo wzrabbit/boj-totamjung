@@ -3,7 +3,7 @@ import HiderSection from '@/components/sections/HiderSection';
 import RandomDefenseSection from '@/components/sections/RandomDefenseSection';
 import AppearanceAndDataManageSection from '@/components/sections/AppearanceAndDataManageSection';
 import useOptionsPage from '@/hooks/options/useOptionsPage';
-import { totamjung } from '@/images/png';
+import { totamjung } from '@/assets/png';
 import * as S from './Options.styled';
 
 const Options = () => {

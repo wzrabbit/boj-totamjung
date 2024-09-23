@@ -3,7 +3,7 @@ import useRandomDefenseHistoryMenu from '@/hooks/randomDefense/useRandomDefenseH
 import * as S from './RandomDefenseHistoryMenu.styled';
 import Switch from '@/components/common/Switch';
 import NamedFrame from '@/components/common/NamedFrame/NamedFrame';
-import { TrashIcon, PackageIcon } from '@/images/svg';
+import { TrashIcon, PackageIcon } from '@/assets/svg';
 import { MAX_HISTORY_LIMIT } from '@/constants/randomDefense';
 
 const RandomDefenseHistoryMenu = () => {

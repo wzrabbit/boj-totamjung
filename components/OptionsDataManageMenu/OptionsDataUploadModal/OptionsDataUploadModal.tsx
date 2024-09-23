@@ -4,7 +4,7 @@ import Text from '@/components/common/Text';
 import Input from '@/components/common/Input';
 import useConfirmInput from '@/hooks/useConfirmInput';
 import { theme } from '@/styles/theme';
-import { CloseCircleIcon, FileUploadIcon } from '@/images/svg';
+import { CloseCircleIcon, FileUploadIcon } from '@/assets/svg';
 import * as S from './OptionsDataUploadModal.styled';
 
 interface OptionsDataUploadModalProps {

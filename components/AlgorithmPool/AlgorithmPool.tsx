@@ -3,8 +3,8 @@ import AlgorithmList from './AlgorithmList';
 import SimpleModal from '@/components/common/SimpleModal';
 import useAlgorithmPool from '@/hooks/algorithm/useAlgorithmPool';
 import useModal from '@/hooks/useModal';
-import { SearchIcon } from '@/images/svg';
-import { allCheckedIcon, allUncheckedIcon } from '@/images/png';
+import { SearchIcon } from '@/assets/svg';
+import { allCheckedIcon, allUncheckedIcon } from '@/assets/png';
 
 const AlgorithmPool = () => {
   const {

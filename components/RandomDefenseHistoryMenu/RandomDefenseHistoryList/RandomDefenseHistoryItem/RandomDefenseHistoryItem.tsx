@@ -1,6 +1,6 @@
 import * as S from './RandomDefenseHistoryItem.styled';
-import { solvedAcNumericTierIcons, solvedAcRankIcons } from '@/images/svg/tier';
-import { ClockIcon, TrashIcon } from '@/images/svg';
+import { solvedAcNumericTierIcons, solvedAcRankIcons } from '@/assets/svg/tier';
+import { ClockIcon, TrashIcon } from '@/assets/svg';
 import { formatDate } from '@/utils/formatDate';
 import type { IsoString } from '@/types/utils';
 

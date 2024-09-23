@@ -5,7 +5,7 @@ import MenuTitle from '@/components/MenuTitle';
 import IconButton from '@/components/common/IconButton';
 import SimpleModal from '@/components/common/SimpleModal';
 import Text from '@/components/common/Text';
-import { SaveIcon, FileDownloadIcon, FileDeleteIcon } from '@/images/svg';
+import { SaveIcon, FileDownloadIcon, FileDeleteIcon } from '@/assets/svg';
 import useOptionsDataManageMenu from '@/hooks/useOptionsDataManageMenu';
 import DataFileUploadButton from './DataFileUploadButton';
 

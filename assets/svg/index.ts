@@ -1,25 +1,53 @@
-export { ReactComponent as SearchIcon } from './search.svg';
-export { ReactComponent as ClockIcon } from './clock.svg';
-export { ReactComponent as TrashIcon } from './trash.svg';
-export { ReactComponent as PackageIcon } from './package.svg';
-export { ReactComponent as LinkIcon } from './link.svg';
-export { ReactComponent as CloseIcon } from './close.svg';
-export { ReactComponent as CloseSmallIcon } from './close-small.svg';
-export { ReactComponent as CloseCircleIcon } from './close-circle.svg';
-export { ReactComponent as CheckCircleIcon } from './check-circle.svg';
-export { ReactComponent as SwitchIcon } from './switch.svg';
-export { ReactComponent as CopyIcon } from './copy.svg';
-export { ReactComponent as EditIcon } from './edit.svg';
-export { ReactComponent as WarningIcon } from './warning.svg';
-export { ReactComponent as DiceIcon } from './dice.svg';
-export { ReactComponent as CheckIcon } from './check.svg';
-export { ReactComponent as LoadingIcon } from './loading.svg';
-export { ReactComponent as ArrowDownTriangleIcon } from './arrow-down-triangle.svg';
-export { ReactComponent as ToolsIcon } from './tools.svg';
-export { ReactComponent as FontIcon } from './font.svg';
-export { ReactComponent as SaveIcon } from './save.svg';
-export { ReactComponent as FileUploadIcon } from './file-upload.svg';
-export { ReactComponent as FileDownloadIcon } from './file-download.svg';
-export { ReactComponent as FileDeleteIcon } from './file-delete.svg';
-export { ReactComponent as StickyNoteIcon } from './sticky-note.svg';
-export { ReactComponent as GithubIcon } from './github.svg';
+import SearchIcon from './search.svg?react';
+import ClockIcon from './clock.svg?react';
+import TrashIcon from './trash.svg?react';
+import PackageIcon from './package.svg?react';
+import LinkIcon from './link.svg?react';
+import CloseIcon from './close.svg?react';
+import CloseSmallIcon from './close-small.svg?react';
+import CloseCircleIcon from './close-circle.svg?react';
+import CheckCircleIcon from './check-circle.svg?react';
+import SwitchIcon from './switch.svg?react';
+import CopyIcon from './copy.svg?react';
+import EditIcon from './edit.svg?react';
+import WarningIcon from './warning.svg?react';
+import DiceIcon from './dice.svg?react';
+import CheckIcon from './check.svg?react';
+import LoadingIcon from './loading.svg?react';
+import ArrowDownTriangleIcon from './arrow-down-triangle.svg?react';
+import ToolsIcon from './tools.svg?react';
+import FontIcon from './font.svg?react';
+import SaveIcon from './save.svg?react';
+import FileUploadIcon from './file-upload.svg?react';
+import FileDownloadIcon from './file-download.svg?react';
+import FileDeleteIcon from './file-delete.svg?react';
+import StickyNoteIcon from './sticky-note.svg?react';
+import GithubIcon from './github.svg?react';
+
+export {
+  SearchIcon,
+  ClockIcon,
+  TrashIcon,
+  PackageIcon,
+  LinkIcon,
+  CloseIcon,
+  CloseSmallIcon,
+  CloseCircleIcon,
+  CheckCircleIcon,
+  SwitchIcon,
+  CopyIcon,
+  EditIcon,
+  WarningIcon,
+  DiceIcon,
+  CheckIcon,
+  LoadingIcon,
+  ArrowDownTriangleIcon,
+  ToolsIcon,
+  FontIcon,
+  SaveIcon,
+  FileUploadIcon,
+  FileDownloadIcon,
+  FileDeleteIcon,
+  StickyNoteIcon,
+  GithubIcon,
+};

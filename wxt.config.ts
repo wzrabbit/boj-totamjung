@@ -1,7 +1,11 @@
 import { defineConfig } from 'wxt';
+import vitePluginSvgr from 'vite-plugin-svgr';
 
 export default defineConfig({
   modules: ['@wxt-dev/module-react'],
+  vite: () => ({
+    plugins: [vitePluginSvgr()],
+  }),
   manifest: {
     name: '토탐정',
     permissions: ['storage'],

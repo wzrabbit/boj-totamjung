@@ -1,0 +1,185 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Do+Hyeon&family=Gaegu&family=Gothic+A1&family=Gowun+Batang&family=Gowun+Dodum&family=Hi+Melody&family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&family=IBM+Plex+Mono&family=Hahmlet&family=Diphylleia&family=Oxanium:wght@200..800&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css"
+/>
+<style>
+  @font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff')
+      format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Medium.woff')
+      format('woff');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Bold.woff')
+      format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
+</style>
+<script>
+  var process = {
+    env: {
+      BUILD_DATE: new Date().toLocaleDateString('ko-KR'),
+    },
+  };
+  var browser = {
+    runtime: {
+      getURL: (path) => path,
+      getManifest: () => ({ version: 'Test', manifest_version: 3 }),
+      sendMessage: async ({ command, message }, callback) => {
+        if (command === 'openOptionsPage') {
+          alert(
+            '이 alert가 뜬다면, 실제 실행 환경에서는 설정 페이지가 뜰 것입니다.',
+          );
+        }
+
+        if (command === 'fetchCheckedAlgorithmIds') {
+          return {
+            checkedIds: [1, 2, 3],
+          };
+        }
+
+        if (command === 'fetchRandomDefenseHistory') {
+          const randomDefenseHistory = [
+            {
+              problemId: 27959,
+              title: '초코바',
+              tier: 1,
+              createdAt: '2024-03-04T01:00:00.000Z',
+            },
+            {
+              problemId: 27964,
+              title: '콰트로치즈피자',
+              tier: 6,
+              createdAt: '2024-03-02T06:04:10.000Z',
+            },
+            {
+              problemId: 27943,
+              title: '가지 사진 찾기',
+              tier: 11,
+              createdAt: '2024-02-29T22:12:33.040Z',
+            },
+            {
+              problemId: 27470,
+              title: '멋진 부분집합',
+              tier: 16,
+              createdAt: '2024-02-29T22:10:33.127Z',
+            },
+            {
+              problemId: 30243,
+              title: '🧩 N-Queen (Hard)',
+              tier: 21,
+              createdAt: '2023-01-11T10:20:44.790Z',
+            },
+            {
+              problemId: 31442,
+              title: '좋은 수열',
+              tier: 26,
+              createdAt: '2023-01-11T10:20:44.789Z',
+            },
+            {
+              problemId: 1223,
+              title: '마법의 돌',
+              tier: 0,
+              createdAt: '2022-03-17T18:00:40.000Z',
+            },
+            {
+              problemId: 27903,
+              title: '인생',
+              tier: 31,
+              createdAt: '2022-03-15T00:00:00.000Z',
+            },
+          ];
+
+          return {
+            randomDefenseHistory,
+            isHidden: false,
+          };
+        }
+
+        if (command === 'fetchQuickSlots') {
+          return {
+            selectedSlotNo: 1,
+            hotkey: 'Alt',
+            slots: {
+              1: { isEmpty: true },
+              2: {
+                isEmpty: false,
+                title: '골드 랜덤 디펜스',
+                query: '*11..15 s#3000.. solvable:true',
+              },
+              3: { isEmpty: true },
+              4: {
+                isEmpty: false,
+                title: '외국어 문제 풀어보기',
+                query: '*5..20 !lang:ko solvable:true',
+              },
+              5: { isEmpty: true },
+              6: { isEmpty: true },
+              7: { isEmpty: true },
+              8: {
+                isEmpty: false,
+                title:
+                  '이추첨의이름은정확히삼십글자이며이렇게하는이유는테스트를위함',
+                query:
+                  '*1..30 (-#rope-#bayes-#knuth-#dancing_links-#differential_cryptanalysis-#discrete_sqrt-#lgv-#green-#stoer_wagner-#multipoint_evaluation-#lte-#geometric_boolean_operations-#a_star-#discrete_kth_root)',
+              },
+              9: { isEmpty: true },
+              0: { isEmpty: true },
+            },
+          };
+        }
+
+        if (command === 'fetchTotamjungTheme') {
+          return {
+            totamjungTheme: 'none',
+          };
+        }
+
+        if (command === 'fetchHiderOptions') {
+          return {
+            problemTagLockDuration: {
+              hours: 1,
+              minutes: 30,
+            },
+            shouldHideTier: true,
+            shouldWarnHighTier: true,
+            warnTier: 16,
+            algorithmHiderUsage: 'always',
+            problemTagLockUsage: 'click',
+          };
+        }
+
+        if (command === 'fetchFontNo') {
+          return {
+            fontNo: 10,
+          };
+        }
+
+        return {};
+      },
+    },
+  };
+</script>

@@ -54,7 +54,8 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
         </S.IntroductoryContainer>
         <S.InfoContainer>
           <Text type="normal" fontSize="14px" textAlign="center">
-            버전: <b>v{browser.runtime.getManifest().version}</b>{' '}
+            버전:{' '}
+            <b>{`v${browser.runtime.getManifest().version} - MV${browser.runtime.getManifest().manifest_version}`}</b>{' '}
             {process.env.BUILD_DATE ? `/ ${process.env.BUILD_DATE} 빌드` : ''}
           </Text>
           <Text type="normal" fontSize="14px" textAlign="center">

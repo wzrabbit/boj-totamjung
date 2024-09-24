@@ -5,6 +5,11 @@ export default defineConfig({
   modules: ['@wxt-dev/module-react'],
   vite: () => ({
     plugins: [vitePluginSvgr()],
+    define: {
+      'process.env.BUILD_DATE': JSON.stringify(
+        new Date().toLocaleDateString('ko-KR'),
+      ),
+    },
   }),
   manifest: {
     name: '토탐정',

@@ -11,7 +11,7 @@ describe('Test #1 - 테마 불러오기', () => {
     async (totamjungTheme) => {
       jest
         .spyOn(browser.storage.local, 'get')
-        .mockImplementation(() => ({ totamjungTheme }));
+        .mockImplementation(() => Promise.resolve({ totamjungTheme }));
 
       expect(await fetchTotamjungTheme()).toEqual({
         totamjungTheme,
@@ -28,7 +28,7 @@ describe('Test #2 - 유효하지 않은 테마 값을 불러왔을 때 대응하
     async (totamjungTheme) => {
       jest
         .spyOn(browser.storage.local, 'get')
-        .mockImplementation(() => ({ totamjungTheme }));
+        .mockImplementation(() => Promise.resolve({ totamjungTheme }));
 
       expect(await fetchTotamjungTheme()).toEqual({
         totamjungTheme: 'none',
@@ -44,7 +44,9 @@ describe('Test #3 - 테마 저장하기', () => {
     '올바른 테마 값인 "%s"를 이용해 저장할 경우, 해당 값으로 그대로 저장되어야 한다.',
     async (totamjungTheme) => {
       jest.clearAllMocks();
-      jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+      jest
+        .spyOn(browser.storage.local, 'set')
+        .mockImplementation(() => Promise.resolve());
       saveTotamjungTheme(totamjungTheme);
 
       expect(browser.storage.local.set).toHaveBeenCalledWith({
@@ -61,7 +63,9 @@ describe('Test #4 - 잘못된 테마 저장에 대응하기', () => {
     '잘못된 테마 값인 "%s"를 이용해 저장할 경우, 저장이 진행되지 않아야 한다.',
     async (invalidTheme) => {
       jest.clearAllMocks();
-      jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+      jest
+        .spyOn(browser.storage.local, 'set')
+        .mockImplementation(() => Promise.resolve());
       saveTotamjungTheme(invalidTheme);
 
       expect(browser.storage.local.set).not.toHaveBeenCalled();

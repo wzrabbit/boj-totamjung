@@ -31,9 +31,11 @@ describe('Test #1 - 가리개 관련 설정 불러오기', () => {
     ];
 
     test.each(testcases)('#%#', async (hiderOptions) => {
-      jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
-        [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
-      }));
+      jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
+        Promise.resolve({
+          [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
+        }),
+      );
 
       expect(await fetchHiderOptions()).toEqual(hiderOptions);
     });
@@ -83,9 +85,11 @@ describe('Test #2 - 유효하지 않은 가리개 관련 설정 데이터를 불
     ];
 
     test.each(testcases)('#%#', async (hiderOptions) => {
-      jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({
-        [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
-      }));
+      jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
+        Promise.resolve({
+          [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
+        }),
+      );
 
       expect(await fetchHiderOptions()).toEqual(DEFAULT_HIDER_OPTIONS);
     });
@@ -106,7 +110,9 @@ describe('Test #3 - 가리개 관련 설정 저장하기', () => {
       problemTagLockUsage: 'auto',
     };
 
-    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
     saveHiderOptions(hiderOptions);
 
     expect(browser.storage.local.set).toHaveBeenCalledWith({
@@ -127,7 +133,9 @@ describe('Test #4 - 유효하지 않은 가리개 관련 설정 데이터를 저
     };
 
     jest.clearAllMocks();
-    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
 
     saveHiderOptions(hiderOptions);
 

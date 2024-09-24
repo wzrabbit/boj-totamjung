@@ -218,11 +218,15 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
     jest.clearAllMocks();
     jest
       .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => legacySyncData);
+      .mockImplementation(() => Promise.resolve(legacySyncData));
     jest
       .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() => legacyLocalData);
-    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+      .mockImplementation(() =>
+        Promise.resolve(Promise.resolve(legacyLocalData)),
+      );
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
 
     await updateAllLegacyData();
 
@@ -405,11 +409,15 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
     jest.clearAllMocks();
     jest
       .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => legacySyncData);
+      .mockImplementation(() => Promise.resolve(legacySyncData));
     jest
       .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() => legacyLocalData);
-    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+      .mockImplementation(() =>
+        Promise.resolve(Promise.resolve(legacyLocalData)),
+      );
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
 
     await updateAllLegacyData();
 
@@ -471,11 +479,15 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
     jest.clearAllMocks();
     jest
       .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => legacySyncData);
+      .mockImplementation(() => Promise.resolve(legacySyncData));
     jest
       .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() => legacyLocalData);
-    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+      .mockImplementation(() =>
+        Promise.resolve(Promise.resolve(legacyLocalData)),
+      );
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
 
     await updateAllLegacyData();
 
@@ -484,9 +496,15 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
 
   test('구버전 데이터가 빈 오브젝트여도 런타임 에러 없이 기본 데이터로 저장을 진행해야 한다.', async () => {
     jest.clearAllMocks();
-    jest.spyOn(browser.storage.sync, 'get').mockImplementation(() => ({}));
-    jest.spyOn(browser.storage.local, 'get').mockImplementation(() => ({}));
-    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+    jest
+      .spyOn(browser.storage.sync, 'get')
+      .mockImplementation(() => Promise.resolve({}));
+    jest
+      .spyOn(browser.storage.local, 'get')
+      .mockImplementation(() => Promise.resolve({}));
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
 
     await updateAllLegacyData();
 
@@ -507,11 +525,17 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
 describe('Test #3 - 구버전 데이터가 아닌 경우(변환을 하면 안 되는 경우)에 대응하기', () => {
   test('데이터에 버전 정보가 들어있고, 그 버전이 "v1.2"인 경우 구버전 데이터로 보지 않아야 하고, 변환을 진행하지 않아야 한다.', async () => {
     jest.clearAllMocks();
-    jest.spyOn(browser.storage.sync, 'get').mockImplementation(() => ({}));
+    jest
+      .spyOn(browser.storage.sync, 'get')
+      .mockImplementation(() => Promise.resolve({}));
     jest
       .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() => ({ dataVersion: 'v1.2' }));
-    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+      .mockImplementation(() =>
+        Promise.resolve(Promise.resolve({ dataVersion: 'v1.2' })),
+      );
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
 
     await updateAllLegacyData();
 
@@ -520,11 +544,17 @@ describe('Test #3 - 구버전 데이터가 아닌 경우(변환을 하면 안 �
 
   test('데이터에 버전 정보가 들어있더라도, 그 버전이 정해둔 최신 버전과 일치하지 않는 경우 구버전 데이터로 보고 변환을 진행해야 한다.', async () => {
     jest.clearAllMocks();
-    jest.spyOn(browser.storage.sync, 'get').mockImplementation(() => ({}));
+    jest
+      .spyOn(browser.storage.sync, 'get')
+      .mockImplementation(() => Promise.resolve({}));
     jest
       .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() => ({ dataVersion: 'some old version' }));
-    jest.spyOn(browser.storage.local, 'set').mockImplementation(() => {});
+      .mockImplementation(() =>
+        Promise.resolve({ dataVersion: 'some old version' }),
+      );
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
 
     await updateAllLegacyData();
 

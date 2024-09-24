@@ -50,7 +50,7 @@ export const getRemainingLockTimeByProblemId = async (problemId: number) => {
     problemTagLockDuration.hours * 3_600_000 +
     problemTagLockDuration.minutes * 60_000;
 
-  addSingleTimerByProblemId(problemId);
+  await addSingleTimerByProblemId(problemId);
 
   return lockTimesInMilliseconds;
 };

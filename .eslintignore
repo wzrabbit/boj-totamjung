@@ -1,6 +1,0 @@
-webpack.config.js
-jest.config.js
-chromeStorageMock.js
-node_modules
-dist
-.vscode

@@ -24,7 +24,7 @@ const TIER_BADGE_CSS_SELECTORS = [
   "#status-table td:nth-child(3):not(:has(.result-ac)) .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg'])",
   ".col-md-12:has(a[href='/board/list/solvedac']) ~ .col-md-12 .table.table-bordered.table-striped td:nth-child(2):not(:has(.result-ac)) > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg'])",
   ".nav.nav-pills.no-print.problem-menu:not(:has(a[href^=\"https://solved.ac/contribute/\"])) .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg'])",
-  ".row:has(li[class='active'] > a[href='/category']) ~ .row .table.table-bordered.table-striped td:nth-child(3):not(:has(.result-ac)) > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg'])",
+  ".row:has(li[class='active'] > a[href='/category']) ~ .row .table.table-bordered.table-striped tr:not(:has(.problem-label-ac)) > td:nth-child(3) > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg'])",
   ".col-md-12:has(a[href='/workbook/top']) ~ .col-md-12 .table.table-bordered.table-striped tr:not(:has(.problem-label-ac)) td:nth-child(2) > .solvedac-tier:not([src*='/0.svg']):not([src*='/-1.svg'])",
 ] as const;
 
@@ -97,12 +97,12 @@ const changeBoardBlockquoteBadgeTier = async (
   }
 
   if (isUserSolved) {
-    boardBlockquoteTierBadgeElement.style.content = `url(${solvedAcNumericTierIcons[tier]})`;
+    boardBlockquoteTierBadgeElement.style.content = `url(${JSON.stringify(solvedAcNumericTierIcons[tier])}`;
     return;
   }
 
   if (tier >= warnTier && shouldWarnHighTier) {
-    boardBlockquoteTierBadgeElement.style.content = `url(${solvedAcRankIcons.warn})`;
+    boardBlockquoteTierBadgeElement.style.content = `url(${JSON.stringify(solvedAcRankIcons.warn)}`;
   }
 };
 
@@ -117,7 +117,7 @@ const changeRegularBadgeTier = (warnTier: RatedTier) => {
       const tier = src.match(TIER_FROM_SRC_REGEX);
 
       if (tier && Number(tier) >= warnTier) {
-        tierBadgeElement.style.content = `url(${solvedAcRankIcons.warn})`;
+        tierBadgeElement.style.content = `url(${JSON.stringify(solvedAcRankIcons.warn)})`;
       }
     }
   });

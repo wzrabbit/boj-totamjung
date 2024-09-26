@@ -39,10 +39,15 @@
   }
 </style>
 <script>
-  var chrome = {
+  var process = {
+    env: {
+      BUILD_DATE: new Date().toLocaleDateString('ko-KR'),
+    },
+  };
+  var browser = {
     runtime: {
       getURL: (path) => path,
-      getManifest: () => ({ version: 'Test' }),
+      getManifest: () => ({ version: 'Test', manifest_version: 3 }),
       sendMessage: async ({ command, message }, callback) => {
         if (command === 'openOptionsPage') {
           alert(

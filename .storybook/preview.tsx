@@ -1,21 +1,19 @@
-import type { Preview } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../src/styles/GlobalStyle';
-import { theme } from '../src/styles/theme';
+import GlobalStyle from '../styles/GlobalStyle';
+import { theme } from '../styles/theme';
+import type { Preview } from '@storybook/react';
 import React from 'react';
 
 const COLORS = {
   BROWN: '#1a0e0a',
   WHITE: '#ffffff',
 };
-
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/,
+        date: /Date$/i,
       },
     },
     backgrounds: {

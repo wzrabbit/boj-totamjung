@@ -1,0 +1,1 @@
+const t=e=>typeof e=="object"&&e!==null,n=e=>t(e)&&Object.keys(e).every(r=>!isNaN(Number(r))),i=e=>Array.isArray(e)&&e.every(r=>typeof r=="number"),o=e=>typeof e=="string"&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(e),s=e=>typeof e=="number"&&e%1===0&&e>=0&&e<=31,c=e=>s(e)&&e!==31,u=e=>s(e)&&e!==0&&e!==31;export{u as a,n as b,o as c,c as d,i as e,t as i};

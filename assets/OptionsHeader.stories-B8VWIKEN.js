@@ -1,0 +1,5 @@
+import{O as p}from"./OptionsHeader-BH3f0DrG.js";import"./jsx-runtime-DEdD30eg.js";import"./index-RYns6xqu.js";import"./OptionsNav-CEIUftEw.js";import"./styled-components.browser.esm-CkAH7aAm.js";import"./SimpleModal-ClNHGUid.js";import"./Modal-D8EuTlZI.js";import"./close-R_Y1ANk3.js";import"./index-DAfSkmQi.js";import"./IconButton-D0rtTRsA.js";import"./Text-DG2UbxfS.js";import"./theme-C4yZJZ7X.js";import"./close-circle-Z95a0wyf.js";import"./check-circle-c0jdaR34.js";import"./TotamjungInfoModal-NXMlDYdx.js";const y={title:"components/OptionsHeader",component:p,parameters:{docs:{description:{component:"`OptionsHeader`는 설정 페이지의 헤더 컴포넌트입니다."}}}},r={args:{selectedCategory:"algorithmHider"}};var t,o,e;r.parameters={...r.parameters,docs:{...(t=r.parameters)==null?void 0:t.docs,source:{originalSource:`{
+  args: {
+    selectedCategory: 'algorithmHider'
+  }
+}`,...(e=(o=r.parameters)==null?void 0:o.docs)==null?void 0:e.source}}};const C=["Default"];export{r as Default,C as __namedExportsOrder,y as default};

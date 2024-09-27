@@ -1,0 +1,1 @@
+import{i as n}from"./typeGuards-DuDHAUw0.js";const t=e=>n(e)&&"totamjungTheme"in e&&o(e.totamjungTheme),o=e=>e==="none"||e==="totamjung",m=e=>typeof e=="number"&&!isNaN(e)&&e%1===0;export{m as a,o as b,t as i};

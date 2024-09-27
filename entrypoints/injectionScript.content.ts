@@ -20,6 +20,7 @@ const executeInjectionScript = () => {
 
   const injectFontsAndThemes = () => {
     const htmlElement = document.documentElement;
+    htmlElement.setAttribute('hideTier', 'loading');
 
     browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_TOTAMJUNG_THEME })

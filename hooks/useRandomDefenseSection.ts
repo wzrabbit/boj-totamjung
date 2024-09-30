@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { isQuickSlotsResponse } from '@/domains/dataHandlers/validators/quickSlotsValidator';
-import { COMMANDS } from '@/constants/commands';
 import type { QuickSlots, SlotNo, Hotkey } from '@/types/randomDefense';
+import {
+  fetchQuickSlots,
+  saveQuickSlots,
+} from '@/domains/dataHandlers/quickSlotsDataHandler';
 
 const emptySlots: QuickSlots = {
   1: { isEmpty: true },
@@ -23,22 +25,14 @@ const useRandomDefenseManageMenu = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const fetchQuickSlots = async () => {
-      const response = await browser.runtime.sendMessage({
-        command: COMMANDS.FETCH_QUICK_SLOTS,
-      });
+    (async () => {
+      const { slots, selectedSlotNo, hotkey } = await fetchQuickSlots();
 
-      if (!isQuickSlotsResponse(response)) {
-        return;
-      }
-
-      setSlots(response.slots);
-      setSelectedSlotNo(response.selectedSlotNo);
-      setHotkey(response.hotkey);
+      setSlots(slots);
+      setSelectedSlotNo(selectedSlotNo);
+      setHotkey(hotkey);
       setIsLoaded(true);
-    };
-
-    fetchQuickSlots();
+    })();
   }, []);
 
   useEffect(() => {
@@ -46,13 +40,8 @@ const useRandomDefenseManageMenu = () => {
       return;
     }
 
-    browser.runtime.sendMessage({
-      command: COMMANDS.SAVE_QUICK_SLOTS,
-      slots,
-      selectedSlotNo,
-      hotkey,
-    });
-  }, [slots, selectedSlotNo, hotkey]);
+    saveQuickSlots(selectedSlotNo, slots, hotkey);
+  }, [selectedSlotNo, slots, hotkey]);
 
   const updateSlot = (title: string, query: string) => {
     setSlots((prev) => ({

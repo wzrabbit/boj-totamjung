@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import QuickSlotMenu from './QuickSlotMenu';
 import type { QuickSlotsResponse } from '@/types/randomDefense';
+import { fn } from '@storybook/test';
 
 /**
  * `QuickSlotMenu`는 추첨 생성 폼을 통해 생성된 연습 쿼리들을 관리할 수 있는 메뉴 형태의 컴포넌트입니다.
@@ -49,17 +50,9 @@ export const Default: Story = {
   args: {
     quickSlotsInfo: quickSlotsResponse,
     isLoaded: true,
-    onHotkeyChange: (hotkey) => {
-      alert(`onHotkeyChange('${hotkey}')`);
-    },
-    onSlotChange: (title: string, query: string) => {
-      alert(`onSlotChange('${title}', '${query}')`);
-    },
-    onSlotDelete: () => {
-      alert(`onSlotDelete()`);
-    },
-    onSlotNoChange: (slotNo) => {
-      alert(`onSlotNoChange(${slotNo})`);
-    },
+    onHotkeyChange: fn(),
+    onSlotChange: fn(),
+    onSlotDelete: fn(),
+    onSlotNoChange: fn(),
   },
 };

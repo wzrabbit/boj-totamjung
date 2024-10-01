@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Fieldset from './Fieldset';
 import Input from '../Input';
+import { fn } from '@storybook/test';
 
 /**
  * `Fieldset`는 어느 하나의 주제에 대해 사용자가 원하는 옵션을 선택할 수 있도록 해주는 컴포넌트입니다. 각 옵션에는 평범하게 `string`을 사용하거나, `ReactNode`와 같은 컴포넌트를 사용할 수 있습니다.
@@ -71,9 +72,7 @@ export const Default: Story = {
     name: 'favoriteFruit',
     options,
     checkedValue: 'apple',
-    onChange: (value: string) => {
-      alert(`onChange('${value}')`);
-    },
+    onChange: fn(),
   },
 };
 
@@ -84,9 +83,7 @@ export const Vertical: Story = {
     options,
     checkedValue: 'apple',
     isVertical: true,
-    onChange: (value: string) => {
-      alert(`onChange('${value}')`);
-    },
+    onChange: fn(),
   },
 };
 
@@ -99,9 +96,7 @@ export const TooManyOptions: Story = {
     name: 'tooManyOptions',
     options: randomOptions,
     checkedValue: randomOptions[0].value,
-    onChange: (value: string) => {
-      alert(`onChange('${value}')`);
-    },
+    onChange: fn(),
   },
 };
 
@@ -115,9 +110,7 @@ export const ComponentOptions: Story = {
     options: optionsWithImages,
     checkedValue: 'apple',
     isVertical: true,
-    onChange: (value: string) => {
-      alert(`onChange('${value}')`);
-    },
+    onChange: fn(),
   },
 };
 
@@ -132,8 +125,6 @@ export const Disabled: Story = {
     options,
     checkedValue: 'apple',
     disabled: true,
-    onChange: (value: string) => {
-      alert(`onChange('${value}')`);
-    },
+    onChange: fn(),
   },
 };

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Radio from './Radio';
+import { fn } from '@storybook/test';
 
 /**
  * `Radio`는 공용 라디오 컴포넌트입니다. 크기가 작기 때문에 단독으로 쓰이기보다는 다른 요소들과 같이 쓰입니다.
@@ -30,9 +31,7 @@ export const Checked: Story = {
     name: 'optionName',
     value: 'optionValue',
     checked: true,
-    onChange: (value) => {
-      alert(`onChange('${value}')`);
-    },
+    onChange: fn(),
   },
 };
 
@@ -41,9 +40,7 @@ export const NotChecked: Story = {
     name: 'optionName',
     value: 'optionValue',
     checked: false,
-    onChange: (value) => {
-      alert(`onChange('${value}')`);
-    },
+    onChange: fn(),
   },
 };
 
@@ -53,8 +50,6 @@ export const Disabled: Story = {
     value: 'optionValue',
     checked: false,
     disabled: true,
-    onChange: (value) => {
-      alert(`onChange('${value}')`);
-    },
+    onChange: fn(),
   },
 };

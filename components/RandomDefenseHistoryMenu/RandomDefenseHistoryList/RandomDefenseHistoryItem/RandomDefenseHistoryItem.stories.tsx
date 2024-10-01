@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import RandomDefenseHistoryItem from './RandomDefenseHistoryItem';
+import { fn } from '@storybook/test';
 
 /**
  * `RandomDefenseHistoryItem`는 추첨 기록에서 추첨된 문제 하나의 정보를 보여주는 컴포넌트입니다.
@@ -21,9 +22,7 @@ export const Bronze: Story = {
     tier: 1,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -34,9 +33,7 @@ export const Silver: Story = {
     tier: 6,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -47,9 +44,7 @@ export const Gold: Story = {
     tier: 11,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -60,9 +55,7 @@ export const Platinum: Story = {
     tier: 16,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -73,9 +66,7 @@ export const Diamond: Story = {
     tier: 21,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -86,9 +77,7 @@ export const Ruby: Story = {
     tier: 26,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -99,9 +88,7 @@ export const Unrated: Story = {
     tier: 0,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -112,9 +99,7 @@ export const NotRatable: Story = {
     tier: 31,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -125,9 +110,7 @@ export const Hidden: Story = {
     tier: 1,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: true,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -138,8 +121,6 @@ export const LongTitle: Story = {
     tier: 15,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert('onDelete()');
-    },
+    onDelete: fn(),
   },
 };

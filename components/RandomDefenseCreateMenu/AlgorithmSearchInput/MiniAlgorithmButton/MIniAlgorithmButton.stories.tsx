@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import MiniAlgorithmButton from './MiniAlgorithmButton';
+import { fn } from '@storybook/test';
 
 /**
  * `MiniAlgorithmButton`는 검색에 사용할 알고리즘을 정하는 `AlgorithmSearchInput` 컴포넌트의 하위 컴포넌트입니다. 클릭 시 용도에 따라 새로운 알고리즘을 추가하거나, 이미 지정된 알고리즘을 목록에서 제거하는 기능을 수행합니다.
@@ -22,9 +23,7 @@ export const DeleteMode: Story = {
     id: 2,
     name: '그리디 알고리즘',
     mode: 'delete',
-    onClick: (algorithm) => {
-      alert(`onClick(${JSON.stringify(algorithm)})`);
-    },
+    onClick: fn(),
   },
 };
 
@@ -36,8 +35,6 @@ export const AddMode: Story = {
     id: 1,
     name: '그리디 알고리즘',
     mode: 'add',
-    onClick: (algorithm) => {
-      alert(`onClick(${JSON.stringify(algorithm)})`);
-    },
+    onClick: fn(),
   },
 };

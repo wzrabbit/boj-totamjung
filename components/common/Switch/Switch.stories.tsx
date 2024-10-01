@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Switch from './Switch';
+import { fn } from '@storybook/test';
 
 /**
  * `Switch`는 공용 스위치 컴포넌트입니다.
@@ -27,9 +28,7 @@ export const LargeChecked: Story = {
     size: 'large',
     isChecked: true,
     ariaLabel: '테스트',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };
 
@@ -38,9 +37,7 @@ export const LargeNotChecked: Story = {
     size: 'large',
     isChecked: false,
     ariaLabel: '테스트',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };
 
@@ -49,9 +46,7 @@ export const MediumChecked: Story = {
     size: 'medium',
     isChecked: true,
     ariaLabel: '테스트',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };
 
@@ -60,8 +55,6 @@ export const MediumNotChecked: Story = {
     size: 'medium',
     isChecked: false,
     ariaLabel: '테스트',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };

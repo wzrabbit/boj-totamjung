@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import RandomDefenseHistoryList from './RandomDefenseHistoryList';
+import { fn } from '@storybook/test';
 import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
 
 /**
@@ -70,8 +71,6 @@ export const Default: Story = {
   args: {
     items,
     isHidden: false,
-    onDelete: (id) => {
-      alert(`onDelete("${id}")`);
-    },
+    onDelete: fn(),
   },
 };

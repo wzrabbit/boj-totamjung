@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Input from './Input';
+import { fn } from '@storybook/test';
 
 /**
  * `Input`는 공통 인풋 컴포넌트입니다.
@@ -22,6 +23,7 @@ export const Default: Story = {
     placeholder: '마음가는 대로 입력해 보세요',
     hasError: false,
     ariaLabel: '아무 값이든 입력해 보세요',
+    onChange: fn(),
   },
 };
 
@@ -34,5 +36,6 @@ export const Error: Story = {
     placeholder: '사람은 누구나 실수를 하죠',
     hasError: true,
     ariaLabel: '아무 값이든 입력해 보세요',
+    onChange: fn(),
   },
 };

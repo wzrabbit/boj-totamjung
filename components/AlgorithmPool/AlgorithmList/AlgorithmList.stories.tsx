@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import AlgorithmList from './AlgorithmList';
+import { fn } from '@storybook/test';
 import type { Algorithm } from '@/types/algorithm';
 
 /**
@@ -64,8 +65,6 @@ export const Default: Story = {
   args: {
     items,
     checkedIds,
-    onChange: (id) => {
-      alert(`onChange(${id});`);
-    },
+    onChange: fn(),
   },
 };

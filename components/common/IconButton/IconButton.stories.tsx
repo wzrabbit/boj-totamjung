@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import IconButton from './IconButton';
 import { PackageIcon } from '@/assets/svg';
+import { fn } from '@storybook/test';
 
 /**
  * `IconButton`은 범용적으로 사용할 수 있는 버튼 컴포넌트입니다. 일반 이미지 형태의 아이콘과 svg 형태의 아이콘 중 원하는 것을 골라 사용할 수 있으며, 사용하지 않고 텍스트만 표시되는 버튼으로도 사용할 수 있습니다.
@@ -27,9 +28,7 @@ export const MediumWithSvgIcon: Story = {
     iconSrc: <PackageIcon />,
     disabled: false,
     ariaLabel: '테스트용 버튼',
-    onClick: () => {
-      alert('onClick()');
-    },
+    onClick: () => fn(),
   },
 };
 
@@ -42,9 +41,7 @@ export const MediumWithSvgIconDisabled: Story = {
     iconSrc: <PackageIcon />,
     disabled: true,
     ariaLabel: '테스트용 버튼',
-    onClick: () => {
-      alert('onClick()');
-    },
+    onClick: () => fn(),
   },
 };
 
@@ -57,9 +54,7 @@ export const LargeWithSvgIcon: Story = {
     iconSrc: <PackageIcon />,
     disabled: false,
     ariaLabel: '테스트용 버튼',
-    onClick: () => {
-      alert('onClick()');
-    },
+    onClick: () => fn(),
   },
 };
 
@@ -72,9 +67,7 @@ export const MediumWithImageIcon: Story = {
     iconSrc: YOUTUBE_IMAGE_ICON_SRC,
     disabled: false,
     ariaLabel: '테스트용 버튼',
-    onClick: () => {
-      alert('onClick()');
-    },
+    onClick: () => fn(),
   },
 };
 
@@ -87,9 +80,7 @@ export const LargeWithImageIcon: Story = {
     iconSrc: YOUTUBE_IMAGE_ICON_SRC,
     disabled: false,
     ariaLabel: '테스트용 버튼',
-    onClick: () => {
-      alert('onClick()');
-    },
+    onClick: () => fn(),
   },
 };
 
@@ -101,9 +92,7 @@ export const MediumWithNoIcon: Story = {
     color: '#d9d9d9',
     disabled: false,
     ariaLabel: '테스트용 버튼',
-    onClick: () => {
-      alert('onClick()');
-    },
+    onClick: () => fn(),
   },
 };
 
@@ -115,8 +104,6 @@ export const LargeWithNoIcon: Story = {
     color: '#d9d9d9',
     disabled: false,
     ariaLabel: '테스트용 버튼',
-    onClick: () => {
-      alert('onClick()');
-    },
+    onClick: () => fn(),
   },
 };

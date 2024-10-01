@@ -62,33 +62,34 @@ const useAlgorithmSearchInput = (params: UseAlgorithmSearchInputParams) => {
       return;
     }
 
-    const focusInputAndOpenMenu = () => {
-      inputElement.focus();
-      setIsOpen(() => true);
+    const updateOpenStateOnMouseDown = (event: globalThis.MouseEvent) => {
+      const clickedElement = event.target;
+
+      if (!clickedElement || !(clickedElement instanceof Node)) {
+        return;
+      }
+
+      setIsOpen(containerElement.contains(clickedElement));
     };
 
-    const manageMenuVisibilityOnFocus = () => {
-      setIsOpen(() => {
-        return containerElement.contains(document.activeElement);
-      });
+    const updateOpenStateOnFocus = () => {
+      if (document.activeElement === document.body) {
+        return;
+      }
+
+      setIsOpen(containerElement.contains(document.activeElement));
     };
 
-    containerElement.addEventListener('click', focusInputAndOpenMenu);
-    containerElement.addEventListener('focusin', manageMenuVisibilityOnFocus);
-    containerElement.addEventListener('focusout', manageMenuVisibilityOnFocus);
+    document.addEventListener('mousedown', updateOpenStateOnMouseDown);
+    document.addEventListener('focusin', updateOpenStateOnFocus);
+    document.addEventListener('focusout', updateOpenStateOnFocus);
 
     return () => {
-      containerElement.removeEventListener('click', focusInputAndOpenMenu);
-      containerElement.removeEventListener(
-        'focusin',
-        manageMenuVisibilityOnFocus,
-      );
-      containerElement.removeEventListener(
-        'focusout',
-        manageMenuVisibilityOnFocus,
-      );
+      document.removeEventListener('mousedown', updateOpenStateOnMouseDown);
+      document.removeEventListener('focusin', updateOpenStateOnFocus);
+      document.removeEventListener('focusout', updateOpenStateOnFocus);
     };
-  }, [containerRef, inputRef, isOpen, setIsOpen]);
+  }, [containerRef, inputRef]);
 
   return {
     isOpen,

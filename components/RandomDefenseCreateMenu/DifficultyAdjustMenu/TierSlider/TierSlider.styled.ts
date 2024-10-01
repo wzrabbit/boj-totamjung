@@ -37,6 +37,7 @@ export const Track = styled.div`
 export const Thumb = styled.input<{ value: TierWithoutNotRatable }>`
   position: absolute;
   -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 
   width: 100%;
@@ -46,6 +47,13 @@ export const Thumb = styled.input<{ value: TierWithoutNotRatable }>`
 
   &::-webkit-slider-runnable-track {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  &::-moz-range-track {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
   }
 
@@ -59,6 +67,23 @@ export const Thumb = styled.input<{ value: TierWithoutNotRatable }>`
       inset;
 
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    pointer-events: auto;
+  }
+
+  &::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+
+    border-radius: 7.5px;
+    background-color: ${({ theme, value }) => theme.solvedAcTier[value]};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.TRANSPARENT_FAINT_WHITE}
+      inset;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
 
     pointer-events: auto;

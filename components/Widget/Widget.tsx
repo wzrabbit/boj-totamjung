@@ -60,7 +60,7 @@ const Widget = (props: WidgetProps) => {
                 onClick={openOptionsPage}
               >
                 <S.DropdownButtonIcon
-                  src={browser.runtime.getURL('settings.png')}
+                  src={browser.runtime.getURL('/settings.png')}
                 />
               </S.DropdownMenuButton>
             </S.DropdownMenuItem>
@@ -74,7 +74,7 @@ const Widget = (props: WidgetProps) => {
                 onClick={toggleTotamjungTheme}
               >
                 <S.DropdownButtonIcon
-                  src={browser.runtime.getURL('palette.png')}
+                  src={browser.runtime.getURL('/palette.png')}
                 />
               </S.DropdownMenuButton>
             </S.DropdownMenuItem>
@@ -87,7 +87,7 @@ const Widget = (props: WidgetProps) => {
                 onClick={performRandomDefenseByClick}
               >
                 <S.DropdownButtonIcon
-                  src={browser.runtime.getURL('dice.png')}
+                  src={browser.runtime.getURL('/dice.png')}
                 />
               </S.DropdownMenuButton>
             </S.DropdownMenuItem>
@@ -102,9 +102,9 @@ const Widget = (props: WidgetProps) => {
                   src={
                     shouldShowInspectIcon
                       ? hasUnknownAlgorithms
-                        ? browser.runtime.getURL('inspect-result-question.png')
-                        : browser.runtime.getURL('inspect-result-check.png')
-                      : browser.runtime.getURL('search.png')
+                        ? browser.runtime.getURL('/inspect-result-question.png')
+                        : browser.runtime.getURL('/inspect-result-check.png')
+                      : browser.runtime.getURL('/search.png')
                   }
                 />
               </S.DropdownMenuButton>
@@ -117,7 +117,7 @@ const Widget = (props: WidgetProps) => {
                 $widgetTheme={theme}
               >
                 <S.DropdownButtonIcon
-                  src={browser.runtime.getURL('lock.png')}
+                  src={browser.runtime.getURL('/lock.png')}
                 />
               </S.DropdownMenuButton>
             </S.DropdownMenuItem>

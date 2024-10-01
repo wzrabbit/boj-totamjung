@@ -131,7 +131,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
         onToast(
           {
             title: `${selectedSlotNo}번 슬롯은 현재 비어 있습니다.`,
-            mainIconSrc: browser.runtime.getURL('dice.png'),
+            mainIconSrc: browser.runtime.getURL('/dice.png'),
             descriptions: [
               '추첨을 만들지 않으셨다면, 설정에서 해당 슬롯에 추첨을 먼저 만들어 주세요!',
               '설정의 퀵슬롯 메뉴에서 선택된 슬롯 번호를 변경하는 것으로 위젯 클릭 시 사용할 추첨의 슬롯을 정하실 수 있습니다.',
@@ -155,7 +155,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       onToast(
         {
           title: '데이터 불일치가 발견되었습니다.',
-          mainIconSrc: browser.runtime.getURL('dice.png'),
+          mainIconSrc: browser.runtime.getURL('/dice.png'),
           descriptions: '개발자에게 이 문제가 발생했음을 알려 주세요.',
         },
         8000,
@@ -171,7 +171,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       onToast(
         {
           title: errorMessage,
-          mainIconSrc: browser.runtime.getURL('dice.png'),
+          mainIconSrc: browser.runtime.getURL('/dice.png'),
           descriptions: errorDescriptions,
         },
         8000,

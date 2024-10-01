@@ -3,6 +3,7 @@ import vitePluginSvgr from 'vite-plugin-svgr';
 
 export default defineConfig({
   modules: ['@wxt-dev/module-react'],
+  extensionApi: 'chrome',
   vite: () => ({
     plugins: [vitePluginSvgr()],
     define: {

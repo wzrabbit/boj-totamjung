@@ -1,5 +1,6 @@
 import { isObject } from '@/types/typeGuards';
 import { COMMANDS } from '@/constants/commands';
+import { browser } from 'wxt/browser/chrome';
 import {
   fetchCheckedAlgorithmIds,
   saveCheckedAlgorithmIds,
@@ -70,6 +71,7 @@ const executeBackground = () => {
         fetchCheckedAlgorithmIds().then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.SAVE_CHECKED_ALGORITHM_IDS) {
@@ -84,6 +86,7 @@ const executeBackground = () => {
         fetchRandomDefenseHistory().then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY) {
@@ -100,6 +103,7 @@ const executeBackground = () => {
         fetchQuickSlots().then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.SAVE_QUICK_SLOTS) {
@@ -120,6 +124,7 @@ const executeBackground = () => {
         fetchTotamjungTheme().then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.SAVE_TOTAMJUNG_THEME) {
@@ -134,6 +139,7 @@ const executeBackground = () => {
         fetchHiderOptions().then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.SAVE_HIDER_OPTIONS) {
@@ -148,6 +154,7 @@ const executeBackground = () => {
         fetchFontNo().then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.SAVE_FONT_NO) {
@@ -163,6 +170,7 @@ const executeBackground = () => {
         fetchTimers().then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.SAVE_TIMERS) {
@@ -178,6 +186,7 @@ const executeBackground = () => {
         fetchOptionsData().then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.GET_REMAINING_LOCK_TIME) {
@@ -194,6 +203,7 @@ const executeBackground = () => {
         getRemainingLockTimeByProblemId(problemId).then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.ADD_SINGLE_TIMER) {
@@ -239,6 +249,7 @@ const executeBackground = () => {
         isUserSolvedProblem(handle, problemId).then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.GET_RANDOM_DEFENSE_RESULT) {
@@ -249,6 +260,7 @@ const executeBackground = () => {
         getRandomDefenseResult(message.query).then((result) => {
           sendResponse(result);
         });
+        return true;
       }
 
       if (command === COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO) {
@@ -258,8 +270,6 @@ const executeBackground = () => {
 
         appendRandomDefenseInfoToHistory(message.randomDefenseHistoryInfo);
       }
-
-      return true;
     },
   );
 };

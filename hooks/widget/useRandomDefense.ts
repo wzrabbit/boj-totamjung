@@ -7,6 +7,7 @@ import {
 } from '@/domains/dataHandlers/validators/quickSlotsValidator';
 import type { ToastInfo } from '@/types/toast';
 import type { QuickSlotsResponse, SlotNo } from '@/types/randomDefense';
+import type { Storage } from 'wxt/browser';
 import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
 
 interface UseRandomDefenseParams {
@@ -53,8 +54,8 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   }, []);
 
   const updateQuickSlotsIfLocalChanged = (
-    changes: { [key: string]: browser.storage.StorageChange },
-    areaName: browser.storage.AreaName,
+    changes: { [key: string]: Storage.StorageChange },
+    areaName: string,
   ) => {
     if (areaName !== 'local' || !('quickSlots' in changes)) {
       return;

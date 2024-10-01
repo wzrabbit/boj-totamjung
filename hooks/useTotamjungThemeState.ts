@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
 import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { Storage } from 'wxt/browser';
 
 const useTotamjungThemeState = () => {
   const [totamjungTheme, setTotamjungTheme] = useState<TotamjungTheme>('none');
   const [isLoaded, setIsLoaded] = useState(false);
 
   const updateTotamjungThemeIfLocalChanged = (
-    changes: { [key: string]: browser.storage.StorageChange },
-    areaName: browser.storage.AreaName,
+    changes: { [key: string]: Storage.StorageChange },
+    areaName: string,
   ) => {
     if (areaName !== 'local' || !('totamjungTheme' in changes)) {
       return;

@@ -39,6 +39,7 @@ const FONT_INFOS = [
   { name: 'Noto Serif', fontFamily: 'Noto Serif KR' },
   { name: 'Hahmlet', fontFamily: 'Hahmlet' },
   { name: 'Diphylleia', fontFamily: 'Diphylleia' },
+  { name: '쿠키런', fontFamily: 'CookieRun' },
 ];
 
 const AppearanceFieldsetMenu = () => {

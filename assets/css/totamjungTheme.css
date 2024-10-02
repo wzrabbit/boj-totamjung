@@ -2416,6 +2416,10 @@ html[fontNo='25'] #problem-body .problem-text {
   font-family: 'Diphylleia', 'Open Sans', sans-serif !important;
 }
 
+html[fontNo='26'] #problem-body .problem-text {
+  font-family: 'CookieRun', 'Open Sans', sans-serif !important;
+}
+
 /* FOR BOJ EXTENDED */
 html[totamjungTheme='totamjung']
   .table

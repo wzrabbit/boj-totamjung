@@ -9,7 +9,46 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/common/IconButton',
   component: IconButton,
-  argTypes: {},
+  argTypes: {
+    type: {
+      description: '버튼의 `type`입니다.',
+    },
+    name: {
+      description: '버튼에 표시할 텍스트입니다.',
+    },
+    size: {
+      description: '버튼의 크기입니다.',
+    },
+    color: {
+      description: '버튼의 색상입니다.',
+    },
+    iconSrc: {
+      description: '버튼의 좌측에 표시할 아이콘의 경로입니다.',
+      control: false,
+    },
+    disabled: {
+      description: '버튼이 비활성화되어 있는지의 여부입니다.',
+    },
+    ariaLabel: {
+      description: '버튼의 `aria-label`입니다.',
+    },
+    onClick: {
+      description: '버튼이 클릭될 경우 실행시킬 콜백 함수입니다.',
+    },
+    width: {
+      description: '버튼의 가로 길이입니다.',
+      table: {
+        defaultValue: { summary: 'auto' },
+      },
+    },
+    autoFocus: {
+      description:
+        '이 버튼이 생성될 때, 자동으로 포커스를 줄 것인지의 여부입니다.',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
 } satisfies Meta<typeof IconButton>;
 
 export default meta;

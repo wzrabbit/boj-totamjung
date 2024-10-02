@@ -9,7 +9,14 @@ const meta = {
   title:
     'components/RandomDefenseCreateMenu/DifficultyAdjustMenu/TierPresetButton',
   component: TierPresetButton,
-  argTypes: {},
+  argTypes: {
+    rank: {
+      description: '버튼에서 사용할 **랭크**를 의미합니다.',
+    },
+    onClick: {
+      description: '버튼이 클릭될 경우 실행시킬 콜백 함수를 의미합니다.',
+    },
+  },
 } satisfies Meta<typeof TierPresetButton>;
 
 export default meta;

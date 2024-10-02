@@ -9,7 +9,19 @@ import { useState } from 'react';
 const meta = {
   title: 'components/OptionsDataManageMenu/OptionsDataUploadModal',
   component: OptionsDataUploadModal,
-  argTypes: {},
+  argTypes: {
+    open: {
+      description: '이 모달이 열려 있는지의 여부입니다.',
+    },
+    onClose: {
+      description:
+        '이 모달이 닫혀야 할 때 실행시킬 콜백 함수입니다. 사용자가 초기화 작업을 취소했음을 의미합니다.',
+    },
+    onUpload: {
+      description:
+        '토탐정 설정 데이터를 초기화해야 할 때 실행시킬 콜백 함수입니다. 사용자가 최종적으로 초기화 작업을 승인했음을 의미합니다.',
+    },
+  },
 } satisfies Meta<typeof OptionsDataUploadModal>;
 
 export default meta;

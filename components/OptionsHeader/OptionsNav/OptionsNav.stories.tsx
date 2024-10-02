@@ -8,6 +8,14 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/OptionsHeader/OptionsNav',
   component: OptionsNav,
+  argTypes: {
+    selectedCategory: {
+      description: '현재 선택되어 있는 메뉴 카테고리입니다.',
+    },
+    onChange: {
+      description: '카테고리를 변경될 경우 호출할 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof OptionsNav>;
 
 export default meta;

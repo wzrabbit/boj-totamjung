@@ -8,7 +8,18 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/QuickSlotMenu/SlotPagination',
   component: SlotPagination,
-  argTypes: {},
+  argTypes: {
+    selectedSlotNo: {
+      description: '선택되어 있는 슬롯의 번호입니다.',
+    },
+    occupiedSlotNos: {
+      description:
+        '추첨 정보가 있어 비어 있지 않은 슬롯의 번호들의 목록입니다.',
+    },
+    onChange: {
+      description: '슬롯의 정보가 변경되어야 할 때 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof SlotPagination>;
 
 export default meta;

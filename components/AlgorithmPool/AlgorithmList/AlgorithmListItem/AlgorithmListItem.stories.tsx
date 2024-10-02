@@ -8,7 +8,23 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/AlgorithmPool/AlgorithmListItem',
   component: AlgorithmListItem,
-  argTypes: {},
+  argTypes: {
+    id: {
+      description: '알고리즘 분류의 ID입니다.',
+    },
+    name: {
+      description: '알고리즘 분류의 이름입니다.',
+    },
+    isChecked: {
+      description: '알고리즘 분류가 체크되어 있는지의 여부입니다.',
+    },
+    backgroundColor: {
+      description: '메뉴의 색상입니다.',
+    },
+    onChange: {
+      description: '체크 여부가 변경되었을 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof AlgorithmListItem>;
 
 export default meta;

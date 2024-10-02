@@ -8,7 +8,26 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/RandomDefenseHistoryMenu/RandomDefenseHistoryItem',
   component: RandomDefenseHistoryItem,
-  argTypes: {},
+  argTypes: {
+    problemId: {
+      description: '이 추첨 기록의 문제 번호입니다.',
+    },
+    title: {
+      description: '이 추첨 기록의 문제의 제목입니다.',
+    },
+    tier: {
+      description: '이 추첨 기록의 문제에 책정되어 있는 난이도(티어)입니다.',
+    },
+    createdAt: {
+      description: '해당 문제에 대응되는 추첨 결과가 실행된 시각입니다.',
+    },
+    isHidden: {
+      description: '이 추첨 기록의 문제 티어가 가려져 있는지의 여부입니다.',
+    },
+    onDelete: {
+      description: '이 추첨 기록을 지워야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof RandomDefenseHistoryItem>;
 
 export default meta;

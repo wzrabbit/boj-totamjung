@@ -9,7 +9,19 @@ import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
 const meta = {
   title: 'components/RandomDefenseHistoryMenu/RandomDefenseHistoryList',
   component: RandomDefenseHistoryList,
-  argTypes: {},
+  argTypes: {
+    items: {
+      description: '추첨 기록들의 목록입니다.',
+    },
+    isHidden: {
+      description:
+        '추첨 기록들의 티어가 가려져야 하는지의 여부입니다. `true`일 경우 기록에 있는 모든 추첨 기록의 티어를 감춥니다.',
+    },
+    onDelete: {
+      description:
+        '추첨 기록 중 하나가 삭제되어야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof RandomDefenseHistoryList>;
 
 export default meta;

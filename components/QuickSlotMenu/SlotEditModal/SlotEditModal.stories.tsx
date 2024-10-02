@@ -9,7 +9,24 @@ import { useState } from 'react';
 const meta = {
   title: 'components/QuickSlotMenu/SlotEditModal',
   component: SlotEditModal,
-  argTypes: {},
+  argTypes: {
+    title: {
+      description: '모달에 표시할 슬롯의 제목입니다.',
+    },
+    query: {
+      description: '모달에 표시할 슬롯의 쿼리입니다.',
+    },
+    open: {
+      description: '모달이 열려있는지의 여부입니다.',
+    },
+    onClose: {
+      description: '모달을 닫아야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+    onSlotChange: {
+      description:
+        '사용자가 슬롯 정보의 수정을 완료하여 슬롯의 정보가 변경되어야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof SlotEditModal>;
 
 export default meta;

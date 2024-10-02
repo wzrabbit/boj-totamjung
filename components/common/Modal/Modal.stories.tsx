@@ -11,7 +11,17 @@ import { CheckCircleIcon, CloseCircleIcon } from '@/assets/svg';
 const meta = {
   title: 'components/common/Modal',
   component: Modal,
-  argTypes: {},
+  argTypes: {
+    open: {
+      description: '모달이 열려있는지의 여부입니다.',
+    },
+    title: {
+      description: '모달의 제목입니다.',
+    },
+    onClose: {
+      description: '모달을 닫아야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof Modal>;
 
 export default meta;

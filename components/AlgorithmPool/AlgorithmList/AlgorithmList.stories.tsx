@@ -9,7 +9,18 @@ import type { Algorithm } from '@/types/algorithm';
 const meta = {
   title: 'components/AlgorithmPool/AlgorithmList',
   component: AlgorithmList,
-  argTypes: {},
+  argTypes: {
+    items: {
+      description: '알고리즘 분류에 대한 정보로 이루어진 항목들입니다.',
+    },
+    checkedIds: {
+      description: '사용자가 체크해 둔 알고리즘 분류의 ID 목록입니다.',
+    },
+    onChange: {
+      description:
+        '사용자가 체크해 둔 알고리즘 분류의 정보가 변경되었을 경우 호출할 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof AlgorithmList>;
 
 export default meta;

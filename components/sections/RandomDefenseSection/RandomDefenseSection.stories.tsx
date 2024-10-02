@@ -7,6 +7,11 @@ import RandomDefenseSection from './RandomDefenseSection';
 const meta = {
   title: 'components/sections/RandomDefenseSection',
   component: RandomDefenseSection,
+  argTypes: {
+    show: {
+      description: '본 섹션을 표시할 것인지의 여부입니다.',
+    },
+  },
 } satisfies Meta<typeof RandomDefenseSection>;
 
 export default meta;

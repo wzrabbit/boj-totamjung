@@ -9,12 +9,24 @@ const meta = {
   title: 'components/common/Radio',
   component: Radio,
   argTypes: {
+    name: {
+      description: '라디오의 `name`입니다.',
+    },
+    value: {
+      description: '라디오의 `value`입니다.',
+    },
     checked: {
       description: '라디오의 체크 여부를 의미합니다.',
     },
     onChange: {
       description:
         '라디오의 체크 여부가 달라지는 경우 실행하게 될 함수를 의미합니다.',
+    },
+    disabled: {
+      description: '라디오가 비활성화되어 있는지의 여부입니다.',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
     },
   },
 } satisfies Meta<typeof Radio>;

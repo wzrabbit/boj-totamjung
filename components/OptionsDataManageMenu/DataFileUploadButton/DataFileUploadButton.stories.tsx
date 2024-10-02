@@ -8,7 +8,11 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/OptionsDataManageMenu/DataFileUploadButton',
   component: DataFileUploadButton,
-  argTypes: {},
+  argTypes: {
+    onChange: {
+      description: '사용자가 파일을 업로드한 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof DataFileUploadButton>;
 
 export default meta;

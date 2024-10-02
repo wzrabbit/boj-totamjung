@@ -9,7 +9,12 @@ const meta = {
   title:
     'components/RandomDefenseCreateMenu/DifficultyAdjustMenu/TierPresetButtonList',
   component: TierPresetButtonList,
-  argTypes: {},
+  argTypes: {
+    onClick: {
+      description:
+        '이 리스트의 버튼이 클릭되었을 경우 실행시킬 콜백 함수입니다. 이 때 변경해야 하는 티어 범위와 함께 실행됩니다.',
+    },
+  },
 } satisfies Meta<typeof TierPresetButtonList>;
 
 export default meta;

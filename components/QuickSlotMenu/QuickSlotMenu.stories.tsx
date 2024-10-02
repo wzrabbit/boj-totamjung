@@ -9,7 +9,22 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/QuickSlotMenu',
   component: QuickSlotMenu,
-  argTypes: {},
+  argTypes: {
+    quickSlotsInfo: {
+      description:
+        '퀵 슬롯 정보들의 목록을 의미합니다. 이 정보에는 10개의 슬롯에 대한 쿼리 정보, 설정되어 있는 단축키, 선택된 슬롯 번호가 포함됩니다.',
+    },
+    isLoaded: {
+      description: '이 컴포넌트가 로드되었는지를 의미합니다.',
+    },
+    onHotkeyChange: {
+      description: '단축키가 변경되어야 할 때 실행시킬 콜백 함수입니다.',
+    },
+    onSlotChange: {
+      description:
+        '퀵 슬롯의 정보가 변경되어야 할 때 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof QuickSlotMenu>;
 
 export default meta;

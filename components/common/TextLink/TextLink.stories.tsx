@@ -8,6 +8,17 @@ import TextLink from './TextLink';
 const meta = {
   title: 'components/common/TextLink',
   component: TextLink,
+  argTypes: {
+    children: {
+      description: '`children` prop입니다. 여기에 내용을 명시할 수 있습니다.',
+    },
+    fontSize: {
+      description: '텍스트의 폰트 크기입니다.',
+    },
+    href: {
+      description: '클릭 시 이동할 URL입니다.',
+    },
+  },
 } satisfies Meta<typeof TextLink>;
 
 export default meta;

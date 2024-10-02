@@ -8,7 +8,17 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/Widget',
   component: Widget,
-  argTypes: {},
+  argTypes: {
+    theme: {
+      description: '위젯에 적용될 테마입니다.',
+    },
+    onChangeTheme: {
+      description: '테마를 변경해야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+    onToast: {
+      description: '토스트를 띄워야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof Widget>;
 
 export default meta;

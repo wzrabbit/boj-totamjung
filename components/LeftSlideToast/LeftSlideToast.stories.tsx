@@ -10,12 +10,35 @@ const meta = {
   title: 'components/LeftSlideToast',
   component: LeftSlideToast,
   argTypes: {
+    mainIconSrc: {
+      description: '토스트의 좌측에 표시할 큰 아이콘의 파일 경로입니다.',
+    },
+    theme: {
+      description: '본 컴포넌트에 적용할 테마를 의미합니다.',
+      control: 'radio',
+      options: ['none', 'totamjung'],
+    },
     progress: {
+      description:
+        '토스트의 프로그레스 바가 얼마나 차 있는지를 의미합니다. 이 값은 **0 이상 100 이하의 수**여야 합니다.',
       control: {
         type: 'range',
         min: 0,
         max: 100,
       },
+    },
+    title: {
+      description: '토스트의 제목입니다.',
+    },
+    descriptions: {
+      description: '토스트의 제목을 뒷받침할 설명입니다.',
+    },
+    open: {
+      description:
+        '토스트가 열려 있는지(=사용자에게 보이는 상태인지)를 의미합니다.',
+    },
+    onClose: {
+      description: '토스트를 닫아야 할 때 실행시킬 콜백 함수입니다.',
     },
   },
 } satisfies Meta<typeof LeftSlideToast>;

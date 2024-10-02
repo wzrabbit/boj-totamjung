@@ -8,6 +8,15 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/RandomDefenseCreateMenu/AlgorithmSearchInput',
   component: AlgorithmSearchInput,
+  argTypes: {
+    selectedAlgorithmIds: {
+      description: '인풋 컴포넌트에 선택된 알고리즘의 ID 목록입니다.',
+    },
+    onChange: {
+      description:
+        '선택되어 있는 알고리즘의 ID가 변경되어야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof AlgorithmSearchInput>;
 
 export default meta;

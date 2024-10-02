@@ -9,6 +9,21 @@ const meta = {
   title:
     'components/RandomDefenseCreateMenu/AlgorithmSearchInput/MiniAlgorithmButton',
   component: MiniAlgorithmButton,
+  argTypes: {
+    id: {
+      description: '알고리즘 분류의 ID입니다.',
+    },
+    name: {
+      description: '알고리즘 분류의 이름입니다.',
+    },
+    mode: {
+      description:
+        '이 컴포넌트의 **용도**를 의미합니다. 클릭할 경우 해당 알고리즘 분류를 목록에서 추가하는 `add` 모드와, 클릭할 경우 해당 알고리즘 분류를 목록에서 제거하는 `delete` 모드 중 용도에 맞게 하나를 선택하여 사용할 수 있습니다.',
+    },
+    onClick: {
+      description: '클릭되었을 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof MiniAlgorithmButton>;
 
 export default meta;

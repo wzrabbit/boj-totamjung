@@ -8,6 +8,40 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/common/Textarea',
   component: Textarea,
+  argTypes: {
+    width: {
+      description: '컴포넌트의 가로 길이입니다.',
+    },
+    height: {
+      description: '컴포넌트의 세로 길이입니다.',
+    },
+    value: {
+      description: '현재 입력되어 있는 값입니다.',
+    },
+    placeholder: {
+      description:
+        '컴포넌트의 `placeholder`입니다. 입력을 시작하기 전 보여지는 힌트 문구를 의미합니다.',
+    },
+    hasError: {
+      description:
+        '에러 발생 여부입니다. 에러가 발생한 경우에는 컴포넌트의 윤곽선이 붉은색이 됩니다.',
+    },
+    ariaLabel: {
+      description: '컴포넌트의 `aria-label`입니다.',
+    },
+    onChange: {
+      description: '컴포넌트의 값이 변경될 경우 실행시킬 콜백 함수입니다.',
+    },
+    name: {
+      description: '컴포넌트의 `name`입니다.',
+    },
+    minLength: {
+      description: '컴포넌트에 적을 수 있는 최소 문자 수입니다.',
+    },
+    maxLength: {
+      description: '컴포넌트에 적을 수 있는 최대 문자 수입니다.',
+    },
+  },
 } satisfies Meta<typeof Textarea>;
 
 export default meta;

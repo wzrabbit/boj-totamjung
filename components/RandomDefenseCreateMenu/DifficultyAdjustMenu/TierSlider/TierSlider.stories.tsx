@@ -9,7 +9,17 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/RandomDefenseCreateMenu/DifficultyAdjustMenu/TierSlider',
   component: TierSlider,
-  argTypes: {},
+  argTypes: {
+    startTier: {
+      description: '난이도 범위에서의 **시작 티어**입니다.',
+    },
+    endTier: {
+      description: '난이도 범위에서의 **끝 티어**입니다.',
+    },
+    onChange: {
+      description: '난이도 범위가 변경되어야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof TierSlider>;
 
 export default meta;

@@ -8,6 +8,14 @@ import { fn } from '@storybook/test';
 const meta = {
   title: 'components/TierDropdown',
   component: TierDropdown,
+  argTypes: {
+    selectedTier: {
+      description: '현재 선택되어 있는 티어입니다.',
+    },
+    onChange: {
+      description: '티어가 변경되어야 할 때 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof TierDropdown>;
 
 export default meta;

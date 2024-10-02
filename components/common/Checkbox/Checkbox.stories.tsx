@@ -12,6 +12,9 @@ const meta = {
     isChecked: {
       description: '체크박스의 체크 여부를 의미합니다.',
     },
+    ariaLabel: {
+      description: '`aria-label` 속성입니다.',
+    },
     onChange: {
       description:
         '체크박스의 체크 여부가 달라지는 경우 실행하게 될 함수를 의미합니다.',

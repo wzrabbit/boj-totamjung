@@ -106,30 +106,40 @@ const executeInjectionScript = () => {
       );
       const spoqaHanSansNeoStyleElement = document.createElement('style');
       spoqaHanSansNeoStyleElement.innerHTML = `
-      @font-face {
-        font-family: 'Spoqa Han Sans Neo';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff')
-          format('woff');
-        font-weight: 400;
-        font-style: normal;
-      }
+        @font-face {
+          font-family: 'Spoqa Han Sans Neo';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff')
+            format('woff');
+          font-weight: 400;
+          font-style: normal;
+        }
 
-      @font-face {
-        font-family: 'Spoqa Han Sans Neo';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Medium.woff')
-          format('woff');
-        font-weight: 500;
-        font-style: normal;
-      }
+        @font-face {
+          font-family: 'Spoqa Han Sans Neo';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Medium.woff')
+            format('woff');
+          font-weight: 500;
+          font-style: normal;
+        }
 
-      @font-face {
-        font-family: 'Spoqa Han Sans Neo';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Bold.woff')
-          format('woff');
-        font-weight: 700;
-        font-style: normal;
-      }
-    `;
+        @font-face {
+          font-family: 'Spoqa Han Sans Neo';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Bold.woff')
+            format('woff');
+          font-weight: 700;
+          font-style: normal;
+        }
+      `;
+      const cookieRunStyleElement = document.createElement('style');
+      cookieRunStyleElement.innerHTML = `
+        @font-face {
+          font-family: 'CookieRun';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff')
+            format('woff');
+          font-weight: 400;
+          font-style: normal;
+        }
+      `;
 
       [
         pretendardLinkElement,
@@ -138,6 +148,7 @@ const executeInjectionScript = () => {
         fontsLinkElement,
         dunggeunmoNeoLinkElement,
         spoqaHanSansNeoStyleElement,
+        cookieRunStyleElement,
       ].forEach((element) => {
         headElement.appendChild(element);
       });

@@ -25,7 +25,7 @@ const Fieldset = (props: FieldsetProps) => {
     options,
     checkedValue,
     disabled,
-    isVertical,
+    isVertical = false,
     onChange,
   } = props;
 

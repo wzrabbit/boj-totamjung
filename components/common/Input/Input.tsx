@@ -17,7 +17,7 @@ interface InputProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = forwardRef((props: InputProps, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { width, hasError, textAlign, ariaLabel, ...rest } = props;
 
   return (

@@ -67,7 +67,7 @@ const AppearanceFieldsetMenu = () => {
         name="shouldHideTier"
         options={FONT_INFOS.map(({ name, fontFamily, fontSize }, index) => ({
           label: (
-            <S.FontText $fontFamily={fontFamily} $fontSize={fontSize}>
+            <S.FontText $fontFamily={fontFamily} $fontSize={fontSize ?? '16px'}>
               {name}
             </S.FontText>
           ),

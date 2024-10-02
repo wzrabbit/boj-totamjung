@@ -18,7 +18,7 @@ interface RadioWithoutValue {
 }
 
 const Radio = (props: RadioProps) => {
-  const { checked, disabled } = props;
+  const { checked, disabled = false } = props;
 
   return (
     <S.Label>

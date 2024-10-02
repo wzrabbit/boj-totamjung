@@ -38,7 +38,7 @@ const TIER_RANGE = {
   },
 } as const;
 
-const TierPresetButtonProps = (props: TierPresetButtonProps) => {
+const TierPresetButton = (props: TierPresetButtonProps) => {
   const { rank, onClick } = props;
 
   return (
@@ -57,4 +57,4 @@ const TierPresetButtonProps = (props: TierPresetButtonProps) => {
   );
 };
 
-export default TierPresetButtonProps;
+export default TierPresetButton;

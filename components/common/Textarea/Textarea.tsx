@@ -16,20 +16,22 @@ interface TextareaProps {
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const Textarea = forwardRef((props: TextareaProps, ref) => {
-  const { width, height, hasError, ariaLabel, ...rest } = props;
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  (props, ref) => {
+    const { width, height, hasError, ariaLabel, ...rest } = props;
 
-  return (
-    <S.Textarea
-      $width={width}
-      $height={height}
-      $hasError={hasError}
-      spellCheck={false}
-      aria-label={ariaLabel}
-      ref={ref}
-      {...rest}
-    />
-  );
-});
+    return (
+      <S.Textarea
+        $width={width}
+        $height={height}
+        $hasError={hasError}
+        spellCheck={false}
+        aria-label={ariaLabel}
+        ref={ref}
+        {...rest}
+      />
+    );
+  },
+);
 
 export default Textarea;

@@ -1,7 +1,7 @@
-import type { SVGProps } from 'react';
+import type { SVGProps, ReactElement } from 'react';
 
 export interface ToastInfo {
   title: string;
   descriptions?: string | string[];
-  mainIconSrc: string | SVGProps<SVGSVGElement>;
+  mainIconSrc: string | ReactElement<SVGProps<SVGSVGElement>>;
 }

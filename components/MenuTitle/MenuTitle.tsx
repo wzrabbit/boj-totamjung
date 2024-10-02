@@ -1,8 +1,8 @@
-import type { SVGProps } from 'react';
+import type { SVGProps, ReactElement } from 'react';
 import * as S from './MenuTitle.styled';
 
 interface MenuTitleProps {
-  iconSrc: string | SVGProps<SVGSVGElement>;
+  iconSrc: string | ReactElement<SVGProps<SVGSVGElement>>;
   title: string;
 }
 

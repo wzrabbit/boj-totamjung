@@ -15,7 +15,7 @@ interface OptionsDataUploadModalProps {
 
 const DATA_UPLOAD_CONFIRM_TEXT = '숙지했습니다';
 
-const OptionsDataResetModal = (props: OptionsDataUploadModalProps) => {
+const OptionsDataUploadModal = (props: OptionsDataUploadModalProps) => {
   const { open, onClose, onUpload } = props;
   const { inputValue, isSameWithConfirmText, updateInputValue } =
     useConfirmInput({
@@ -85,4 +85,4 @@ const OptionsDataResetModal = (props: OptionsDataUploadModalProps) => {
   );
 };
 
-export default OptionsDataResetModal;
+export default OptionsDataUploadModal;

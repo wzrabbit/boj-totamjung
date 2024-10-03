@@ -80,14 +80,20 @@ const useAlgorithmSearchInput = (params: UseAlgorithmSearchInputParams) => {
       setIsOpen(containerElement.contains(document.activeElement));
     };
 
+    const focusInputElementOnClick = () => {
+      inputElement.focus();
+    };
+
     document.addEventListener('mousedown', updateOpenStateOnMouseDown);
     document.addEventListener('focusin', updateOpenStateOnFocus);
     document.addEventListener('focusout', updateOpenStateOnFocus);
+    containerElement.addEventListener('click', focusInputElementOnClick);
 
     return () => {
       document.removeEventListener('mousedown', updateOpenStateOnMouseDown);
       document.removeEventListener('focusin', updateOpenStateOnFocus);
       document.removeEventListener('focusout', updateOpenStateOnFocus);
+      containerElement.removeEventListener('click', focusInputElementOnClick);
     };
   }, [containerRef, inputRef]);
 

@@ -36,7 +36,7 @@ export const InputPanel = styled.ul`
 
   position: relative;
 
-  height: 64px;
+  height: 65px;
 
   z-index: 1;
   cursor: text;

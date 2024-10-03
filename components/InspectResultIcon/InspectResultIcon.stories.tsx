@@ -7,6 +7,17 @@ import InspectResultIcon from './InspectResultIcon';
 const meta = {
   title: 'components/InspectResultIcon',
   component: InspectResultIcon,
+  argTypes: {
+    theme: {
+      description: '본 컴포넌트에 적용할 테마를 의미합니다.',
+      control: 'radio',
+      options: ['none', 'totamjung'],
+    },
+    icon: {
+      description: '아이콘의 종류를 의미합니다.',
+      control: 'radio',
+    },
+  },
 } satisfies Meta<typeof InspectResultIcon>;
 
 export default meta;

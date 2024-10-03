@@ -7,6 +7,11 @@ import HiderSection from './HiderSection';
 const meta = {
   title: 'components/sections/HiderSection',
   component: HiderSection,
+  argTypes: {
+    show: {
+      description: '본 섹션을 표시할 것인지의 여부입니다.',
+    },
+  },
 } satisfies Meta<typeof HiderSection>;
 
 export default meta;

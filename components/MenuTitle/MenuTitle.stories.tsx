@@ -8,7 +8,15 @@ import MenuTitle from './MenuTitle';
 const meta = {
   title: 'components/MenuTitle',
   component: MenuTitle,
-  argTypes: {},
+  argTypes: {
+    iconSrc: {
+      description: '제목 컴포넌트에서 표시할 좌측의 아이콘을 의미합니다.',
+      control: false,
+    },
+    title: {
+      description: '제목 컴포넌트에 표시할 제목을 의미합니다.',
+    },
+  },
 } satisfies Meta<typeof MenuTitle>;
 
 export default meta;

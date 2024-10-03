@@ -10,7 +10,7 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions'
+    '@storybook/addon-interactions',
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -18,6 +18,9 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: true,
+  },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
   },
   viteFinal: async (config) => {
     if (config.resolve) {

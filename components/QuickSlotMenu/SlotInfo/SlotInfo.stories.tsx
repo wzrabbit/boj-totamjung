@@ -7,7 +7,17 @@ import SlotInfo from './SlotInfo';
 const meta = {
   title: 'components/QuickSlotMenu/SlotInfo',
   component: SlotInfo,
-  argTypes: {},
+  argTypes: {
+    isEmpty: {
+      description: '해당하는 슬롯이 비어 있는지의 여부입니다.',
+    },
+    title: {
+      description: '슬롯에 저장된 추첨의 제목(=이름)입니다.',
+    },
+    query: {
+      description: '슬롯에 저장된 추첨의 쿼리 정보입니다.',
+    },
+  },
 } satisfies Meta<typeof SlotInfo>;
 
 export default meta;

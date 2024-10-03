@@ -47,146 +47,229 @@
   }
 </style>
 <script>
+  const STORAGE_KEY = {
+    DATA_VERSION: 'dataVersion',
+    CHECKED_ALGORITHM_IDS: 'checkedAlgorithmIds',
+    QUICK_SLOTS: 'quickSlots',
+    TOTAMJUNG_THEME: 'totamjungTheme',
+    HIDER_OPTIONS: 'hiderOptions',
+    RANDOM_DEFENSE_HISTORY: 'randomDefenseHistory',
+    IS_TIER_HIDDEN: 'isTierHidden',
+    FONT_NO: 'fontNo',
+    TIMERS: 'timers',
+  };
+
+  const COMMANDS = {
+    FETCH_CHECKED_ALGORITHM_IDS: 'fetchCheckedAlgorithmIds',
+    FETCH_QUICK_SLOTS: 'fetchQuickSlots',
+    FETCH_TOTAMJUNG_THEME: 'fetchTotamjungTheme',
+    FETCH_HIDER_OPTIONS: 'fetchHiderOptions',
+    FETCH_OPTIONS_DATA: 'fetchOptionsData',
+    SAVE_AND_GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
+    GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
+    OPEN_OPTIONS_PAGE: 'openOptionsPage',
+  };
+
+  const checkedAlgorithmIds = [1, 2, 4, 8];
+
+  const randomDefenseHistory = [
+    {
+      problemId: 27959,
+      title: '초코바',
+      tier: 1,
+      createdAt: '2024-03-04T01:00:00.000Z',
+    },
+    {
+      problemId: 27964,
+      title: '콰트로치즈피자',
+      tier: 6,
+      createdAt: '2024-03-02T06:04:10.000Z',
+    },
+    {
+      problemId: 27943,
+      title: '가지 사진 찾기',
+      tier: 11,
+      createdAt: '2024-02-29T22:12:33.040Z',
+    },
+    {
+      problemId: 27470,
+      title: '멋진 부분집합',
+      tier: 16,
+      createdAt: '2024-02-29T22:10:33.127Z',
+    },
+    {
+      problemId: 30243,
+      title: '🧩 N-Queen (Hard)',
+      tier: 21,
+      createdAt: '2023-01-11T10:20:44.790Z',
+    },
+    {
+      problemId: 31442,
+      title: '좋은 수열',
+      tier: 26,
+      createdAt: '2023-01-11T10:20:44.789Z',
+    },
+    {
+      problemId: 1223,
+      title: '마법의 돌',
+      tier: 0,
+      createdAt: '2022-03-17T18:00:40.000Z',
+    },
+    {
+      problemId: 27903,
+      title: '인생',
+      tier: 31,
+      createdAt: '2022-03-15T00:00:00.000Z',
+    },
+  ];
+
+  const isTierHidden = false;
+
+  const quickSlotsResponse = {
+    selectedSlotNo: 1,
+    hotkey: 'Alt',
+    slots: {
+      1: { isEmpty: true },
+      2: {
+        isEmpty: false,
+        title: '골드 랜덤 디펜스',
+        query: '*11..15 s#3000.. solvable:true',
+      },
+      3: { isEmpty: true },
+      4: {
+        isEmpty: false,
+        title: '외국어 문제 풀어보기',
+        query: '*5..20 !lang:ko solvable:true',
+      },
+      5: { isEmpty: true },
+      6: { isEmpty: true },
+      7: { isEmpty: true },
+      8: {
+        isEmpty: false,
+        title: '이추첨의이름은정확히삼십글자이며이렇게하는이유는테스트를위함',
+        query:
+          '*1..30 (-#rope-#bayes-#knuth-#dancing_links-#differential_cryptanalysis-#discrete_sqrt-#lgv-#green-#stoer_wagner-#multipoint_evaluation-#lte-#geometric_boolean_operations-#a_star-#discrete_kth_root)',
+      },
+      9: { isEmpty: true },
+      0: { isEmpty: true },
+    },
+  };
+
+  const hiderOptionsResponse = {
+    problemTagLockDuration: {
+      hours: 1,
+      minutes: 30,
+    },
+    shouldHideTier: true,
+    shouldWarnHighTier: true,
+    warnTier: 16,
+    algorithmHiderUsage: 'always',
+    problemTagLockUsage: 'click',
+  };
+
+  const totamjungTheme = 'totamjung';
+
+  const fontNo = 22;
+
   var process = {
     env: {
       BUILD_DATE: new Date().toLocaleDateString('ko-KR'),
     },
   };
+
   var browser = {
     runtime: {
-      getURL: (path) => path,
       getManifest: () => ({ version: 'Test', manifest_version: 3 }),
+      getURL: (path) => path,
       sendMessage: async ({ command, message }, callback) => {
-        if (command === 'openOptionsPage') {
-          alert(
-            '이 alert가 뜬다면, 실제 실행 환경에서는 설정 페이지가 뜰 것입니다.',
-          );
+        switch (command) {
+          case COMMANDS.FETCH_CHECKED_ALGORITHM_IDS:
+            return { checkedIds: checkedAlgorithmIds };
+          case COMMANDS.FETCH_HIDER_OPTIONS:
+            return hiderOptionsResponse;
+          case COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME:
+            return 0;
+          case COMMANDS.FETCH_QUICK_SLOTS:
+            return quickSlotsResponse;
+          case COMMANDS.GET_RANDOM_DEFENSE_RESULT:
+            return {
+              success: false,
+              errorMessage: '테스트!',
+              errorDescriptions: [
+                '이 테스트 메시지가 디버그 도구에 표시된다면, 랜덤 디펜스가 진행되었음을 의미하는 것입니다.',
+              ],
+            };
+          case COMMANDS.OPEN_OPTIONS_PAGE:
+            if (command === 'openOptionsPage') {
+              alert(
+                '이 alert가 뜬다면, 실제 실행 환경에서는 설정 페이지가 뜰 것입니다.',
+              );
+            }
+            return;
+          default:
+            console.error(
+              `알 수 없는 메시지가 전달되었습니다: 메시지명이 올바른지, 테스트 데이터를 채우는 것을 까먹지 않았는지 다시 점검해 보세요.`,
+              { command, message },
+            );
         }
+      },
+    },
 
-        if (command === 'fetchCheckedAlgorithmIds') {
-          return {
-            checkedIds: [1, 2, 3],
-          };
-        }
+    storage: {
+      onChanged: {
+        addListener: () => {},
+        removeListener: () => {},
+      },
 
-        if (command === 'fetchRandomDefenseHistory') {
-          const randomDefenseHistory = [
-            {
-              problemId: 27959,
-              title: '초코바',
-              tier: 1,
-              createdAt: '2024-03-04T01:00:00.000Z',
-            },
-            {
-              problemId: 27964,
-              title: '콰트로치즈피자',
-              tier: 6,
-              createdAt: '2024-03-02T06:04:10.000Z',
-            },
-            {
-              problemId: 27943,
-              title: '가지 사진 찾기',
-              tier: 11,
-              createdAt: '2024-02-29T22:12:33.040Z',
-            },
-            {
-              problemId: 27470,
-              title: '멋진 부분집합',
-              tier: 16,
-              createdAt: '2024-02-29T22:10:33.127Z',
-            },
-            {
-              problemId: 30243,
-              title: '🧩 N-Queen (Hard)',
-              tier: 21,
-              createdAt: '2023-01-11T10:20:44.790Z',
-            },
-            {
-              problemId: 31442,
-              title: '좋은 수열',
-              tier: 26,
-              createdAt: '2023-01-11T10:20:44.789Z',
-            },
-            {
-              problemId: 1223,
-              title: '마법의 돌',
-              tier: 0,
-              createdAt: '2022-03-17T18:00:40.000Z',
-            },
-            {
-              problemId: 27903,
-              title: '인생',
-              tier: 31,
-              createdAt: '2022-03-15T00:00:00.000Z',
-            },
-          ];
+      local: {
+        get: (command) => {
+          const commandList = typeof command === 'string' ? [command] : command;
+          const response = {};
 
-          return {
-            randomDefenseHistory,
-            isHidden: false,
-          };
-        }
+          commandList.forEach((currentCommand) => {
+            switch (currentCommand) {
+              case STORAGE_KEY.CHECKED_ALGORITHM_IDS:
+                Object.assign(response, { checkedAlgorithmIds });
+                break;
 
-        if (command === 'fetchQuickSlots') {
-          return {
-            selectedSlotNo: 1,
-            hotkey: 'Alt',
-            slots: {
-              1: { isEmpty: true },
-              2: {
-                isEmpty: false,
-                title: '골드 랜덤 디펜스',
-                query: '*11..15 s#3000.. solvable:true',
-              },
-              3: { isEmpty: true },
-              4: {
-                isEmpty: false,
-                title: '외국어 문제 풀어보기',
-                query: '*5..20 !lang:ko solvable:true',
-              },
-              5: { isEmpty: true },
-              6: { isEmpty: true },
-              7: { isEmpty: true },
-              8: {
-                isEmpty: false,
-                title:
-                  '이추첨의이름은정확히삼십글자이며이렇게하는이유는테스트를위함',
-                query:
-                  '*1..30 (-#rope-#bayes-#knuth-#dancing_links-#differential_cryptanalysis-#discrete_sqrt-#lgv-#green-#stoer_wagner-#multipoint_evaluation-#lte-#geometric_boolean_operations-#a_star-#discrete_kth_root)',
-              },
-              9: { isEmpty: true },
-              0: { isEmpty: true },
-            },
-          };
-        }
+              case STORAGE_KEY.RANDOM_DEFENSE_HISTORY:
+                Object.assign(response, { randomDefenseHistory });
+                break;
 
-        if (command === 'fetchTotamjungTheme') {
-          return {
-            totamjungTheme: 'none',
-          };
-        }
+              case STORAGE_KEY.IS_TIER_HIDDEN:
+                Object.assign(response, { isTierHidden });
+                break;
 
-        if (command === 'fetchHiderOptions') {
-          return {
-            problemTagLockDuration: {
-              hours: 1,
-              minutes: 30,
-            },
-            shouldHideTier: true,
-            shouldWarnHighTier: true,
-            warnTier: 16,
-            algorithmHiderUsage: 'always',
-            problemTagLockUsage: 'click',
-          };
-        }
+              case STORAGE_KEY.HIDER_OPTIONS:
+                Object.assign(response, { hiderOptionsResponse });
+                break;
 
-        if (command === 'fetchFontNo') {
-          return {
-            fontNo: 10,
-          };
-        }
+              case STORAGE_KEY.QUICK_SLOTS:
+                Object.assign(response, quickSlotsResponse);
+                break;
 
-        return {};
+              case STORAGE_KEY.TOTAMJUNG_THEME:
+                Object.assign(response, { totamjungTheme });
+                break;
+
+              case STORAGE_KEY.FONT_NO:
+                Object.assign(response, { fontNo });
+                break;
+
+              default:
+                console.error(
+                  `알 수 없는 커맨드가 전달되었습니다: ${currentCommand}\n커맨드명이 올바른지, 테스트 데이터를 채우는 것을 까먹지 않았는지 다시 점검해 보세요.`,
+                );
+            }
+          });
+
+          return response;
+        },
+
+        set: (object) => {
+          console.log('browser.storage.local.set 호출!');
+          console.log(object);
+        },
       },
     },
   };

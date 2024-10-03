@@ -9,6 +9,18 @@ import ErrorText from './ErrorText';
 const meta = {
   title: 'components/common/ErrorText',
   component: ErrorText,
+  argTypes: {
+    fontSize: {
+      description: '에러 메시지의 폰트 크기입니다.',
+    },
+    errorMessage: {
+      description: '에러 메시지에 보여질 텍스트입니다.',
+    },
+    height: {
+      description:
+        '에러 메시지의 높이입니다. 이 값은 필수로 명시하지 않아도 되며, 에러 메시지가 길어져 컴포넌트의 범위를 벗어날 가능성이 있을 경우 미리 컴포넌트의 높이를 설정해둘 때 사용할 수 있습니다.',
+    },
+  },
 } satisfies Meta<typeof ErrorText>;
 
 export default meta;

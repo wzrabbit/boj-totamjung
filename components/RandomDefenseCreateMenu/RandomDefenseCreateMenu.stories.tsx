@@ -7,7 +7,18 @@ import RandomDefenseCreateMenu from './RandomDefenseCreateMenu';
 const meta = {
   title: 'components/RandomDefenseCreateMenu',
   component: RandomDefenseCreateMenu,
-  argTypes: {},
+  argTypes: {
+    selectedSlotNo: {
+      description: '현재 선택되어 있는 슬롯의 번호입니다.',
+    },
+    isLoaded: {
+      description: '본 컴포넌트가 로드되었는지를 의미합니다.',
+    },
+    onSubmit: {
+      description:
+        '사용자가 추첨 생성 버튼을 눌러 새로운 추첨 결과를 생성하기 위해 정보를 보낼 때 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof RandomDefenseCreateMenu>;
 
 export default meta;

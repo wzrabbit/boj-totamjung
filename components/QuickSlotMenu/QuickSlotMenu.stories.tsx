@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import QuickSlotMenu from './QuickSlotMenu';
 import type { QuickSlotsResponse } from '@/types/randomDefense';
+import { fn } from '@storybook/test';
 
 /**
  * `QuickSlotMenu`는 추첨 생성 폼을 통해 생성된 연습 쿼리들을 관리할 수 있는 메뉴 형태의 컴포넌트입니다.
@@ -8,7 +9,22 @@ import type { QuickSlotsResponse } from '@/types/randomDefense';
 const meta = {
   title: 'components/QuickSlotMenu',
   component: QuickSlotMenu,
-  argTypes: {},
+  argTypes: {
+    quickSlotsInfo: {
+      description:
+        '퀵 슬롯 정보들의 목록을 의미합니다. 이 정보에는 10개의 슬롯에 대한 쿼리 정보, 설정되어 있는 단축키, 선택된 슬롯 번호가 포함됩니다.',
+    },
+    isLoaded: {
+      description: '이 컴포넌트가 로드되었는지를 의미합니다.',
+    },
+    onHotkeyChange: {
+      description: '단축키가 변경되어야 할 때 실행시킬 콜백 함수입니다.',
+    },
+    onSlotChange: {
+      description:
+        '퀵 슬롯의 정보가 변경되어야 할 때 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof QuickSlotMenu>;
 
 export default meta;
@@ -49,17 +65,9 @@ export const Default: Story = {
   args: {
     quickSlotsInfo: quickSlotsResponse,
     isLoaded: true,
-    onHotkeyChange: (hotkey) => {
-      alert(`onHotkeyChange('${hotkey}')`);
-    },
-    onSlotChange: (title: string, query: string) => {
-      alert(`onSlotChange('${title}', '${query}')`);
-    },
-    onSlotDelete: () => {
-      alert(`onSlotDelete()`);
-    },
-    onSlotNoChange: (slotNo) => {
-      alert(`onSlotNoChange(${slotNo})`);
-    },
+    onHotkeyChange: fn(),
+    onSlotChange: fn(),
+    onSlotDelete: fn(),
+    onSlotNoChange: fn(),
   },
 };

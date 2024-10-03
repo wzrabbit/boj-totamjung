@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Switch from './Switch';
+import { fn } from '@storybook/test';
 
 /**
  * `Switch`는 공용 스위치 컴포넌트입니다.
@@ -8,12 +9,18 @@ const meta = {
   title: 'components/common/Switch',
   component: Switch,
   argTypes: {
+    size: {
+      description: '스위치의 크기입니다.',
+    },
     isChecked: {
-      description: '스위치의 체크 여부를 의미합니다.',
+      description: '스위치의 체크 여부입니다.',
+    },
+    ariaLabel: {
+      description: '스위치의 `aria-label`입니다.',
     },
     onChange: {
       description:
-        '스위치의 체크 여부가 달라지는 경우 실행하게 될 함수를 의미합니다.',
+        '스위치의 체크 여부가 달라지는 경우 실행하게 될 콜백 함수입니다.',
     },
   },
 } satisfies Meta<typeof Switch>;
@@ -27,9 +34,7 @@ export const LargeChecked: Story = {
     size: 'large',
     isChecked: true,
     ariaLabel: '테스트',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };
 
@@ -38,9 +43,7 @@ export const LargeNotChecked: Story = {
     size: 'large',
     isChecked: false,
     ariaLabel: '테스트',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };
 
@@ -49,9 +52,7 @@ export const MediumChecked: Story = {
     size: 'medium',
     isChecked: true,
     ariaLabel: '테스트',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };
 
@@ -60,8 +61,6 @@ export const MediumNotChecked: Story = {
     size: 'medium',
     isChecked: false,
     ariaLabel: '테스트',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Checkbox from './Checkbox';
+import { fn } from '@storybook/test';
 
 /**
  * `Checkbox`는 공용 체크박스 컴포넌트입니다. 크기가 작기 때문에 단독으로 쓰이기보다는 다른 요소들과 같이 쓰입니다.
@@ -10,6 +11,9 @@ const meta = {
   argTypes: {
     isChecked: {
       description: '체크박스의 체크 여부를 의미합니다.',
+    },
+    ariaLabel: {
+      description: '`aria-label` 속성입니다.',
     },
     onChange: {
       description:
@@ -26,9 +30,7 @@ export const Checked: Story = {
   args: {
     isChecked: true,
     ariaLabel: '다이나믹 프로그래밍',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };
 
@@ -36,8 +38,6 @@ export const NotChecked: Story = {
   args: {
     isChecked: false,
     ariaLabel: '다이나믹 프로그래밍',
-    onChange: () => {
-      alert('onChange()');
-    },
+    onChange: fn(),
   },
 };

@@ -9,6 +9,43 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'components/common/SimpleModal',
   component: SimpleModal,
+  argTypes: {
+    actionType: {
+      description:
+        '모달의 **종류**입니다. 어느 옵션을 선택하느냐에 따라 모달의 하단에 표시되는 버튼의 종류가 달라집니다.',
+    },
+    width: {
+      description: '모달의 가로 길이입니다.',
+    },
+    height: {
+      description: '모달의 세로 길이입니다.',
+    },
+    title: {
+      description: '모달에 표시될 제목입니다.',
+    },
+    message: {
+      description: '모달에 표시할 내용입니다.',
+    },
+    open: {
+      description: '모달이 열려있는 지의 여부입니다.',
+    },
+    onClose: {
+      description:
+        '모달이 닫혀야 할 경우 실행시킬 콜백 함수입니다. **`actionType`가 `confirm`인 경우 확인 버튼을 눌렀을 때 이 함수가 호출됩니다.**',
+    },
+    onConfirm: {
+      description:
+        '모달에서 **확인** 버튼을 누를 경우 실행시킬 콜백 함수입니다. **`actionType`가 `cancelConfirm`인 경우에만 적용됩니다.**',
+    },
+    onYesSelect: {
+      description:
+        '모달에서 **예** 버튼을 누를 경우 실행시킬 콜백 함수입니다. **`actionType`가 `yesNo`인 경우에만 적용됩니다.**',
+    },
+    onNoSelect: {
+      description:
+        '모달에서 **아니요** 버튼을 누를 경우 실행시킬 콜백 함수입니다. **`actionType`가 `yesNo`인 경우에만 적용됩니다.**',
+    },
+  },
 } satisfies Meta<typeof SimpleModal>;
 
 export default meta;

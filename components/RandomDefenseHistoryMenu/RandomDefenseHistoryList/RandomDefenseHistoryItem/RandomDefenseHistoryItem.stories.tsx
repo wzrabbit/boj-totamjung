@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import RandomDefenseHistoryItem from './RandomDefenseHistoryItem';
+import { fn } from '@storybook/test';
 
 /**
  * `RandomDefenseHistoryItem`는 추첨 기록에서 추첨된 문제 하나의 정보를 보여주는 컴포넌트입니다.
@@ -7,7 +8,26 @@ import RandomDefenseHistoryItem from './RandomDefenseHistoryItem';
 const meta = {
   title: 'components/RandomDefenseHistoryMenu/RandomDefenseHistoryItem',
   component: RandomDefenseHistoryItem,
-  argTypes: {},
+  argTypes: {
+    problemId: {
+      description: '이 추첨 기록의 문제 번호입니다.',
+    },
+    title: {
+      description: '이 추첨 기록의 문제의 제목입니다.',
+    },
+    tier: {
+      description: '이 추첨 기록의 문제에 책정되어 있는 난이도(티어)입니다.',
+    },
+    createdAt: {
+      description: '해당 문제에 대응되는 추첨 결과가 실행된 시각입니다.',
+    },
+    isHidden: {
+      description: '이 추첨 기록의 문제 티어가 가려져 있는지의 여부입니다.',
+    },
+    onDelete: {
+      description: '이 추첨 기록을 지워야 할 경우 실행시킬 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof RandomDefenseHistoryItem>;
 
 export default meta;
@@ -21,9 +41,7 @@ export const Bronze: Story = {
     tier: 1,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -34,9 +52,7 @@ export const Silver: Story = {
     tier: 6,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -47,9 +63,7 @@ export const Gold: Story = {
     tier: 11,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -60,9 +74,7 @@ export const Platinum: Story = {
     tier: 16,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -73,9 +85,7 @@ export const Diamond: Story = {
     tier: 21,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -86,9 +96,7 @@ export const Ruby: Story = {
     tier: 26,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -99,9 +107,7 @@ export const Unrated: Story = {
     tier: 0,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -112,9 +118,7 @@ export const NotRatable: Story = {
     tier: 31,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -125,9 +129,7 @@ export const Hidden: Story = {
     tier: 1,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: true,
-    onDelete: () => {
-      alert(`onDelete()`);
-    },
+    onDelete: fn(),
   },
 };
 
@@ -138,8 +140,6 @@ export const LongTitle: Story = {
     tier: 15,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
-    onDelete: () => {
-      alert('onDelete()');
-    },
+    onDelete: fn(),
   },
 };

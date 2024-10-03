@@ -9,7 +9,14 @@ import { useState } from 'react';
 const meta = {
   title: 'components/OptionsHeader/TotamjungInfoModal',
   component: TotamjungInfoModal,
-  argTypes: {},
+  argTypes: {
+    open: {
+      description: '모달이 열려있는 지의 여부입니다.',
+    },
+    onClose: {
+      description: '모달을 닫아야 할 경우 실행할 콜백 함수입니다.',
+    },
+  },
 } satisfies Meta<typeof TotamjungInfoModal>;
 
 export default meta;

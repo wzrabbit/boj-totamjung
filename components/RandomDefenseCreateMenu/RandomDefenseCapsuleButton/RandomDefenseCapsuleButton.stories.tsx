@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import RandomDefenseCapsuleButton from './RandomDefenseCapsuleButton';
+import { fn } from '@storybook/test';
 
 /**
  * `RandomDefenseCapsuleButton`는 추첨 생성 메뉴에서 모드를 스위칭할 수 있는 캡슐 모양의 버튼입니다.
@@ -17,17 +18,13 @@ type Story = StoryObj<typeof meta>;
 export const EasyMode: Story = {
   args: {
     mode: 'easy',
-    onClick: (mode) => {
-      alert(`onClick('${mode}')`);
-    },
+    onClick: fn(),
   },
 };
 
 export const ManualMode: Story = {
   args: {
     mode: 'manual',
-    onClick: (mode) => {
-      alert(`onClick('${mode}')`);
-    },
+    onClick: fn(),
   },
 };

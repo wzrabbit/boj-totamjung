@@ -7,6 +7,11 @@ import AppearanceAndDataManageSection from './AppearanceAndDataManageSection';
 const meta = {
   title: 'components/sections/AppearanceAndDataManageSection',
   component: AppearanceAndDataManageSection,
+  argTypes: {
+    show: {
+      description: '본 섹션을 표시할 것인지의 여부입니다.',
+    },
+  },
 } satisfies Meta<typeof AppearanceAndDataManageSection>;
 
 export default meta;

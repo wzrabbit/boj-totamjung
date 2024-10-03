@@ -50,7 +50,7 @@ const AppearanceFieldsetMenu = () => {
     <S.Container>
       <MenuTitle
         title="테마 설정"
-        iconSrc={browser.runtime.getURL('palette.png')}
+        iconSrc={browser.runtime.getURL('/palette.png')}
       />
       <Fieldset
         legend="토탐정 테마 사용 여부"
@@ -68,7 +68,7 @@ const AppearanceFieldsetMenu = () => {
         name="shouldHideTier"
         options={FONT_INFOS.map(({ name, fontFamily, fontSize }, index) => ({
           label: (
-            <S.FontText $fontFamily={fontFamily} $fontSize={fontSize}>
+            <S.FontText $fontFamily={fontFamily} $fontSize={fontSize ?? '16px'}>
               {name}
             </S.FontText>
           ),

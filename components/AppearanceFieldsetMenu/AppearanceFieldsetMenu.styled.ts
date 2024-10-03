@@ -13,6 +13,6 @@ export const Container = styled.div`
 
 export const FontText = styled.p<{ $fontFamily: string; $fontSize: string }>`
   color: ${({ theme }) => theme.color.LEMON};
-  font-size: ${({ $fontSize }) => $fontSize ?? '16px'};
+  font-size: ${({ $fontSize }) => $fontSize};
   font-family: ${({ $fontFamily }) => $fontFamily};
 `;

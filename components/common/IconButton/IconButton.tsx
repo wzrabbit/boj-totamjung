@@ -1,12 +1,12 @@
 import * as S from './IconButton.styled';
-import { SVGProps } from 'react';
+import type { ReactElement, SVGProps } from 'react';
 
 interface CommonIconButtonProps {
   name: string;
   size: 'large' | 'medium';
   width?: string;
   color: string;
-  iconSrc?: string | SVGProps<SVGSVGElement>;
+  iconSrc?: string | ReactElement<SVGProps<SVGSVGElement>>;
   disabled: boolean;
   ariaLabel: string;
   autoFocus?: boolean;

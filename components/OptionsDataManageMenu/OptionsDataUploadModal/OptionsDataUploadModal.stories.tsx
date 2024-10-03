@@ -42,7 +42,7 @@ export const Default: Story = {
           disabled={false}
           ariaLabel="모달 열기"
           onClick={() => {
-            setIsOpen(() => true);
+            setIsOpen(true);
           }}
         />
         <OptionsDataUploadModal
@@ -51,13 +51,13 @@ export const Default: Story = {
             alert(
               'onClose()를 실행시켰습니다. 이는 사용자가 작업을 취소했음을 의미합니다.',
             );
-            setIsOpen(() => false);
+            setIsOpen(false);
           }}
           onUpload={() => {
             alert(
               'onUpload()을 실행시켰습니다. 이는 사용자가 초기화를 수락한 경우입니다.',
             );
-            setIsOpen(() => false);
+            setIsOpen(false);
           }}
         />
       </>

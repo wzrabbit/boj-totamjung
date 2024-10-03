@@ -76,7 +76,7 @@ export const TextModal: Story = {
           disabled={false}
           ariaLabel="모달 열기"
           onClick={() => {
-            setIsOpen(() => true);
+            setIsOpen(true);
           }}
         />
       </div>
@@ -85,6 +85,7 @@ export const TextModal: Story = {
   args: {
     open: false,
     title: '테스트용 알림창',
+    onClose: () => {},
   },
 };
 
@@ -123,7 +124,7 @@ export const TextModal: Story = {
  *       ariaLabel="취소"
  *       onClick={() => {
  *          alert('민트초코의 위대함을 모르는 당신이 불쌍해');
- *          setIsOpen(() => false);
+ *          setIsOpen(false);
  *       }}
  *     />
  *     <IconButton
@@ -136,7 +137,7 @@ export const TextModal: Story = {
  *       ariaLabel="확인"
  *       onClick={() => {
  *         alert('그럴 바엔 치약을 3,000개 구매하는 게 낫지 않나요?');
- *         setIsOpen(() => false);
+ *         setIsOpen(false);
  *       }}
  *     />
  *   </ModalActionButtonsContainer>
@@ -178,7 +179,7 @@ export const TextWithControlButtons: Story = {
               ariaLabel="취소"
               onClick={() => {
                 alert('민트초코의 위대함을 모르는 당신이 불쌍해');
-                setIsOpen(() => false);
+                setIsOpen(false);
               }}
             />
             <IconButton
@@ -191,7 +192,7 @@ export const TextWithControlButtons: Story = {
               ariaLabel="확인"
               onClick={() => {
                 alert('그럴 바엔 치약을 3,000개 구매하는 게 낫지 않나요?');
-                setIsOpen(() => false);
+                setIsOpen(false);
               }}
             />
           </ModalActionButtonsContainer>
@@ -204,7 +205,7 @@ export const TextWithControlButtons: Story = {
           disabled={false}
           ariaLabel="모달 열기"
           onClick={() => {
-            setIsOpen(() => true);
+            setIsOpen(true);
           }}
         />
       </div>
@@ -213,6 +214,7 @@ export const TextWithControlButtons: Story = {
   args: {
     open: false,
     title: '테스트용 알림창',
+    onClose: () => {},
   },
 };
 
@@ -256,7 +258,7 @@ export const VeryLongTitle: Story = {
               disabled={false}
               ariaLabel="전혀 안 궁금하지만 이해했다고 대충 대답하기"
               onClick={() => {
-                setIsOpen(() => false);
+                setIsOpen(false);
               }}
             />
           </ModalActionButtonsContainer>
@@ -269,7 +271,7 @@ export const VeryLongTitle: Story = {
           disabled={false}
           ariaLabel="모달 열기"
           onClick={() => {
-            setIsOpen(() => true);
+            setIsOpen(true);
           }}
         />
       </div>
@@ -278,5 +280,6 @@ export const VeryLongTitle: Story = {
   args: {
     open: false,
     title: '테스트용 알림창',
+    onClose: () => {},
   },
 };

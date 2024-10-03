@@ -33,7 +33,7 @@ export const Button = styled.button<{
   transition: 0.2s;
 `;
 
-export const Text = styled.span<{ $size: 'large' | 'medium'; $color: string }>`
+export const Text = styled.span<{ $size: 'large' | 'medium' }>`
   font-size: ${({ $size }) => ($size === 'large' ? '20px' : '16px')};
   font-weight: 600;
   text-align: center;

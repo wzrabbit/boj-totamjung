@@ -56,7 +56,7 @@ export const Default: Story = {
     ),
   ],
   args: {
-    mainIconSrc: browser.runtime.getURL('dice.png'),
+    mainIconSrc: browser.runtime.getURL('/dice.png'),
     theme: 'none',
     progress: 65,
     title: '테스트 제목입니다.',
@@ -96,7 +96,7 @@ export const TotamjungTheme: Story = {
     ),
   ],
   args: {
-    mainIconSrc: browser.runtime.getURL('dice.png'),
+    mainIconSrc: browser.runtime.getURL('/dice.png'),
     theme: 'totamjung',
     progress: 65,
     title: '테스트 제목입니다.',
@@ -136,7 +136,7 @@ export const MultipleDescriptions: Story = {
     ),
   ],
   args: {
-    mainIconSrc: browser.runtime.getURL('dice.png'),
+    mainIconSrc: browser.runtime.getURL('/dice.png'),
     theme: 'none',
     progress: 65,
     title: '필요할 경우 여러 개의 설명을 사용할 수도 있습니다.',
@@ -158,7 +158,7 @@ export const NoDescription: Story = {
     ),
   ],
   args: {
-    mainIconSrc: browser.runtime.getURL('dice.png'),
+    mainIconSrc: browser.runtime.getURL('/dice.png'),
     theme: 'none',
     progress: 65,
     title: '설명이 필요 없다고요? 그럼 메시지만 간결하게 전달해도 문제 없죠.',
@@ -179,7 +179,7 @@ export const VeryLongDescription: Story = {
     ),
   ],
   args: {
-    mainIconSrc: browser.runtime.getURL('dice.png'),
+    mainIconSrc: browser.runtime.getURL('/dice.png'),
     theme: 'none',
     progress: 65,
     title: '매우 긴 설명',

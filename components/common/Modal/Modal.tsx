@@ -19,7 +19,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     createPortal(
       <S.Container>
         <S.Backdrop onClick={onClose} />
-        <S.Modal open={open} role="dialog">
+        <S.Modal role="dialog">
           <S.Header>
             <S.Title>{title}</S.Title>
             <S.CloseButton onClick={onClose} aria-label="모달 닫기">

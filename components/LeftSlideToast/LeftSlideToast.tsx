@@ -1,11 +1,11 @@
 import * as S from './LeftSlideToast.styled';
 import { CheckIcon, CloseIcon } from '@/assets/svg';
-import type { SVGProps } from 'react';
+import type { SVGProps, ReactElement } from 'react';
 import { TotamjungTheme } from '@/types/totamjungTheme';
 import CircleProgressBar from '@/components/common/CircleProgressBar';
 
 interface LeftSlideToastProps {
-  mainIconSrc: string | SVGProps<SVGSVGElement>;
+  mainIconSrc: string | ReactElement<SVGProps<SVGSVGElement>>;
   theme: TotamjungTheme;
   progress: number;
   title: string;
@@ -47,9 +47,7 @@ const LeftSlideToast = (props: LeftSlideToastProps) => {
             {listedDescriptions.map((description, index) => (
               <S.DescriptionContainer key={index} $totamjungTheme={theme}>
                 <CheckIcon />
-                <S.Description key={index} $totamjungTheme={theme}>
-                  {description}
-                </S.Description>
+                <S.Description key={index}>{description}</S.Description>
               </S.DescriptionContainer>
             ))}
           </S.DescriptionList>

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -56,6 +57,11 @@ const GlobalStyle = createGlobalStyle`
 
   body:has([role="dialog"]) {
     overflow: hidden;
+  }
+
+  * {
+    scrollbar-width: 15px;
+    scrollbar-color: ${theme.color.LIGHTEST_BROWN} ${theme.color.SLIGHT_DARK_BROWN};
   }
 `;
 

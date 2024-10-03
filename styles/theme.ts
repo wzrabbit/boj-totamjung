@@ -8,6 +8,7 @@ export const theme = {
     LIGHTER_BROWN: '#694132',
     LIGHT_BROWN: '#412a23',
     BROWN: '#301e18',
+    SLIGHT_DARK_BROWN: '#271610',
     DARK_BROWN: '#1a0e0a',
     WHITE: '#eeeeee',
     PURE_WHITE: '#ffffff',

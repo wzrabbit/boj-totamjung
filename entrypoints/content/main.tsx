@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
 import GlobalStyle from '@/styles/GlobalStyle';
 import { theme } from '@/styles/theme';
@@ -13,10 +13,10 @@ const executeContentScript = () => {
   const hostStyle = document.createElement('style');
 
   hostStyle.textContent = `
-  :host {
-    display: block;
-  }
-`;
+    :host {
+      display: block;
+    }
+  `;
 
   shadowRoot.appendChild(styleContainer);
   shadowRoot.appendChild(appContainer);
@@ -24,7 +24,9 @@ const executeContentScript = () => {
 
   document.body.appendChild(wrapper);
 
-  render(
+  const root = createRoot(appContainer);
+
+  root.render(
     <StrictMode>
       <StyleSheetManager target={styleContainer}>
         <ThemeProvider theme={theme}>
@@ -33,7 +35,6 @@ const executeContentScript = () => {
         </ThemeProvider>
       </StyleSheetManager>
     </StrictMode>,
-    appContainer,
   );
 };
 

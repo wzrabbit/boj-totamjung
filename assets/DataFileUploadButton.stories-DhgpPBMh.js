@@ -1,3 +1,0 @@
-import{D as r}from"./DataFileUploadButton-CcY5BXqx.js";import"./jsx-runtime-DEdD30eg.js";import"./index-RYns6xqu.js";import"./file-upload-D_bXM9eZ.js";import"./styled-components.browser.esm-CkAH7aAm.js";const i={title:"components/OptionsDataManageMenu/DataFileUploadButton",component:r,argTypes:{},parameters:{docs:{description:{component:"`DataFileUploadButton`은 토탐정의 세이브파일을 업로드할 수 있도록 해 주는 버튼 컴포넌트입니다."}}}},t={args:{}};var a,o,e;t.parameters={...t.parameters,docs:{...(a=t.parameters)==null?void 0:a.docs,source:{originalSource:`{
-  args: {}
-}`,...(e=(o=t.parameters)==null?void 0:o.docs)==null?void 0:e.source}}};const d=["Default"];export{t as Default,d as __namedExportsOrder,i as default};

@@ -1616,30 +1616,9 @@ html[totamjungTheme='totamjung'] .media-object {
   filter: brightness(45%) sepia(80%) hue-rotate(-24deg);
 }
 
-html[totamjungTheme='totamjung'] ::-webkit-scrollbar,
-html[totamjungTheme='totamjung'] pre::-webkit-scrollbar,
-html[totamjungTheme='totamjung'] ::-webkit-scrollbar-track,
-html[totamjungTheme='totamjung'] pre::-webkit-scrollbar-track,
-html[totamjungTheme='totamjung']::-webkit-scrollbar-thumb,
-html[totamjungTheme='totamjung'] pre::-webkit-scrollbar-thumb,
-html[totamjungTheme='totamjung'] .table-responsive::-webkit-scrollbar {
-  width: 15px;
-  height: 15px;
-}
-
-html[totamjungTheme='totamjung'] ::-webkit-scrollbar,
-html[totamjungTheme='totamjung'] pre::-webkit-scrollbar,
-html[totamjungTheme='totamjung'] ::-webkit-scrollbar-track,
-html[totamjungTheme='totamjung'] pre::-webkit-scrollbar-track,
-html[totamjungTheme='totamjung'] .table-responsive::-webkit-scrollbar-track {
-  background-color: var(--secondary-menu-color);
-}
-
-html[totamjungTheme='totamjung'] ::-webkit-scrollbar-thumb,
-html[totamjungTheme='totamjung'] pre::-webkit-scrollbar-thumb,
-html[totamjungTheme='totamjung'] .table-responsive::-webkit-scrollbar-thumb {
-  background-color: var(--bright-menu-line-color);
-  border-radius: 10px;
+html[totamjungTheme='totamjung'] {
+  scrollbar-width: 15px;
+  scrollbar-color: var(--bright-menu-line-color) var(--secondary-menu-color);
 }
 
 html[totamjungTheme='totamjung'] ::selection,

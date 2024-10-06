@@ -2,8 +2,9 @@ import type { TotamjungTheme } from '@/types/totamjungTheme';
 import { styled, css } from 'styled-components';
 
 export const Container = styled.div<{
+  $open: boolean;
   $totamjungTheme: TotamjungTheme;
-  $arrowDirection: 'up' | 'left' | 'right' | 'down';
+  $direction: 'up' | 'left' | 'right' | 'down';
 }>`
   position: relative;
 
@@ -19,6 +20,12 @@ export const Container = styled.div<{
 
   word-break: break-all;
 
+  ${({ $open }) =>
+    !$open &&
+    css`
+      display: none;
+    `}
+
   &::after {
     content: '';
     position: absolute;
@@ -28,25 +35,25 @@ export const Container = styled.div<{
 
     border: 9px solid;
 
-    ${({ theme, $totamjungTheme, $arrowDirection }) => {
+    ${({ theme, $totamjungTheme, $direction }) => {
       const arrowColor =
         $totamjungTheme === 'totamjung'
           ? theme.color.BLACK_TRANSPARENT
           : theme.color.BOJ_BLUE;
 
-      if ($arrowDirection === 'up') {
+      if ($direction === 'left') {
         return css`
-          bottom: 100%;
-          left: 50%;
+          top: 50%;
+          left: 100%;
 
           border-left-width: 9px;
-          border-color: transparent transparent ${arrowColor} transparent;
+          border-color: transparent transparent transparent ${arrowColor};
 
-          transform: translateX(-50%);
+          transform: translateY(-50%);
         `;
       }
 
-      if ($arrowDirection === 'left') {
+      if ($direction === 'right') {
         return css`
           top: 50%;
           right: 100%;
@@ -58,15 +65,15 @@ export const Container = styled.div<{
         `;
       }
 
-      if ($arrowDirection === 'right') {
+      if ($direction === 'down') {
         return css`
-          top: 50%;
-          left: 100%;
+          bottom: 100%;
+          left: 50%;
 
           border-left-width: 9px;
-          border-color: transparent transparent transparent ${arrowColor};
+          border-color: transparent transparent ${arrowColor} transparent;
 
-          transform: translateY(-50%);
+          transform: translateX(-50%);
         `;
       }
 

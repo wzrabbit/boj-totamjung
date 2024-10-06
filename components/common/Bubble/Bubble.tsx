@@ -5,13 +5,17 @@ import Text from '@/components/common/Text';
 interface BubbleProps {
   children: string;
   totamjungTheme: TotamjungTheme;
+  arrowDirection: 'up' | 'left' | 'right' | 'down';
 }
 
 const Bubble = (props: BubbleProps) => {
-  const { children, totamjungTheme } = props;
+  const { children, totamjungTheme, arrowDirection } = props;
 
   return (
-    <S.Container $totamjungTheme={totamjungTheme}>
+    <S.Container
+      $totamjungTheme={totamjungTheme}
+      $arrowDirection={arrowDirection}
+    >
       <Text type="normal" fontSize="14px">
         {children}
       </Text>

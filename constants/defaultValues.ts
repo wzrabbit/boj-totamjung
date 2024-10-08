@@ -53,7 +53,10 @@ export const DEFAULT_FONT_NO = 0;
 
 export const DEFAULT_TIMERS = [];
 
-export const DEFAULT_INITIAL_DATA = {
+/**
+ * 데이터를 초기화했을 때 덮어씌우게 될 빈 데이터입니다. 최초 설치 데이터와는 약간 다릅니다.
+ */
+export const DEFAULT_EMPTY_DATA = {
   [STORAGE_KEY.DATA_VERSION]: 'v1.2',
   [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: DEFAULT_CHECKED_ALGORITHM_IDS,
   [STORAGE_KEY.QUICK_SLOTS]: DEFAULT_QUICK_SLOTS_RESPONSE,

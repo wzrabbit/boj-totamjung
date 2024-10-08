@@ -7,7 +7,7 @@ import { fetchRandomDefenseHistory } from './randomDefenseHistoryDataHandler';
 import { fetchFontNo } from './fontNoDataHandler';
 import { fetchTimers } from './timersDataHandler';
 import type { OptionsDataResponse } from '@/types/options';
-import { DEFAULT_INITIAL_DATA } from '@/constants/defaultValues';
+import { DEFAULT_EMPTY_DATA } from '@/constants/defaultValues';
 import { isOptionsDataResponse } from './validators/optionsDataValidator';
 
 export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
@@ -57,7 +57,7 @@ export const saveOptionsData = async (data: unknown) => {
 };
 
 export const deleteOptionsData = async () => {
-  await browser.storage.local.set(DEFAULT_INITIAL_DATA);
+  await browser.storage.local.set(DEFAULT_EMPTY_DATA);
 
   return true;
 };

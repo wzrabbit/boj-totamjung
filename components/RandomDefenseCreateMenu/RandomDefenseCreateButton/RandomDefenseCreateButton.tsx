@@ -1,5 +1,4 @@
 import { SlotNo } from '@/types/randomDefense';
-import { DiceIcon } from '@/assets/svg';
 import type { MouseEvent } from 'react';
 import * as S from './RandomDefenseCreateButton.styled';
 
@@ -20,9 +19,7 @@ const RandomDefenseCreateButton = (props: RandomDefenseCreateButtonProps) => {
       disabled={!isLoaded}
     >
       <S.UpperSide>
-        <S.DiceIconWrapper>
-          <DiceIcon />
-        </S.DiceIconWrapper>
+        <S.DiceIcon src={browser.runtime.getURL('/dice.png')} alt="" />
         <S.TextContainer>
           <S.TitleText>추첨 생성</S.TitleText>
           <S.SlotNoText>

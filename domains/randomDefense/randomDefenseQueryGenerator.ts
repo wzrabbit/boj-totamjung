@@ -43,7 +43,7 @@ export const generateRandomDefenseQuery = (
       )})`
     : '';
 
-  return `(*0&s?false|!*0) o?true w?false ${handleBanQuery}${solvedRangeQuery}${difficultyRangeQuery}${algorithmNamesQuery}`.trim();
+  return `(*0&!s?|!*0) o? -w? ${handleBanQuery}${solvedRangeQuery}${difficultyRangeQuery}${algorithmNamesQuery}`.trim();
 };
 
 const generateAlgorithmTags = (algorithmIds: number[]) => {

@@ -48,7 +48,10 @@ export const saveOptionsData = async (data: unknown) => {
     return false;
   }
 
-  await browser.storage.local.set(data);
+  await browser.storage.local.set({
+    ...data,
+    [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: false,
+  });
 
   return true;
 };

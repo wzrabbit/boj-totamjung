@@ -9,6 +9,7 @@ import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChan
 import type { ToastInfo } from '@/types/toast';
 import type { TotamjungTheme } from '@/types/totamjungTheme';
 import type { HiderOptionsResponse } from '@/types/algorithm';
+import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
 
 interface UseWidgetParams {
   theme: TotamjungTheme;
@@ -25,6 +26,8 @@ const useWidget = (params: UseWidgetParams) => {
     HiderOptionsResponse | undefined
   >(undefined);
   const [inspectIconState, setInspectIconState] = useState(false);
+  const [shouldShowWelcomeMessage, setShouldShowWelcomeMessage] =
+    useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
     useInjectedProblemTags({ checkedIds, hiderOptions });
@@ -41,19 +44,26 @@ const useWidget = (params: UseWidgetParams) => {
 
   useEffect(() => {
     const loadWidgetData = async () => {
-      const [checkedAlgorithmIdsResponse, hiderOptionsResponse] =
-        await Promise.all([
-          browser.runtime.sendMessage({
-            command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
-          }),
-          browser.runtime.sendMessage({
-            command: COMMANDS.FETCH_HIDER_OPTIONS,
-          }),
-        ]);
+      const [
+        checkedAlgorithmIdsResponse,
+        hiderOptionsResponse,
+        shouldShowWelcomeMessageResponse,
+      ] = await Promise.all([
+        browser.runtime.sendMessage({
+          command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
+        }),
+        browser.runtime.sendMessage({
+          command: COMMANDS.FETCH_HIDER_OPTIONS,
+        }),
+        browser.runtime.sendMessage({
+          command: COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE,
+        }),
+      ]);
 
       if (
         !isValidCheckedAlgorithmIdsResponse(checkedAlgorithmIdsResponse) ||
-        !isHiderOptionsResponse(hiderOptionsResponse)
+        !isHiderOptionsResponse(hiderOptionsResponse) ||
+        !isShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse)
       ) {
         return;
       }
@@ -76,6 +86,7 @@ const useWidget = (params: UseWidgetParams) => {
 
       setCheckedIds(checkedIds);
       setHiderOptions(hiderOptionsResponse);
+      setShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse);
       setIsLoaded(true);
     };
 
@@ -145,6 +156,14 @@ const useWidget = (params: UseWidgetParams) => {
     }
   };
 
+  const closeWelcomeMessage = () => {
+    setShouldShowWelcomeMessage(false);
+    browser.runtime.sendMessage({
+      command: COMMANDS.SAVE_SHOULD_SHOW_WELCOME_MESSAGE,
+      shouldShowWelcomeMessage: false,
+    });
+  };
+
   return {
     isExpanded,
     isScrollingToTop,
@@ -153,6 +172,7 @@ const useWidget = (params: UseWidgetParams) => {
     isInspectButtonDisabled,
     isLockButtonDisabled,
     shouldShowInspectIcon,
+    shouldShowWelcomeMessage,
     isLoaded,
     scrollToTop,
     endScrollingAnimation,
@@ -162,6 +182,7 @@ const useWidget = (params: UseWidgetParams) => {
     performRandomDefenseByClick,
     showInspectResultUsingPopup,
     toggleTimer,
+    closeWelcomeMessage,
   };
 };
 

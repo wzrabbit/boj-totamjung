@@ -1,5 +1,7 @@
 import useWidget from '@/hooks/widget/useWidget';
 import InspectResultIcon from '@/components/InspectResultIcon/InspectResultIcon';
+import SpeechBubble from '@/components/common/SpeechBubble';
+import Text from '@/components/common/Text';
 import * as S from './Widget.styled';
 import type { TotamjungTheme } from '@/types/totamjungTheme';
 import type { ToastInfo } from '@/types/toast';
@@ -22,6 +24,7 @@ const Widget = (props: WidgetProps) => {
     isInspectButtonDisabled,
     isLockButtonDisabled,
     shouldShowInspectIcon,
+    shouldShowWelcomeMessage,
     isLoaded,
     scrollToTop,
     endScrollingAnimation,
@@ -31,6 +34,7 @@ const Widget = (props: WidgetProps) => {
     performRandomDefenseByClick,
     showInspectResultUsingPopup,
     toggleTimer,
+    closeWelcomeMessage,
   } = useWidget(props);
   const problemTitleElement = $('#problem_title');
 
@@ -131,6 +135,29 @@ const Widget = (props: WidgetProps) => {
               />,
               problemTitleElement,
             )}
+          {shouldShowWelcomeMessage && (
+            <S.SpeechBubbleWrapper>
+              <SpeechBubble
+                open={true}
+                maxWidth="400px"
+                content={
+                  <S.SpeechBubbleContentContainer>
+                    <Text type="normal" fontSize="14px">
+                      토탐정을 설치해 주셔서 감사합니다!
+                    </Text>
+                    <Text type="normal" fontSize="14px">
+                      <strong>위젯을 우클릭</strong>하여 토탐정의 여러 기능들을
+                      활용해 보세요.
+                    </Text>
+                  </S.SpeechBubbleContentContainer>
+                }
+                totamjungTheme={theme}
+                direction="left"
+                hasCloseButton={true}
+                onClose={closeWelcomeMessage}
+              />
+            </S.SpeechBubbleWrapper>
+          )}
         </>
       )}
     </S.Container>

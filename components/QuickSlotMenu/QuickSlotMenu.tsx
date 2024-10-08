@@ -24,7 +24,9 @@ interface QuickSlotMenuProps {
 
 const QuickSlotMenu = (props: QuickSlotMenuProps) => {
   const { isLoaded } = props;
-  const { activeModalName, openModal, closeModal } = useModal<'copiedQuery'>();
+  const { activeModalName, openModal, closeModal } = useModal<
+    'copiedQuery' | 'confirmDeleteSlot'
+  >();
   const {
     slot,
     selectedSlotNo,
@@ -90,7 +92,9 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
               iconSrc={<TrashIcon />}
               disabled={slot.isEmpty}
               ariaLabel="슬롯 삭제하기"
-              onClick={deleteSlot}
+              onClick={() => {
+                openModal('confirmDeleteSlot');
+              }}
             />
           </S.SlotControlPanel>
         </S.Container>
@@ -112,6 +116,19 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
         onClose={closeModal}
         title="쿼리 복사 완료"
         message="쿼리를 클립보드에 복사했어요!"
+      />
+      <SimpleModal
+        actionType="yesNo"
+        width="350px"
+        height="auto"
+        open={activeModalName === 'confirmDeleteSlot'}
+        onYesSelect={() => {
+          deleteSlot();
+          closeModal();
+        }}
+        onNoSelect={closeModal}
+        title="추첨 삭제 확인"
+        message={`${selectedSlotNo}번 슬롯에 저장되어 있는 추첨을 삭제할까요?`}
       />
     </NamedFrame>
   );

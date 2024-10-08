@@ -34,15 +34,19 @@ import {
   addSingleTimerByProblemId,
   removeSingleTimerByProblemId,
 } from '@/domains/dataHandlers/timersDataHandler';
+import {
+  fetchShouldShowWelcomeMessage,
+  saveShouldShowWelcomeMessage,
+} from '@/domains/dataHandlers/shouldShowWelcomeMessageDataHandler';
 import { fetchOptionsData } from '@/domains/dataHandlers/optionsDataHandler';
 import { isUserSolvedProblem } from '@/domains/tierHider/userSolvedChecker';
 import { getRandomDefenseResult } from '@/domains/randomDefense/randomDefenseProblemChooser';
-import { DEFAULT_INITIAL_DATA } from '@/constants/defaultValues';
+import { initializeDataOnFirstInstall } from '@/domains/dataHandlers/dataInitializer';
 
 const executeBackground = () => {
   browser.runtime.onInstalled.addListener(({ reason }) => {
     if (reason === 'install') {
-      browser.storage.local.set(DEFAULT_INITIAL_DATA);
+      initializeDataOnFirstInstall();
       return;
     }
 
@@ -269,6 +273,22 @@ const executeBackground = () => {
         }
 
         appendRandomDefenseInfoToHistory(message.randomDefenseHistoryInfo);
+      }
+
+      if (command === COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE) {
+        fetchShouldShowWelcomeMessage().then((result) => {
+          sendResponse(result);
+        });
+        return true;
+      }
+
+      if (command === COMMANDS.SAVE_SHOULD_SHOW_WELCOME_MESSAGE) {
+        if (!('shouldShowWelcomeMessage' in message)) {
+          return;
+        }
+
+        const { shouldShowWelcomeMessage } = message;
+        saveShouldShowWelcomeMessage(shouldShowWelcomeMessage);
       }
     },
   );

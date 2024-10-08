@@ -16,7 +16,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [],
         customQuery: '',
       },
-      '(*0&s?false|!*0) o?true w?false ~@test_user s#100..500 *10..16',
+      '(*0&!s?|!*0) o? -w? ~@test_user s#100..500 *10..16',
     ],
     [
       {
@@ -31,7 +31,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [],
         customQuery: '',
       },
-      '(*0&s?false|!*0) o?true w?false *11..15',
+      '(*0&!s?|!*0) o? -w? *11..15',
     ],
     [
       {
@@ -46,7 +46,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [7],
         customQuery: '',
       },
-      '(*0&s?false|!*0) o?true w?false ~@silverlove1234 s#200.. *6..10 (#greedy)',
+      '(*0&!s?|!*0) o? -w? ~@silverlove1234 s#200.. *6..10 (#greedy)',
     ],
     [
       {
@@ -61,7 +61,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [],
         customQuery: 'foobar 1234',
       },
-      '(*0&s?false|!*0) o?true w?false ~@ChoGosu *0',
+      '(*0&!s?|!*0) o? -w? ~@ChoGosu *0',
     ],
     [
       {
@@ -76,7 +76,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [4, 9, 16],
         customQuery: '',
       },
-      '(*0&s?false|!*0) o?true w?false s#..10000 *1..30 (#graphs&#graph_traversal&#bfs)',
+      '(*0&!s?|!*0) o? -w? s#..10000 *1..30 (#graphs&#graph_traversal&#bfs)',
     ],
     [
       {
@@ -91,7 +91,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [1, 14],
         customQuery: '',
       },
-      '(*0&s?false|!*0) o?true w?false s#0.. *1..30 (-#math-#geometry)',
+      '(*0&!s?|!*0) o? -w? s#0.. *1..30 (-#math-#geometry)',
     ],
   ];
 

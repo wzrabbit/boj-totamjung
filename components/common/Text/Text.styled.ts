@@ -7,6 +7,7 @@ export const Text = styled.p<{
 }>`
   text-align: ${({ $textAlign }) => $textAlign};
   font-size: ${({ $fontSize }) => $fontSize};
+  line-height: 1.2;
 
   ${({ theme, $type }) => {
     if ($type === 'primary') {

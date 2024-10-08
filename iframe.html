@@ -567,6 +567,7 @@
     IS_TIER_HIDDEN: 'isTierHidden',
     FONT_NO: 'fontNo',
     TIMERS: 'timers',
+    SHOULD_SHOW_WELCOME_MESSAGE: 'shouldShowWelcomeMessage',
   };
 
   const COMMANDS = {
@@ -578,6 +579,8 @@
     SAVE_AND_GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
     GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
     OPEN_OPTIONS_PAGE: 'openOptionsPage',
+    FETCH_SHOULD_SHOW_WELCOME_MESSAGE: 'fetchShouldShowWelcomeMessage',
+    SAVE_SHOULD_SHOW_WELCOME_MESSAGE: 'saveShouldShowWelcomeMessage',
   };
 
   const checkedAlgorithmIds = [1, 2, 4, 8];
@@ -710,12 +713,14 @@
               ],
             };
           case COMMANDS.OPEN_OPTIONS_PAGE:
-            if (command === 'openOptionsPage') {
-              alert(
-                '이 alert가 뜬다면, 실제 실행 환경에서는 설정 페이지가 뜰 것입니다.',
-              );
-            }
+            alert(
+              '이 alert가 뜬다면, 실제 실행 환경에서는 설정 페이지가 뜰 것입니다.',
+            );
             return;
+          case COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE:
+            return true;
+          case COMMANDS.SAVE_SHOULD_SHOW_WELCOME_MESSAGE:
+            return undefined;
           default:
             console.error(
               `알 수 없는 메시지가 전달되었습니다: 메시지명이 올바른지, 테스트 데이터를 채우는 것을 까먹지 않았는지 다시 점검해 보세요.`,
@@ -785,7 +790,7 @@
   };
 </script>
 
-    <script type="module" crossorigin src="./assets/iframe-D5QMYUK5.js"></script>
+    <script type="module" crossorigin src="./assets/iframe-P2yLgLVj.js"></script>
   </head>
 
   <body>

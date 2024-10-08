@@ -2,10 +2,10 @@ import { COMMANDS } from '@/constants/commands';
 import { isFontNoResponse } from '@/domains/dataHandlers/validators/fontNoValidator';
 import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import { isTotamjungThemeResponse } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
-import '~/assets/css/palette.css';
-import '~/assets/css/totamjungTheme.css';
-import '~/assets/css/tierHider.css';
-import '~/assets/css/problemTheme.css';
+import '@/assets/css/palette.css';
+import '@/assets/css/totamjungTheme.css';
+import '@/assets/css/tierHider.css';
+import '@/assets/css/problemTheme.css';
 
 export default defineContentScript({
   matches: ['https://www.acmicpc.net/*'],
@@ -69,6 +69,10 @@ const executeInjectionScript = () => {
 
     const headInjectionObserver = new MutationObserver(() => {
       const headElement = document.head;
+
+      if (!headElement) {
+        return;
+      }
 
       const pretendardLinkElement = Object.assign(
         document.createElement('link'),

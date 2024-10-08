@@ -51,18 +51,14 @@ export const LowerSide = styled.div`
   bottom: 0;
 `;
 
-export const DiceIconWrapper = styled.div`
+export const DiceIcon = styled.img`
   flex-shrink: 0;
 
-  width: 36px;
-  height: 36px;
+  width: 26px;
+  height: 27px;
+  margin: 4px;
 
-  & svg {
-    width: 36px;
-    height: 36px;
-
-    color: ${({ theme }) => theme.color.DARK_ORANGE};
-  }
+  filter: ${({ theme }) => theme.filter.DARK_ORANGE_FILTER};
 `;
 
 export const TextContainer = styled.div`

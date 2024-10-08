@@ -68,11 +68,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
       return;
     }
 
-    if (
-      confirm(`${selectedSlotNo}번 슬롯에 저장되어 있는 쿼리를 삭제할까요?`)
-    ) {
-      onSlotDelete();
-    }
+    onSlotDelete();
   };
 
   const setSelectedSlotNo = (slotNo: SlotNo) => {

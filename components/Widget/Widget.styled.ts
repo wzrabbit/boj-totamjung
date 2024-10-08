@@ -190,3 +190,20 @@ export const DropdownButtonIcon = styled.img`
     transform: scale(1);
   }
 `;
+
+export const SpeechBubbleWrapper = styled.div`
+  display: inline-flex;
+  justify-content: flex-end;
+  position: absolute;
+  left: -420px;
+  bottom: -15px;
+
+  width: 400px;
+  height: 65px;
+`;
+
+export const SpeechBubbleContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+`;

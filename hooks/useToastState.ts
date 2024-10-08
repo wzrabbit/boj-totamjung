@@ -65,6 +65,7 @@ const useToastState = () => {
 
     setToastState((prev) => ({
       ...prev,
+      descriptions: '',
       ...toastInfo,
       open: true,
     }));

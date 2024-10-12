@@ -14,7 +14,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint .",
-    "test": "jest --watchAll"
+    "test": "cross-env TZ='Asia/Seoul' jest --watchAll",
+    "test:ci": "cross-env TZ='Asia/Seoul' jest --ci"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -1369,6 +1369,41 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     tag: 'shortest_path',
     alias: [],
   },
+  {
+    id: 203,
+    name: '린드스트롬-게셀-비엔노 보조정리',
+    englishName: 'Lindström-gessel-viennot Lemma',
+    tag: 'lgv',
+    alias: [],
+  },
+  {
+    id: 204,
+    name: '지수승강 보조정리',
+    englishName: 'Lifting The Exponent Lemma',
+    tag: 'lte',
+    alias: [],
+  },
+  {
+    id: 205,
+    name: '유리 등차수열의 내림 합',
+    englishName: 'Sum Of Floor Of Rational Arithmetic Sequence',
+    tag: 'floor_sum',
+    alias: [],
+  },
+  {
+    id: 206,
+    name: '자릿수를 이용한 다이나믹 프로그래밍',
+    englishName: 'Digit Dp',
+    tag: 'dp_digit',
+    alias: [],
+  },
+  {
+    id: 207,
+    name: '덱을 이용한 구간 최댓값 트릭',
+    englishName: 'Deque Range Maximum Trick',
+    tag: 'deque_trick',
+    alias: ['덱 트릭'],
+  },
 ];
 
 export const ALGORITHMS_COUNT = ALGORITHM_INFOS.length;

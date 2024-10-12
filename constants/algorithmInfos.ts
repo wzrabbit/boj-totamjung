@@ -331,7 +331,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '에라토스테네스의 체',
     englishName: 'Sieve Of Eratosthenes',
     tag: 'sieve',
-    alias: ['에테체'],
+    alias: ['에테체', '에라체'],
   },
   {
     id: 49,
@@ -554,7 +554,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   },
   {
     id: 82,
-    name: '가장 긴 증가하는 부분 수열: O(log n)',
+    name: '가장 긴 증가하는 부분 수열: O(n log n)',
     englishName: 'Longest Increasing Sequence In O(n Log N)',
     tag: 'lis',
     alias: [],
@@ -591,8 +591,8 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     id: 87,
     name: '최대 유량 최소 컷 정리',
     englishName: 'Max-flow Min-cut Theorem',
-    tag: 'mfmc',
-    alias: ['Max-Flow Min-Cut Theorem'],
+    tag: 'mcmf',
+    alias: [],
   },
   {
     id: 88,
@@ -1368,6 +1368,41 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     englishName: 'Shortest Path',
     tag: 'shortest_path',
     alias: [],
+  },
+  {
+    id: 203,
+    name: '린드스트롬-게셀-비엔노 보조정리',
+    englishName: 'Lindström-gessel-viennot Lemma',
+    tag: 'lgv',
+    alias: [],
+  },
+  {
+    id: 204,
+    name: '지수승강 보조정리',
+    englishName: 'Lifting The Exponent Lemma',
+    tag: 'lte',
+    alias: [],
+  },
+  {
+    id: 205,
+    name: '유리 등차수열의 내림 합',
+    englishName: 'Sum Of Floor Of Rational Arithmetic Sequence',
+    tag: 'floor_sum',
+    alias: [],
+  },
+  {
+    id: 206,
+    name: '자릿수를 이용한 다이나믹 프로그래밍',
+    englishName: 'Digit Dp',
+    tag: 'dp_digit',
+    alias: [],
+  },
+  {
+    id: 207,
+    name: '덱을 이용한 구간 최댓값 트릭',
+    englishName: 'Deque Range Maximum Trick',
+    tag: 'deque_trick',
+    alias: ['덱 트릭'],
   },
 ];
 

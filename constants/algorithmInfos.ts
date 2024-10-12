@@ -331,7 +331,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '에라토스테네스의 체',
     englishName: 'Sieve Of Eratosthenes',
     tag: 'sieve',
-    alias: ['에테체'],
+    alias: ['에테체', '에라체'],
   },
   {
     id: 49,

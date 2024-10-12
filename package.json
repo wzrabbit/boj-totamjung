@@ -42,6 +42,7 @@
     "@wxt-dev/module-react": "^1.1.0",
     "babel-jest": "^29.7.0",
     "chrome-launcher": "^1.1.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",

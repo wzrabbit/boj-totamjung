@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TierSlider from './TierSlider';
-import type { TierWithoutNotRatable } from '@/types/randomDefense';
 import { fn } from '@storybook/test';
 
 /**

@@ -1,7 +1,7 @@
 import { isObject, isRatedTier } from '@/types/typeGuards';
 import type {
   HiderOptionsResponse,
-  LegacyHiderOptions,
+  LegacySettings,
   LegacyTimer,
 } from '@/types/algorithm';
 import {
@@ -66,13 +66,12 @@ export const isLegacyTimer = (data: unknown): data is LegacyTimer => {
     isNumericStringAllowsLeadingZeroes(data.hour) &&
     data.minute.length >= 1 &&
     data.minute.length <= 2 &&
-    isNumericStringAllowsLeadingZeroes(data.minute)
+    isNumericStringAllowsLeadingZeroes(data.minute) &&
+    ((data.problem >= 1_000 && data.problem % 1 === 0) || data.problem === -1)
   );
 };
 
-export const isLegacyHiderOptions = (
-  data: unknown,
-): data is LegacyHiderOptions => {
+export const isLegacySettings = (data: unknown): data is LegacySettings => {
   if (
     !(
       isObject(data) &&

@@ -51,7 +51,6 @@ export const STORAGE_KEY = {
 export const LEGACY_SYNC_STORAGE_KEY = {
   CHECKED_ALGORITHM_IDS: 'algorithm',
   QUICK_SLOTS: 'query',
-  TOTAMJUNG_THEME: 'theme',
   TIMER: 'timer',
   SETTINGS: 'settings',
 } as const;

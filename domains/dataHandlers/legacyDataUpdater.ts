@@ -37,8 +37,8 @@ export const updateAllLegacyData = async () => {
   const checkedAlgorithmIds = sanitizeCheckedAlgorithmIds(
     legacySyncData[LEGACY_SYNC_STORAGE_KEY.CHECKED_ALGORITHM_IDS],
   );
-  const totamjungTheme = convertLegacyToLatestTotamjungTheme(
-    legacySyncData[LEGACY_SYNC_STORAGE_KEY.TOTAMJUNG_THEME],
+  const totamjungTheme = convertLegacyToLatestTotamjungThemeBySettings(
+    legacySyncData[LEGACY_SYNC_STORAGE_KEY.SETTINGS],
   );
   const hiderOptions = convertLegacyToLatestHiderOptions(
     legacySyncData[LEGACY_SYNC_STORAGE_KEY.TIMER],

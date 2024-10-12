@@ -10,8 +10,9 @@ import { sanitizeIsTierHidden } from './sanitizers/isTierHiddenSanitizer';
 import { convertLegacyToLatestQuickSlots } from './converters/legacyToLatestQuickSlotsConverter';
 import { convertLegacyToLatestRandomDefenseHistory } from './converters/legacyToLatestRandomDefenseHistory';
 import { convertLegacyToLatestHiderOptions } from './converters/legacyToLatestHiderOptionsConverter';
-import { convertLegacyToLatestTotamjungTheme } from './converters/legacyToLatestTotamjungThemeConverter';
+import { convertLegacyToLatestTotamjungThemeBySettings } from './converters/legacyToLatestTotamjungThemeConverter';
 import { convertLegacyToLatestFontNoBySettings } from './converters/legacyToLatestFontNo';
+import { convertLegacyToLatestTimers } from './converters/legacyToLatestTimers';
 
 export const updateAllLegacyData = async () => {
   const { dataVersion } = await browser.storage.local.get(
@@ -33,12 +34,15 @@ export const updateAllLegacyData = async () => {
   const legacyRandomDefenseHistory = sanitizeLegacyRandomDefenseHistory(
     legacyLocalData[LEGACY_LOCAL_STORAGE_KEY.RANDOM_DEFENSE_HISTORY],
   );
-
   const checkedAlgorithmIds = sanitizeCheckedAlgorithmIds(
     legacySyncData[LEGACY_SYNC_STORAGE_KEY.CHECKED_ALGORITHM_IDS],
   );
-  const totamjungTheme = convertLegacyToLatestTotamjungTheme(
-    legacySyncData[LEGACY_SYNC_STORAGE_KEY.TOTAMJUNG_THEME],
+  const isTierHidden = sanitizeIsTierHidden(
+    legacySyncData[STORAGE_KEY.IS_TIER_HIDDEN],
+  );
+
+  const totamjungTheme = convertLegacyToLatestTotamjungThemeBySettings(
+    legacySyncData[LEGACY_SYNC_STORAGE_KEY.SETTINGS],
   );
   const hiderOptions = convertLegacyToLatestHiderOptions(
     legacySyncData[LEGACY_SYNC_STORAGE_KEY.TIMER],
@@ -48,11 +52,11 @@ export const updateAllLegacyData = async () => {
   const randomDefenseHistory = convertLegacyToLatestRandomDefenseHistory(
     legacyRandomDefenseHistory,
   );
-  const isTierHidden = sanitizeIsTierHidden(
-    legacySyncData[STORAGE_KEY.IS_TIER_HIDDEN],
-  );
   const fontNo = convertLegacyToLatestFontNoBySettings(
     legacySyncData[LEGACY_SYNC_STORAGE_KEY.SETTINGS],
+  );
+  const timers = convertLegacyToLatestTimers(
+    legacySyncData[LEGACY_SYNC_STORAGE_KEY.TIMER],
   );
 
   browser.storage.local.set({
@@ -63,6 +67,7 @@ export const updateAllLegacyData = async () => {
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: randomDefenseHistory,
     [STORAGE_KEY.IS_TIER_HIDDEN]: isTierHidden,
     [STORAGE_KEY.FONT_NO]: fontNo,
+    [STORAGE_KEY.TIMERS]: timers,
     [STORAGE_KEY.DATA_VERSION]: 'v1.2',
   });
 };

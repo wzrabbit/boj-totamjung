@@ -33,7 +33,7 @@ export interface LegacyTimer {
   problem: number;
 }
 
-export interface LegacyHiderOptions {
+export interface LegacySettings {
   font: `font-${number}` | 'none';
   lock: 'click' | 'always';
   predict: 'click' | 'always';

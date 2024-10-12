@@ -7,6 +7,7 @@ import {
   DEFAULT_IS_TIER_HIDDEN,
   DEFAULT_QUICK_SLOTS_RESPONSE,
   DEFAULT_RANDOM_DEFENSE_HISTORY,
+  DEFAULT_TIMERS,
   DEFAULT_TOTAMJUNG_THEME,
 } from '@/constants/defaultValues';
 
@@ -50,7 +51,7 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
         predict: 'always',
         theme: 'yes',
       },
-      timer: { expire: -1, hour: '1', minute: '30', problem: -1 },
+      timer: { expire: 1728488132677, hour: '1', minute: '30', problem: 1234 },
     };
 
     const legacyLocalData = {
@@ -211,7 +212,13 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
           title: '36진수',
         },
       ],
-      totamjungTheme: 'none',
+      timers: [
+        {
+          problemId: 1234,
+          expiresAt: '2024-10-09T15:35:32.677Z',
+        },
+      ],
+      totamjungTheme: 'totamjung',
       fontNo: 19,
     };
 
@@ -402,6 +409,7 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
           title: 'Locked Doors',
         },
       ],
+      timers: [],
       totamjungTheme: 'none',
       fontNo: 3,
     };
@@ -472,7 +480,8 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
       isTierHidden: DEFAULT_IS_TIER_HIDDEN,
       quickSlots: DEFAULT_QUICK_SLOTS_RESPONSE,
       randomDefenseHistory: DEFAULT_RANDOM_DEFENSE_HISTORY,
-      totamjungTheme: DEFAULT_TOTAMJUNG_THEME,
+      timers: DEFAULT_TIMERS,
+      totamjungTheme: 'totamjung',
       fontNo: DEFAULT_FONT_NO,
     };
 
@@ -515,6 +524,7 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
       [STORAGE_KEY.TOTAMJUNG_THEME]: DEFAULT_TOTAMJUNG_THEME,
       [STORAGE_KEY.HIDER_OPTIONS]: DEFAULT_HIDER_OPTIONS,
       [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: DEFAULT_RANDOM_DEFENSE_HISTORY,
+      [STORAGE_KEY.TIMERS]: DEFAULT_TIMERS,
       [STORAGE_KEY.IS_TIER_HIDDEN]: DEFAULT_IS_TIER_HIDDEN,
       [STORAGE_KEY.FONT_NO]: DEFAULT_FONT_NO,
       [STORAGE_KEY.DATA_VERSION]: 'v1.2',

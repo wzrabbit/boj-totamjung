@@ -11,7 +11,7 @@ const OPTIONS_NAV_CATEGORIES: {
   category: OptionsNavCategory;
 }[] = [
   { displayName: '알고리즘 가리개', category: 'algorithmHider' },
-  { displayName: '문제 추첨', category: 'randomDefense' },
+  { displayName: '랜덤 디펜스', category: 'randomDefense' },
   { displayName: '외관 및 데이터 관리', category: 'appearanceAndDataManage' },
 ];
 

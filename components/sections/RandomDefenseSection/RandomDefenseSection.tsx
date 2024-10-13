@@ -23,7 +23,7 @@ const RandomDefenseSection = (props: OptionsSectionProps) => {
   return show ? (
     <S.Container>
       <MenuTitle
-        title="문제 추첨"
+        title="랜덤 디펜스"
         iconSrc={browser.runtime.getURL('/dice.png')}
       />
       <S.Menu>

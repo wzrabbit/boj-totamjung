@@ -86,7 +86,7 @@ const Widget = (props: WidgetProps) => {
               <S.DropdownMenuButton
                 type="button"
                 $widgetTheme={theme}
-                aria-label="무작위 문제 추첨하기"
+                aria-label="랜덤 디펜스 진행하기"
                 disabled={isRandomDefenseButtonDisabled}
                 onClick={performRandomDefenseByClick}
               >

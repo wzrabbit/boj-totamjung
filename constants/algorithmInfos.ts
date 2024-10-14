@@ -893,7 +893,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   },
   {
     id: 133,
-    name: 'Aliens 트릭',
+    name: 'aliens 트릭',
     englishName: 'Aliens Trick',
     tag: 'aliens',
     alias: [],
@@ -1175,7 +1175,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   },
   {
     id: 175,
-    name: '크누스 X',
+    name: '크누스 x',
     englishName: "Knuth's X",
     tag: 'knuth_x',
     alias: [],

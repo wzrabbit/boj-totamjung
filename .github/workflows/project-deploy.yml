@@ -1,0 +1,56 @@
+name: Deploy Project
+
+on:
+  push:
+    branches: 'main'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+
+      - name: Get Version from package.json
+        id: get_version
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Build MV3 Project (for Chrome)
+        run: |
+          npm run build
+
+      - name: Build MV2 Project (for Firefox)
+        run: |
+          npm run build:firefox
+
+      - name: Deploy MV3 Project (for Chrome)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.output/chrome-mv3
+          destination_dir: v${{ env.VERSION }}-chrome-mv3
+          publish_branch: deploy
+
+      - name: Deploy MV2 Project (for Firefox)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.output/firefox-mv2
+          destination_dir: v${{ env.VERSION }}-firefox-mv2
+          publish_branch: deploy
+          keep_files: true

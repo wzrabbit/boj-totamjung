@@ -2,7 +2,7 @@ name: Test Project
 
 on:
   pull_request:
-    branches: ['totamjung-react']
+    branches: ['develop', 'main']
 
 jobs:
   build-and-deploy:

@@ -11,7 +11,6 @@ import SwitchIcon from './switch.svg?react';
 import CopyIcon from './copy.svg?react';
 import EditIcon from './edit.svg?react';
 import WarningIcon from './warning.svg?react';
-import DiceIcon from './dice.svg?react';
 import CheckIcon from './check.svg?react';
 import LoadingIcon from './loading.svg?react';
 import ArrowDownTriangleIcon from './arrow-down-triangle.svg?react';
@@ -38,7 +37,6 @@ export {
   CopyIcon,
   EditIcon,
   WarningIcon,
-  DiceIcon,
   CheckIcon,
   LoadingIcon,
   ArrowDownTriangleIcon,

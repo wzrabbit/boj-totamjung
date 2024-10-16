@@ -1,0 +1,41 @@
+name: Test Project
+
+on:
+  pull_request:
+    branches: ['develop', 'main']
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+
+      - name: Lint Project
+        run: |
+          npm run lint
+
+      - name: Compile Project
+        run: |
+          npm run compile
+
+      - name: Build Project
+        run: |
+          npm run build
+
+      - name: Test Project
+        run: |
+          npm run test:ci

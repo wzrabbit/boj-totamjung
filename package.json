@@ -1,0 +1,65 @@
+{
+  "name": "boj-totamjung",
+  "description": "[BOJ-Extension] 알고리즘 분류 가리개 & 랜덤 디펜스, 토탐정!",
+  "private": true,
+  "version": "1.2",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox",
+    "compile": "tsc --noEmit",
+    "postinstall": "wxt prepare",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "lint": "eslint .",
+    "test": "cross-env TZ='Asia/Seoul' jest --watchAll",
+    "test:ci": "cross-env TZ='Asia/Seoul' jest --ci"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@storybook/addon-essentials": "^8.3.2",
+    "@storybook/addon-interactions": "^8.3.2",
+    "@storybook/addon-links": "^8.3.2",
+    "@storybook/blocks": "^8.3.2",
+    "@storybook/react": "^8.3.2",
+    "@storybook/react-vite": "^8.3.2",
+    "@storybook/test": "^8.3.2",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "@wxt-dev/module-react": "^1.1.0",
+    "babel-jest": "^29.7.0",
+    "chrome-launcher": "^1.1.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-storybook": "^0.8.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "jest": "^29.7.0",
+    "jest-transformer-svg": "^2.0.2",
+    "prettier": "^3.3.3",
+    "storybook": "^8.3.2",
+    "typescript": "^5.5.4",
+    "vite-plugin-svgr": "^4.2.0",
+    "wxt": "^0.19.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  }
+}

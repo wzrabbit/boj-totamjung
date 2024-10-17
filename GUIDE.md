@@ -1,5 +1,9 @@
 ![토탐정_배너](https://user-images.githubusercontent.com/87642422/162562353-f28461f1-e563-4121-8187-493af1ee150e.png)
 
+> [!NOTE]
+> 이 가이드 문서는 `v1.1.*` 버전 사용자분들을 위한 구버전 가이드입니다.
+> 만약 `v1.2` 이상의 버전을 이용하신다면, 새로 나온 [토탐정 사용 가이드](https://github.com/wzrabbit/boj-totamjung/wiki/%ED%86%A0%ED%83%90%EC%A0%95-%EC%82%AC%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C)를 참고해 주세요.
+
 # 사용 방법
 
 이 페이지에서는 토탐정의 기본적인 사용법을 설명합니다. 설치 방법은 [README](https://github.com/wzrabbit/boj-totamjung/blob/main/README.md) 페이지를 참고해 주세요.

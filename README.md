@@ -144,7 +144,7 @@ https://github.com/user-attachments/assets/a17af3ef-435d-48a9-bcce-1b00fb442121
 
 토탐정은 [MIT License](https://opensource.org/license/mit) 를 따릅니다. 그러나 아래의 항목에 대해서는 해당 저작권자 분들이 명시하신 라이선스를 따릅니다.
 
-- `./assets/svg` 디렉토리 내에 있으면서, `.src/assets/svg/tier` 디렉토리에 포함되지 않은 아이콘들은 각 저작권자가 명시한 라이선스를 따르며, 관련 라이선스는 [여기](./src/assets/svg/README)에서 확인하실 수 있습니다.
+- `./assets/svg` 디렉토리 내에 있으면서, `./assets/svg/tier` 디렉토리에 포함되지 않은 아이콘들은 각 저작권자가 명시한 라이선스를 따르며, 관련 라이선스는 [여기](./assets/svg/README.md)에서 확인하실 수 있습니다.
 - `./assets/svg/tier` 디렉토리에 있는 티어 뱃지 관련 아이콘들의 저작권은 [솔브드](https://solved.ac)에 있습니다.
 
 ## ❤️ 기여자들

@@ -15,6 +15,9 @@
     <a href="https://chromewebstore.google.com/detail/%ED%86%A0%ED%83%90%EC%A0%95/hannhecbnjnnbbafffmogdlnajpcomek?hl=ko">
       <img src="https://github.com/user-attachments/assets/2438162f-68d0-41be-89f5-fa9084d2e50e" alt="Chrome 웹 스토어에서 다운로드" width="206px" height="58px" />
     </a>
+      <a href="https://store.whale.naver.com/detail/pkigleffcifanlafphnjkdpkfippibcm">
+      <img src="https://github.com/user-attachments/assets/7415a6ef-fc26-4978-809d-159fa2133d88" alt="Whale 스토어에서 다운로드" width="206px" height="58px" />
+    </a>
     <a href="https://addons.mozilla.org/ko/firefox/addon/%ED%86%A0%ED%83%90%EC%A0%95/">
       <img src="https://github.com/user-attachments/assets/32da6f06-805d-48e3-8303-afd5ffce4c4b" alt="Firefox 애드온에서 다운로드" width="206px" height="58px" />
     </a>

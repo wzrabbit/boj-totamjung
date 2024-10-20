@@ -83,7 +83,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 14,
     name: '기하학',
-    englishName: ' Geometry',
+    englishName: 'Geometry',
     tag: 'geometry',
     alias: ['기하싫어', '기하시러'],
   },

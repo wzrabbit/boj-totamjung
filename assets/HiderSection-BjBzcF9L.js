@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-DEdD30eg.js";import{M as s}from"./MenuTitle-CeT6tPAk.js";import{S as n,A as l}from"./AlgorithmPool-DFbaHNOS.js";import{H as a}from"./HiderFieldsetMenu-BSZSx0o7.js";import"./index-RYns6xqu.js";import{d as i}from"./styled-components.browser.esm-CkAH7aAm.js";const c=i.section`
+import{j as e}from"./jsx-runtime-DEdD30eg.js";import{M as s}from"./MenuTitle-CeT6tPAk.js";import{S as n,A as l}from"./AlgorithmPool-C_OvvpVc.js";import{H as a}from"./HiderFieldsetMenu-BSZSx0o7.js";import"./index-RYns6xqu.js";import{d as i}from"./styled-components.browser.esm-CkAH7aAm.js";const c=i.section`
   display: flex;
   column-gap: 20px;
   flex-shrink: 0;

@@ -1,6 +1,7 @@
 import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
 import type {
   RandomDefenseFormData,
+  Language,
   SearchOperator,
 } from '@/types/randomDefense';
 
@@ -12,6 +13,7 @@ export const generateRandomDefenseQuery = (
     handle,
     solvedMin,
     solvedMax,
+    language,
     startTier,
     endTier,
     searchOperator,
@@ -24,6 +26,7 @@ export const generateRandomDefenseQuery = (
   }
 
   const algorithmTags = generateAlgorithmTags(algorithmIds);
+  const convertedLanguage = convertLanguage(language);
   const convertedOperator = convertOperator(searchOperator);
 
   const shouldGenerateHandleBanQuery = handle.trim() !== '';
@@ -32,6 +35,8 @@ export const generateRandomDefenseQuery = (
   const shouldGenerateAlgorithmNamesQuery = algorithmTags.length > 0;
 
   const handleBanQuery = shouldGenerateHandleBanQuery ? `~@${handle} ` : '';
+  const languageQuery =
+    convertedLanguage === '' ? '' : ` ${convertedLanguage} `;
   const solvedRangeQuery = shouldGenerateSolvedRangeQuery
     ? `s#${solvedMin}..${solvedMax} `
     : '';
@@ -43,7 +48,7 @@ export const generateRandomDefenseQuery = (
       )})`
     : '';
 
-  return `(*0&!s?|!*0) o? -w? ${handleBanQuery}${solvedRangeQuery}${difficultyRangeQuery}${algorithmNamesQuery}`.trim();
+  return `(*0&!s?|!*0) o? -w? ${handleBanQuery}${languageQuery}${solvedRangeQuery}${difficultyRangeQuery}${algorithmNamesQuery}`.trim();
 };
 
 const generateAlgorithmTags = (algorithmIds: number[]) => {
@@ -60,6 +65,19 @@ const generateAlgorithmTags = (algorithmIds: number[]) => {
   });
 
   return algorithmTags;
+};
+
+export const convertLanguage = (language: Language) => {
+  switch (language) {
+    case 'ko':
+      return 'lang:ko';
+    case 'en':
+      return 'lang:en';
+    case 'ko/en':
+      return '(lang:ko|lang:en)';
+    default:
+      return '';
+  }
 };
 
 const convertOperator = (searchOperator: SearchOperator) => {

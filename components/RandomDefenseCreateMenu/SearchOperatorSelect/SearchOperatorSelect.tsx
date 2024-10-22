@@ -1,19 +1,20 @@
 import { CheckIcon } from '@/assets/svg';
+import type { SearchOperator } from '@/types/randomDefense';
 import * as S from './SearchOperatorSelect.styled';
 
 interface SearchOperatorSelectProps {
-  searchOperator: 'OR' | 'AND' | 'NOR';
-  onClick: (searchOperator: 'OR' | 'AND' | 'NOR') => void;
+  searchOperator: SearchOperator;
+  onClick: (searchOperator: SearchOperator) => void;
 }
 
-const OPERATORS = ['OR', 'AND', 'NOR'] as const;
+const operators: readonly SearchOperator[] = ['OR', 'AND', 'NOR'];
 
 const SearchOperatorSelect = (props: SearchOperatorSelectProps) => {
   const { searchOperator, onClick } = props;
 
   return (
     <S.Container>
-      {OPERATORS.map((operator) => (
+      {operators.map((operator) => (
         <S.ButtonContainer key={operator}>
           {operator === searchOperator && (
             <S.CheckIconWrapper>

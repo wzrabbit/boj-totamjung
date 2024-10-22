@@ -9,12 +9,12 @@ interface TierDropdownProps {
   onChange: (tier: RatedTier) => void;
 }
 
-const RATED_TIERS: RatedTier[] = [
+const ratedTiers: readonly RatedTier[] = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
   23, 24, 25, 26, 27, 28, 29, 30,
 ];
 
-const RATED_TIER_NAMES: Record<RatedTier, string> = {
+const ratedTierNames: Record<RatedTier, string> = {
   1: 'Bronze V',
   2: 'Bronze IV',
   3: 'Bronze III',
@@ -70,25 +70,25 @@ const TierDropdown = (props: TierDropdownProps) => {
       >
         <S.TierBadge src={solvedAcNumericTierIcons[selectedTier]} alt="" />
         <S.TierText $tier={selectedTier} $isBold={true}>
-          {RATED_TIER_NAMES[selectedTier]}
+          {ratedTierNames[selectedTier]}
         </S.TierText>
         <S.ArrowDownTriangleIconWrapper>
           <ArrowDownTriangleIcon />
         </S.ArrowDownTriangleIconWrapper>
       </S.Button>
       <S.List $isOpen={isDropdownOpen}>
-        {RATED_TIERS.map((tier) => (
+        {ratedTiers.map((tier) => (
           <S.ListItem key={tier}>
             <S.ListButton
               type="button"
-              aria-label={`${RATED_TIER_NAMES[tier]}를 경고 시작 티어로 설정하기`}
+              aria-label={`${ratedTierNames[tier]}를 경고 시작 티어로 설정하기`}
               onClick={() => {
                 updateSelectedTier(tier);
               }}
             >
               <S.TierBadge src={solvedAcNumericTierIcons[tier]} alt="" />
               <S.TierText $tier={tier} $isBold={tier === selectedTier}>
-                {RATED_TIER_NAMES[tier]}
+                {ratedTierNames[tier]}
               </S.TierText>
               {tier === selectedTier && (
                 <S.CheckIconWrapper>

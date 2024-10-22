@@ -13,9 +13,16 @@ import {
   isTierWithoutNotRatable,
 } from '@/types/typeGuards';
 import type {
+  Language,
   RandomDefenseFormData,
   RandomDefenseFormDataVerdict,
 } from '@/types/randomDefense';
+
+export const isLanguage = (data: unknown): data is Language => {
+  return (
+    typeof data === 'string' && ['ko', 'en', 'ko/en', 'all'].includes(data)
+  );
+};
 
 export const isRandomDefenseFormData = (
   data: unknown,
@@ -27,6 +34,7 @@ export const isRandomDefenseFormData = (
     'handle' in data &&
     'solvedMin' in data &&
     'solvedMax' in data &&
+    'language' in data &&
     'startTier' in data &&
     'endTier' in data &&
     'searchOperator' in data &&
@@ -36,6 +44,7 @@ export const isRandomDefenseFormData = (
     ['easy', 'manual'].includes(data.mode) &&
     typeof data.title === 'string' &&
     typeof data.handle === 'string' &&
+    typeof data.language === 'string' &&
     typeof data.solvedMin === 'string' &&
     typeof data.solvedMax === 'string' &&
     isNumericArray(data.algorithmIds) &&

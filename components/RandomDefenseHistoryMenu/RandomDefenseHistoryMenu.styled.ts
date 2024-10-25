@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const HistoryListContainer = styled.div`
   width: 348px;
-  height: 429px;
+  height: 414px;
   padding: 8px;
 
   border: 1px solid ${({ theme }) => theme.color.LIGHT_BROWN};

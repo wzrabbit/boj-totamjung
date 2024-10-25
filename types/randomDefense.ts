@@ -87,15 +87,12 @@ export type SlotVerdict = SlotValidVerdict | SlotInvalidVerdict;
 
 export type SearchOperator = 'OR' | 'AND' | 'NOR';
 
-export type Language = 'ko' | 'en' | 'ko/en' | 'all';
-
 export interface RandomDefenseFormData {
   mode: 'easy' | 'manual';
   title: string;
   handle: string;
   solvedMin: string;
   solvedMax: string;
-  language: Language;
   startTier: TierWithoutNotRatable;
   endTier: TierWithoutNotRatable;
   searchOperator: SearchOperator;

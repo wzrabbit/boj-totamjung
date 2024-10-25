@@ -1,14 +1,11 @@
-import {
-  MAX_CUSTOM_QUERY_LENGTH,
-  TITLE_MAX_LENGTH,
-} from '@/constants/randomDefense';
 import type { SlotVerdict } from '@/types/randomDefense';
 
 export const validateSlot = (title: string, query: string): SlotVerdict => {
-  if (title.length > TITLE_MAX_LENGTH) {
+  if (title.length > 30) {
     return {
       isValid: false,
-      errorMessage: `추첨 이름의 길이가 너무 길어요. ${TITLE_MAX_LENGTH}자 이하가 되도록 줄여 주세요.`,
+      errorMessage:
+        '추첨 이름의 길이가 너무 길어요. 30자 이하가 되도록 줄여 주세요.',
       focusElementName: 'title',
     };
   }
@@ -21,10 +18,11 @@ export const validateSlot = (title: string, query: string): SlotVerdict => {
     };
   }
 
-  if (query.length > MAX_CUSTOM_QUERY_LENGTH) {
+  if (query.length > 300) {
     return {
       isValid: false,
-      errorMessage: `쿼리의 길이가 너무 길어요. ${MAX_CUSTOM_QUERY_LENGTH}자 이하가 되도록 줄여 주세요.`,
+      errorMessage:
+        '쿼리의 길이가 너무 길어요. 300자 이하가 되도록 줄여 주세요.',
       focusElementName: 'query',
     };
   }

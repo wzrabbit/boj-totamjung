@@ -1,6 +1,6 @@
 import MenuTitle from '@/components/MenuTitle';
 import Fieldset from '@/components/common/Fieldset';
-import TierSelect from '@/components/TierSelect';
+import TierDropdown from '@/components/TierDropdown';
 import Text from '@/components/common/Text';
 import ProblemTagLockTimer from '@/components/ProblemTagLockTimer';
 import TextLink from '@/components/common/TextLink';
@@ -60,7 +60,10 @@ const HiderFieldsetMenu = () => {
           {
             label: (
               <S.WarningTierLabel>
-                <TierSelect selectedTier={warnTier} onChange={updateWarnTier} />
+                <TierDropdown
+                  selectedTier={warnTier}
+                  onChange={updateWarnTier}
+                />
                 <Text type="semiPrimary" fontSize="16px">
                   이상 난이도일 경우 경고
                 </Text>

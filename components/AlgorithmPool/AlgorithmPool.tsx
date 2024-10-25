@@ -38,7 +38,7 @@ const AlgorithmPool = () => {
             <SearchIcon />
           </S.SearchIconWrapper>
           <S.SearchInput
-            placeholder="알고리즘 분류를 입력해 주세요..."
+            placeholder="검색어를 입력해 주세요..."
             value={keyword}
             onChange={handleChangeKeyword}
           />

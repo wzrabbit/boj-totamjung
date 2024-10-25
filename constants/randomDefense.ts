@@ -20,4 +20,4 @@ export const MAX_SOLVED_COUNT = 100_000_000;
 
 export const NUMBER_REGEX = /^([1-9][0-9]*|0)$/;
 
-export const MAX_CUSTOM_QUERY_LENGTH = 300;
+export const MAX_CUSTOM_QUERY_LENGTH = 512;

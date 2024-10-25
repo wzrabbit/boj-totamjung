@@ -1,6 +1,7 @@
 import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
 import type {
   RandomDefenseFormData,
+  Language,
   SearchOperator,
 } from '@/types/randomDefense';
 
@@ -12,6 +13,7 @@ export const generateRandomDefenseQuery = (
     handle,
     solvedMin,
     solvedMax,
+    language,
     startTier,
     endTier,
     searchOperator,
@@ -24,6 +26,7 @@ export const generateRandomDefenseQuery = (
   }
 
   const algorithmTags = generateAlgorithmTags(algorithmIds);
+  const convertedLanguage = convertLanguage(language);
   const convertedOperator = convertOperator(searchOperator);
 
   const shouldGenerateHandleBanQuery = handle.trim() !== '';
@@ -35,15 +38,18 @@ export const generateRandomDefenseQuery = (
   const solvedRangeQuery = shouldGenerateSolvedRangeQuery
     ? `s#${solvedMin}..${solvedMax} `
     : '';
+  const languageQuery = convertedLanguage === '' ? '' : `${convertedLanguage} `;
   const difficultyRangeQuery =
     startTier === endTier ? `*${startTier} ` : `*${startTier}..${endTier} `;
   const algorithmNamesQuery = shouldGenerateAlgorithmNamesQuery
-    ? `(${convertedOperator === '-' ? '-' : ''}${algorithmTags.join(
-        convertedOperator,
-      )})`
+    ? algorithmTags.length === 1
+      ? algorithmTags[0]
+      : `(${convertedOperator === '~' ? '~' : ''}${algorithmTags.join(
+          convertedOperator,
+        )})`
     : '';
 
-  return `(*0&!s?|!*0) o? -w? ${handleBanQuery}${solvedRangeQuery}${difficultyRangeQuery}${algorithmNamesQuery}`.trim();
+  return `(*0&!s?|!*0) o? -w? ${handleBanQuery}${solvedRangeQuery}${languageQuery}${difficultyRangeQuery}${algorithmNamesQuery}`.trim();
 };
 
 const generateAlgorithmTags = (algorithmIds: number[]) => {
@@ -62,14 +68,26 @@ const generateAlgorithmTags = (algorithmIds: number[]) => {
   return algorithmTags;
 };
 
+export const convertLanguage = (language: Language) => {
+  switch (language) {
+    case 'ko':
+      return 'lang:ko';
+    case 'en':
+      return '(lang:en~lang:ko~lang:ja~lang:sv)';
+    case 'ko/en':
+      return '(lang:ko|(lang:en~lang:ja~lang:sv))';
+    default:
+      return '';
+  }
+};
+
 const convertOperator = (searchOperator: SearchOperator) => {
-  if (searchOperator === 'OR') {
-    return '|';
+  switch (searchOperator) {
+    case 'OR':
+      return '|';
+    case 'AND':
+      return '&';
+    default:
+      return '~';
   }
-
-  if (searchOperator === 'AND') {
-    return '&';
-  }
-
-  return '-';
 };

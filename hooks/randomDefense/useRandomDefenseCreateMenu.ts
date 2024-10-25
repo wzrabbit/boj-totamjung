@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { isRandomDefenseFormData } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import { validateRandomDefenseFormData } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import type { ChangeEventHandler, MouseEventHandler } from 'react';
+import { isLanguage } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import type {
   RandomDefenseFormData,
   SlotNo,
@@ -18,6 +19,7 @@ const initialRandomDefenseFormData: RandomDefenseFormData = {
   mode: 'easy',
   title: '',
   handle: '',
+  language: 'ko',
   solvedMin: '',
   solvedMax: '',
   startTier: 1,
@@ -43,6 +45,7 @@ const useRandomDefenseCreateMenu = (
     handle,
     solvedMin,
     solvedMax,
+    language,
     startTier,
     endTier,
     searchOperator,
@@ -76,6 +79,17 @@ const useRandomDefenseCreateMenu = (
     setRandomDefenseFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  const setLanguage = (language: string) => {
+    if (!isLanguage(language)) {
+      return;
+    }
+
+    setRandomDefenseFormData((prev) => ({
+      ...prev,
+      language,
     }));
   };
 
@@ -160,6 +174,7 @@ const useRandomDefenseCreateMenu = (
     handle,
     solvedMin,
     solvedMax,
+    language,
     startTier,
     endTier,
     searchOperator,
@@ -169,6 +184,7 @@ const useRandomDefenseCreateMenu = (
     errorElementName,
     setMode,
     setRandomDefenseInputValue,
+    setLanguage,
     setTierRange,
     setSearchOperator,
     setAlgorithmIds,

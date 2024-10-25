@@ -9,14 +9,14 @@ const INITIAL_QUICK_SLOTS: QuickSlots = {
   1: {
     isEmpty: false,
     title: '골드 랜덤 디펜스',
-    query: 'o? -w? *g',
+    query: 'o? -w? *g lang:ko',
   },
   2: {
     isEmpty: false,
     title: '실버 랜덤 디펜스',
-    query: 'o? -w? *s',
+    query: 'o? -w? *s lang:ko',
   },
-  3: { isEmpty: false, title: '올 랜덤', query: '(*0&!s?|!*0) o? -w?' },
+  3: { isEmpty: false, title: '올 랜덤', query: '(*0&!s?|!*0) o? -w? lang:ko' },
   4: { isEmpty: true },
   5: { isEmpty: true },
   6: { isEmpty: true },

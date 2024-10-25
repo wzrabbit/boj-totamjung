@@ -3,7 +3,7 @@ import { validateSlot } from './slotValidator';
 describe('Test #1 - 올바른 데이터 판정 테스트', () => {
   const testcases = [
     ['골드 랜덤 디펜스', 'tier: g5..g1'],
-    ['a'.repeat(30), 'a'.repeat(300)],
+    ['a'.repeat(30), 'a'.repeat(512)],
     ['', 'x'],
   ];
 
@@ -39,8 +39,8 @@ describe('Test #2 - 잘못된 데이터 판정 테스트', () => {
       ['쿼리에 공백은 빈 걸로 처리', '      '],
     ],
     tooLongQuery: [
-      ['', 'a'.repeat(301)],
-      ['a'.repeat(30), 'a'.repeat(301)],
+      ['', 'a'.repeat(513)],
+      ['a'.repeat(30), 'a'.repeat(513)],
     ],
   };
   test.each(testcases.tooLongTitle)(
@@ -72,7 +72,7 @@ describe('Test #2 - 잘못된 데이터 판정 테스트', () => {
       expect(validateSlot(title, query)).toEqual({
         isValid: false,
         errorMessage:
-          '쿼리의 길이가 너무 길어요. 300자 이하가 되도록 줄여 주세요.',
+          '쿼리의 길이가 너무 길어요. 512자 이하가 되도록 줄여 주세요.',
         focusElementName: 'query',
       });
     },

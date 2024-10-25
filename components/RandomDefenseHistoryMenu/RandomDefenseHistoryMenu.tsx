@@ -22,7 +22,7 @@ const RandomDefenseHistoryMenu = () => {
     useModal<'confirmClearHistory'>();
 
   return (
-    <NamedFrame width="370px" height="537px" padding="10px" title="추첨 기록">
+    <NamedFrame width="370px" height="553px" padding="10px" title="추첨 기록">
       <S.Container>
         {isLoaded && (
           <>

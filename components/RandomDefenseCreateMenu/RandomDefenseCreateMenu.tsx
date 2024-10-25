@@ -12,33 +12,12 @@ import AlgorithmSearchInput from './AlgorithmSearchInput';
 import useRandomDefenseCreateMenu from '@/hooks/randomDefense/useRandomDefenseCreateMenu';
 import * as S from './RandomDefenseCreateMenu.styled';
 import type { SlotNo } from '@/types/randomDefense';
-import Select from '@/components/common/Select';
-import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
 
 interface RandomDefenseCreateMenuProps {
   selectedSlotNo: SlotNo;
   isLoaded: boolean;
   onSubmit: (title: string, query: string) => void;
 }
-
-const languageOptions = [
-  {
-    label: '한국어',
-    value: 'ko',
-  },
-  {
-    label: '영어',
-    value: 'en',
-  },
-  {
-    label: '한국어 및 영어',
-    value: 'ko/en',
-  },
-  {
-    label: '모든 언어',
-    value: 'all',
-  },
-];
 
 const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
   const { selectedSlotNo, isLoaded, onSubmit } = props;
@@ -48,7 +27,6 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     handle,
     solvedMin,
     solvedMax,
-    language,
     startTier,
     endTier,
     searchOperator,
@@ -58,7 +36,6 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     errorElementName,
     setMode,
     setRandomDefenseInputValue,
-    setLanguage,
     setTierRange,
     setSearchOperator,
     setAlgorithmIds,
@@ -71,7 +48,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
   } = useRandomDefenseCreateMenu({ selectedSlotNo, onSubmit });
 
   return (
-    <NamedFrame width="650px" height="373px" padding="10px" title="추첨 만들기">
+    <NamedFrame width="650px" height="357px" padding="10px" title="추첨 만들기">
       <S.Form>
         <S.ErrorTextWrapper>
           <ErrorText errorMessage={errorMessage} fontSize="14px" />
@@ -99,7 +76,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
         </S.Label>
         {mode === 'easy' ? (
           <>
-            <S.Row $columnGap="50px">
+            <S.Row $columnGap="30px">
               <S.Label $width="190px">
                 <Text type="primary" fontSize="16px">
                   검색에서 제외할 닉네임
@@ -153,18 +130,6 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                   />
                 </S.SolvedRangeInputsContainer>
               </S.PanelContainer>
-              <S.PanelContainer $width="190px">
-                <Text type="primary" fontSize="16px">
-                  문제 언어
-                </Text>
-                <Select
-                  options={languageOptions}
-                  selectedValue={language}
-                  width="130px"
-                  ariaLabel="문제 언어 고르기"
-                  onChange={setLanguage}
-                />
-              </S.PanelContainer>
             </S.Row>
             <S.PanelContainer $width="100%">
               <Text type="primary" fontSize="16px">
@@ -208,9 +173,9 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                 height="160px"
                 name="customQuery"
                 value={customQuery}
-                placeholder={`1 ~ ${MAX_CUSTOM_QUERY_LENGTH}자`}
+                placeholder="1 ~ 300자"
                 minLength={1}
-                maxLength={MAX_CUSTOM_QUERY_LENGTH}
+                maxLength={300}
                 hasError={errorElementName === 'customQuery'}
                 ariaLabel="쿼리"
                 onChange={setRandomDefenseInputValue}

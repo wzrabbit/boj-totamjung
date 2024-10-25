@@ -10,7 +10,7 @@ export const Form = styled.form`
 
   width: 100%;
   height: 100%;
-  padding-top: 22px;
+  padding-top: 6px;
 
   z-index: 1;
 `;

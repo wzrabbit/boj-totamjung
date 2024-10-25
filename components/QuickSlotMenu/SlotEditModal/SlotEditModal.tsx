@@ -8,6 +8,7 @@ import ErrorText from '@/components/common/ErrorText';
 import useSlotEditModal from '@/hooks/randomDefense/useSlotEditModal';
 import { CloseCircleIcon, CheckCircleIcon } from '@/assets/svg';
 import * as S from './SlotEditModal.styled';
+import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
 
 interface SlotEditModalProps {
   title: string;
@@ -75,8 +76,8 @@ const SlotEditModal = (props: SlotEditModalProps) => {
             name="query"
             value={query}
             ref={queryRef}
-            maxLength={300}
-            placeholder="1 ~ 300자"
+            maxLength={MAX_CUSTOM_QUERY_LENGTH}
+            placeholder={`1 ~ ${MAX_CUSTOM_QUERY_LENGTH}자`}
             hasError={isQueryElementHasErrors}
             ariaLabel="새로운 쿼리를 입력해주세요"
             onChange={(event) => {

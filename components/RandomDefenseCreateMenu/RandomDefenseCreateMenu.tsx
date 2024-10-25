@@ -173,9 +173,9 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                 height="160px"
                 name="customQuery"
                 value={customQuery}
-                placeholder="1 ~ 300자"
+                placeholder={`1 ~ ${MAX_CUSTOM_QUERY_LENGTH}자`}
                 minLength={1}
-                maxLength={300}
+                maxLength={MAX_CUSTOM_QUERY_LENGTH}
                 hasError={errorElementName === 'customQuery'}
                 ariaLabel="쿼리"
                 onChange={setRandomDefenseInputValue}

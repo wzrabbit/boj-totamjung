@@ -1,20 +1,20 @@
-import * as S from './TierDropdown.styled';
+import * as S from './TierSelect.styled';
 import { CheckIcon, ArrowDownTriangleIcon } from '@/assets/svg';
 import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
-import useTierDropdown from '@/hooks/tierHider/useTierDropdown';
+import useSelect from '@/hooks/useSelect';
 import type { RatedTier } from '@/types/tierHider';
 
-interface TierDropdownProps {
+interface TierSelectProps {
   selectedTier: RatedTier;
   onChange: (tier: RatedTier) => void;
 }
 
-const RATED_TIERS: RatedTier[] = [
+const ratedTiers: readonly RatedTier[] = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
   23, 24, 25, 26, 27, 28, 29, 30,
 ];
 
-const RATED_TIER_NAMES: Record<RatedTier, string> = {
+const ratedTierNames: Record<RatedTier, string> = {
   1: 'Bronze V',
   2: 'Bronze IV',
   3: 'Bronze III',
@@ -47,16 +47,16 @@ const RATED_TIER_NAMES: Record<RatedTier, string> = {
   30: 'Ruby I',
 };
 
-const TierDropdown = (props: TierDropdownProps) => {
-  const { selectedTier: initSelectedTier, onChange } = props;
+const TierSelect = (props: TierSelectProps) => {
+  const { selectedTier: initSelectedValue, onChange } = props;
   const {
-    selectedTier,
-    updateSelectedTier,
-    isDropdownOpen,
-    openDropdown,
+    selectedValue,
+    updateSelectedValue,
+    isSelectOpen,
+    openSelect,
     containerRef,
-  } = useTierDropdown({
-    initSelectedTier,
+  } = useSelect<RatedTier>({
+    initSelectedValue,
     onChange,
   });
 
@@ -65,32 +65,32 @@ const TierDropdown = (props: TierDropdownProps) => {
       <S.Button
         type="button"
         aria-label="난이도 경고 시작 티어 변경하기"
-        $isActivated={isDropdownOpen}
-        onClick={openDropdown}
+        $isActivated={isSelectOpen}
+        onClick={openSelect}
       >
-        <S.TierBadge src={solvedAcNumericTierIcons[selectedTier]} alt="" />
-        <S.TierText $tier={selectedTier} $isBold={true}>
-          {RATED_TIER_NAMES[selectedTier]}
+        <S.TierBadge src={solvedAcNumericTierIcons[selectedValue]} alt="" />
+        <S.TierText $tier={selectedValue} $isBold={true}>
+          {ratedTierNames[selectedValue]}
         </S.TierText>
         <S.ArrowDownTriangleIconWrapper>
           <ArrowDownTriangleIcon />
         </S.ArrowDownTriangleIconWrapper>
       </S.Button>
-      <S.List $isOpen={isDropdownOpen}>
-        {RATED_TIERS.map((tier) => (
+      <S.List $isOpen={isSelectOpen}>
+        {ratedTiers.map((tier) => (
           <S.ListItem key={tier}>
             <S.ListButton
               type="button"
-              aria-label={`${RATED_TIER_NAMES[tier]}를 경고 시작 티어로 설정하기`}
+              aria-label={`${ratedTierNames[tier]}를 경고 시작 티어로 설정하기`}
               onClick={() => {
-                updateSelectedTier(tier);
+                updateSelectedValue(tier);
               }}
             >
               <S.TierBadge src={solvedAcNumericTierIcons[tier]} alt="" />
-              <S.TierText $tier={tier} $isBold={tier === selectedTier}>
-                {RATED_TIER_NAMES[tier]}
+              <S.TierText $tier={tier} $isBold={tier === selectedValue}>
+                {ratedTierNames[tier]}
               </S.TierText>
-              {tier === selectedTier && (
+              {tier === selectedValue && (
                 <S.CheckIconWrapper>
                   <CheckIcon />
                 </S.CheckIconWrapper>
@@ -103,4 +103,4 @@ const TierDropdown = (props: TierDropdownProps) => {
   );
 };
 
-export default TierDropdown;
+export default TierSelect;

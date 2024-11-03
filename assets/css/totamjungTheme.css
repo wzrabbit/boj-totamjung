@@ -730,6 +730,17 @@ html[totamjungTheme='totamjung']
   background-color: var(--table-contest-color-light);
 }
 
+html[totamjungTheme='totamjung']
+  .row:has(.list-group-item.active a[href^='/contest/notice'])
+  .table-responsive
+  td,
+html[totamjungTheme='totamjung']
+  .row:has(.list-group-item.active a[href^='/contest/qna'])
+  .table-responsive
+  td {
+  border-top: 2px solid var(--menu-line-color);
+}
+
 html[totamjungTheme='totamjung'] .table-condensed th,
 html[totamjungTheme='totamjung'] .table-condensed td {
   border-color: var(--bright-menu-line-color);

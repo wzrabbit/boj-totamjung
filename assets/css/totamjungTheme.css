@@ -2281,6 +2281,7 @@ html[totamjungTheme='totamjung'] .problem-label.problem-label-full,
 html[totamjungTheme='totamjung'] .problem-label.problem-label-class,
 html[totamjungTheme='totamjung'] .problem-label.problem-label-feedback,
 html[totamjungTheme='totamjung'] .label.label-primary,
+html[totamjungTheme='totamjung'] .label.label-info,
 html[totamjungTheme='totamjung'] .problem-label-challenging {
   background: var(--label-sky-gradient-color);
 }

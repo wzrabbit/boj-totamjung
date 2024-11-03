@@ -655,6 +655,24 @@ html[totamjungTheme='totamjung']
   background-color: var(--secondary-menu-color);
 }
 
+html[totamjungTheme='totamjung'] #contest_statistics a {
+  color: var(--link-color) !important;
+}
+
+html[totamjungTheme='totamjung'] #contest_statistics > thead > tr {
+  border-bottom: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] #contest_statistics > tfoot > tr:nth-child(1) {
+  background-color: var(--dark-menu-color);
+  border-top: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] #contest_statistics > tfoot > tr:nth-child(2) {
+  background-color: var(--dark-menu-color);
+  border-top: 1px solid var(--secondary-menu-color);
+}
+
 html[totamjungTheme='totamjung'] #problem-body .table-bordered tr > td,
 html[totamjungTheme='totamjung'] #problem-body .table-bordered tr > th {
   border: 0.75px solid var(--table-border-color);
@@ -710,6 +728,17 @@ html[totamjungTheme='totamjung']
   > tr.info:nth-of-type(even)
   > th {
   background-color: var(--table-contest-color-light);
+}
+
+html[totamjungTheme='totamjung']
+  .row:has(.list-group-item.active a[href^='/contest/notice'])
+  .table-responsive
+  td,
+html[totamjungTheme='totamjung']
+  .row:has(.list-group-item.active a[href^='/contest/qna'])
+  .table-responsive
+  td {
+  border-top: 2px solid var(--menu-line-color);
 }
 
 html[totamjungTheme='totamjung'] .table-condensed th,
@@ -2252,6 +2281,7 @@ html[totamjungTheme='totamjung'] .problem-label.problem-label-full,
 html[totamjungTheme='totamjung'] .problem-label.problem-label-class,
 html[totamjungTheme='totamjung'] .problem-label.problem-label-feedback,
 html[totamjungTheme='totamjung'] .label.label-primary,
+html[totamjungTheme='totamjung'] .label.label-info,
 html[totamjungTheme='totamjung'] .problem-label-challenging {
   background: var(--label-sky-gradient-color);
 }
@@ -2547,4 +2577,18 @@ html[totamjungTheme='totamjung'] .boj-ext-alert > .title > a {
 /* FOR TIERIMNIDA */
 html[totamjungTheme='totamjung'] .problem-list span[style='color:#000000'] {
   color: var(--text-color) !important;
+}
+
+/* FOR BAECHU */
+html[totamjungTheme='totamjung'] .label.label-badge {
+  background: var(--label-mango-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] .label.label-background {
+  background: var(--label-purple-gradient-color);
+}
+
+/* FOR O-EY */
+html[totamjungTheme='totamjung'] .problem-label.problem-label-tr {
+  background: var(--label-purple-gradient-color);
 }

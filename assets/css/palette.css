@@ -311,14 +311,26 @@
 
   --label-yellow-gradient-color: linear-gradient(
     120deg,
-    rgb(219, 162, 20) 0%,
-    rgb(102, 76, 10) 100%
+    rgb(239, 188, 49) 0%,
+    rgb(136, 106, 26) 100%
+  );
+
+  --label-mango-gradient-color: linear-gradient(
+    120deg,
+    rgb(239, 165, 46) 0%,
+    rgb(145, 101, 30) 100%
   );
 
   --label-sky-gradient-color: linear-gradient(
     120deg,
     rgb(35, 141, 174) 0%,
     rgb(17, 68, 84) 100%
+  );
+
+  --label-purple-gradient-color: linear-gradient(
+    120deg,
+    rgb(110, 23, 177) 0%,
+    rgb(56, 8, 68) 100%
   );
 
   --label-gray-gradient-color: linear-gradient(

@@ -24,12 +24,6 @@ jobs:
         run: |
           npm ci
 
-      - name: Get Version from package.json
-        id: get_version
-        run: |
-          VERSION=$(jq -r '.version' package.json)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-
       - name: Build MV3 Project (for Chrome)
         run: |
           npm run build
@@ -43,7 +37,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./.output/chrome-mv3
-          destination_dir: ./totamjung/v${{ env.VERSION }}-chrome-mv3
+          destination_dir: ./chrome-mv3
           publish_branch: deploy
 
       - name: Deploy MV2 Project (for Firefox)
@@ -51,5 +45,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./.output/firefox-mv2
-          destination_dir: ./totamjung/v${{ env.VERSION }}-firefox-mv2
+          destination_dir: ./firefox-mv2
           publish_branch: deploy

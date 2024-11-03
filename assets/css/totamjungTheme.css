@@ -655,6 +655,24 @@ html[totamjungTheme='totamjung']
   background-color: var(--secondary-menu-color);
 }
 
+html[totamjungTheme='totamjung'] #contest_statistics a {
+  color: var(--link-color) !important;
+}
+
+html[totamjungTheme='totamjung'] #contest_statistics > thead > tr {
+  border-bottom: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] #contest_statistics > tfoot > tr:nth-child(1) {
+  background-color: var(--dark-menu-color);
+  border-top: 1px solid var(--menu-line-color);
+}
+
+html[totamjungTheme='totamjung'] #contest_statistics > tfoot > tr:nth-child(2) {
+  background-color: var(--dark-menu-color);
+  border-top: 1px solid var(--secondary-menu-color);
+}
+
 html[totamjungTheme='totamjung'] #problem-body .table-bordered tr > td,
 html[totamjungTheme='totamjung'] #problem-body .table-bordered tr > th {
   border: 0.75px solid var(--table-border-color);

@@ -2548,3 +2548,12 @@ html[totamjungTheme='totamjung'] .boj-ext-alert > .title > a {
 html[totamjungTheme='totamjung'] .problem-list span[style='color:#000000'] {
   color: var(--text-color) !important;
 }
+
+/* FOR BAECHU */
+html[totamjungTheme='totamjung'] .label.label-badge {
+  background: var(--label-mango-gradient-color);
+}
+
+html[totamjungTheme='totamjung'] .label.label-background {
+  background: var(--label-purple-gradient-color);
+}

@@ -2557,3 +2557,8 @@ html[totamjungTheme='totamjung'] .label.label-badge {
 html[totamjungTheme='totamjung'] .label.label-background {
   background: var(--label-purple-gradient-color);
 }
+
+/* FOR O-EY */
+html[totamjungTheme='totamjung'] .problem-label.problem-label-tr {
+  background: var(--label-purple-gradient-color);
+}

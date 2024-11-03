@@ -58,13 +58,19 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     tag: 'graph_traversal',
     alias: [],
   },
-  { id: 10, name: '정렬', englishName: 'Sorting', tag: 'sorting', alias: [] },
+  {
+    id: 10,
+    name: '정렬',
+    englishName: 'Sorting',
+    tag: 'sorting',
+    alias: ['소트', '소팅'],
+  },
   {
     id: 11,
     name: '정수론',
     englishName: 'Number Theory',
     tag: 'number_theory',
-    alias: [],
+    alias: ['수학'],
   },
   {
     id: 12,
@@ -141,7 +147,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '누적 합',
     englishName: 'Prefix Sum',
     tag: 'prefix_sum',
-    alias: ['cumulative sum', '프리픽스 썸', '프리픽스 섬'],
+    alias: ['cumulative sum', '프리픽스 썸', '프리픽스 섬', 'imos'],
   },
   {
     id: 23,
@@ -239,7 +245,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '우선순위 큐',
     englishName: 'Priority Queue',
     tag: 'priority_queue',
-    alias: ['힙', 'heap'],
+    alias: ['힙', 'heap', 'pq', '우큐'],
   },
   {
     id: 35,
@@ -268,7 +274,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '최대 유량',
     englishName: 'Maximum Flow',
     tag: 'flow',
-    alias: ['플로우'],
+    alias: ['플로우', '네트워크 플로우', 'network flow'],
   },
   {
     id: 40,
@@ -359,7 +365,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '배낭 문제',
     englishName: 'Knapsack',
     tag: 'knapsack',
-    alias: [],
+    alias: ['냅색'],
   },
   {
     id: 53,
@@ -395,7 +401,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '유클리드 호제법',
     englishName: 'Euclidean Algorithm',
     tag: 'euclidean',
-    alias: [],
+    alias: ['gcd'],
   },
   {
     id: 59,
@@ -445,14 +451,14 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '고속 푸리에 변환',
     englishName: 'Fast Fourier Transform',
     tag: 'fft',
-    alias: [],
+    alias: ['어쩔FFT'],
   },
   {
     id: 67,
     name: '접미사 배열과 lcp 배열',
     englishName: 'Suffix ARray And Lcp Array',
     tag: 'suffix_array',
-    alias: [],
+    alias: ['서픽스 어레이'],
   },
   {
     id: 68,
@@ -480,7 +486,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: 'kmp',
     englishName: 'Knuth-morris-pratt',
     tag: 'kmp',
-    alias: ['Knuth-Morris-Pratt'],
+    alias: [],
   },
   {
     id: 72,
@@ -501,7 +507,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '중간에서 만나기',
     englishName: 'Meet In The Middle',
     tag: 'mitm',
-    alias: ['meet in the middle'],
+    alias: ['meet in the middle', '밋 인더 미들'],
   },
   {
     id: 75,
@@ -700,7 +706,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '확장 유클리드 호제법',
     englishName: 'Extended Euclidean Algorithm',
     tag: 'extended_euclidean',
-    alias: [],
+    alias: ['egcd', 'gcd'],
   },
   {
     id: 106,
@@ -791,7 +797,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '벌리캠프-매시',
     englishName: 'Berlekamp-massey',
     tag: 'berlekamp_massey',
-    alias: ['벌레캠프-매시', '벌래캠프-매시', '벌리컴프-매시'],
+    alias: ['벌레캠프-매시', '벌래캠프-매시', '벌리컴프-매시', '벌리캄프-매시'],
   },
   {
     id: 119,
@@ -819,7 +825,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '정규 표현식',
     englishName: 'Regular Expression',
     tag: 'regex',
-    alias: ['리잭스', '리젝스', '정규식', 'RegExp', 'regular expression'],
+    alias: ['리잭스', '리젝스', '정규식', 'RegExp'],
   },
   {
     id: 123,
@@ -896,7 +902,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: 'aliens 트릭',
     englishName: 'Aliens Trick',
     tag: 'aliens',
-    alias: [],
+    alias: ['외계인 트릭'],
   },
   {
     id: 134,

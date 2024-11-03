@@ -554,7 +554,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   },
   {
     id: 82,
-    name: '가장 긴 증가하는 부분 수열: O(n log n)',
+    name: '가장 긴 증가하는 부분 수열: o(n log n)',
     englishName: 'Longest Increasing Sequence In O(n Log N)',
     tag: 'lis',
     alias: [],

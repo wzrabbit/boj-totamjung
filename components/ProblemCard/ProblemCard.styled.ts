@@ -125,11 +125,18 @@ export const ProblemId = styled.div<{
 `;
 
 export const Title = styled.div`
-  height: 45px;
+  display: -webkit-box;
+  overflow: hidden;
+  height: 40px;
 
   color: ${({ theme }) => theme.color.WHITE};
   font-size: 18px;
   font-weight: 600;
   line-height: 20px;
   text-align: center;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 `;

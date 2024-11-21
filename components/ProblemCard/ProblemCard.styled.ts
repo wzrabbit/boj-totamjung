@@ -67,11 +67,21 @@ const getTierColor = (tier: Tier, isHidden: boolean, theme: DefaultTheme) => {
   return theme.color.WHITE;
 };
 
-export const Container = styled.li<{
+export const Container = styled.li.attrs<{
+  $rotateX: number;
+  $rotateY: number;
+}>(({ $rotateX, $rotateY }) => ({
+  style: {
+    transform: `perspective(350px) rotateX(${$rotateX}deg) rotateY(${$rotateY}deg)`,
+  },
+}))<{
   $tier: Tier;
   $isHidden: boolean;
+  $rotateX: number;
+  $rotateY: number;
 }>`
   display: inline-block;
+  flex-shrink: 0;
 
   width: 241px;
   height: 327px;
@@ -79,6 +89,12 @@ export const Container = styled.li<{
 
   background-image: ${({ $tier, $isHidden }) =>
     `url(${getProblemCardSrcByTier($tier, $isHidden)})`};
+
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: 0 0 15px ${({ theme }) => theme.color.TRANSPARENT_LEMON};
+  }
 `;
 
 export const LinkButton = styled.a`

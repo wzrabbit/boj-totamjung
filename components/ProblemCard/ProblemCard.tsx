@@ -1,5 +1,6 @@
 import { solvedAcRankIcons, solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type { Tier } from '@/types/randomDefense';
+import useCardTweak from '@/hooks/gacha/useCardTweak';
 import * as S from './ProblemCard.styled';
 
 interface ProblemCardProps {
@@ -16,14 +17,22 @@ interface ProblemInfo {
 const ProblemCard = (props: ProblemCardProps) => {
   const { problemInfo, isHidden } = props;
   const { problemId, title, tier } = problemInfo;
+  const { rotateX, rotateY, adjustCardTweak, resetCardTweak } = useCardTweak();
 
   return (
-    <S.Container $tier={tier} $isHidden={isHidden}>
+    <S.Container
+      $tier={tier}
+      $isHidden={isHidden}
+      $rotateX={rotateX}
+      $rotateY={rotateY}
+      onMouseMove={adjustCardTweak}
+      onMouseOut={resetCardTweak}
+    >
       <S.LinkButton
         target="_blank"
         rel="noreferrer noopener"
         href={`https://icpc.me/${problemId}`}
-        aria-label={`${problemId}번 ${title}`}
+        aria-label={`문제 번호 ${problemId}번 ${title}`}
       >
         <S.TierBadge
           src={

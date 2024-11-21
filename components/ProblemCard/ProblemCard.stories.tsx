@@ -111,3 +111,18 @@ export const Ruby: Story = {
     isHidden: false,
   },
 };
+
+/**
+ * 문제 제목의 길이가 너무 길 경우 최대 2줄까지만 보여집니다.
+ */
+export const LongTitle: Story = {
+  args: {
+    problemInfo: {
+      problemId: 15641,
+      title:
+        'SUPER SUPER BINARY SEARCH DELUXE 2.5: THE LEGEND OF THE GOLDEN MAZASSUMNIDA, EPISODE 2: THE MAZWAETL UNIVERSE, PART 2: THE PARALLEL UNIVERSE AND THE LOST MAZASSUMNIDA: GAME OF THE YEAR EDITION ',
+      tier: 31,
+    },
+    isHidden: false,
+  },
+};

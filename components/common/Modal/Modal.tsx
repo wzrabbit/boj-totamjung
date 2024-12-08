@@ -7,18 +7,33 @@ import type { PropsWithChildren } from 'react';
 interface ModalProps {
   title: string;
   open: boolean;
+  padding?: string;
+  closeOnBackdropClick?: boolean;
   onClose: () => void;
 }
 
 const Modal = (props: PropsWithChildren<ModalProps>) => {
-  const { title, open, onClose, children } = props;
+  const {
+    title,
+    open,
+    padding = '16px',
+    closeOnBackdropClick,
+    onClose,
+    children,
+  } = props;
   useEscKey({ onEscKeyPress: onClose });
 
   return (
     open &&
     createPortal(
       <S.Container>
-        <S.Backdrop onClick={onClose} />
+        <S.Backdrop
+          onClick={() => {
+            if (closeOnBackdropClick) {
+              onClose();
+            }
+          }}
+        />
         <S.Modal role="dialog">
           <S.Header>
             <S.Title>{title}</S.Title>
@@ -26,7 +41,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
               <CloseIcon />
             </S.CloseButton>
           </S.Header>
-          <S.Body>{children}</S.Body>
+          <S.Body $padding={padding}>{children}</S.Body>
         </S.Modal>
       </S.Container>,
       document.body,

@@ -96,8 +96,8 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const Body = styled.div`
-  padding: 16px;
+export const Body = styled.div<{ $padding: string }>`
+  padding: ${({ $padding }) => $padding};
 
   background-color: ${({ theme }) => theme.color.BROWN};
 

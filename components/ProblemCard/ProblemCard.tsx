@@ -6,6 +6,7 @@ import * as S from './ProblemCard.styled';
 interface ProblemCardProps {
   problemInfo: ProblemInfo;
   isHidden: boolean;
+  width: number;
 }
 
 interface ProblemInfo {
@@ -15,12 +16,13 @@ interface ProblemInfo {
 }
 
 const ProblemCard = (props: ProblemCardProps) => {
-  const { problemInfo, isHidden } = props;
+  const { problemInfo, isHidden, width } = props;
   const { problemId, title, tier } = problemInfo;
   const { rotateX, rotateY, adjustCardTweak, resetCardTweak } = useCardTweak();
 
   return (
     <S.Container
+      $width={width}
       $tier={tier}
       $isHidden={isHidden}
       $rotateX={rotateX}
@@ -33,8 +35,10 @@ const ProblemCard = (props: ProblemCardProps) => {
         rel="noreferrer noopener"
         href={`https://icpc.me/${problemId}`}
         aria-label={`문제 번호 ${problemId}번 ${title}`}
+        $cardWidth={width}
       >
         <S.TierBadge
+          $cardWidth={width}
           src={
             isHidden ? solvedAcRankIcons.hidden : solvedAcNumericTierIcons[tier]
           }
@@ -42,10 +46,11 @@ const ProblemCard = (props: ProblemCardProps) => {
           draggable={false}
         />
         <S.ProblemId
+          $cardWidth={width}
           $tier={tier}
           $isHidden={isHidden}
         >{`#${problemId}`}</S.ProblemId>
-        <S.Title>{title}</S.Title>
+        {width >= 150 && <S.Title $cardWidth={width}>{title}</S.Title>}
       </S.LinkButton>
     </S.Container>
   );

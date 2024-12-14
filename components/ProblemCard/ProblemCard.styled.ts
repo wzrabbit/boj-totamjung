@@ -67,12 +67,30 @@ const getTierColor = (tier: Tier, isHidden: boolean, theme: DefaultTheme) => {
   return theme.color.WHITE;
 };
 
-export const Container = styled.li.attrs<{
+export const HoverTransformContainer = styled.div`
+  display: inline-block;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  transition: transform 0.25s;
+`;
+
+export const InnerContainer = styled.div.attrs<{
   $rotateX: number;
   $rotateY: number;
-}>(({ $rotateX, $rotateY }) => ({
+  $width: number;
+}>(({ $rotateX, $rotateY, $width }) => ({
   style: {
-    transform: `perspective(350px) rotateX(${$rotateX}deg) rotateY(${$rotateY}deg)`,
+    transform: `perspective(${$width * 3}px) rotateX(${$rotateX}deg) rotateY(${$rotateY}deg)`,
+    width: `${$width}px`,
+    height: `${$width * 1.36}px`,
+    borderRadius: `${$width * 0.1}px`,
   },
 }))<{
   $tier: Tier;
@@ -83,60 +101,78 @@ export const Container = styled.li.attrs<{
   display: inline-block;
   flex-shrink: 0;
 
-  width: 241px;
-  height: 327px;
-  border-radius: 24px;
-
+  box-shadow: 0 0 15px ${({ theme }) => theme.color.BLACK_DARKER_TRANSPARENT};
   background-image: ${({ $tier, $isHidden }) =>
     `url(${getProblemCardSrcByTier($tier, $isHidden)})`};
+  background-size: 100% 100%;
 
-  transition: 0.1s;
+  transition: transform 0.1s;
+  user-select: none;
 
   &:hover {
     box-shadow: 0 0 15px ${({ theme }) => theme.color.TRANSPARENT_LEMON};
   }
 `;
 
-export const LinkButton = styled.a`
+export const LinkButton = styled.a.attrs<{ $cardWidth: number }>(
+  ({ $cardWidth }) => ({
+    style: {
+      rowGap: `${$cardWidth / 30}px`,
+      padding: `${$cardWidth / 12.05}px`,
+    },
+  }),
+)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 8px;
 
   width: 100%;
   height: 100%;
-  padding: 20px;
+
+  transition: 0.1s;
 `;
 
-export const TierBadge = styled.img`
-  width: 100px;
-  height: 100px;
-  margin: 60px 0 15px 0;
-`;
+export const TierBadge = styled.img.attrs<{ $cardWidth: number }>(
+  ({ $cardWidth }) => ({
+    style: {
+      height: `${$cardWidth / 2.4}px`,
+      margin: `${$cardWidth / 4.016}px 0 ${$cardWidth / 16.066}px 0`,
+    },
+  }),
+)``;
 
-export const ProblemId = styled.div<{
+export const ProblemId = styled.div.attrs<{ $cardWidth: number }>(
+  ({ $cardWidth }) => ({
+    style: {
+      fontSize: `${$cardWidth / 7.531}px`,
+    },
+  }),
+)<{
   $tier: Tier;
   $isHidden: boolean;
+  $cardWidth: number;
 }>`
   color: ${({ $tier, $isHidden, theme }) =>
     getTierColor($tier, $isHidden, theme)};
-  font-size: 32px;
   font-family: 'Cafe24ClassicType';
 `;
 
-export const Title = styled.div`
+export const Title = styled.div.attrs<{ $cardWidth: number }>(
+  ({ $cardWidth, theme }) => ({
+    style: {
+      height: `${$cardWidth / 6.025}px`,
+      color: `${theme.color.WHITE}`,
+      fontSize: `${Math.max(14, $cardWidth / 13.388)}px`,
+      lineHeight: `${Math.max(12, $cardWidth / 13.388)}px`,
+    },
+  }),
+)<{ $cardWidth: number }>`
   display: -webkit-box;
   overflow: hidden;
-  height: 40px;
 
-  color: ${({ theme }) => theme.color.WHITE};
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 20px;
   text-align: center;
   word-break: break-all;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
-  line-clamp: 2;
   -webkit-line-clamp: 2;
 `;

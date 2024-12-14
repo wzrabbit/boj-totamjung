@@ -21,6 +21,7 @@ export const Unrated: Story = {
       tier: 0,
     },
     isHidden: false,
+    width: 240,
   },
 };
 
@@ -32,6 +33,7 @@ export const NotRatable: Story = {
       tier: 31,
     },
     isHidden: false,
+    width: 240,
   },
 };
 
@@ -43,6 +45,7 @@ export const Hidden: Story = {
       tier: 3,
     },
     isHidden: true,
+    width: 240,
   },
 };
 
@@ -54,6 +57,7 @@ export const Bronze: Story = {
       tier: 4,
     },
     isHidden: false,
+    width: 240,
   },
 };
 
@@ -65,6 +69,7 @@ export const Silver: Story = {
       tier: 10,
     },
     isHidden: false,
+    width: 240,
   },
 };
 
@@ -76,6 +81,7 @@ export const Gold: Story = {
       tier: 12,
     },
     isHidden: false,
+    width: 240,
   },
 };
 
@@ -87,6 +93,7 @@ export const Platinum: Story = {
       tier: 16,
     },
     isHidden: false,
+    width: 240,
   },
 };
 
@@ -98,6 +105,7 @@ export const Diamond: Story = {
       tier: 23,
     },
     isHidden: false,
+    width: 240,
   },
 };
 
@@ -109,6 +117,7 @@ export const Ruby: Story = {
       tier: 26,
     },
     isHidden: false,
+    width: 240,
   },
 };
 
@@ -124,5 +133,6 @@ export const LongTitle: Story = {
       tier: 31,
     },
     isHidden: false,
+    width: 240,
   },
 };

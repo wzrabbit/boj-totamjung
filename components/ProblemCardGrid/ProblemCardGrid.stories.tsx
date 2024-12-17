@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProblemCardGrid from './ProblemCardGrid';
-import type { Tier } from '@/types/randomDefense';
+import type { ProblemInfo } from '@/types/gacha';
 
 /**
  * `ProblemCardGrid`
@@ -13,12 +13,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-
-interface ProblemInfo {
-  problemId: number;
-  title: string;
-  tier: Tier;
-}
 
 const getSampleProblemInfos = (problemCount: number): ProblemInfo[] => {
   return Array.from({ length: problemCount }).map((_, index) => ({

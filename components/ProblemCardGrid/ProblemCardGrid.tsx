@@ -1,13 +1,7 @@
 import * as S from './ProblemCardGrid.styled';
 import ProblemCard from '@/components/ProblemCard';
 import useProblemCardGrid from '@/hooks/gacha/useProblemCardGrid';
-import type { Tier } from '@/types/randomDefense';
-
-interface ProblemInfo {
-  problemId: number;
-  title: string;
-  tier: Tier;
-}
+import type { ProblemInfo } from '@/types/gacha';
 
 interface ProblemCardGridProps {
   problemInfos: ProblemInfo[];

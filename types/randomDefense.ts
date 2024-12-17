@@ -36,7 +36,7 @@ export type TierWithoutNotRatable = Exclude<Tier, 31>;
 
 export type Hotkey = 'Alt' | 'F2';
 
-interface FilledSlot {
+export interface FilledSlot {
   isEmpty: false;
   title: string;
   query: string;
@@ -158,5 +158,5 @@ interface RandomDefenseFailureResult {
 
 interface RandomDefenseSuccessResult {
   success: true;
-  problemInfo: SolvedAcSearchProblemInfo;
+  problemInfos: SolvedAcSearchProblemInfo[];
 }

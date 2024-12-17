@@ -1,6 +1,8 @@
-import { isObject } from '@/types/typeGuards';
-import { isSolvedAcSearchProblemInfo } from './solvedAcSearchProblemResponseValidator';
-import type { RandomDefenseResultResponse } from '@/types/randomDefense';
+import { isObject, isTier } from '@/types/typeGuards';
+import type {
+  ProblemInfo,
+  RandomDefenseResultResponse,
+} from '@/types/randomDefense';
 
 export const isRandomDefenseResultResponse = (
   data: unknown,
@@ -14,9 +16,7 @@ export const isRandomDefenseResultResponse = (
   const { success } = data;
 
   if (success) {
-    return (
-      'problemInfo' in data && isSolvedAcSearchProblemInfo(data.problemInfo)
-    );
+    return 'problemInfos' in data && isProblemInfos(data.problemInfos);
   }
 
   if ('statusCode' in data && typeof data.statusCode !== 'number') {
@@ -30,6 +30,7 @@ export const isRandomDefenseResultResponse = (
   if (!('errorDescriptions' in data)) {
     return true;
   }
+
   const { errorDescriptions } = data;
 
   return (
@@ -39,4 +40,20 @@ export const isRandomDefenseResultResponse = (
         (errorDescription) => typeof errorDescription === 'string',
       ))
   );
+};
+
+const isProblemInfo = (data: unknown): data is ProblemInfo => {
+  return (
+    isObject(data) &&
+    'problemId' in data &&
+    'title' in data &&
+    'tier' in data &&
+    typeof data.problemId === 'number' &&
+    typeof data.title === 'string' &&
+    isTier(data.tier)
+  );
+};
+
+const isProblemInfos = (data: unknown): data is ProblemInfo[] => {
+  return Array.isArray(data) && data.every((item) => isProblemInfo(item));
 };

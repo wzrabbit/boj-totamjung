@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProblemCardGrid from './ProblemCardGrid';
-import type { ProblemInfo } from '@/types/gacha';
+import type { ProblemInfo } from '@/types/randomDefense';
 
 /**
  * `ProblemCardGrid`

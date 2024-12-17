@@ -1,7 +1,3 @@
-import type { Tier } from './randomDefense';
+import type { Rank } from './randomDefense';
 
-export interface ProblemInfo {
-  problemId: number;
-  title: string;
-  tier: Tier;
-}
+export type PreviewCardRanks = [Rank] | [Rank, Rank] | [Rank, Rank, Rank];

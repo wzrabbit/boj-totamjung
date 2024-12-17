@@ -192,7 +192,9 @@
     runtime: {
       getManifest: () => ({ version: 'Test', manifest_version: 3 }),
       getURL: (path) => path,
-      sendMessage: async ({ command, message }, callback) => {
+      sendMessage: async (message, callback) => {
+        const command = message.command;
+
         switch (command) {
           case COMMANDS.FETCH_CHECKED_ALGORITHM_IDS:
             return { checkedIds: checkedAlgorithmIds };
@@ -203,13 +205,15 @@
           case COMMANDS.FETCH_QUICK_SLOTS:
             return quickSlotsResponse;
           case COMMANDS.GET_RANDOM_DEFENSE_RESULT:
-            return {
-              success: false,
-              errorMessage: '테스트!',
-              errorDescriptions: [
-                '이 테스트 메시지가 디버그 도구에 표시된다면, 랜덤 디펜스가 진행되었음을 의미하는 것입니다.',
-              ],
-            };
+            if (command.problemCount === 1) {
+              return {
+                success: false,
+                errorMessage: '테스트!',
+                errorDescriptions: [
+                  '이 테스트 메시지가 디버그 도구에 표시된다면, 랜덤 디펜스가 진행되었음을 의미하는 것입니다.',
+                ],
+              };
+            }
           case COMMANDS.OPEN_OPTIONS_PAGE:
             alert(
               '이 alert가 뜬다면, 실제 실행 환경에서는 설정 페이지가 뜰 것입니다.',

@@ -259,11 +259,18 @@ const executeBackground = () => {
       }
 
       if (command === COMMANDS.GET_RANDOM_DEFENSE_RESULT) {
-        if (!('query' in message) || typeof message.query !== 'string') {
+        if (
+          !('query' in message) ||
+          typeof message.query !== 'string' ||
+          !('problemCount' in message) ||
+          typeof message.problemCount !== 'number'
+        ) {
           return;
         }
 
-        getRandomDefenseResult(message.query).then((result) => {
+        const { query, problemCount } = message;
+
+        getRandomDefenseResult(query, problemCount).then((result) => {
           sendResponse(result);
         });
         return true;

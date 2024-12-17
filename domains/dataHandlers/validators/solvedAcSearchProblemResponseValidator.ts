@@ -1,5 +1,5 @@
 import { isObject } from '@/types/typeGuards';
-import { isTierWithoutNotRatable } from '@/types/typeGuards';
+import { isTier } from '@/types/typeGuards';
 import type {
   SolvedAcSearchProblemResponse,
   SolvedAcSearchProblemInfo,
@@ -33,9 +33,11 @@ export const isSolvedAcSearchProblemInfo = (
     isObject(data) &&
     'problemId' in data &&
     'titleKo' in data &&
+    'isLevelLocked' in data &&
     'level' in data &&
     typeof data.problemId === 'number' &&
     typeof data.titleKo === 'string' &&
-    isTierWithoutNotRatable(data.level)
+    typeof data.isLevelLocked === 'boolean' &&
+    isTier(data.level)
   );
 };

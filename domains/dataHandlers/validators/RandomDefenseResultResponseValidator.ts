@@ -1,5 +1,5 @@
 import { isObject } from '@/types/typeGuards';
-import { isSolvedAcSearchProblemInfo } from './solvedAcSearchProblemResponseValidator';
+import { isSolvedAcSearchProblemInfos } from './solvedAcSearchProblemResponseValidator';
 import type { RandomDefenseResultResponse } from '@/types/randomDefense';
 
 export const isRandomDefenseResultResponse = (
@@ -15,7 +15,7 @@ export const isRandomDefenseResultResponse = (
 
   if (success) {
     return (
-      'problemInfo' in data && isSolvedAcSearchProblemInfo(data.problemInfo)
+      'problemInfos' in data && isSolvedAcSearchProblemInfos(data.problemInfos)
     );
   }
 

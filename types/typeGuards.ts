@@ -1,5 +1,5 @@
 import type { IsoString } from '@/types/utils';
-import type { Tier, TierWithoutNotRatable } from '@/types/randomDefense';
+import type { Rank, Tier, TierWithoutNotRatable } from '@/types/randomDefense';
 import { RatedTier } from '@/types/tierHider';
 
 export const isObject = (data: unknown): data is object => {
@@ -39,4 +39,19 @@ export const isTierWithoutNotRatable = (
 
 export const isRatedTier = (data: unknown): data is RatedTier => {
   return isTier(data) && data !== 0 && data !== 31;
+};
+
+export const isRank = (data: unknown): data is Rank => {
+  return (
+    typeof data === 'string' &&
+    [
+      'unrated',
+      'bronze',
+      'silver',
+      'gold',
+      'platinum',
+      'diamond',
+      'ruby',
+    ].includes(data)
+  );
 };

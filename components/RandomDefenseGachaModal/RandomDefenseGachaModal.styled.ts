@@ -12,7 +12,7 @@ export const rotate = keyframes`
 `;
 
 export const blink = keyframes`
-0% {
+  0% {
    opacity: 0.3;
   }
   
@@ -22,6 +22,32 @@ export const blink = keyframes`
 
   100% {
    opacity: 0.3;
+  }
+`;
+
+export const tremble = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  10% {
+    transform: rotate(-3deg);
+  }
+
+  20% {
+    transform: rotate(3deg);
+  }
+
+  30% {
+    transform: rotate(-3deg);
+  }
+
+  40% {
+    transform: rotate(3deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
   }
 `;
 
@@ -155,9 +181,49 @@ export const IconMessageContainer = styled.div`
 export const LoadingMessage = styled.span`
   font-size: 20px;
   line-height: 20px;
-  font-weight: 600;
+  font-weight: 500;
 
   color: ${({ theme }) => theme.color.LIGHT_GRAY};
 
   animation: ${blink} 2s linear infinite;
+`;
+
+export const ReadyScreen = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+`;
+
+export const CardBoxWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+`;
+
+export const MouseClickIconWrapper = styled.div`
+  width: 25px;
+  height: 25px;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+
+    color: ${({ theme }) => theme.color.PURE_WHITE};
+  }
+
+  animation: ${tremble} 1.5s infinite;
+`;
+
+export const ReadyMessage = styled.span`
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 500;
+
+  color: ${({ theme }) => theme.color.WHITE};
 `;

@@ -9,6 +9,7 @@ import {
 } from '@/assets/svg';
 import { theme } from '@/styles/theme';
 import type { FilledSlot } from '@/types/randomDefense';
+import CardBox from '@/components/CardBox';
 
 interface RandomDefenseGachaModalProps {
   open: boolean;
@@ -20,7 +21,7 @@ interface RandomDefenseGachaModalProps {
 const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
   const { open, onClose } = props;
 
-  const gachaStatus = 'loading';
+  const gachaStatus = 'ready';
   const errorMessage = '에러가 발생했습니다.';
   const errorDescriptions = ['첫 번째 에러 줄', '두 번째 에러 줄'];
 
@@ -38,6 +39,28 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               </S.IconMessageContainer>
             </S.BottomControlList>
           </S.LoadingScreen>
+        )}
+        {gachaStatus === 'ready' && (
+          <S.ReadyScreen>
+            <S.CardBoxWrapper>
+              <CardBox
+                color="red"
+                isTierHidden={false}
+                cardRanks={['bronze', 'silver', 'gold']}
+                onOpenAnimationEnd={() => {}}
+              />
+            </S.CardBoxWrapper>
+            <S.BottomControlList>
+              <S.IconMessageContainer>
+                <S.MouseClickIconWrapper>
+                  <MouseClickIcon />
+                </S.MouseClickIconWrapper>
+                <S.ReadyMessage>
+                  카드 상자를 클릭하면 결과를 확인할 수 있습니다
+                </S.ReadyMessage>
+              </S.IconMessageContainer>
+            </S.BottomControlList>
+          </S.ReadyScreen>
         )}
         {gachaStatus === 'error' && (
           <S.ErrorScreen>

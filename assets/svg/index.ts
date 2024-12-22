@@ -22,6 +22,7 @@ import FileDownloadIcon from './file-download.svg?react';
 import FileDeleteIcon from './file-delete.svg?react';
 import StickyNoteIcon from './sticky-note.svg?react';
 import GithubIcon from './github.svg?react';
+import RepeatIcon from './repeat.svg?react';
 
 export {
   SearchIcon,
@@ -48,4 +49,5 @@ export {
   FileDeleteIcon,
   StickyNoteIcon,
   GithubIcon,
+  RepeatIcon,
 };

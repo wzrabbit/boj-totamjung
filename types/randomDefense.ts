@@ -158,7 +158,7 @@ interface RandomDefenseFailureResult {
 
 interface RandomDefenseSuccessResult {
   success: true;
-  problemInfo: SolvedAcSearchProblemInfo;
+  problemInfos: ProblemInfo[];
 }
 
 export interface ProblemInfo {

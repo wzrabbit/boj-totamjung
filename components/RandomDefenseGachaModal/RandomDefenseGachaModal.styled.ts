@@ -1,5 +1,29 @@
-import { styled } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 import { woodBackground } from '@/assets/png';
+
+export const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const blink = keyframes`
+0% {
+   opacity: 0.3;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+   opacity: 0.3;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -99,4 +123,41 @@ export const BottomControlList = styled.div`
   height: 80px;
 
   column-gap: 12px;
+`;
+
+export const LoadingScreen = styled.div`
+  display: flex;
+  align-items: flex-end;
+
+  width: 100%;
+  height: 100%;
+`;
+
+export const LoadingIconWrapper = styled.div`
+  width: 20px;
+  height: 20px;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+
+    color: ${({ theme }) => theme.color.WHITE};
+  }
+
+  animation: ${rotate} 3s linear infinite;
+`;
+
+export const IconMessageContainer = styled.div`
+  display: flex;
+  column-gap: 8px;
+`;
+
+export const LoadingMessage = styled.span`
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 600;
+
+  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+
+  animation: ${blink} 2s linear infinite;
 `;

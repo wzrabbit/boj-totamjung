@@ -159,4 +159,9 @@ interface RandomDefenseFailureResult {
 interface RandomDefenseSuccessResult {
   success: true;
   problemInfo: SolvedAcSearchProblemInfo;
+
+export interface ProblemInfo {
+  problemId: number;
+  title: string;
+  tier: Tier;
 }

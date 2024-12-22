@@ -1,5 +1,5 @@
 import { solvedAcRankIcons, solvedAcNumericTierIcons } from '@/assets/svg/tier';
-import type { ProblemInfo } from '@/types/gacha';
+import type { ProblemInfo } from '@/types/randomDefense';
 import useCardTweak from '@/hooks/gacha/useCardTweak';
 import * as S from './ProblemCard.styled';
 

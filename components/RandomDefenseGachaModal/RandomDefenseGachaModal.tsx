@@ -10,9 +10,10 @@ import {
   SaveIcon,
 } from '@/assets/svg';
 import { theme } from '@/styles/theme';
-import type { FilledSlot, ProblemInfo } from '@/types/randomDefense';
+import type { FilledSlot } from '@/types/randomDefense';
 import CardBox from '@/components/CardBox';
 import ProblemCardGrid from '@/components/ProblemCardGrid';
+import useRandomDefenseGachaModal from '@/hooks/gacha/useRandomDefenseGachaModal';
 
 interface RandomDefenseGachaModalProps {
   open: boolean;
@@ -22,62 +23,16 @@ interface RandomDefenseGachaModalProps {
 }
 
 const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
-  const { open, onClose } = props;
-  const gachaStatus = 'showingResult';
-  const errorMessage = '에러가 발생했습니다.';
-  const errorDescriptions = ['첫 번째 에러 줄', '두 번째 에러 줄'];
-  const problemInfos: ProblemInfo[] = [
-    {
-      problemId: 1000,
-      title: 'A+B',
-      tier: 1,
-    },
-    {
-      problemId: 1001,
-      title: 'A+B',
-      tier: 31,
-    },
-    {
-      problemId: 1002,
-      title: 'A+B',
-      tier: 16,
-    },
-    {
-      problemId: 1003,
-      title: 'A+B',
-      tier: 26,
-    },
-    {
-      problemId: 1004,
-      title: 'A+B',
-      tier: 3,
-    },
-    {
-      problemId: 1005,
-      title: 'A+B',
-      tier: 8,
-    },
-    {
-      problemId: 1006,
-      title: 'A+B',
-      tier: 12,
-    },
-    {
-      problemId: 1007,
-      title: 'A+B',
-      tier: 21,
-    },
-    {
-      problemId: 1008,
-      title: 'A+B',
-      tier: 14,
-    },
-    {
-      problemId: 1009,
-      title: 'A+B',
-      tier: 0,
-    },
-  ].slice(0, 10);
+  const { open, slot, problemCount, onClose } = props;
+  const {
+    gachaStatus,
+    problemInfos,
+    previewCardRanks,
+    errorMessage,
+    errorDescriptions,
+    setGachaStatus,
+    restartGacha,
+  } = useRandomDefenseGachaModal({ open, slot, problemCount });
 
   return (
     <Modal title="즉석 추첨" open={open} padding="0" onClose={onClose}>
@@ -100,8 +55,8 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               <CardBox
                 color="red"
                 isTierHidden={false}
-                cardRanks={['bronze', 'silver', 'gold']}
-                onOpenAnimationEnd={() => {}}
+                cardRanks={previewCardRanks}
+                onOpenAnimationEnd={() => setGachaStatus('showingResult')}
               />
             </S.CardBoxWrapper>
             <S.BottomControlList>
@@ -148,7 +103,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 iconSrc={<RepeatIcon />}
                 disabled={false}
                 ariaLabel="다시 시도하기"
-                onClick={() => {}}
+                onClick={restartGacha}
               />
             </S.BottomControlList>
           </S.ErrorScreen>
@@ -187,7 +142,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 iconSrc={<RepeatIcon />}
                 disabled={false}
                 ariaLabel="다시 추첨하기!"
-                onClick={() => {}}
+                onClick={restartGacha}
               />
             </S.ResultBottomControlList>
           </S.ResultScreen>

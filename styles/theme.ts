@@ -23,6 +23,7 @@ export const theme = {
     AZURE_BLUE: '#007bff',
     BOJ_BLUE: '#0076c0',
     BOJ_BLUE_TRANSPARENT: '#0076c050',
+    BLACK: '#000000',
     BLACK_TRANSPARENT: '#00000050',
     BLACK_DARKER_TRANSPARENT: '#000000aa',
     ORANGE: '#ff8533',

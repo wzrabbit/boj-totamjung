@@ -1,5 +1,17 @@
 import { styled, css, keyframes } from 'styled-components';
 
+const slideUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const kickbackAndDisappear = keyframes`
   0% {
     transform: translateY(0) scale(1);
@@ -7,19 +19,19 @@ const kickbackAndDisappear = keyframes`
   }
 
   22% {
-    transform: translateY(15%)  scale(1); opacity: 1;
+    transform: translateY(15%) scale(1); opacity: 1;
   }
 
   44% {
-    transform: translateY(0)  scale(1); opacity: 1;
+    transform: translateY(0) scale(1); opacity: 1;
   }
 
   66% {
-    transform: translateY(0)  scale(1); opacity: 1;
+    transform: translateY(0) scale(1); opacity: 1;
   }
 
   100% {
-    transform: translateY(0)  scale(0.8); opacity: 0;
+    transform: translateY(0) scale(0.8); opacity: 0;
   }
 `;
 
@@ -58,18 +70,25 @@ const shootCard = keyframes`
   }
 `;
 
-export const Container = styled.button<{ $isCardBoxOpening: boolean }>`
+export const ScaleUpAnimationContainer = styled.div`
   display: inline-block;
   position: relative;
 
   width: 160px;
   height: 234px;
 
+  animation: ${slideUp} 0.25s forwards;
+`;
+
+export const InnerContainer = styled.button<{ $isCardBoxOpening: boolean }>`
+  width: 100%;
+  height: 100%;
+
   background: none;
 
   transition: 0.3s;
-
   user-select: none;
+
   ${({ $isCardBoxOpening }) =>
     $isCardBoxOpening &&
     css`
@@ -102,7 +121,7 @@ export const GlowingBox = styled.div<{ $isCardBoxOpening: boolean }>`
 
   box-shadow: 0 0 70px ${({ theme }) => theme.color.BLACK};
 
-  ${Container}:hover > & {
+  ${InnerContainer}:hover > & {
     box-shadow: 0 0 75px ${({ theme }) => theme.color.GOLD};
   }
 
@@ -121,13 +140,19 @@ export const CardBoxInside = styled.img`
   width: 100%;
 `;
 
-export const InsideCardList = styled.div`
+export const InsideCardList = styled.div<{ $isCardBoxOpening: boolean }>`
   position: absolute;
   top: 10%;
   left: 0;
 
   width: 100%;
   height: 80%;
+
+  ${({ $isCardBoxOpening }) =>
+    !$isCardBoxOpening &&
+    css`
+      opacity: 0;
+    `}
 `;
 
 export const InsideCard = styled.img<{

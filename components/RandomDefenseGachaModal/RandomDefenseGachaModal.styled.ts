@@ -289,5 +289,5 @@ export const ResultBottomControlList = styled.div`
 
   opacity: 0;
   pointer-events: none;
-  animation: ${fadeInAndEnable} 0.3s 0.7s forwards;
+  animation: ${fadeInAndEnable} 0.3s 1s forwards;
 `;

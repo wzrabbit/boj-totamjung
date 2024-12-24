@@ -176,7 +176,7 @@ export const InsideCard = styled.img<{
 
 export const CardBoxFront = styled.img`
   position: absolute;
-  top: 9.15%;
+  top: 9%;
   left: 0;
 
   width: 100%;

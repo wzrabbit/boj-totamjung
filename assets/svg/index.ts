@@ -24,6 +24,8 @@ import StickyNoteIcon from './sticky-note.svg?react';
 import GithubIcon from './github.svg?react';
 import RepeatIcon from './repeat.svg?react';
 import MouseClickIcon from './mouse-click.svg?react';
+import DicesIcon from './dices.svg?react';
+import DownloadIcon from './download.svg?react';
 
 export {
   SearchIcon,
@@ -52,4 +54,6 @@ export {
   GithubIcon,
   RepeatIcon,
   MouseClickIcon,
+  DicesIcon,
+  DownloadIcon,
 };

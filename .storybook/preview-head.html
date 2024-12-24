@@ -166,6 +166,34 @@
     },
   };
 
+  const getProblemInfos = () => [
+    {
+      problemId: 40000,
+      title: '테스트 문제 1',
+      tier: Math.floor(Math.random() * 32),
+    },
+    {
+      problemId: 40001,
+      title: '테스트 문제 2',
+      tier: Math.floor(Math.random() * 32),
+    },
+    {
+      problemId: 40002,
+      title: '테스트 문제 3',
+      tier: Math.floor(Math.random() * 32),
+    },
+    {
+      problemId: 40003,
+      title: '테스트 문제 4',
+      tier: Math.floor(Math.random() * 32),
+    },
+    {
+      problemId: 40004,
+      title: '테스트 문제 5',
+      tier: Math.floor(Math.random() * 32),
+    },
+  ];
+
   const hiderOptionsResponse = {
     problemTagLockDuration: {
       hours: 1,
@@ -192,7 +220,9 @@
     runtime: {
       getManifest: () => ({ version: 'Test', manifest_version: 3 }),
       getURL: (path) => path,
-      sendMessage: async ({ command, message }, callback) => {
+      sendMessage: async (message, callback) => {
+        const command = message.command;
+
         switch (command) {
           case COMMANDS.FETCH_CHECKED_ALGORITHM_IDS:
             return { checkedIds: checkedAlgorithmIds };
@@ -203,12 +233,19 @@
           case COMMANDS.FETCH_QUICK_SLOTS:
             return quickSlotsResponse;
           case COMMANDS.GET_RANDOM_DEFENSE_RESULT:
+            if (command.problemCount === 1) {
+              return {
+                success: false,
+                errorMessage: '테스트!',
+                errorDescriptions: [
+                  '이 테스트 메시지가 디버그 도구에 표시된다면, 랜덤 디펜스가 진행되었음을 의미하는 것입니다.',
+                ],
+              };
+            }
+
             return {
-              success: false,
-              errorMessage: '테스트!',
-              errorDescriptions: [
-                '이 테스트 메시지가 디버그 도구에 표시된다면, 랜덤 디펜스가 진행되었음을 의미하는 것입니다.',
-              ],
+              success: true,
+              problemInfos: getProblemInfos(),
             };
           case COMMANDS.OPEN_OPTIONS_PAGE:
             alert(

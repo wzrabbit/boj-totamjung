@@ -166,33 +166,15 @@
     },
   };
 
-  const getProblemInfos = () => [
-    {
-      problemId: 40000,
-      title: '테스트 문제 1',
+  const getProblemInfos = () => {
+    const problemCount = Math.ceil(Math.random() * 10);
+
+    return Array.from({ length: problemCount }).map((_, index) => ({
+      problemId: 40000 + index,
+      title: `테스트 문제 ${index + 1}`,
       tier: Math.floor(Math.random() * 32),
-    },
-    {
-      problemId: 40001,
-      title: '테스트 문제 2',
-      tier: Math.floor(Math.random() * 32),
-    },
-    {
-      problemId: 40002,
-      title: '테스트 문제 3',
-      tier: Math.floor(Math.random() * 32),
-    },
-    {
-      problemId: 40003,
-      title: '테스트 문제 4',
-      tier: Math.floor(Math.random() * 32),
-    },
-    {
-      problemId: 40004,
-      title: '테스트 문제 5',
-      tier: Math.floor(Math.random() * 32),
-    },
-  ];
+    }));
+  };
 
   const hiderOptionsResponse = {
     problemTagLockDuration: {

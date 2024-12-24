@@ -89,6 +89,30 @@ export const Container = styled.button<{ $isCardBoxOpening: boolean }>`
     `}
 `;
 
+export const GlowingBox = styled.div<{ $isCardBoxOpening: boolean }>`
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 80%;
+  height: 90%;
+  margin: 10%;
+
+  transition: 0.3s;
+
+  box-shadow: 0 0 70px ${({ theme }) => theme.color.BLACK};
+
+  ${Container}:hover > & {
+    box-shadow: 0 0 75px ${({ theme }) => theme.color.GOLD};
+  }
+
+  ${({ theme, $isCardBoxOpening }) =>
+    $isCardBoxOpening &&
+    css`
+      box-shadow: 0 0 75px ${theme.color.GOLD};
+    `};
+`;
+
 export const CardBoxInside = styled.img`
   position: absolute;
   top: 0;

@@ -27,6 +27,7 @@ const CardBox = (props: CardBoxProps) => {
         }
       }}
     >
+      <S.GlowingBox $isCardBoxOpening={isCardBoxOpening} />
       <S.CardBoxInside src={CARD_BOXES.inside[color]} draggable={false} />
       <S.InsideCardList>
         {firstCardRank && (

@@ -6,10 +6,13 @@ import {
   RepeatIcon,
   MouseClickIcon,
   LoadingIcon,
+  CopyIcon,
+  SaveIcon,
 } from '@/assets/svg';
 import { theme } from '@/styles/theme';
-import type { FilledSlot } from '@/types/randomDefense';
+import type { FilledSlot, ProblemInfo } from '@/types/randomDefense';
 import CardBox from '@/components/CardBox';
+import ProblemCardGrid from '@/components/ProblemCardGrid';
 
 interface RandomDefenseGachaModalProps {
   open: boolean;
@@ -20,10 +23,61 @@ interface RandomDefenseGachaModalProps {
 
 const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
   const { open, onClose } = props;
-
-  const gachaStatus = 'ready';
+  const gachaStatus = 'showingResult';
   const errorMessage = '에러가 발생했습니다.';
   const errorDescriptions = ['첫 번째 에러 줄', '두 번째 에러 줄'];
+  const problemInfos: ProblemInfo[] = [
+    {
+      problemId: 1000,
+      title: 'A+B',
+      tier: 1,
+    },
+    {
+      problemId: 1001,
+      title: 'A+B',
+      tier: 31,
+    },
+    {
+      problemId: 1002,
+      title: 'A+B',
+      tier: 16,
+    },
+    {
+      problemId: 1003,
+      title: 'A+B',
+      tier: 26,
+    },
+    {
+      problemId: 1004,
+      title: 'A+B',
+      tier: 3,
+    },
+    {
+      problemId: 1005,
+      title: 'A+B',
+      tier: 8,
+    },
+    {
+      problemId: 1006,
+      title: 'A+B',
+      tier: 12,
+    },
+    {
+      problemId: 1007,
+      title: 'A+B',
+      tier: 21,
+    },
+    {
+      problemId: 1008,
+      title: 'A+B',
+      tier: 14,
+    },
+    {
+      problemId: 1009,
+      title: 'A+B',
+      tier: 0,
+    },
+  ].slice(0, 10);
 
   return (
     <Modal title="즉석 추첨" open={open} padding="0" onClose={onClose}>
@@ -98,6 +152,45 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               />
             </S.BottomControlList>
           </S.ErrorScreen>
+        )}
+        {gachaStatus === 'showingResult' && (
+          <S.ResultScreen>
+            <S.ProblemCardGridWrapper>
+              <ProblemCardGrid problemInfos={problemInfos} />
+            </S.ProblemCardGridWrapper>
+            <S.ResultBottomControlList>
+              <IconButton
+                type="button"
+                name="결과 복사하기"
+                size="large"
+                color={theme.color.LIGHT_GRAY}
+                iconSrc={<CopyIcon />}
+                disabled={false}
+                ariaLabel="결과 복사하기"
+                onClick={() => {}}
+              />
+              <IconButton
+                type="button"
+                name="결과 저장하기"
+                size="large"
+                color={theme.color.LEMON}
+                iconSrc={<SaveIcon />}
+                disabled={false}
+                ariaLabel="결과 저장하기"
+                onClick={() => {}}
+              />
+              <IconButton
+                type="button"
+                name="다시 추첨하기!"
+                size="large"
+                color={theme.color.ORANGE}
+                iconSrc={<RepeatIcon />}
+                disabled={false}
+                ariaLabel="다시 추첨하기!"
+                onClick={() => {}}
+              />
+            </S.ResultBottomControlList>
+          </S.ResultScreen>
         )}
       </S.Container>
     </Modal>

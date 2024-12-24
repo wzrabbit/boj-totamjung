@@ -51,6 +51,35 @@ export const tremble = keyframes`
   }
 `;
 
+const zoomIn = keyframes`
+  0% {
+    transform: scale(0.75);
+    opacity: 0;
+  }
+  
+  60% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
+
+const fadeInAndEnable = keyframes`
+  from {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  to {
+    pointer-events: auto;
+    opacity: 1;
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -226,4 +255,39 @@ export const ReadyMessage = styled.span`
   font-weight: 500;
 
   color: ${({ theme }) => theme.color.WHITE};
+`;
+
+export const ResultScreen = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+`;
+
+export const ProblemCardGridWrapper = styled.div`
+  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+
+  opacity: 0;
+  animation: ${zoomIn} cubic-bezier(0.165, 0.84, 0.44, 1) 0.7s 0.3s forwards;
+`;
+
+export const ResultBottomControlList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  width: 100%;
+  height: 80px;
+
+  column-gap: 12px;
+
+  opacity: 0;
+  pointer-events: none;
+  animation: ${fadeInAndEnable} 0.3s 0.7s forwards;
 `;

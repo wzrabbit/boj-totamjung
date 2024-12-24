@@ -27,6 +27,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
   const {
     gachaStatus,
     problemInfos,
+    cardBoxColor,
     previewCardRanks,
     errorMessage,
     errorDescriptions,
@@ -53,7 +54,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
           <S.ReadyScreen>
             <S.CardBoxWrapper>
               <CardBox
-                color="red"
+                color={cardBoxColor}
                 isTierHidden={false}
                 cardRanks={previewCardRanks}
                 onOpenAnimationEnd={() => setGachaStatus('showingResult')}

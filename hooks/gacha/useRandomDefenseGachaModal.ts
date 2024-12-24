@@ -2,6 +2,7 @@ import { COMMANDS } from '@/constants/commands';
 import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
 import { decidePreviewCardRanksByProblemInfos } from '@/domains/gacha/decidePreviewCardRanksByProblemInfos';
 import { useState, useEffect, useCallback } from 'react';
+import { chooseByProbability } from '@/utils/chooseByProbability';
 import type { FilledSlot } from '@/types/randomDefense';
 import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
@@ -14,12 +15,38 @@ interface UseRandomDefenseGachaModalParams {
 
 type GachaStatus = 'loading' | 'ready' | 'showingResult' | 'error';
 
+type CardBoxColor = 'black' | 'red' | 'green' | 'blue' | 'gold';
+
+const cardBoxColorChoices: { choice: CardBoxColor; probability: number }[] = [
+  {
+    choice: 'black',
+    probability: 0.24975,
+  },
+  {
+    choice: 'red',
+    probability: 0.24975,
+  },
+  {
+    choice: 'green',
+    probability: 0.24975,
+  },
+  {
+    choice: 'blue',
+    probability: 0.24975,
+  },
+  {
+    choice: 'gold',
+    probability: 0.001,
+  },
+];
+
 const useRandomDefenseGachaModal = (
   params: UseRandomDefenseGachaModalParams,
 ) => {
   const { open, slot, problemCount } = params;
   const [gachaStatus, setGachaStatus] = useState<GachaStatus>('loading');
   const [problemInfos, setProblemInfos] = useState<ProblemInfo[]>([]);
+  const [cardBoxColor, setCardBoxColor] = useState<CardBoxColor>('black');
   const [errorMessage, setErrorMessage] = useState('');
   const [errorDescriptions, setErrorDescriptions] = useState<string | string[]>(
     [],
@@ -58,6 +85,7 @@ const useRandomDefenseGachaModal = (
 
   const restartGacha = () => {
     setGachaStatus('loading');
+    setCardBoxColor(chooseByProbability(cardBoxColorChoices));
     fetchRandomDefenseResult();
   };
 
@@ -68,6 +96,7 @@ const useRandomDefenseGachaModal = (
   return {
     gachaStatus,
     problemInfos,
+    cardBoxColor,
     previewCardRanks,
     errorMessage,
     errorDescriptions,

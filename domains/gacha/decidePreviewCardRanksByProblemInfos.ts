@@ -3,7 +3,7 @@ import type { PreviewCardRanks } from '@/types/gacha';
 import type { ProblemInfo } from '@/types/randomDefense';
 import { isRank } from '@/types/typeGuards';
 
-const rankNames: Rank[] = [
+const normalRankNames: Rank[] = [
   'bronze',
   'silver',
   'gold',
@@ -74,7 +74,7 @@ const getRankByTier = (tier: Tier): Rank => {
     return 'unrated';
   }
 
-  return rankNames[Math.floor((tier - 1) / 5)];
+  return normalRankNames[Math.floor((tier - 1) / 5)];
 };
 
 const isRankCountEntries = (

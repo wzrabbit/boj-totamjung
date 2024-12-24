@@ -160,10 +160,10 @@ export const ProblemId = styled.div.attrs<{ $cardWidth: number }>(
 export const Title = styled.div.attrs<{ $cardWidth: number }>(
   ({ $cardWidth, theme }) => ({
     style: {
-      height: `${$cardWidth / 6.025}px`,
+      height: `${Math.max(28, $cardWidth / 6.025)}px`,
       color: `${theme.color.WHITE}`,
       fontSize: `${Math.max(14, $cardWidth / 13.388)}px`,
-      lineHeight: `${Math.max(12, $cardWidth / 13.388)}px`,
+      lineHeight: `${Math.max(14, $cardWidth / 13.388)}px`,
     },
   }),
 )<{ $cardWidth: number }>`

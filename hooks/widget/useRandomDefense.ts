@@ -185,6 +185,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     }
 
     const { problemInfos } = randomDefenseResultResponse;
+    const { problemId } = problemInfos[0];
 
     browser.runtime.sendMessage({
       command: COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO,

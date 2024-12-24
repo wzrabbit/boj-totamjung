@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { calculateCardGridLayout } from '@/domains/gacha/calculateCardGridLayout';
 
 interface UseProblemCardGridParams {
@@ -10,13 +10,14 @@ const useProblemCardGrid = (params: UseProblemCardGridParams) => {
   const [cardCount, setCardCount] = useState(initCardCount);
   const [cardGridWidth, setCardGridWidth] = useState(0);
   const [cardGridHeight, setCardGridHeight] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
   const cardGridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setCardCount(cardCount);
   }, [initCardCount]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const cardGridElement = cardGridRef.current;
 
     if (!cardGridElement) {
@@ -27,6 +28,7 @@ const useProblemCardGrid = (params: UseProblemCardGridParams) => {
       const { clientWidth, clientHeight } = cardGridElement;
       setCardGridWidth(clientWidth);
       setCardGridHeight(clientHeight);
+      setIsLoaded(true);
     };
 
     const resizeObserver = new ResizeObserver(() => {
@@ -42,6 +44,7 @@ const useProblemCardGrid = (params: UseProblemCardGridParams) => {
 
   return {
     ...calculateCardGridLayout(cardGridWidth, cardGridHeight, cardCount),
+    isLoaded,
     cardGridRef,
   };
 };

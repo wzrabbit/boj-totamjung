@@ -11,12 +11,13 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
   const { problemInfos } = props;
   const cardCount = problemInfos.length;
   const cardGridInfo = useProblemCardGrid({ cardCount });
-  const { cardWidth, cardGridGap, isOverflow, cardGridRef } = cardGridInfo;
+  const { cardWidth, cardGridGap, isOverflow, isLoaded, cardGridRef } =
+    cardGridInfo;
 
   let renderingCardIndex = 0;
 
   return (
-    <S.Container ref={cardGridRef}>
+    <S.Container ref={cardGridRef} $visible={isLoaded}>
       {isOverflow ? (
         <S.StaticGrid
           $width={cardGridInfo.innerGridWidth}

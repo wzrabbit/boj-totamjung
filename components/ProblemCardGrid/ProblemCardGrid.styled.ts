@@ -1,7 +1,8 @@
 import { styled } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ $visible: boolean }>`
   display: flex;
+  visibility: ${({ $visible }) => ($visible ? 'visible' : 'hidden')};
   overflow-x: hidden;
   overflow-y: auto;
   justify-content: center;

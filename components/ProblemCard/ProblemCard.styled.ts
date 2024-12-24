@@ -99,6 +99,7 @@ export const InnerContainer = styled.div.attrs<{
   $rotateY: number;
 }>`
   display: inline-block;
+  overflow: hidden;
   flex-shrink: 0;
 
   box-shadow: 0 0 15px ${({ theme }) => theme.color.BLACK_DARKER_TRANSPARENT};
@@ -175,4 +176,36 @@ export const Title = styled.div.attrs<{ $cardWidth: number }>(
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+`;
+
+export const Overlay = styled.div.attrs<{ $movement: number }>(
+  ({ $movement }) => ({
+    style: {
+      backgroundPosition: `${$movement + 60}%`,
+    },
+  }),
+)`
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    115deg,
+    transparent 32%,
+    rgba(250, 215, 110, 0.3) 42%,
+    rgba(135, 50, 255, 0.3) 53%,
+    transparent 63%
+  );
+  background-size: 150% 150%;
+
+  mix-blend-mode: color-dodge;
+  transition: 0.1s;
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
 `;

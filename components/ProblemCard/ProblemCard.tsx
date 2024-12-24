@@ -54,6 +54,7 @@ const ProblemCard = (props: ProblemCardProps) => {
             $isHidden={isHidden}
           >{`#${problemId}`}</S.ProblemId>
           <S.Title $cardWidth={width}>{title}</S.Title>
+          <S.Overlay $movement={rotateX + rotateY} />
         </S.LinkButton>
       </S.InnerContainer>
     </S.HoverTransformContainer>

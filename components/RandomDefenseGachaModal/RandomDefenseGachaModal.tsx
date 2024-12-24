@@ -7,7 +7,8 @@ import {
   MouseClickIcon,
   LoadingIcon,
   CopyIcon,
-  SaveIcon,
+  DownloadIcon,
+  DicesIcon,
 } from '@/assets/svg';
 import { theme } from '@/styles/theme';
 import type { FilledSlot } from '@/types/randomDefense';
@@ -117,22 +118,22 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
             <S.ResultBottomControlList>
               <IconButton
                 type="button"
-                name="결과 복사하기"
+                name="문제 목록 복사"
                 size="large"
                 color={theme.color.LIGHT_GRAY}
                 iconSrc={<CopyIcon />}
                 disabled={false}
-                ariaLabel="결과 복사하기"
+                ariaLabel="문제 목록 복사"
                 onClick={() => {}}
               />
               <IconButton
                 type="button"
-                name="결과 저장하기"
+                name="추첨 결과 저장"
                 size="large"
                 color={theme.color.LEMON}
-                iconSrc={<SaveIcon />}
+                iconSrc={<DownloadIcon />}
                 disabled={false}
-                ariaLabel="결과 저장하기"
+                ariaLabel="추첨 결과 저장"
                 onClick={() => {}}
               />
               <IconButton
@@ -140,7 +141,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 name="다시 추첨하기!"
                 size="large"
                 color={theme.color.ORANGE}
-                iconSrc={<RepeatIcon />}
+                iconSrc={<DicesIcon />}
                 disabled={false}
                 ariaLabel="다시 추첨하기!"
                 onClick={restartGacha}

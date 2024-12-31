@@ -7,6 +7,8 @@ import {
   MouseClickIcon,
   LoadingIcon,
   DicesIcon,
+  VolumeOffIcon,
+  VolumeOnIcon,
 } from '@/assets/svg';
 import { theme } from '@/styles/theme';
 import type { FilledSlot } from '@/types/randomDefense';
@@ -30,9 +32,10 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     previewCardRanks,
     errorMessage,
     errorDescriptions,
+    isAudioMuted,
     setGachaStatus,
     restartGacha,
-    updateIsAudioMuted,
+    toggleIsAudioMuted,
     playCardSlideAudio,
     playGachaAudio,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
@@ -134,6 +137,13 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
             </S.ResultBottomControlList>
           </S.ResultScreen>
         )}
+        <S.MuteButton
+          $isMuted={isAudioMuted}
+          onClick={toggleIsAudioMuted}
+          aria-label={isAudioMuted ? '효과음 켜기' : '효과음 끄기'}
+        >
+          {isAudioMuted ? <VolumeOffIcon /> : <VolumeOnIcon />}
+        </S.MuteButton>
       </S.Container>
     </Modal>
   );

@@ -81,12 +81,14 @@ const fadeInAndEnable = keyframes`
 `;
 
 export const Container = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 
   width: 800px;
-  height: 520px;
+  height: 550px;
   max-width: 100%;
   max-height: 100%;
 
@@ -95,6 +97,35 @@ export const Container = styled.div`
 
   & > div {
     flex-grow: 1;
+  }
+`;
+
+export const MuteButton = styled.button<{ $isMuted: boolean }>`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 35px;
+  height: 35px;
+
+  border: 2px solid ${({ theme }) => theme.color.LIGHT_GRAY};
+
+  border-radius: 50%;
+  background: transparent;
+
+  opacity: 0.4;
+  transition: 0.2s;
+
+  &:hover {
+    box-shadow: 0 0 10px ${({ theme }) => theme.color.LIGHT_GRAY};
+    opacity: 0.7;
+  }
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+
+    color: ${({ theme }) => theme.color.LIGHT_GRAY};
   }
 `;
 
@@ -270,7 +301,7 @@ export const ProblemCardGridWrapper = styled.div`
 
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 60px 20px 20px 20px;
 
   opacity: 0;
   animation: ${zoomIn} cubic-bezier(0.165, 0.84, 0.44, 1) 0.7s 0.3s forwards;

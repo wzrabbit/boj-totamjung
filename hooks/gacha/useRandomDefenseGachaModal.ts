@@ -96,9 +96,12 @@ const useRandomDefenseGachaModal = (
     fetchRandomDefenseResult();
   };
 
-  const updateIsAudioMuted = (isMuted: boolean) => {
-    setIsAudioMuted(isMuted);
-    gachaAudioRef.current.muted = isMuted;
+  const toggleIsAudioMuted = () => {
+    setIsAudioMuted((prev) => {
+      const newMutedState = !prev;
+      gachaAudioRef.current.muted = newMutedState;
+      return newMutedState;
+    });
   };
 
   const playCardSlideAudio = () => {
@@ -124,9 +127,10 @@ const useRandomDefenseGachaModal = (
     previewCardRanks,
     errorMessage,
     errorDescriptions,
+    isAudioMuted,
     setGachaStatus,
     restartGacha,
-    updateIsAudioMuted,
+    toggleIsAudioMuted,
     playCardSlideAudio,
     playGachaAudio,
   };

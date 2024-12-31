@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProblemCard from './ProblemCard';
+import { fn } from '@storybook/test';
 
 /**
  * `ProblemCard`는 즉석 추첨 결과에서 나온 결과에서 하나의 문제를 시각적으로 보여주는 카드 모양의 컴포넌트입니다.
@@ -33,6 +34,7 @@ export const Unrated: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -45,6 +47,7 @@ export const NotRatable: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -57,6 +60,7 @@ export const Hidden: Story = {
     },
     isHidden: true,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -69,6 +73,7 @@ export const Bronze: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -81,6 +86,7 @@ export const Silver: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -93,6 +99,7 @@ export const Gold: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -105,6 +112,7 @@ export const Platinum: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -117,6 +125,7 @@ export const Diamond: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -129,6 +138,7 @@ export const Ruby: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -145,5 +155,6 @@ export const LongTitle: Story = {
     },
     isHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };

@@ -7,11 +7,13 @@ interface CardBoxProps {
   color: 'black' | 'red' | 'green' | 'blue' | 'gold';
   isTierHidden: boolean;
   cardRanks: [Rank] | [Rank, Rank] | [Rank, Rank, Rank];
+  onFirstClick: () => void;
   onOpenAnimationEnd: () => void;
 }
 
 const CardBox = (props: CardBoxProps) => {
-  const { color, isTierHidden, cardRanks, onOpenAnimationEnd } = props;
+  const { color, isTierHidden, cardRanks, onFirstClick, onOpenAnimationEnd } =
+    props;
   const [isCardBoxOpening, setIsCardBoxOpening] = useState(false);
   const firstCardRank = cardRanks[0];
   const secondCardRank = cardRanks[1];
@@ -20,7 +22,15 @@ const CardBox = (props: CardBoxProps) => {
   return (
     <S.ScaleUpAnimationContainer>
       <S.InnerContainer
-        onClick={() => setIsCardBoxOpening(true)}
+        onClick={() => {
+          setIsCardBoxOpening((isCardBoxOpening) => {
+            if (!isCardBoxOpening) {
+              onFirstClick();
+            }
+
+            return true;
+          });
+        }}
         $isCardBoxOpening={isCardBoxOpening}
         onAnimationEnd={(event) => {
           if (isCardBoxOpening && event.target === event.currentTarget) {
@@ -42,7 +52,7 @@ const CardBox = (props: CardBoxProps) => {
               alt=""
               $isCardBoxOpening={isCardBoxOpening}
               $top="0"
-              $delay={1}
+              $delay={1.5}
             />
           )}
           {secondCardRank && (
@@ -56,7 +66,7 @@ const CardBox = (props: CardBoxProps) => {
               alt=""
               $isCardBoxOpening={isCardBoxOpening}
               $top="4%"
-              $delay={1.15}
+              $delay={1.65}
             />
           )}
           {thirdCardRank && (
@@ -70,7 +80,7 @@ const CardBox = (props: CardBoxProps) => {
               alt=""
               $isCardBoxOpening={isCardBoxOpening}
               $top="8%"
-              $delay={1.3}
+              $delay={1.8}
             />
           )}
         </S.InsideCardList>

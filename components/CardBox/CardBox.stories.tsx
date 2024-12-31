@@ -35,6 +35,7 @@ export const Red: Story = {
     color: 'red',
     isTierHidden: false,
     cardRanks: ['bronze', 'silver', 'gold'],
+    onFirstClick: fn(),
     onOpenAnimationEnd: fn(),
   },
 };
@@ -44,6 +45,7 @@ export const Black: Story = {
     color: 'black',
     isTierHidden: false,
     cardRanks: ['platinum', 'diamond', 'ruby'],
+    onFirstClick: fn(),
     onOpenAnimationEnd: fn(),
   },
 };
@@ -53,6 +55,7 @@ export const Green: Story = {
     color: 'green',
     isTierHidden: false,
     cardRanks: ['bronze', 'bronze', 'bronze'],
+    onFirstClick: fn(),
     onOpenAnimationEnd: fn(),
   },
 };
@@ -62,6 +65,7 @@ export const Blue: Story = {
     color: 'blue',
     isTierHidden: false,
     cardRanks: ['diamond', 'gold', 'diamond'],
+    onFirstClick: fn(),
     onOpenAnimationEnd: fn(),
   },
 };
@@ -71,6 +75,7 @@ export const Gold: Story = {
     color: 'gold',
     isTierHidden: false,
     cardRanks: ['gold', 'gold', 'gold'],
+    onFirstClick: fn(),
     onOpenAnimationEnd: fn(),
   },
 };
@@ -80,6 +85,7 @@ export const HiddenCard: Story = {
     color: 'red',
     isTierHidden: true,
     cardRanks: ['bronze', 'silver', 'gold'],
+    onFirstClick: fn(),
     onOpenAnimationEnd: fn(),
   },
 };
@@ -89,6 +95,7 @@ export const SingleCard: Story = {
     color: 'red',
     isTierHidden: false,
     cardRanks: ['unrated'],
+    onFirstClick: fn(),
     onOpenAnimationEnd: fn(),
   },
 };
@@ -98,6 +105,7 @@ export const DoubleCard: Story = {
     color: 'red',
     isTierHidden: false,
     cardRanks: ['unrated', 'unrated'],
+    onFirstClick: fn(),
     onOpenAnimationEnd: fn(),
   },
 };

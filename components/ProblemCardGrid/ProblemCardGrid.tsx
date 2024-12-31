@@ -5,10 +5,11 @@ import type { ProblemInfo } from '@/types/randomDefense';
 
 interface ProblemCardGridProps {
   problemInfos: ProblemInfo[];
+  onCardHover: () => void;
 }
 
 const ProblemCardGrid = (props: ProblemCardGridProps) => {
-  const { problemInfos } = props;
+  const { problemInfos, onCardHover } = props;
   const cardCount = problemInfos.length;
   const cardGridInfo = useProblemCardGrid({ cardCount });
   const { cardWidth, cardGridGap, isOverflow, isLoaded, cardGridRef } =
@@ -30,6 +31,7 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
               width={cardWidth}
               problemInfo={problemInfo}
               isHidden={false}
+              onHover={onCardHover}
             />
           ))}
         </S.StaticGrid>
@@ -51,6 +53,7 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
                     width={cardWidth}
                     problemInfo={problemInfo}
                     isHidden={false}
+                    onHover={onCardHover}
                   />
                 );
               })}

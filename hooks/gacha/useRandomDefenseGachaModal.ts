@@ -1,8 +1,10 @@
 import { COMMANDS } from '@/constants/commands';
 import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
 import { decidePreviewCardRanksByProblemInfos } from '@/domains/gacha/decidePreviewCardRanksByProblemInfos';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { chooseByProbability } from '@/utils/chooseByProbability';
+import { pickIntegerInRange } from '@/utils/pickIntegerInRange';
+import { cardSlideAudios, gachaAudio } from '@/assets/audio';
 import type { FilledSlot } from '@/types/randomDefense';
 import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
@@ -40,6 +42,8 @@ const cardBoxColorChoices: { choice: CardBoxColor; probability: number }[] = [
   },
 ];
 
+const cardSlideAudioElements = cardSlideAudios.map((audio) => new Audio(audio));
+
 const useRandomDefenseGachaModal = (
   params: UseRandomDefenseGachaModalParams,
 ) => {
@@ -51,6 +55,9 @@ const useRandomDefenseGachaModal = (
   const [errorDescriptions, setErrorDescriptions] = useState<string | string[]>(
     [],
   );
+  const [isAudioMuted, setIsAudioMuted] = useState(false);
+  const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
+
   const previewCardRanks: PreviewCardRanks =
     problemInfos.length > 0
       ? decidePreviewCardRanksByProblemInfos(problemInfos)
@@ -89,6 +96,23 @@ const useRandomDefenseGachaModal = (
     fetchRandomDefenseResult();
   };
 
+  const updateIsAudioMuted = (isMuted: boolean) => {
+    setIsAudioMuted(isMuted);
+    gachaAudioRef.current.muted = isMuted;
+  };
+
+  const playCardSlideAudio = () => {
+    if (!isAudioMuted) {
+      cardSlideAudioElements[pickIntegerInRange(0, 3)].play();
+    }
+  };
+
+  const playGachaAudio = () => {
+    gachaAudioRef.current.pause();
+    gachaAudioRef.current.currentTime = 0;
+    gachaAudioRef.current.play();
+  };
+
   useEffect(() => {
     restartGacha();
   }, [open, slot, problemCount]);
@@ -102,6 +126,9 @@ const useRandomDefenseGachaModal = (
     errorDescriptions,
     setGachaStatus,
     restartGacha,
+    updateIsAudioMuted,
+    playCardSlideAudio,
+    playGachaAudio,
   };
 };
 

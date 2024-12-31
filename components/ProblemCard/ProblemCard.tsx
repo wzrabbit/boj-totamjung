@@ -7,10 +7,11 @@ interface ProblemCardProps {
   problemInfo: ProblemInfo;
   isHidden: boolean;
   width: number;
+  onHover: () => void;
 }
 
 const ProblemCard = (props: ProblemCardProps) => {
-  const { problemInfo, isHidden, width } = props;
+  const { problemInfo, isHidden, width, onHover } = props;
   const { problemId, title, tier } = problemInfo;
   const { rotateX, rotateY, adjustCardTweak, resetCardTweak } = useCardTweak();
 
@@ -24,6 +25,7 @@ const ProblemCard = (props: ProblemCardProps) => {
         $rotateY={rotateY}
         onMouseMove={adjustCardTweak}
         onMouseOut={resetCardTweak}
+        onMouseOver={onHover}
       >
         <S.LinkButton
           target="_blank"

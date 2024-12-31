@@ -32,6 +32,9 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     errorDescriptions,
     setGachaStatus,
     restartGacha,
+    updateIsAudioMuted,
+    playCardSlideAudio,
+    playGachaAudio,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
 
   return (
@@ -56,6 +59,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 color={cardBoxColor}
                 isTierHidden={false}
                 cardRanks={previewCardRanks}
+                onFirstClick={playGachaAudio}
                 onOpenAnimationEnd={() => setGachaStatus('showingResult')}
               />
             </S.CardBoxWrapper>
@@ -111,7 +115,10 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
         {gachaStatus === 'showingResult' && (
           <S.ResultScreen>
             <S.ProblemCardGridWrapper>
-              <ProblemCardGrid problemInfos={problemInfos} />
+              <ProblemCardGrid
+                problemInfos={problemInfos}
+                onCardHover={playCardSlideAudio}
+              />
             </S.ProblemCardGridWrapper>
             <S.ResultBottomControlList>
               <IconButton

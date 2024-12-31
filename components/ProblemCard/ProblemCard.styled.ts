@@ -202,7 +202,6 @@ export const Overlay = styled.div.attrs<{ $movement: number }>(
   background-size: 150% 150%;
 
   mix-blend-mode: color-dodge;
-  transition: 0.1s;
   opacity: 0;
 
   &:hover {

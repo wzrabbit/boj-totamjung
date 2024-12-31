@@ -46,6 +46,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
       title="즉석 추첨"
       open={open}
       padding="0"
+      closeOnBackdropClick={false}
       onClose={() => {
         stopGachaAudio();
         onClose();

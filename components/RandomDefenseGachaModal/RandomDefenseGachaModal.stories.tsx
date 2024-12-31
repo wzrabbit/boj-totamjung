@@ -10,6 +10,21 @@ import type { FilledSlot } from '@/types/randomDefense';
 const meta = {
   title: 'components/RandomDefenseGachaModal',
   component: RandomDefenseGachaModal,
+  argTypes: {
+    open: {
+      description: '모달이 열려있는 지의 여부입니다.',
+    },
+    onClose: {
+      description: '모달을 닫을 때 호출되는 콜백 함수입니다.',
+    },
+    slot: {
+      description:
+        '즉석 추첨 진행 시 문제 검색 조건으로 활용할 슬롯입니다. 이 슬롯은 비어있어서는 안 됩니다.',
+    },
+    problemCount: {
+      description: '즉석 추첨 시 추첨할 문제의 수입니다.',
+    },
+  },
 } satisfies Meta<typeof RandomDefenseGachaModal>;
 
 export default meta;

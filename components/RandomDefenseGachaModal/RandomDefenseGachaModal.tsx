@@ -6,8 +6,6 @@ import {
   RepeatIcon,
   MouseClickIcon,
   LoadingIcon,
-  CopyIcon,
-  DownloadIcon,
   DicesIcon,
 } from '@/assets/svg';
 import { theme } from '@/styles/theme';
@@ -116,26 +114,6 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               <ProblemCardGrid problemInfos={problemInfos} />
             </S.ProblemCardGridWrapper>
             <S.ResultBottomControlList>
-              <IconButton
-                type="button"
-                name="문제 목록 복사"
-                size="large"
-                color={theme.color.LIGHT_GRAY}
-                iconSrc={<CopyIcon />}
-                disabled={false}
-                ariaLabel="문제 목록 복사"
-                onClick={() => {}}
-              />
-              <IconButton
-                type="button"
-                name="추첨 결과 저장"
-                size="large"
-                color={theme.color.LEMON}
-                iconSrc={<DownloadIcon />}
-                disabled={false}
-                ariaLabel="추첨 결과 저장"
-                onClick={() => {}}
-              />
               <IconButton
                 type="button"
                 name="다시 추첨하기!"

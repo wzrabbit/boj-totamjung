@@ -38,10 +38,19 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     toggleIsAudioMuted,
     playCardSlideAudio,
     playGachaAudio,
+    stopGachaAudio,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
 
   return (
-    <Modal title="즉석 추첨" open={open} padding="0" onClose={onClose}>
+    <Modal
+      title="즉석 추첨"
+      open={open}
+      padding="0"
+      onClose={() => {
+        stopGachaAudio();
+        onClose();
+      }}
+    >
       <S.Container>
         {gachaStatus === 'loading' && (
           <S.LoadingScreen>

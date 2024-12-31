@@ -111,9 +111,13 @@ const useRandomDefenseGachaModal = (
   };
 
   const playGachaAudio = () => {
+    stopGachaAudio();
+    gachaAudioRef.current.play();
+  };
+
+  const stopGachaAudio = () => {
     gachaAudioRef.current.pause();
     gachaAudioRef.current.currentTime = 0;
-    gachaAudioRef.current.play();
   };
 
   useEffect(() => {
@@ -133,6 +137,7 @@ const useRandomDefenseGachaModal = (
     toggleIsAudioMuted,
     playCardSlideAudio,
     playGachaAudio,
+    stopGachaAudio,
   };
 };
 

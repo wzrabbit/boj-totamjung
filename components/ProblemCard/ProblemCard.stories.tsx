@@ -7,6 +7,17 @@ import ProblemCard from './ProblemCard';
 const meta = {
   title: 'components/ProblemCard',
   component: ProblemCard,
+  argTypes: {
+    problemInfo: {
+      description: '정보를 표시할 문제의 정보입니다.',
+    },
+    isHidden: {
+      description: '난이도를 숨길 지의 여부입니다.',
+    },
+    width: {
+      description: '카드의 가로 길이입니다. 단위는 px입니다.',
+    },
+  },
 } satisfies Meta<typeof ProblemCard>;
 
 export default meta;

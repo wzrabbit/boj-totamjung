@@ -140,7 +140,9 @@ export const theme = {
     WHITE_FILTER:
       'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(342deg) brightness(102%) contrast(102%)',
     LIGHTEST_BROWN_FILTER:
-      'brightness(0) saturate(100%) invert(52%) sepia(15%) saturate(936%) hue-rotate(330deg) brightness(89%) contrast(88%);',
+      'brightness(0) saturate(100%) invert(52%) sepia(15%) saturate(936%) hue-rotate(330deg) brightness(89%) contrast(88%)',
+    LIGHT_GRAY_FILTER:
+      'brightness(0) saturate(100%) invert(86%) sepia(0%) saturate(1969%) hue-rotate(175deg) brightness(78%) contrast(96%)',
   },
 };
 

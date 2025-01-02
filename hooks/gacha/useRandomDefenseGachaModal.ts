@@ -8,6 +8,7 @@ import { cardSlideAudios, gachaAudio } from '@/assets/audio';
 import type { FilledSlot } from '@/types/randomDefense';
 import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
+import { isGachaOptionsResponse } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
 
 interface UseRandomDefenseGachaModalParams {
   open: boolean;
@@ -55,7 +56,8 @@ const useRandomDefenseGachaModal = (
   const [errorDescriptions, setErrorDescriptions] = useState<string | string[]>(
     [],
   );
-  const [isAudioMuted, setIsAudioMuted] = useState(false);
+  const [isTierHidden, setIsTierHidden] = useState(false);
+  const [isAudioMuted, setIsAudioMuted] = useState(true);
   const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
 
   const previewCardRanks: PreviewCardRanks =
@@ -71,7 +73,9 @@ const useRandomDefenseGachaModal = (
     });
 
     if (!isRandomDefenseResultResponse(randomDefenseResult)) {
-      setErrorMessage('데이터 불일치가 발견되었습니다.');
+      setErrorMessage(
+        'API로부터 불러온 데이터에서 데이터 불일치가 발견되었습니다.',
+      );
       setErrorDescriptions('개발자에게 이 문제가 발생했음을 알려주세요.');
       setGachaStatus('error');
       return;
@@ -90,10 +94,31 @@ const useRandomDefenseGachaModal = (
     setGachaStatus('ready');
   }, []);
 
+  const fetchGachaOptions = useCallback(async () => {
+    const gachaOptions = await browser.runtime.sendMessage({
+      command: COMMANDS.FETCH_GACHA_OPTIONS,
+    });
+
+    if (!isGachaOptionsResponse(gachaOptions)) {
+      setErrorMessage('설정 데이터에서 불일치가 발견되었습니다.');
+      setErrorDescriptions('개발자에게 이 문제가 발생했음을 알려주세요.');
+      setGachaStatus('error');
+      return;
+    }
+
+    const { isTierHidden, isAudioMuted } = gachaOptions;
+    setIsTierHidden(isTierHidden);
+    setIsAudioMuted(isAudioMuted);
+  }, []);
+
   const restartGacha = () => {
     setGachaStatus('loading');
     setCardBoxColor(chooseByProbability(cardBoxColorChoices));
     fetchRandomDefenseResult();
+  };
+
+  const toggleIsTierHidden = () => {
+    setIsTierHidden((prev) => !prev);
   };
 
   const toggleIsAudioMuted = () => {
@@ -124,6 +149,18 @@ const useRandomDefenseGachaModal = (
     restartGacha();
   }, [open, slot, problemCount]);
 
+  useEffect(() => {
+    fetchGachaOptions();
+  }, []);
+
+  useEffect(() => {
+    browser.runtime.sendMessage({
+      command: COMMANDS.SAVE_GACHA_OPTIONS,
+      isTierHidden,
+      isAudioMuted,
+    });
+  }, [isTierHidden, isAudioMuted]);
+
   return {
     gachaStatus,
     problemInfos,
@@ -131,9 +168,11 @@ const useRandomDefenseGachaModal = (
     previewCardRanks,
     errorMessage,
     errorDescriptions,
+    isTierHidden,
     isAudioMuted,
     setGachaStatus,
     restartGacha,
+    toggleIsTierHidden,
     toggleIsAudioMuted,
     playCardSlideAudio,
     playGachaAudio,

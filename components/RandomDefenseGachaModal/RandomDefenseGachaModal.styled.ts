@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'styled-components';
+import { styled, keyframes, css } from 'styled-components';
 import { woodBackground } from '@/assets/png';
 
 export const rotate = keyframes`
@@ -100,26 +100,78 @@ export const Container = styled.div`
   }
 `;
 
-export const MuteButton = styled.button<{ $isMuted: boolean }>`
+export const ToggleButtonContainer = styled.div<{ $align: 'left' | 'right' }>`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 12px;
   position: absolute;
   top: 20px;
-  right: 20px;
+
+  height: 35px;
+
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  user-select: none;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  ${({ $align }) =>
+    $align === 'left'
+      ? css`
+          left: 20px;
+        `
+      : css`
+          right: 20px;
+        `};
+`;
+
+export const ToggleButtonText = styled.div`
+  display: inline-block;
+
+  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+`;
+
+const transparentButtonStyle = css`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
   width: 35px;
   height: 35px;
 
   border: 2px solid ${({ theme }) => theme.color.LIGHT_GRAY};
-
   border-radius: 50%;
   background: transparent;
 
-  opacity: 0.4;
-  transition: 0.2s;
-
   &:hover {
     box-shadow: 0 0 10px ${({ theme }) => theme.color.LIGHT_GRAY};
-    opacity: 0.7;
+    transform: scale(1.1);
   }
+
+  &:active {
+    transform: scale(1);
+  }
+
+  transition:
+    box-shadow,
+    transform 0.2s;
+`;
+
+export const TierVisibilityToggleButton = styled.button`
+  ${transparentButtonStyle}
+
+  & > img {
+    height: 70%;
+
+    filter: ${({ theme }) => theme.filter.LIGHT_GRAY_FILTER};
+  }
+`;
+
+export const AudioToggleButton = styled.button`
+  ${transparentButtonStyle}
 
   & > svg {
     width: 100%;

@@ -2,6 +2,7 @@ export { default as allCheckedIcon } from './all-checked.png';
 export { default as allUncheckedIcon } from './all-unchecked.png';
 export { default as lockWithClockIcon } from './lock-with-clock.png';
 export { default as hiddenTierBadgeIcon } from './hidden-tier-badge.png';
+export { default as tier1BadgeIcon } from './tier-1-badge.png';
 export { default as settingsTitle } from './settings-title.png';
 export { default as guidebookButton } from './guidebook-button.png';
 export { default as infoButton } from './info-button.png';

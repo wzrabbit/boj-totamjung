@@ -33,8 +33,6 @@ export const calculateCardGridLayout = (
     isOverflow,
   } = calculateBestGridInfo(cardGridWidth, cardGridHeight, cardCount);
 
-  console.log({ rowCount, columnCount, innerGridWidth, innerGridHeight });
-
   if (isOverflow) {
     return {
       cardWidth,

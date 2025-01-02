@@ -37,6 +37,7 @@ const CardBox = (props: CardBoxProps) => {
             onOpenAnimationEnd();
           }
         }}
+        aria-label="카드 상자를 열어 추첨 진행하기"
       >
         <S.GlowingBox $isCardBoxOpening={isCardBoxOpening} />
         <S.CardBoxInside src={CARD_BOXES.inside[color]} draggable={false} />

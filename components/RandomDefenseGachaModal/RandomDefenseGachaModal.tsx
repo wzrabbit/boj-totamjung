@@ -9,6 +9,7 @@ import {
   DicesIcon,
   VolumeOffIcon,
   VolumeOnIcon,
+  CopyIcon,
 } from '@/assets/svg';
 import { hiddenTierBadgeIcon, tier1BadgeIcon } from '@/assets/png';
 import { theme } from '@/styles/theme';
@@ -42,6 +43,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     playCardSlideAudio,
     playGachaAudio,
     stopGachaAudio,
+    copyProblemInfosMarkdownToClipboard,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
 
   return (
@@ -138,6 +140,16 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               />
             </S.ProblemCardGridWrapper>
             <S.ResultBottomControlList>
+              <IconButton
+                type="button"
+                name="문제 목록 복사"
+                size="large"
+                color={theme.color.LIGHT_GRAY}
+                iconSrc={<CopyIcon />}
+                disabled={false}
+                ariaLabel="문제 목록 복사"
+                onClick={copyProblemInfosMarkdownToClipboard}
+              />
               <IconButton
                 type="button"
                 name="다시 추첨하기!"

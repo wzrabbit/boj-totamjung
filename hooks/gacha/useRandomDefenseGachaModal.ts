@@ -9,6 +9,7 @@ import type { FilledSlot } from '@/types/randomDefense';
 import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
 import { isGachaOptionsResponse } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
+import { getProblemInfosInMarkdownText } from '@/domains/gacha/getProblemInfosInMarkdownText';
 
 interface UseRandomDefenseGachaModalParams {
   open: boolean;
@@ -145,6 +146,12 @@ const useRandomDefenseGachaModal = (
     gachaAudioRef.current.currentTime = 0;
   };
 
+  const copyProblemInfosMarkdownToClipboard = () => {
+    navigator.clipboard.writeText(
+      getProblemInfosInMarkdownText(slot.title, problemInfos),
+    );
+  };
+
   useEffect(() => {
     restartGacha();
   }, [open, slot, problemCount]);
@@ -177,6 +184,7 @@ const useRandomDefenseGachaModal = (
     playCardSlideAudio,
     playGachaAudio,
     stopGachaAudio,
+    copyProblemInfosMarkdownToClipboard,
   };
 };
 

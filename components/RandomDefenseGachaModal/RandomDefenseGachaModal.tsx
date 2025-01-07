@@ -143,9 +143,11 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 isTierHidden={isTierHidden}
               />
             </S.ProblemCardGridWrapper>
-            <GachaModalNotification shouldFadeOut={shouldNotificationFadeOut}>
-              {notificationMessage}
-            </GachaModalNotification>
+            <S.GachaModalNotificationWrapper>
+              <GachaModalNotification shouldFadeOut={shouldNotificationFadeOut}>
+                {notificationMessage}
+              </GachaModalNotification>
+            </S.GachaModalNotificationWrapper>
             <S.ResultBottomControlList>
               <IconButton
                 type="button"

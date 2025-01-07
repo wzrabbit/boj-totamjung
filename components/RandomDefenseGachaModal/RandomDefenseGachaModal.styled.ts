@@ -359,6 +359,15 @@ export const ProblemCardGridWrapper = styled.div`
   animation: ${zoomIn} cubic-bezier(0.165, 0.84, 0.44, 1) 0.7s 0.3s forwards;
 `;
 
+export const GachaModalNotificationWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 65px;
+
+  width: 100%;
+  height: 20px;
+`;
+
 export const ResultBottomControlList = styled.div`
   display: flex;
   justify-content: center;

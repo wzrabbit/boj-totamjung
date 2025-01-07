@@ -29,8 +29,7 @@ export const Container = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 40px;
-  margin-bottom: -20px;
+  height: 20px;
 
   user-select: none;
 

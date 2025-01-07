@@ -110,6 +110,7 @@ const useRandomDefenseGachaModal = (
     const { isTierHidden, isAudioMuted } = gachaOptions;
     setIsTierHidden(isTierHidden);
     setIsAudioMuted(isAudioMuted);
+    gachaAudioRef.current.muted = isAudioMuted;
   }, []);
 
   const restartGacha = () => {

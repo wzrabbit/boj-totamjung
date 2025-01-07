@@ -19,7 +19,11 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
   let renderingCardIndex = 0;
 
   return (
-    <S.Container ref={cardGridRef} $visible={isLoaded}>
+    <S.Container
+      ref={cardGridRef}
+      $visible={isLoaded}
+      $overflowY={isOverflow ? 'auto' : 'visible'}
+    >
       {isOverflow ? (
         <S.StaticGrid
           $width={cardGridInfo.innerGridWidth}

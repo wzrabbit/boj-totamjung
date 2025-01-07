@@ -59,6 +59,9 @@ const useRandomDefenseGachaModal = (
   );
   const [isTierHidden, setIsTierHidden] = useState(false);
   const [isAudioMuted, setIsAudioMuted] = useState(true);
+  const [notificationMessage, setNotificationMessage] = useState('');
+  const [shouldNotificationFadeOut, setShouldNotificationFadeOut] =
+    useState(true);
   const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
 
   const previewCardRanks: PreviewCardRanks =
@@ -151,6 +154,14 @@ const useRandomDefenseGachaModal = (
     navigator.clipboard.writeText(
       getProblemInfosInMarkdownText(slot.title, problemInfos),
     );
+    setNotificationMessage('문제 목록을 클립보드에 복사했어요!');
+    setShouldNotificationFadeOut(false);
+    setTimeout(() => setShouldNotificationFadeOut(true));
+  };
+
+  const showResultScreenAndResetNotificationMessage = () => {
+    setGachaStatus('showingResult');
+    setNotificationMessage('');
   };
 
   useEffect(() => {
@@ -178,7 +189,8 @@ const useRandomDefenseGachaModal = (
     errorDescriptions,
     isTierHidden,
     isAudioMuted,
-    setGachaStatus,
+    notificationMessage,
+    shouldNotificationFadeOut,
     restartGacha,
     toggleIsTierHidden,
     toggleIsAudioMuted,
@@ -186,6 +198,7 @@ const useRandomDefenseGachaModal = (
     playGachaAudio,
     stopGachaAudio,
     copyProblemInfosMarkdownToClipboard,
+    showResultScreenAndResetNotificationMessage,
   };
 };
 

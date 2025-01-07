@@ -17,6 +17,7 @@ import type { FilledSlot } from '@/types/randomDefense';
 import CardBox from '@/components/CardBox';
 import ProblemCardGrid from '@/components/ProblemCardGrid';
 import useRandomDefenseGachaModal from '@/hooks/gacha/useRandomDefenseGachaModal';
+import GachaModalNotification from '../GachaModalNotification/GachaModalNotification';
 
 interface RandomDefenseGachaModalProps {
   open: boolean;
@@ -36,7 +37,8 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     errorDescriptions,
     isTierHidden,
     isAudioMuted,
-    setGachaStatus,
+    notificationMessage,
+    shouldNotificationFadeOut,
     restartGacha,
     toggleIsTierHidden,
     toggleIsAudioMuted,
@@ -44,6 +46,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     playGachaAudio,
     stopGachaAudio,
     copyProblemInfosMarkdownToClipboard,
+    showResultScreenAndResetNotificationMessage,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
 
   return (
@@ -78,7 +81,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 isTierHidden={isTierHidden}
                 cardRanks={previewCardRanks}
                 onFirstClick={playGachaAudio}
-                onOpenAnimationEnd={() => setGachaStatus('showingResult')}
+                onOpenAnimationEnd={showResultScreenAndResetNotificationMessage}
               />
             </S.CardBoxWrapper>
             <S.BottomControlList>
@@ -130,6 +133,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
             </S.BottomControlList>
           </S.ErrorScreen>
         )}
+
         {gachaStatus === 'showingResult' && (
           <S.ResultScreen>
             <S.ProblemCardGridWrapper>
@@ -139,6 +143,9 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 isTierHidden={isTierHidden}
               />
             </S.ProblemCardGridWrapper>
+            <GachaModalNotification shouldFadeOut={shouldNotificationFadeOut}>
+              {notificationMessage}
+            </GachaModalNotification>
             <S.ResultBottomControlList>
               <IconButton
                 type="button"

@@ -150,6 +150,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     const randomDefenseResultResponse = await browser.runtime.sendMessage({
       command: COMMANDS.GET_RANDOM_DEFENSE_RESULT,
       query: selectedSlot.query,
+      problemCount: 1,
     });
 
     if (!isRandomDefenseResultResponse(randomDefenseResultResponse)) {
@@ -183,15 +184,13 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       return;
     }
 
-    const { problemInfo } = randomDefenseResultResponse;
-    const { problemId, titleKo, level } = problemInfo;
+    const { problemInfos } = randomDefenseResultResponse;
+    const { problemId } = problemInfos[0];
 
     browser.runtime.sendMessage({
       command: COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO,
       randomDefenseHistoryInfo: {
-        problemId,
-        title: titleKo,
-        tier: level,
+        ...problemInfos[0],
         createdAt: new Date().toISOString(),
       },
     });

@@ -1,5 +1,4 @@
 import type { solvedAcNumericTierIcons } from '@/assets/svg/tier';
-import type { SolvedAcSearchProblemInfo } from '@/types/solvedAcApi';
 import type { IsoString } from '@/types/utils';
 
 export interface RandomDefenseHistoryInfo {
@@ -158,7 +157,7 @@ interface RandomDefenseFailureResult {
 
 interface RandomDefenseSuccessResult {
   success: true;
-  problemInfo: SolvedAcSearchProblemInfo;
+  problemInfos: ProblemInfo[];
 }
 
 export interface ProblemInfo {

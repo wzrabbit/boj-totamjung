@@ -2,9 +2,10 @@ import {
   MAX_HISTORY_LIMIT,
   MAX_PROBLEM_ID,
   MAX_PROBLEM_NAME_LENGTH,
-  MAX_TIER,
+  MAX_TIER_INCLUDING_NOT_RATABLE,
   MIN_PROBLEM_ID,
   MIN_TIER,
+  MAX_TIER,
 } from '@/constants/randomDefense';
 import {
   isLegacyRandomDefenseHistoryInfo,
@@ -28,7 +29,7 @@ const isValidRandomDefenseHistoryInfo = (item: unknown) => {
     isValidIsoString(item.createdAt) &&
     item.tier % 1 === 0 &&
     item.tier >= MIN_TIER &&
-    item.tier <= MAX_TIER
+    item.tier <= MAX_TIER_INCLUDING_NOT_RATABLE
   );
 };
 

@@ -1,5 +1,5 @@
 import { solvedAcRankIcons, solvedAcNumericTierIcons } from '@/assets/svg/tier';
-import type { Tier } from '@/types/randomDefense';
+import type { ProblemInfo } from '@/types/randomDefense';
 import useCardTweak from '@/hooks/gacha/useCardTweak';
 import * as S from './ProblemCard.styled';
 
@@ -7,12 +7,6 @@ interface ProblemCardProps {
   problemInfo: ProblemInfo;
   isHidden: boolean;
   width: number;
-}
-
-interface ProblemInfo {
-  problemId: number;
-  title: string;
-  tier: Tier;
 }
 
 const ProblemCard = (props: ProblemCardProps) => {

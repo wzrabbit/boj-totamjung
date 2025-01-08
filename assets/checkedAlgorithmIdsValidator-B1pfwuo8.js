@@ -1,1 +1,0 @@
-import{i as s}from"./typeGuards-KkNNuKow.js";const i=e=>Array.isArray(e)?e.every(r=>typeof r=="number"&&!isNaN(r)&&r%1===0&&r>=1):!1,n=e=>!s(e)||!("checkedIds"in e)?!1:i(e.checkedIds);export{n as a,i};

@@ -40,6 +40,7 @@ export const CardCount6: Story = {
   ],
   args: {
     problemInfos: getSampleProblemInfos(6),
+    isTierHidden: false,
     onCardHover: fn(),
   },
 };
@@ -56,6 +57,7 @@ export const CardCount1: Story = {
   ],
   args: {
     problemInfos: getSampleProblemInfos(1),
+    isTierHidden: false,
     onCardHover: fn(),
   },
 };
@@ -72,6 +74,7 @@ export const CardCount2: Story = {
   ],
   args: {
     problemInfos: getSampleProblemInfos(2),
+    isTierHidden: false,
     onCardHover: fn(),
   },
 };
@@ -88,6 +91,7 @@ export const CardCount5: Story = {
   ],
   args: {
     problemInfos: getSampleProblemInfos(5),
+    isTierHidden: false,
     onCardHover: fn(),
   },
 };
@@ -104,6 +108,7 @@ export const CardCount10: Story = {
   ],
   args: {
     problemInfos: getSampleProblemInfos(10),
+    isTierHidden: false,
     onCardHover: fn(),
   },
 };
@@ -120,6 +125,7 @@ export const CardCount25: Story = {
   ],
   args: {
     problemInfos: getSampleProblemInfos(25),
+    isTierHidden: false,
     onCardHover: fn(),
   },
 };
@@ -136,6 +142,7 @@ export const CardCount50: Story = {
   ],
   args: {
     problemInfos: getSampleProblemInfos(50),
+    isTierHidden: false,
     onCardHover: fn(),
   },
 };

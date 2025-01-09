@@ -9,6 +9,7 @@ import type { FilledSlot } from '@/types/randomDefense';
 import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
 import { isGachaOptionsResponse } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
+import { getProblemInfosInMarkdownText } from '@/domains/gacha/getProblemInfosInMarkdownText';
 
 interface UseRandomDefenseGachaModalParams {
   open: boolean;
@@ -58,6 +59,9 @@ const useRandomDefenseGachaModal = (
   );
   const [isTierHidden, setIsTierHidden] = useState(false);
   const [isAudioMuted, setIsAudioMuted] = useState(true);
+  const [notificationMessage, setNotificationMessage] = useState('');
+  const [shouldNotificationFadeOut, setShouldNotificationFadeOut] =
+    useState(true);
   const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
 
   const previewCardRanks: PreviewCardRanks =
@@ -109,6 +113,7 @@ const useRandomDefenseGachaModal = (
     const { isTierHidden, isAudioMuted } = gachaOptions;
     setIsTierHidden(isTierHidden);
     setIsAudioMuted(isAudioMuted);
+    gachaAudioRef.current.muted = isAudioMuted;
   }, []);
 
   const restartGacha = () => {
@@ -145,6 +150,20 @@ const useRandomDefenseGachaModal = (
     gachaAudioRef.current.currentTime = 0;
   };
 
+  const copyProblemInfosMarkdownToClipboard = () => {
+    navigator.clipboard.writeText(
+      getProblemInfosInMarkdownText(slot.title, problemInfos),
+    );
+    setNotificationMessage('문제 목록을 클립보드에 복사했어요!');
+    setShouldNotificationFadeOut(false);
+    setTimeout(() => setShouldNotificationFadeOut(true));
+  };
+
+  const showResultScreenAndResetNotificationMessage = () => {
+    setGachaStatus('showingResult');
+    setNotificationMessage('');
+  };
+
   useEffect(() => {
     restartGacha();
   }, [open, slot, problemCount]);
@@ -170,13 +189,16 @@ const useRandomDefenseGachaModal = (
     errorDescriptions,
     isTierHidden,
     isAudioMuted,
-    setGachaStatus,
+    notificationMessage,
+    shouldNotificationFadeOut,
     restartGacha,
     toggleIsTierHidden,
     toggleIsAudioMuted,
     playCardSlideAudio,
     playGachaAudio,
     stopGachaAudio,
+    copyProblemInfosMarkdownToClipboard,
+    showResultScreenAndResetNotificationMessage,
   };
 };
 

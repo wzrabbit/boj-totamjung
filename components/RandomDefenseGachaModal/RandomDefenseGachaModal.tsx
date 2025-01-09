@@ -9,6 +9,7 @@ import {
   DicesIcon,
   VolumeOffIcon,
   VolumeOnIcon,
+  CopyIcon,
 } from '@/assets/svg';
 import { hiddenTierBadgeIcon, tier1BadgeIcon } from '@/assets/png';
 import { theme } from '@/styles/theme';
@@ -16,6 +17,7 @@ import type { FilledSlot } from '@/types/randomDefense';
 import CardBox from '@/components/CardBox';
 import ProblemCardGrid from '@/components/ProblemCardGrid';
 import useRandomDefenseGachaModal from '@/hooks/gacha/useRandomDefenseGachaModal';
+import GachaModalNotification from '../GachaModalNotification/GachaModalNotification';
 
 interface RandomDefenseGachaModalProps {
   open: boolean;
@@ -35,13 +37,16 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     errorDescriptions,
     isTierHidden,
     isAudioMuted,
-    setGachaStatus,
+    notificationMessage,
+    shouldNotificationFadeOut,
     restartGacha,
     toggleIsTierHidden,
     toggleIsAudioMuted,
     playCardSlideAudio,
     playGachaAudio,
     stopGachaAudio,
+    copyProblemInfosMarkdownToClipboard,
+    showResultScreenAndResetNotificationMessage,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
 
   return (
@@ -76,7 +81,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 isTierHidden={isTierHidden}
                 cardRanks={previewCardRanks}
                 onFirstClick={playGachaAudio}
-                onOpenAnimationEnd={() => setGachaStatus('showingResult')}
+                onOpenAnimationEnd={showResultScreenAndResetNotificationMessage}
               />
             </S.CardBoxWrapper>
             <S.BottomControlList>
@@ -128,6 +133,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
             </S.BottomControlList>
           </S.ErrorScreen>
         )}
+
         {gachaStatus === 'showingResult' && (
           <S.ResultScreen>
             <S.ProblemCardGridWrapper>
@@ -137,7 +143,22 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 isTierHidden={isTierHidden}
               />
             </S.ProblemCardGridWrapper>
+            <S.GachaModalNotificationWrapper>
+              <GachaModalNotification shouldFadeOut={shouldNotificationFadeOut}>
+                {notificationMessage}
+              </GachaModalNotification>
+            </S.GachaModalNotificationWrapper>
             <S.ResultBottomControlList>
+              <IconButton
+                type="button"
+                name="문제 목록 복사"
+                size="large"
+                color={theme.color.LIGHT_GRAY}
+                iconSrc={<CopyIcon />}
+                disabled={false}
+                ariaLabel="문제 목록 복사"
+                onClick={copyProblemInfosMarkdownToClipboard}
+              />
               <IconButton
                 type="button"
                 name="다시 추첨하기!"

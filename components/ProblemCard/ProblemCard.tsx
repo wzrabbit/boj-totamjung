@@ -5,12 +5,13 @@ import * as S from './ProblemCard.styled';
 
 interface ProblemCardProps {
   problemInfo: ProblemInfo;
-  isHidden: boolean;
+  isTierHidden: boolean;
   width: number;
+  onHover: () => void;
 }
 
 const ProblemCard = (props: ProblemCardProps) => {
-  const { problemInfo, isHidden, width } = props;
+  const { problemInfo, isTierHidden, width, onHover } = props;
   const { problemId, title, tier } = problemInfo;
   const { rotateX, rotateY, adjustCardTweak, resetCardTweak } = useCardTweak();
 
@@ -19,11 +20,12 @@ const ProblemCard = (props: ProblemCardProps) => {
       <S.InnerContainer
         $width={width}
         $tier={tier}
-        $isHidden={isHidden}
+        $isTierHidden={isTierHidden}
         $rotateX={rotateX}
         $rotateY={rotateY}
         onMouseMove={adjustCardTweak}
         onMouseOut={resetCardTweak}
+        onMouseOver={onHover}
       >
         <S.LinkButton
           target="_blank"
@@ -35,7 +37,7 @@ const ProblemCard = (props: ProblemCardProps) => {
           <S.TierBadge
             $cardWidth={width}
             src={
-              isHidden
+              isTierHidden
                 ? solvedAcRankIcons.hidden
                 : solvedAcNumericTierIcons[tier]
             }
@@ -45,7 +47,7 @@ const ProblemCard = (props: ProblemCardProps) => {
           <S.ProblemId
             $cardWidth={width}
             $tier={tier}
-            $isHidden={isHidden}
+            $isTierHidden={isTierHidden}
           >{`#${problemId}`}</S.ProblemId>
           <S.Title $cardWidth={width}>{title}</S.Title>
           <S.Overlay $movement={rotateX + rotateY} />

@@ -19,7 +19,7 @@ const kickbackAndDisappear = keyframes`
   }
 
   22% {
-    transform: translateY(15%) scale(1); opacity: 1;
+    transform: translateY(22%) scale(1); opacity: 1;
   }
 
   44% {
@@ -92,7 +92,7 @@ export const InnerContainer = styled.button<{ $isCardBoxOpening: boolean }>`
   ${({ $isCardBoxOpening }) =>
     $isCardBoxOpening &&
     css`
-      animation: ${kickbackAndDisappear} 1.35s 1.6s forwards;
+      animation: ${kickbackAndDisappear} 1.35s 2.1s forwards;
     `}
 
   ${({ $isCardBoxOpening }) =>
@@ -194,6 +194,6 @@ export const CardBoxTop = styled.img<{ $isCardBoxOpening: boolean }>`
   ${({ $isCardBoxOpening }) =>
     $isCardBoxOpening &&
     css`
-      animation: ${openTopAndDisappear} 0.8s ease-in-out forwards;
+      animation: ${openTopAndDisappear} 1.1s ease-in-out forwards;
     `}
 `;

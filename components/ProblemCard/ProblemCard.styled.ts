@@ -3,8 +3,8 @@ import { PROBLEM_CARDS } from '@/assets/png/problemCards';
 import type { DefaultTheme } from 'styled-components';
 import type { Tier } from '@/types/randomDefense';
 
-const getProblemCardSrcByTier = (tier: Tier, isHidden: boolean) => {
-  if (isHidden) {
+const getProblemCardSrcByTier = (tier: Tier, isTierHidden: boolean) => {
+  if (isTierHidden) {
     return PROBLEM_CARDS.hidden;
   }
 
@@ -35,8 +35,12 @@ const getProblemCardSrcByTier = (tier: Tier, isHidden: boolean) => {
   return PROBLEM_CARDS.unrated;
 };
 
-const getTierColor = (tier: Tier, isHidden: boolean, theme: DefaultTheme) => {
-  if (isHidden) {
+const getTierColor = (
+  tier: Tier,
+  isTierHidden: boolean,
+  theme: DefaultTheme,
+) => {
+  if (isTierHidden) {
     return theme.color.GRAY;
   }
 
@@ -94,7 +98,7 @@ export const InnerContainer = styled.div.attrs<{
   },
 }))<{
   $tier: Tier;
-  $isHidden: boolean;
+  $isTierHidden: boolean;
   $rotateX: number;
   $rotateY: number;
 }>`
@@ -103,8 +107,8 @@ export const InnerContainer = styled.div.attrs<{
   flex-shrink: 0;
 
   box-shadow: 0 0 15px ${({ theme }) => theme.color.BLACK_DARKER_TRANSPARENT};
-  background-image: ${({ $tier, $isHidden }) =>
-    `url(${getProblemCardSrcByTier($tier, $isHidden)})`};
+  background-image: ${({ $tier, $isTierHidden }) =>
+    `url(${getProblemCardSrcByTier($tier, $isTierHidden)})`};
   background-size: 100% 100%;
 
   transition: transform 0.1s;
@@ -150,11 +154,11 @@ export const ProblemId = styled.div.attrs<{ $cardWidth: number }>(
   }),
 )<{
   $tier: Tier;
-  $isHidden: boolean;
+  $isTierHidden: boolean;
   $cardWidth: number;
 }>`
-  color: ${({ $tier, $isHidden, theme }) =>
-    getTierColor($tier, $isHidden, theme)};
+  color: ${({ $tier, $isTierHidden, theme }) =>
+    getTierColor($tier, $isTierHidden, theme)};
   font-family: 'Cafe24ClassicType';
 `;
 

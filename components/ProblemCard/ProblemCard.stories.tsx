@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProblemCard from './ProblemCard';
+import { fn } from '@storybook/test';
 
 /**
  * `ProblemCard`는 즉석 추첨 결과에서 나온 결과에서 하나의 문제를 시각적으로 보여주는 카드 모양의 컴포넌트입니다.
@@ -11,7 +12,7 @@ const meta = {
     problemInfo: {
       description: '정보를 표시할 문제의 정보입니다.',
     },
-    isHidden: {
+    isTierHidden: {
       description: '난이도를 숨길 지의 여부입니다.',
     },
     width: {
@@ -31,8 +32,9 @@ export const Unrated: Story = {
       title: '마법의 돌',
       tier: 0,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -43,8 +45,9 @@ export const NotRatable: Story = {
       title: '정ㅋ벅ㅋ',
       tier: 31,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -55,8 +58,9 @@ export const Hidden: Story = {
       title: '가변 배열',
       tier: 3,
     },
-    isHidden: true,
+    isTierHidden: true,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -67,8 +71,9 @@ export const Bronze: Story = {
       title: '무지개 만들기',
       tier: 4,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -79,8 +84,9 @@ export const Silver: Story = {
       title: '내가 무릎을 꿇은 것은 추진력을 얻기 위함이었다',
       tier: 10,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -91,8 +97,9 @@ export const Gold: Story = {
       title: '합성소수',
       tier: 12,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -103,8 +110,9 @@ export const Platinum: Story = {
       title: '멋진 부분집합',
       tier: 16,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -115,8 +123,9 @@ export const Diamond: Story = {
       title: '히스토그램에서 가장 큰 직사각형과 쿼리 2',
       tier: 23,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -127,8 +136,9 @@ export const Ruby: Story = {
       title: '좋은 수열',
       tier: 26,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };
 
@@ -143,7 +153,8 @@ export const LongTitle: Story = {
         'SUPER SUPER BINARY SEARCH DELUXE 2.5: THE LEGEND OF THE GOLDEN MAZASSUMNIDA, EPISODE 2: THE MAZWAETL UNIVERSE, PART 2: THE PARALLEL UNIVERSE AND THE LOST MAZASSUMNIDA: GAME OF THE YEAR EDITION ',
       tier: 31,
     },
-    isHidden: false,
+    isTierHidden: false,
     width: 240,
+    onHover: fn(),
   },
 };

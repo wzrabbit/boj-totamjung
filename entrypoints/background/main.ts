@@ -38,6 +38,10 @@ import {
   fetchShouldShowWelcomeMessage,
   saveShouldShowWelcomeMessage,
 } from '@/domains/dataHandlers/shouldShowWelcomeMessageDataHandler';
+import {
+  fetchGachaOptions,
+  saveGachaOptions,
+} from '@/domains/dataHandlers/gachaOptionsHandler';
 import { fetchOptionsData } from '@/domains/dataHandlers/optionsDataHandler';
 import { isUserSolvedProblem } from '@/domains/tierHider/userSolvedChecker';
 import { getRandomDefenseResult } from '@/domains/randomDefense/randomDefenseProblemChooser';
@@ -186,6 +190,22 @@ const executeBackground = () => {
 
         const { timers } = message;
         saveTimers(timers);
+      }
+
+      if (command === COMMANDS.FETCH_GACHA_OPTIONS) {
+        fetchGachaOptions().then((result) => {
+          sendResponse(result);
+        });
+        return true;
+      }
+
+      if (command === COMMANDS.SAVE_GACHA_OPTIONS) {
+        if (!('isTierHidden' in message && 'isAudioMuted' in message)) {
+          return;
+        }
+
+        const { isTierHidden, isAudioMuted } = message;
+        saveGachaOptions({ isTierHidden, isAudioMuted });
       }
 
       if (command === COMMANDS.FETCH_OPTIONS_DATA) {

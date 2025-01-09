@@ -53,6 +53,11 @@ export const DEFAULT_FONT_NO = 0;
 
 export const DEFAULT_TIMERS = [];
 
+export const DEFAULT_GACHA_OPTIONS = {
+  isTierHidden: false,
+  isAudioMuted: true,
+} as const;
+
 /**
  * 데이터를 초기화했을 때 덮어씌우게 될 빈 데이터입니다. 최초 설치 데이터와는 약간 다릅니다.
  */
@@ -66,5 +71,6 @@ export const DEFAULT_EMPTY_DATA = {
   [STORAGE_KEY.IS_TIER_HIDDEN]: DEFAULT_IS_TIER_HIDDEN,
   [STORAGE_KEY.FONT_NO]: DEFAULT_FONT_NO,
   [STORAGE_KEY.TIMERS]: DEFAULT_TIMERS,
+  [STORAGE_KEY.GACHA_OPTIONS]: DEFAULT_GACHA_OPTIONS,
   [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: false,
 };

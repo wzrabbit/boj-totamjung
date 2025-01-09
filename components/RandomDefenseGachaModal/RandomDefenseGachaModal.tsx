@@ -7,7 +7,10 @@ import {
   MouseClickIcon,
   LoadingIcon,
   DicesIcon,
+  VolumeOffIcon,
+  VolumeOnIcon,
 } from '@/assets/svg';
+import { hiddenTierBadgeIcon, tier1BadgeIcon } from '@/assets/png';
 import { theme } from '@/styles/theme';
 import type { FilledSlot } from '@/types/randomDefense';
 import CardBox from '@/components/CardBox';
@@ -30,12 +33,28 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     previewCardRanks,
     errorMessage,
     errorDescriptions,
+    isTierHidden,
+    isAudioMuted,
     setGachaStatus,
     restartGacha,
+    toggleIsTierHidden,
+    toggleIsAudioMuted,
+    playCardSlideAudio,
+    playGachaAudio,
+    stopGachaAudio,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
 
   return (
-    <Modal title="즉석 추첨" open={open} padding="0" onClose={onClose}>
+    <Modal
+      title="즉석 추첨"
+      open={open}
+      padding="0"
+      closeOnBackdropClick={false}
+      onClose={() => {
+        stopGachaAudio();
+        onClose();
+      }}
+    >
       <S.Container>
         {gachaStatus === 'loading' && (
           <S.LoadingScreen>
@@ -54,8 +73,9 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
             <S.CardBoxWrapper>
               <CardBox
                 color={cardBoxColor}
-                isTierHidden={false}
+                isTierHidden={isTierHidden}
                 cardRanks={previewCardRanks}
+                onFirstClick={playGachaAudio}
                 onOpenAnimationEnd={() => setGachaStatus('showingResult')}
               />
             </S.CardBoxWrapper>
@@ -111,7 +131,11 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
         {gachaStatus === 'showingResult' && (
           <S.ResultScreen>
             <S.ProblemCardGridWrapper>
-              <ProblemCardGrid problemInfos={problemInfos} />
+              <ProblemCardGrid
+                problemInfos={problemInfos}
+                onCardHover={playCardSlideAudio}
+                isTierHidden={isTierHidden}
+              />
             </S.ProblemCardGridWrapper>
             <S.ResultBottomControlList>
               <IconButton
@@ -127,6 +151,31 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
             </S.ResultBottomControlList>
           </S.ResultScreen>
         )}
+
+        <S.ToggleButtonContainer $align="left">
+          <S.TierVisibilityToggleButton
+            onClick={toggleIsTierHidden}
+            aria-label={
+              isTierHidden ? '문제 난이도 보이기' : '문제 난이도 감추기'
+            }
+          >
+            {isTierHidden ? (
+              <img src={hiddenTierBadgeIcon} alt="" draggable={false} />
+            ) : (
+              <img src={tier1BadgeIcon} alt="" draggable={false} />
+            )}
+          </S.TierVisibilityToggleButton>
+          <S.ToggleButtonText>{`티어 숨기기: ${isTierHidden ? 'ON' : 'OFF'}`}</S.ToggleButtonText>
+        </S.ToggleButtonContainer>
+        <S.ToggleButtonContainer $align="right">
+          <S.ToggleButtonText>{`효과음: ${isAudioMuted ? 'OFF' : 'ON'}`}</S.ToggleButtonText>
+          <S.AudioToggleButton
+            onClick={toggleIsAudioMuted}
+            aria-label={isAudioMuted ? '효과음 켜기' : '효과음 끄기'}
+          >
+            {isAudioMuted ? <VolumeOffIcon /> : <VolumeOnIcon />}
+          </S.AudioToggleButton>
+        </S.ToggleButtonContainer>
       </S.Container>
     </Modal>
   );

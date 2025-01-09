@@ -21,6 +21,8 @@ export const COMMANDS = {
   IS_USER_SOLVED_PROBLEM: 'isUserSolvedProblem',
   GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
   APPEND_RANDOM_DEFENSE_HISTORY_INFO: 'appendRandomDefenseHistoryInfo',
+  FETCH_GACHA_OPTIONS: 'fetchGachaOptions',
+  SAVE_GACHA_OPTIONS: 'saveGachaOptions',
   FETCH_SHOULD_SHOW_WELCOME_MESSAGE: 'fetchShouldShowWelcomeMessage',
   SAVE_SHOULD_SHOW_WELCOME_MESSAGE: 'saveShouldShowWelcomeMessage',
 } as const;
@@ -40,6 +42,7 @@ export const STORAGE_KEY = {
   IS_TIER_HIDDEN: 'isTierHidden',
   FONT_NO: 'fontNo',
   TIMERS: 'timers',
+  GACHA_OPTIONS: 'gachaOptions',
   SHOULD_SHOW_WELCOME_MESSAGE: 'shouldShowWelcomeMessage',
 } as const;
 

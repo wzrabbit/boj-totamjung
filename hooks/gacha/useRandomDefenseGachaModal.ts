@@ -1,11 +1,14 @@
 import { COMMANDS } from '@/constants/commands';
 import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
 import { decidePreviewCardRanksByProblemInfos } from '@/domains/gacha/decidePreviewCardRanksByProblemInfos';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { chooseByProbability } from '@/utils/chooseByProbability';
+import { pickIntegerInRange } from '@/utils/pickIntegerInRange';
+import { cardSlideAudios, gachaAudio } from '@/assets/audio';
 import type { FilledSlot } from '@/types/randomDefense';
 import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
+import { isGachaOptionsResponse } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
 
 interface UseRandomDefenseGachaModalParams {
   open: boolean;
@@ -40,6 +43,8 @@ const cardBoxColorChoices: { choice: CardBoxColor; probability: number }[] = [
   },
 ];
 
+const cardSlideAudioElements = cardSlideAudios.map((audio) => new Audio(audio));
+
 const useRandomDefenseGachaModal = (
   params: UseRandomDefenseGachaModalParams,
 ) => {
@@ -51,6 +56,10 @@ const useRandomDefenseGachaModal = (
   const [errorDescriptions, setErrorDescriptions] = useState<string | string[]>(
     [],
   );
+  const [isTierHidden, setIsTierHidden] = useState(false);
+  const [isAudioMuted, setIsAudioMuted] = useState(true);
+  const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
+
   const previewCardRanks: PreviewCardRanks =
     problemInfos.length > 0
       ? decidePreviewCardRanksByProblemInfos(problemInfos)
@@ -64,7 +73,9 @@ const useRandomDefenseGachaModal = (
     });
 
     if (!isRandomDefenseResultResponse(randomDefenseResult)) {
-      setErrorMessage('데이터 불일치가 발견되었습니다.');
+      setErrorMessage(
+        'API로부터 불러온 데이터에서 데이터 불일치가 발견되었습니다.',
+      );
       setErrorDescriptions('개발자에게 이 문제가 발생했음을 알려주세요.');
       setGachaStatus('error');
       return;
@@ -83,15 +94,72 @@ const useRandomDefenseGachaModal = (
     setGachaStatus('ready');
   }, []);
 
+  const fetchGachaOptions = useCallback(async () => {
+    const gachaOptions = await browser.runtime.sendMessage({
+      command: COMMANDS.FETCH_GACHA_OPTIONS,
+    });
+
+    if (!isGachaOptionsResponse(gachaOptions)) {
+      setErrorMessage('설정 데이터에서 불일치가 발견되었습니다.');
+      setErrorDescriptions('개발자에게 이 문제가 발생했음을 알려주세요.');
+      setGachaStatus('error');
+      return;
+    }
+
+    const { isTierHidden, isAudioMuted } = gachaOptions;
+    setIsTierHidden(isTierHidden);
+    setIsAudioMuted(isAudioMuted);
+  }, []);
+
   const restartGacha = () => {
     setGachaStatus('loading');
     setCardBoxColor(chooseByProbability(cardBoxColorChoices));
     fetchRandomDefenseResult();
   };
 
+  const toggleIsTierHidden = () => {
+    setIsTierHidden((prev) => !prev);
+  };
+
+  const toggleIsAudioMuted = () => {
+    setIsAudioMuted((prev) => {
+      const newMutedState = !prev;
+      gachaAudioRef.current.muted = newMutedState;
+      return newMutedState;
+    });
+  };
+
+  const playCardSlideAudio = () => {
+    if (!isAudioMuted) {
+      cardSlideAudioElements[pickIntegerInRange(0, 3)].play();
+    }
+  };
+
+  const playGachaAudio = () => {
+    stopGachaAudio();
+    gachaAudioRef.current.play();
+  };
+
+  const stopGachaAudio = () => {
+    gachaAudioRef.current.pause();
+    gachaAudioRef.current.currentTime = 0;
+  };
+
   useEffect(() => {
     restartGacha();
   }, [open, slot, problemCount]);
+
+  useEffect(() => {
+    fetchGachaOptions();
+  }, []);
+
+  useEffect(() => {
+    browser.runtime.sendMessage({
+      command: COMMANDS.SAVE_GACHA_OPTIONS,
+      isTierHidden,
+      isAudioMuted,
+    });
+  }, [isTierHidden, isAudioMuted]);
 
   return {
     gachaStatus,
@@ -100,8 +168,15 @@ const useRandomDefenseGachaModal = (
     previewCardRanks,
     errorMessage,
     errorDescriptions,
+    isTierHidden,
+    isAudioMuted,
     setGachaStatus,
     restartGacha,
+    toggleIsTierHidden,
+    toggleIsAudioMuted,
+    playCardSlideAudio,
+    playGachaAudio,
+    stopGachaAudio,
   };
 };
 

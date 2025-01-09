@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'styled-components';
+import { styled, keyframes, css } from 'styled-components';
 import { woodBackground } from '@/assets/png';
 
 export const rotate = keyframes`
@@ -81,12 +81,14 @@ const fadeInAndEnable = keyframes`
 `;
 
 export const Container = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 
   width: 800px;
-  height: 520px;
+  height: 550px;
   max-width: 100%;
   max-height: 100%;
 
@@ -95,6 +97,87 @@ export const Container = styled.div`
 
   & > div {
     flex-grow: 1;
+  }
+`;
+
+export const ToggleButtonContainer = styled.div<{ $align: 'left' | 'right' }>`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 12px;
+  position: absolute;
+  top: 20px;
+
+  height: 35px;
+
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  user-select: none;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  ${({ $align }) =>
+    $align === 'left'
+      ? css`
+          left: 20px;
+        `
+      : css`
+          right: 20px;
+        `};
+`;
+
+export const ToggleButtonText = styled.div`
+  display: inline-block;
+
+  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+`;
+
+const transparentButtonStyle = css`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 35px;
+  height: 35px;
+
+  border: 2px solid ${({ theme }) => theme.color.LIGHT_GRAY};
+  border-radius: 50%;
+  background: transparent;
+
+  &:hover {
+    box-shadow: 0 0 10px ${({ theme }) => theme.color.LIGHT_GRAY};
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+
+  transition:
+    box-shadow,
+    transform 0.2s;
+`;
+
+export const TierVisibilityToggleButton = styled.button`
+  ${transparentButtonStyle}
+
+  & > img {
+    height: 70%;
+
+    filter: ${({ theme }) => theme.filter.LIGHT_GRAY_FILTER};
+  }
+`;
+
+export const AudioToggleButton = styled.button`
+  ${transparentButtonStyle}
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+
+    color: ${({ theme }) => theme.color.LIGHT_GRAY};
   }
 `;
 
@@ -270,7 +353,7 @@ export const ProblemCardGridWrapper = styled.div`
 
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 60px 20px 20px 20px;
 
   opacity: 0;
   animation: ${zoomIn} cubic-bezier(0.165, 0.84, 0.44, 1) 0.7s 0.3s forwards;

@@ -26,6 +26,8 @@ import RepeatIcon from './repeat.svg?react';
 import MouseClickIcon from './mouse-click.svg?react';
 import DicesIcon from './dices.svg?react';
 import DownloadIcon from './download.svg?react';
+import VolumeOnIcon from './volume-on.svg?react';
+import VolumeOffIcon from './volume-off.svg?react';
 
 export {
   SearchIcon,
@@ -56,4 +58,6 @@ export {
   MouseClickIcon,
   DicesIcon,
   DownloadIcon,
+  VolumeOnIcon,
+  VolumeOffIcon,
 };

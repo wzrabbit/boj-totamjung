@@ -17,7 +17,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     title,
     open,
     padding = '16px',
-    closeOnBackdropClick,
+    closeOnBackdropClick = true,
     onClose,
     children,
   } = props;

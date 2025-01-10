@@ -5,6 +5,7 @@ import type {
   RandomDefenseHistoryInfo,
   RandomDefenseHistoryResponse,
 } from '@/types/randomDefense';
+import { isRandomDefenseHistoryInfos } from './validators/randomDefenseHistoryValidator';
 
 const getSortedRandomDefenseHistory = (
   randomDefenseHistory: RandomDefenseHistoryInfo[],
@@ -35,7 +36,7 @@ export const fetchRandomDefenseHistory =
     };
   };
 
-export const saveRandomDefenseHistory = (
+export const saveRandomDefenseHistory = async (
   randomDefenseHistory: unknown,
   isHidden: unknown,
 ) => {
@@ -55,13 +56,20 @@ export const saveRandomDefenseHistory = (
   });
 };
 
-export const appendRandomDefenseInfoToHistory = async (
-  randomDefenseHistoryInfo: unknown,
+export const addRandomDefenseInfosToHistory = async (
+  newRandomDefenseHistoryInfos: unknown,
 ) => {
   const { randomDefenseHistory, isHidden } = await fetchRandomDefenseHistory();
 
+  if (
+    !isRandomDefenseHistoryInfos(randomDefenseHistory) ||
+    !isRandomDefenseHistoryInfos(newRandomDefenseHistoryInfos)
+  ) {
+    return;
+  }
+
   saveRandomDefenseHistory(
-    [...randomDefenseHistory, randomDefenseHistoryInfo],
+    [...randomDefenseHistory, ...newRandomDefenseHistoryInfos],
     isHidden,
   );
 };

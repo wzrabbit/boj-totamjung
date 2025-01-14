@@ -97,7 +97,7 @@ const useRandomDefenseGachaModal = (
     const problemInfos = randomDefenseResult.problemInfos;
     setProblemInfos(problemInfos);
     setGachaStatus('ready');
-  }, []);
+  }, [slot, problemCount]);
 
   const fetchGachaOptions = useCallback(async () => {
     const gachaOptions = await browser.runtime.sendMessage({

@@ -62,6 +62,7 @@ const useRandomDefenseGachaModal = (
   const [notificationMessage, setNotificationMessage] = useState('');
   const [shouldNotificationFadeOut, setShouldNotificationFadeOut] =
     useState(true);
+  const [isSavedToHistory, setIsSavedToHistory] = useState(false);
   const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
 
   const previewCardRanks: PreviewCardRanks =
@@ -118,6 +119,7 @@ const useRandomDefenseGachaModal = (
 
   const restartGacha = () => {
     setGachaStatus('loading');
+    setIsSavedToHistory(false);
     setCardBoxColor(chooseByProbability(cardBoxColorChoices));
     fetchRandomDefenseResult();
   };
@@ -164,6 +166,24 @@ const useRandomDefenseGachaModal = (
     setNotificationMessage('');
   };
 
+  const saveGachaResultToStorage = () => {
+    const currentIsoString = new Date().toISOString();
+    const randomDefenseHistoryInfos = problemInfos.map((problemInfo) => ({
+      ...problemInfo,
+      createdAt: currentIsoString,
+    }));
+
+    browser.runtime.sendMessage({
+      command: COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS,
+      randomDefenseHistoryInfos,
+    });
+
+    setIsSavedToHistory(true);
+    setNotificationMessage('문제 목록을 추첨 기록에 저장했어요!');
+    setShouldNotificationFadeOut(false);
+    setTimeout(() => setShouldNotificationFadeOut(true));
+  };
+
   useEffect(() => {
     restartGacha();
   }, [open, slot, problemCount]);
@@ -191,6 +211,7 @@ const useRandomDefenseGachaModal = (
     isAudioMuted,
     notificationMessage,
     shouldNotificationFadeOut,
+    isSavedToHistory,
     restartGacha,
     toggleIsTierHidden,
     toggleIsAudioMuted,
@@ -199,6 +220,7 @@ const useRandomDefenseGachaModal = (
     stopGachaAudio,
     copyProblemInfosMarkdownToClipboard,
     showResultScreenAndResetNotificationMessage,
+    saveGachaResultToStorage,
   };
 };
 

@@ -185,7 +185,9 @@ const useRandomDefenseGachaModal = (
   };
 
   useEffect(() => {
-    restartGacha();
+    if (open) {
+      restartGacha();
+    }
   }, [open, slot, problemCount]);
 
   useEffect(() => {

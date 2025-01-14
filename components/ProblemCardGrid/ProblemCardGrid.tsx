@@ -35,7 +35,7 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
               key={problemInfo.problemId}
               width={cardWidth}
               problemInfo={problemInfo}
-              isTierHidden={false}
+              isTierHidden={isTierHidden}
               onHover={onCardHover}
             />
           ))}

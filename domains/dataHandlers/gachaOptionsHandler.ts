@@ -5,8 +5,9 @@ import type { GachaOptionsResponse } from '@/types/gacha';
 
 export const fetchGachaOptions = async (): Promise<GachaOptionsResponse> => {
   const data = await browser.storage.local.get(STORAGE_KEY.GACHA_OPTIONS);
+  const gachaOptions = data[STORAGE_KEY.GACHA_OPTIONS];
 
-  return sanitizeGachaOptionsResponse(data);
+  return sanitizeGachaOptionsResponse(gachaOptions);
 };
 
 export const saveGachaOptions = (gachaOptions: unknown) => {
@@ -15,6 +16,6 @@ export const saveGachaOptions = (gachaOptions: unknown) => {
   }
 
   browser.storage.local.set({
-    [STORAGE_KEY.FONT_NO]: gachaOptions,
+    [STORAGE_KEY.GACHA_OPTIONS]: gachaOptions,
   });
 };

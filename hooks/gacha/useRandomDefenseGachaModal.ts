@@ -63,6 +63,7 @@ const useRandomDefenseGachaModal = (
   const [shouldNotificationFadeOut, setShouldNotificationFadeOut] =
     useState(true);
   const [isSavedToHistory, setIsSavedToHistory] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
 
   const previewCardRanks: PreviewCardRanks =
@@ -114,6 +115,7 @@ const useRandomDefenseGachaModal = (
     const { isTierHidden, isAudioMuted } = gachaOptions;
     setIsTierHidden(isTierHidden);
     setIsAudioMuted(isAudioMuted);
+    setIsLoaded(true);
     gachaAudioRef.current.muted = isAudioMuted;
   }, []);
 
@@ -195,12 +197,16 @@ const useRandomDefenseGachaModal = (
   }, []);
 
   useEffect(() => {
+    if (!isLoaded) {
+      return;
+    }
+
     browser.runtime.sendMessage({
       command: COMMANDS.SAVE_GACHA_OPTIONS,
       isTierHidden,
       isAudioMuted,
     });
-  }, [isTierHidden, isAudioMuted]);
+  }, [isLoaded, isTierHidden, isAudioMuted]);
 
   return {
     gachaStatus,

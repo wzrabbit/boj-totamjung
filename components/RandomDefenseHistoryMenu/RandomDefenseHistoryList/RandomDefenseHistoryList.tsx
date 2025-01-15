@@ -15,11 +15,12 @@ const RandomDefenseHistoryList = (props: RandomDefenseHistoryList) => {
     <S.Container>
       {items.map((item) => {
         const id = `${item.problemId}-${item.createdAt}`;
+        const isCurrentTierHidden = ![0, 31].includes(item.tier) && isHidden;
 
         return (
           <RandomDefenseHistoryItem
             key={id}
-            isHidden={isHidden}
+            isHidden={isCurrentTierHidden}
             onDelete={() => {
               onDelete(id);
             }}

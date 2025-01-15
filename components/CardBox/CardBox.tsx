@@ -45,7 +45,7 @@ const CardBox = (props: CardBoxProps) => {
           {firstCardRank && (
             <S.InsideCard
               src={
-                isTierHidden
+                firstCardRank !== 'unrated' && isTierHidden
                   ? PROBLEM_CARDS.hidden
                   : PROBLEM_CARDS[firstCardRank]
               }
@@ -59,7 +59,7 @@ const CardBox = (props: CardBoxProps) => {
           {secondCardRank && (
             <S.InsideCard
               src={
-                isTierHidden
+                secondCardRank !== 'unrated' && isTierHidden
                   ? PROBLEM_CARDS.hidden
                   : PROBLEM_CARDS[secondCardRank]
               }
@@ -73,7 +73,7 @@ const CardBox = (props: CardBoxProps) => {
           {thirdCardRank && (
             <S.InsideCard
               src={
-                isTierHidden
+                thirdCardRank !== 'unrated' && isTierHidden
                   ? PROBLEM_CARDS.hidden
                   : PROBLEM_CARDS[thirdCardRank]
               }

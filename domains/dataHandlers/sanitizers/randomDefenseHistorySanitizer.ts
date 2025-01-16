@@ -47,6 +47,14 @@ const isValidLegacyRandomDefenseHistoryInfo = (item: unknown) => {
   );
 };
 
+const getSortedRandomDefenseHistory = (
+  randomDefenseHistory: RandomDefenseHistoryInfo[],
+) => {
+  return [...randomDefenseHistory].sort((a, b) =>
+    a.createdAt > b.createdAt ? -1 : 1,
+  );
+};
+
 export const sanitizeRandomDefenseHistory = (
   randomDefenseHistory: unknown,
 ): RandomDefenseHistoryInfo[] => {
@@ -65,7 +73,10 @@ export const sanitizeRandomDefenseHistory = (
     }
   });
 
-  return sanitizedRandomDefenseHistory.slice(0, MAX_HISTORY_LIMIT);
+  return getSortedRandomDefenseHistory(sanitizedRandomDefenseHistory).slice(
+    0,
+    MAX_HISTORY_LIMIT,
+  );
 };
 
 export const sanitizeLegacyRandomDefenseHistory = (

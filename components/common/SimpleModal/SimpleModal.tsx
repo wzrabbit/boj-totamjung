@@ -11,6 +11,7 @@ type SimpleModalProps = {
   height: string;
   open: boolean;
   message: string;
+  closeOnBackdropClick?: boolean;
 } & (ConfirmModalProps | CancelConfirmModalProps | YesNoModalProps);
 
 interface ConfirmModalProps {
@@ -31,12 +32,21 @@ interface YesNoModalProps {
 }
 
 const SimpleModal = (props: SimpleModalProps) => {
-  const { title, width, height, open, message, actionType } = props;
+  const {
+    title,
+    width,
+    height,
+    open,
+    message,
+    actionType,
+    closeOnBackdropClick = true,
+  } = props;
 
   return (
     <Modal
       title={title}
       open={open}
+      closeOnBackdropClick={closeOnBackdropClick}
       onClose={() => {
         actionType === 'yesNo' ? props.onNoSelect() : props.onClose();
       }}

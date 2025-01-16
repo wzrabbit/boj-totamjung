@@ -92,7 +92,7 @@ export const getRandomDefenseResult = async (
         errorMessage: '추첨 조건을 만족하는 문제가 부족합니다.',
         errorDescriptions: [
           `검색된 문제 수가 총 ${count}문제로, 요청하신 ${problemCount}문제보다 더 적어 추첨을 진행하지 못했습니다.`,
-          `더 넓은 검색범위의 쿼리를 사용해 보시거나, 추첨할 문제 수를 ${count} 문제 이하로 줄여보세요.`,
+          `더 넓은 검색범위의 쿼리를 사용해 보시거나, 추첨할 문제 수를 ${count}문제 이하로 줄여보세요.`,
         ],
       };
     }

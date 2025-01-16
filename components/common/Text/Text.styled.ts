@@ -1,7 +1,7 @@
 import { styled, css } from 'styled-components';
 
 export const Text = styled.p<{
-  $type: 'primary' | 'semiPrimary' | 'normal' | 'code';
+  $type: 'primary' | 'semiPrimary' | 'normal' | 'gray' | 'code';
   $fontSize: '16px' | '14px' | '13px';
   $textAlign: 'left' | 'center' | 'right';
 }>`
@@ -20,6 +20,12 @@ export const Text = styled.p<{
     if ($type === 'semiPrimary') {
       return css`
         color: ${theme.color.LEMON};
+      `;
+    }
+
+    if ($type === 'gray') {
+      return css`
+        color: ${theme.color.LIGHT_GRAY};
       `;
     }
 

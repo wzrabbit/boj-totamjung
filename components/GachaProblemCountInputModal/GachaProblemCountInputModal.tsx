@@ -9,6 +9,7 @@ import { MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE } from '@/constants/randomDefense'
 
 interface GachaProblemCountInputModalProps {
   open: boolean;
+  portalTarget?: HTMLElement | null;
   onClose: () => void;
   onSubmitProblemCount: (problemCount: number) => void;
 }
@@ -16,12 +17,17 @@ interface GachaProblemCountInputModalProps {
 const GachaProblemCountInputModal = (
   props: GachaProblemCountInputModalProps,
 ) => {
-  const { open, onClose, onSubmitProblemCount } = props;
+  const { open, portalTarget, onClose, onSubmitProblemCount } = props;
   const { inputValue, updateInputValue, isInputValueValid } =
     useGachaProblemCount();
 
   return (
-    <Modal title="즉석 추첨" open={open} onClose={onClose}>
+    <Modal
+      title="즉석 추첨"
+      portalTarget={portalTarget}
+      open={open}
+      onClose={onClose}
+    >
       <S.ContentContainer>
         <Text type="normal" fontSize="16px">
           추첨을 진행할 문제 수를 입력해 주세요.

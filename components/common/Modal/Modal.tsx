@@ -9,6 +9,7 @@ interface ModalProps {
   open: boolean;
   padding?: string;
   closeOnBackdropClick?: boolean;
+  portalTarget?: HTMLElement | null;
   onClose: () => void;
 }
 
@@ -18,6 +19,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     open,
     padding = '16px',
     closeOnBackdropClick = true,
+    portalTarget,
     onClose,
     children,
   } = props;
@@ -44,7 +46,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
           <S.Body $padding={padding}>{children}</S.Body>
         </S.Modal>
       </S.Container>,
-      document.body,
+      portalTarget ?? document.body,
     )
   );
 };

@@ -46,8 +46,15 @@ export const IntroductoryContainer = styled.div`
   row-gap: 8px;
 `;
 
-export const LogoSquareImage = styled.img`
+export const LogoSquareImage = styled.img.attrs<{
+  $scaleX: number;
+  $scaleY: number;
+}>(({ $scaleX, $scaleY }) => ({
+  style: { transform: `scale(${$scaleX}, ${$scaleY})` },
+}))`
   width: 160px;
+
+  transform-origin: bottom;
 `;
 
 export const ContentTitle = styled.span`

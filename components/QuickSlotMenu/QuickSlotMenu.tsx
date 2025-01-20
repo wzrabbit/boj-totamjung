@@ -8,10 +8,12 @@ import useQuickSlotMenu from '@/hooks/randomDefense/useQuickSlotMenu';
 import SlotEditModal from './SlotEditModal';
 import Loading from '@/components/common/Loading';
 import useModal from '@/hooks/useModal';
-import { CopyIcon, EditIcon, TrashIcon } from '@/assets/svg';
+import { CopyIcon, DicesIcon, EditIcon, TrashIcon } from '@/assets/svg';
 import type { QuickSlotsResponse, SlotNo, Hotkey } from '@/types/randomDefense';
 import { theme } from '@/styles/theme';
 import SimpleModal from '@/components/common/SimpleModal';
+import RandomDefenseGachaModal from '@/components/RandomDefenseGachaModal';
+import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
 
 interface QuickSlotMenuProps {
   quickSlotsInfo: QuickSlotsResponse;
@@ -25,7 +27,7 @@ interface QuickSlotMenuProps {
 const QuickSlotMenu = (props: QuickSlotMenuProps) => {
   const { isLoaded } = props;
   const { activeModalName, openModal, closeModal } = useModal<
-    'copiedQuery' | 'confirmDeleteSlot'
+    'copiedQuery' | 'confirmDeleteSlot' | 'gachaProblemCount' | 'gacha'
   >();
   const {
     slot,
@@ -33,12 +35,14 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
     hotkey,
     occupiedSlotNos,
     shouldEditModalShow,
+    gachaProblemCount,
     setSelectedSlotNo,
     switchHotkey,
     openEditModal,
     closeEditModal,
     updateSlot,
     deleteSlot,
+    setGachaProblemCount,
   } = useQuickSlotMenu(props);
 
   return (
@@ -96,6 +100,18 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
                 openModal('confirmDeleteSlot');
               }}
             />
+            <IconButton
+              type="button"
+              name="즉석 추첨"
+              size="medium"
+              color={theme.color.PURPLE}
+              iconSrc={<DicesIcon />}
+              disabled={slot.isEmpty}
+              ariaLabel="즉석 추첨 진행"
+              onClick={() => {
+                openModal('gachaProblemCount');
+              }}
+            />
           </S.SlotControlPanel>
         </S.Container>
       ) : (
@@ -130,6 +146,22 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
         title="추첨 삭제 확인"
         message={`${selectedSlotNo}번 슬롯에 저장되어 있는 추첨을 삭제할까요?`}
       />
+      <GachaProblemCountInputModal
+        open={activeModalName === 'gachaProblemCount'}
+        onClose={closeModal}
+        onSubmitProblemCount={(newProblemCount) => {
+          setGachaProblemCount(newProblemCount);
+          openModal('gacha');
+        }}
+      />
+      {!slot.isEmpty && (
+        <RandomDefenseGachaModal
+          open={activeModalName === 'gacha'}
+          slot={slot}
+          problemCount={gachaProblemCount}
+          onClose={closeModal}
+        />
+      )}
     </NamedFrame>
   );
 };

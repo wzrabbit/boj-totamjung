@@ -32,6 +32,7 @@ export const theme = {
     BEIGE: '#c8aaa0',
     LIME: '#00ed28',
     LIGHT_PURPLE: '#dcbfff',
+    PURPLE: '#963eff',
   },
 
   solvedAcTier: {

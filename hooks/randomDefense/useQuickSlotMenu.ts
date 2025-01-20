@@ -23,6 +23,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
   } = params;
   const { selectedSlotNo, slots, hotkey } = quickSlotsInfo;
   const [shouldEditModalShow, setShouldEditModalShow] = useState(false);
+  const [gachaProblemCount, setGachaProblemCount] = useState(0);
 
   const switchHotkey = () => {
     if (!isLoaded) {
@@ -82,6 +83,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
     selectedSlotNo,
     hotkey,
     occupiedSlotNos: getOccupiedSlotNos(),
+    gachaProblemCount,
     shouldEditModalShow,
     switchHotkey,
     openEditModal,
@@ -89,6 +91,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
     updateSlot,
     deleteSlot,
     setSelectedSlotNo,
+    setGachaProblemCount,
   };
 };
 

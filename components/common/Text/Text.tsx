@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react';
 import * as S from './Text.styled';
 
 interface TextProps {
-  type: 'primary' | 'semiPrimary' | 'normal' | 'gray' | 'code';
+  type: 'primary' | 'semiPrimary' | 'normal' | 'gray' | 'darkGray' | 'code';
   fontSize: '16px' | '14px' | '13px';
   textAlign?: 'left' | 'center' | 'right';
 }

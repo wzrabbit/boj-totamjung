@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -31,29 +31,6 @@ export const Backdrop = styled.div`
     }
     to {
       opacity: 1;
-    }
-  }
-`;
-
-export const Modal = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  max-width: 100%;
-  max-height: 100%;
-
-  box-shadow: 0 0 30px ${({ theme }) => theme.color.GOLD};
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
-
-  animation: zoomIn 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-
-  @keyframes zoomIn {
-    from {
-      transform: scale(0.7);
-    }
-    to {
-      transform: scale(1);
     }
   }
 `;
@@ -96,7 +73,9 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const Body = styled.div<{ $padding: string }>`
+export const Body = styled.div<{
+  $padding: string;
+}>`
   padding: ${({ $padding }) => $padding};
 
   background-color: ${({ theme }) => theme.color.BROWN};
@@ -105,7 +84,9 @@ export const Body = styled.div<{ $padding: string }>`
   font-size: 16px;
 `;
 
-export const ModalActionButtonsContainer = styled.div`
+export const ModalActionButtonsContainer = styled.div<{
+  $theme: 'none' | 'totamjung';
+}>`
   display: flex;
   justify-content: flex-end;
   column-gap: 6px;
@@ -115,5 +96,52 @@ export const ModalActionButtonsContainer = styled.div`
   padding: 16px;
   margin: 16px -16px -16px -16px;
 
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme, $theme }) =>
+    $theme === 'totamjung' ? theme.color.DARK_BROWN : theme.color.WHITE};
+`;
+
+export const Modal = styled.div<{ $theme: 'none' | 'totamjung' }>`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  box-shadow: 0 0 30px
+    ${({ theme, $theme }) =>
+      $theme === 'totamjung' ? theme.color.GOLD : theme.color.LIGHT_GRAY};
+  background-color: ${({ theme, $theme }) =>
+    $theme === 'totamjung' ? theme.color.DARK_BROWN : theme.color.WHITE};
+
+  animation: zoomIn 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.7);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  ${({ $theme }) =>
+    $theme === 'none' &&
+    css`
+      & ${Header} {
+        border-bottom: 16px solid ${({ theme }) => theme.color.WHITE};
+
+        background-color: ${({ theme }) => theme.color.WHITE};
+      }
+
+      & ${Title}, & ${CloseButton} > svg {
+        color: ${({ theme }) => theme.color.DARK_GRAY};
+      }
+
+      & ${Body} {
+        background-color: ${({ theme }) => theme.color.PURE_WHITE};
+
+        color: ${({ theme }) => theme.color.DARK_GRAY};
+      }
+    `};
 `;

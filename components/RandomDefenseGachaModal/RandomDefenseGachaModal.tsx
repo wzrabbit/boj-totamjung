@@ -23,13 +23,22 @@ import GachaModalNotification from '../GachaModalNotification/GachaModalNotifica
 
 interface RandomDefenseGachaModalProps {
   open: boolean;
+  theme: 'none' | 'totamjung';
   slot: FilledSlot;
   problemCount: number;
+  portalTarget?: HTMLElement | null;
   onClose: () => void;
 }
 
 const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
-  const { open, slot, problemCount, onClose } = props;
+  const {
+    open,
+    theme: modalTheme = 'totamjung',
+    slot,
+    problemCount,
+    portalTarget,
+    onClose,
+  } = props;
   const {
     gachaStatus,
     problemInfos,
@@ -57,8 +66,10 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     <Modal
       title="즉석 추첨"
       open={open}
+      theme={modalTheme}
       padding="0"
       closeOnBackdropClick={false}
+      portalTarget={portalTarget}
       onClose={() => {
         stopGachaAudio();
         onClose();

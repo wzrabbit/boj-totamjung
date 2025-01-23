@@ -21,6 +21,35 @@ const meta = {
     onClose: {
       description: '모달을 닫아야 할 경우 실행시킬 콜백 함수입니다.',
     },
+    padding: {
+      description: '모달 내부 공간에 둘 `padding`의 크기입니다.',
+      table: {
+        defaultValue: {
+          summary: '16px',
+        },
+      },
+    },
+    theme: {
+      description: '모달의 테마입니다.',
+      table: {
+        defaultValue: {
+          summary: 'totamjung',
+        },
+      },
+    },
+    closeOnBackdropClick: {
+      description:
+        '모달의 빈 공간을 누를 경우 모달이 닫히게 할지의 여부입니다.',
+      table: {
+        defaultValue: {
+          summary: 'true',
+        },
+      },
+    },
+    portalTarget: {
+      description:
+        '모달을 렌더링시킬 위치의 DOM을 의미합니다. 지정하지 않을 경우, 기본적으로 `document.body`로 지정됩니다.',
+    },
   },
 } satisfies Meta<typeof Modal>;
 
@@ -192,6 +221,64 @@ export const TextWithControlButtons: Story = {
               ariaLabel="확인"
               onClick={() => {
                 alert('그럴 바엔 치약을 3,000개 구매하는 게 낫지 않나요?');
+                setIsOpen(false);
+              }}
+            />
+          </ModalActionButtonsContainer>
+        </Modal>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#a15eff"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {
+    open: false,
+    title: '테스트용 알림창',
+    onClose: () => {},
+  },
+};
+
+/**
+ * 대부분의 상황에서는 토탐정 테마 모달을 사용하지만, 백준 내에서 어울리는 UI를 보여주어야 할 경우 다른 테마를 사용할 수도 있습니다.
+ */
+export const PlainThemeWithControlButtons: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <Modal
+          open={isOpen}
+          title="테스트 모달"
+          theme="none"
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <div style={{ width: '300px' }}>
+            <Text type="darkGray" fontSize="16px">
+              토탐정 테마가 적용되지 않은 모달입니다.
+            </Text>
+          </div>
+          <ModalActionButtonsContainer theme="none">
+            <IconButton
+              type="button"
+              name="확인"
+              size="medium"
+              color="#333333"
+              iconSrc={<CheckCircleIcon />}
+              disabled={false}
+              ariaLabel="확인"
+              onClick={() => {
                 setIsOpen(false);
               }}
             />

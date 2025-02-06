@@ -134,6 +134,17 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
 
     spoilerButtonRef.current?.addEventListener('click', openSpoiler);
 
+    if (spoilerButtonRef.current) {
+      if (isTimerRunning) {
+        spoilerButtonRef.current.style.cursor = 'not-allowed';
+        spoilerButtonRef.current.style.textDecorationColor = 'transparent';
+        return;
+      }
+
+      spoilerButtonRef.current.style.cursor = 'pointer';
+      spoilerButtonRef.current.style.textDecorationColor = 'inherit';
+    }
+
     return () => {
       spoilerButtonRef.current?.removeEventListener('click', openSpoiler);
     };

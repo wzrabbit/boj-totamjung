@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'styled-components';
+import { styled, keyframes, css } from 'styled-components';
 
 export const Container = styled.div`
   padding-top: 10px;
@@ -150,9 +150,7 @@ export const DropdownMenuItem = styled.li`
   height: 32px;
 `;
 
-export const DropdownMenuButton = styled.button<{
-  $widgetTheme: 'none' | 'totamjung';
-}>`
+const dropdownMenuButtonStyles = css`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,16 +161,9 @@ export const DropdownMenuButton = styled.button<{
   background: transparent;
 
   transition: background-color 0.3s;
-
-  & > img {
-    filter: ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'none'
-        ? theme.filter.BOJ_BLUE_FILTER
-        : theme.filter.LIGHT_BROWN_FILTER};
-  }
 `;
 
-export const DropdownButtonIcon = styled.img`
+export const DropdownButtonIcon = styled.img.attrs({ draggable: false })`
   width: auto;
   height: 26px;
 
@@ -182,12 +173,68 @@ export const DropdownButtonIcon = styled.img`
     opacity: 0.6;
   }
 
-  button:not(:disabled) > &:hover {
+  button:not(:disabled):hover > & {
     transform: scale(1.1);
   }
 
-  button:not(:disabled) > &:active {
+  button:not(:disabled):active > & {
     transform: scale(1);
+  }
+`;
+
+export const DropdownMenuButton = styled.button<{
+  $widgetTheme: 'none' | 'totamjung';
+}>`
+  ${dropdownMenuButtonStyles}
+
+  & > ${DropdownButtonIcon} {
+    filter: ${({ theme, $widgetTheme }) => {
+      return $widgetTheme === 'none'
+        ? theme.filter.BOJ_BLUE_FILTER
+        : theme.filter.LIGHT_BROWN_FILTER;
+    }};
+  }
+`;
+
+const maskFillUp = keyframes`
+  from {
+    mask-position: 0% 0%;
+  }
+
+  to {
+    mask-position: 0% 100%;
+  }
+`;
+
+export const RandomDefenseButton = styled.button<{
+  $widgetTheme: 'none' | 'totamjung';
+}>`
+  ${dropdownMenuButtonStyles}
+
+  & > ${DropdownButtonIcon} {
+    filter: ${({ theme, $widgetTheme }) => {
+      return $widgetTheme === 'none'
+        ? theme.filter.BOJ_BLUE_FILTER
+        : theme.filter.LIGHT_BROWN_FILTER;
+    }};
+  }
+
+  &.pressing:after {
+    content: '';
+    position: absolute;
+
+    width: 24.79px;
+    height: 26px;
+
+    background-image: url(${browser.runtime.getURL('/dice.png')});
+    background-size: 24.79px 26px;
+    filter: ${({ theme }) => theme.filter.LIGHT_GRAY_FILTER};
+    mix-blend-mode: color-dodge;
+    opacity: 0.4;
+    mask-image: linear-gradient(to bottom, transparent 50%, black 50%);
+    mask-size: 100% 200%;
+
+    animation: ${maskFillUp} 0.8s 0.2s forwards linear;
   }
 `;
 

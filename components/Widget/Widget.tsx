@@ -7,35 +7,45 @@ import type { TotamjungTheme } from '@/types/totamjungTheme';
 import type { ToastInfo } from '@/types/toast';
 import { createPortal } from 'react-dom';
 import { $ } from '@/utils/querySelector';
+import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
+import RandomDefenseGachaModal from '../RandomDefenseGachaModal';
 
 interface WidgetProps {
   theme: TotamjungTheme;
+  rootElement: HTMLElement;
   onChangeTheme: (theme: TotamjungTheme) => void;
   onToast: (toastInfo: ToastInfo, duration: number) => void;
 }
 
 const Widget = (props: WidgetProps) => {
-  const { theme } = props;
+  const { theme, rootElement } = props;
   const {
     isExpanded,
     isScrollingToTop,
     hasUnknownAlgorithms,
     isRandomDefenseButtonDisabled,
+    isRandomDefenseButtonPressing,
+    gachaProblemCount,
+    gachaSlot,
     isInspectButtonDisabled,
     isLockButtonDisabled,
     shouldShowInspectIcon,
     shouldShowWelcomeMessage,
+    activeModalName,
     isLoaded,
     scrollToTop,
     endScrollingAnimation,
     toggleWidgetOpen,
     openOptionsPage,
     toggleTotamjungTheme,
-    performRandomDefenseByClick,
+    openGachaModalWithProblemCount,
+    suspendGacha,
     showInspectResultUsingPopup,
     toggleTimer,
     closeWelcomeMessage,
+    randomDefenseButtonRef,
   } = useWidget(props);
+
   const problemTitleElement = $('#problem_title');
 
   return (
@@ -83,17 +93,18 @@ const Widget = (props: WidgetProps) => {
               </S.DropdownMenuButton>
             </S.DropdownMenuItem>
             <S.DropdownMenuItem>
-              <S.DropdownMenuButton
+              <S.RandomDefenseButton
+                ref={randomDefenseButtonRef}
                 type="button"
+                className={isRandomDefenseButtonPressing ? 'pressing' : ''}
                 $widgetTheme={theme}
                 aria-label="랜덤 디펜스 진행하기"
                 disabled={isRandomDefenseButtonDisabled}
-                onClick={performRandomDefenseByClick}
               >
                 <S.DropdownButtonIcon
                   src={browser.runtime.getURL('/dice.png')}
                 />
-              </S.DropdownMenuButton>
+              </S.RandomDefenseButton>
             </S.DropdownMenuItem>
             <S.DropdownMenuItem>
               <S.DropdownMenuButton
@@ -157,6 +168,24 @@ const Widget = (props: WidgetProps) => {
                 onClose={closeWelcomeMessage}
               />
             </S.SpeechBubbleWrapper>
+          )}
+          <GachaProblemCountInputModal
+            open={activeModalName === 'gachaProblemCount'}
+            portalTarget={rootElement}
+            theme={theme}
+            shouldShowHotkeyMessage={false}
+            onClose={suspendGacha}
+            onSubmitProblemCount={openGachaModalWithProblemCount}
+          />
+          {gachaSlot && (
+            <RandomDefenseGachaModal
+              open={activeModalName === 'gacha'}
+              portalTarget={rootElement}
+              theme={theme}
+              slot={gachaSlot}
+              problemCount={gachaProblemCount}
+              onClose={suspendGacha}
+            />
           )}
         </>
       )}

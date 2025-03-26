@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-DEdD30eg.js";import{d as r}from"./styled-components.browser.esm-CkAH7aAm.js";import{A as f}from"./AlgorithmList-pvpffuOk.js";import{S as u}from"./SimpleModal-k5RQWRZ5.js";import{g as O}from"./getSearchResults-CsPxK2_U.js";import{a as R}from"./algorithmInfos-BNLNF_TH.js";import{r as A}from"./index-RYns6xqu.js";import{S as g}from"./commands-BRsa08kP.js";import{i as I}from"./checkedAlgorithmIdsValidator-_GhylmXA.js";import{d as D}from"./defaultValues-B69Rceu1.js";import{u as E}from"./useModal-CV8qRtLl.js";const j=r.div`
+import{j as e}from"./jsx-runtime-DEdD30eg.js";import{d as r}from"./styled-components.browser.esm-CkAH7aAm.js";import{A as f}from"./AlgorithmList-pvpffuOk.js";import{S as u}from"./SimpleModal-k5RQWRZ5.js";import{g as O}from"./getSearchResults-CsPxK2_U.js";import{a as R}from"./algorithmInfos-BNLNF_TH.js";import{r as A}from"./index-RYns6xqu.js";import{S as g}from"./commands-CzqO23sC.js";import{i as I}from"./checkedAlgorithmIdsValidator-_GhylmXA.js";import{d as D}from"./defaultValues-5WESY1KB.js";import{u as E}from"./useModal-CV8qRtLl.js";const j=r.div`
   flex-shrink: 0;
 
   width: 700px;

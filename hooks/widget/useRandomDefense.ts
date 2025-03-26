@@ -188,11 +188,13 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     const { problemId } = problemInfos[0];
 
     browser.runtime.sendMessage({
-      command: COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO,
-      randomDefenseHistoryInfo: {
-        ...problemInfos[0],
-        createdAt: new Date().toISOString(),
-      },
+      command: COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS,
+      randomDefenseHistoryInfos: [
+        {
+          ...problemInfos[0],
+          createdAt: new Date().toISOString(),
+        },
+      ],
     });
 
     location.href = `https://acmicpc.net/problem/${problemId}`;

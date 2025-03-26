@@ -20,7 +20,7 @@ export const COMMANDS = {
   REMOVE_SINGLE_TIMER: 'removeSingleTimer',
   IS_USER_SOLVED_PROBLEM: 'isUserSolvedProblem',
   GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
-  APPEND_RANDOM_DEFENSE_HISTORY_INFO: 'appendRandomDefenseHistoryInfo',
+  ADD_RANDOM_DEFENSE_HISTORY_INFOS: 'addRandomDefenseHistoryInfos',
   FETCH_GACHA_OPTIONS: 'fetchGachaOptions',
   SAVE_GACHA_OPTIONS: 'saveGachaOptions',
   FETCH_SHOULD_SHOW_WELCOME_MESSAGE: 'fetchShouldShowWelcomeMessage',

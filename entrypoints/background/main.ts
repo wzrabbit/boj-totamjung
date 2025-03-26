@@ -10,7 +10,7 @@ import {
   saveQuickSlots,
 } from '@/domains/dataHandlers/quickSlotsDataHandler';
 import {
-  appendRandomDefenseInfoToHistory,
+  addRandomDefenseInfosToHistory,
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from '@/domains/dataHandlers/randomDefenseHistoryDataHandler';
@@ -296,12 +296,12 @@ const executeBackground = () => {
         return true;
       }
 
-      if (command === COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO) {
-        if (!('randomDefenseHistoryInfo' in message)) {
+      if (command === COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS) {
+        if (!('randomDefenseHistoryInfos' in message)) {
           return;
         }
 
-        appendRandomDefenseInfoToHistory(message.randomDefenseHistoryInfo);
+        addRandomDefenseInfosToHistory(message.randomDefenseHistoryInfos);
       }
 
       if (command === COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE) {

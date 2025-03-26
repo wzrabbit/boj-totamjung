@@ -10,6 +10,8 @@ import {
   VolumeOffIcon,
   VolumeOnIcon,
   CopyIcon,
+  DownloadIcon,
+  CheckIcon,
 } from '@/assets/svg';
 import { hiddenTierBadgeIcon, tier1BadgeIcon } from '@/assets/png';
 import { theme } from '@/styles/theme';
@@ -37,6 +39,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     errorDescriptions,
     isTierHidden,
     isAudioMuted,
+    isSavedToHistory,
     notificationMessage,
     shouldNotificationFadeOut,
     restartGacha,
@@ -47,6 +50,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     stopGachaAudio,
     copyProblemInfosMarkdownToClipboard,
     showResultScreenAndResetNotificationMessage,
+    saveGachaResultToStorage,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
 
   return (
@@ -158,6 +162,16 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 disabled={false}
                 ariaLabel="문제 목록 복사"
                 onClick={copyProblemInfosMarkdownToClipboard}
+              />
+              <IconButton
+                type="button"
+                name="추첨 기록 저장"
+                size="large"
+                color={theme.color.LEMON}
+                iconSrc={isSavedToHistory ? <CheckIcon /> : <DownloadIcon />}
+                disabled={isSavedToHistory}
+                ariaLabel="추첨 기록 저장"
+                onClick={saveGachaResultToStorage}
               />
               <IconButton
                 type="button"

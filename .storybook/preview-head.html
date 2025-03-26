@@ -78,6 +78,7 @@
     SAVE_GACHA_OPTIONS: 'saveGachaOptions',
     SAVE_AND_GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
     GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
+    ADD_RANDOM_DEFENSE_HISTORY_INFOS: 'addRandomDefenseHistoryInfos',
     OPEN_OPTIONS_PAGE: 'openOptionsPage',
     FETCH_SHOULD_SHOW_WELCOME_MESSAGE: 'fetchShouldShowWelcomeMessage',
     SAVE_SHOULD_SHOW_WELCOME_MESSAGE: 'saveShouldShowWelcomeMessage',
@@ -248,6 +249,8 @@
           case COMMANDS.SAVE_SHOULD_SHOW_WELCOME_MESSAGE:
             return null;
           case COMMANDS.SAVE_GACHA_OPTIONS:
+            return null;
+          case COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS:
             return null;
           default:
             console.error(

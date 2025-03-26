@@ -97,7 +97,7 @@ export const getRandomDefenseResult = async (
       };
     }
 
-    const problemInfos = items.map((item) => {
+    const problemInfos = items.slice(0, problemCount).map((item) => {
       const { problemId, titleKo, level, isLevelLocked } = item;
 
       return {

@@ -462,7 +462,7 @@ describe('Test #3 - 추첨 기록 한도 대응', () => {
       createdAt: new Date(index).toISOString(),
     }));
 
-    const expectedResult = randomDefenseHistory.slice(0, -123).reverse();
+    const expectedResult = randomDefenseHistory.slice(123).reverse();
 
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({

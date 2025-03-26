@@ -73,15 +73,12 @@ export const Indicator = styled.div`
   display: flex;
   column-gap: 4px;
 
-  width: 80px;
   height: 20px;
   margin-bottom: 16px;
   margin-right: auto;
 `;
 
-export const IndicatorText = styled.p`
-  display: inline-block;
-
+export const IndicatorText = styled.div`
   color: ${({ theme }) => theme.color.WHITE};
   font-size: 14px;
   line-height: 20px;

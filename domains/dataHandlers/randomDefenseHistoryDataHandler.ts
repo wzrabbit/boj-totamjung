@@ -1,19 +1,8 @@
 import { STORAGE_KEY } from '@/constants/commands';
 import { sanitizeRandomDefenseHistory } from './sanitizers/randomDefenseHistorySanitizer';
 import { sanitizeIsTierHidden } from './sanitizers/isTierHiddenSanitizer';
-import type {
-  RandomDefenseHistoryInfo,
-  RandomDefenseHistoryResponse,
-} from '@/types/randomDefense';
+import type { RandomDefenseHistoryResponse } from '@/types/randomDefense';
 import { isRandomDefenseHistoryInfos } from './validators/randomDefenseHistoryValidator';
-
-const getSortedRandomDefenseHistory = (
-  randomDefenseHistory: RandomDefenseHistoryInfo[],
-) => {
-  return [...randomDefenseHistory].sort((a, b) =>
-    a.createdAt > b.createdAt ? -1 : 1,
-  );
-};
 
 export const fetchRandomDefenseHistory =
   async (): Promise<RandomDefenseHistoryResponse> => {
@@ -25,13 +14,10 @@ export const fetchRandomDefenseHistory =
     const isTierHidden = data[STORAGE_KEY.IS_TIER_HIDDEN];
     const sanitizedRandomDefenseHistory =
       sanitizeRandomDefenseHistory(randomDefenseHistory);
-    const sortedRandomDefenseHistory = getSortedRandomDefenseHistory(
-      sanitizedRandomDefenseHistory,
-    );
     const sanitizedIsTierHidden = sanitizeIsTierHidden(isTierHidden);
 
     return {
-      randomDefenseHistory: sortedRandomDefenseHistory,
+      randomDefenseHistory: sanitizedRandomDefenseHistory,
       isHidden: sanitizedIsTierHidden,
     };
   };
@@ -46,12 +32,9 @@ export const saveRandomDefenseHistory = async (
 
   const sanitizedRandomDefenseHistory =
     sanitizeRandomDefenseHistory(randomDefenseHistory);
-  const sortedRandomDefenseHistory = getSortedRandomDefenseHistory(
-    sanitizedRandomDefenseHistory,
-  );
 
   browser.storage.local.set({
-    [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: sortedRandomDefenseHistory,
+    [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: sanitizedRandomDefenseHistory,
     [STORAGE_KEY.IS_TIER_HIDDEN]: isHidden,
   });
 };

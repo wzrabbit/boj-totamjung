@@ -34,6 +34,7 @@ export const Default: Story = {
     ),
   ],
   args: {
+    rootElement: document.body,
     theme: 'none',
     onChangeTheme: fn(),
     onToast: fn(),

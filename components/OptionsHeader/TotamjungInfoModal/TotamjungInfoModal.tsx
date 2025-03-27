@@ -7,6 +7,9 @@ import { bug, logoSquare } from '@/assets/png';
 import { StickyNoteIcon, GithubIcon } from '@/assets/svg';
 import { theme } from '@/styles/theme';
 import * as S from './TotamjungInfoModal.styled';
+import SimpleModal from '@/components/common/SimpleModal';
+import useModal from '@/hooks/useModal';
+import useTotamjungClickHandler from '@/hooks/options/useTotamjungClickHandler';
 
 interface TotamjungInfoModalProps {
   open: boolean;
@@ -30,6 +33,12 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
     idleTime: 3000,
     erasingTime: 500,
   });
+  const { activeModalName, openModal, closeModal } =
+    useModal<'totamjungComplain'>();
+  const { increaseClickCount, totamjungScaleX, totamjungScaleY } =
+    useTotamjungClickHandler({
+      onShowComplainModal: () => openModal('totamjungComplain'),
+    });
 
   useEffect(() => {
     if (open) {
@@ -45,7 +54,13 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
       <S.ContentContainer>
         <S.DarkBrownGradientElement />
         <S.IntroductoryContainer>
-          <S.LogoSquareImage src={logoSquare} alt="" />
+          <S.LogoSquareImage
+            src={logoSquare}
+            alt=""
+            onClick={increaseClickCount}
+            $scaleX={totamjungScaleX}
+            $scaleY={totamjungScaleY}
+          />
           <S.ContentTitle>토탐정</S.ContentTitle>
           <S.IntroductoryTextContainer>
             <S.TypewriterText>{currentText}</S.TypewriterText>
@@ -104,6 +119,16 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             }}
           />
         </S.ControlButtonsContainer>
+        <SimpleModal
+          title="왜 그런 짓을..."
+          width="350px"
+          height="auto"
+          open={activeModalName === 'totamjungComplain'}
+          message="그만 좀 두드려 주시면 안 될까요!?"
+          actionType="confirm"
+          closeOnBackdropClick={false}
+          onClose={closeModal}
+        />
       </S.ContentContainer>
     </Modal>
   );

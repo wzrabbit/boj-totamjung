@@ -5,11 +5,14 @@ import { isValidCheckedAlgorithmIdsResponse } from '@/domains/dataHandlers/valid
 import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
+import useModal from '@/hooks/useModal';
+import useMouseLongPress from '@/hooks/useMouseLongPress';
 import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
+import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
 import type { ToastInfo } from '@/types/toast';
 import type { TotamjungTheme } from '@/types/totamjungTheme';
 import type { HiderOptionsResponse } from '@/types/algorithm';
-import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
+import { FilledSlot } from '@/types/randomDefense';
 
 interface UseWidgetParams {
   theme: TotamjungTheme;
@@ -28,13 +31,31 @@ const useWidget = (params: UseWidgetParams) => {
   const [inspectIconState, setInspectIconState] = useState(false);
   const [shouldShowWelcomeMessage, setShouldShowWelcomeMessage] =
     useState(false);
+  const [gachaSlot, setGachaSlot] = useState<FilledSlot | null>(null);
+  const [gachaProblemCount, setGachaProblemCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
     useInjectedProblemTags({ checkedIds, hiderOptions });
-  const { isRandomDefenseAvailable, performRandomDefenseByClick } =
-    useRandomDefense({
-      onToast,
-    });
+  const { activeModalName, openModal, closeModal } = useModal<
+    'gachaProblemCount' | 'gacha'
+  >();
+  const {
+    isRandomDefenseAvailable,
+    performRandomDefenseByClick,
+    performRandomDefenseByMouseLongPress,
+    enableRandomDefense,
+  } = useRandomDefense({
+    onToast,
+    onGachaStart: (slot) => openGachaProblemCountModalWithSlotInfo(slot),
+  });
+  const {
+    isPressing: isRandomDefenseButtonPressing,
+    longPressRef: randomDefenseButtonRef,
+  } = useMouseLongPress({
+    requiredLongPressTimeInMilliseconds: 1000,
+    onClick: performRandomDefenseByClick,
+    onLongPress: performRandomDefenseByMouseLongPress,
+  });
 
   const isRandomDefenseButtonDisabled = !isRandomDefenseAvailable;
   const isInspectButtonDisabled =
@@ -156,6 +177,26 @@ const useWidget = (params: UseWidgetParams) => {
     }
   };
 
+  const openGachaProblemCountModalWithSlotInfo = (slot: FilledSlot) => {
+    openModal('gachaProblemCount');
+    setGachaSlot(slot);
+  };
+
+  const openGachaModalWithProblemCount = (problemCount: number) => {
+    if (!gachaSlot) {
+      return;
+    }
+
+    openModal('gacha');
+    setGachaProblemCount(problemCount);
+  };
+
+  const suspendGacha = () => {
+    closeModal();
+    setGachaSlot(null);
+    enableRandomDefense();
+  };
+
   const closeWelcomeMessage = () => {
     setShouldShowWelcomeMessage(false);
     browser.runtime.sendMessage({
@@ -169,20 +210,26 @@ const useWidget = (params: UseWidgetParams) => {
     isScrollingToTop,
     hasUnknownAlgorithms,
     isRandomDefenseButtonDisabled,
+    isRandomDefenseButtonPressing,
+    gachaProblemCount,
+    gachaSlot,
     isInspectButtonDisabled,
     isLockButtonDisabled,
     shouldShowInspectIcon,
     shouldShowWelcomeMessage,
+    activeModalName,
     isLoaded,
     scrollToTop,
     endScrollingAnimation,
     toggleWidgetOpen,
     openOptionsPage,
     toggleTotamjungTheme,
-    performRandomDefenseByClick,
+    openGachaModalWithProblemCount,
+    suspendGacha,
     showInspectResultUsingPopup,
     toggleTimer,
     closeWelcomeMessage,
+    randomDefenseButtonRef,
   };
 };
 

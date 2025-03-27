@@ -1,30 +1,36 @@
 import { useState, useEffect, useRef } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { DEFAULT_QUICK_SLOTS_RESPONSE } from '@/constants/defaultValues';
-import {
-  isQuickSlotsResponse,
-  isSlotNo,
-} from '@/domains/dataHandlers/validators/quickSlotsValidator';
-import type { ToastInfo } from '@/types/toast';
-import type { QuickSlotsResponse, SlotNo } from '@/types/randomDefense';
-import type { Storage } from 'wxt/browser';
+import { isQuickSlotsResponse } from '@/domains/dataHandlers/validators/quickSlotsValidator';
 import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
+import useHotKeyLongPress from '../useHotkeyLongPress';
+import type { ToastInfo } from '@/types/toast';
+import type {
+  FilledSlot,
+  QuickSlotsResponse,
+  SlotNo,
+} from '@/types/randomDefense';
+import type { Storage } from 'wxt/browser';
 
 interface UseRandomDefenseParams {
   onToast: (toastInfo: ToastInfo, duration: number) => void;
+  onGachaStart: (slot: FilledSlot) => void;
 }
 
 const useRandomDefense = (params: UseRandomDefenseParams) => {
-  const { onToast } = params;
+  const { onToast, onGachaStart } = params;
   const [isRandomDefenseAvailable, setIsRandomDefenseAvailable] =
     useState(false);
-
   const isRandomDefenseAvailableRef = useRef(isRandomDefenseAvailable);
-  const pressedKeysRef = useRef<Set<string>>(new Set());
-  const pressedCodesRef = useRef<Set<string>>(new Set());
   const quickSlotsResponseRef = useRef<QuickSlotsResponse>(
     DEFAULT_QUICK_SLOTS_RESPONSE,
   );
+  useHotKeyLongPress({
+    baseKey: quickSlotsResponseRef.current.hotkey,
+    requiredLongPressTimeInMilliseconds: 1000,
+    onPress: (numberKey) => performRandomDefense(numberKey, 'press'),
+    onLongPress: (numberKey) => performRandomDefense(numberKey, 'keyLongPress'),
+  });
 
   useEffect(() => {
     const fetchQuickSlots = async () => {
@@ -42,13 +48,9 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     };
 
     fetchQuickSlots();
-    document.addEventListener('keydown', addPressedKeyInfo);
-    document.addEventListener('keyup', deletePressedKeyInfo);
     browser.storage.onChanged.addListener(updateQuickSlotsIfLocalChanged);
 
     return () => {
-      document.removeEventListener('keydown', addPressedKeyInfo);
-      document.removeEventListener('keyup', deletePressedKeyInfo);
       browser.storage.onChanged.removeListener(updateQuickSlotsIfLocalChanged);
     };
   }, []);
@@ -70,52 +72,9 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     quickSlotsResponseRef.current = newValue;
   };
 
-  const addPressedKeyInfo = (event: globalThis.KeyboardEvent) => {
-    const key = event.key;
-    const code = event.code;
-
-    pressedKeysRef.current.add(key);
-    pressedCodesRef.current.add(code);
-
-    const altPressed = event.altKey;
-    const f2Pressed = pressedCodesRef.current.has('F2');
-    const isNumberKeyPressedNow =
-      !isNaN(Number(event.key)) || event.code.startsWith('Digit');
-
-    if (!isNumberKeyPressedNow) {
-      return;
-    }
-
-    const { hotkey } = quickSlotsResponseRef.current;
-    const currentNumberKey = !isNaN(Number(event.key))
-      ? Number(event.key)
-      : Number(event.code.at(-1));
-
-    if (!isSlotNo(currentNumberKey)) {
-      return;
-    }
-
-    if (hotkey === 'Alt' && altPressed) {
-      performRandomDefense(currentNumberKey, 'keydown');
-      return;
-    }
-
-    if (hotkey === 'F2' && f2Pressed) {
-      performRandomDefense(currentNumberKey, 'keydown');
-    }
-  };
-
-  const deletePressedKeyInfo = (event: globalThis.KeyboardEvent) => {
-    const key = event.key;
-    const code = event.code;
-
-    pressedKeysRef.current.delete(key);
-    pressedCodesRef.current.delete(code);
-  };
-
   const performRandomDefense = async (
     selectedSlotNo: SlotNo,
-    method: 'keydown' | 'click',
+    method: 'press' | 'keyLongPress' | 'click' | 'mouseLongPress',
   ) => {
     if (!isRandomDefenseAvailableRef.current) {
       return;
@@ -128,7 +87,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     const selectedSlot = slots[selectedSlotNo];
 
     if (selectedSlot.isEmpty) {
-      if (method === 'click') {
+      if (method === 'click' || method === 'mouseLongPress') {
         onToast(
           {
             title: `${selectedSlotNo}번 슬롯은 현재 비어 있습니다.`,
@@ -143,7 +102,12 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       }
       isRandomDefenseAvailableRef.current = true;
       setIsRandomDefenseAvailable(true);
+      return;
+    }
 
+    if (method === 'keyLongPress' || method === 'mouseLongPress') {
+      onGachaStart(selectedSlot);
+      setIsRandomDefenseAvailable(false);
       return;
     }
 
@@ -180,7 +144,6 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       );
       isRandomDefenseAvailableRef.current = true;
       setIsRandomDefenseAvailable(true);
-
       return;
     }
 
@@ -204,9 +167,42 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     performRandomDefense(quickSlotsResponseRef.current.selectedSlotNo, 'click');
   };
 
+  const performRandomDefenseByMouseLongPress = () => {
+    performRandomDefense(
+      quickSlotsResponseRef.current.selectedSlotNo,
+      'mouseLongPress',
+    );
+  };
+
+  /**
+   * 기본적으로 랜덤 디펜스를 진행하기 시작하면 한 번에 여러 번의 랜덤 디펜스가 진행되는 것을 막기 위해,
+   * 랜덤 디펜스를 더 이상 진행하지 못하도록 잠금이 자동으로 설정됩니다.
+   *
+   * 이 잠금은 랜덤 디펜스에 실패하는 경우 해제되며, 성공한 경우에는 다른 페이지로 이동되므로 이 잠금이 자동으로 해제됩니다.
+   * 그러나 단축키 또는 마우스를 길게 눌러 진행하는 즉석 추첨의 경우 이 잠금이 자동으로 해제되지 않으며 사용자가 추첨 창을 닫았다면 다시 랜덤 디펜스를 진행할 수 있도록 잠금을 해제해야 할 수 있습니다.
+   * 이 때 본 함수를 이용해 랜덤 디펜스를 다시 사용할 수 있도록 잠금을 해제할 수 있습니다.
+   */
+  const enableRandomDefense = () => {
+    isRandomDefenseAvailableRef.current = true;
+    setIsRandomDefenseAvailable(true);
+  };
+
+  /**
+   * 단축키에 의한 랜덤 디펜스 진행 시에는 중복 진행을 막기 위해 추가적인 랜덤 디펜스는 비활성화되므로 사용할 필요가 없습니다.
+   * 다만, 마우스로 인한 즉석 추첨 실행 등의, 다른 방법으로 이미 랜덤 디펜스를 시작하게 된 경우에는 직접 랜덤 디펜스가 진행 중이므로 비활성화해야 함을 이 커스텀 훅에 알려야 할 수 있습니다.
+   * 그 때에 이 함수를 사용하면 됩니다.
+   */
+  const disableRandomDefense = () => {
+    isRandomDefenseAvailableRef.current = false;
+    setIsRandomDefenseAvailable(false);
+  };
+
   return {
     isRandomDefenseAvailable,
     performRandomDefenseByClick,
+    performRandomDefenseByMouseLongPress,
+    enableRandomDefense,
+    disableRandomDefense,
   };
 };
 

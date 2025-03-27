@@ -150,6 +150,7 @@ export const ProblemId = styled.div.attrs<{ $cardWidth: number }>(
   ({ $cardWidth }) => ({
     style: {
       fontSize: `${$cardWidth / 7.531}px`,
+      lineHeight: `${$cardWidth / 7.531}px`,
     },
   }),
 )<{

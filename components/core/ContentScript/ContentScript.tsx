@@ -7,22 +7,26 @@ const ContentScript = () => {
   const { totamjungTheme, isLoaded, updateTotamjungTheme } =
     useTotamjungThemeState();
   const { toastState, showToast, closeToast } = useToastState();
+  const totamjungRootRef = useRef<HTMLDivElement>(null);
 
   return (
-    isLoaded && (
-      <div style={{ position: 'relative', zIndex: 10000 }}>
-        <Widget
-          theme={totamjungTheme}
-          onChangeTheme={updateTotamjungTheme}
-          onToast={showToast}
-        />
-        <LeftSlideToast
-          theme={totamjungTheme}
-          onClose={closeToast}
-          {...toastState}
-        />
-      </div>
-    )
+    <div ref={totamjungRootRef} style={{ position: 'relative', zIndex: 10000 }}>
+      {isLoaded && totamjungRootRef.current && (
+        <>
+          <Widget
+            theme={totamjungTheme}
+            rootElement={totamjungRootRef.current}
+            onChangeTheme={updateTotamjungTheme}
+            onToast={showToast}
+          />
+          <LeftSlideToast
+            theme={totamjungTheme}
+            onClose={closeToast}
+            {...toastState}
+          />
+        </>
+      )}
+    </div>
   );
 };
 

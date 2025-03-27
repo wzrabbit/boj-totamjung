@@ -1,7 +1,7 @@
 import { styled, css } from 'styled-components';
 
 export const Text = styled.p<{
-  $type: 'primary' | 'semiPrimary' | 'normal' | 'gray' | 'code';
+  $type: 'primary' | 'semiPrimary' | 'normal' | 'gray' | 'darkGray' | 'code';
   $fontSize: '16px' | '14px' | '13px';
   $textAlign: 'left' | 'center' | 'right';
 }>`
@@ -29,6 +29,13 @@ export const Text = styled.p<{
       return css`
         font-family: Pretendard;
         color: ${theme.color.LIGHT_GRAY};
+      `;
+    }
+
+    if ($type === 'darkGray') {
+      return css`
+        font-family: Pretendard;
+        color: ${theme.color.DARK_GRAY};
       `;
     }
 

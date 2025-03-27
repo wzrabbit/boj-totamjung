@@ -2,14 +2,21 @@ import * as S from './Modal.styled';
 import useEscKey from '@/hooks/useEscKey';
 import { CloseIcon } from '@/assets/svg';
 import { createPortal } from 'react-dom';
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
 interface ModalProps {
   title: string;
   open: boolean;
   padding?: string;
   closeOnBackdropClick?: boolean;
+  theme?: 'none' | 'totamjung';
+  portalTarget?: HTMLElement | null;
   onClose: () => void;
+}
+
+interface ModalActionButtonsContainerProps {
+  theme?: 'none' | 'totamjung';
+  children: ReactNode;
 }
 
 const Modal = (props: PropsWithChildren<ModalProps>) => {
@@ -18,6 +25,8 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     open,
     padding = '16px',
     closeOnBackdropClick = true,
+    theme = 'totamjung',
+    portalTarget,
     onClose,
     children,
   } = props;
@@ -34,7 +43,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
             }
           }}
         />
-        <S.Modal role="dialog">
+        <S.Modal role="dialog" $theme={theme}>
           <S.Header>
             <S.Title>{title}</S.Title>
             <S.CloseButton onClick={onClose} aria-label="모달 닫기">
@@ -44,7 +53,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
           <S.Body $padding={padding}>{children}</S.Body>
         </S.Modal>
       </S.Container>,
-      document.body,
+      portalTarget ?? document.body,
     )
   );
 };
@@ -54,11 +63,15 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
  * 이 컴포넌트는 `<Modal>` 컴포넌트의 단순 부속품을 넘어 사용자가 사용할 때 보조적으로 사용하므로
  * 본 컴포넌트 파일에 같이 정의합니다.
  */
-export const ModalActionButtonsContainer = (props: PropsWithChildren) => {
-  const { children } = props;
+export const ModalActionButtonsContainer = (
+  props: ModalActionButtonsContainerProps,
+) => {
+  const { children, theme = 'totamjung' } = props;
 
   return (
-    <S.ModalActionButtonsContainer>{children}</S.ModalActionButtonsContainer>
+    <S.ModalActionButtonsContainer $theme={theme}>
+      {children}
+    </S.ModalActionButtonsContainer>
   );
 };
 

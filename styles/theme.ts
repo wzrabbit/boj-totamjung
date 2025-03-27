@@ -15,6 +15,7 @@ export const theme = {
     TRANSPARENT_FAINT_WHITE: '#eeeeee20',
     GRAY: '#808080',
     LIGHT_GRAY: '#aaaaaa',
+    DARK_GRAY: '#333333',
     RED: '#ff0000',
     LIGHT_RED: '#ff5454',
     LIGHT_RED_TRANSPARENT: '#ff545420',
@@ -31,7 +32,9 @@ export const theme = {
     ORANGE_TRANSPARENT: '#ff853340',
     BEIGE: '#c8aaa0',
     LIME: '#00ed28',
+    GREEN: '#008000',
     LIGHT_PURPLE: '#dcbfff',
+    PURPLE: '#963eff',
   },
 
   solvedAcTier: {

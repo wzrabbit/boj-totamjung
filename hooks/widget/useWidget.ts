@@ -6,6 +6,7 @@ import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderO
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
 import useModal from '@/hooks/useModal';
+import useMouseLongPress from '@/hooks/useMouseLongPress';
 import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
 import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
 import type { ToastInfo } from '@/types/toast';

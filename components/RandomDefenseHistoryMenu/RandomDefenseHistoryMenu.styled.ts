@@ -78,8 +78,8 @@ export const Indicator = styled.div`
   margin-right: auto;
 `;
 
-export const IndicatorText = styled.div`
-  color: ${({ theme }) => theme.color.WHITE};
+export const IndicatorText = styled.div<{ $color: string }>`
+  color: ${({ $color }) => $color};
   font-size: 14px;
   line-height: 20px;
 `;

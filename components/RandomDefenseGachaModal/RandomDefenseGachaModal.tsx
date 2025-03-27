@@ -23,7 +23,7 @@ import GachaModalNotification from '../GachaModalNotification/GachaModalNotifica
 
 interface RandomDefenseGachaModalProps {
   open: boolean;
-  theme: 'none' | 'totamjung';
+  theme?: 'none' | 'totamjung';
   slot: FilledSlot;
   problemCount: number;
   portalTarget?: HTMLElement | null;

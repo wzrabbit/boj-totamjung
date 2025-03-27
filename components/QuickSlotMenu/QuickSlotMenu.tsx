@@ -148,6 +148,7 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
       />
       <GachaProblemCountInputModal
         open={activeModalName === 'gachaProblemCount'}
+        shouldShowHotkeyMessage={true}
         onClose={closeModal}
         onSubmitProblemCount={(newProblemCount) => {
           setGachaProblemCount(newProblemCount);

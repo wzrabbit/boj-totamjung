@@ -46,13 +46,19 @@ const executeInjectionScript = () => {
           return;
         }
 
-        const { shouldHideTier } = response;
+        const { shouldHideTier, shouldRevealTierOnHover } = response;
 
-        if (shouldHideTier) {
-          htmlElement.setAttribute('hideTier', 'true');
-        } else {
+        if (!shouldHideTier) {
           htmlElement.setAttribute('hideTier', 'false');
+          return;
         }
+
+        if (shouldRevealTierOnHover) {
+          htmlElement.setAttribute('hideTier', 'revealOnHover');
+          return;
+        }
+
+        htmlElement.setAttribute('hideTier', 'true');
       });
 
     browser.runtime

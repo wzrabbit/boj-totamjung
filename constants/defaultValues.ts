@@ -4,6 +4,7 @@ import type {
   LegacyQuickSlotsResponse,
 } from '@/types/randomDefense';
 import { STORAGE_KEY } from './commands';
+import { HiderOptionsResponse } from '@/types/algorithm';
 
 export const DEFAULT_CHECKED_ALGORITHM_IDS = [1, 2];
 
@@ -31,13 +32,14 @@ export const DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE: LegacyQuickSlotsResponse = {
   ...DEFAULT_QUICK_SLOTS,
 };
 
-export const DEFAULT_HIDER_OPTIONS = {
+export const DEFAULT_HIDER_OPTIONS: HiderOptionsResponse = {
   problemTagLockDuration: {
     hours: 0,
     minutes: 20,
   },
   shouldHideTier: false,
   shouldWarnHighTier: false,
+  shouldRevealTierOnHover: false,
   warnTier: 1,
   algorithmHiderUsage: 'click',
   problemTagLockUsage: 'click',

@@ -1,7 +1,7 @@
 import { COMMANDS } from '@/constants/commands';
 import { isFontNoResponse } from '@/domains/dataHandlers/validators/fontNoValidator';
 import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
-import { isTotamjungThemeResponse } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
+import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
 import '@/assets/css/palette.css';
 import '@/assets/css/totamjungTheme.css';
 import '@/assets/css/tierHider.css';
@@ -24,12 +24,10 @@ const executeInjectionScript = () => {
 
     browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_TOTAMJUNG_THEME })
-      .then((response) => {
-        if (!isTotamjungThemeResponse(response)) {
+      .then((totamjungTheme) => {
+        if (!isTotamjungTheme(totamjungTheme)) {
           return;
         }
-
-        const { totamjungTheme } = response;
 
         if (totamjungTheme === 'totamjung') {
           htmlElement.style.backgroundColor = TOTAMJUNG_THEME_BACKGROUND_COLOR;

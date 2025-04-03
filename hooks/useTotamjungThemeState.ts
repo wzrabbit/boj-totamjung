@@ -41,7 +41,7 @@ const useTotamjungThemeState = () => {
 
   useEffect(() => {
     const fetchTotamjungTheme = async () => {
-      const { totamjungTheme } = await browser.runtime.sendMessage({
+      const totamjungTheme = await browser.runtime.sendMessage({
         command: COMMANDS.FETCH_TOTAMJUNG_THEME,
       });
 
@@ -62,6 +62,8 @@ const useTotamjungThemeState = () => {
       );
     };
   }, []);
+
+  console.log('ok', totamjungTheme);
 
   return { totamjungTheme, isLoaded, updateTotamjungTheme };
 };

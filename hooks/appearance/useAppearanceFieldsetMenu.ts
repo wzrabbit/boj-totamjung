@@ -10,7 +10,7 @@ import {
   saveFontNo,
 } from '@/domains/dataHandlers/fontNoDataHandler';
 
-const UseAppearanceFieldsetMenu = () => {
+const useAppearanceFieldsetMenu = () => {
   const [totamjungTheme, setTotamjungTheme] = useState<
     TotamjungTheme | undefined
   >(undefined);
@@ -79,4 +79,4 @@ const UseAppearanceFieldsetMenu = () => {
   };
 };
 
-export default UseAppearanceFieldsetMenu;
+export default useAppearanceFieldsetMenu;

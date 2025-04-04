@@ -1,5 +1,5 @@
 import { COMMANDS } from '@/constants/commands';
-import { isFontNoResponse } from '@/domains/dataHandlers/validators/fontNoValidator';
+import { isFontNo } from '@/domains/dataHandlers/validators/fontNoValidator';
 import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
 import '@/assets/css/palette.css';
@@ -61,12 +61,10 @@ const executeInjectionScript = () => {
 
     browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_FONT_NO })
-      .then((response) => {
-        if (!isFontNoResponse(response)) {
+      .then((fontNo) => {
+        if (!isFontNo(fontNo)) {
           return;
         }
-
-        const { fontNo } = response;
 
         htmlElement.setAttribute('fontNo', String(fontNo));
       });

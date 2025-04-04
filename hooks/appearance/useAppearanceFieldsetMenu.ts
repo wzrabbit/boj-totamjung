@@ -19,12 +19,10 @@ const UseAppearanceFieldsetMenu = () => {
 
   useEffect(() => {
     const loadAppearanceFieldsetMenuData = async () => {
-      const [currentTotamjungTheme, fontNoResponse] = await Promise.all([
+      const [currentTotamjungTheme, currentFontNo] = await Promise.all([
         fetchTotamjungTheme(),
         fetchFontNo(),
       ]);
-
-      const { fontNo: currentFontNo } = fontNoResponse;
 
       setTotamjungTheme(currentTotamjungTheme);
       setFontNo(currentFontNo);

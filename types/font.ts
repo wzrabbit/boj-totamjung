@@ -1,6 +1,4 @@
-export interface FontNoResponse {
-  fontNo: number;
-}
+export type FontNo = number;
 
 export type LegacyFontNo = 'none' | `font-${number}`;
 

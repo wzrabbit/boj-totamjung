@@ -1,7 +1,8 @@
-import { isObject } from '@/types/typeGuards';
-import type { CheckedAlgorithmIdsResponse } from '@/types/algorithm';
+import type { CheckedAlgorithmIds } from '@/types/algorithm';
 
-export const isValidCheckedAlgorithmIds = (data: unknown): data is number[] => {
+export const isValidCheckedAlgorithmIds = (
+  data: unknown,
+): data is CheckedAlgorithmIds => {
   if (!Array.isArray(data)) {
     return false;
   }
@@ -13,14 +14,4 @@ export const isValidCheckedAlgorithmIds = (data: unknown): data is number[] => {
       value % 1 === 0 &&
       value >= 1,
   );
-};
-
-export const isValidCheckedAlgorithmIdsResponse = (
-  data: unknown,
-): data is CheckedAlgorithmIdsResponse => {
-  if (!isObject(data) || !('checkedIds' in data)) {
-    return false;
-  }
-
-  return isValidCheckedAlgorithmIds(data.checkedIds);
 };

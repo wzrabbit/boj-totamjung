@@ -215,7 +215,7 @@
 
         switch (command) {
           case COMMANDS.FETCH_CHECKED_ALGORITHM_IDS:
-            return { checkedIds: checkedAlgorithmIds };
+            return checkedAlgorithmIds;
           case COMMANDS.FETCH_HIDER_OPTIONS:
             return hiderOptionsResponse;
           case COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME:

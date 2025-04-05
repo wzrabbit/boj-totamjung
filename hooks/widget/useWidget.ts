@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { MouseEvent } from 'react';
 import { COMMANDS } from '@/constants/commands';
-import { isValidCheckedAlgorithmIdsResponse } from '@/domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
+import { isValidCheckedAlgorithmIds } from '@/domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
 import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
@@ -24,7 +24,9 @@ const useWidget = (params: UseWidgetParams) => {
   const { theme, onChangeTheme, onToast } = params;
   const [isScrollingToTop, setIsScrollingToTop] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [checkedIds, setCheckedIds] = useState<number[] | undefined>(undefined);
+  const [checkedAlgorithmIds, setCheckedAlgorithmIds] = useState<
+    number[] | undefined
+  >(undefined);
   const [hiderOptions, setHiderOptions] = useState<
     HiderOptionsResponse | undefined
   >(undefined);
@@ -35,7 +37,7 @@ const useWidget = (params: UseWidgetParams) => {
   const [gachaProblemCount, setGachaProblemCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
-    useInjectedProblemTags({ checkedIds, hiderOptions });
+    useInjectedProblemTags({ checkedAlgorithmIds, hiderOptions });
   const { activeModalName, openModal, closeModal } = useModal<
     'gachaProblemCount' | 'gacha'
   >();
@@ -66,7 +68,7 @@ const useWidget = (params: UseWidgetParams) => {
   useEffect(() => {
     const loadWidgetData = async () => {
       const [
-        checkedAlgorithmIdsResponse,
+        checkedAlgorithmIds,
         hiderOptionsResponse,
         shouldShowWelcomeMessageResponse,
       ] = await Promise.all([
@@ -82,14 +84,13 @@ const useWidget = (params: UseWidgetParams) => {
       ]);
 
       if (
-        !isValidCheckedAlgorithmIdsResponse(checkedAlgorithmIdsResponse) ||
+        !isValidCheckedAlgorithmIds(checkedAlgorithmIds) ||
         !isHiderOptionsResponse(hiderOptionsResponse) ||
         !isShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse)
       ) {
         return;
       }
 
-      const { checkedIds } = checkedAlgorithmIdsResponse;
       const {
         algorithmHiderUsage,
         shouldHideTier,
@@ -105,7 +106,7 @@ const useWidget = (params: UseWidgetParams) => {
         setInspectIconState(true);
       }
 
-      setCheckedIds(checkedIds);
+      setCheckedAlgorithmIds(checkedAlgorithmIds);
       setHiderOptions(hiderOptionsResponse);
       setShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse);
       setIsLoaded(true);

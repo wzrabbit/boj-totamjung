@@ -85,11 +85,11 @@ const executeBackground = () => {
       }
 
       if (command === COMMANDS.SAVE_CHECKED_ALGORITHM_IDS) {
-        if (!('checkedIds' in message)) {
+        if (!('checkedAlgorithmIds' in message)) {
           return;
         }
 
-        saveCheckedAlgorithmIds(message.checkedIds);
+        saveCheckedAlgorithmIds(message.checkedAlgorithmIds);
       }
 
       if (command === COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY) {

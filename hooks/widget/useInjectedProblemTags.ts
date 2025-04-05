@@ -7,7 +7,7 @@ import { COMMANDS } from '@/constants/commands';
 import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 
 interface UseInjectedProblemTags {
-  checkedIds: number[] | undefined;
+  checkedAlgorithmIds: number[] | undefined;
   hiderOptions: HiderOptionsResponse | undefined;
 }
 
@@ -15,7 +15,7 @@ interface UseInjectedProblemTags {
  * 이 커스텀 훅은 BOJ의 알고리즘 분류의 정보를 가져오고 제어할 수 있는 커스텀 훅입니다.
  */
 const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
-  const { checkedIds, hiderOptions } = params;
+  const { checkedAlgorithmIds, hiderOptions } = params;
   const {
     isTimerRunning,
     timerDisplayText,
@@ -47,7 +47,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
   }, []);
 
   useEffect(() => {
-    if (!checkedIds || !hiderOptions) {
+    if (!checkedAlgorithmIds || !hiderOptions) {
       return;
     }
 
@@ -94,7 +94,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
 
         if (
           currentAlgorithmId === undefined ||
-          !checkedIds.includes(currentAlgorithmId)
+          !checkedAlgorithmIds.includes(currentAlgorithmId)
         ) {
           hasUnknownAlgorithms = true;
           unknownAlgorithmIndexes.push(index);
@@ -148,7 +148,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
     return () => {
       spoilerButtonRef.current?.removeEventListener('click', openSpoiler);
     };
-  }, [checkedIds, hiderOptions, isTimerRunning, isHighlighted]);
+  }, [checkedAlgorithmIds, hiderOptions, isTimerRunning, isHighlighted]);
 
   useEffect(() => {
     if (!spoilerButtonRef.current) {

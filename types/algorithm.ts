@@ -41,9 +41,7 @@ export interface LegacySettings {
   theme: 'yes' | 'no';
 }
 
-export interface CheckedAlgorithmIdsResponse {
-  checkedIds: number[];
-}
+export type CheckedAlgorithmIds = number[];
 
 export interface Timer {
   problemId: number;

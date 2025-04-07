@@ -4,7 +4,7 @@ import { $, $$ } from '@/utils/querySelector';
 import useLockTimer from './useLockTimer';
 import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
 import { COMMANDS } from '@/constants/commands';
-import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 
 interface UseInjectedProblemTags {
   checkedAlgorithmIds: number[] | undefined;
@@ -170,7 +170,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
       command: COMMANDS.FETCH_HIDER_OPTIONS,
     });
 
-    if (!isHiderOptionsResponse(hiderOptions)) {
+    if (!isHiderOptions(hiderOptions)) {
       return;
     }
 

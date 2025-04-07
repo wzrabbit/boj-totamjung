@@ -1,6 +1,6 @@
 import { STORAGE_KEY } from '@/constants/commands';
 import { sanitizeQuickSlots } from './sanitizers/quickSlotsSanitizer';
-import { isRepairableQuickSlotsResponse } from './validators/quickSlotsValidator';
+import { isRepairableQuickSlots } from './validators/quickSlotsValidator';
 
 export const fetchQuickSlots = async () => {
   const data = await browser.storage.local.get(STORAGE_KEY.QUICK_SLOTS);
@@ -17,7 +17,7 @@ export const saveQuickSlots = (
 ) => {
   const quickSlotsData = { selectedSlotNo, slots, hotkey };
 
-  if (!isRepairableQuickSlotsResponse(quickSlotsData)) {
+  if (!isRepairableQuickSlots(quickSlotsData)) {
     return;
   }
 

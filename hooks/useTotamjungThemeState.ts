@@ -63,8 +63,6 @@ const useTotamjungThemeState = () => {
     };
   }, []);
 
-  console.log('ok', totamjungTheme);
-
   return { totamjungTheme, isLoaded, updateTotamjungTheme };
 };
 

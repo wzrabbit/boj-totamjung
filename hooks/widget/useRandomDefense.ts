@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { DEFAULT_QUICK_SLOTS_RESPONSE } from '@/constants/defaultValues';
-import { isQuickSlotsResponse } from '@/domains/dataHandlers/validators/quickSlotsValidator';
-import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
+import { isQuickSlots } from '@/domains/dataHandlers/validators/quickSlotsValidator';
+import { isRandomDefenseResult } from '@/domains/dataHandlers/validators/RandomDefenseResultValidator';
 import useHotKeyLongPress from '../useHotkeyLongPress';
 import type { ToastInfo } from '@/types/toast';
 import type { FilledSlot, QuickSlots, SlotNo } from '@/types/randomDefense';
@@ -34,7 +34,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
         command: COMMANDS.FETCH_QUICK_SLOTS,
       });
 
-      if (!isQuickSlotsResponse(response)) {
+      if (!isQuickSlots(response)) {
         return;
       }
 
@@ -61,7 +61,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
 
     const { newValue } = changes.quickSlots;
 
-    if (!isQuickSlotsResponse(newValue)) {
+    if (!isQuickSlots(newValue)) {
       return;
     }
 
@@ -113,7 +113,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       problemCount: 1,
     });
 
-    if (!isRandomDefenseResultResponse(randomDefenseResultResponse)) {
+    if (!isRandomDefenseResult(randomDefenseResultResponse)) {
       onToast(
         {
           title: '데이터 불일치가 발견되었습니다.',

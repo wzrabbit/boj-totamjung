@@ -1,10 +1,10 @@
 import { isSolvedAcSearchProblemResponse } from '@/domains/dataHandlers/validators/solvedAcSearchProblemResponseValidator';
-import type { RandomDefenseResultResponse } from '@/types/randomDefense';
+import type { RandomDefenseResult } from '@/types/randomDefense';
 
 export const getRandomDefenseResult = async (
   query: string,
   problemCount: number,
-): Promise<RandomDefenseResultResponse> => {
+): Promise<RandomDefenseResult> => {
   try {
     const response = await fetch(
       `https://solved.ac/api/v3/search/problem?query=${encodeURIComponent(

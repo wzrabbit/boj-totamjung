@@ -1,5 +1,5 @@
 import { COMMANDS } from '@/constants/commands';
-import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
+import { isRandomDefenseResult } from '@/domains/dataHandlers/validators/RandomDefenseResultValidator';
 import { decidePreviewCardRanksByProblemInfos } from '@/domains/gacha/decidePreviewCardRanksByProblemInfos';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { chooseByProbability } from '@/utils/chooseByProbability';
@@ -78,7 +78,7 @@ const useRandomDefenseGachaModal = (
       problemCount,
     });
 
-    if (!isRandomDefenseResultResponse(randomDefenseResult)) {
+    if (!isRandomDefenseResult(randomDefenseResult)) {
       setErrorMessage(
         'API로부터 불러온 데이터에서 데이터 불일치가 발견되었습니다.',
       );

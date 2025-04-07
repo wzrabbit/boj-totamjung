@@ -1,11 +1,11 @@
 import {
   isSlot,
   isHotkey,
-  isRepairableQuickSlotsResponse,
-  isRepairableLegacyQuickSlotsResponse,
-  isQuickSlotsResponse,
+  isRepairableQuickSlots,
+  isRepairableLegacyQuickSlots,
+  isQuickSlots,
   isSlotNo,
-  isLegacyQuickSlotsResponse,
+  isLegacyQuickSlots,
 } from '../validators/quickSlotsValidator';
 import {
   DEFAULT_QUICK_SLOTS_RESPONSE,
@@ -49,7 +49,7 @@ const sanitizeSlot = (slot: unknown, slotNo: SlotNo): Slot => {
 };
 
 export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlots => {
-  if (!isRepairableQuickSlotsResponse(quickSlots)) {
+  if (!isRepairableQuickSlots(quickSlots)) {
     return DEFAULT_QUICK_SLOTS_RESPONSE;
   }
 
@@ -73,7 +73,7 @@ export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlots => {
     sanitizedQuickSlots.slots[slotNo] = sanitizeSlot(slot, slotNo);
   });
 
-  return isQuickSlotsResponse(sanitizedQuickSlots)
+  return isQuickSlots(sanitizedQuickSlots)
     ? sanitizedQuickSlots
     : DEFAULT_QUICK_SLOTS_RESPONSE;
 };
@@ -81,7 +81,7 @@ export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlots => {
 export const sanitizeLegacyQuickSlots = (
   legacyQuickSlots: unknown,
 ): LegacyQuickSlots => {
-  if (!isRepairableLegacyQuickSlotsResponse(legacyQuickSlots)) {
+  if (!isRepairableLegacyQuickSlots(legacyQuickSlots)) {
     return DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE;
   }
 
@@ -101,7 +101,7 @@ export const sanitizeLegacyQuickSlots = (
     sanitizedLegacyQuickSlots[slotNo] = sanitizeSlot(slot, slotNo);
   });
 
-  return isLegacyQuickSlotsResponse(sanitizedLegacyQuickSlots)
+  return isLegacyQuickSlots(sanitizedLegacyQuickSlots)
     ? sanitizedLegacyQuickSlots
     : DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE;
 };

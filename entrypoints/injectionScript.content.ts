@@ -1,6 +1,6 @@
 import { COMMANDS } from '@/constants/commands';
 import { isFontNo } from '@/domains/dataHandlers/validators/fontNoValidator';
-import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
 import '@/assets/css/palette.css';
 import '@/assets/css/totamjungTheme.css';
@@ -40,7 +40,7 @@ const executeInjectionScript = () => {
     browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_HIDER_OPTIONS })
       .then((response) => {
-        if (!isHiderOptionsResponse(response)) {
+        if (!isHiderOptions(response)) {
           return;
         }
 

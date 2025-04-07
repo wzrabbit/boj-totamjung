@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import type { MouseEvent } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { isValidCheckedAlgorithmIds } from '@/domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
-import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
 import useModal from '@/hooks/useModal';
@@ -85,7 +85,7 @@ const useWidget = (params: UseWidgetParams) => {
 
       if (
         !isValidCheckedAlgorithmIds(checkedAlgorithmIds) ||
-        !isHiderOptionsResponse(hiderOptions) ||
+        !isHiderOptions(hiderOptions) ||
         !isShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse)
       ) {
         return;

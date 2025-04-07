@@ -9,7 +9,7 @@ import {
   isNumericStringAllowsLeadingZeroes,
 } from '@/utils/numericStringChecker';
 
-export const isHiderOptionsResponse = (data: unknown): data is HiderOptions => {
+export const isHiderOptions = (data: unknown): data is HiderOptions => {
   if (
     !(
       isObject(data) &&

@@ -1,12 +1,9 @@
 import { isObject, isTier } from '@/types/typeGuards';
-import type {
-  ProblemInfo,
-  RandomDefenseResultResponse,
-} from '@/types/randomDefense';
+import type { ProblemInfo, RandomDefenseResult } from '@/types/randomDefense';
 
-export const isRandomDefenseResultResponse = (
+export const isRandomDefenseResult = (
   data: unknown,
-): data is RandomDefenseResultResponse => {
+): data is RandomDefenseResult => {
   if (
     !(isObject(data) && 'success' in data && typeof data.success === 'boolean')
   ) {

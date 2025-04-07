@@ -8,7 +8,7 @@ import { cardSlideAudios, gachaAudio } from '@/assets/audio';
 import type { FilledSlot } from '@/types/randomDefense';
 import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
-import { isGachaOptionsResponse } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
+import { isGachaOptions } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
 import { getProblemInfosInMarkdownText } from '@/domains/gacha/getProblemInfosInMarkdownText';
 
 interface UseRandomDefenseGachaModalParams {
@@ -105,7 +105,7 @@ const useRandomDefenseGachaModal = (
       command: COMMANDS.FETCH_GACHA_OPTIONS,
     });
 
-    if (!isGachaOptionsResponse(gachaOptions)) {
+    if (!isGachaOptions(gachaOptions)) {
       setErrorMessage('설정 데이터에서 불일치가 발견되었습니다.');
       setErrorDescriptions('개발자에게 이 문제가 발생했음을 알려주세요.');
       setGachaStatus('error');

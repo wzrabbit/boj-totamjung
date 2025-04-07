@@ -1,17 +1,17 @@
 import { STORAGE_KEY } from '@/constants/commands';
-import { isGachaOptionsResponse } from './validators/gachaOptionsValidator';
-import { sanitizeGachaOptionsResponse } from './sanitizers/gachaOptionsSanitizer';
-import type { GachaOptionsResponse } from '@/types/gacha';
+import { isGachaOptions } from './validators/gachaOptionsValidator';
+import { sanitizeGachaOptions } from './sanitizers/gachaOptionsSanitizer';
+import type { GachaOptions } from '@/types/gacha';
 
-export const fetchGachaOptions = async (): Promise<GachaOptionsResponse> => {
+export const fetchGachaOptions = async (): Promise<GachaOptions> => {
   const data = await browser.storage.local.get(STORAGE_KEY.GACHA_OPTIONS);
   const gachaOptions = data[STORAGE_KEY.GACHA_OPTIONS];
 
-  return sanitizeGachaOptionsResponse(gachaOptions);
+  return sanitizeGachaOptions(gachaOptions);
 };
 
 export const saveGachaOptions = (gachaOptions: unknown) => {
-  if (!isGachaOptionsResponse(gachaOptions)) {
+  if (!isGachaOptions(gachaOptions)) {
     return;
   }
 

@@ -1,10 +1,8 @@
 import { isObject } from '@/types/typeGuards';
-import type { GachaOptionsResponse } from '@/types/gacha';
+import type { GachaOptions } from '@/types/gacha';
 import { DEFAULT_GACHA_OPTIONS } from '@/constants/defaultValues';
 
-export const sanitizeGachaOptionsResponse = (
-  data: unknown,
-): GachaOptionsResponse => {
+export const sanitizeGachaOptions = (data: unknown): GachaOptions => {
   if (!isObject(data)) {
     return DEFAULT_GACHA_OPTIONS;
   }

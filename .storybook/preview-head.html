@@ -191,7 +191,7 @@
     problemTagLockUsage: 'click',
   };
 
-  const gachaOptionsResponse = {
+  const gachaOptions = {
     isTierHidden: false,
     isAudioMuted: true,
   };
@@ -223,7 +223,7 @@
           case COMMANDS.FETCH_QUICK_SLOTS:
             return quickSlots;
           case COMMANDS.FETCH_GACHA_OPTIONS:
-            return gachaOptionsResponse;
+            return gachaOptions;
           case COMMANDS.GET_RANDOM_DEFENSE_RESULT:
             if (command.problemCount === 1) {
               return {
@@ -299,7 +299,7 @@
                 break;
 
               case STORAGE_KEY.GACHA_OPTIONS:
-                Object.assign(response, { gachaOptionsResponse });
+                Object.assign(response, { gachaOptions });
                 break;
 
               case STORAGE_KEY.FONT_NO:

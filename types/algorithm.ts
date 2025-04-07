@@ -14,7 +14,7 @@ export interface AlgorithmInfo {
   alias: string[];
 }
 
-export interface HiderOptionsResponse {
+export interface HiderOptions {
   problemTagLockDuration: {
     hours: number;
     minutes: number;

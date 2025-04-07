@@ -15,7 +15,7 @@ export const fetchOptionsData = async (): Promise<OptionsData> => {
     checkedAlgorithmIds,
     quickSlots,
     totamjungTheme,
-    hiderOptionsResponse,
+    hiderOptions,
     randomDefenseHistoryResponse,
     timers,
     fontNo,
@@ -33,7 +33,7 @@ export const fetchOptionsData = async (): Promise<OptionsData> => {
     [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIds,
     [STORAGE_KEY.QUICK_SLOTS]: quickSlots,
     [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,
-    [STORAGE_KEY.HIDER_OPTIONS]: hiderOptionsResponse,
+    [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]:
       randomDefenseHistoryResponse.randomDefenseHistory,
     [STORAGE_KEY.IS_TIER_HIDDEN]: randomDefenseHistoryResponse.isHidden,

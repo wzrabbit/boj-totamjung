@@ -4,7 +4,7 @@ import type {
   LegacyQuickSlots,
 } from '@/types/randomDefense';
 import { STORAGE_KEY } from './commands';
-import { HiderOptionsResponse } from '@/types/algorithm';
+import { HiderOptions } from '@/types/algorithm';
 
 export const DEFAULT_CHECKED_ALGORITHM_IDS = [1, 2];
 
@@ -32,7 +32,7 @@ export const DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE: LegacyQuickSlots = {
   ...DEFAULT_QUICK_SLOTS,
 };
 
-export const DEFAULT_HIDER_OPTIONS: HiderOptionsResponse = {
+export const DEFAULT_HIDER_OPTIONS: HiderOptions = {
   problemTagLockDuration: {
     hours: 0,
     minutes: 20,

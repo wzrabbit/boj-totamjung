@@ -6,7 +6,7 @@ import {
   getRemainingLockTimeByProblemId,
   removeSingleTimerByProblemId,
 } from './timersDataHandler';
-import type { HiderOptionsResponse, Timer } from '@/types/algorithm';
+import type { HiderOptions, Timer } from '@/types/algorithm';
 
 describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
   test('정상적인 타이머 리스트를 불러올 경우, 타이머 리스트를 그대로 불러온 결과를 반환해야 한다.', async () => {
@@ -273,7 +273,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2024-01-02T00:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 0,
         minutes: 20,
@@ -286,7 +286,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,
@@ -315,7 +315,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2024-01-02T00:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 0,
         minutes: 20,
@@ -328,7 +328,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,
@@ -369,7 +369,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2024-01-02T02:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 0,
         minutes: 60,
@@ -382,7 +382,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,
@@ -411,7 +411,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2023-12-31T00:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 0,
         minutes: 20,
@@ -424,7 +424,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,
@@ -453,7 +453,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2023-02-28T00:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 4,
         minutes: 30,
@@ -466,7 +466,7 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,

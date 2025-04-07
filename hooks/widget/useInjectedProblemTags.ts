@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import type { HiderOptionsResponse } from '@/types/algorithm';
+import type { HiderOptions } from '@/types/algorithm';
 import { $, $$ } from '@/utils/querySelector';
 import useLockTimer from './useLockTimer';
 import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
@@ -8,7 +8,7 @@ import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderO
 
 interface UseInjectedProblemTags {
   checkedAlgorithmIds: number[] | undefined;
-  hiderOptions: HiderOptionsResponse | undefined;
+  hiderOptions: HiderOptions | undefined;
 }
 
 /**

@@ -11,7 +11,7 @@ import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChan
 import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
 import type { ToastInfo } from '@/types/toast';
 import type { TotamjungTheme } from '@/types/totamjungTheme';
-import type { HiderOptionsResponse } from '@/types/algorithm';
+import type { HiderOptions } from '@/types/algorithm';
 import { FilledSlot } from '@/types/randomDefense';
 
 interface UseWidgetParams {
@@ -27,9 +27,9 @@ const useWidget = (params: UseWidgetParams) => {
   const [checkedAlgorithmIds, setCheckedAlgorithmIds] = useState<
     number[] | undefined
   >(undefined);
-  const [hiderOptions, setHiderOptions] = useState<
-    HiderOptionsResponse | undefined
-  >(undefined);
+  const [hiderOptions, setHiderOptions] = useState<HiderOptions | undefined>(
+    undefined,
+  );
   const [inspectIconState, setInspectIconState] = useState(false);
   const [shouldShowWelcomeMessage, setShouldShowWelcomeMessage] =
     useState(false);
@@ -69,7 +69,7 @@ const useWidget = (params: UseWidgetParams) => {
     const loadWidgetData = async () => {
       const [
         checkedAlgorithmIds,
-        hiderOptionsResponse,
+        hiderOptions,
         shouldShowWelcomeMessageResponse,
       ] = await Promise.all([
         browser.runtime.sendMessage({
@@ -85,7 +85,7 @@ const useWidget = (params: UseWidgetParams) => {
 
       if (
         !isValidCheckedAlgorithmIds(checkedAlgorithmIds) ||
-        !isHiderOptionsResponse(hiderOptionsResponse) ||
+        !isHiderOptionsResponse(hiderOptions) ||
         !isShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse)
       ) {
         return;
@@ -96,7 +96,7 @@ const useWidget = (params: UseWidgetParams) => {
         shouldHideTier,
         shouldWarnHighTier,
         warnTier,
-      } = hiderOptionsResponse;
+      } = hiderOptions;
 
       if (shouldHideTier) {
         changeNormalToWarnTier(warnTier, shouldWarnHighTier);
@@ -107,7 +107,7 @@ const useWidget = (params: UseWidgetParams) => {
       }
 
       setCheckedAlgorithmIds(checkedAlgorithmIds);
-      setHiderOptions(hiderOptionsResponse);
+      setHiderOptions(hiderOptions);
       setShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse);
       setIsLoaded(true);
     };

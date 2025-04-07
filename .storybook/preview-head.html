@@ -179,7 +179,7 @@
     }));
   };
 
-  const hiderOptionsResponse = {
+  const hiderOptions = {
     problemTagLockDuration: {
       hours: 1,
       minutes: 30,
@@ -217,7 +217,7 @@
           case COMMANDS.FETCH_CHECKED_ALGORITHM_IDS:
             return checkedAlgorithmIds;
           case COMMANDS.FETCH_HIDER_OPTIONS:
-            return hiderOptionsResponse;
+            return hiderOptions;
           case COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME:
             return 0;
           case COMMANDS.FETCH_QUICK_SLOTS:
@@ -287,7 +287,7 @@
                 break;
 
               case STORAGE_KEY.HIDER_OPTIONS:
-                Object.assign(response, { hiderOptionsResponse });
+                Object.assign(response, { hiderOptions });
                 break;
 
               case STORAGE_KEY.QUICK_SLOTS:

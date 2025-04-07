@@ -3,7 +3,7 @@ import {
   isLegacySettings,
 } from '../validators/hiderOptionsValidator';
 import { DEFAULT_HIDER_OPTIONS } from '@/constants/defaultValues';
-import type { HiderOptionsResponse } from '@/types/algorithm';
+import type { HiderOptions } from '@/types/algorithm';
 
 interface HiderOptionsUsage {
   algorithmHiderUsage: 'click' | 'always';
@@ -16,7 +16,7 @@ interface HiderOptionsUsage {
 export const convertLegacyToLatestHiderOptions = (
   legacyTimer: unknown,
   legacySettings: unknown,
-): HiderOptionsResponse => {
+): HiderOptions => {
   const duration = isLegacyTimer(legacyTimer)
     ? { hours: Number(legacyTimer.hour), minutes: Number(legacyTimer.minute) }
     : { hours: 0, minutes: 20 };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { HiderOptionsResponse } from '@/types/algorithm';
+import type { HiderOptions } from '@/types/algorithm';
 import { RatedTier } from '@/types/tierHider';
 import {
   fetchHiderOptions,
@@ -25,7 +25,7 @@ type HiderOptionsState =
 
 type HiderOptionsReadyResponse = {
   isLoaded: true;
-} & HiderOptionsResponse;
+} & HiderOptions;
 
 type HiderOptionsNotReadyResponse = {
   isLoaded: false;

@@ -13,7 +13,7 @@ import { isOptionsDataResponse } from './validators/optionsDataValidator';
 export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
   const [
     checkedAlgorithmIds,
-    quickSlotsResponse,
+    quickSlots,
     totamjungTheme,
     hiderOptionsResponse,
     randomDefenseHistoryResponse,
@@ -31,7 +31,7 @@ export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
 
   return {
     [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIds,
-    [STORAGE_KEY.QUICK_SLOTS]: quickSlotsResponse,
+    [STORAGE_KEY.QUICK_SLOTS]: quickSlots,
     [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,
     [STORAGE_KEY.HIDER_OPTIONS]: hiderOptionsResponse,
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]:

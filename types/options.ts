@@ -1,6 +1,6 @@
 import { STORAGE_KEY } from '@/constants/commands';
 import type { CheckedAlgorithmIds } from '@/types/algorithm';
-import type { QuickSlotsResponse } from '@/types/randomDefense';
+import type { QuickSlots } from '@/types/randomDefense';
 import type { TotamjungTheme } from '@/types/totamjungTheme';
 import type { HiderOptionsResponse } from '@/types/algorithm';
 import type { RandomDefenseHistoryResponse } from '@/types/randomDefense';
@@ -9,7 +9,7 @@ import type { Timer } from '@/types/algorithm';
 
 export interface OptionsDataResponse {
   [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: CheckedAlgorithmIds;
-  [STORAGE_KEY.QUICK_SLOTS]: QuickSlotsResponse;
+  [STORAGE_KEY.QUICK_SLOTS]: QuickSlots;
   [STORAGE_KEY.TOTAMJUNG_THEME]: TotamjungTheme;
   [STORAGE_KEY.HIDER_OPTIONS]: HiderOptionsResponse;
   [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: RandomDefenseHistoryResponse['randomDefenseHistory'];

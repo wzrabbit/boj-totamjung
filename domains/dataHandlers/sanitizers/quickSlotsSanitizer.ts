@@ -16,8 +16,8 @@ import {
   TITLE_MAX_LENGTH,
 } from '@/constants/randomDefense';
 import type {
-  QuickSlotsResponse,
-  LegacyQuickSlotsResponse,
+  QuickSlots,
+  LegacyQuickSlots,
   SlotNo,
   Slot,
 } from '@/types/randomDefense';
@@ -48,7 +48,7 @@ const sanitizeSlot = (slot: unknown, slotNo: SlotNo): Slot => {
   return slot;
 };
 
-export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlotsResponse => {
+export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlots => {
   if (!isRepairableQuickSlotsResponse(quickSlots)) {
     return DEFAULT_QUICK_SLOTS_RESPONSE;
   }
@@ -80,7 +80,7 @@ export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlotsResponse => {
 
 export const sanitizeLegacyQuickSlots = (
   legacyQuickSlots: unknown,
-): LegacyQuickSlotsResponse => {
+): LegacyQuickSlots => {
   if (!isRepairableLegacyQuickSlotsResponse(legacyQuickSlots)) {
     return DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE;
   }

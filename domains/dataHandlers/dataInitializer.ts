@@ -1,11 +1,11 @@
-import type { QuickSlots, QuickSlotsResponse } from '@/types/randomDefense';
+import type { Slots, QuickSlots } from '@/types/randomDefense';
 import { DEFAULT_EMPTY_DATA } from '@/constants/defaultValues';
 import { STORAGE_KEY } from '@/constants/commands';
 
 /**
  * 최초 설치 시 덮어씌우게 될 데이터입니다. 데이터 초기화 시에 덮어씌우는 데이터와는 다소 다르며, 세 개의 범용성 높은 쿼리가 생성되어 있는채로 시작하게 됩니다.
  */
-const INITIAL_QUICK_SLOTS: QuickSlots = {
+const INITIAL_QUICK_SLOTS: Slots = {
   1: {
     isEmpty: false,
     title: '골드 랜덤 디펜스',
@@ -26,7 +26,7 @@ const INITIAL_QUICK_SLOTS: QuickSlots = {
   0: { isEmpty: true },
 } as const;
 
-export const INITIAL_QUICK_SLOTS_RESPONSE: QuickSlotsResponse = {
+export const INITIAL_QUICK_SLOTS_RESPONSE: QuickSlots = {
   hotkey: 'Alt',
   selectedSlotNo: 1,
   slots: INITIAL_QUICK_SLOTS,

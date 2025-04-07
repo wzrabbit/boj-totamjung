@@ -47,7 +47,7 @@ interface EmptySlot {
 
 export type Slot = FilledSlot | EmptySlot;
 
-export type QuickSlots = {
+export type Slots = {
   1: Slot;
   2: Slot;
   3: Slot;
@@ -62,15 +62,15 @@ export type QuickSlots = {
 
 export type SlotNo = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0;
 
-export interface QuickSlotsResponse {
+export interface QuickSlots {
   hotkey: Hotkey;
   selectedSlotNo: SlotNo;
-  slots: QuickSlots;
+  slots: Slots;
 }
 
-export type LegacyQuickSlotsResponse = {
+export type LegacyQuickSlots = {
   selectedNo: SlotNo;
-} & QuickSlots;
+} & Slots;
 
 interface SlotValidVerdict {
   isValid: true;

@@ -1,8 +1,8 @@
 import { isNumericObject, isObject } from '@/types/typeGuards';
 import type {
   Hotkey,
-  LegacyQuickSlotsResponse,
-  QuickSlotsResponse,
+  LegacyQuickSlots,
+  QuickSlots,
   RepairableLegacyQuickSlotsResponse,
   RepairableQuickSlotsResponse,
   Slot,
@@ -42,9 +42,7 @@ export const isSlotNo = (data: unknown): data is SlotNo => {
   return [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].includes(data);
 };
 
-export const isQuickSlotsResponse = (
-  data: unknown,
-): data is QuickSlotsResponse => {
+export const isQuickSlotsResponse = (data: unknown): data is QuickSlots => {
   if (
     !(
       isObject(data) &&
@@ -72,7 +70,7 @@ export const isQuickSlotsResponse = (
 
 export const isLegacyQuickSlotsResponse = (
   data: unknown,
-): data is LegacyQuickSlotsResponse => {
+): data is LegacyQuickSlots => {
   if (
     !(
       isObject(data) &&

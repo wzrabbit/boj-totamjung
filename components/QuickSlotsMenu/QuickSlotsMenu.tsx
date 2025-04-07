@@ -1,4 +1,4 @@
-import * as S from './QuickSlotMenu.styled';
+import * as S from './QuickSlotsMenu.styled';
 import NamedFrame from '@/components/common/NamedFrame';
 import SlotPagination from './SlotPagination';
 import SlotInfo from './SlotInfo';
@@ -9,14 +9,14 @@ import SlotEditModal from './SlotEditModal';
 import Loading from '@/components/common/Loading';
 import useModal from '@/hooks/useModal';
 import { CopyIcon, DicesIcon, EditIcon, TrashIcon } from '@/assets/svg';
-import type { QuickSlotsResponse, SlotNo, Hotkey } from '@/types/randomDefense';
+import type { QuickSlots, SlotNo, Hotkey } from '@/types/randomDefense';
 import { theme } from '@/styles/theme';
 import SimpleModal from '@/components/common/SimpleModal';
 import RandomDefenseGachaModal from '@/components/RandomDefenseGachaModal';
 import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
 
 interface QuickSlotMenuProps {
-  quickSlotsInfo: QuickSlotsResponse;
+  quickSlotsInfo: QuickSlots;
   isLoaded: boolean;
   onHotkeyChange: (hotkey: Hotkey) => void;
   onSlotChange: (title: string, query: string) => void;
@@ -24,7 +24,7 @@ interface QuickSlotMenuProps {
   onSlotNoChange: (slotNo: SlotNo) => void;
 }
 
-const QuickSlotMenu = (props: QuickSlotMenuProps) => {
+const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
   const { isLoaded } = props;
   const { activeModalName, openModal, closeModal } = useModal<
     'copiedQuery' | 'confirmDeleteSlot' | 'gachaProblemCount' | 'gacha'
@@ -167,4 +167,4 @@ const QuickSlotMenu = (props: QuickSlotMenuProps) => {
   );
 };
 
-export default QuickSlotMenu;
+export default QuickSlotsMenu;

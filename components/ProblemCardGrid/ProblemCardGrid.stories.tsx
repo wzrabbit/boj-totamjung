@@ -7,7 +7,7 @@ import { fn } from '@storybook/test';
  * `ProblemCardGrid`는 즉석 추첨 결과를 의미하는 카드들을 그리드 형태로 보여주는 컴포넌트입니다. 그리드의 크기와 카드의 수에 따라 최적의 레이아웃을 보여주도록 자동으로 변경됩니다.
  */
 const meta = {
-  title: 'components/QuickSlotMenu/ProblemCardGrid',
+  title: 'components/QuickSlotsMenu/ProblemCardGrid',
   component: ProblemCardGrid,
   argTypes: {
     problemInfos: {

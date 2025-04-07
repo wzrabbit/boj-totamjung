@@ -1,11 +1,8 @@
-import type {
-  QuickSlotsResponse,
-  LegacyQuickSlotsResponse,
-} from '@/types/randomDefense';
+import type { QuickSlots, LegacyQuickSlots } from '@/types/randomDefense';
 
 export const convertLegacyToLatestQuickSlots = (
-  legacyQuickSlots: LegacyQuickSlotsResponse,
-): QuickSlotsResponse => {
+  legacyQuickSlots: LegacyQuickSlots,
+): QuickSlots => {
   const { selectedNo, ...legacyQuickSlotsWithoutSelectedNo } = legacyQuickSlots;
 
   return {

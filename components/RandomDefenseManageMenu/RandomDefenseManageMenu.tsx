@@ -1,5 +1,5 @@
 import RandomDefenseCreateMenu from '@/components/RandomDefenseCreateMenu';
-import QuickSlotMenu from '@/components/QuickSlotMenu';
+import QuickSlotsMenu from '@/components/QuickSlotsMenu';
 import useRandomDefenseManageMenu from '@/hooks/useRandomDefenseSection';
 import * as S from './RandomDefenseManageMenu.styled';
 
@@ -23,7 +23,7 @@ const RandomDefenseManageMenu = () => {
         selectedSlotNo={selectedSlotNo}
         onSubmit={updateSlot}
       />
-      <QuickSlotMenu
+      <QuickSlotsMenu
         quickSlotsInfo={quickSlotsInfo}
         isLoaded={isLoaded}
         onHotkeyChange={setHotkey}

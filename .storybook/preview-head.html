@@ -139,7 +139,7 @@
 
   const isTierHidden = false;
 
-  const quickSlotsResponse = {
+  const quickSlots = {
     selectedSlotNo: 1,
     hotkey: 'Alt',
     slots: {
@@ -221,7 +221,7 @@
           case COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME:
             return 0;
           case COMMANDS.FETCH_QUICK_SLOTS:
-            return quickSlotsResponse;
+            return quickSlots;
           case COMMANDS.FETCH_GACHA_OPTIONS:
             return gachaOptionsResponse;
           case COMMANDS.GET_RANDOM_DEFENSE_RESULT:
@@ -291,7 +291,7 @@
                 break;
 
               case STORAGE_KEY.QUICK_SLOTS:
-                Object.assign(response, quickSlotsResponse);
+                Object.assign(response, quickSlots);
                 break;
 
               case STORAGE_KEY.TOTAMJUNG_THEME:

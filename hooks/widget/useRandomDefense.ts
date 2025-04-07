@@ -5,11 +5,7 @@ import { isQuickSlotsResponse } from '@/domains/dataHandlers/validators/quickSlo
 import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
 import useHotKeyLongPress from '../useHotkeyLongPress';
 import type { ToastInfo } from '@/types/toast';
-import type {
-  FilledSlot,
-  QuickSlotsResponse,
-  SlotNo,
-} from '@/types/randomDefense';
+import type { FilledSlot, QuickSlots, SlotNo } from '@/types/randomDefense';
 import type { Storage } from 'wxt/browser';
 
 interface UseRandomDefenseParams {
@@ -22,7 +18,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   const [isRandomDefenseAvailable, setIsRandomDefenseAvailable] =
     useState(false);
   const isRandomDefenseAvailableRef = useRef(isRandomDefenseAvailable);
-  const quickSlotsResponseRef = useRef<QuickSlotsResponse>(
+  const quickSlotsResponseRef = useRef<QuickSlots>(
     DEFAULT_QUICK_SLOTS_RESPONSE,
   );
   useHotKeyLongPress({

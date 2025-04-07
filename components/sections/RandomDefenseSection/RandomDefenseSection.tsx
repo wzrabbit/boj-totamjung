@@ -1,5 +1,5 @@
 import RandomDefenseCreateMenu from '@/components/RandomDefenseCreateMenu';
-import QuickSlotMenu from '@/components/QuickSlotMenu';
+import QuickSlotsMenu from '@/components/QuickSlotsMenu';
 import useRandomDefenseSection from '@/hooks/useRandomDefenseSection';
 import RandomDefenseHistoryMenu from '@/components/RandomDefenseHistoryMenu';
 import MenuTitle from '@/components/MenuTitle';
@@ -33,7 +33,7 @@ const RandomDefenseSection = (props: OptionsSectionProps) => {
             selectedSlotNo={selectedSlotNo}
             onSubmit={updateSlot}
           />
-          <QuickSlotMenu
+          <QuickSlotsMenu
             quickSlotsInfo={quickSlotsInfo}
             isLoaded={isLoaded}
             onHotkeyChange={setHotkey}

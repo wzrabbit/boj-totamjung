@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import QuickSlotMenu from './QuickSlotMenu';
-import type { QuickSlotsResponse } from '@/types/randomDefense';
+import QuickSlotsMenu from './QuickSlotsMenu';
+import type { QuickSlots } from '@/types/randomDefense';
 import { fn } from '@storybook/test';
 
 /**
- * `QuickSlotMenu`는 추첨 생성 폼을 통해 생성된 연습 쿼리들을 관리할 수 있는 메뉴 형태의 컴포넌트입니다.
+ * `QuickSlotsMenu`는 추첨 생성 폼을 통해 생성된 연습 쿼리들을 관리할 수 있는 메뉴 형태의 컴포넌트입니다.
  */
 const meta = {
-  title: 'components/QuickSlotMenu',
-  component: QuickSlotMenu,
+  title: 'components/QuickSlotsMenu',
+  component: QuickSlotsMenu,
   argTypes: {
     quickSlotsInfo: {
       description:
@@ -25,13 +25,13 @@ const meta = {
         '퀵 슬롯의 정보가 변경되어야 할 때 실행시킬 콜백 함수입니다.',
     },
   },
-} satisfies Meta<typeof QuickSlotMenu>;
+} satisfies Meta<typeof QuickSlotsMenu>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const quickSlotsResponse: QuickSlotsResponse = {
+const quickSlots: QuickSlots = {
   selectedSlotNo: 2,
   hotkey: 'Alt',
   slots: {
@@ -63,7 +63,7 @@ const quickSlotsResponse: QuickSlotsResponse = {
 
 export const Default: Story = {
   args: {
-    quickSlotsInfo: quickSlotsResponse,
+    quickSlotsInfo: quickSlots,
     isLoaded: true,
     onHotkeyChange: fn(),
     onSlotChange: fn(),

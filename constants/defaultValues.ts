@@ -1,14 +1,14 @@
 import type {
+  Slots,
   QuickSlots,
-  QuickSlotsResponse,
-  LegacyQuickSlotsResponse,
+  LegacyQuickSlots,
 } from '@/types/randomDefense';
 import { STORAGE_KEY } from './commands';
 import { HiderOptionsResponse } from '@/types/algorithm';
 
 export const DEFAULT_CHECKED_ALGORITHM_IDS = [1, 2];
 
-const DEFAULT_QUICK_SLOTS: QuickSlots = {
+const DEFAULT_QUICK_SLOTS: Slots = {
   1: { isEmpty: true },
   2: { isEmpty: true },
   3: { isEmpty: true },
@@ -21,13 +21,13 @@ const DEFAULT_QUICK_SLOTS: QuickSlots = {
   0: { isEmpty: true },
 } as const;
 
-export const DEFAULT_QUICK_SLOTS_RESPONSE: QuickSlotsResponse = {
+export const DEFAULT_QUICK_SLOTS_RESPONSE: QuickSlots = {
   hotkey: 'Alt',
   selectedSlotNo: 1,
   slots: DEFAULT_QUICK_SLOTS,
 };
 
-export const DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE: LegacyQuickSlotsResponse = {
+export const DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE: LegacyQuickSlots = {
   selectedNo: 1,
   ...DEFAULT_QUICK_SLOTS,
 };

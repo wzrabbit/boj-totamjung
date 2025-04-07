@@ -1,9 +1,5 @@
 import { isObject, isIsoString } from '@/types/typeGuards';
-import type { Timer, TimersResponse } from '@/types/algorithm';
-
-export const isTimersResponse = (data: unknown): data is TimersResponse => {
-  return isObject(data) && 'timers' in data && isTimers(data.timers);
-};
+import type { Timer } from '@/types/algorithm';
 
 export const isTimers = (data: unknown): data is Timer[] => {
   if (!Array.isArray(data)) {

@@ -47,7 +47,3 @@ export interface Timer {
   problemId: number;
   expiresAt: IsoString;
 }
-
-export interface TimersResponse {
-  timers: Timer[];
-}

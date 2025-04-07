@@ -19,15 +19,13 @@ const fallbackHiderOptions = {
   problemTagLockUsage: undefined,
 };
 
-type HiderOptionsState =
-  | HiderOptionsReadyResponse
-  | HiderOptionsNotReadyResponse;
+type HiderOptionsState = HiderOptionsReadyState | HiderOptionsNotReadyState;
 
-type HiderOptionsReadyResponse = {
+type HiderOptionsReadyState = {
   isLoaded: true;
 } & HiderOptions;
 
-type HiderOptionsNotReadyResponse = {
+type HiderOptionsNotReadyState = {
   isLoaded: false;
 } & typeof fallbackHiderOptions;
 

@@ -67,26 +67,23 @@ const useWidget = (params: UseWidgetParams) => {
 
   useEffect(() => {
     const loadWidgetData = async () => {
-      const [
-        checkedAlgorithmIds,
-        hiderOptions,
-        shouldShowWelcomeMessageResponse,
-      ] = await Promise.all([
-        browser.runtime.sendMessage({
-          command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
-        }),
-        browser.runtime.sendMessage({
-          command: COMMANDS.FETCH_HIDER_OPTIONS,
-        }),
-        browser.runtime.sendMessage({
-          command: COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE,
-        }),
-      ]);
+      const [checkedAlgorithmIds, hiderOptions, shouldShowWelcomeMessage] =
+        await Promise.all([
+          browser.runtime.sendMessage({
+            command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
+          }),
+          browser.runtime.sendMessage({
+            command: COMMANDS.FETCH_HIDER_OPTIONS,
+          }),
+          browser.runtime.sendMessage({
+            command: COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE,
+          }),
+        ]);
 
       if (
         !isValidCheckedAlgorithmIds(checkedAlgorithmIds) ||
         !isHiderOptions(hiderOptions) ||
-        !isShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse)
+        !isShouldShowWelcomeMessage(shouldShowWelcomeMessage)
       ) {
         return;
       }
@@ -108,7 +105,7 @@ const useWidget = (params: UseWidgetParams) => {
 
       setCheckedAlgorithmIds(checkedAlgorithmIds);
       setHiderOptions(hiderOptions);
-      setShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse);
+      setShouldShowWelcomeMessage(shouldShowWelcomeMessage);
       setIsLoaded(true);
     };
 

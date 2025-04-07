@@ -7,11 +7,9 @@ import { isFontNo } from './fontNoValidator';
 import { isTimers } from './isTimersValidator';
 import { STORAGE_KEY } from '@/constants/commands';
 import { isObject } from '@/types/typeGuards';
-import type { OptionsDataResponse } from '@/types/options';
+import type { OptionsData } from '@/types/options';
 
-export const isOptionsDataResponse = (
-  data: unknown,
-): data is OptionsDataResponse => {
+export const isOptionsData = (data: unknown): data is OptionsData => {
   if (
     !(
       isObject(data) &&

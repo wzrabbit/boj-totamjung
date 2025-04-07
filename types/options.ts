@@ -7,7 +7,7 @@ import type { RandomDefenseHistoryResponse } from '@/types/randomDefense';
 import type { FontNo } from '@/types/font';
 import type { Timer } from '@/types/algorithm';
 
-export interface OptionsDataResponse {
+export interface OptionsData {
   [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: CheckedAlgorithmIds;
   [STORAGE_KEY.QUICK_SLOTS]: QuickSlots;
   [STORAGE_KEY.TOTAMJUNG_THEME]: TotamjungTheme;

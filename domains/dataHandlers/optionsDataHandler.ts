@@ -6,11 +6,11 @@ import { fetchHiderOptions } from './hiderOptionsDataHandler';
 import { fetchRandomDefenseHistory } from './randomDefenseHistoryDataHandler';
 import { fetchFontNo } from './fontNoDataHandler';
 import { fetchTimers } from './timersDataHandler';
-import type { OptionsDataResponse } from '@/types/options';
+import type { OptionsData } from '@/types/options';
 import { DEFAULT_EMPTY_DATA } from '@/constants/defaultValues';
-import { isOptionsDataResponse } from './validators/optionsDataValidator';
+import { isOptionsData } from './validators/optionsDataValidator';
 
-export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
+export const fetchOptionsData = async (): Promise<OptionsData> => {
   const [
     checkedAlgorithmIds,
     quickSlots,
@@ -44,7 +44,7 @@ export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
 };
 
 export const saveOptionsData = async (data: unknown) => {
-  if (!isOptionsDataResponse(data)) {
+  if (!isOptionsData(data)) {
     return false;
   }
 

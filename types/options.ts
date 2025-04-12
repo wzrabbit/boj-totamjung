@@ -6,6 +6,7 @@ import type { HiderOptions } from '@/types/algorithm';
 import type { RandomDefenseHistoryResponse } from '@/types/randomDefense';
 import type { FontNo } from '@/types/font';
 import type { Timer } from '@/types/algorithm';
+import type { GachaOptions } from '@/types/gacha';
 
 export interface OptionsData {
   [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: CheckedAlgorithmIds;
@@ -16,7 +17,8 @@ export interface OptionsData {
   [STORAGE_KEY.IS_TIER_HIDDEN]: RandomDefenseHistoryResponse['isHidden'];
   [STORAGE_KEY.FONT_NO]: FontNo;
   [STORAGE_KEY.TIMERS]: Timer[];
-  [STORAGE_KEY.DATA_VERSION]: 'v1.2';
+  [STORAGE_KEY.GACHA_OPTIONS]: GachaOptions;
+  [STORAGE_KEY.DATA_VERSION]: 3;
 }
 
 export interface OptionsSectionProps {

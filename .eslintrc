@@ -19,6 +19,7 @@
     "eqeqeq": "error",
     "no-useless-return": "error",
     "no-unreachable-loop": "error",
-    "no-console": "warn"
+    "no-console": "warn",
+    "@typescript-eslint/no-namespace": "off"
   }
 }

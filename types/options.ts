@@ -18,6 +18,7 @@ export interface OptionsData {
   [STORAGE_KEY.FONT_NO]: FontNo;
   [STORAGE_KEY.TIMERS]: Timer[];
   [STORAGE_KEY.GACHA_OPTIONS]: GachaOptions;
+  [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: boolean;
   [STORAGE_KEY.DATA_VERSION]: 3;
 }
 

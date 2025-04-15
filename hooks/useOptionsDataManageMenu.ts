@@ -5,8 +5,12 @@ import {
 } from '@/domains/dataHandlers/optionsDataHandler';
 import type { ChangeEventHandler } from 'react';
 import { extractTotamjungDataFile } from '@/domains/extractTotamjungDataFile';
-import { isOptionsData } from '@/domains/dataHandlers/validators/optionsDataValidator';
+import {
+  isOptionsData,
+  isV2OptionsData,
+} from '@/domains/dataHandlers/validators/optionsDataValidator';
 import type { OptionsData } from '@/types/options';
+import { VALID_VERSIONS } from '@/constants/validVersions';
 
 interface ErrorInfo {
   errorTitle: string;
@@ -88,10 +92,11 @@ const useOptionsDataManageMenu = () => {
         }
 
         const saveFileJson = JSON.parse(fileReaderResult);
+        const { dataVersion } = saveFileJson;
 
         if (
           !('dataVersion' in saveFileJson) ||
-          typeof saveFileJson.dataVersion !== 'string'
+          (dataVersion !== 'v1.2' && typeof dataVersion !== 'number')
         ) {
           displayErrorModal({
             errorTitle: '데이터를 업로드하지 못했습니다',
@@ -101,15 +106,27 @@ const useOptionsDataManageMenu = () => {
           return;
         }
 
-        if (saveFileJson.dataVersion !== 'v1.2') {
+        if (!VALID_VERSIONS.includes(dataVersion)) {
           displayErrorModal({
             errorTitle: '데이터를 업로드하지 못했습니다',
-            errorMessage: `이 세이브파일의 버전은 ${saveFileJson.dataVersion}으로, 이 버전에서 다룰 수 있는 v1.2보다 높거나, 이 버전에서 인식할 수 없는 버전입니다.`,
+            errorMessage: `이 세이브파일의 버전은 ${dataVersion}으로, 이 버전에서 다룰 수 있는 가장 높은 데이터 버전인 3보다 높거나, 이 버전에서 인식할 수 없는 버전입니다.`,
           });
           return;
         }
 
-        if (!isOptionsData(saveFileJson)) {
+        if (
+          ['v1.2', 2].includes(dataVersion) &&
+          !isV2OptionsData(saveFileJson)
+        ) {
+          displayErrorModal({
+            errorTitle: '데이터를 업로드하지 못했습니다',
+            errorMessage:
+              'v1.2.* 버전 데이터의 세이브파일은 업로드 가능하나, 이 세이브파일은 데이터의 일부 또는 전부가 손실된 것 같습니다. 버그라고 생각하시는 경우 개발자에게 문의를 부탁드립니다.',
+          });
+          return;
+        }
+
+        if (dataVersion === 3 && !isOptionsData(saveFileJson)) {
           displayErrorModal({
             errorTitle: '데이터를 업로드하지 못했습니다',
             errorMessage:

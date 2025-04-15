@@ -1,10 +1,10 @@
 import { isObject } from '@/types/typeGuards';
-import { isLegacyFontNo } from '../validators/fontNoValidator';
+import { isV1FontNo } from '../validators/fontNoValidator';
 
 /**
  * 이 컨버터 함수에는 유효하지 않은 구버전 설정 값이 주어져도 괜찮습니다.
  */
-export const convertLegacyToLatestFontNoBySettings = (
+export const convertV1ToLatestFontNoBySettings = (
   legacySettings: unknown,
 ): number => {
   if (!isObject(legacySettings) || !('font' in legacySettings)) {
@@ -13,7 +13,7 @@ export const convertLegacyToLatestFontNoBySettings = (
 
   const legacyFontNo = legacySettings.font;
 
-  if (!isLegacyFontNo(legacyFontNo)) {
+  if (!isV1FontNo(legacyFontNo)) {
     return 0;
   }
 

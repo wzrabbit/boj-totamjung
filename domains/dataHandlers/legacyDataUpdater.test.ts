@@ -5,7 +5,7 @@ import {
   DEFAULT_FONT_NO,
   DEFAULT_HIDER_OPTIONS,
   DEFAULT_IS_TIER_HIDDEN,
-  DEFAULT_QUICK_SLOTS_RESPONSE,
+  DEFAULT_QUICK_SLOTS,
   DEFAULT_RANDOM_DEFENSE_HISTORY,
   DEFAULT_TIMERS,
   DEFAULT_TOTAMJUNG_THEME,
@@ -478,7 +478,7 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
         warnTier: 1,
       },
       isTierHidden: DEFAULT_IS_TIER_HIDDEN,
-      quickSlots: DEFAULT_QUICK_SLOTS_RESPONSE,
+      quickSlots: DEFAULT_QUICK_SLOTS,
       randomDefenseHistory: DEFAULT_RANDOM_DEFENSE_HISTORY,
       timers: DEFAULT_TIMERS,
       totamjungTheme: 'totamjung',
@@ -520,7 +520,7 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
     expect(browser.storage.local.get).not.toThrow();
     expect(browser.storage.local.set).toHaveBeenCalledWith({
       [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: DEFAULT_CHECKED_ALGORITHM_IDS,
-      [STORAGE_KEY.QUICK_SLOTS]: DEFAULT_QUICK_SLOTS_RESPONSE,
+      [STORAGE_KEY.QUICK_SLOTS]: DEFAULT_QUICK_SLOTS,
       [STORAGE_KEY.TOTAMJUNG_THEME]: DEFAULT_TOTAMJUNG_THEME,
       [STORAGE_KEY.HIDER_OPTIONS]: DEFAULT_HIDER_OPTIONS,
       [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: DEFAULT_RANDOM_DEFENSE_HISTORY,

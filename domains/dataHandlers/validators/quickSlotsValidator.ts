@@ -1,13 +1,12 @@
 import { isNumericObject, isObject } from '@/types/typeGuards';
 import type {
   Hotkey,
-  LegacyQuickSlots,
   QuickSlots,
-  RepairableLegacyQuickSlots,
   RepairableQuickSlots,
   Slot,
   SlotNo,
 } from '@/types/randomDefense';
+import type { V1 } from '@/types/legacyData';
 
 export const isHotkey = (data: unknown): data is Hotkey => {
   return data === 'Alt' || data === 'F2';
@@ -42,6 +41,32 @@ export const isSlotNo = (data: unknown): data is SlotNo => {
   return [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].includes(data);
 };
 
+export const isV1QuickSlots = (data: unknown): data is V1.QuickSlots => {
+  if (
+    !(
+      isObject(data) &&
+      'selectedNo' in data &&
+      typeof data.selectedNo === 'number'
+    )
+  ) {
+    return false;
+  }
+
+  const { selectedNo, ...slots } = data;
+
+  if (!(selectedNo % 1 === 0 && selectedNo >= 0 && selectedNo <= 9)) {
+    return false;
+  }
+
+  if (!isNumericObject(slots)) {
+    return false;
+  }
+
+  return Array.from({ length: 10 }).every(
+    (_, key) => key in slots && isSlot(slots[key]),
+  );
+};
+
 export const isQuickSlots = (data: unknown): data is QuickSlots => {
   if (
     !(
@@ -68,35 +93,9 @@ export const isQuickSlots = (data: unknown): data is QuickSlots => {
   );
 };
 
-export const isLegacyQuickSlots = (data: unknown): data is LegacyQuickSlots => {
-  if (
-    !(
-      isObject(data) &&
-      'selectedNo' in data &&
-      typeof data.selectedNo === 'number'
-    )
-  ) {
-    return false;
-  }
-
-  const { selectedNo, ...slots } = data;
-
-  if (!(selectedNo % 1 === 0 && selectedNo >= 0 && selectedNo <= 9)) {
-    return false;
-  }
-
-  if (!isNumericObject(slots)) {
-    return false;
-  }
-
-  return Array.from({ length: 10 }).every(
-    (_, key) => key in slots && isSlot(slots[key]),
-  );
-};
-
-export const isRepairableLegacyQuickSlots = (
+export const isV1RepairableQuickSlots = (
   data: unknown,
-): data is RepairableLegacyQuickSlots => {
+): data is V1.RepairableQuickSlots => {
   return (
     isObject(data) && Array.from({ length: 10 }).every((_, key) => key in data)
   );

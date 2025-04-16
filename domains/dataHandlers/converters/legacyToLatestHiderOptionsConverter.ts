@@ -1,5 +1,5 @@
 import { isV1Timer, isV1Settings } from '../validators/hiderOptionsValidator';
-import { DEFAULT_HIDER_OPTIONS } from '@/constants/defaultValues';
+import { DEFAULT_V2_HIDER_OPTIONS } from '@/constants/defaultValues';
 import type { HiderOptions } from '@/types/algorithm';
 import type { V2 } from '@/types/legacyData';
 
@@ -30,7 +30,7 @@ export const convertV1ToV2HiderOptions = (
       };
 
   return {
-    ...DEFAULT_HIDER_OPTIONS,
+    ...DEFAULT_V2_HIDER_OPTIONS,
     problemTagLockDuration: duration,
     ...hiderOptions,
   };

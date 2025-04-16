@@ -45,6 +45,14 @@ const isValidV1RandomDefenseHistoryInfo = (item: unknown) => {
   );
 };
 
+const getSortedV1RandomDefenseHistory = (
+  randomDefenseHistory: V1.RandomDefenseHistoryInfo[],
+) => {
+  return [...randomDefenseHistory].sort((a, b) =>
+    new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1,
+  );
+};
+
 const getSortedRandomDefenseHistory = (
   randomDefenseHistory: RandomDefenseHistoryInfo[],
 ) => {
@@ -95,5 +103,7 @@ export const sanitizeV1RandomDefenseHistory = (
     }
   });
 
-  return sanitizedLegacyRandomDefenseHistory.slice(0, MAX_HISTORY_LIMIT);
+  return getSortedV1RandomDefenseHistory(
+    sanitizedLegacyRandomDefenseHistory,
+  ).slice(0, MAX_HISTORY_LIMIT);
 };

@@ -62,8 +62,13 @@ export namespace V2 {
 
   export type OptionsData = Omit<
     LatestOptionsData,
-    typeof STORAGE_KEY.GACHA_OPTIONS | typeof STORAGE_KEY.HIDER_OPTIONS
-  > & { hiderOptions: V2.HiderOptions };
+    | typeof STORAGE_KEY.GACHA_OPTIONS
+    | typeof STORAGE_KEY.HIDER_OPTIONS
+    | typeof STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE
+    | typeof STORAGE_KEY.DATA_VERSION
+  > & { hiderOptions: V2.HiderOptions } & {
+    shouldShowWelcomeMessage?: boolean;
+  } & { dataVersion: V2.DataVersion };
 
   export type HiderOptions = Omit<
     LatestHiderOptions,

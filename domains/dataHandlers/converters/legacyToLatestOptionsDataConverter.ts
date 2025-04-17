@@ -106,7 +106,7 @@ export const convertV2ToLatestOptionsData = (
   const fontNo = sanitizeFontNo(legacyData[V2_STORAGE_KEY.FONT_NO]);
   const timers = sanitizeTimers(legacyData[V2_STORAGE_KEY.TIMERS]);
   const shouldShowWelcomeMessage = sanitizeShouldShowWelcomeMessage(
-    V2_STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE,
+    legacyData[V2_STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE],
   );
 
   return {

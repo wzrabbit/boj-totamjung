@@ -1,9 +1,45 @@
-import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { MainTheme } from '@/types/mainTheme';
 import { styled, css } from 'styled-components';
+import { theme } from '@/styles/theme';
+
+const bubbleBackgroundColors: Record<MainTheme, string> = {
+  none: theme.color.BOJ_BLUE,
+  totamjung: theme.color.BLACK_DARKER_TRANSPARENT,
+  solvedAcLight: theme.solvedAcColor.OFF_WHITE,
+  solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
+  solvedAcBlack: theme.solvedAcColor.DARK_INDIGO,
+  bojExtendedDark: theme.color.BLACK_DARKER_TRANSPARENT,
+  bojExtendedRigel: theme.bojExtendedColor.DARK_INDIGO,
+} as const;
+
+const bubbleArrowColors: Record<MainTheme, string> = {
+  ...bubbleBackgroundColors,
+  solvedAcLight: theme.solvedAcColor.LIGHT_GRAY,
+} as const;
+
+const bubbleTextColors: Record<MainTheme, string> = {
+  none: theme.color.WHITE,
+  totamjung: theme.color.WHITE,
+  solvedAcLight: theme.color.BLACK,
+  solvedAcDark: theme.color.WHITE,
+  solvedAcBlack: theme.color.WHITE,
+  bojExtendedDark: theme.color.WHITE,
+  bojExtendedRigel: theme.color.WHITE,
+} as const;
+
+const closeButtonColors: Record<MainTheme, string> = {
+  none: theme.color.WHITE,
+  totamjung: theme.color.LIGHTEST_BROWN,
+  solvedAcLight: theme.color.BLACK,
+  solvedAcDark: theme.color.WHITE,
+  solvedAcBlack: theme.color.WHITE,
+  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
+  bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
+} as const;
 
 export const Container = styled.div<{
   $open: boolean;
-  $totamjungTheme: TotamjungTheme;
+  $totamjungTheme: MainTheme;
   $direction: 'up' | 'left' | 'right' | 'down';
   $maxWidth?: string;
 }>`
@@ -14,11 +50,15 @@ export const Container = styled.div<{
 
   padding: 14px;
 
+  ${({ theme, $totamjungTheme }) =>
+    $totamjungTheme === 'solvedAcLight' &&
+    css`
+      border: 1px solid ${theme.solvedAcColor.LIGHT_GRAY};
+    `};
+
   border-radius: 8px;
-  background-color: ${({ theme, $totamjungTheme }) =>
-    $totamjungTheme === 'totamjung'
-      ? theme.color.BLACK_DARKER_TRANSPARENT
-      : theme.color.BOJ_BLUE};
+  background-color: ${({ $totamjungTheme }) =>
+    bubbleBackgroundColors[$totamjungTheme]};
 
   word-break: break-all;
 
@@ -43,11 +83,8 @@ export const Container = styled.div<{
 
     border: 9px solid;
 
-    ${({ theme, $totamjungTheme, $direction }) => {
-      const arrowColor =
-        $totamjungTheme === 'totamjung'
-          ? theme.color.BLACK_DARKER_TRANSPARENT
-          : theme.color.BOJ_BLUE;
+    ${({ $totamjungTheme, $direction }) => {
+      const arrowColor = bubbleArrowColors[$totamjungTheme];
 
       if ($direction === 'left') {
         return css`
@@ -103,6 +140,13 @@ export const ContentWrapper = styled.div`
   height: 100%;
 `;
 
+export const Content = styled.span<{ $totamjungTheme: MainTheme }>`
+  font-size: 14px;
+  line-height: 14px;
+  font-family: Pretendard;
+  color: ${({ $totamjungTheme }) => bubbleTextColors[$totamjungTheme]};
+`;
+
 export const CloseButtonWrapper = styled.div`
   display: flex;
 
@@ -112,7 +156,7 @@ export const CloseButtonWrapper = styled.div`
   margin-left: auto;
 `;
 
-export const CloseButton = styled.button<{ $totamjungTheme: TotamjungTheme }>`
+export const CloseButton = styled.button<{ $totamjungTheme: MainTheme }>`
   width: 20px;
   height: 20px;
 
@@ -122,9 +166,6 @@ export const CloseButton = styled.button<{ $totamjungTheme: TotamjungTheme }>`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme, $totamjungTheme }) =>
-      $totamjungTheme === 'totamjung'
-        ? theme.color.LIGHTER_BROWN
-        : theme.color.WHITE};
+    color: ${({ $totamjungTheme }) => closeButtonColors[$totamjungTheme]};
   }
 `;

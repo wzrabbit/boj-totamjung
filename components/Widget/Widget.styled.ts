@@ -1,4 +1,57 @@
+import type { MainTheme } from '@/types/mainTheme';
+import { theme } from '@/styles/theme';
 import { styled, keyframes, css } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
+
+const topButtonBackgroundColors: Record<MainTheme, string> = {
+  none: theme.color.BOJ_BLUE,
+  totamjung: theme.color.LIGHTEST_BROWN,
+  solvedAcLight: theme.solvedAcColor.LIME,
+  solvedAcDark: theme.solvedAcColor.LIME,
+  solvedAcBlack: theme.solvedAcColor.LIME,
+  bojExtendedDark: theme.bojExtendedColor.DARK_GRAY,
+  bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
+} as const;
+
+const topButtonArrowBackgroundColors: Record<MainTheme, string> = {
+  none: theme.color.PURE_WHITE,
+  totamjung: theme.color.BROWN,
+  solvedAcLight: theme.color.PURE_WHITE,
+  solvedAcDark: theme.color.PURE_WHITE,
+  solvedAcBlack: theme.color.PURE_WHITE,
+  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
+  bojExtendedRigel: theme.color.WHITE,
+} as const;
+
+const dropdownIconsFilters: Record<MainTheme, string> = {
+  none: theme.filter.BOJ_BLUE_FILTER,
+  totamjung: theme.filter.LIGHTEST_BROWN_FILTER,
+  solvedAcLight: theme.solvedAcFilter.LIME,
+  solvedAcDark: theme.solvedAcFilter.LIME,
+  solvedAcBlack: theme.solvedAcFilter.LIME,
+  bojExtendedDark: theme.bojExtendedFilter.DARK_GRAY,
+  bojExtendedRigel: theme.bojExtendedFilter.DARK_SKY_BLUE,
+} as const;
+
+const dropdownBackgroundColors: Record<MainTheme, string> = {
+  none: 'transparent',
+  totamjung: theme.color.BLACK_TRANSPARENT,
+  solvedAcLight: 'transparent',
+  solvedAcDark: theme.color.BLACK_TRANSPARENT,
+  solvedAcBlack: theme.color.BLACK_TRANSPARENT,
+  bojExtendedDark: theme.color.BLACK_TRANSPARENT,
+  bojExtendedRigel: theme.color.BLACK_TRANSPARENT,
+} as const;
+
+const speechBubbleTextColors: Record<MainTheme, string> = {
+  none: theme.color.WHITE,
+  totamjung: theme.color.WHITE,
+  solvedAcLight: theme.color.BLACK,
+  solvedAcDark: theme.color.WHITE,
+  solvedAcBlack: theme.color.WHITE,
+  bojExtendedDark: theme.color.WHITE,
+  bojExtendedRigel: theme.color.WHITE,
+} as const;
 
 export const Container = styled.div`
   padding-top: 10px;
@@ -39,7 +92,7 @@ const bounceTop = keyframes`
 `;
 
 export const TopButton = styled.button<{
-  $widgetTheme: 'none' | 'totamjung';
+  $widgetTheme: MainTheme;
 }>`
   display: flex;
   justify-content: center;
@@ -51,19 +104,14 @@ export const TopButton = styled.button<{
 
   border-radius: 20px !important;
   background-color: ${({ theme, $widgetTheme }) =>
-    $widgetTheme === 'none'
-      ? theme.color.BOJ_BLUE
-      : theme.color.LIGHTEST_BROWN};
+    topButtonBackgroundColors[$widgetTheme] ?? theme.color.BOJ_BLUE};
 
   transition:
     0.3s transform,
     0.1s outline;
   z-index: 1;
   outline: 0px solid
-    ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'totamjung'
-        ? theme.color.LIGHTEST_BROWN_TRANSPARENT
-        : theme.color.BOJ_BLUE_TRANSPARENT} !important;
+    ${({ $widgetTheme }) => topButtonBackgroundColors[$widgetTheme]} !important;
 
   &:active {
     transform: scale(0.93);
@@ -72,15 +120,17 @@ export const TopButton = styled.button<{
   &:hover,
   &:active {
     outline: 4px solid
-      ${({ theme, $widgetTheme }) =>
-        $widgetTheme === 'totamjung'
-          ? theme.color.LIGHTEST_BROWN_TRANSPARENT
-          : theme.color.BOJ_BLUE_TRANSPARENT} !important;
+      ${({ $widgetTheme }) => {
+        return getTransparentHexColor(
+          topButtonBackgroundColors[$widgetTheme],
+          0.4,
+        );
+      }} !important;
   }
 
   & span {
-    background-color: ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'none' ? theme.color.PURE_WHITE : theme.color.BROWN};
+    background-color: ${({ $widgetTheme }) =>
+      topButtonArrowBackgroundColors[$widgetTheme]};
   }
 `;
 
@@ -112,7 +162,7 @@ export const TopIconFrag = styled.span<{ $direction: 'left' | 'right' }>`
 `;
 
 export const DropdownMenu = styled.ul<{
-  $widgetTheme: 'none' | 'totamjung';
+  $widgetTheme: MainTheme;
   $isExpanded: boolean;
 }>`
   display: flex;
@@ -125,13 +175,10 @@ export const DropdownMenu = styled.ul<{
   padding: 8px 0 0 0;
 
   border: 2px solid
-    ${({ theme, $widgetTheme }) =>
-      $widgetTheme === 'none'
-        ? theme.color.BOJ_BLUE
-        : theme.color.LIGHTEST_BROWN};
+    ${({ $widgetTheme }) => topButtonBackgroundColors[$widgetTheme]};
   border-radius: 20px !important;
-  background-color: ${({ theme, $widgetTheme }) =>
-    $widgetTheme === 'none' ? 'transparent' : theme.color.BLACK_TRANSPARENT};
+  background-color: ${({ $widgetTheme }) =>
+    dropdownBackgroundColors[$widgetTheme]};
 
   backdrop-filter: blur(5px);
   transform-origin: center bottom;
@@ -183,16 +230,12 @@ export const DropdownButtonIcon = styled.img.attrs({ draggable: false })`
 `;
 
 export const DropdownMenuButton = styled.button<{
-  $widgetTheme: 'none' | 'totamjung';
+  $widgetTheme: MainTheme;
 }>`
   ${dropdownMenuButtonStyles}
 
   & > ${DropdownButtonIcon} {
-    filter: ${({ theme, $widgetTheme }) => {
-      return $widgetTheme === 'none'
-        ? theme.filter.BOJ_BLUE_FILTER
-        : theme.filter.LIGHT_BROWN_FILTER;
-    }};
+    filter: ${({ $widgetTheme }) => dropdownIconsFilters[$widgetTheme]};
   }
 `;
 
@@ -207,16 +250,12 @@ const maskFillUp = keyframes`
 `;
 
 export const RandomDefenseButton = styled.button<{
-  $widgetTheme: 'none' | 'totamjung';
+  $widgetTheme: MainTheme;
 }>`
   ${dropdownMenuButtonStyles}
 
   & > ${DropdownButtonIcon} {
-    filter: ${({ theme, $widgetTheme }) => {
-      return $widgetTheme === 'none'
-        ? theme.filter.BOJ_BLUE_FILTER
-        : theme.filter.LIGHT_BROWN_FILTER;
-    }};
+    filter: ${({ $widgetTheme }) => dropdownIconsFilters[$widgetTheme]};
   }
 
   &.pressing:after {
@@ -249,8 +288,20 @@ export const SpeechBubbleWrapper = styled.div`
   height: 65px;
 `;
 
-export const SpeechBubbleContentContainer = styled.div`
+export const SpeechBubbleText = styled.span`
+  font-size: 14px;
+  line-height: 14px;
+  font-family: Pretendard;
+`;
+
+export const SpeechBubbleContentContainer = styled.div<{
+  $totamjungTheme: MainTheme;
+}>`
   display: flex;
   flex-direction: column;
   row-gap: 4px;
+
+  & > ${SpeechBubbleText} {
+    color: ${({ $totamjungTheme }) => speechBubbleTextColors[$totamjungTheme]};
+  }
 `;

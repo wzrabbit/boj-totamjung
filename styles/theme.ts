@@ -147,6 +147,31 @@ export const theme = {
     LIGHT_GRAY_FILTER:
       'brightness(0) saturate(100%) invert(86%) sepia(0%) saturate(1969%) hue-rotate(175deg) brightness(78%) contrast(96%)',
   },
+
+  solvedAcColor: {
+    LIME: '#17ce3a',
+    OFF_WHITE: '#f7f8f9',
+    LIGHT_GRAY: '#dddfe0',
+    DARK_INDIGO: '#0b131b',
+  },
+
+  bojExtendedColor: {
+    DARK_SKY_BLUE: '#008db4',
+    DARK_INDIGO: '#001a26',
+    DARK_GRAY: '#545454',
+    LIGHT_GRAY: '#a2a4a5',
+  },
+
+  solvedAcFilter: {
+    LIME: 'brightness(0) saturate(100%) invert(60%) sepia(34%) saturate(3800%) hue-rotate(87deg) brightness(105%) contrast(86%)',
+  },
+
+  bojExtendedFilter: {
+    DARK_GRAY:
+      'brightness(0) saturate(100%) invert(31%) sepia(0%) saturate(1005%) hue-rotate(147deg) brightness(100%) contrast(88%)',
+    DARK_SKY_BLUE:
+      'brightness(0) saturate(100%) invert(31%) sepia(81%) saturate(2692%) hue-rotate(171deg) brightness(96%) contrast(101%)',
+  },
 };
 
 export type Theme = typeof theme;

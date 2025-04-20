@@ -173,8 +173,6 @@ const executeInjectionScript = () => {
       ].forEach((element) => {
         headElement.appendChild(element);
       });
-
-      headInjectionObserver.disconnect();
     });
 
     headInjectionObserver.observe(htmlElement, { childList: true });

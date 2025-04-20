@@ -112,6 +112,13 @@ const useWidget = (params: UseWidgetParams) => {
     loadWidgetData();
   }, []);
 
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      'totamjungTheme',
+      theme === 'totamjung' ? 'totamjung' : 'none',
+    );
+  }, [theme]);
+
   const scrollToTop = () => {
     if (isScrollingToTop) {
       return;

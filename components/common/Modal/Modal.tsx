@@ -3,19 +3,20 @@ import useEscKey from '@/hooks/useEscKey';
 import { CloseIcon } from '@/assets/svg';
 import { createPortal } from 'react-dom';
 import type { PropsWithChildren, ReactNode } from 'react';
+import type { MainTheme } from '@/types/mainTheme';
 
 interface ModalProps {
   title: string;
   open: boolean;
   padding?: string;
   closeOnBackdropClick?: boolean;
-  theme?: 'none' | 'totamjung';
+  theme?: MainTheme;
   portalTarget?: HTMLElement | null;
   onClose: () => void;
 }
 
 interface ModalActionButtonsContainerProps {
-  theme?: 'none' | 'totamjung';
+  theme?: MainTheme;
   children: ReactNode;
 }
 
@@ -43,7 +44,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
             }
           }}
         />
-        <S.Modal role="dialog" $theme={theme}>
+        <S.Modal role="dialog" $totamjungTheme={theme}>
           <S.Header>
             <S.Title>{title}</S.Title>
             <S.CloseButton onClick={onClose} aria-label="모달 닫기">
@@ -69,7 +70,7 @@ export const ModalActionButtonsContainer = (
   const { children, theme = 'totamjung' } = props;
 
   return (
-    <S.ModalActionButtonsContainer $theme={theme}>
+    <S.ModalActionButtonsContainer $totamjungTheme={theme}>
       {children}
     </S.ModalActionButtonsContainer>
   );

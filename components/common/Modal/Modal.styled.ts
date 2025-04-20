@@ -1,4 +1,46 @@
+import { theme } from '@/styles/theme';
+import type { MainTheme } from '@/types/mainTheme';
 import { css, styled } from 'styled-components';
+
+const modalHeaderBackgroundColors: Record<MainTheme, string> = {
+  none: theme.color.WHITE,
+  totamjung: theme.color.DARK_BROWN,
+  bojExtendedDark: theme.bojExtendedColor.DARKEST_GRAY,
+  bojExtendedRigel: theme.bojExtendedColor.DARK_INDIGO,
+  solvedAcLight: theme.color.WHITE,
+  solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
+  solvedAcBlack: theme.color.BLACK,
+};
+
+const modalTitleColors: Record<MainTheme, string> = {
+  none: theme.color.BLACK,
+  totamjung: theme.color.GOLD,
+  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
+  bojExtendedRigel: theme.color.WHITE,
+  solvedAcLight: theme.color.BLACK,
+  solvedAcDark: theme.color.WHITE,
+  solvedAcBlack: theme.color.WHITE,
+};
+
+const modalBodyBackgroundColors: Record<MainTheme, string> = {
+  none: theme.color.PURE_WHITE,
+  totamjung: theme.color.BROWN,
+  bojExtendedDark: theme.bojExtendedColor.DARKER_GRAY,
+  bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
+  solvedAcLight: theme.color.PURE_WHITE,
+  solvedAcDark: theme.solvedAcColor.INDIGO,
+  solvedAcBlack: theme.solvedAcColor.DARK_INDIGO,
+};
+
+const modalBoxShadowColors: Record<MainTheme, string> = {
+  none: theme.color.WHITE,
+  totamjung: theme.color.GOLD,
+  bojExtendedDark: theme.bojExtendedColor.DARKEST_GRAY,
+  bojExtendedRigel: theme.bojExtendedColor.DARK_INDIGO,
+  solvedAcLight: theme.color.WHITE,
+  solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
+  solvedAcBlack: theme.color.BLACK,
+};
 
 export const Container = styled.div`
   display: flex;
@@ -42,16 +84,12 @@ export const Header = styled.div`
 
   height: 56px;
   padding: 16px 16px 0 16px;
-  border-bottom: 16px solid ${({ theme }) => theme.color.DARK_BROWN};
-
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
 `;
 
 export const Title = styled.p`
   overflow: hidden;
   flex-grow: 1;
 
-  color: ${({ theme }) => theme.color.GOLD};
   font-size: 24px;
   font-family: 'Do Hyeon', Pretendard;
   text-overflow: ellipsis;
@@ -69,7 +107,6 @@ export const CloseButton = styled.button`
   & > svg {
     width: 100%;
     height: 100%;
-    color: ${({ theme }) => theme.color.GOLD};
   }
 `;
 
@@ -78,14 +115,11 @@ export const Body = styled.div<{
 }>`
   padding: ${({ $padding }) => $padding};
 
-  background-color: ${({ theme }) => theme.color.BROWN};
-
-  color: ${({ theme }) => theme.color.WHITE};
   font-size: 16px;
 `;
 
 export const ModalActionButtonsContainer = styled.div<{
-  $theme: 'none' | 'totamjung';
+  $totamjungTheme: MainTheme;
 }>`
   display: flex;
   justify-content: flex-end;
@@ -96,11 +130,11 @@ export const ModalActionButtonsContainer = styled.div<{
   padding: 16px;
   margin: 16px -16px -16px -16px;
 
-  background-color: ${({ theme, $theme }) =>
-    $theme === 'totamjung' ? theme.color.DARK_BROWN : theme.color.WHITE};
+  background-color: ${({ $totamjungTheme }) =>
+    modalHeaderBackgroundColors[$totamjungTheme]};
 `;
 
-export const Modal = styled.div<{ $theme: 'none' | 'totamjung' }>`
+export const Modal = styled.div<{ $totamjungTheme: MainTheme }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -109,10 +143,9 @@ export const Modal = styled.div<{ $theme: 'none' | 'totamjung' }>`
   max-height: 100%;
 
   box-shadow: 0 0 30px
-    ${({ theme, $theme }) =>
-      $theme === 'totamjung' ? theme.color.GOLD : theme.color.LIGHT_GRAY};
-  background-color: ${({ theme, $theme }) =>
-    $theme === 'totamjung' ? theme.color.DARK_BROWN : theme.color.WHITE};
+    ${({ $totamjungTheme }) => modalBoxShadowColors[$totamjungTheme]};
+  background-color: ${({ $totamjungTheme }) =>
+    modalHeaderBackgroundColors[$totamjungTheme]};
 
   animation: zoomIn 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 
@@ -125,23 +158,21 @@ export const Modal = styled.div<{ $theme: 'none' | 'totamjung' }>`
     }
   }
 
-  ${({ $theme }) =>
-    $theme === 'none' &&
-    css`
-      & ${Header} {
-        border-bottom: 16px solid ${({ theme }) => theme.color.WHITE};
+  ${({ $totamjungTheme }) => css`
+    & ${Header} {
+      border-bottom: 16px solid ${modalHeaderBackgroundColors[$totamjungTheme]};
 
-        background-color: ${({ theme }) => theme.color.WHITE};
-      }
+      background-color: ${modalHeaderBackgroundColors[$totamjungTheme]};
+    }
 
-      & ${Title}, & ${CloseButton} > svg {
-        color: ${({ theme }) => theme.color.DARK_GRAY};
-      }
+    & ${Title}, & ${CloseButton} > svg {
+      color: ${modalTitleColors[$totamjungTheme]};
+    }
 
-      & ${Body} {
-        background-color: ${({ theme }) => theme.color.PURE_WHITE};
+    & ${Body} {
+      background-color: ${modalBodyBackgroundColors[$totamjungTheme]};
 
-        color: ${({ theme }) => theme.color.DARK_GRAY};
-      }
-    `};
+      color: ${({ theme }) => theme.color.DARK_GRAY};
+    }
+  `};
 `;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
-import { TotamjungTheme } from '@/types/totamjungTheme';
+import { TotamjungTheme } from '@/types/mainTheme';
 import {
   fetchTotamjungTheme,
   saveTotamjungTheme,

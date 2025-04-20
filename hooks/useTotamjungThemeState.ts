@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
-import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { TotamjungTheme } from '@/types/mainTheme';
 import type { Storage } from 'wxt/browser';
 
 const useTotamjungThemeState = () => {

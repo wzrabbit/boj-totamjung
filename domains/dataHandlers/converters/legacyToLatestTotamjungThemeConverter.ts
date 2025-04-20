@@ -1,4 +1,4 @@
-import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { TotamjungTheme } from '@/types/mainTheme';
 import { isObject } from '@/types/typeGuards';
 
 /**

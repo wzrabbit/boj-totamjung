@@ -1,7 +1,7 @@
 import { STORAGE_KEY } from '@/constants/commands';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
 import { sanitizeTotamjungTheme } from './sanitizers/totamjungThemeSanitizer';
-import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { TotamjungTheme } from '@/types/mainTheme';
 
 export const fetchTotamjungTheme = async (): Promise<TotamjungTheme> => {
   const data = await browser.storage.local.get(STORAGE_KEY.TOTAMJUNG_THEME);

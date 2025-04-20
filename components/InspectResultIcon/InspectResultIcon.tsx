@@ -20,7 +20,7 @@ const descriptions = {
 const filters: Record<TotamjungTheme | BojExtendedTheme, string> = {
   none: styledTheme.filter.BOJ_BLUE_FILTER,
   totamjung: styledTheme.filter.LIGHT_BROWN_FILTER,
-  bojExtendedRigel: styledTheme.bojExtendedFilter.DARK_SKY_BLUE,
+  bojExtendedRigel: styledTheme.bojExtendedFilter.SKY_BLUE,
   bojExtendedDark: styledTheme.bojExtendedFilter.DARK_GRAY,
 };
 

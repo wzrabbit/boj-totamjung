@@ -10,7 +10,7 @@ const topButtonBackgroundColors: Record<MainTheme, string> = {
   solvedAcDark: theme.solvedAcColor.LIME,
   solvedAcBlack: theme.solvedAcColor.LIME,
   bojExtendedDark: theme.bojExtendedColor.DARK_GRAY,
-  bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
+  bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
 } as const;
 
 const topButtonArrowBackgroundColors: Record<MainTheme, string> = {
@@ -30,7 +30,7 @@ const dropdownIconsFilters: Record<MainTheme, string> = {
   solvedAcDark: theme.solvedAcFilter.LIME,
   solvedAcBlack: theme.solvedAcFilter.LIME,
   bojExtendedDark: theme.bojExtendedFilter.DARK_GRAY,
-  bojExtendedRigel: theme.bojExtendedFilter.DARK_SKY_BLUE,
+  bojExtendedRigel: theme.bojExtendedFilter.SKY_BLUE,
 } as const;
 
 const dropdownBackgroundColors: Record<MainTheme, string> = {

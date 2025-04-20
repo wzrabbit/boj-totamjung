@@ -156,7 +156,7 @@ export const theme = {
   },
 
   bojExtendedColor: {
-    DARK_SKY_BLUE: '#008db4',
+    SKY_BLUE: '#008db4',
     DARK_INDIGO: '#001a26',
     DARK_GRAY: '#545454',
     LIGHT_GRAY: '#a2a4a5',
@@ -169,7 +169,7 @@ export const theme = {
   bojExtendedFilter: {
     DARK_GRAY:
       'brightness(0) saturate(100%) invert(31%) sepia(0%) saturate(1005%) hue-rotate(147deg) brightness(100%) contrast(88%)',
-    DARK_SKY_BLUE:
+    SKY_BLUE:
       'brightness(0) saturate(100%) invert(31%) sepia(81%) saturate(2692%) hue-rotate(171deg) brightness(96%) contrast(101%)',
   },
 };

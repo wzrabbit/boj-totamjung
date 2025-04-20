@@ -34,7 +34,7 @@ const closeButtonColors: Record<MainTheme, string> = {
   solvedAcDark: theme.color.WHITE,
   solvedAcBlack: theme.color.WHITE,
   bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
-  bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
+  bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
 } as const;
 
 export const Container = styled.div<{

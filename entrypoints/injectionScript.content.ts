@@ -8,7 +8,7 @@ import '@/assets/css/tierHider.css';
 import '@/assets/css/problemTheme.css';
 
 export default defineContentScript({
-  matches: ['https://www.acmicpc.net/*'],
+  matches: ['https://www.acmicpc.net/*', 'https://solved.ac/*'],
   runAt: 'document_start',
   main() {
     executeInjectionScript();
@@ -29,7 +29,11 @@ const executeInjectionScript = () => {
           return;
         }
 
-        if (totamjungTheme === 'totamjung') {
+        const isBojExtendedThemeEnabled =
+          htmlElement.hasAttribute('theme') &&
+          htmlElement.getAttribute('theme') !== 'light';
+
+        if (totamjungTheme === 'totamjung' && !isBojExtendedThemeEnabled) {
           htmlElement.style.backgroundColor = TOTAMJUNG_THEME_BACKGROUND_COLOR;
           htmlElement.setAttribute('totamjungTheme', 'totamjung');
         } else {

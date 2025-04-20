@@ -19,7 +19,7 @@ export default defineConfig({
     web_accessible_resources: [
       {
         resources: ['/*'],
-        matches: ['https://www.acmicpc.net/*'],
+        matches: ['https://www.acmicpc.net/*', 'https://solved.ac/*'],
       },
     ],
   },

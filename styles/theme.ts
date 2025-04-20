@@ -152,13 +152,17 @@ export const theme = {
     LIME: '#17ce3a',
     OFF_WHITE: '#f7f8f9',
     LIGHT_GRAY: '#dddfe0',
+    INDIGO: '#15202b',
     DARK_INDIGO: '#0b131b',
   },
 
   bojExtendedColor: {
     SKY_BLUE: '#008db4',
+    DARK_SKY_BLUE: '#002635',
     DARK_INDIGO: '#001a26',
     DARK_GRAY: '#545454',
+    DARKER_GRAY: '#202020',
+    DARKEST_GRAY: '#161616',
     LIGHT_GRAY: '#a2a4a5',
   },
 

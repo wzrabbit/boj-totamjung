@@ -13,7 +13,7 @@ const meta = {
     content: {
       description: '말풍선에 담을 내용입니다.',
     },
-    totamjungTheme: {
+    theme: {
       description: '말풍선에 적용할 테마입니다.',
     },
     direction: {
@@ -44,7 +44,7 @@ export const DirectionLeft: Story = {
   args: {
     open: true,
     content: '테스트 메시지입니다.',
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'left',
   },
 };
@@ -53,7 +53,7 @@ export const DirectionUp: Story = {
   args: {
     open: true,
     content: '테스트 메시지입니다.',
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'up',
   },
 };
@@ -62,7 +62,7 @@ export const DirectionRight: Story = {
   args: {
     open: true,
     content: '테스트 메시지입니다.',
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'right',
   },
 };
@@ -71,17 +71,8 @@ export const DirectionDown: Story = {
   args: {
     open: true,
     content: '테스트 메시지입니다.',
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'down',
-  },
-};
-
-export const TotamjungTheme: Story = {
-  args: {
-    open: true,
-    content: '테스트 메시지입니다.',
-    totamjungTheme: 'totamjung',
-    direction: 'left',
   },
 };
 
@@ -90,7 +81,7 @@ export const TooManyContent: Story = {
     open: true,
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'left',
   },
 };
@@ -100,7 +91,7 @@ export const TooManyContentWithLimitedWidth: Story = {
     open: true,
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'left',
     maxWidth: '300px',
   },
@@ -110,7 +101,7 @@ export const HasCloseButton: Story = {
   args: {
     open: true,
     content: '테스트 메시지입니다.',
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'left',
     hasCloseButton: true,
     onClose: fn(),
@@ -122,7 +113,7 @@ export const CloseButtonWithManyContent: Story = {
     open: true,
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'left',
     hasCloseButton: true,
     onClose: fn(),
@@ -143,9 +134,63 @@ export const UsingReactComponentAsChild: Story = {
         </Text>
       </div>
     ),
-    totamjungTheme: 'none',
+    theme: 'none',
     direction: 'left',
     hasCloseButton: true,
     onClose: fn(),
+  },
+};
+
+export const Totamjung: Story = {
+  args: {
+    open: true,
+    content: '테스트 메시지입니다.',
+    theme: 'totamjung',
+    direction: 'left',
+  },
+};
+
+export const SolvedAcLight: Story = {
+  args: {
+    open: true,
+    content: '테스트 메시지입니다.',
+    theme: 'solvedAcLight',
+    direction: 'left',
+  },
+};
+
+export const SolvedAcDark: Story = {
+  args: {
+    open: true,
+    content: '테스트 메시지입니다.',
+    theme: 'solvedAcDark',
+    direction: 'left',
+  },
+};
+
+export const SolvedAcBlack: Story = {
+  args: {
+    open: true,
+    content: '테스트 메시지입니다.',
+    theme: 'solvedAcBlack',
+    direction: 'left',
+  },
+};
+
+export const BojExtendedRigel: Story = {
+  args: {
+    open: true,
+    content: '테스트 메시지입니다.',
+    theme: 'bojExtendedRigel',
+    direction: 'left',
+  },
+};
+
+export const BojExtendedDark: Story = {
+  args: {
+    open: true,
+    content: '테스트 메시지입니다.',
+    theme: 'bojExtendedDark',
+    direction: 'left',
   },
 };

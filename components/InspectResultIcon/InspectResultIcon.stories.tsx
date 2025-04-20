@@ -51,3 +51,31 @@ export const TotamjungQuestionIcon: Story = {
     icon: 'question',
   },
 };
+
+export const BojExtendedDarkCheckIcon: Story = {
+  args: {
+    theme: 'bojExtendedDark',
+    icon: 'check',
+  },
+};
+
+export const BojExtendedDarkQuestionIcon: Story = {
+  args: {
+    theme: 'bojExtendedDark',
+    icon: 'question',
+  },
+};
+
+export const BojExtendedRigelCheckIcon: Story = {
+  args: {
+    theme: 'bojExtendedRigel',
+    icon: 'check',
+  },
+};
+
+export const BojExtendedRigelQuestionIcon: Story = {
+  args: {
+    theme: 'bojExtendedRigel',
+    icon: 'question',
+  },
+};

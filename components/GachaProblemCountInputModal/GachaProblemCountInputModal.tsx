@@ -1,15 +1,17 @@
 import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
 import IconButton from '@/components/common/IconButton';
-import Text from '@/components/common/Text';
 import * as S from './GachaProblemCountInputModal.styled';
 import { CheckCircleIcon } from '@/assets/svg';
-import { theme } from '@/styles/theme';
 import useGachaProblemCount from '@/hooks/useGachaProblemCount';
 import { MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE } from '@/constants/randomDefense';
+import type { MainTheme } from '@/types/mainTheme';
+import { theme as styledTheme } from '@/styles/theme';
+
+export const lightThemes: readonly MainTheme[] = ['none', 'solvedAcLight'];
 
 interface GachaProblemCountInputModalProps {
   open: boolean;
-  theme?: 'none' | 'totamjung';
+  theme?: MainTheme;
   portalTarget?: HTMLElement | null;
   shouldShowHotkeyMessage: boolean;
   onClose: () => void;
@@ -21,7 +23,7 @@ const GachaProblemCountInputModal = (
 ) => {
   const {
     open,
-    theme: modalTheme = 'totamjung',
+    theme = 'totamjung',
     portalTarget,
     shouldShowHotkeyMessage,
     onClose,
@@ -33,55 +35,49 @@ const GachaProblemCountInputModal = (
   return (
     <Modal
       title="즉석 추첨"
-      theme={modalTheme}
+      theme={theme}
       portalTarget={portalTarget}
       open={open}
       onClose={onClose}
     >
       <S.ContentContainer>
-        <Text
-          type={modalTheme === 'totamjung' ? 'normal' : 'darkGray'}
-          fontSize="16px"
-        >
+        <S.Text $totamjungTheme={theme} $fontSize="16px" $textAlign="left">
           추첨을 진행할 문제 수를 입력해 주세요.
-        </Text>
+        </S.Text>
         <S.ProblemCountInput
           type="number"
           min={1}
           max={MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE}
           value={inputValue}
-          $theme={modalTheme}
+          $totamjungTheme={theme}
           onChange={updateInputValue}
           autoFocus
         />
-        <Text
-          type={modalTheme === 'totamjung' ? 'normal' : 'darkGray'}
-          textAlign="right"
-          fontSize="14px"
-        >
+        <S.Text $totamjungTheme={theme} $fontSize="14px" $textAlign="right">
           {`1문제 이상, ${MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE}문제 이하`}
-        </Text>
+        </S.Text>
         {shouldShowHotkeyMessage && (
-          <Text
-            type={modalTheme === 'totamjung' ? 'gray' : 'darkGray'}
-            textAlign="left"
-            fontSize="16px"
+          <S.Text
+            $totamjungTheme={theme}
+            $fontSize="16px"
+            $textAlign="left"
+            $isTransparent={true}
           >
             TIP: 즉석 추첨은 백준 사이트 내에서 슬롯 번호에 대응하는 단축키를
             길게 누르는 것으로도 진행할 수 있습니다.
-          </Text>
+          </S.Text>
         )}
       </S.ContentContainer>
-      <ModalActionButtonsContainer theme={modalTheme}>
+      <ModalActionButtonsContainer theme={theme}>
         <IconButton
           type="button"
           name="확인"
           size="medium"
           iconSrc={<CheckCircleIcon />}
           color={
-            modalTheme === 'totamjung'
-              ? theme.color.GOLD
-              : theme.color.DARK_GRAY
+            lightThemes.includes(theme)
+              ? styledTheme.color.DARK_GRAY
+              : styledTheme.color.GOLD
           }
           disabled={!isInputValueValid}
           ariaLabel="확인"

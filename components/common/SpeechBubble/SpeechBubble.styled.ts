@@ -14,7 +14,7 @@ const bubbleBackgroundColors: Record<MainTheme, string> = {
 
 const bubbleArrowColors: Record<MainTheme, string> = {
   ...bubbleBackgroundColors,
-  solvedAcLight: theme.solvedAcColor.LIGHT_GRAY,
+  solvedAcLight: theme.solvedAcColor.LIGHTER_GRAY,
 } as const;
 
 const bubbleTextColors: Record<MainTheme, string> = {
@@ -30,7 +30,7 @@ const bubbleTextColors: Record<MainTheme, string> = {
 const closeButtonColors: Record<MainTheme, string> = {
   none: theme.color.WHITE,
   totamjung: theme.color.LIGHTEST_BROWN,
-  solvedAcLight: theme.color.BLACK,
+  solvedAcLight: theme.color.GRAY,
   solvedAcDark: theme.color.WHITE,
   solvedAcBlack: theme.color.WHITE,
   bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
@@ -53,7 +53,7 @@ export const Container = styled.div<{
   ${({ theme, $totamjungTheme }) =>
     $totamjungTheme === 'solvedAcLight' &&
     css`
-      border: 1px solid ${theme.solvedAcColor.LIGHT_GRAY};
+      border: 1px solid ${theme.solvedAcColor.LIGHTER_GRAY};
     `};
 
   border-radius: 8px;

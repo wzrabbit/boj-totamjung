@@ -151,8 +151,9 @@ export const theme = {
   solvedAcColor: {
     LIME: '#17ce3a',
     OFF_WHITE: '#f7f8f9',
-    LIGHT_GRAY: '#b8bcbf',
     GRAY: '#8a8f95',
+    LIGHT_GRAY: '#b8bcbf',
+    LIGHTER_GRAY: '#dddfe0',
     INDIGO: '#15202b',
     DARK_INDIGO: '#0b131b',
   },

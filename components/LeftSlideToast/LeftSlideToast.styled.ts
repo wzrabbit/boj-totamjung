@@ -18,8 +18,8 @@ const toastBorderColors: Record<MainTheme, string> = {
   bojExtendedDark: theme.bojExtendedColor.DARK_GRAY,
   bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
   solvedAcLight: theme.solvedAcColor.LIGHT_GRAY,
-  solvedAcDark: theme.solvedAcColor.LIGHT_GRAY,
-  solvedAcBlack: theme.solvedAcColor.LIGHT_GRAY,
+  solvedAcDark: theme.solvedAcColor.GRAY,
+  solvedAcBlack: theme.solvedAcColor.GRAY,
 };
 
 const toastBoxShadowColors: Record<MainTheme, string> = {

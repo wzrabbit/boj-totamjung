@@ -24,12 +24,14 @@ const modalTitleColors: Record<MainTheme, string> = {
 
 const modalCloseButtonIconColors: Record<MainTheme, string> = {
   ...modalTitleColors,
+  none: theme.solvedAcColor.GRAY,
+  solvedAcLight: theme.solvedAcColor.GRAY,
   solvedAcDark: theme.solvedAcColor.LIGHT_GRAY,
   solvedAcBlack: theme.solvedAcColor.LIGHT_GRAY,
 };
 
 const modalBodyBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
+  none: theme.color.PURE_WHITE,
   totamjung: theme.color.BROWN,
   bojExtendedDark: theme.bojExtendedColor.DARKER_GRAY,
   bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,

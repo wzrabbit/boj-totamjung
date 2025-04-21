@@ -151,7 +151,8 @@ export const theme = {
   solvedAcColor: {
     LIME: '#17ce3a',
     OFF_WHITE: '#f7f8f9',
-    LIGHT_GRAY: '#dddfe0',
+    LIGHT_GRAY: '#b8bcbf',
+    GRAY: '#8a8f95',
     INDIGO: '#15202b',
     DARK_INDIGO: '#0b131b',
   },
@@ -168,6 +169,8 @@ export const theme = {
 
   solvedAcFilter: {
     LIME: 'brightness(0) saturate(100%) invert(60%) sepia(34%) saturate(3800%) hue-rotate(87deg) brightness(105%) contrast(86%)',
+    LIGHT_GRAY:
+      'brightness(0) saturate(100%) invert(79%) sepia(4%) saturate(201%) hue-rotate(163deg) brightness(94%) contrast(93%)',
   },
 
   bojExtendedFilter: {
@@ -175,6 +178,8 @@ export const theme = {
       'brightness(0) saturate(100%) invert(31%) sepia(0%) saturate(1005%) hue-rotate(147deg) brightness(100%) contrast(88%)',
     SKY_BLUE:
       'brightness(0) saturate(100%) invert(31%) sepia(81%) saturate(2692%) hue-rotate(171deg) brightness(96%) contrast(101%)',
+    LIGHT_GRAY:
+      'brightness(0) saturate(100%) invert(76%) sepia(5%) saturate(94%) hue-rotate(155deg) brightness(86%) contrast(88%)',
   },
 };
 

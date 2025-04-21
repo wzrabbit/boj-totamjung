@@ -1,25 +1,20 @@
 import * as S from './LeftSlideToast.styled';
+import { circleProgressBarColors } from './LeftSlideToast.styled';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 import { CheckIcon, CloseIcon } from '@/assets/svg';
 import type { SVGProps, ReactElement } from 'react';
-import { TotamjungTheme } from '@/types/totamjungTheme';
+import type { MainTheme } from '@/types/mainTheme';
 import CircleProgressBar from '@/components/common/CircleProgressBar';
 
 interface LeftSlideToastProps {
   mainIconSrc: string | ReactElement<SVGProps<SVGSVGElement>>;
-  theme: TotamjungTheme;
+  theme: MainTheme;
   progress: number;
   title: string;
   descriptions?: string | string[];
   open: boolean;
   onClose: () => void;
 }
-
-const COLORS = {
-  WHITE: 'white',
-  SKY_BLUE: '#1c8cd1',
-  BROWN: '#331911',
-  LIGHT_BROWN: '#a17362',
-};
 
 const LeftSlideToast = (props: LeftSlideToastProps) => {
   const { mainIconSrc, theme, progress, title, descriptions, open, onClose } =
@@ -65,8 +60,11 @@ const LeftSlideToast = (props: LeftSlideToastProps) => {
         <CircleProgressBar
           size={32}
           progress={progress}
-          color={theme === 'totamjung' ? COLORS.LIGHT_BROWN : COLORS.WHITE}
-          trackColor={theme === 'totamjung' ? COLORS.BROWN : COLORS.SKY_BLUE}
+          color={circleProgressBarColors[theme]}
+          trackColor={getTransparentHexColor(
+            circleProgressBarColors[theme],
+            0.3,
+          )}
         />
       </S.RightControlPanel>
     </S.Container>

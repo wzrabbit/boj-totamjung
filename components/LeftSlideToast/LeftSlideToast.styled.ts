@@ -1,9 +1,86 @@
-import { styled, css } from 'styled-components';
-import type { TotamjungTheme } from '@/types/totamjungTheme';
+import { styled } from 'styled-components';
+import { theme } from '@/styles/theme';
+import type { MainTheme } from '@/types/mainTheme';
+
+const toastBackgroundColors: Record<MainTheme, string> = {
+  none: theme.color.BOJ_BLUE,
+  totamjung: theme.color.DARK_BROWN,
+  bojExtendedDark: theme.bojExtendedColor.DARKEST_GRAY,
+  bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
+  solvedAcLight: theme.solvedAcColor.OFF_WHITE,
+  solvedAcDark: theme.solvedAcColor.INDIGO,
+  solvedAcBlack: theme.solvedAcColor.DARK_INDIGO,
+};
+
+const toastBorderColors: Record<MainTheme, string> = {
+  none: theme.color.BOJ_BLUE,
+  totamjung: theme.color.LIGHTER_BROWN,
+  bojExtendedDark: theme.bojExtendedColor.DARK_GRAY,
+  bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
+  solvedAcLight: theme.solvedAcColor.LIGHT_GRAY,
+  solvedAcDark: theme.solvedAcColor.LIGHT_GRAY,
+  solvedAcBlack: theme.solvedAcColor.LIGHT_GRAY,
+};
+
+const toastBoxShadowColors: Record<MainTheme, string> = {
+  none: 'transparent',
+  totamjung: theme.color.LIGHTER_BROWN,
+  bojExtendedDark: theme.bojExtendedColor.DARKER_GRAY,
+  bojExtendedRigel: 'transparent',
+  solvedAcLight: theme.solvedAcColor.OFF_WHITE,
+  solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
+  solvedAcBlack: theme.color.BLACK,
+};
+
+const toastTitleColors: Record<MainTheme, string> = {
+  none: theme.color.WHITE,
+  totamjung: theme.color.BEIGE,
+  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
+  bojExtendedRigel: theme.color.WHITE,
+  solvedAcLight: theme.color.BLACK,
+  solvedAcDark: theme.solvedAcColor.OFF_WHITE,
+  solvedAcBlack: theme.solvedAcColor.OFF_WHITE,
+};
+
+const toastDescriptionColors: Record<MainTheme, string> = {
+  ...toastTitleColors,
+  totamjung: theme.color.WHITE,
+  bojExtendedDark: theme.color.WHITE,
+};
+
+const toastIconColors: Record<MainTheme, string> = {
+  none: theme.color.WHITE,
+  totamjung: theme.color.LIGHTEST_BROWN,
+  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
+  bojExtendedRigel: theme.color.WHITE,
+  solvedAcLight: theme.solvedAcColor.GRAY,
+  solvedAcDark: theme.solvedAcColor.LIGHT_GRAY,
+  solvedAcBlack: theme.solvedAcColor.LIGHT_GRAY,
+};
+
+const toastIconFilters: Record<MainTheme, string> = {
+  none: theme.filter.WHITE_FILTER,
+  totamjung: theme.filter.LIGHT_BROWN_FILTER,
+  bojExtendedDark: theme.bojExtendedFilter.LIGHT_GRAY,
+  bojExtendedRigel: theme.filter.WHITE_FILTER,
+  solvedAcLight: theme.solvedAcFilter.LIGHT_GRAY,
+  solvedAcDark: theme.solvedAcFilter.LIGHT_GRAY,
+  solvedAcBlack: theme.solvedAcFilter.LIGHT_GRAY,
+};
+
+export const circleProgressBarColors: Record<MainTheme, string> = {
+  none: theme.color.WHITE,
+  totamjung: theme.color.LIGHTEST_BROWN,
+  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
+  bojExtendedRigel: theme.color.WHITE,
+  solvedAcLight: theme.solvedAcColor.GRAY,
+  solvedAcDark: theme.solvedAcColor.LIGHT_GRAY,
+  solvedAcBlack: theme.solvedAcColor.LIGHT_GRAY,
+};
 
 export const Container = styled.div<{
   $open: boolean;
-  $totamjungTheme: TotamjungTheme;
+  $totamjungTheme: MainTheme;
 }>`
   display: flex;
   column-gap: 10px;
@@ -16,18 +93,12 @@ export const Container = styled.div<{
   padding: 10px;
 
   border-radius: 10px;
-
-  ${({ theme, $totamjungTheme }) =>
-    $totamjungTheme === 'totamjung'
-      ? css`
-          border: 2px solid ${theme.color.LIGHTER_BROWN};
-          background-color: ${theme.color.DARK_BROWN};
-          box-shadow: 0 0 20px ${theme.color.LIGHTER_BROWN};
-        `
-      : css`
-          border: 2px solid ${theme.color.BOJ_BLUE};
-          background-color: ${theme.color.BOJ_BLUE};
-        `}
+  border: 2px solid
+    ${({ $totamjungTheme }) => toastBorderColors[$totamjungTheme]};
+  background-color: ${({ $totamjungTheme }) =>
+    toastBackgroundColors[$totamjungTheme]};
+  box-shadow: 0 0 20px
+    ${({ $totamjungTheme }) => toastBoxShadowColors[$totamjungTheme]};
 
   transform: ${({ $open }) => ($open ? 'translateX(0)' : 'translateX(-450px)')};
   transition: transform cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
@@ -41,26 +112,20 @@ export const LeftIconWrapper = styled.div`
   width: 66px;
 `;
 
-export const IconImage = styled.img<{ $totamjungTheme: TotamjungTheme }>`
+export const IconImage = styled.img<{ $totamjungTheme: MainTheme }>`
   width: 40px;
 
-  filter: ${({ theme, $totamjungTheme }) =>
-    $totamjungTheme === 'totamjung'
-      ? theme.filter.LIGHTEST_BROWN_FILTER
-      : theme.filter.WHITE_FILTER};
+  filter: ${({ $totamjungTheme }) => toastIconFilters[$totamjungTheme]};
   user-select: none;
 `;
 
-export const IconWrapper = styled.div<{ $totamjungTheme: TotamjungTheme }>`
+export const IconWrapper = styled.div<{ $totamjungTheme: MainTheme }>`
   &,
   & > svg {
     width: 48px;
     height: 48px;
 
-    color: ${({ theme, $totamjungTheme }) =>
-      $totamjungTheme === 'totamjung'
-        ? theme.color.LIGHTEST_BROWN
-        : theme.color.WHITE};
+    color: ${({ $totamjungTheme }) => toastIconColors[$totamjungTheme]};
   }
 `;
 
@@ -72,12 +137,12 @@ export const ContentContainer = styled.div`
   width: 264px;
 `;
 
-export const Title = styled.p<{ $totamjungTheme: TotamjungTheme }>`
+export const Title = styled.p<{ $totamjungTheme: MainTheme }>`
   font-size: 16px;
   font-weight: 700;
+  font-family: Pretendard;
   word-break: break-all;
-  color: ${({ theme, $totamjungTheme }) =>
-    $totamjungTheme === 'totamjung' ? theme.color.BEIGE : theme.color.WHITE};
+  color: ${({ $totamjungTheme }) => toastTitleColors[$totamjungTheme]};
 `;
 
 export const DescriptionList = styled.ul`
@@ -86,8 +151,13 @@ export const DescriptionList = styled.ul`
   row-gap: 4px;
 `;
 
+export const Description = styled.p`
+  font-size: 14px;
+  word-break: break-all;
+`;
+
 export const DescriptionContainer = styled.li<{
-  $totamjungTheme: TotamjungTheme;
+  $totamjungTheme: MainTheme;
 }>`
   display: flex;
   column-gap: 3px;
@@ -96,22 +166,17 @@ export const DescriptionContainer = styled.li<{
 
   line-height: 17px;
 
+  & > ${Description} {
+    color: ${({ $totamjungTheme }) => toastDescriptionColors[$totamjungTheme]};
+  }
+
   & > svg {
     flex-shrink: 0;
 
     width: 17px;
     height: 17px;
-    color: ${({ theme, $totamjungTheme }) =>
-      $totamjungTheme === 'totamjung'
-        ? theme.color.LIGHTEST_BROWN
-        : theme.color.WHITE};
+    color: ${({ $totamjungTheme }) => toastIconColors[$totamjungTheme]};
   }
-`;
-
-export const Description = styled.p`
-  font-size: 14px;
-  word-break: break-all;
-  color: ${({ theme }) => theme.color.WHITE};
 `;
 
 export const RightControlPanel = styled.div`
@@ -123,7 +188,7 @@ export const RightControlPanel = styled.div`
   width: 32px;
 `;
 
-export const CloseButton = styled.button<{ $totamjungTheme: TotamjungTheme }>`
+export const CloseButton = styled.button<{ $totamjungTheme: MainTheme }>`
   width: 30px;
   height: 30px;
 
@@ -132,9 +197,6 @@ export const CloseButton = styled.button<{ $totamjungTheme: TotamjungTheme }>`
   & > svg {
     width: 30px;
     height: 30px;
-    color: ${({ theme, $totamjungTheme }) =>
-      $totamjungTheme === 'totamjung'
-        ? theme.color.LIGHTEST_BROWN
-        : theme.color.WHITE};
+    color: ${({ $totamjungTheme }) => toastIconColors[$totamjungTheme]};
   }
 `;

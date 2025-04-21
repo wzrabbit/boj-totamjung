@@ -22,8 +22,14 @@ const modalTitleColors: Record<MainTheme, string> = {
   solvedAcBlack: theme.color.WHITE,
 };
 
+const modalCloseButtonIconColors: Record<MainTheme, string> = {
+  ...modalTitleColors,
+  solvedAcDark: theme.solvedAcColor.LIGHT_GRAY,
+  solvedAcBlack: theme.solvedAcColor.LIGHT_GRAY,
+};
+
 const modalBodyBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.PURE_WHITE,
+  none: theme.color.WHITE,
   totamjung: theme.color.BROWN,
   bojExtendedDark: theme.bojExtendedColor.DARKER_GRAY,
   bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
@@ -33,7 +39,7 @@ const modalBodyBackgroundColors: Record<MainTheme, string> = {
 };
 
 const modalBoxShadowColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
+  none: theme.color.LIGHT_GRAY,
   totamjung: theme.color.GOLD,
   bojExtendedDark: theme.bojExtendedColor.DARKEST_GRAY,
   bojExtendedRigel: theme.bojExtendedColor.DARK_INDIGO,
@@ -165,8 +171,12 @@ export const Modal = styled.div<{ $totamjungTheme: MainTheme }>`
       background-color: ${modalHeaderBackgroundColors[$totamjungTheme]};
     }
 
-    & ${Title}, & ${CloseButton} > svg {
+    & ${Title} {
       color: ${modalTitleColors[$totamjungTheme]};
+    }
+
+    & ${CloseButton} > svg {
+      color: ${modalCloseButtonIconColors[$totamjungTheme]};
     }
 
     & ${Body} {

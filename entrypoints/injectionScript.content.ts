@@ -2,6 +2,7 @@ import { COMMANDS } from '@/constants/commands';
 import { isFontNo } from '@/domains/dataHandlers/validators/fontNoValidator';
 import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
+import { isExternalThemeActive } from '@/domains/isExternalThemeActive';
 import '@/assets/css/palette.css';
 import '@/assets/css/totamjungTheme.css';
 import '@/assets/css/tierHider.css';
@@ -29,11 +30,7 @@ const executeInjectionScript = () => {
           return;
         }
 
-        const isBojExtendedThemeEnabled =
-          htmlElement.hasAttribute('theme') &&
-          htmlElement.getAttribute('theme') !== 'light';
-
-        if (totamjungTheme === 'totamjung' && !isBojExtendedThemeEnabled) {
+        if (totamjungTheme === 'totamjung' && !isExternalThemeActive()) {
           htmlElement.style.backgroundColor = TOTAMJUNG_THEME_BACKGROUND_COLOR;
           htmlElement.setAttribute('totamjungTheme', 'totamjung');
         } else {

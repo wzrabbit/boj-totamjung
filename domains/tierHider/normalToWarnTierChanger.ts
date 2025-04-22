@@ -1,5 +1,5 @@
 import { $, $$ } from '@/utils/querySelector';
-import { solvedAcNumericTierIcons, solvedAcRankIcons } from '@/assets/svg/tier';
+import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import { isTierWithoutNotRatable } from '@/types/typeGuards';
 import type { RatedTier } from '@/types/tierHider';
 import { COMMANDS } from '@/constants/commands';
@@ -102,7 +102,7 @@ const changeBoardBlockquoteBadgeTier = async (
   }
 
   if (tier >= warnTier && shouldWarnHighTier) {
-    boardBlockquoteTierBadgeElement.style.content = `url(${JSON.stringify(solvedAcRankIcons.warn)}`;
+    boardBlockquoteTierBadgeElement.classList.add('warn');
   }
 };
 
@@ -117,7 +117,7 @@ const changeRegularBadgeTier = (warnTier: RatedTier) => {
       const tier = src.match(TIER_FROM_SRC_REGEX);
 
       if (tier && Number(tier) >= warnTier) {
-        tierBadgeElement.style.content = `url(${JSON.stringify(solvedAcRankIcons.warn)})`;
+        tierBadgeElement.classList.add('warn');
       }
     }
   });

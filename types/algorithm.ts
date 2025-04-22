@@ -21,6 +21,7 @@ export interface HiderOptionsResponse {
   };
   shouldHideTier: boolean;
   shouldWarnHighTier: boolean;
+  shouldRevealTierOnHover: boolean;
   warnTier: RatedTier;
   algorithmHiderUsage: 'click' | 'always';
   problemTagLockUsage: 'click' | 'auto';

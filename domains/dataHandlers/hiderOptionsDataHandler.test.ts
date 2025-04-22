@@ -13,6 +13,7 @@ describe('Test #1 - 가리개 관련 설정 불러오기', () => {
         },
         shouldHideTier: true,
         shouldWarnHighTier: true,
+        shouldRevealTierOnHover: false,
         warnTier: 30,
         algorithmHiderUsage: 'always',
         problemTagLockUsage: 'auto',
@@ -24,6 +25,7 @@ describe('Test #1 - 가리개 관련 설정 불러오기', () => {
         },
         shouldHideTier: false,
         shouldWarnHighTier: true,
+        shouldRevealTierOnHover: false,
         warnTier: 12,
         algorithmHiderUsage: 'click',
         problemTagLockUsage: 'auto',
@@ -82,6 +84,10 @@ describe('Test #2 - 유효하지 않은 가리개 관련 설정 데이터를 불
         problemTagLockUsage: 'click',
       },
       {},
+      {
+        ...DEFAULT_HIDER_OPTIONS,
+        shouldRevealTierOnHover: 'foo',
+      },
     ];
 
     test.each(testcases)('#%#', async (hiderOptions) => {
@@ -105,6 +111,7 @@ describe('Test #3 - 가리개 관련 설정 저장하기', () => {
       },
       shouldHideTier: true,
       shouldWarnHighTier: false,
+      shouldRevealTierOnHover: true,
       warnTier: 29,
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'auto',
@@ -129,6 +136,7 @@ describe('Test #4 - 유효하지 않은 가리개 관련 설정 데이터를 저
         minutes: 50,
       },
       shouldWarnHighTier: false,
+      shouldRevealTierOnHover: false,
       warnTier: 29,
     };
 

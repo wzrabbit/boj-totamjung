@@ -19,6 +19,7 @@ export const isHiderOptionsResponse = (
       'shouldHideTier' in data &&
       'shouldWarnHighTier' in data &&
       'warnTier' in data &&
+      'shouldRevealTierOnHover' in data &&
       'algorithmHiderUsage' in data &&
       'problemTagLockUsage' in data &&
       isObject(data.problemTagLockDuration) &&
@@ -28,6 +29,7 @@ export const isHiderOptionsResponse = (
       typeof data.problemTagLockDuration.minutes === 'number' &&
       typeof data.shouldHideTier === 'boolean' &&
       typeof data.shouldWarnHighTier === 'boolean' &&
+      typeof data.shouldRevealTierOnHover === 'boolean' &&
       isRatedTier(data.warnTier) &&
       typeof data.algorithmHiderUsage === 'string' &&
       ['click', 'always'].includes(data.algorithmHiderUsage) &&

@@ -3,7 +3,6 @@ import Fieldset from '@/components/common/Fieldset';
 import TierSelect from '@/components/TierSelect';
 import Text from '@/components/common/Text';
 import ProblemTagLockTimer from '@/components/ProblemTagLockTimer';
-import TextLink from '@/components/common/TextLink';
 import { ToolsIcon } from '@/assets/svg';
 import { hiddenTierBadgeIcon } from '@/assets/png';
 import useHiderFieldsetMenu from '@/hooks/algorithm/useHiderFieldsetMenu';
@@ -14,12 +13,14 @@ const HiderFieldsetMenu = () => {
     problemTagLockDuration,
     shouldHideTier,
     shouldWarnHighTier,
+    shouldRevealTierOnHover,
     warnTier,
     algorithmHiderUsage,
     problemTagLockUsage,
     updateProblemTagLockDuration,
     updateShouldHideTier,
     updateShouldWarnHighTier,
+    updateShouldRevealTierOnHover,
     updateWarnTier,
     updateAlgorithmHiderUsage,
     updateProblemTagLockUsage,
@@ -72,13 +73,17 @@ const HiderFieldsetMenu = () => {
         checkedValue={shouldWarnHighTier ? 'true' : 'false'}
         onChange={updateShouldWarnHighTier}
       />
-      <Text type="normal" fontSize="14px">
-        티어 가리개를 사용하기 위해서는 백준의{' '}
-        <TextLink href="https://www.acmicpc.net/setting/view" fontSize="14px">
-          설정 페이지
-        </TextLink>
-        에서 [보기] - [solved.ac 티어]가 "보기"로 설정되어 있어야 합니다.
-      </Text>
+      <Fieldset
+        legend="티어 아이콘에 마우스를 올릴 경우 난이도 공개하기"
+        name="shouldRevealTierOnHover"
+        disabled={!shouldHideTier}
+        options={[
+          { label: '공개', value: 'true' },
+          { label: '공개하지 않음', value: 'false' },
+        ]}
+        checkedValue={shouldRevealTierOnHover ? 'true' : 'false'}
+        onChange={updateShouldRevealTierOnHover}
+      />
       <MenuTitle title="기본 설정" iconSrc={<ToolsIcon />} />
       <Fieldset
         legend="알고 있는 알고리즘만으로 문제를 풀 수 있는지의 여부 공개 방법"

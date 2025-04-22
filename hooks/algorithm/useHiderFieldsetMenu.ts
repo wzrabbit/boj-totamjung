@@ -13,6 +13,7 @@ const fallbackHiderOptions = {
   },
   shouldHideTier: undefined,
   shouldWarnHighTier: undefined,
+  shouldRevealTierOnHover: undefined,
   warnTier: 1 as const,
   algorithmHiderUsage: undefined,
   problemTagLockUsage: undefined,
@@ -99,6 +100,20 @@ const useHiderFieldsetMenu = () => {
     });
   };
 
+  const updateShouldRevealTierOnHover = (
+    shouldRevealTierOnHoverString: string,
+  ) => {
+    const shouldRevealTierOnHover = shouldRevealTierOnHoverString === 'true';
+
+    setHiderOptionsState((prev) => {
+      if (!prev.isLoaded) {
+        return prev;
+      }
+
+      return { ...prev, shouldRevealTierOnHover };
+    });
+  };
+
   const updateWarnTier = (warnTier: RatedTier) => {
     setHiderOptionsState((prev) => {
       if (!prev.isLoaded) {
@@ -145,6 +160,7 @@ const useHiderFieldsetMenu = () => {
     updateProblemTagLockDuration,
     updateShouldHideTier,
     updateShouldWarnHighTier,
+    updateShouldRevealTierOnHover,
     updateWarnTier,
     updateAlgorithmHiderUsage,
     updateProblemTagLockUsage,

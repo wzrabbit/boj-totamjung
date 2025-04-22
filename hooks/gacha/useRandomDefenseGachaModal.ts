@@ -170,10 +170,12 @@ const useRandomDefenseGachaModal = (
 
   const saveGachaResultToStorage = () => {
     const currentIsoString = new Date().toISOString();
-    const randomDefenseHistoryInfos = problemInfos.map((problemInfo) => ({
-      ...problemInfo,
-      createdAt: currentIsoString,
-    }));
+    const randomDefenseHistoryInfos = problemInfos
+      .map((problemInfo) => ({
+        ...problemInfo,
+        createdAt: currentIsoString,
+      }))
+      .reverse();
 
     browser.runtime.sendMessage({
       command: COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS,

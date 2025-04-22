@@ -1,7 +1,7 @@
 import MenuTitle from '@/components/MenuTitle';
 import Fieldset from '@/components/common/Fieldset';
 import { FontIcon } from '@/assets/svg';
-import UseAppearanceFieldsetMenu from '@/hooks/appearance/useAppearanceFieldsetMenu';
+import useAppearanceFieldsetMenu from '@/hooks/appearance/useAppearanceFieldsetMenu';
 import * as S from './AppearanceFieldsetMenu.styled';
 
 const FONT_INFOS = [
@@ -44,7 +44,7 @@ const FONT_INFOS = [
 
 const AppearanceFieldsetMenu = () => {
   const { totamjungTheme, fontNo, updateTotamjungTheme, updateFontNo } =
-    UseAppearanceFieldsetMenu();
+    useAppearanceFieldsetMenu();
 
   return (
     <S.Container>

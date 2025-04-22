@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { HiderOptionsResponse } from '@/types/algorithm';
+import type { HiderOptions } from '@/types/algorithm';
 import { RatedTier } from '@/types/tierHider';
 import {
   fetchHiderOptions,
@@ -19,15 +19,13 @@ const fallbackHiderOptions = {
   problemTagLockUsage: undefined,
 };
 
-type HiderOptionsState =
-  | HiderOptionsReadyResponse
-  | HiderOptionsNotReadyResponse;
+type HiderOptionsState = HiderOptionsReadyState | HiderOptionsNotReadyState;
 
-type HiderOptionsReadyResponse = {
+type HiderOptionsReadyState = {
   isLoaded: true;
-} & HiderOptionsResponse;
+} & HiderOptions;
 
-type HiderOptionsNotReadyResponse = {
+type HiderOptionsNotReadyState = {
   isLoaded: false;
 } & typeof fallbackHiderOptions;
 

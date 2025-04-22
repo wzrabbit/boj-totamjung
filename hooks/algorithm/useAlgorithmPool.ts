@@ -9,14 +9,14 @@ import {
 
 const useAlgorithmPool = () => {
   const [keyword, setKeyword] = useState('');
-  const [checkedIds, setCheckedIds] = useState<number[]>([]);
+  const [checkedAlgorithmIds, setCheckedAlgorithmIds] = useState<number[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const response = await fetchCheckedAlgorithmIds();
+      const checkedAlgorithmIds = await fetchCheckedAlgorithmIds();
 
-      setCheckedIds(response.checkedIds);
+      setCheckedAlgorithmIds(checkedAlgorithmIds);
       setIsLoaded(true);
     })();
   }, []);
@@ -26,32 +26,34 @@ const useAlgorithmPool = () => {
       return;
     }
 
-    saveCheckedAlgorithmIds(checkedIds);
-  }, [checkedIds]);
+    saveCheckedAlgorithmIds(checkedAlgorithmIds);
+  }, [checkedAlgorithmIds]);
 
   const handleChangeKeyword: ChangeEventHandler<HTMLInputElement> = (event) => {
     setKeyword(event.target.value);
   };
 
   const toggleAlgorithm = (id: number) => {
-    if (checkedIds.includes(id)) {
-      const newCheckedIds = checkedIds.filter((checkedId) => checkedId !== id);
-      setCheckedIds(newCheckedIds);
+    if (checkedAlgorithmIds.includes(id)) {
+      const newCheckedIds = checkedAlgorithmIds.filter(
+        (checkedId) => checkedId !== id,
+      );
+      setCheckedAlgorithmIds(newCheckedIds);
       return;
     }
 
-    const newCheckedIds = [...checkedIds, id];
-    setCheckedIds(newCheckedIds);
+    const newCheckedIds = [...checkedAlgorithmIds, id];
+    setCheckedAlgorithmIds(newCheckedIds);
   };
 
   const checkAllAlgorithms = () => {
-    setCheckedIds(
+    setCheckedAlgorithmIds(
       Array.from({ length: ALGORITHMS_COUNT }).map((_, index) => index + 1),
     );
   };
 
   const uncheckAllAlgorithms = () => {
-    setCheckedIds([]);
+    setCheckedAlgorithmIds([]);
   };
 
   const items = getSearchResults(keyword);
@@ -59,7 +61,7 @@ const useAlgorithmPool = () => {
   return {
     keyword,
     items,
-    checkedIds,
+    checkedAlgorithmIds,
     isLoaded,
     handleChangeKeyword,
     toggleAlgorithm,

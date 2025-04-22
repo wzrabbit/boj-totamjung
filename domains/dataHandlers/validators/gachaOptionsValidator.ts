@@ -1,9 +1,7 @@
 import { isObject } from '@/types/typeGuards';
-import type { GachaOptionsResponse } from '@/types/gacha';
+import type { GachaOptions } from '@/types/gacha';
 
-export const isGachaOptionsResponse = (
-  data: unknown,
-): data is GachaOptionsResponse => {
+export const isGachaOptions = (data: unknown): data is GachaOptions => {
   return (
     isObject(data) &&
     'isTierHidden' in data &&

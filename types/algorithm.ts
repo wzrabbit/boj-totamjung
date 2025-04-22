@@ -14,7 +14,7 @@ export interface AlgorithmInfo {
   alias: string[];
 }
 
-export interface HiderOptionsResponse {
+export interface HiderOptions {
   problemTagLockDuration: {
     hours: number;
     minutes: number;
@@ -41,15 +41,9 @@ export interface LegacySettings {
   theme: 'yes' | 'no';
 }
 
-export interface CheckedAlgorithmIdsResponse {
-  checkedIds: number[];
-}
+export type CheckedAlgorithmIds = number[];
 
 export interface Timer {
   problemId: number;
   expiresAt: IsoString;
-}
-
-export interface TimersResponse {
-  timers: Timer[];
 }

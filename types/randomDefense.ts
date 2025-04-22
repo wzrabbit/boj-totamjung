@@ -47,7 +47,7 @@ interface EmptySlot {
 
 export type Slot = FilledSlot | EmptySlot;
 
-export type QuickSlots = {
+export type Slots = {
   1: Slot;
   2: Slot;
   3: Slot;
@@ -62,15 +62,15 @@ export type QuickSlots = {
 
 export type SlotNo = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0;
 
-export interface QuickSlotsResponse {
+export interface QuickSlots {
   hotkey: Hotkey;
   selectedSlotNo: SlotNo;
-  slots: QuickSlots;
+  slots: Slots;
 }
 
-export type LegacyQuickSlotsResponse = {
+export type LegacyQuickSlots = {
   selectedNo: SlotNo;
-} & QuickSlots;
+} & Slots;
 
 interface SlotValidVerdict {
   isValid: true;
@@ -117,10 +117,10 @@ interface RandomDefenseFormDataInvalidVerdict {
 }
 
 /**
- * RepairableLegacyQuickSlotsResponse 타입은, LegacyQuickSlotsResponse보다 넓은 범위의 타입으로써, 구버전의 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
- * LegacyQuickSlotsResponse가 아니지만, RepairableLegacyQuickSlotsResponse에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
+ * RepairableLegacyQuickSlots 타입은, LegacyQuickSlots보다 넓은 범위의 타입으로써, 구버전의 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
+ * LegacyQuickSlots가 아니지만, RepairableLegacyQuickSlots에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
  */
-export interface RepairableLegacyQuickSlotsResponse {
+export interface RepairableLegacyQuickSlots {
   1: unknown;
   2: unknown;
   3: unknown;
@@ -135,16 +135,16 @@ export interface RepairableLegacyQuickSlotsResponse {
 }
 
 /**
- * RepairableQuickSlotsResponse 타입은, QuickSlotsResponse보다 넓은 범위의 타입으로써, 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
- * QuickSlotsResponse가 아니지만, RepairableQuickSlotsResponse에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
+ * RepairableQuickSlots 타입은, QuickSlots보다 넓은 범위의 타입으로써, 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
+ * QuickSlots가 아니지만, RepairableQuickSlots에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
  */
-export interface RepairableQuickSlotsResponse {
-  slots: Omit<RepairableLegacyQuickSlotsResponse, 'selectedNo'>;
+export interface RepairableQuickSlots {
+  slots: Omit<RepairableLegacyQuickSlots, 'selectedNo'>;
   hotkey?: unknown;
   selectedSlotNo?: unknown;
 }
 
-export type RandomDefenseResultResponse =
+export type RandomDefenseResult =
   | RandomDefenseFailureResult
   | RandomDefenseSuccessResult;
 

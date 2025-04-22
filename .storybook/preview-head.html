@@ -139,7 +139,7 @@
 
   const isTierHidden = false;
 
-  const quickSlotsResponse = {
+  const quickSlots = {
     selectedSlotNo: 1,
     hotkey: 'Alt',
     slots: {
@@ -179,7 +179,7 @@
     }));
   };
 
-  const hiderOptionsResponse = {
+  const hiderOptions = {
     problemTagLockDuration: {
       hours: 1,
       minutes: 30,
@@ -191,7 +191,7 @@
     problemTagLockUsage: 'click',
   };
 
-  const gachaOptionsResponse = {
+  const gachaOptions = {
     isTierHidden: false,
     isAudioMuted: true,
   };
@@ -215,15 +215,15 @@
 
         switch (command) {
           case COMMANDS.FETCH_CHECKED_ALGORITHM_IDS:
-            return { checkedIds: checkedAlgorithmIds };
+            return checkedAlgorithmIds;
           case COMMANDS.FETCH_HIDER_OPTIONS:
-            return hiderOptionsResponse;
+            return hiderOptions;
           case COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME:
             return 0;
           case COMMANDS.FETCH_QUICK_SLOTS:
-            return quickSlotsResponse;
+            return quickSlots;
           case COMMANDS.FETCH_GACHA_OPTIONS:
-            return gachaOptionsResponse;
+            return gachaOptions;
           case COMMANDS.GET_RANDOM_DEFENSE_RESULT:
             if (command.problemCount === 1) {
               return {
@@ -287,11 +287,11 @@
                 break;
 
               case STORAGE_KEY.HIDER_OPTIONS:
-                Object.assign(response, { hiderOptionsResponse });
+                Object.assign(response, { hiderOptions });
                 break;
 
               case STORAGE_KEY.QUICK_SLOTS:
-                Object.assign(response, quickSlotsResponse);
+                Object.assign(response, quickSlots);
                 break;
 
               case STORAGE_KEY.TOTAMJUNG_THEME:
@@ -299,7 +299,7 @@
                 break;
 
               case STORAGE_KEY.GACHA_OPTIONS:
-                Object.assign(response, { gachaOptionsResponse });
+                Object.assign(response, { gachaOptions });
                 break;
 
               case STORAGE_KEY.FONT_NO:

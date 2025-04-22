@@ -8,9 +8,9 @@ import {
   saveQuickSlots,
 } from '../dataHandlers/quickSlotsDataHandler';
 import { DEFAULT_QUICK_SLOTS_RESPONSE } from '@/constants/defaultValues';
-import type { QuickSlotsResponse } from '@/types/randomDefense';
+import type { QuickSlots } from '@/types/randomDefense';
 
-const validQuickSlots: QuickSlotsResponse = {
+const validQuickSlots: QuickSlots = {
   slots: {
     1: {
       isEmpty: true,

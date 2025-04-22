@@ -6,19 +6,19 @@ import { fetchHiderOptions } from './hiderOptionsDataHandler';
 import { fetchRandomDefenseHistory } from './randomDefenseHistoryDataHandler';
 import { fetchFontNo } from './fontNoDataHandler';
 import { fetchTimers } from './timersDataHandler';
-import type { OptionsDataResponse } from '@/types/options';
+import type { OptionsData } from '@/types/options';
 import { DEFAULT_EMPTY_DATA } from '@/constants/defaultValues';
-import { isOptionsDataResponse } from './validators/optionsDataValidator';
+import { isOptionsData } from './validators/optionsDataValidator';
 
-export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
+export const fetchOptionsData = async (): Promise<OptionsData> => {
   const [
-    checkedAlgorithmIdsResponse,
-    quickSlotsResponse,
-    totamjungThemeResponse,
-    hiderOptionsResponse,
+    checkedAlgorithmIds,
+    quickSlots,
+    totamjungTheme,
+    hiderOptions,
     randomDefenseHistoryResponse,
-    timersResponse,
-    fontNoResponse,
+    timers,
+    fontNo,
   ] = await Promise.all([
     fetchCheckedAlgorithmIds(),
     fetchQuickSlots(),
@@ -30,21 +30,21 @@ export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
   ]);
 
   return {
-    [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIdsResponse.checkedIds,
-    [STORAGE_KEY.QUICK_SLOTS]: quickSlotsResponse,
-    [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungThemeResponse.totamjungTheme,
-    [STORAGE_KEY.HIDER_OPTIONS]: hiderOptionsResponse,
+    [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIds,
+    [STORAGE_KEY.QUICK_SLOTS]: quickSlots,
+    [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,
+    [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]:
       randomDefenseHistoryResponse.randomDefenseHistory,
     [STORAGE_KEY.IS_TIER_HIDDEN]: randomDefenseHistoryResponse.isHidden,
-    [STORAGE_KEY.FONT_NO]: fontNoResponse['fontNo'],
-    [STORAGE_KEY.TIMERS]: timersResponse['timers'],
+    [STORAGE_KEY.FONT_NO]: fontNo,
+    [STORAGE_KEY.TIMERS]: timers,
     [STORAGE_KEY.DATA_VERSION]: 'v1.2',
   };
 };
 
 export const saveOptionsData = async (data: unknown) => {
-  if (!isOptionsDataResponse(data)) {
+  if (!isOptionsData(data)) {
     return false;
   }
 

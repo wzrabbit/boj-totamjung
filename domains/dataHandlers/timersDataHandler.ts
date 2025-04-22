@@ -2,17 +2,13 @@ import { STORAGE_KEY } from '@/constants/commands';
 import { sanitizeTimers } from './sanitizers/timersSanitizer';
 import { fetchHiderOptions } from './hiderOptionsDataHandler';
 import { isTimers } from './validators/isTimersValidator';
-import type { TimersResponse } from '@/types/algorithm';
+import type { Timer } from '@/types/algorithm';
 
-export const fetchTimers = async (): Promise<TimersResponse> => {
+export const fetchTimers = async (): Promise<Timer[]> => {
   const data = await browser.storage.local.get(STORAGE_KEY.TIMERS);
   const timers = data[STORAGE_KEY.TIMERS];
 
-  const sanitizedTimers = sanitizeTimers(timers);
-
-  return {
-    [STORAGE_KEY.TIMERS]: sanitizedTimers,
-  };
+  return sanitizeTimers(timers);
 };
 
 export const saveTimers = async (timers: unknown) => {
@@ -26,7 +22,7 @@ export const saveTimers = async (timers: unknown) => {
 };
 
 export const getRemainingLockTimeByProblemId = async (problemId: number) => {
-  const { timers } = await fetchTimers();
+  const timers = await fetchTimers();
   const expiryIsoTime = timers.find(
     (timer) => timer.problemId === problemId,
   )?.expiresAt;
@@ -56,7 +52,7 @@ export const getRemainingLockTimeByProblemId = async (problemId: number) => {
 };
 
 export const addSingleTimerByProblemId = async (problemId: number) => {
-  const { timers } = await fetchTimers();
+  const timers = await fetchTimers();
   const { problemTagLockDuration } = await fetchHiderOptions();
 
   const lockTimesInMilliseconds =
@@ -75,7 +71,7 @@ export const addSingleTimerByProblemId = async (problemId: number) => {
 };
 
 export const removeSingleTimerByProblemId = async (problemId: number) => {
-  const { timers } = await fetchTimers();
+  const timers = await fetchTimers();
   const newTimers = timers.filter((timer) => timer.problemId !== problemId);
 
   browser.storage.local.set({

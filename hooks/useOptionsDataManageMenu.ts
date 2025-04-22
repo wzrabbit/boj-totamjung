@@ -5,8 +5,8 @@ import {
 } from '@/domains/dataHandlers/optionsDataHandler';
 import type { ChangeEventHandler } from 'react';
 import { extractTotamjungDataFile } from '@/domains/extractTotamjungDataFile';
-import { isOptionsDataResponse } from '@/domains/dataHandlers/validators/optionsDataValidator';
-import type { OptionsDataResponse } from '@/types/options';
+import { isOptionsData } from '@/domains/dataHandlers/validators/optionsDataValidator';
+import type { OptionsData } from '@/types/options';
 
 interface ErrorInfo {
   errorTitle: string;
@@ -17,9 +17,9 @@ type ActiveModal = 'none' | 'extract' | 'upload' | 'reset' | 'error';
 
 const useOptionsDataManageMenu = () => {
   const [activeModal, setActiveModal] = useState<ActiveModal>('none');
-  const [saveFileData, setSaveFileData] = useState<
-    OptionsDataResponse | undefined
-  >(undefined);
+  const [saveFileData, setSaveFileData] = useState<OptionsData | undefined>(
+    undefined,
+  );
   const [errorInfo, setErrorInfo] = useState({
     errorTitle: '',
     errorMessage: '',
@@ -109,7 +109,7 @@ const useOptionsDataManageMenu = () => {
           return;
         }
 
-        if (!isOptionsDataResponse(saveFileJson)) {
+        if (!isOptionsData(saveFileJson)) {
           displayErrorModal({
             errorTitle: '데이터를 업로드하지 못했습니다',
             errorMessage:

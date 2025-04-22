@@ -13,7 +13,7 @@ const meta = {
     items: {
       description: '알고리즘 분류에 대한 정보로 이루어진 항목들입니다.',
     },
-    checkedIds: {
+    checkedAlgorithmIds: {
       description: '사용자가 체크해 둔 알고리즘 분류의 ID 목록입니다.',
     },
     onChange: {
@@ -70,12 +70,12 @@ const items: Algorithm[] = [
   },
 ];
 
-const checkedIds = [1, 3, 6, 10];
+const checkedAlgorithmIds = [1, 3, 6, 10];
 
 export const Default: Story = {
   args: {
     items,
-    checkedIds,
+    checkedAlgorithmIds,
     onChange: fn(),
   },
 };

@@ -1,15 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { DEFAULT_QUICK_SLOTS_RESPONSE } from '@/constants/defaultValues';
-import { isQuickSlotsResponse } from '@/domains/dataHandlers/validators/quickSlotsValidator';
-import { isRandomDefenseResultResponse } from '@/domains/dataHandlers/validators/RandomDefenseResultResponseValidator';
+import { isQuickSlots } from '@/domains/dataHandlers/validators/quickSlotsValidator';
+import { isRandomDefenseResult } from '@/domains/dataHandlers/validators/RandomDefenseResultValidator';
 import useHotKeyLongPress from '../useHotkeyLongPress';
 import type { ToastInfo } from '@/types/toast';
-import type {
-  FilledSlot,
-  QuickSlotsResponse,
-  SlotNo,
-} from '@/types/randomDefense';
+import type { FilledSlot, QuickSlots, SlotNo } from '@/types/randomDefense';
 import type { Storage } from 'wxt/browser';
 
 interface UseRandomDefenseParams {
@@ -22,11 +18,9 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   const [isRandomDefenseAvailable, setIsRandomDefenseAvailable] =
     useState(false);
   const isRandomDefenseAvailableRef = useRef(isRandomDefenseAvailable);
-  const quickSlotsResponseRef = useRef<QuickSlotsResponse>(
-    DEFAULT_QUICK_SLOTS_RESPONSE,
-  );
+  const quickSlotsRef = useRef<QuickSlots>(DEFAULT_QUICK_SLOTS_RESPONSE);
   useHotKeyLongPress({
-    baseKey: quickSlotsResponseRef.current.hotkey,
+    baseKey: quickSlotsRef.current.hotkey,
     requiredLongPressTimeInMilliseconds: 1000,
     onPress: (numberKey) => performRandomDefense(numberKey, 'press'),
     onLongPress: (numberKey) => performRandomDefense(numberKey, 'keyLongPress'),
@@ -38,11 +32,11 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
         command: COMMANDS.FETCH_QUICK_SLOTS,
       });
 
-      if (!isQuickSlotsResponse(response)) {
+      if (!isQuickSlots(response)) {
         return;
       }
 
-      quickSlotsResponseRef.current = response;
+      quickSlotsRef.current = response;
       isRandomDefenseAvailableRef.current = true;
       setIsRandomDefenseAvailable(true);
     };
@@ -65,11 +59,11 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
 
     const { newValue } = changes.quickSlots;
 
-    if (!isQuickSlotsResponse(newValue)) {
+    if (!isQuickSlots(newValue)) {
       return;
     }
 
-    quickSlotsResponseRef.current = newValue;
+    quickSlotsRef.current = newValue;
   };
 
   const performRandomDefense = async (
@@ -83,7 +77,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     isRandomDefenseAvailableRef.current = false;
     setIsRandomDefenseAvailable(false);
 
-    const { slots } = quickSlotsResponseRef.current;
+    const { slots } = quickSlotsRef.current;
     const selectedSlot = slots[selectedSlotNo];
 
     if (selectedSlot.isEmpty) {
@@ -111,13 +105,13 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       return;
     }
 
-    const randomDefenseResultResponse = await browser.runtime.sendMessage({
+    const randomDefenseResult = await browser.runtime.sendMessage({
       command: COMMANDS.GET_RANDOM_DEFENSE_RESULT,
       query: selectedSlot.query,
       problemCount: 1,
     });
 
-    if (!isRandomDefenseResultResponse(randomDefenseResultResponse)) {
+    if (!isRandomDefenseResult(randomDefenseResult)) {
       onToast(
         {
           title: '데이터 불일치가 발견되었습니다.',
@@ -131,8 +125,8 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       return;
     }
 
-    if (!randomDefenseResultResponse.success) {
-      const { errorMessage, errorDescriptions } = randomDefenseResultResponse;
+    if (!randomDefenseResult.success) {
+      const { errorMessage, errorDescriptions } = randomDefenseResult;
 
       onToast(
         {
@@ -147,7 +141,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       return;
     }
 
-    const { problemInfos } = randomDefenseResultResponse;
+    const { problemInfos } = randomDefenseResult;
     const { problemId } = problemInfos[0];
 
     browser.runtime.sendMessage({
@@ -164,12 +158,12 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   };
 
   const performRandomDefenseByClick = () => {
-    performRandomDefense(quickSlotsResponseRef.current.selectedSlotNo, 'click');
+    performRandomDefense(quickSlotsRef.current.selectedSlotNo, 'click');
   };
 
   const performRandomDefenseByMouseLongPress = () => {
     performRandomDefense(
-      quickSlotsResponseRef.current.selectedSlotNo,
+      quickSlotsRef.current.selectedSlotNo,
       'mouseLongPress',
     );
   };

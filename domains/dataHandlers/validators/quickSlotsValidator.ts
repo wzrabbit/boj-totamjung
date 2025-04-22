@@ -1,10 +1,10 @@
 import { isNumericObject, isObject } from '@/types/typeGuards';
 import type {
   Hotkey,
-  LegacyQuickSlotsResponse,
-  QuickSlotsResponse,
-  RepairableLegacyQuickSlotsResponse,
-  RepairableQuickSlotsResponse,
+  LegacyQuickSlots,
+  QuickSlots,
+  RepairableLegacyQuickSlots,
+  RepairableQuickSlots,
   Slot,
   SlotNo,
 } from '@/types/randomDefense';
@@ -42,9 +42,7 @@ export const isSlotNo = (data: unknown): data is SlotNo => {
   return [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].includes(data);
 };
 
-export const isQuickSlotsResponse = (
-  data: unknown,
-): data is QuickSlotsResponse => {
+export const isQuickSlots = (data: unknown): data is QuickSlots => {
   if (
     !(
       isObject(data) &&
@@ -70,9 +68,7 @@ export const isQuickSlotsResponse = (
   );
 };
 
-export const isLegacyQuickSlotsResponse = (
-  data: unknown,
-): data is LegacyQuickSlotsResponse => {
+export const isLegacyQuickSlots = (data: unknown): data is LegacyQuickSlots => {
   if (
     !(
       isObject(data) &&
@@ -98,17 +94,17 @@ export const isLegacyQuickSlotsResponse = (
   );
 };
 
-export const isRepairableLegacyQuickSlotsResponse = (
+export const isRepairableLegacyQuickSlots = (
   data: unknown,
-): data is RepairableLegacyQuickSlotsResponse => {
+): data is RepairableLegacyQuickSlots => {
   return (
     isObject(data) && Array.from({ length: 10 }).every((_, key) => key in data)
   );
 };
 
-export const isRepairableQuickSlotsResponse = (
+export const isRepairableQuickSlots = (
   data: unknown,
-): data is RepairableQuickSlotsResponse => {
+): data is RepairableQuickSlots => {
   if (!isObject(data) || !('slots' in data)) {
     return false;
   }

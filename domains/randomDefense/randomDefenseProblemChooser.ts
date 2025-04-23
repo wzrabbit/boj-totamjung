@@ -1,9 +1,10 @@
 import { isSolvedAcSearchProblemResponse } from '@/domains/dataHandlers/validators/solvedAcSearchProblemResponseValidator';
-import { RandomDefenseResultResponse } from '@/types/randomDefense';
+import type { RandomDefenseResult } from '@/types/randomDefense';
 
 export const getRandomDefenseResult = async (
   query: string,
-): Promise<RandomDefenseResultResponse> => {
+  problemCount: number,
+): Promise<RandomDefenseResult> => {
   try {
     const response = await fetch(
       `https://solved.ac/api/v3/search/problem?query=${encodeURIComponent(
@@ -71,12 +72,13 @@ export const getRandomDefenseResult = async (
       };
     }
 
-    const { count, items } = parsedResponse;
+    const { items } = parsedResponse;
+    const count = items.length;
 
     if (count === 0) {
       return {
         success: false,
-        errorMessage: '해당 추첨의 쿼리를 만족하는 문제가 없습니다.',
+        errorMessage: '추첨 조건을 만족하는 문제가 없습니다.',
         errorDescriptions: [
           '쿼리에 오타가 있는 지 확인해 보세요.',
           '다른 주제의 쿼리나, 좀 더 넓은 검색범위의 쿼리를 사용해 보세요.',
@@ -84,16 +86,38 @@ export const getRandomDefenseResult = async (
       };
     }
 
+    if (count < problemCount) {
+      return {
+        success: false,
+        errorMessage: '추첨 조건을 만족하는 문제가 부족합니다.',
+        errorDescriptions: [
+          `검색된 문제 수가 총 ${count}문제로, 요청하신 ${problemCount}문제보다 더 적어 추첨을 진행하지 못했습니다.`,
+          `더 넓은 검색범위의 쿼리를 사용해 보시거나, 추첨할 문제 수를 ${count}문제 이하로 줄여보세요.`,
+        ],
+      };
+    }
+
+    const problemInfos = items.slice(0, problemCount).map((item) => {
+      const { problemId, titleKo, level, isLevelLocked } = item;
+
+      return {
+        problemId,
+        title: titleKo,
+        tier: level === 0 && isLevelLocked ? 31 : level,
+      };
+    });
+
     return {
       success: true,
-      problemInfo: items[0],
+      problemInfos,
     };
   } catch (error) {
     return {
       success: false,
       errorMessage: '문제 추첨 중 에러가 발생했습니다.',
       errorDescriptions: [
-        '네트워크 연결이 불안정한 것 같습니다. 네트워크 연결이 원활한지 확인해 주세요.',
+        '네트워크 연결이 불안정한 것이 원인일 수 있습니다. 네트워크 연결이 원활한지 확인해 주세요.',
+        '네트워크에 문제가 없다면, 솔브드의 API 서버가 일시적으로 불안정한 것이 원인일 수 있습니다. 이 경우 잠시 후 다시 시도해보세요.',
       ],
     };
   }

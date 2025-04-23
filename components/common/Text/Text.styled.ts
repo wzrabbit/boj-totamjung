@@ -1,7 +1,7 @@
 import { styled, css } from 'styled-components';
 
 export const Text = styled.p<{
-  $type: 'primary' | 'semiPrimary' | 'normal' | 'code';
+  $type: 'primary' | 'semiPrimary' | 'normal' | 'gray' | 'darkGray' | 'code';
   $fontSize: '16px' | '14px' | '13px';
   $textAlign: 'left' | 'center' | 'right';
 }>`
@@ -12,6 +12,7 @@ export const Text = styled.p<{
   ${({ theme, $type }) => {
     if ($type === 'primary') {
       return css`
+        font-family: Pretendard;
         color: ${theme.color.GOLD};
         font-weight: 600;
       `;
@@ -19,7 +20,22 @@ export const Text = styled.p<{
 
     if ($type === 'semiPrimary') {
       return css`
+        font-family: Pretendard;
         color: ${theme.color.LEMON};
+      `;
+    }
+
+    if ($type === 'gray') {
+      return css`
+        font-family: Pretendard;
+        color: ${theme.color.LIGHT_GRAY};
+      `;
+    }
+
+    if ($type === 'darkGray') {
+      return css`
+        font-family: Pretendard;
+        color: ${theme.color.DARK_GRAY};
       `;
     }
 
@@ -31,6 +47,7 @@ export const Text = styled.p<{
     }
 
     return css`
+      font-family: Pretendard;
       color: ${theme.color.WHITE};
     `;
   }}

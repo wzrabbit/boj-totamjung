@@ -1,21 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
-import type { HiderOptionsResponse } from '@/types/algorithm';
+import type { HiderOptions } from '@/types/algorithm';
 import { $, $$ } from '@/utils/querySelector';
 import useLockTimer from './useLockTimer';
 import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
 import { COMMANDS } from '@/constants/commands';
-import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 
 interface UseInjectedProblemTags {
-  checkedIds: number[] | undefined;
-  hiderOptions: HiderOptionsResponse | undefined;
+  checkedAlgorithmIds: number[] | undefined;
+  hiderOptions: HiderOptions | undefined;
 }
 
 /**
  * 이 커스텀 훅은 BOJ의 알고리즘 분류의 정보를 가져오고 제어할 수 있는 커스텀 훅입니다.
  */
 const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
-  const { checkedIds, hiderOptions } = params;
+  const { checkedAlgorithmIds, hiderOptions } = params;
   const {
     isTimerRunning,
     timerDisplayText,
@@ -47,7 +47,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
   }, []);
 
   useEffect(() => {
-    if (!checkedIds || !hiderOptions) {
+    if (!checkedAlgorithmIds || !hiderOptions) {
       return;
     }
 
@@ -94,7 +94,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
 
         if (
           currentAlgorithmId === undefined ||
-          !checkedIds.includes(currentAlgorithmId)
+          !checkedAlgorithmIds.includes(currentAlgorithmId)
         ) {
           hasUnknownAlgorithms = true;
           unknownAlgorithmIndexes.push(index);
@@ -134,10 +134,21 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
 
     spoilerButtonRef.current?.addEventListener('click', openSpoiler);
 
+    if (spoilerButtonRef.current) {
+      if (isTimerRunning) {
+        spoilerButtonRef.current.style.cursor = 'not-allowed';
+        spoilerButtonRef.current.style.textDecorationColor = 'transparent';
+        return;
+      }
+
+      spoilerButtonRef.current.style.cursor = 'pointer';
+      spoilerButtonRef.current.style.textDecorationColor = 'inherit';
+    }
+
     return () => {
       spoilerButtonRef.current?.removeEventListener('click', openSpoiler);
     };
-  }, [checkedIds, hiderOptions, isTimerRunning, isHighlighted]);
+  }, [checkedAlgorithmIds, hiderOptions, isTimerRunning, isHighlighted]);
 
   useEffect(() => {
     if (!spoilerButtonRef.current) {
@@ -159,7 +170,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
       command: COMMANDS.FETCH_HIDER_OPTIONS,
     });
 
-    if (!isHiderOptionsResponse(hiderOptions)) {
+    if (!isHiderOptions(hiderOptions)) {
       return;
     }
 

@@ -13,9 +13,7 @@ describe('Test #1 - 테마 불러오기', () => {
         .spyOn(browser.storage.local, 'get')
         .mockImplementation(() => Promise.resolve({ totamjungTheme }));
 
-      expect(await fetchTotamjungTheme()).toEqual({
-        totamjungTheme,
-      });
+      expect(await fetchTotamjungTheme()).toEqual(totamjungTheme);
     },
   );
 });
@@ -30,9 +28,7 @@ describe('Test #2 - 유효하지 않은 테마 값을 불러왔을 때 대응하
         .spyOn(browser.storage.local, 'get')
         .mockImplementation(() => Promise.resolve({ totamjungTheme }));
 
-      expect(await fetchTotamjungTheme()).toEqual({
-        totamjungTheme: 'none',
-      });
+      expect(await fetchTotamjungTheme()).toEqual('none');
     },
   );
 });

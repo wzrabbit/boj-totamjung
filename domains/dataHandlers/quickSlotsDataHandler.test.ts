@@ -7,10 +7,10 @@ import {
   fetchQuickSlots,
   saveQuickSlots,
 } from '../dataHandlers/quickSlotsDataHandler';
-import { DEFAULT_QUICK_SLOTS_RESPONSE } from '@/constants/defaultValues';
-import type { QuickSlotsResponse } from '@/types/randomDefense';
+import { DEFAULT_QUICK_SLOTS } from '@/constants/defaultValues';
+import type { QuickSlots } from '@/types/randomDefense';
 
-const validQuickSlots: QuickSlotsResponse = {
+const validQuickSlots: QuickSlots = {
   slots: {
     1: {
       isEmpty: true,
@@ -260,7 +260,7 @@ describe('Test #2 - 유효하지 않은 퀵슬롯 정보를 불러올 경우 대
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS_RESPONSE);
+    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS);
   });
 
   test('slots 프로퍼티를 찾을 수 없는 경우, 복구가 불가능한 것으로 판정하고, 초기 데이터를 반환해야 한다.', async () => {
@@ -275,7 +275,7 @@ describe('Test #2 - 유효하지 않은 퀵슬롯 정보를 불러올 경우 대
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS_RESPONSE);
+    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS);
   });
 
   test('데이터가 오브젝트 형태가 아닌 경우, 복구가 불가능한 것으로 판정하고, 초기 데이터를 반환해야 한다.', async () => {
@@ -287,7 +287,7 @@ describe('Test #2 - 유효하지 않은 퀵슬롯 정보를 불러올 경우 대
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS_RESPONSE);
+    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS);
   });
 });
 

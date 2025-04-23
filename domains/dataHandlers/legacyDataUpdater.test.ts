@@ -1,18 +1,25 @@
 import { STORAGE_KEY } from '@/constants/commands';
 import { updateAllLegacyData } from './legacyDataUpdater';
 import {
+  convertV1ToV2OptionsData,
+  convertV2ToLatestOptionsData,
+} from './converters/legacyToLatestOptionsDataConverter';
+import {
   DEFAULT_CHECKED_ALGORITHM_IDS,
   DEFAULT_FONT_NO,
+  DEFAULT_GACHA_OPTIONS,
   DEFAULT_HIDER_OPTIONS,
   DEFAULT_IS_TIER_HIDDEN,
-  DEFAULT_QUICK_SLOTS_RESPONSE,
+  DEFAULT_QUICK_SLOTS,
   DEFAULT_RANDOM_DEFENSE_HISTORY,
   DEFAULT_TIMERS,
   DEFAULT_TOTAMJUNG_THEME,
 } from '@/constants/defaultValues';
+import { V2 } from '@/types/legacyData';
+import { OptionsData } from '@/types/options';
 
-describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하기', () => {
-  test('구버전 데이터가 올바를 경우 온전하게 최신 버전 데이터로 변환하여 저장을 진행해야 한다.', async () => {
+describe('Test #1 - 데이터 변환 테스트', () => {
+  test('1버전 데이터가 올바를 경우 온전하게 2버전 데이터로 변환하여 값을 반환해야 한다.', async () => {
     const legacySyncData = {
       algorithm: [1, 2, 4, 7, 14, 156, 171, 194, 200, 1234],
       query: {
@@ -105,9 +112,9 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
       ],
     };
 
-    const expected = {
+    const expected: V2.OptionsData = {
       checkedAlgorithmIds: [1, 2, 4, 7, 14, 156, 171, 194, 200, 1234],
-      dataVersion: 'v1.2',
+      dataVersion: 2,
       hiderOptions: {
         algorithmHiderUsage: 'always',
         problemTagLockDuration: { hours: 1, minutes: 30 },
@@ -152,10 +159,40 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
       },
       randomDefenseHistory: [
         {
-          createdAt: '2024-06-12T09:25:01.000Z',
-          problemId: 24141,
-          tier: 12,
-          title: 'インフルエンザ (Flu)',
+          createdAt: '2024-06-30T13:34:10.000Z',
+          problemId: 1036,
+          tier: 15,
+          title: '36진수',
+        },
+        {
+          createdAt: '2024-06-28T11:33:36.000Z',
+          problemId: 29063,
+          tier: 0,
+          title: 'Телепорты',
+        },
+        {
+          createdAt: '2024-06-12T13:51:23.000Z',
+          problemId: 28050,
+          tier: 18,
+          title: 'Kind Baker',
+        },
+        {
+          createdAt: '2024-06-12T13:44:54.000Z',
+          problemId: 30513,
+          tier: 21,
+          title: '하이퍼 삼각형 자르기',
+        },
+        {
+          createdAt: '2024-06-12T12:49:04.000Z',
+          problemId: 23912,
+          tier: 18,
+          title: 'Locked Doors',
+        },
+        {
+          createdAt: '2024-06-12T12:48:56.000Z',
+          problemId: 5751,
+          tier: 3,
+          title: 'Head or Tail',
         },
         {
           createdAt: '2024-06-12T11:26:43.000Z',
@@ -170,46 +207,16 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
           title: 'Escape Wall Maria',
         },
         {
-          createdAt: '2024-06-12T12:48:56.000Z',
-          problemId: 5751,
-          tier: 3,
-          title: 'Head or Tail',
+          createdAt: '2024-06-12T09:25:01.000Z',
+          problemId: 24141,
+          tier: 12,
+          title: 'インフルエンザ (Flu)',
         },
         {
           createdAt: '2023-06-29T10:02:25.000Z',
           problemId: 14434,
           tier: 15,
           title: '놀이기구1',
-        },
-        {
-          createdAt: '2024-06-12T12:49:04.000Z',
-          problemId: 23912,
-          tier: 18,
-          title: 'Locked Doors',
-        },
-        {
-          createdAt: '2024-06-12T13:44:54.000Z',
-          problemId: 30513,
-          tier: 21,
-          title: '하이퍼 삼각형 자르기',
-        },
-        {
-          createdAt: '2024-06-12T13:51:23.000Z',
-          problemId: 28050,
-          tier: 18,
-          title: 'Kind Baker',
-        },
-        {
-          createdAt: '2024-06-28T11:33:36.000Z',
-          problemId: 29063,
-          tier: 0,
-          title: 'Телепорты',
-        },
-        {
-          createdAt: '2024-06-30T13:34:10.000Z',
-          problemId: 1036,
-          tier: 15,
-          title: '36진수',
         },
       ],
       timers: [
@@ -220,29 +227,267 @@ describe('Test #1 - 구버전 데이터를 최신 버전 데이터로 변환하�
       ],
       totamjungTheme: 'totamjung',
       fontNo: 19,
+      shouldShowWelcomeMessage: false,
     };
 
-    jest.clearAllMocks();
-    jest
-      .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => Promise.resolve(legacySyncData));
-    jest
-      .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() =>
-        Promise.resolve(Promise.resolve(legacyLocalData)),
-      );
-    jest
-      .spyOn(browser.storage.local, 'set')
-      .mockImplementation(() => Promise.resolve());
+    expect(convertV1ToV2OptionsData(legacySyncData, legacyLocalData)).toEqual(
+      expected,
+    );
+  });
 
-    await updateAllLegacyData();
+  test('2버전 데이터가 올바른 경우 온전하게 최신 버전의 데이터로 변환하여 값을 반환해야 한다.', async () => {
+    const legacyData: V2.OptionsData = {
+      checkedAlgorithmIds: [1, 2, 4, 7, 14, 156, 171, 194, 200, 1234],
+      dataVersion: 2,
+      hiderOptions: {
+        algorithmHiderUsage: 'always',
+        problemTagLockDuration: { hours: 1, minutes: 30 },
+        problemTagLockUsage: 'click',
+        shouldHideTier: false,
+        shouldWarnHighTier: false,
+        warnTier: 1,
+      },
+      isTierHidden: false,
+      quickSlots: {
+        hotkey: 'Alt',
+        selectedSlotNo: 5,
+        slots: {
+          1: {
+            isEmpty: false,
+            query: 'tier:1..30 solvable:true',
+            title: 'All Random',
+          },
+          2: {
+            isEmpty: false,
+            query:
+              'tier:1..30 solvable:true (tag:number_theory|tag:dp|tag:bruteforcing|tag:arithmetic|tag:data_structures)',
+            title: '대충 만든 추첨',
+          },
+          3: { isEmpty: true },
+          4: {
+            isEmpty: false,
+            query: 'tier:0..0 solvable:true ',
+            title: '추첨 4',
+          },
+          '5': {
+            isEmpty: false,
+            query: 'tier:s1..g4 ratable:true solvable:true 수열',
+            title: '직접 만든 쿼리',
+          },
+          6: { isEmpty: true },
+          7: { isEmpty: true },
+          8: { isEmpty: true },
+          9: { isEmpty: true },
+          0: { isEmpty: true },
+        },
+      },
+      randomDefenseHistory: [
+        {
+          createdAt: '2024-06-30T13:34:10.000Z',
+          problemId: 1036,
+          tier: 15,
+          title: '36진수',
+        },
+        {
+          createdAt: '2024-06-28T11:33:36.000Z',
+          problemId: 29063,
+          tier: 0,
+          title: 'Телепорты',
+        },
+        {
+          createdAt: '2024-06-12T13:51:23.000Z',
+          problemId: 28050,
+          tier: 18,
+          title: 'Kind Baker',
+        },
+        {
+          createdAt: '2024-06-12T13:44:54.000Z',
+          problemId: 30513,
+          tier: 21,
+          title: '하이퍼 삼각형 자르기',
+        },
+        {
+          createdAt: '2024-06-12T12:49:04.000Z',
+          problemId: 23912,
+          tier: 18,
+          title: 'Locked Doors',
+        },
+        {
+          createdAt: '2024-06-12T12:48:56.000Z',
+          problemId: 5751,
+          tier: 3,
+          title: 'Head or Tail',
+        },
+        {
+          createdAt: '2024-06-12T11:26:43.000Z',
+          problemId: 15494,
+          tier: 4,
+          title: 'Davor',
+        },
+        {
+          createdAt: '2024-06-12T10:23:40.000Z',
+          problemId: 24819,
+          tier: 10,
+          title: 'Escape Wall Maria',
+        },
+        {
+          createdAt: '2024-06-12T09:25:01.000Z',
+          problemId: 24141,
+          tier: 12,
+          title: 'インフルエンザ (Flu)',
+        },
+        {
+          createdAt: '2023-06-29T10:02:25.000Z',
+          problemId: 14434,
+          tier: 15,
+          title: '놀이기구1',
+        },
+      ],
+      timers: [
+        {
+          problemId: 1234,
+          expiresAt: '3024-10-09T15:35:32.677Z',
+        },
+        {
+          problemId: 5678,
+          expiresAt: '3025-10-09T15:35:32.677Z',
+        },
+      ],
+      totamjungTheme: 'totamjung',
+      fontNo: 19,
+      shouldShowWelcomeMessage: false,
+    };
 
-    expect(browser.storage.local.set).toHaveBeenCalledWith(expected);
+    const expected: OptionsData = {
+      checkedAlgorithmIds: [1, 2, 4, 7, 14, 156, 171, 194, 200, 1234],
+      dataVersion: 3,
+      hiderOptions: {
+        algorithmHiderUsage: 'always',
+        problemTagLockDuration: { hours: 1, minutes: 30 },
+        problemTagLockUsage: 'click',
+        shouldHideTier: false,
+        shouldWarnHighTier: false,
+        shouldRevealTierOnHover: false,
+        warnTier: 1,
+      },
+      isTierHidden: false,
+      quickSlots: {
+        hotkey: 'Alt',
+        selectedSlotNo: 5,
+        slots: {
+          1: {
+            isEmpty: false,
+            query: 'tier:1..30 solvable:true',
+            title: 'All Random',
+          },
+          2: {
+            isEmpty: false,
+            query:
+              'tier:1..30 solvable:true (tag:number_theory|tag:dp|tag:bruteforcing|tag:arithmetic|tag:data_structures)',
+            title: '대충 만든 추첨',
+          },
+          3: { isEmpty: true },
+          4: {
+            isEmpty: false,
+            query: 'tier:0..0 solvable:true ',
+            title: '추첨 4',
+          },
+          '5': {
+            isEmpty: false,
+            query: 'tier:s1..g4 ratable:true solvable:true 수열',
+            title: '직접 만든 쿼리',
+          },
+          6: { isEmpty: true },
+          7: { isEmpty: true },
+          8: { isEmpty: true },
+          9: { isEmpty: true },
+          0: { isEmpty: true },
+        },
+      },
+      randomDefenseHistory: [
+        {
+          createdAt: '2024-06-30T13:34:10.000Z',
+          problemId: 1036,
+          tier: 15,
+          title: '36진수',
+        },
+        {
+          createdAt: '2024-06-28T11:33:36.000Z',
+          problemId: 29063,
+          tier: 0,
+          title: 'Телепорты',
+        },
+        {
+          createdAt: '2024-06-12T13:51:23.000Z',
+          problemId: 28050,
+          tier: 18,
+          title: 'Kind Baker',
+        },
+        {
+          createdAt: '2024-06-12T13:44:54.000Z',
+          problemId: 30513,
+          tier: 21,
+          title: '하이퍼 삼각형 자르기',
+        },
+        {
+          createdAt: '2024-06-12T12:49:04.000Z',
+          problemId: 23912,
+          tier: 18,
+          title: 'Locked Doors',
+        },
+        {
+          createdAt: '2024-06-12T12:48:56.000Z',
+          problemId: 5751,
+          tier: 3,
+          title: 'Head or Tail',
+        },
+        {
+          createdAt: '2024-06-12T11:26:43.000Z',
+          problemId: 15494,
+          tier: 4,
+          title: 'Davor',
+        },
+        {
+          createdAt: '2024-06-12T10:23:40.000Z',
+          problemId: 24819,
+          tier: 10,
+          title: 'Escape Wall Maria',
+        },
+        {
+          createdAt: '2024-06-12T09:25:01.000Z',
+          problemId: 24141,
+          tier: 12,
+          title: 'インフルエンザ (Flu)',
+        },
+        {
+          createdAt: '2023-06-29T10:02:25.000Z',
+          problemId: 14434,
+          tier: 15,
+          title: '놀이기구1',
+        },
+      ],
+      timers: [
+        {
+          problemId: 1234,
+          expiresAt: '3024-10-09T15:35:32.677Z',
+        },
+        {
+          problemId: 5678,
+          expiresAt: '3025-10-09T15:35:32.677Z',
+        },
+      ],
+      gachaOptions: DEFAULT_GACHA_OPTIONS,
+      totamjungTheme: 'totamjung',
+      fontNo: 19,
+      shouldShowWelcomeMessage: false,
+    };
+
+    expect(convertV2ToLatestOptionsData(legacyData)).toEqual(expected);
   });
 });
 
-describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
-  test('구버전 데이터가 일부 손상되어 있다면, 복구 가능한 범위 내에서 복구한 후 저장을 진행해야 한다.', async () => {
+describe('Test #2 - 손상된 데이터 변환 테스트', () => {
+  test('손상된 1버전 데이터를 2버전 데이터로 변환할 경우 복구 가능한 범위 내에서 복구한 데이터를 반환해야 한다.', async () => {
     const legacySyncData = {
       algorithm: [
         1,
@@ -346,9 +591,9 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
       ],
     };
 
-    const expected = {
+    const expected: V2.OptionsData = {
       checkedAlgorithmIds: [1, 2, 4, 7, 14, 171, 194, 200, 1234],
-      dataVersion: 'v1.2',
+      dataVersion: 2,
       hiderOptions: {
         algorithmHiderUsage: 'always',
         problemTagLockDuration: { hours: 0, minutes: 20 },
@@ -391,6 +636,12 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
       },
       randomDefenseHistory: [
         {
+          createdAt: '2024-06-12T12:49:04.000Z',
+          problemId: 23912,
+          tier: 18,
+          title: 'Locked Doors',
+        },
+        {
           createdAt: '2024-06-12T11:26:43.000Z',
           problemId: 15494,
           tier: 4,
@@ -402,37 +653,19 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
           tier: 10,
           title: 'Escape Wall Maria',
         },
-        {
-          createdAt: '2024-06-12T12:49:04.000Z',
-          problemId: 23912,
-          tier: 18,
-          title: 'Locked Doors',
-        },
       ],
       timers: [],
       totamjungTheme: 'none',
+      shouldShowWelcomeMessage: false,
       fontNo: 3,
     };
 
-    jest.clearAllMocks();
-    jest
-      .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => Promise.resolve(legacySyncData));
-    jest
-      .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() =>
-        Promise.resolve(Promise.resolve(legacyLocalData)),
-      );
-    jest
-      .spyOn(browser.storage.local, 'set')
-      .mockImplementation(() => Promise.resolve());
-
-    await updateAllLegacyData();
-
-    expect(browser.storage.local.set).toHaveBeenCalledWith(expected);
+    expect(convertV1ToV2OptionsData(legacySyncData, legacyLocalData)).toEqual(
+      expected,
+    );
   });
 
-  test('구버전 데이터가 복구가 불가능할 정도로 손상되어 있다면, 복구 불가능한 데이터 그룹은 초기화 후 저장을 진행해야 한다.', async () => {
+  test('1버전 데이터의 일부 키값이 복구가 불가능할 정도로 손상되어 있다면, 해당 키 값들에 대해서는 2버전의 초기 데이터를 반환해야 한다.', async () => {
     const legacySyncData = {
       query: {
         2: {
@@ -466,9 +699,9 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
       queryLog: undefined,
     };
 
-    const expected = {
+    const expected: V2.OptionsData = {
       checkedAlgorithmIds: DEFAULT_CHECKED_ALGORITHM_IDS,
-      dataVersion: 'v1.2',
+      dataVersion: 2,
       hiderOptions: {
         algorithmHiderUsage: 'click',
         problemTagLockDuration: { hours: 1, minutes: 30 },
@@ -478,96 +711,162 @@ describe('Test #2 - 잘못된 구버전 데이터에 대응하기', () => {
         warnTier: 1,
       },
       isTierHidden: DEFAULT_IS_TIER_HIDDEN,
-      quickSlots: DEFAULT_QUICK_SLOTS_RESPONSE,
+      quickSlots: DEFAULT_QUICK_SLOTS,
       randomDefenseHistory: DEFAULT_RANDOM_DEFENSE_HISTORY,
       timers: DEFAULT_TIMERS,
       totamjungTheme: 'totamjung',
       fontNo: DEFAULT_FONT_NO,
+      shouldShowWelcomeMessage: false,
     };
 
-    jest.clearAllMocks();
-    jest
-      .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => Promise.resolve(legacySyncData));
-    jest
-      .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() =>
-        Promise.resolve(Promise.resolve(legacyLocalData)),
-      );
-    jest
-      .spyOn(browser.storage.local, 'set')
-      .mockImplementation(() => Promise.resolve());
-
-    await updateAllLegacyData();
-
-    expect(browser.storage.local.set).toHaveBeenCalledWith(expected);
+    expect(convertV1ToV2OptionsData(legacySyncData, legacyLocalData)).toEqual(
+      expected,
+    );
   });
 
-  test('구버전 데이터가 빈 오브젝트여도 런타임 에러 없이 기본 데이터로 저장을 진행해야 한다.', async () => {
-    jest.clearAllMocks();
-    jest
-      .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => Promise.resolve({}));
-    jest
-      .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() => Promise.resolve({}));
-    jest
-      .spyOn(browser.storage.local, 'set')
-      .mockImplementation(() => Promise.resolve());
+  test('손상된 2버전 데이터를 3버전 데이터로 변환할 경우 복구 가능한 범위 내에서 복구한 데이터를 반환해야 한다.', async () => {
+    const legacyData = {
+      checkedAlgorithmIds: ['', -2.3, -5, 'foo', 1, 2, 3, undefined, null],
+      dataVersion: 2,
+      hiderOptions: {
+        algorithmHiderUsage: 'click',
+        problemTagLockDuration: { hours: 0, minutes: 20 },
+        problemTagLockUsage: 'auto',
+        shouldHideTier: true,
+        shouldWarnHighTier: true,
+        warnTier: 16,
+      },
+      quickSlots: {
+        hotkey: 'F2',
+        selectedSlotNo: 0,
+        slots: {
+          1: 'asdf',
+          2: {},
+          3: 100,
+          4: {
+            isEmpty: false,
+            query: 'tier:0..0 solvable:true ',
+            title: '추첨 4',
+          },
+          '5': {
+            isEmpty: false,
+            query: 'tier:s1..g4 ratable:true solvable:true 수열',
+            title: '직접 만든 쿼리',
+          },
+          6: { empty: true },
+          7: 'not an object',
+          8: { isEmpty: true },
+          9: { isEmpty: true },
+          0: { isEmpty: true },
+        },
+      },
+      randomDefenseHistory: [
+        {
+          createdAt: '2024-06-30T13:34:10.000Z',
+          problemId: 1036,
+          tier: 15,
+          title: '36진수',
+        },
+        {
+          createdAt: '2024-06-28T11:33:36.000Z',
+          problemId: 29063,
+          tier: 0,
+          title: 'Телепорты',
+        },
+        null,
+        {
+          date: '2024-06-12 21:49:04',
+          no: 23912,
+          tier: 18,
+          title: 'Locked Doors',
+        },
+      ],
+      timers: [
+        {
+          problemId: 12340,
+          expiresAt: '2034-10-09T15:35:32.677Z',
+        },
+        { foo: 1 },
+        {
+          problemId: 30291,
+          expiresAt: '2034-10-19T15:35:32.677Z',
+        },
+      ],
+      totamjungTheme: 'totamjung',
+      fontNo: 5,
+      shouldShowWelcomeMessage: true,
+    };
 
-    await updateAllLegacyData();
+    const expected: OptionsData = {
+      checkedAlgorithmIds: [1, 2, 3],
+      quickSlots: {
+        hotkey: 'F2',
+        selectedSlotNo: 0,
+        slots: {
+          1: { isEmpty: true },
+          2: { isEmpty: true },
+          3: { isEmpty: true },
+          4: {
+            isEmpty: false,
+            query: 'tier:0..0 solvable:true ',
+            title: '추첨 4',
+          },
+          '5': {
+            isEmpty: false,
+            query: 'tier:s1..g4 ratable:true solvable:true 수열',
+            title: '직접 만든 쿼리',
+          },
+          6: { isEmpty: true },
+          7: { isEmpty: true },
+          8: { isEmpty: true },
+          9: { isEmpty: true },
+          0: { isEmpty: true },
+        },
+      },
+      hiderOptions: {
+        algorithmHiderUsage: 'click',
+        problemTagLockDuration: { hours: 0, minutes: 20 },
+        problemTagLockUsage: 'auto',
+        shouldHideTier: true,
+        shouldWarnHighTier: true,
+        shouldRevealTierOnHover: false,
+        warnTier: 16,
+      },
+      randomDefenseHistory: [
+        {
+          createdAt: '2024-06-30T13:34:10.000Z',
+          problemId: 1036,
+          tier: 15,
+          title: '36진수',
+        },
+        {
+          createdAt: '2024-06-28T11:33:36.000Z',
+          problemId: 29063,
+          tier: 0,
+          title: 'Телепорты',
+        },
+      ],
+      timers: [
+        {
+          problemId: 12340,
+          expiresAt: '2034-10-09T15:35:32.677Z',
+        },
+        {
+          problemId: 30291,
+          expiresAt: '2034-10-19T15:35:32.677Z',
+        },
+      ],
+      gachaOptions: {
+        isTierHidden: false,
+        isAudioMuted: true,
+      },
+      totamjungTheme: 'totamjung',
+      fontNo: 5,
+      shouldShowWelcomeMessage: true,
+      dataVersion: 3,
+      isTierHidden: false,
+    };
 
-    expect(browser.storage.local.get).not.toThrow();
-    expect(browser.storage.local.set).toHaveBeenCalledWith({
-      [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: DEFAULT_CHECKED_ALGORITHM_IDS,
-      [STORAGE_KEY.QUICK_SLOTS]: DEFAULT_QUICK_SLOTS_RESPONSE,
-      [STORAGE_KEY.TOTAMJUNG_THEME]: DEFAULT_TOTAMJUNG_THEME,
-      [STORAGE_KEY.HIDER_OPTIONS]: DEFAULT_HIDER_OPTIONS,
-      [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: DEFAULT_RANDOM_DEFENSE_HISTORY,
-      [STORAGE_KEY.TIMERS]: DEFAULT_TIMERS,
-      [STORAGE_KEY.IS_TIER_HIDDEN]: DEFAULT_IS_TIER_HIDDEN,
-      [STORAGE_KEY.FONT_NO]: DEFAULT_FONT_NO,
-      [STORAGE_KEY.DATA_VERSION]: 'v1.2',
-    });
-  });
-});
-
-describe('Test #3 - 구버전 데이터가 아닌 경우(변환을 하면 안 되는 경우)에 대응하기', () => {
-  test('데이터에 버전 정보가 들어있고, 그 버전이 "v1.2"인 경우 구버전 데이터로 보지 않아야 하고, 변환을 진행하지 않아야 한다.', async () => {
-    jest.clearAllMocks();
-    jest
-      .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => Promise.resolve({}));
-    jest
-      .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() =>
-        Promise.resolve(Promise.resolve({ dataVersion: 'v1.2' })),
-      );
-    jest
-      .spyOn(browser.storage.local, 'set')
-      .mockImplementation(() => Promise.resolve());
-
-    await updateAllLegacyData();
-
-    expect(browser.storage.local.set).not.toHaveBeenCalled();
-  });
-
-  test('데이터에 버전 정보가 들어있더라도, 그 버전이 정해둔 최신 버전과 일치하지 않는 경우 구버전 데이터로 보고 변환을 진행해야 한다.', async () => {
-    jest.clearAllMocks();
-    jest
-      .spyOn(browser.storage.sync, 'get')
-      .mockImplementation(() => Promise.resolve({}));
-    jest
-      .spyOn(browser.storage.local, 'get')
-      .mockImplementation(() =>
-        Promise.resolve({ dataVersion: 'some old version' }),
-      );
-    jest
-      .spyOn(browser.storage.local, 'set')
-      .mockImplementation(() => Promise.resolve());
-
-    await updateAllLegacyData();
-
-    expect(browser.storage.local.set).toHaveBeenCalled();
+    expect(convertV2ToLatestOptionsData(legacyData)).toEqual(expected);
   });
 });

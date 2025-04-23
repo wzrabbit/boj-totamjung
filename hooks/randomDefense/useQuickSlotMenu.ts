@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import type { SlotNo, Hotkey, QuickSlotsResponse } from '@/types/randomDefense';
+import type { SlotNo, Hotkey, QuickSlots } from '@/types/randomDefense';
 
 interface UseQuickSlotMenuParams {
-  quickSlotsInfo: QuickSlotsResponse;
+  quickSlotsInfo: QuickSlots;
   isLoaded: boolean;
   onHotkeyChange: (hotkey: Hotkey) => void;
   onSlotChange: (title: string, query: string) => void;
@@ -23,6 +23,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
   } = params;
   const { selectedSlotNo, slots, hotkey } = quickSlotsInfo;
   const [shouldEditModalShow, setShouldEditModalShow] = useState(false);
+  const [gachaProblemCount, setGachaProblemCount] = useState(0);
 
   const switchHotkey = () => {
     if (!isLoaded) {
@@ -82,6 +83,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
     selectedSlotNo,
     hotkey,
     occupiedSlotNos: getOccupiedSlotNos(),
+    gachaProblemCount,
     shouldEditModalShow,
     switchHotkey,
     openEditModal,
@@ -89,6 +91,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
     updateSlot,
     deleteSlot,
     setSelectedSlotNo,
+    setGachaProblemCount,
   };
 };
 

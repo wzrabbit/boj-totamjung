@@ -6,19 +6,29 @@ import { fetchHiderOptions } from './hiderOptionsDataHandler';
 import { fetchRandomDefenseHistory } from './randomDefenseHistoryDataHandler';
 import { fetchFontNo } from './fontNoDataHandler';
 import { fetchTimers } from './timersDataHandler';
-import type { OptionsDataResponse } from '@/types/options';
+import type { OptionsData } from '@/types/options';
 import { DEFAULT_EMPTY_DATA } from '@/constants/defaultValues';
-import { isOptionsDataResponse } from './validators/optionsDataValidator';
+import {
+  isOptionsData,
+  isV2OptionsData,
+} from './validators/optionsDataValidator';
+import { fetchGachaOptions } from './gachaOptionsHandler';
+import { fetchShouldShowWelcomeMessage } from './shouldShowWelcomeMessageDataHandler';
+import { isObject } from '@/types/typeGuards';
+import { VALID_VERSIONS } from '@/constants/validVersions';
+import { updateAllLegacyData } from './legacyDataUpdater';
 
-export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
+export const fetchOptionsData = async (): Promise<OptionsData> => {
   const [
-    checkedAlgorithmIdsResponse,
-    quickSlotsResponse,
-    totamjungThemeResponse,
-    hiderOptionsResponse,
+    checkedAlgorithmIds,
+    quickSlots,
+    totamjungTheme,
+    hiderOptions,
     randomDefenseHistoryResponse,
-    timersResponse,
-    fontNoResponse,
+    timers,
+    gachaOptions,
+    fontNo,
+    shouldShowWelcomeMessage,
   ] = await Promise.all([
     fetchCheckedAlgorithmIds(),
     fetchQuickSlots(),
@@ -26,33 +36,56 @@ export const fetchOptionsData = async (): Promise<OptionsDataResponse> => {
     fetchHiderOptions(),
     fetchRandomDefenseHistory(),
     fetchTimers(),
+    fetchGachaOptions(),
     fetchFontNo(),
+    fetchShouldShowWelcomeMessage(),
   ]);
 
   return {
-    [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIdsResponse.checkedIds,
-    [STORAGE_KEY.QUICK_SLOTS]: quickSlotsResponse,
-    [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungThemeResponse.totamjungTheme,
-    [STORAGE_KEY.HIDER_OPTIONS]: hiderOptionsResponse,
+    [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIds,
+    [STORAGE_KEY.QUICK_SLOTS]: quickSlots,
+    [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,
+    [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]:
       randomDefenseHistoryResponse.randomDefenseHistory,
     [STORAGE_KEY.IS_TIER_HIDDEN]: randomDefenseHistoryResponse.isHidden,
-    [STORAGE_KEY.FONT_NO]: fontNoResponse['fontNo'],
-    [STORAGE_KEY.TIMERS]: timersResponse['timers'],
-    [STORAGE_KEY.DATA_VERSION]: 'v1.2',
+    [STORAGE_KEY.FONT_NO]: fontNo,
+    [STORAGE_KEY.TIMERS]: timers,
+    [STORAGE_KEY.GACHA_OPTIONS]: gachaOptions,
+    [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: shouldShowWelcomeMessage,
+    [STORAGE_KEY.DATA_VERSION]: 3,
   };
 };
 
 export const saveOptionsData = async (data: unknown) => {
-  if (!isOptionsDataResponse(data)) {
+  if (!isObject(data) || !('dataVersion' in data)) {
     return false;
   }
 
-  await browser.storage.local.set({
-    ...data,
-    [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: false,
-  });
+  const { dataVersion } = data;
 
+  if (
+    (typeof dataVersion !== 'number' && typeof dataVersion !== 'string') ||
+    !VALID_VERSIONS.includes(dataVersion)
+  ) {
+    return false;
+  }
+
+  if ((dataVersion === 'v1.2' || dataVersion === 2) && !isV2OptionsData(data)) {
+    return false;
+  }
+
+  if (dataVersion !== 3) {
+    await browser.storage.local.set(data);
+    await updateAllLegacyData();
+    return true;
+  }
+
+  if (!isOptionsData(data)) {
+    return false;
+  }
+
+  await browser.storage.local.set(data);
   return true;
 };
 

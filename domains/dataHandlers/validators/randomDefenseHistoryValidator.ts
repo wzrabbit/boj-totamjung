@@ -1,10 +1,27 @@
 import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type {
-  LegacyRandomDefenseHistoryInfo,
   RandomDefenseHistoryInfo,
   RandomDefenseHistoryResponse,
 } from '@/types/randomDefense';
+import type { V1 } from '@/types/legacyData';
 import { isIsoString, isObject } from '@/types/typeGuards';
+
+export const isV1RandomDefenseHistoryInfo = (
+  data: unknown,
+): data is V1.RandomDefenseHistoryInfo => {
+  return (
+    isObject(data) &&
+    'no' in data &&
+    'title' in data &&
+    'tier' in data &&
+    'date' in data &&
+    typeof data.no === 'number' &&
+    typeof data.title === 'string' &&
+    typeof data.tier === 'number' &&
+    typeof data.date === 'string' &&
+    data.tier in solvedAcNumericTierIcons
+  );
+};
 
 export const isRandomDefenseHistoryInfo = (
   data: unknown,
@@ -20,23 +37,6 @@ export const isRandomDefenseHistoryInfo = (
     typeof data.tier === 'number' &&
     data.tier in solvedAcNumericTierIcons &&
     isIsoString(data.createdAt)
-  );
-};
-
-export const isLegacyRandomDefenseHistoryInfo = (
-  data: unknown,
-): data is LegacyRandomDefenseHistoryInfo => {
-  return (
-    isObject(data) &&
-    'no' in data &&
-    'title' in data &&
-    'tier' in data &&
-    'date' in data &&
-    typeof data.no === 'number' &&
-    typeof data.title === 'string' &&
-    typeof data.tier === 'number' &&
-    typeof data.date === 'string' &&
-    data.tier in solvedAcNumericTierIcons
   );
 };
 

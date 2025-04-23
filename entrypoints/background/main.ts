@@ -10,7 +10,7 @@ import {
   saveQuickSlots,
 } from '@/domains/dataHandlers/quickSlotsDataHandler';
 import {
-  appendRandomDefenseInfoToHistory,
+  addRandomDefenseInfosToHistory,
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from '@/domains/dataHandlers/randomDefenseHistoryDataHandler';
@@ -38,6 +38,10 @@ import {
   fetchShouldShowWelcomeMessage,
   saveShouldShowWelcomeMessage,
 } from '@/domains/dataHandlers/shouldShowWelcomeMessageDataHandler';
+import {
+  fetchGachaOptions,
+  saveGachaOptions,
+} from '@/domains/dataHandlers/gachaOptionsHandler';
 import { fetchOptionsData } from '@/domains/dataHandlers/optionsDataHandler';
 import { isUserSolvedProblem } from '@/domains/tierHider/userSolvedChecker';
 import { getRandomDefenseResult } from '@/domains/randomDefense/randomDefenseProblemChooser';
@@ -81,11 +85,11 @@ const executeBackground = () => {
       }
 
       if (command === COMMANDS.SAVE_CHECKED_ALGORITHM_IDS) {
-        if (!('checkedIds' in message)) {
+        if (!('checkedAlgorithmIds' in message)) {
           return;
         }
 
-        saveCheckedAlgorithmIds(message.checkedIds);
+        saveCheckedAlgorithmIds(message.checkedAlgorithmIds);
       }
 
       if (command === COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY) {
@@ -188,6 +192,22 @@ const executeBackground = () => {
         saveTimers(timers);
       }
 
+      if (command === COMMANDS.FETCH_GACHA_OPTIONS) {
+        fetchGachaOptions().then((result) => {
+          sendResponse(result);
+        });
+        return true;
+      }
+
+      if (command === COMMANDS.SAVE_GACHA_OPTIONS) {
+        if (!('isTierHidden' in message && 'isAudioMuted' in message)) {
+          return;
+        }
+
+        const { isTierHidden, isAudioMuted } = message;
+        saveGachaOptions({ isTierHidden, isAudioMuted });
+      }
+
       if (command === COMMANDS.FETCH_OPTIONS_DATA) {
         fetchOptionsData().then((result) => {
           sendResponse(result);
@@ -259,22 +279,29 @@ const executeBackground = () => {
       }
 
       if (command === COMMANDS.GET_RANDOM_DEFENSE_RESULT) {
-        if (!('query' in message) || typeof message.query !== 'string') {
+        if (
+          !('query' in message) ||
+          typeof message.query !== 'string' ||
+          !('problemCount' in message) ||
+          typeof message.problemCount !== 'number'
+        ) {
           return;
         }
 
-        getRandomDefenseResult(message.query).then((result) => {
+        const { query, problemCount } = message;
+
+        getRandomDefenseResult(query, problemCount).then((result) => {
           sendResponse(result);
         });
         return true;
       }
 
-      if (command === COMMANDS.APPEND_RANDOM_DEFENSE_HISTORY_INFO) {
-        if (!('randomDefenseHistoryInfo' in message)) {
+      if (command === COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS) {
+        if (!('randomDefenseHistoryInfos' in message)) {
           return;
         }
 
-        appendRandomDefenseInfoToHistory(message.randomDefenseHistoryInfo);
+        addRandomDefenseInfosToHistory(message.randomDefenseHistoryInfos);
       }
 
       if (command === COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
-import { TotamjungTheme } from '@/types/totamjungTheme';
+import { TotamjungTheme } from '@/types/mainTheme';
 import {
   fetchTotamjungTheme,
   saveTotamjungTheme,
@@ -10,7 +10,7 @@ import {
   saveFontNo,
 } from '@/domains/dataHandlers/fontNoDataHandler';
 
-const UseAppearanceFieldsetMenu = () => {
+const useAppearanceFieldsetMenu = () => {
   const [totamjungTheme, setTotamjungTheme] = useState<
     TotamjungTheme | undefined
   >(undefined);
@@ -19,15 +19,12 @@ const UseAppearanceFieldsetMenu = () => {
 
   useEffect(() => {
     const loadAppearanceFieldsetMenuData = async () => {
-      const [totamjungThemeResponse, fontNoResponse] = await Promise.all([
+      const [currentTotamjungTheme, currentFontNo] = await Promise.all([
         fetchTotamjungTheme(),
         fetchFontNo(),
       ]);
 
-      const { totamjungTheme: currentTheme } = totamjungThemeResponse;
-      const { fontNo: currentFontNo } = fontNoResponse;
-
-      setTotamjungTheme(currentTheme);
+      setTotamjungTheme(currentTotamjungTheme);
       setFontNo(currentFontNo);
       setIsLoaded(true);
     };
@@ -82,4 +79,4 @@ const UseAppearanceFieldsetMenu = () => {
   };
 };
 
-export default UseAppearanceFieldsetMenu;
+export default useAppearanceFieldsetMenu;

@@ -87,46 +87,6 @@ export const SvgIcon: Story = {
   },
 };
 
-export const TotamjungTheme: Story = {
-  decorators: [
-    (Story) => (
-      <div style={{ height: '160px' }}>
-        <Story />
-      </div>
-    ),
-  ],
-  args: {
-    mainIconSrc: browser.runtime.getURL('/dice.png'),
-    theme: 'totamjung',
-    progress: 65,
-    title: '테스트 제목입니다.',
-    descriptions:
-      '그리고 여기에는 지금 무슨 일이 일어났는지에 대한 설명이 있을 거에요.',
-    open: true,
-    onClose: fn(),
-  },
-};
-
-export const TotamjungThemeWithSvgIcon: Story = {
-  decorators: [
-    (Story) => (
-      <div style={{ height: '160px' }}>
-        <Story />
-      </div>
-    ),
-  ],
-  args: {
-    mainIconSrc: <CopyIcon />,
-    theme: 'totamjung',
-    progress: 65,
-    title: '테스트 제목입니다.',
-    descriptions:
-      '그리고 여기에는 지금 무슨 일이 일어났는지에 대한 설명이 있을 거에요.',
-    open: true,
-    onClose: fn(),
-  },
-};
-
 export const MultipleDescriptions: Story = {
   decorators: [
     (Story) => (
@@ -187,5 +147,53 @@ export const VeryLongDescription: Story = {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Curabitur facilisis, libero a pretium auctor, sapien erat tincidunt nulla, vitae vestibulum elit leo at odio. Donec vehicula mauris ut nisi hendrerit, ac dictum libero consequat. Integer euismod neque eu magna facilisis, in suscipit sem sagittis.',
     open: true,
     onClose: fn(),
+  },
+};
+
+export const TotamjungTheme: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    theme: 'totamjung',
+  },
+};
+
+export const SolvedAcLightTheme: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    theme: 'solvedAcLight',
+  },
+};
+
+export const SolvedAcDarkTheme: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    theme: 'solvedAcDark',
+  },
+};
+
+export const SolvedAcBlackTheme: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    theme: 'solvedAcBlack',
+  },
+};
+
+export const BojExtendedDarkTheme: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    theme: 'bojExtendedDark',
+  },
+};
+
+export const BojExtendedRigelTheme: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    theme: 'bojExtendedRigel',
   },
 };

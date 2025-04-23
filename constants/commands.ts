@@ -20,17 +20,38 @@ export const COMMANDS = {
   REMOVE_SINGLE_TIMER: 'removeSingleTimer',
   IS_USER_SOLVED_PROBLEM: 'isUserSolvedProblem',
   GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
-  APPEND_RANDOM_DEFENSE_HISTORY_INFO: 'appendRandomDefenseHistoryInfo',
+  ADD_RANDOM_DEFENSE_HISTORY_INFOS: 'addRandomDefenseHistoryInfos',
+  FETCH_GACHA_OPTIONS: 'fetchGachaOptions',
+  SAVE_GACHA_OPTIONS: 'saveGachaOptions',
   FETCH_SHOULD_SHOW_WELCOME_MESSAGE: 'fetchShouldShowWelcomeMessage',
   SAVE_SHOULD_SHOW_WELCOME_MESSAGE: 'saveShouldShowWelcomeMessage',
 } as const;
 
 /**
- * 현재 버전(v1.2) 이후 쓰일 키 값들입니다.
+ * 데이터 개편 전인 ~v1.1.2.2에서 사용되던 키들입니다.
+ * v1.2부터는 사용되지 않지만, 이전 버전에서 업데이트를 한 유저를 위해 데이터를 옮겨야 하므로
+ * 필요한 키들입니다.
+ * 이 버전의 데이터는 세이브파일 로드에 사용할 수 없으며, 마이그레이션만 가능합니다.
+ */
+export const V1_SYNC_STORAGE_KEY = {
+  CHECKED_ALGORITHM_IDS: 'algorithm',
+  QUICK_SLOTS: 'query',
+  TIMER: 'timer',
+  SETTINGS: 'settings',
+} as const;
+
+export const V1_LOCAL_STORAGE_KEY = {
+  RANDOM_DEFENSE_HISTORY: 'queryLog',
+} as const;
+
+/**
+ * v1.2.* / dataVersion 2에서 쓰이는 키 값들입니다.
  * 모든 키는 `browser.storage.local`의 키들입니다.
  * 이는 데이터의 크기가 `browser.storage.sync`에 저장할 수 있는 한도를 넘기 때문입니다.
+ * 이 버전의 데이터부터 세이브파일 로드에 사용할 수 있으며, 업로드 시 해당 토탐정 버전이 더 높은 버전의 데이터 버전을 사용하더라도
+ * 마이그레이션 진행을 동반하므로 호환이 가능합니다.
  */
-export const STORAGE_KEY = {
+export const V2_STORAGE_KEY = {
   DATA_VERSION: 'dataVersion',
   CHECKED_ALGORITHM_IDS: 'checkedAlgorithmIds',
   QUICK_SLOTS: 'quickSlots',
@@ -44,17 +65,9 @@ export const STORAGE_KEY = {
 } as const;
 
 /**
- * LEGACY가 변수명으로 붙은 키들의 경우 이전 버전(~v1.1.2.2)에서 사용되던 키들입니다.
- * v1.2부터는 사용되지 않지만, 이전 버전에서 업데이트를 한 유저를 위해 데이터를 옮겨야 하므로
- * 필요한 키들입니다.
+ * v1.3.* / dataVersion 3에서 쓰이는 키 값들입니다. **최신 버전의 키 값들입니다.**
  */
-export const LEGACY_SYNC_STORAGE_KEY = {
-  CHECKED_ALGORITHM_IDS: 'algorithm',
-  QUICK_SLOTS: 'query',
-  TIMER: 'timer',
-  SETTINGS: 'settings',
-} as const;
-
-export const LEGACY_LOCAL_STORAGE_KEY = {
-  RANDOM_DEFENSE_HISTORY: 'queryLog',
+export const STORAGE_KEY = {
+  ...V2_STORAGE_KEY,
+  GACHA_OPTIONS: 'gachaOptions',
 } as const;

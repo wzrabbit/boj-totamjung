@@ -1,4 +1,5 @@
 import {
+  addRandomDefenseInfosToHistory,
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from './randomDefenseHistoryDataHandler';
@@ -461,7 +462,7 @@ describe('Test #3 - 추첨 기록 한도 대응', () => {
       createdAt: new Date(index).toISOString(),
     }));
 
-    const expectedResult = randomDefenseHistory.slice(0, -123).reverse();
+    const expectedResult = randomDefenseHistory.slice(123).reverse();
 
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({
@@ -683,4 +684,94 @@ describe('Test #6 - 잘못된 추첨 기록 저장에 대응하기', () => {
       expect(browser.storage.local.set).not.toHaveBeenCalled();
     },
   );
+});
+
+describe('Test #7 - 추첨 기록 추가하기', () => {
+  test('추가해야 하는 올바른 추첨 기록들이 주어진 경우 그 추첨 기록들이 전체 추첨 기록에 시간순으로 정렬된 채로 추가되어야 한다.', async () => {
+    const randomDefenseHistory = [
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: 27964,
+        title: '콰트로치즈피자',
+        tier: 6,
+        createdAt: '2025-01-01T23:34:00.123Z',
+      },
+      {
+        problemId: 27943,
+        title: '가지 사진 찾기',
+        tier: 11,
+        createdAt: '2025-01-01T23:33:00.123Z',
+      },
+    ];
+
+    const additionalRandomDefenseHistory = [
+      {
+        problemId: 27470,
+        title: '멋진 부분집합',
+        tier: 2,
+        createdAt: '2024-05-03T23:35:00.123Z',
+      },
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-01-04T23:35:00.713Z',
+      },
+    ];
+
+    const expectedRandomDefenseHistory = [
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-01-04T23:35:00.713Z',
+      },
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2025-01-01T23:35:00.123Z',
+      },
+      {
+        problemId: 27964,
+        title: '콰트로치즈피자',
+        tier: 6,
+        createdAt: '2025-01-01T23:34:00.123Z',
+      },
+      {
+        problemId: 27943,
+        title: '가지 사진 찾기',
+        tier: 11,
+        createdAt: '2025-01-01T23:33:00.123Z',
+      },
+      {
+        problemId: 27470,
+        title: '멋진 부분집합',
+        tier: 2,
+        createdAt: '2024-05-03T23:35:00.123Z',
+      },
+    ];
+
+    jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
+      Promise.resolve({
+        randomDefenseHistory,
+        isTierHidden: false,
+      }),
+    );
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
+    addRandomDefenseInfosToHistory(additionalRandomDefenseHistory);
+    await Promise.resolve();
+
+    expect(await browser.storage.local.set).toHaveBeenCalledWith({
+      randomDefenseHistory: expectedRandomDefenseHistory,
+      isTierHidden: false,
+    });
+  });
 });

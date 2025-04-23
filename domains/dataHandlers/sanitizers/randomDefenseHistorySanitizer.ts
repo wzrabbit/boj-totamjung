@@ -2,21 +2,20 @@ import {
   MAX_HISTORY_LIMIT,
   MAX_PROBLEM_ID,
   MAX_PROBLEM_NAME_LENGTH,
-  MAX_TIER,
+  MAX_TIER_INCLUDING_NOT_RATABLE,
   MIN_PROBLEM_ID,
   MIN_TIER,
+  MAX_TIER,
 } from '@/constants/randomDefense';
 import {
-  isLegacyRandomDefenseHistoryInfo,
   isRandomDefenseHistoryInfo,
+  isV1RandomDefenseHistoryInfo,
 } from '@/domains/dataHandlers/validators/randomDefenseHistoryValidator';
-import {
-  LegacyRandomDefenseHistoryInfo,
-  RandomDefenseHistoryInfo,
-} from '@/types/randomDefense';
+import { RandomDefenseHistoryInfo } from '@/types/randomDefense';
 import { isValidIsoString } from '@/utils/isValidIsoString';
 import { isValidDate } from '@/utils/isValidDate';
 import { DEFAULT_RANDOM_DEFENSE_HISTORY } from '@/constants/defaultValues';
+import type { V1 } from '@/types/legacyData';
 
 const isValidRandomDefenseHistoryInfo = (item: unknown) => {
   return (
@@ -28,13 +27,13 @@ const isValidRandomDefenseHistoryInfo = (item: unknown) => {
     isValidIsoString(item.createdAt) &&
     item.tier % 1 === 0 &&
     item.tier >= MIN_TIER &&
-    item.tier <= MAX_TIER
+    item.tier <= MAX_TIER_INCLUDING_NOT_RATABLE
   );
 };
 
-const isValidLegacyRandomDefenseHistoryInfo = (item: unknown) => {
+const isValidV1RandomDefenseHistoryInfo = (item: unknown) => {
   return (
-    isLegacyRandomDefenseHistoryInfo(item) &&
+    isV1RandomDefenseHistoryInfo(item) &&
     item.no % 1 === 0 &&
     item.no >= MIN_PROBLEM_ID &&
     item.no <= MAX_PROBLEM_ID &&
@@ -43,6 +42,22 @@ const isValidLegacyRandomDefenseHistoryInfo = (item: unknown) => {
     item.tier % 1 === 0 &&
     item.tier >= MIN_TIER &&
     item.tier <= MAX_TIER
+  );
+};
+
+const getSortedV1RandomDefenseHistory = (
+  randomDefenseHistory: V1.RandomDefenseHistoryInfo[],
+) => {
+  return [...randomDefenseHistory].sort((a, b) =>
+    new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1,
+  );
+};
+
+const getSortedRandomDefenseHistory = (
+  randomDefenseHistory: RandomDefenseHistoryInfo[],
+) => {
+  return [...randomDefenseHistory].sort((a, b) =>
+    a.createdAt > b.createdAt ? -1 : 1,
   );
 };
 
@@ -64,27 +79,31 @@ export const sanitizeRandomDefenseHistory = (
     }
   });
 
-  return sanitizedRandomDefenseHistory.slice(0, MAX_HISTORY_LIMIT);
+  return getSortedRandomDefenseHistory(sanitizedRandomDefenseHistory).slice(
+    0,
+    MAX_HISTORY_LIMIT,
+  );
 };
 
-export const sanitizeLegacyRandomDefenseHistory = (
+export const sanitizeV1RandomDefenseHistory = (
   legacyRandomDefenseHistory: unknown,
-): LegacyRandomDefenseHistoryInfo[] => {
+): V1.RandomDefenseHistoryInfo[] => {
   if (!Array.isArray(legacyRandomDefenseHistory)) {
     return DEFAULT_RANDOM_DEFENSE_HISTORY;
   }
 
-  const sanitizedLegacyRandomDefenseHistory: LegacyRandomDefenseHistoryInfo[] =
-    [];
+  const sanitizedLegacyRandomDefenseHistory: V1.RandomDefenseHistoryInfo[] = [];
 
   legacyRandomDefenseHistory.forEach((item) => {
     if (
-      isLegacyRandomDefenseHistoryInfo(item) &&
-      isValidLegacyRandomDefenseHistoryInfo(item)
+      isV1RandomDefenseHistoryInfo(item) &&
+      isValidV1RandomDefenseHistoryInfo(item)
     ) {
       sanitizedLegacyRandomDefenseHistory.push(item);
     }
   });
 
-  return sanitizedLegacyRandomDefenseHistory.slice(0, MAX_HISTORY_LIMIT);
+  return getSortedV1RandomDefenseHistory(
+    sanitizedLegacyRandomDefenseHistory,
+  ).slice(0, MAX_HISTORY_LIMIT);
 };

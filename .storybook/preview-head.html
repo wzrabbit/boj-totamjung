@@ -45,6 +45,14 @@
     font-weight: 400;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'Cafe24ClassicType';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Cafe24ClassicType-Regular.woff2')
+      format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
 </style>
 <script>
   const STORAGE_KEY = {
@@ -66,8 +74,11 @@
     FETCH_TOTAMJUNG_THEME: 'fetchTotamjungTheme',
     FETCH_HIDER_OPTIONS: 'fetchHiderOptions',
     FETCH_OPTIONS_DATA: 'fetchOptionsData',
+    FETCH_GACHA_OPTIONS: 'fetchGachaOptions',
+    SAVE_GACHA_OPTIONS: 'saveGachaOptions',
     SAVE_AND_GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
     GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
+    ADD_RANDOM_DEFENSE_HISTORY_INFOS: 'addRandomDefenseHistoryInfos',
     OPEN_OPTIONS_PAGE: 'openOptionsPage',
     FETCH_SHOULD_SHOW_WELCOME_MESSAGE: 'fetchShouldShowWelcomeMessage',
     SAVE_SHOULD_SHOW_WELCOME_MESSAGE: 'saveShouldShowWelcomeMessage',
@@ -128,7 +139,7 @@
 
   const isTierHidden = false;
 
-  const quickSlotsResponse = {
+  const quickSlots = {
     selectedSlotNo: 1,
     hotkey: 'Alt',
     slots: {
@@ -158,7 +169,17 @@
     },
   };
 
-  const hiderOptionsResponse = {
+  const getProblemInfos = () => {
+    const problemCount = Math.ceil(Math.random() * 10);
+
+    return Array.from({ length: problemCount }).map((_, index) => ({
+      problemId: 40000 + index,
+      title: `테스트 문제 ${index + 1}`,
+      tier: Math.floor(Math.random() * 32),
+    }));
+  };
+
+  const hiderOptions = {
     problemTagLockDuration: {
       hours: 1,
       minutes: 30,
@@ -168,6 +189,11 @@
     warnTier: 16,
     algorithmHiderUsage: 'always',
     problemTagLockUsage: 'click',
+  };
+
+  const gachaOptions = {
+    isTierHidden: false,
+    isAudioMuted: true,
   };
 
   const totamjungTheme = 'totamjung';
@@ -184,23 +210,34 @@
     runtime: {
       getManifest: () => ({ version: 'Test', manifest_version: 3 }),
       getURL: (path) => path,
-      sendMessage: async ({ command, message }, callback) => {
+      sendMessage: async (message, callback) => {
+        const command = message.command;
+
         switch (command) {
           case COMMANDS.FETCH_CHECKED_ALGORITHM_IDS:
-            return { checkedIds: checkedAlgorithmIds };
+            return checkedAlgorithmIds;
           case COMMANDS.FETCH_HIDER_OPTIONS:
-            return hiderOptionsResponse;
+            return hiderOptions;
           case COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME:
             return 0;
           case COMMANDS.FETCH_QUICK_SLOTS:
-            return quickSlotsResponse;
+            return quickSlots;
+          case COMMANDS.FETCH_GACHA_OPTIONS:
+            return gachaOptions;
           case COMMANDS.GET_RANDOM_DEFENSE_RESULT:
+            if (command.problemCount === 1) {
+              return {
+                success: false,
+                errorMessage: '테스트!',
+                errorDescriptions: [
+                  '이 테스트 메시지가 디버그 도구에 표시된다면, 랜덤 디펜스가 진행되었음을 의미하는 것입니다.',
+                ],
+              };
+            }
+
             return {
-              success: false,
-              errorMessage: '테스트!',
-              errorDescriptions: [
-                '이 테스트 메시지가 디버그 도구에 표시된다면, 랜덤 디펜스가 진행되었음을 의미하는 것입니다.',
-              ],
+              success: true,
+              problemInfos: getProblemInfos(),
             };
           case COMMANDS.OPEN_OPTIONS_PAGE:
             alert(
@@ -210,7 +247,11 @@
           case COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE:
             return true;
           case COMMANDS.SAVE_SHOULD_SHOW_WELCOME_MESSAGE:
-            return undefined;
+            return null;
+          case COMMANDS.SAVE_GACHA_OPTIONS:
+            return null;
+          case COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS:
+            return null;
           default:
             console.error(
               `알 수 없는 메시지가 전달되었습니다: 메시지명이 올바른지, 테스트 데이터를 채우는 것을 까먹지 않았는지 다시 점검해 보세요.`,
@@ -246,15 +287,19 @@
                 break;
 
               case STORAGE_KEY.HIDER_OPTIONS:
-                Object.assign(response, { hiderOptionsResponse });
+                Object.assign(response, { hiderOptions });
                 break;
 
               case STORAGE_KEY.QUICK_SLOTS:
-                Object.assign(response, quickSlotsResponse);
+                Object.assign(response, quickSlots);
                 break;
 
               case STORAGE_KEY.TOTAMJUNG_THEME:
                 Object.assign(response, { totamjungTheme });
+                break;
+
+              case STORAGE_KEY.GACHA_OPTIONS:
+                Object.assign(response, { gachaOptions });
                 break;
 
               case STORAGE_KEY.FONT_NO:

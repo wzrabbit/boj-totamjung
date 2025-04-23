@@ -21,6 +21,35 @@ const meta = {
     onClose: {
       description: '모달을 닫아야 할 경우 실행시킬 콜백 함수입니다.',
     },
+    padding: {
+      description: '모달 내부 공간에 둘 `padding`의 크기입니다.',
+      table: {
+        defaultValue: {
+          summary: '16px',
+        },
+      },
+    },
+    theme: {
+      description: '모달의 테마입니다.',
+      table: {
+        defaultValue: {
+          summary: 'totamjung',
+        },
+      },
+    },
+    closeOnBackdropClick: {
+      description:
+        '모달의 빈 공간을 누를 경우 모달이 닫히게 할지의 여부입니다.',
+      table: {
+        defaultValue: {
+          summary: 'true',
+        },
+      },
+    },
+    portalTarget: {
+      description:
+        '모달을 렌더링시킬 위치의 DOM을 의미합니다. 지정하지 않을 경우, 기본적으로 `document.body`로 지정됩니다.',
+    },
   },
 } satisfies Meta<typeof Modal>;
 
@@ -257,6 +286,339 @@ export const VeryLongTitle: Story = {
               iconSrc={<CheckCircleIcon />}
               disabled={false}
               ariaLabel="전혀 안 궁금하지만 이해했다고 대충 대답하기"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            />
+          </ModalActionButtonsContainer>
+        </Modal>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#a15eff"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {
+    open: false,
+    title: '테스트용 알림창',
+    onClose: () => {},
+  },
+};
+
+/**
+ * 대부분의 상황에서는 토탐정 테마 모달을 사용하지만, 백준 내에서 어울리는 UI를 보여주어야 할 경우 다른 테마를 사용할 수도 있습니다.
+ */
+export const PlainThemeWithControlButtons: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <Modal
+          open={isOpen}
+          title="테스트 모달"
+          theme="none"
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <div style={{ width: '300px' }}>
+            <Text type="darkGray" fontSize="16px">
+              토탐정 테마가 적용되지 않은 모달입니다.
+            </Text>
+          </div>
+          <ModalActionButtonsContainer theme="none">
+            <IconButton
+              type="button"
+              name="확인"
+              size="medium"
+              color="#333333"
+              iconSrc={<CheckCircleIcon />}
+              disabled={false}
+              ariaLabel="확인"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            />
+          </ModalActionButtonsContainer>
+        </Modal>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#a15eff"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {
+    open: false,
+    title: '테스트용 알림창',
+    onClose: () => {},
+  },
+};
+
+export const SolvedAcLightWithControlButtons: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <Modal
+          open={isOpen}
+          title="테스트 모달"
+          theme="solvedAcLight"
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <div style={{ width: '300px' }}>
+            <Text type="darkGray" fontSize="16px">
+              토탐정 테마가 적용되지 않은 모달입니다.
+            </Text>
+          </div>
+          <ModalActionButtonsContainer theme="solvedAcLight">
+            <IconButton
+              type="button"
+              name="확인"
+              size="medium"
+              color="#333333"
+              iconSrc={<CheckCircleIcon />}
+              disabled={false}
+              ariaLabel="확인"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            />
+          </ModalActionButtonsContainer>
+        </Modal>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#a15eff"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {
+    open: false,
+    title: '테스트용 알림창',
+    onClose: () => {},
+  },
+};
+
+export const SolvedAcDarkWithControlButtons: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <Modal
+          open={isOpen}
+          title="테스트 모달"
+          theme="solvedAcDark"
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <div style={{ width: '300px' }}>
+            <Text type="normal" fontSize="16px">
+              solved.ac의 다크 테마가 적용된 모달입니다.
+            </Text>
+          </div>
+          <ModalActionButtonsContainer theme="solvedAcDark">
+            <IconButton
+              type="button"
+              name="확인"
+              size="medium"
+              color="#eeeeee"
+              iconSrc={<CheckCircleIcon />}
+              disabled={false}
+              ariaLabel="확인"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            />
+          </ModalActionButtonsContainer>
+        </Modal>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#a15eff"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {
+    open: false,
+    title: '테스트용 알림창',
+    onClose: () => {},
+  },
+};
+
+export const SolvedAcBlackWithControlButtons: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <Modal
+          open={isOpen}
+          title="테스트 모달"
+          theme="solvedAcBlack"
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <div style={{ width: '300px' }}>
+            <Text type="normal" fontSize="16px">
+              solved.ac의 암전 테마가 적용된 모달입니다.
+            </Text>
+          </div>
+          <ModalActionButtonsContainer theme="solvedAcBlack">
+            <IconButton
+              type="button"
+              name="확인"
+              size="medium"
+              color="#eeeeee"
+              iconSrc={<CheckCircleIcon />}
+              disabled={false}
+              ariaLabel="확인"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            />
+          </ModalActionButtonsContainer>
+        </Modal>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#a15eff"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {
+    open: false,
+    title: '테스트용 알림창',
+    onClose: () => {},
+  },
+};
+
+export const BojExtendedDarkWithControlButtons: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <Modal
+          open={isOpen}
+          title="테스트 모달"
+          theme="bojExtendedDark"
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <div style={{ width: '300px' }}>
+            <Text type="normal" fontSize="16px">
+              BOJ Extended의 Dark 테마가 적용된 모달입니다.
+            </Text>
+          </div>
+          <ModalActionButtonsContainer theme="bojExtendedDark">
+            <IconButton
+              type="button"
+              name="확인"
+              size="medium"
+              color="#555555"
+              iconSrc={<CheckCircleIcon />}
+              disabled={false}
+              ariaLabel="확인"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            />
+          </ModalActionButtonsContainer>
+        </Modal>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#a15eff"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {
+    open: false,
+    title: '테스트용 알림창',
+    onClose: () => {},
+  },
+};
+
+export const BojExtendedRigelWithControlButtons: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <Modal
+          open={isOpen}
+          title="테스트 모달"
+          theme="bojExtendedRigel"
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <div style={{ width: '300px' }}>
+            <Text type="normal" fontSize="16px">
+              BOJ Extended의 Rigel 테마가 적용된 모달입니다.
+            </Text>
+          </div>
+          <ModalActionButtonsContainer theme="bojExtendedRigel">
+            <IconButton
+              type="button"
+              name="확인"
+              size="medium"
+              color="#eeeeee"
+              iconSrc={<CheckCircleIcon />}
+              disabled={false}
+              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}

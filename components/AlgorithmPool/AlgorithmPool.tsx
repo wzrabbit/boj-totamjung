@@ -10,7 +10,7 @@ const AlgorithmPool = () => {
   const {
     keyword,
     items,
-    checkedIds,
+    checkedAlgorithmIds,
     isLoaded,
     handleChangeKeyword,
     toggleAlgorithm,
@@ -27,7 +27,7 @@ const AlgorithmPool = () => {
         {isLoaded && (
           <AlgorithmList
             items={items}
-            checkedIds={checkedIds}
+            checkedAlgorithmIds={checkedAlgorithmIds}
             onChange={toggleAlgorithm}
           />
         )}

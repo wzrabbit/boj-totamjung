@@ -4,12 +4,12 @@ import type { Algorithm } from '@/types/algorithm';
 
 interface AlgorithmListProps {
   items: Algorithm[];
-  checkedIds: number[];
+  checkedAlgorithmIds: number[];
   onChange: (id: number) => void;
 }
 
 const AlgorithmList = (props: AlgorithmListProps) => {
-  const { items, checkedIds, onChange } = props;
+  const { items, checkedAlgorithmIds, onChange } = props;
 
   return (
     <S.Container>
@@ -18,7 +18,7 @@ const AlgorithmList = (props: AlgorithmListProps) => {
           key={item.id}
           id={item.id}
           name={item.name}
-          isChecked={checkedIds.includes(item.id)}
+          isChecked={checkedAlgorithmIds.includes(item.id)}
           backgroundColor={index % 2 === 0 ? 'brown' : 'light-brown'}
           onChange={onChange}
         />

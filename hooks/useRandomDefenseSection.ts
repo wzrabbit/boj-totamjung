@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import type { QuickSlots, SlotNo, Hotkey } from '@/types/randomDefense';
+import type { Slots, SlotNo, Hotkey } from '@/types/randomDefense';
 import {
   fetchQuickSlots,
   saveQuickSlots,
 } from '@/domains/dataHandlers/quickSlotsDataHandler';
 
-const emptySlots: QuickSlots = {
+const emptySlots: Slots = {
   1: { isEmpty: true },
   2: { isEmpty: true },
   3: { isEmpty: true },
@@ -19,7 +19,7 @@ const emptySlots: QuickSlots = {
 };
 
 const useRandomDefenseManageMenu = () => {
-  const [slots, setSlots] = useState<QuickSlots>(emptySlots);
+  const [slots, setSlots] = useState<Slots>(emptySlots);
   const [selectedSlotNo, setSelectedSlotNo] = useState<SlotNo>(1);
   const [hotkey, setHotkey] = useState<Hotkey>('Alt');
   const [isLoaded, setIsLoaded] = useState(false);

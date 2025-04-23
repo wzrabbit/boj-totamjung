@@ -1,14 +1,15 @@
 import { COMMANDS } from '@/constants/commands';
-import { isFontNoResponse } from '@/domains/dataHandlers/validators/fontNoValidator';
-import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
-import { isTotamjungThemeResponse } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
+import { isFontNo } from '@/domains/dataHandlers/validators/fontNoValidator';
+import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
+import { isExternalThemeActive } from '@/domains/isExternalThemeActive';
 import '@/assets/css/palette.css';
 import '@/assets/css/totamjungTheme.css';
 import '@/assets/css/tierHider.css';
 import '@/assets/css/problemTheme.css';
 
 export default defineContentScript({
-  matches: ['https://www.acmicpc.net/*'],
+  matches: ['https://www.acmicpc.net/*', 'https://solved.ac/*'],
   runAt: 'document_start',
   main() {
     executeInjectionScript();
@@ -24,14 +25,12 @@ const executeInjectionScript = () => {
 
     browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_TOTAMJUNG_THEME })
-      .then((response) => {
-        if (!isTotamjungThemeResponse(response)) {
+      .then((totamjungTheme) => {
+        if (!isTotamjungTheme(totamjungTheme)) {
           return;
         }
 
-        const { totamjungTheme } = response;
-
-        if (totamjungTheme === 'totamjung') {
+        if (totamjungTheme === 'totamjung' && !isExternalThemeActive()) {
           htmlElement.style.backgroundColor = TOTAMJUNG_THEME_BACKGROUND_COLOR;
           htmlElement.setAttribute('totamjungTheme', 'totamjung');
         } else {
@@ -42,27 +41,31 @@ const executeInjectionScript = () => {
     browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_HIDER_OPTIONS })
       .then((response) => {
-        if (!isHiderOptionsResponse(response)) {
+        if (!isHiderOptions(response)) {
           return;
         }
 
-        const { shouldHideTier } = response;
+        const { shouldHideTier, shouldRevealTierOnHover } = response;
 
-        if (shouldHideTier) {
-          htmlElement.setAttribute('hideTier', 'true');
-        } else {
+        if (!shouldHideTier) {
           htmlElement.setAttribute('hideTier', 'false');
+          return;
         }
+
+        if (shouldRevealTierOnHover) {
+          htmlElement.setAttribute('hideTier', 'revealOnHover');
+          return;
+        }
+
+        htmlElement.setAttribute('hideTier', 'true');
       });
 
     browser.runtime
       .sendMessage({ command: COMMANDS.FETCH_FONT_NO })
-      .then((response) => {
-        if (!isFontNoResponse(response)) {
+      .then((fontNo) => {
+        if (!isFontNo(fontNo)) {
           return;
         }
-
-        const { fontNo } = response;
 
         htmlElement.setAttribute('fontNo', String(fontNo));
       });
@@ -144,6 +147,16 @@ const executeInjectionScript = () => {
           font-style: normal;
         }
       `;
+      const cafe24ClassicTypeElement = document.createElement('style');
+      cookieRunStyleElement.innerHTML = `
+        @font-face {
+          font-family: 'Cafe24ClassicType';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Cafe24ClassicType-Regular.woff2')
+            format('woff2');
+          font-weight: normal;
+          font-style: normal;
+        }
+      `;
 
       [
         pretendardLinkElement,
@@ -153,11 +166,10 @@ const executeInjectionScript = () => {
         dunggeunmoNeoLinkElement,
         spoqaHanSansNeoStyleElement,
         cookieRunStyleElement,
+        cafe24ClassicTypeElement,
       ].forEach((element) => {
         headElement.appendChild(element);
       });
-
-      headInjectionObserver.disconnect();
     });
 
     headInjectionObserver.observe(htmlElement, { childList: true });

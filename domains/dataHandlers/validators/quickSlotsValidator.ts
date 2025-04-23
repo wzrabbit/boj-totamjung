@@ -1,13 +1,12 @@
 import { isNumericObject, isObject } from '@/types/typeGuards';
 import type {
   Hotkey,
-  LegacyQuickSlotsResponse,
-  QuickSlotsResponse,
-  RepairableLegacyQuickSlotsResponse,
-  RepairableQuickSlotsResponse,
+  QuickSlots,
+  RepairableQuickSlots,
   Slot,
   SlotNo,
 } from '@/types/randomDefense';
+import type { V1 } from '@/types/legacyData';
 
 export const isHotkey = (data: unknown): data is Hotkey => {
   return data === 'Alt' || data === 'F2';
@@ -42,37 +41,7 @@ export const isSlotNo = (data: unknown): data is SlotNo => {
   return [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].includes(data);
 };
 
-export const isQuickSlotsResponse = (
-  data: unknown,
-): data is QuickSlotsResponse => {
-  if (
-    !(
-      isObject(data) &&
-      'hotkey' in data &&
-      'selectedSlotNo' in data &&
-      'slots' in data &&
-      typeof data.hotkey === 'string' &&
-      ['Alt', 'F2'].includes(data.hotkey) &&
-      isSlotNo(data.selectedSlotNo)
-    )
-  ) {
-    return false;
-  }
-
-  const { slots } = data;
-
-  if (!isNumericObject(slots)) {
-    return false;
-  }
-
-  return Array.from({ length: 10 }).every(
-    (_, key) => key in slots && isSlot(slots[key]),
-  );
-};
-
-export const isLegacyQuickSlotsResponse = (
-  data: unknown,
-): data is LegacyQuickSlotsResponse => {
+export const isV1QuickSlots = (data: unknown): data is V1.QuickSlots => {
   if (
     !(
       isObject(data) &&
@@ -98,17 +67,43 @@ export const isLegacyQuickSlotsResponse = (
   );
 };
 
-export const isRepairableLegacyQuickSlotsResponse = (
+export const isQuickSlots = (data: unknown): data is QuickSlots => {
+  if (
+    !(
+      isObject(data) &&
+      'hotkey' in data &&
+      'selectedSlotNo' in data &&
+      'slots' in data &&
+      typeof data.hotkey === 'string' &&
+      ['Alt', 'F2'].includes(data.hotkey) &&
+      isSlotNo(data.selectedSlotNo)
+    )
+  ) {
+    return false;
+  }
+
+  const { slots } = data;
+
+  if (!isNumericObject(slots)) {
+    return false;
+  }
+
+  return Array.from({ length: 10 }).every(
+    (_, key) => key in slots && isSlot(slots[key]),
+  );
+};
+
+export const isV1RepairableQuickSlots = (
   data: unknown,
-): data is RepairableLegacyQuickSlotsResponse => {
+): data is V1.RepairableQuickSlots => {
   return (
     isObject(data) && Array.from({ length: 10 }).every((_, key) => key in data)
   );
 };
 
-export const isRepairableQuickSlotsResponse = (
+export const isRepairableQuickSlots = (
   data: unknown,
-): data is RepairableQuickSlotsResponse => {
+): data is RepairableQuickSlots => {
   if (!isObject(data) || !('slots' in data)) {
     return false;
   }

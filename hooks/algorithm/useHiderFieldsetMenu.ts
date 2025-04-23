@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { HiderOptionsResponse } from '@/types/algorithm';
+import type { HiderOptions } from '@/types/algorithm';
 import { RatedTier } from '@/types/tierHider';
 import {
   fetchHiderOptions,
@@ -13,20 +13,19 @@ const fallbackHiderOptions = {
   },
   shouldHideTier: undefined,
   shouldWarnHighTier: undefined,
+  shouldRevealTierOnHover: undefined,
   warnTier: 1 as const,
   algorithmHiderUsage: undefined,
   problemTagLockUsage: undefined,
 };
 
-type HiderOptionsState =
-  | HiderOptionsReadyResponse
-  | HiderOptionsNotReadyResponse;
+type HiderOptionsState = HiderOptionsReadyState | HiderOptionsNotReadyState;
 
-type HiderOptionsReadyResponse = {
+type HiderOptionsReadyState = {
   isLoaded: true;
-} & HiderOptionsResponse;
+} & HiderOptions;
 
-type HiderOptionsNotReadyResponse = {
+type HiderOptionsNotReadyState = {
   isLoaded: false;
 } & typeof fallbackHiderOptions;
 
@@ -99,6 +98,20 @@ const useHiderFieldsetMenu = () => {
     });
   };
 
+  const updateShouldRevealTierOnHover = (
+    shouldRevealTierOnHoverString: string,
+  ) => {
+    const shouldRevealTierOnHover = shouldRevealTierOnHoverString === 'true';
+
+    setHiderOptionsState((prev) => {
+      if (!prev.isLoaded) {
+        return prev;
+      }
+
+      return { ...prev, shouldRevealTierOnHover };
+    });
+  };
+
   const updateWarnTier = (warnTier: RatedTier) => {
     setHiderOptionsState((prev) => {
       if (!prev.isLoaded) {
@@ -145,6 +158,7 @@ const useHiderFieldsetMenu = () => {
     updateProblemTagLockDuration,
     updateShouldHideTier,
     updateShouldWarnHighTier,
+    updateShouldRevealTierOnHover,
     updateWarnTier,
     updateAlgorithmHiderUsage,
     updateProblemTagLockUsage,

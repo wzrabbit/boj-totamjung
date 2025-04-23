@@ -1,42 +1,53 @@
 import useWidget from '@/hooks/widget/useWidget';
 import InspectResultIcon from '@/components/InspectResultIcon/InspectResultIcon';
 import SpeechBubble from '@/components/common/SpeechBubble';
-import Text from '@/components/common/Text';
 import * as S from './Widget.styled';
-import type { TotamjungTheme } from '@/types/totamjungTheme';
 import type { ToastInfo } from '@/types/toast';
 import { createPortal } from 'react-dom';
 import { $ } from '@/utils/querySelector';
+import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
+import RandomDefenseGachaModal from '../RandomDefenseGachaModal';
+import { isSolvedAcTheme } from '@/domains/dataHandlers/validators/solvedAcThemeValidadtor';
+import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
 
 interface WidgetProps {
-  theme: TotamjungTheme;
+  theme: MainTheme;
+  rootElement: HTMLElement;
   onChangeTheme: (theme: TotamjungTheme) => void;
   onToast: (toastInfo: ToastInfo, duration: number) => void;
 }
 
 const Widget = (props: WidgetProps) => {
-  const { theme } = props;
+  const { theme, rootElement } = props;
   const {
     isExpanded,
     isScrollingToTop,
     hasUnknownAlgorithms,
     isRandomDefenseButtonDisabled,
+    isRandomDefenseButtonPressing,
+    gachaProblemCount,
+    gachaSlot,
     isInspectButtonDisabled,
     isLockButtonDisabled,
     shouldShowInspectIcon,
     shouldShowWelcomeMessage,
+    activeModalName,
     isLoaded,
     scrollToTop,
     endScrollingAnimation,
     toggleWidgetOpen,
     openOptionsPage,
     toggleTotamjungTheme,
-    performRandomDefenseByClick,
+    openGachaModalWithProblemCount,
+    suspendGacha,
     showInspectResultUsingPopup,
     toggleTimer,
     closeWelcomeMessage,
+    randomDefenseButtonRef,
   } = useWidget(props);
+
   const problemTitleElement = $('#problem_title');
+  const isExternalThemeEnabled = theme !== 'none' && theme !== 'totamjung';
 
   return (
     <S.Container>
@@ -75,6 +86,7 @@ const Widget = (props: WidgetProps) => {
                 aria-label={
                   theme === 'none' ? '토탐정 테마 켜기' : '토탐정 테마 끄기'
                 }
+                disabled={isExternalThemeEnabled}
                 onClick={toggleTotamjungTheme}
               >
                 <S.DropdownButtonIcon
@@ -83,17 +95,18 @@ const Widget = (props: WidgetProps) => {
               </S.DropdownMenuButton>
             </S.DropdownMenuItem>
             <S.DropdownMenuItem>
-              <S.DropdownMenuButton
+              <S.RandomDefenseButton
+                ref={randomDefenseButtonRef}
                 type="button"
+                className={isRandomDefenseButtonPressing ? 'pressing' : ''}
                 $widgetTheme={theme}
                 aria-label="랜덤 디펜스 진행하기"
                 disabled={isRandomDefenseButtonDisabled}
-                onClick={performRandomDefenseByClick}
               >
                 <S.DropdownButtonIcon
                   src={browser.runtime.getURL('/dice.png')}
                 />
-              </S.DropdownMenuButton>
+              </S.RandomDefenseButton>
             </S.DropdownMenuItem>
             <S.DropdownMenuItem>
               <S.DropdownMenuButton
@@ -128,6 +141,7 @@ const Widget = (props: WidgetProps) => {
           </S.DropdownMenu>
           {problemTitleElement &&
             shouldShowInspectIcon &&
+            !isSolvedAcTheme(theme) &&
             createPortal(
               <InspectResultIcon
                 theme={theme}
@@ -141,22 +155,40 @@ const Widget = (props: WidgetProps) => {
                 open={true}
                 maxWidth="400px"
                 content={
-                  <S.SpeechBubbleContentContainer>
-                    <Text type="normal" fontSize="14px">
+                  <S.SpeechBubbleContentContainer $totamjungTheme={theme}>
+                    <S.SpeechBubbleText>
                       토탐정을 설치해 주셔서 감사합니다!
-                    </Text>
-                    <Text type="normal" fontSize="14px">
+                    </S.SpeechBubbleText>
+                    <S.SpeechBubbleText>
                       <strong>위젯을 우클릭</strong>하여 토탐정의 여러 기능들을
                       활용해 보세요.
-                    </Text>
+                    </S.SpeechBubbleText>
                   </S.SpeechBubbleContentContainer>
                 }
-                totamjungTheme={theme}
+                theme={theme}
                 direction="left"
                 hasCloseButton={true}
                 onClose={closeWelcomeMessage}
               />
             </S.SpeechBubbleWrapper>
+          )}
+          <GachaProblemCountInputModal
+            open={activeModalName === 'gachaProblemCount'}
+            portalTarget={rootElement}
+            theme={theme}
+            shouldShowHotkeyMessage={false}
+            onClose={suspendGacha}
+            onSubmitProblemCount={openGachaModalWithProblemCount}
+          />
+          {gachaSlot && (
+            <RandomDefenseGachaModal
+              open={activeModalName === 'gacha'}
+              portalTarget={rootElement}
+              theme={theme}
+              slot={gachaSlot}
+              problemCount={gachaProblemCount}
+              onClose={suspendGacha}
+            />
           )}
         </>
       )}

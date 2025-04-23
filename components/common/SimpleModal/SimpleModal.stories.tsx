@@ -29,6 +29,14 @@ const meta = {
     open: {
       description: '모달이 열려있는 지의 여부입니다.',
     },
+    theme: {
+      description: '모달의 테마입니다.',
+      table: {
+        defaultValue: {
+          summary: 'totamjung',
+        },
+      },
+    },
     onClose: {
       description:
         '모달이 닫혀야 할 경우 실행시킬 콜백 함수입니다. **`actionType`가 `confirm`인 경우 확인 버튼을 눌렀을 때 이 함수가 호출됩니다.**',
@@ -44,6 +52,19 @@ const meta = {
     onNoSelect: {
       description:
         '모달에서 **아니요** 버튼을 누를 경우 실행시킬 콜백 함수입니다. **`actionType`가 `yesNo`인 경우에만 적용됩니다.**',
+    },
+    closeOnBackdropClick: {
+      description:
+        '모달의 빈 공간을 누를 경우 모달이 닫히게 할지의 여부입니다.',
+      table: {
+        defaultValue: {
+          summary: 'true',
+        },
+      },
+    },
+    portalTarget: {
+      description:
+        '모달을 렌더링시킬 위치의 DOM을 의미합니다. 지정하지 않을 경우, 기본적으로 `document.body`로 지정됩니다.',
     },
   },
 } satisfies Meta<typeof SimpleModal>;
@@ -208,5 +229,249 @@ export const YesNo: Story = {
     open: false,
     onYesSelect: () => {},
     onNoSelect: () => {},
+  },
+};
+
+/**
+ * 대부분의 상황에서는 토탐정 테마 모달을 사용하지만, 백준 내에서 어울리는 UI를 보여주어야 할 경우 다른 테마를 사용할 수도 있습니다.
+ */
+export const PlainConfirm: Story = {
+  render: (_, { args }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#d1b072"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(() => true);
+          }}
+        />
+
+        <SimpleModal
+          {...args}
+          open={isOpen}
+          actionType="confirm"
+          onClose={() => setIsOpen(false)}
+        />
+      </>
+    );
+  },
+  args: {
+    actionType: 'confirm',
+    width: '300px',
+    height: '100px',
+    title: '확인 버튼 모달',
+    message: '확인 버튼만 있는 모달입니다.',
+    theme: 'none',
+    open: false,
+    onClose: () => {},
+  },
+};
+
+export const PlainCancelConfirm: Story = {
+  render: (_, { args }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#d1b072"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(() => true);
+          }}
+        />
+
+        <SimpleModal
+          {...args}
+          open={isOpen}
+          actionType="cancelConfirm"
+          onClose={() => setIsOpen(false)}
+          onConfirm={() => setIsOpen(false)}
+        />
+      </>
+    );
+  },
+  args: {
+    actionType: 'cancelConfirm',
+    width: '300px',
+    height: '100px',
+    title: '취소/확인 버튼 모달',
+    message: '취소, 확인 버튼이 있는 모달입니다.',
+    theme: 'none',
+    open: false,
+    onClose: () => {},
+    onConfirm: () => {},
+  },
+};
+
+export const PlainYesNo: Story = {
+  render: (_, { args }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#d1b072"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => {
+            setIsOpen(() => true);
+          }}
+        />
+
+        <SimpleModal
+          {...args}
+          open={isOpen}
+          actionType="yesNo"
+          onYesSelect={() => setIsOpen(false)}
+          onNoSelect={() => setIsOpen(false)}
+        />
+      </>
+    );
+  },
+  args: {
+    actionType: 'yesNo',
+    width: '300px',
+    height: '100px',
+    title: '예/아니요 버튼 모달',
+    message: '예, 아니요 버튼이 있는 모달입니다.',
+    theme: 'none',
+    open: false,
+    onYesSelect: () => {},
+    onNoSelect: () => {},
+  },
+};
+
+export const SolvedAcLightConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'solvedAcLight',
+  },
+};
+
+export const SolvedAcLightCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'solvedAcLight',
+  },
+};
+
+export const SolvedAcLightYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'solvedAcLight',
+  },
+};
+
+export const SolvedAcDarkConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'solvedAcDark',
+  },
+};
+
+export const SolvedAcDarkCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'solvedAcDark',
+  },
+};
+
+export const SolvedAcDarkYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'solvedAcDark',
+  },
+};
+
+export const SolvedAcBlackConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'solvedAcBlack',
+  },
+};
+
+export const SolvedAcBlackCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'solvedAcBlack',
+  },
+};
+
+export const SolvedAcBlackYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'solvedAcBlack',
+  },
+};
+
+export const BojExtendedDarkConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'bojExtendedDark',
+  },
+};
+
+export const BojExtendedDarkCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'bojExtendedDark',
+  },
+};
+
+export const BojExtendedDarkYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'bojExtendedDark',
+  },
+};
+
+export const BojExtendedRigelConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'bojExtendedRigel',
+  },
+};
+
+export const BojExtendedRigelCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'bojExtendedRigel',
+  },
+};
+
+export const BojExtendedRigelYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'bojExtendedRigel',
   },
 };

@@ -1,26 +1,22 @@
 import {
   isSlot,
   isHotkey,
-  isRepairableQuickSlotsResponse,
-  isRepairableLegacyQuickSlotsResponse,
-  isQuickSlotsResponse,
+  isV1RepairableQuickSlots,
+  isRepairableQuickSlots,
+  isV1QuickSlots,
+  isQuickSlots,
   isSlotNo,
-  isLegacyQuickSlotsResponse,
 } from '../validators/quickSlotsValidator';
 import {
-  DEFAULT_QUICK_SLOTS_RESPONSE,
-  DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE,
+  DEFAULT_QUICK_SLOTS,
+  DEFAULT_V1_QUICK_SLOTS,
 } from '@/constants/defaultValues';
 import {
   MAX_CUSTOM_QUERY_LENGTH,
   TITLE_MAX_LENGTH,
 } from '@/constants/randomDefense';
-import type {
-  QuickSlotsResponse,
-  LegacyQuickSlotsResponse,
-  SlotNo,
-  Slot,
-} from '@/types/randomDefense';
+import type { QuickSlots, SlotNo, Slot } from '@/types/randomDefense';
+import { V1 } from '@/types/legacyData';
 
 const SLOT_NOS: SlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
@@ -48,9 +44,9 @@ const sanitizeSlot = (slot: unknown, slotNo: SlotNo): Slot => {
   return slot;
 };
 
-export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlotsResponse => {
-  if (!isRepairableQuickSlotsResponse(quickSlots)) {
-    return DEFAULT_QUICK_SLOTS_RESPONSE;
+export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlots => {
+  if (!isRepairableQuickSlots(quickSlots)) {
+    return DEFAULT_QUICK_SLOTS;
   }
 
   const hotkey =
@@ -73,16 +69,16 @@ export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlotsResponse => {
     sanitizedQuickSlots.slots[slotNo] = sanitizeSlot(slot, slotNo);
   });
 
-  return isQuickSlotsResponse(sanitizedQuickSlots)
+  return isQuickSlots(sanitizedQuickSlots)
     ? sanitizedQuickSlots
-    : DEFAULT_QUICK_SLOTS_RESPONSE;
+    : DEFAULT_QUICK_SLOTS;
 };
 
-export const sanitizeLegacyQuickSlots = (
+export const sanitizeV1QuickSlots = (
   legacyQuickSlots: unknown,
-): LegacyQuickSlotsResponse => {
-  if (!isRepairableLegacyQuickSlotsResponse(legacyQuickSlots)) {
-    return DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE;
+): V1.QuickSlots => {
+  if (!isV1RepairableQuickSlots(legacyQuickSlots)) {
+    return DEFAULT_V1_QUICK_SLOTS;
   }
 
   const { selectedNo, ...slots } = legacyQuickSlots;
@@ -101,7 +97,7 @@ export const sanitizeLegacyQuickSlots = (
     sanitizedLegacyQuickSlots[slotNo] = sanitizeSlot(slot, slotNo);
   });
 
-  return isLegacyQuickSlotsResponse(sanitizedLegacyQuickSlots)
+  return isV1QuickSlots(sanitizedLegacyQuickSlots)
     ? sanitizedLegacyQuickSlots
-    : DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE;
+    : DEFAULT_V1_QUICK_SLOTS;
 };

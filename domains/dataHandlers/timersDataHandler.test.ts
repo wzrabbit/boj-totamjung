@@ -6,7 +6,7 @@ import {
   getRemainingLockTimeByProblemId,
   removeSingleTimerByProblemId,
 } from './timersDataHandler';
-import type { HiderOptionsResponse, Timer } from '@/types/algorithm';
+import type { HiderOptions, Timer } from '@/types/algorithm';
 
 describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
   test('정상적인 타이머 리스트를 불러올 경우, 타이머 리스트를 그대로 불러온 결과를 반환해야 한다.', async () => {
@@ -32,9 +32,7 @@ describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
     );
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
-    expect(await fetchTimers()).toEqual({
-      [STORAGE_KEY.TIMERS]: timers,
-    });
+    expect(await fetchTimers()).toEqual(timers);
   });
 
   test('기한이 지난 타이머가 있는 경우에는 그 타이머를 제외하고 반환해야 한다.', async () => {
@@ -67,9 +65,7 @@ describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
     );
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
-    expect(await fetchTimers()).toEqual({
-      [STORAGE_KEY.TIMERS]: expected,
-    });
+    expect(await fetchTimers()).toEqual(expected);
   });
 
   test(`타이머의 개수가 최대 횟수인 300개를 넘은 경우, 300개까지만 반환해야 한다.`, async () => {
@@ -90,9 +86,7 @@ describe('Test #1 - 타이머 리스트 데이터 불러오기', () => {
     );
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
-    expect(await fetchTimers()).toEqual({
-      [STORAGE_KEY.TIMERS]: expected,
-    });
+    expect(await fetchTimers()).toEqual(expected);
   });
 });
 
@@ -151,9 +145,7 @@ describe('Test #2 - 잘못된 타이머 리스트 데이터에 대응하기', ()
     );
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
-    expect(await fetchTimers()).toEqual({
-      [STORAGE_KEY.TIMERS]: expected,
-    });
+    expect(await fetchTimers()).toEqual(expected);
   });
 
   test('타이머의 데이터 형식 자체가 잘못되어 복구가 불가능한 경우에는, 기본값을 반환한다.', async () => {
@@ -166,9 +158,7 @@ describe('Test #2 - 잘못된 타이머 리스트 데이터에 대응하기', ()
     );
     jest.useFakeTimers().setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
-    expect(await fetchTimers()).toEqual({
-      [STORAGE_KEY.TIMERS]: DEFAULT_TIMERS,
-    });
+    expect(await fetchTimers()).toEqual(DEFAULT_TIMERS);
   });
 });
 
@@ -273,20 +263,21 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2024-01-02T00:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 0,
         minutes: 20,
       },
       shouldHideTier: false,
       shouldWarnHighTier: false,
+      shouldRevealTierOnHover: true,
       warnTier: 11,
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'click',
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,
@@ -315,20 +306,21 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2024-01-02T00:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 0,
         minutes: 20,
       },
       shouldHideTier: false,
       shouldWarnHighTier: false,
+      shouldRevealTierOnHover: false,
       warnTier: 11,
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'auto',
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,
@@ -369,20 +361,21 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2024-01-02T02:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 0,
         minutes: 60,
       },
       shouldHideTier: true,
       shouldWarnHighTier: true,
+      shouldRevealTierOnHover: true,
       warnTier: 17,
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'click',
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,
@@ -411,20 +404,21 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2023-12-31T00:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 0,
         minutes: 20,
       },
       shouldHideTier: false,
       shouldWarnHighTier: false,
+      shouldRevealTierOnHover: true,
       warnTier: 11,
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'click',
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,
@@ -453,20 +447,21 @@ describe('Test #5 - 문제 번호에 해당하는 잠금 타이머 처리 후 �
         expiresAt: '2023-02-28T00:00:00.000Z',
       },
     ];
-    const hiderOptions: HiderOptionsResponse = {
+    const hiderOptions: HiderOptions = {
       problemTagLockDuration: {
         hours: 4,
         minutes: 30,
       },
       shouldHideTier: false,
       shouldWarnHighTier: true,
+      shouldRevealTierOnHover: true,
       warnTier: 30,
       algorithmHiderUsage: 'click',
       problemTagLockUsage: 'auto',
     };
     const browserLocalStorage: {
       timers: Timer[];
-      hiderOptions: HiderOptionsResponse;
+      hiderOptions: HiderOptions;
     } = {
       timers,
       hiderOptions,

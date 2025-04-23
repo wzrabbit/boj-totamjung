@@ -34,7 +34,104 @@ export const Default: Story = {
     ),
   ],
   args: {
+    rootElement: document.body,
     theme: 'none',
+    onChangeTheme: fn(),
+    onToast: fn(),
+  },
+};
+
+export const Totamjung: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%', height: '240px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    rootElement: document.body,
+    theme: 'totamjung',
+    onChangeTheme: fn(),
+    onToast: fn(),
+  },
+};
+
+export const BojExtendedDark: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%', height: '240px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    rootElement: document.body,
+    theme: 'bojExtendedDark',
+    onChangeTheme: fn(),
+    onToast: fn(),
+  },
+};
+
+export const BojExtendedRigel: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%', height: '240px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    rootElement: document.body,
+    theme: 'bojExtendedRigel',
+    onChangeTheme: fn(),
+    onToast: fn(),
+  },
+};
+
+export const SolvedAcLight: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%', height: '240px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    rootElement: document.body,
+    theme: 'solvedAcLight',
+    onChangeTheme: fn(),
+    onToast: fn(),
+  },
+};
+
+export const SolvedAcDark: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%', height: '240px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    rootElement: document.body,
+    theme: 'solvedAcDark',
+    onChangeTheme: fn(),
+    onToast: fn(),
+  },
+};
+
+export const SolvedAcBlack: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%', height: '240px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    rootElement: document.body,
+    theme: 'solvedAcBlack',
     onChangeTheme: fn(),
     onToast: fn(),
   },

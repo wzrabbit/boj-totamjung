@@ -15,6 +15,7 @@ export const theme = {
     TRANSPARENT_FAINT_WHITE: '#eeeeee20',
     GRAY: '#808080',
     LIGHT_GRAY: '#aaaaaa',
+    DARK_GRAY: '#333333',
     RED: '#ff0000',
     LIGHT_RED: '#ff5454',
     LIGHT_RED_TRANSPARENT: '#ff545420',
@@ -23,6 +24,7 @@ export const theme = {
     AZURE_BLUE: '#007bff',
     BOJ_BLUE: '#0076c0',
     BOJ_BLUE_TRANSPARENT: '#0076c050',
+    BLACK: '#000000',
     BLACK_TRANSPARENT: '#00000050',
     BLACK_DARKER_TRANSPARENT: '#000000aa',
     ORANGE: '#ff8533',
@@ -30,7 +32,9 @@ export const theme = {
     ORANGE_TRANSPARENT: '#ff853340',
     BEIGE: '#c8aaa0',
     LIME: '#00ed28',
+    GREEN: '#008000',
     LIGHT_PURPLE: '#dcbfff',
+    PURPLE: '#963eff',
   },
 
   solvedAcTier: {
@@ -139,7 +143,44 @@ export const theme = {
     WHITE_FILTER:
       'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(342deg) brightness(102%) contrast(102%)',
     LIGHTEST_BROWN_FILTER:
-      'brightness(0) saturate(100%) invert(52%) sepia(15%) saturate(936%) hue-rotate(330deg) brightness(89%) contrast(88%);',
+      'brightness(0) saturate(100%) invert(52%) sepia(15%) saturate(936%) hue-rotate(330deg) brightness(89%) contrast(88%)',
+    LIGHT_GRAY_FILTER:
+      'brightness(0) saturate(100%) invert(86%) sepia(0%) saturate(1969%) hue-rotate(175deg) brightness(78%) contrast(96%)',
+  },
+
+  solvedAcColor: {
+    LIME: '#17ce3a',
+    OFF_WHITE: '#f7f8f9',
+    GRAY: '#8a8f95',
+    LIGHT_GRAY: '#b8bcbf',
+    LIGHTER_GRAY: '#dddfe0',
+    INDIGO: '#15202b',
+    DARK_INDIGO: '#0b131b',
+  },
+
+  bojExtendedColor: {
+    SKY_BLUE: '#008db4',
+    DARK_SKY_BLUE: '#002635',
+    DARK_INDIGO: '#001a26',
+    DARK_GRAY: '#545454',
+    DARKER_GRAY: '#202020',
+    DARKEST_GRAY: '#161616',
+    LIGHT_GRAY: '#a2a4a5',
+  },
+
+  solvedAcFilter: {
+    LIME: 'brightness(0) saturate(100%) invert(60%) sepia(34%) saturate(3800%) hue-rotate(87deg) brightness(105%) contrast(86%)',
+    LIGHT_GRAY:
+      'brightness(0) saturate(100%) invert(79%) sepia(4%) saturate(201%) hue-rotate(163deg) brightness(94%) contrast(93%)',
+  },
+
+  bojExtendedFilter: {
+    DARK_GRAY:
+      'brightness(0) saturate(100%) invert(31%) sepia(0%) saturate(1005%) hue-rotate(147deg) brightness(100%) contrast(88%)',
+    SKY_BLUE:
+      'brightness(0) saturate(100%) invert(31%) sepia(81%) saturate(2692%) hue-rotate(171deg) brightness(96%) contrast(101%)',
+    LIGHT_GRAY:
+      'brightness(0) saturate(100%) invert(76%) sepia(5%) saturate(94%) hue-rotate(155deg) brightness(86%) contrast(88%)',
   },
 };
 

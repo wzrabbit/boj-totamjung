@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
 import type { MouseEvent } from 'react';
 import { COMMANDS } from '@/constants/commands';
-import { isValidCheckedAlgorithmIdsResponse } from '@/domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
-import { isHiderOptionsResponse } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import { isValidCheckedAlgorithmIds } from '@/domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
+import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
+import useModal from '@/hooks/useModal';
+import useMouseLongPress from '@/hooks/useMouseLongPress';
 import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
-import type { ToastInfo } from '@/types/toast';
-import type { TotamjungTheme } from '@/types/totamjungTheme';
-import type { HiderOptionsResponse } from '@/types/algorithm';
 import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
+import type { ToastInfo } from '@/types/toast';
+import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
+import type { HiderOptions } from '@/types/algorithm';
+import { FilledSlot } from '@/types/randomDefense';
 
 interface UseWidgetParams {
-  theme: TotamjungTheme;
+  theme: MainTheme;
   onChangeTheme: (theme: TotamjungTheme) => void;
   onToast: (toastInfo: ToastInfo, duration: number) => void;
 }
@@ -21,20 +24,40 @@ const useWidget = (params: UseWidgetParams) => {
   const { theme, onChangeTheme, onToast } = params;
   const [isScrollingToTop, setIsScrollingToTop] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [checkedIds, setCheckedIds] = useState<number[] | undefined>(undefined);
-  const [hiderOptions, setHiderOptions] = useState<
-    HiderOptionsResponse | undefined
+  const [checkedAlgorithmIds, setCheckedAlgorithmIds] = useState<
+    number[] | undefined
   >(undefined);
+  const [hiderOptions, setHiderOptions] = useState<HiderOptions | undefined>(
+    undefined,
+  );
   const [inspectIconState, setInspectIconState] = useState(false);
   const [shouldShowWelcomeMessage, setShouldShowWelcomeMessage] =
     useState(false);
+  const [gachaSlot, setGachaSlot] = useState<FilledSlot | null>(null);
+  const [gachaProblemCount, setGachaProblemCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
-    useInjectedProblemTags({ checkedIds, hiderOptions });
-  const { isRandomDefenseAvailable, performRandomDefenseByClick } =
-    useRandomDefense({
-      onToast,
-    });
+    useInjectedProblemTags({ checkedAlgorithmIds, hiderOptions });
+  const { activeModalName, openModal, closeModal } = useModal<
+    'gachaProblemCount' | 'gacha'
+  >();
+  const {
+    isRandomDefenseAvailable,
+    performRandomDefenseByClick,
+    performRandomDefenseByMouseLongPress,
+    enableRandomDefense,
+  } = useRandomDefense({
+    onToast,
+    onGachaStart: (slot) => openGachaProblemCountModalWithSlotInfo(slot),
+  });
+  const {
+    isPressing: isRandomDefenseButtonPressing,
+    longPressRef: randomDefenseButtonRef,
+  } = useMouseLongPress({
+    requiredLongPressTimeInMilliseconds: 1000,
+    onClick: performRandomDefenseByClick,
+    onLongPress: performRandomDefenseByMouseLongPress,
+  });
 
   const isRandomDefenseButtonDisabled = !isRandomDefenseAvailable;
   const isInspectButtonDisabled =
@@ -44,37 +67,33 @@ const useWidget = (params: UseWidgetParams) => {
 
   useEffect(() => {
     const loadWidgetData = async () => {
-      const [
-        checkedAlgorithmIdsResponse,
-        hiderOptionsResponse,
-        shouldShowWelcomeMessageResponse,
-      ] = await Promise.all([
-        browser.runtime.sendMessage({
-          command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
-        }),
-        browser.runtime.sendMessage({
-          command: COMMANDS.FETCH_HIDER_OPTIONS,
-        }),
-        browser.runtime.sendMessage({
-          command: COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE,
-        }),
-      ]);
+      const [checkedAlgorithmIds, hiderOptions, shouldShowWelcomeMessage] =
+        await Promise.all([
+          browser.runtime.sendMessage({
+            command: COMMANDS.FETCH_CHECKED_ALGORITHM_IDS,
+          }),
+          browser.runtime.sendMessage({
+            command: COMMANDS.FETCH_HIDER_OPTIONS,
+          }),
+          browser.runtime.sendMessage({
+            command: COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE,
+          }),
+        ]);
 
       if (
-        !isValidCheckedAlgorithmIdsResponse(checkedAlgorithmIdsResponse) ||
-        !isHiderOptionsResponse(hiderOptionsResponse) ||
-        !isShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse)
+        !isValidCheckedAlgorithmIds(checkedAlgorithmIds) ||
+        !isHiderOptions(hiderOptions) ||
+        !isShouldShowWelcomeMessage(shouldShowWelcomeMessage)
       ) {
         return;
       }
 
-      const { checkedIds } = checkedAlgorithmIdsResponse;
       const {
         algorithmHiderUsage,
         shouldHideTier,
         shouldWarnHighTier,
         warnTier,
-      } = hiderOptionsResponse;
+      } = hiderOptions;
 
       if (shouldHideTier) {
         changeNormalToWarnTier(warnTier, shouldWarnHighTier);
@@ -84,14 +103,21 @@ const useWidget = (params: UseWidgetParams) => {
         setInspectIconState(true);
       }
 
-      setCheckedIds(checkedIds);
-      setHiderOptions(hiderOptionsResponse);
-      setShouldShowWelcomeMessage(shouldShowWelcomeMessageResponse);
+      setCheckedAlgorithmIds(checkedAlgorithmIds);
+      setHiderOptions(hiderOptions);
+      setShouldShowWelcomeMessage(shouldShowWelcomeMessage);
       setIsLoaded(true);
     };
 
     loadWidgetData();
   }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      'totamjungTheme',
+      theme === 'totamjung' ? 'totamjung' : 'none',
+    );
+  }, [theme]);
 
   const scrollToTop = () => {
     if (isScrollingToTop) {
@@ -156,6 +182,26 @@ const useWidget = (params: UseWidgetParams) => {
     }
   };
 
+  const openGachaProblemCountModalWithSlotInfo = (slot: FilledSlot) => {
+    openModal('gachaProblemCount');
+    setGachaSlot(slot);
+  };
+
+  const openGachaModalWithProblemCount = (problemCount: number) => {
+    if (!gachaSlot) {
+      return;
+    }
+
+    openModal('gacha');
+    setGachaProblemCount(problemCount);
+  };
+
+  const suspendGacha = () => {
+    closeModal();
+    setGachaSlot(null);
+    enableRandomDefense();
+  };
+
   const closeWelcomeMessage = () => {
     setShouldShowWelcomeMessage(false);
     browser.runtime.sendMessage({
@@ -169,20 +215,26 @@ const useWidget = (params: UseWidgetParams) => {
     isScrollingToTop,
     hasUnknownAlgorithms,
     isRandomDefenseButtonDisabled,
+    isRandomDefenseButtonPressing,
+    gachaProblemCount,
+    gachaSlot,
     isInspectButtonDisabled,
     isLockButtonDisabled,
     shouldShowInspectIcon,
     shouldShowWelcomeMessage,
+    activeModalName,
     isLoaded,
     scrollToTop,
     endScrollingAnimation,
     toggleWidgetOpen,
     openOptionsPage,
     toggleTotamjungTheme,
-    performRandomDefenseByClick,
+    openGachaModalWithProblemCount,
+    suspendGacha,
     showInspectResultUsingPopup,
     toggleTimer,
     closeWelcomeMessage,
+    randomDefenseButtonRef,
   };
 };
 

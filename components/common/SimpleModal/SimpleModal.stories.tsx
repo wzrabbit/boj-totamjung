@@ -355,3 +355,123 @@ export const PlainYesNo: Story = {
     onNoSelect: () => {},
   },
 };
+
+export const SolvedAcLightConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'solvedAcLight',
+  },
+};
+
+export const SolvedAcLightCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'solvedAcLight',
+  },
+};
+
+export const SolvedAcLightYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'solvedAcLight',
+  },
+};
+
+export const SolvedAcDarkConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'solvedAcDark',
+  },
+};
+
+export const SolvedAcDarkCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'solvedAcDark',
+  },
+};
+
+export const SolvedAcDarkYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'solvedAcDark',
+  },
+};
+
+export const SolvedAcBlackConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'solvedAcBlack',
+  },
+};
+
+export const SolvedAcBlackCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'solvedAcBlack',
+  },
+};
+
+export const SolvedAcBlackYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'solvedAcBlack',
+  },
+};
+
+export const BojExtendedDarkConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'bojExtendedDark',
+  },
+};
+
+export const BojExtendedDarkCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'bojExtendedDark',
+  },
+};
+
+export const BojExtendedDarkYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'bojExtendedDark',
+  },
+};
+
+export const BojExtendedRigelConfirm: Story = {
+  ...PlainConfirm,
+  args: {
+    ...PlainConfirm.args,
+    theme: 'bojExtendedRigel',
+  },
+};
+
+export const BojExtendedRigelCancelConfirm: Story = {
+  ...PlainCancelConfirm,
+  args: {
+    ...PlainCancelConfirm.args,
+    theme: 'bojExtendedRigel',
+  },
+};
+
+export const BojExtendedRigelYesNo: Story = {
+  ...PlainYesNo,
+  args: {
+    ...PlainYesNo.args,
+    theme: 'bojExtendedRigel',
+  },
+};

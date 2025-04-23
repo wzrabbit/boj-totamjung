@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
-import type { TotamjungTheme } from '@/types/totamjungTheme';
+import { isExternalThemeActive } from '@/domains/isExternalThemeActive';
+import type { TotamjungTheme } from '@/types/mainTheme';
 import type { Storage } from 'wxt/browser';
 
 const useTotamjungThemeState = () => {
@@ -22,8 +23,10 @@ const useTotamjungThemeState = () => {
       return;
     }
 
-    const html = document.documentElement;
-    html.setAttribute('totamjungTheme', newValue);
+    if (!isExternalThemeActive()) {
+      const html = document.documentElement;
+      html.setAttribute('totamjungTheme', newValue);
+    }
 
     setTotamjungTheme(newValue);
   };

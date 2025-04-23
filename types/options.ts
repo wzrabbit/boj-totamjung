@@ -1,7 +1,7 @@
 import { STORAGE_KEY } from '@/constants/commands';
 import type { CheckedAlgorithmIds } from '@/types/algorithm';
 import type { QuickSlots } from '@/types/randomDefense';
-import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { TotamjungTheme } from '@/types/mainTheme';
 import type { HiderOptions } from '@/types/algorithm';
 import type { RandomDefenseHistoryResponse } from '@/types/randomDefense';
 import type { FontNo } from '@/types/font';

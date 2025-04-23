@@ -139,3 +139,138 @@ export const PlainTheme: Story = {
     onSubmitProblemCount: () => {},
   },
 };
+
+export const SolvedAcLightTheme: Story = {
+  ...PlainTheme,
+  render: (_, { args }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#d1b072"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => setIsOpen(true)}
+        />
+        <GachaProblemCountInputModal
+          {...args}
+          theme="solvedAcLight"
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onSubmitProblemCount={() => setIsOpen(false)}
+        />
+      </>
+    );
+  },
+};
+
+export const SolvedAcDarkTheme: Story = {
+  ...PlainTheme,
+  render: (_, { args }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#d1b072"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => setIsOpen(true)}
+        />
+        <GachaProblemCountInputModal
+          {...args}
+          theme="solvedAcDark"
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onSubmitProblemCount={() => setIsOpen(false)}
+        />
+      </>
+    );
+  },
+};
+
+export const SolvedAcBlackTheme: Story = {
+  ...PlainTheme,
+  render: (_, { args }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#d1b072"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => setIsOpen(true)}
+        />
+        <GachaProblemCountInputModal
+          {...args}
+          theme="solvedAcBlack"
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onSubmitProblemCount={() => setIsOpen(false)}
+        />
+      </>
+    );
+  },
+};
+
+export const BojExtendedDarkTheme: Story = {
+  ...PlainTheme,
+  render: (_, { args }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#d1b072"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => setIsOpen(true)}
+        />
+        <GachaProblemCountInputModal
+          {...args}
+          theme="bojExtendedDark"
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onSubmitProblemCount={() => setIsOpen(false)}
+        />
+      </>
+    );
+  },
+};
+
+export const BojExtendedRigelTheme: Story = {
+  ...PlainTheme,
+  render: (_, { args }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <>
+        <IconButton
+          type="button"
+          name="모달 열기"
+          size="large"
+          color="#d1b072"
+          disabled={false}
+          ariaLabel="모달 열기"
+          onClick={() => setIsOpen(true)}
+        />
+        <GachaProblemCountInputModal
+          {...args}
+          theme="bojExtendedRigel"
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onSubmitProblemCount={() => setIsOpen(false)}
+        />
+      </>
+    );
+  },
+};

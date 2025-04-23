@@ -20,10 +20,11 @@ import CardBox from '@/components/CardBox';
 import ProblemCardGrid from '@/components/ProblemCardGrid';
 import useRandomDefenseGachaModal from '@/hooks/gacha/useRandomDefenseGachaModal';
 import GachaModalNotification from '../GachaModalNotification/GachaModalNotification';
+import type { MainTheme } from '@/types/mainTheme';
 
 interface RandomDefenseGachaModalProps {
   open: boolean;
-  theme?: 'none' | 'totamjung';
+  theme?: MainTheme;
   slot: FilledSlot;
   problemCount: number;
   portalTarget?: HTMLElement | null;

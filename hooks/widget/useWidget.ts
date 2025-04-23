@@ -10,12 +10,12 @@ import useMouseLongPress from '@/hooks/useMouseLongPress';
 import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
 import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
 import type { ToastInfo } from '@/types/toast';
-import type { TotamjungTheme } from '@/types/totamjungTheme';
+import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
 import type { HiderOptions } from '@/types/algorithm';
 import { FilledSlot } from '@/types/randomDefense';
 
 interface UseWidgetParams {
-  theme: TotamjungTheme;
+  theme: MainTheme;
   onChangeTheme: (theme: TotamjungTheme) => void;
   onToast: (toastInfo: ToastInfo, duration: number) => void;
 }
@@ -111,6 +111,13 @@ const useWidget = (params: UseWidgetParams) => {
 
     loadWidgetData();
   }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      'totamjungTheme',
+      theme === 'totamjung' ? 'totamjung' : 'none',
+    );
+  }, [theme]);
 
   const scrollToTop = () => {
     if (isScrollingToTop) {

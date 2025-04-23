@@ -1,9 +1,9 @@
 import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
 import IconButton from '@/components/common/IconButton';
-import Text from '@/components/common/Text';
-import { theme } from '@/styles/theme';
+import { theme as styledTheme } from '@/styles/theme';
 import { CheckCircleIcon, CloseCircleIcon } from '@/assets/svg';
 import * as S from './SimpleModal.styled';
+import type { MainTheme } from '@/types/mainTheme';
 
 type SimpleModalProps = {
   title: string;
@@ -17,23 +17,25 @@ type SimpleModalProps = {
 
 interface ConfirmModalProps {
   actionType: 'confirm';
-  theme?: 'none' | 'totamjung';
+  theme?: MainTheme;
   onClose: () => void;
 }
 
 interface CancelConfirmModalProps {
   actionType: 'cancelConfirm';
-  theme?: 'none' | 'totamjung';
+  theme?: MainTheme;
   onClose: () => void;
   onConfirm: () => void;
 }
 
 interface YesNoModalProps {
   actionType: 'yesNo';
-  theme?: 'none' | 'totamjung';
+  theme?: MainTheme;
   onYesSelect: () => void;
   onNoSelect: () => void;
 }
+
+export const lightThemes: readonly MainTheme[] = ['none', 'solvedAcLight'];
 
 const SimpleModal = (props: SimpleModalProps) => {
   const {
@@ -60,12 +62,7 @@ const SimpleModal = (props: SimpleModalProps) => {
       }}
     >
       <S.ContentContainer $width={width} $height={height}>
-        <Text
-          type={theme === 'totamjung' ? 'normal' : 'darkGray'}
-          fontSize="16px"
-        >
-          {message}
-        </Text>
+        <S.Text $totamjungTheme={theme}>{message}</S.Text>
       </S.ContentContainer>
       <ModalActionButtonsContainer theme={theme}>
         {actionType === 'confirm' ? (
@@ -89,7 +86,7 @@ const SimpleModal = (props: SimpleModalProps) => {
 };
 
 const ConfirmButton = (props: Omit<ConfirmModalProps, 'actionType'>) => {
-  const { theme: modalTheme, onClose } = props;
+  const { theme = 'totamjung', onClose } = props;
 
   return (
     <IconButton
@@ -98,7 +95,9 @@ const ConfirmButton = (props: Omit<ConfirmModalProps, 'actionType'>) => {
       size="medium"
       iconSrc={<CheckCircleIcon />}
       color={
-        modalTheme === 'totamjung' ? theme.color.GOLD : theme.color.DARK_GRAY
+        lightThemes.includes(theme)
+          ? styledTheme.color.DARK_GRAY
+          : styledTheme.color.GOLD
       }
       disabled={false}
       ariaLabel="확인"
@@ -111,7 +110,7 @@ const ConfirmButton = (props: Omit<ConfirmModalProps, 'actionType'>) => {
 const CancelConfirmButtons = (
   props: Omit<CancelConfirmModalProps, 'actionType'>,
 ) => {
-  const { theme: modalTheme, onClose, onConfirm } = props;
+  const { theme = 'totamjung', onClose, onConfirm } = props;
 
   return (
     <>
@@ -121,9 +120,9 @@ const CancelConfirmButtons = (
         size="medium"
         iconSrc={<CloseCircleIcon />}
         color={
-          modalTheme === 'totamjung'
-            ? theme.color.LIGHT_GRAY
-            : theme.color.DARK_GRAY
+          lightThemes.includes(theme)
+            ? styledTheme.color.DARK_GRAY
+            : styledTheme.color.LIGHT_GRAY
         }
         disabled={false}
         ariaLabel="취소"
@@ -135,7 +134,9 @@ const CancelConfirmButtons = (
         size="medium"
         iconSrc={<CheckCircleIcon />}
         color={
-          modalTheme === 'totamjung' ? theme.color.GOLD : theme.color.DARK_GRAY
+          lightThemes.includes(theme)
+            ? styledTheme.color.DARK_GRAY
+            : styledTheme.color.GOLD
         }
         disabled={false}
         ariaLabel="확인"
@@ -146,7 +147,7 @@ const CancelConfirmButtons = (
 };
 
 const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
-  const { theme: modalTheme, onYesSelect, onNoSelect } = props;
+  const { theme = 'totamjung', onYesSelect, onNoSelect } = props;
 
   return (
     <>
@@ -157,7 +158,9 @@ const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
         width="80px"
         iconSrc={<CheckCircleIcon />}
         color={
-          modalTheme === 'totamjung' ? theme.color.LIME : theme.color.GREEN
+          lightThemes.includes(theme)
+            ? styledTheme.color.GREEN
+            : styledTheme.color.LIME
         }
         disabled={false}
         ariaLabel="예"
@@ -168,7 +171,7 @@ const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
         name="아니요"
         size="medium"
         iconSrc={<CloseCircleIcon />}
-        color={theme.color.RED}
+        color={styledTheme.color.RED}
         disabled={false}
         ariaLabel="아니요"
         onClick={onNoSelect}

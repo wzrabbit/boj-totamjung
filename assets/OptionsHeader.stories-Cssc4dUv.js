@@ -1,6 +1,0 @@
-import{O as a}from"./OptionsHeader-C5j3lUAJ.js";import{f as p}from"./index-C_FWhylE.js";import"./jsx-runtime-DEdD30eg.js";import"./index-RYns6xqu.js";import"./OptionsNav-QcPXiVWW.js";import"./styled-components.browser.esm-CkAH7aAm.js";import"./SimpleModal-BnTyCKaN.js";import"./Modal-B6gp7QWS.js";import"./close-R_Y1ANk3.js";import"./index-DAfSkmQi.js";import"./IconButton-DB9afjvp.js";import"./Text-D9btwR46.js";import"./theme-YzccoX_F.js";import"./close-circle-Z95a0wyf.js";import"./check-circle-c0jdaR34.js";import"./TotamjungInfoModal-CPYpjoEA.js";import"./useModal-CV8qRtLl.js";const _={title:"components/OptionsHeader",component:a,argTypes:{selectedCategory:{description:"현재 선택되어 있는 메뉴 카테고리입니다."},onCategoryChange:{description:"카테고리를 변경할 때 호출할 콜백 함수입니다."}},parameters:{docs:{description:{component:"`OptionsHeader`는 설정 페이지의 헤더 컴포넌트입니다."}}}},r={args:{selectedCategory:"algorithmHider",onCategoryChange:p()}};var o,e,t;r.parameters={...r.parameters,docs:{...(o=r.parameters)==null?void 0:o.docs,source:{originalSource:`{
-  args: {
-    selectedCategory: 'algorithmHider',
-    onCategoryChange: fn()
-  }
-}`,...(t=(e=r.parameters)==null?void 0:e.docs)==null?void 0:t.source}}};const E=["Default"];export{r as Default,E as __namedExportsOrder,_ as default};

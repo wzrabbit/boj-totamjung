@@ -1,0 +1,1 @@
+const _=0,s=30,E=31,M=1e3,T=99999,A=500,N=300,R=5,a=30,c=/^\w{3,20}$/,o=1e8,t=/^([1-9][0-9]*|0)$/,n=512,I=50;export{c as H,n as M,t as N,a as T,I as a,R as b,N as c,M as d,T as e,A as f,_ as g,E as h,s as i,o as j};

@@ -136,6 +136,9 @@ const useHotKeyLongPress = (params: UseHotkeyLongPressParams) => {
    */
   const unlockHotkey = () => {
     setIsHotkeyLocked(false);
+    pressingBaseKeyRef.current = null;
+    pressingNumberKeyRef.current = null;
+    isHotkeyPressingRef.current = false;
   };
 
   useEffect(() => {
@@ -146,6 +149,7 @@ const useHotKeyLongPress = (params: UseHotkeyLongPressParams) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('keyup', handleKeyUp);
+      clearTimeout(keyPressTimerRef.current);
     };
   }, [initBaseKey, isHotkeyLocked]);
 

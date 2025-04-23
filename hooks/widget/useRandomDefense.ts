@@ -19,7 +19,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     useState(false);
   const isRandomDefenseAvailableRef = useRef(isRandomDefenseAvailable);
   const quickSlotsRef = useRef<QuickSlots>(DEFAULT_QUICK_SLOTS);
-  useHotKeyLongPress({
+  const { unlockHotkey } = useHotKeyLongPress({
     baseKey: quickSlotsRef.current.hotkey,
     requiredLongPressTimeInMilliseconds: 1000,
     onPress: (numberKey) => performRandomDefense(numberKey, 'press'),
@@ -179,6 +179,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   const enableRandomDefense = () => {
     isRandomDefenseAvailableRef.current = true;
     setIsRandomDefenseAvailable(true);
+    unlockHotkey();
   };
 
   /**

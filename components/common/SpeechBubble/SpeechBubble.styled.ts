@@ -31,8 +31,8 @@ const closeButtonColors: Record<MainTheme, string> = {
   none: theme.color.WHITE,
   totamjung: theme.color.LIGHTEST_BROWN,
   solvedAcLight: theme.color.GRAY,
-  solvedAcDark: theme.color.WHITE,
-  solvedAcBlack: theme.color.WHITE,
+  solvedAcDark: theme.solvedAcColor.GRAY,
+  solvedAcBlack: theme.solvedAcColor.GRAY,
   bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
   bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
 } as const;

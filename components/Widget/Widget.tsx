@@ -7,6 +7,7 @@ import { createPortal } from 'react-dom';
 import { $ } from '@/utils/querySelector';
 import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
 import RandomDefenseGachaModal from '../RandomDefenseGachaModal';
+import { isSolvedAcTheme } from '@/domains/dataHandlers/validators/solvedAcThemeValidadtor';
 import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
 
 interface WidgetProps {
@@ -140,6 +141,7 @@ const Widget = (props: WidgetProps) => {
           </S.DropdownMenu>
           {problemTitleElement &&
             shouldShowInspectIcon &&
+            !isSolvedAcTheme(theme) &&
             createPortal(
               <InspectResultIcon
                 theme={theme}

@@ -143,6 +143,9 @@ const useHotKeyLongPress = (params: UseHotkeyLongPressParams) => {
 
   useEffect(() => {
     setBaseKey(initBaseKey);
+  }, [initBaseKey]);
+
+  useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
 
@@ -151,7 +154,7 @@ const useHotKeyLongPress = (params: UseHotkeyLongPressParams) => {
       document.removeEventListener('keyup', handleKeyUp);
       clearTimeout(keyPressTimerRef.current);
     };
-  }, [initBaseKey, isHotkeyLocked]);
+  }, [baseKey, isHotkeyLocked]);
 
   return { unlockHotkey };
 };

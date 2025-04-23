@@ -49,7 +49,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '브루트포스 알고리즘',
     englishName: 'Bruteforcing',
     tag: 'bruteforcing',
-    alias: ['brute force'],
+    alias: ['brute force', '무차별 대입', '무작위 대입'],
   },
   {
     id: 9,

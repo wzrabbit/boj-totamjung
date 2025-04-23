@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { COMMANDS } from '@/constants/commands';
-import { DEFAULT_QUICK_SLOTS_RESPONSE } from '@/constants/defaultValues';
+import { DEFAULT_QUICK_SLOTS } from '@/constants/defaultValues';
 import { isQuickSlots } from '@/domains/dataHandlers/validators/quickSlotsValidator';
 import { isRandomDefenseResult } from '@/domains/dataHandlers/validators/RandomDefenseResultValidator';
 import useHotKeyLongPress from '../useHotkeyLongPress';
@@ -18,7 +18,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   const [isRandomDefenseAvailable, setIsRandomDefenseAvailable] =
     useState(false);
   const isRandomDefenseAvailableRef = useRef(isRandomDefenseAvailable);
-  const quickSlotsRef = useRef<QuickSlots>(DEFAULT_QUICK_SLOTS_RESPONSE);
+  const quickSlotsRef = useRef<QuickSlots>(DEFAULT_QUICK_SLOTS);
   useHotKeyLongPress({
     baseKey: quickSlotsRef.current.hotkey,
     requiredLongPressTimeInMilliseconds: 1000,

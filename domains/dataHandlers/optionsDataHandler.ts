@@ -8,7 +8,15 @@ import { fetchFontNo } from './fontNoDataHandler';
 import { fetchTimers } from './timersDataHandler';
 import type { OptionsData } from '@/types/options';
 import { DEFAULT_EMPTY_DATA } from '@/constants/defaultValues';
-import { isOptionsData } from './validators/optionsDataValidator';
+import {
+  isOptionsData,
+  isV2OptionsData,
+} from './validators/optionsDataValidator';
+import { fetchGachaOptions } from './gachaOptionsHandler';
+import { fetchShouldShowWelcomeMessage } from './shouldShowWelcomeMessageDataHandler';
+import { isObject } from '@/types/typeGuards';
+import { VALID_VERSIONS } from '@/constants/validVersions';
+import { updateAllLegacyData } from './legacyDataUpdater';
 
 export const fetchOptionsData = async (): Promise<OptionsData> => {
   const [
@@ -18,7 +26,9 @@ export const fetchOptionsData = async (): Promise<OptionsData> => {
     hiderOptions,
     randomDefenseHistoryResponse,
     timers,
+    gachaOptions,
     fontNo,
+    shouldShowWelcomeMessage,
   ] = await Promise.all([
     fetchCheckedAlgorithmIds(),
     fetchQuickSlots(),
@@ -26,7 +36,9 @@ export const fetchOptionsData = async (): Promise<OptionsData> => {
     fetchHiderOptions(),
     fetchRandomDefenseHistory(),
     fetchTimers(),
+    fetchGachaOptions(),
     fetchFontNo(),
+    fetchShouldShowWelcomeMessage(),
   ]);
 
   return {
@@ -39,20 +51,41 @@ export const fetchOptionsData = async (): Promise<OptionsData> => {
     [STORAGE_KEY.IS_TIER_HIDDEN]: randomDefenseHistoryResponse.isHidden,
     [STORAGE_KEY.FONT_NO]: fontNo,
     [STORAGE_KEY.TIMERS]: timers,
-    [STORAGE_KEY.DATA_VERSION]: 'v1.2',
+    [STORAGE_KEY.GACHA_OPTIONS]: gachaOptions,
+    [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: shouldShowWelcomeMessage,
+    [STORAGE_KEY.DATA_VERSION]: 3,
   };
 };
 
 export const saveOptionsData = async (data: unknown) => {
+  if (!isObject(data) || !('dataVersion' in data)) {
+    return false;
+  }
+
+  const { dataVersion } = data;
+
+  if (
+    (typeof dataVersion !== 'number' && typeof dataVersion !== 'string') ||
+    !VALID_VERSIONS.includes(dataVersion)
+  ) {
+    return false;
+  }
+
+  if ((dataVersion === 'v1.2' || dataVersion === 2) && !isV2OptionsData(data)) {
+    return false;
+  }
+
+  if (dataVersion !== 3) {
+    await browser.storage.local.set(data);
+    await updateAllLegacyData();
+    return true;
+  }
+
   if (!isOptionsData(data)) {
     return false;
   }
 
-  await browser.storage.local.set({
-    ...data,
-    [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: false,
-  });
-
+  await browser.storage.local.set(data);
   return true;
 };
 

@@ -1,15 +1,12 @@
 import { isObject, isRatedTier } from '@/types/typeGuards';
-import type {
-  HiderOptions,
-  LegacySettings,
-  LegacyTimer,
-} from '@/types/algorithm';
+import type { HiderOptions } from '@/types/algorithm';
+import type { V1, V2 } from '@/types/legacyData';
 import {
   isNumericString,
   isNumericStringAllowsLeadingZeroes,
 } from '@/utils/numericStringChecker';
 
-export const isHiderOptions = (data: unknown): data is HiderOptions => {
+export const isV2HiderOptions = (data: unknown): data is V2.HiderOptions => {
   if (
     !(
       isObject(data) &&
@@ -17,7 +14,6 @@ export const isHiderOptions = (data: unknown): data is HiderOptions => {
       'shouldHideTier' in data &&
       'shouldWarnHighTier' in data &&
       'warnTier' in data &&
-      'shouldRevealTierOnHover' in data &&
       'algorithmHiderUsage' in data &&
       'problemTagLockUsage' in data &&
       isObject(data.problemTagLockDuration) &&
@@ -27,7 +23,6 @@ export const isHiderOptions = (data: unknown): data is HiderOptions => {
       typeof data.problemTagLockDuration.minutes === 'number' &&
       typeof data.shouldHideTier === 'boolean' &&
       typeof data.shouldWarnHighTier === 'boolean' &&
-      typeof data.shouldRevealTierOnHover === 'boolean' &&
       isRatedTier(data.warnTier) &&
       typeof data.algorithmHiderUsage === 'string' &&
       ['click', 'always'].includes(data.algorithmHiderUsage) &&
@@ -50,7 +45,15 @@ export const isHiderOptions = (data: unknown): data is HiderOptions => {
   );
 };
 
-export const isLegacyTimer = (data: unknown): data is LegacyTimer => {
+export const isHiderOptions = (data: unknown): data is HiderOptions => {
+  return (
+    isV2HiderOptions(data) &&
+    'shouldRevealTierOnHover' in data &&
+    typeof data.shouldRevealTierOnHover === 'boolean'
+  );
+};
+
+export const isV1Timer = (data: unknown): data is V1.Timer => {
   return (
     isObject(data) &&
     'expire' in data &&
@@ -71,7 +74,7 @@ export const isLegacyTimer = (data: unknown): data is LegacyTimer => {
   );
 };
 
-export const isLegacySettings = (data: unknown): data is LegacySettings => {
+export const isV1Settings = (data: unknown): data is V1.Settings => {
   if (
     !(
       isObject(data) &&

@@ -1,14 +1,11 @@
-import type {
-  Slots,
-  QuickSlots,
-  LegacyQuickSlots,
-} from '@/types/randomDefense';
+import type { Slots, QuickSlots } from '@/types/randomDefense';
+import type { V1, V2 } from '@/types/legacyData';
 import { STORAGE_KEY } from './commands';
 import { HiderOptions } from '@/types/algorithm';
 
 export const DEFAULT_CHECKED_ALGORITHM_IDS = [1, 2];
 
-const DEFAULT_QUICK_SLOTS: Slots = {
+export const DEFAULT_SLOTS: Slots = {
   1: { isEmpty: true },
   2: { isEmpty: true },
   3: { isEmpty: true },
@@ -21,28 +18,27 @@ const DEFAULT_QUICK_SLOTS: Slots = {
   0: { isEmpty: true },
 } as const;
 
-export const DEFAULT_QUICK_SLOTS_RESPONSE: QuickSlots = {
+export const DEFAULT_QUICK_SLOTS: QuickSlots = {
   hotkey: 'Alt',
   selectedSlotNo: 1,
-  slots: DEFAULT_QUICK_SLOTS,
+  slots: DEFAULT_SLOTS,
 };
 
-export const DEFAULT_LEGACY_QUICK_SLOTS_RESPONSE: LegacyQuickSlots = {
-  selectedNo: 1,
-  ...DEFAULT_QUICK_SLOTS,
-};
-
-export const DEFAULT_HIDER_OPTIONS: HiderOptions = {
+export const DEFAULT_V2_HIDER_OPTIONS: V2.HiderOptions = {
   problemTagLockDuration: {
     hours: 0,
     minutes: 20,
   },
   shouldHideTier: false,
   shouldWarnHighTier: false,
-  shouldRevealTierOnHover: false,
   warnTier: 1,
   algorithmHiderUsage: 'click',
   problemTagLockUsage: 'click',
+} as const;
+
+export const DEFAULT_HIDER_OPTIONS: HiderOptions = {
+  ...DEFAULT_V2_HIDER_OPTIONS,
+  shouldRevealTierOnHover: false,
 } as const;
 
 export const DEFAULT_TOTAMJUNG_THEME = 'none';
@@ -60,19 +56,26 @@ export const DEFAULT_GACHA_OPTIONS = {
   isAudioMuted: true,
 } as const;
 
-/**
- * 데이터를 초기화했을 때 덮어씌우게 될 빈 데이터입니다. 최초 설치 데이터와는 약간 다릅니다.
- */
-export const DEFAULT_EMPTY_DATA = {
-  [STORAGE_KEY.DATA_VERSION]: 'v1.2',
+export const DEFAULT_V1_QUICK_SLOTS: V1.QuickSlots = {
+  selectedNo: 1,
+  ...DEFAULT_SLOTS,
+};
+
+export const DEFAULT_V2_EMPTY_DATA = {
+  [STORAGE_KEY.DATA_VERSION]: 2,
   [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: DEFAULT_CHECKED_ALGORITHM_IDS,
-  [STORAGE_KEY.QUICK_SLOTS]: DEFAULT_QUICK_SLOTS_RESPONSE,
+  [STORAGE_KEY.QUICK_SLOTS]: DEFAULT_QUICK_SLOTS,
   [STORAGE_KEY.TOTAMJUNG_THEME]: DEFAULT_TOTAMJUNG_THEME,
   [STORAGE_KEY.HIDER_OPTIONS]: DEFAULT_HIDER_OPTIONS,
   [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: DEFAULT_RANDOM_DEFENSE_HISTORY,
   [STORAGE_KEY.IS_TIER_HIDDEN]: DEFAULT_IS_TIER_HIDDEN,
   [STORAGE_KEY.FONT_NO]: DEFAULT_FONT_NO,
   [STORAGE_KEY.TIMERS]: DEFAULT_TIMERS,
-  [STORAGE_KEY.GACHA_OPTIONS]: DEFAULT_GACHA_OPTIONS,
   [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: false,
+};
+
+export const DEFAULT_EMPTY_DATA = {
+  ...DEFAULT_V2_EMPTY_DATA,
+  [STORAGE_KEY.DATA_VERSION]: 3,
+  [STORAGE_KEY.GACHA_OPTIONS]: DEFAULT_GACHA_OPTIONS,
 };

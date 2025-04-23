@@ -1,11 +1,9 @@
 import { isIsoString } from '@/types/typeGuards';
-import {
-  LegacyRandomDefenseHistoryInfo,
-  RandomDefenseHistoryInfo,
-} from '@/types/randomDefense';
+import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
+import type { V1 } from '@/types/legacyData';
 
-export const convertLegacyToLatestRandomDefenseHistory = (
-  legacyRandomDefenseHistory: LegacyRandomDefenseHistoryInfo[],
+export const convertV1ToLatestRandomDefenseHistory = (
+  legacyRandomDefenseHistory: V1.RandomDefenseHistoryInfo[],
 ): RandomDefenseHistoryInfo[] => {
   const latestRandomDefenseHistory: RandomDefenseHistoryInfo[] = [];
 

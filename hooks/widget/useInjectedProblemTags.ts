@@ -81,7 +81,7 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
       const algorithmElements = $$('.spoiler-link');
 
       const problemAlgorithmNames = algorithmElements.map((algorithmElement) =>
-        algorithmElement.innerText.replace(/\u2013/g, '-'),
+        algorithmElement.innerText.replace(/\u2013/g, '-').toLowerCase(),
       );
 
       let hasUnknownAlgorithms = false;
@@ -89,7 +89,9 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
 
       problemAlgorithmNames.forEach((name, index) => {
         const currentAlgorithmId = ALGORITHM_INFOS.find(
-          (info) => info.name === name || info.englishName === name,
+          (info) =>
+            info.name.toLowerCase() === name ||
+            info.englishName.toLowerCase() === name,
         )?.id;
 
         if (

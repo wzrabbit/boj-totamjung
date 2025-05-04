@@ -46,7 +46,7 @@ const testcases: [string, Algorithm[]][] = [
       },
       {
         id: 82,
-        name: '가장 긴 증가하는 부분 수열: o(n log n)',
+        name: '가장 긴 증가하는 부분 수열',
       },
       {
         id: 124,

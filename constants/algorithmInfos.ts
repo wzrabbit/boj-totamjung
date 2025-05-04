@@ -560,8 +560,8 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   },
   {
     id: 82,
-    name: '가장 긴 증가하는 부분 수열: o(n log n)',
-    englishName: 'Longest Increasing Sequence In O(n Log N)',
+    name: '가장 긴 증가하는 부분 수열',
+    englishName: 'Longest Increasing Sequence Problem',
     tag: 'lis',
     alias: [],
   },
@@ -1153,7 +1153,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   },
   {
     id: 171,
-    name: '유향 최소 신장 트리',
+    name: '유향 최소 스패닝 트리',
     englishName: 'Directed Minimum Spanning Tree',
     tag: 'directed_mst',
     alias: [],
@@ -1540,7 +1540,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     id: 226,
     name: '키네틱 세그먼트 트리',
     englishName: 'Kinetic Segment Tree',
-    tag: 'segtree_kinetic',
+    tag: 'kinetic_segtree',
     alias: [],
   },
   {
@@ -1555,6 +1555,27 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
     name: '최대 부분 배열 문제',
     englishName: 'Maximum Subarray',
     tag: 'maximum_subarray',
+    alias: [],
+  },
+  {
+    id: 229,
+    name: '각도 정렬',
+    englishName: 'Angle Sorting',
+    tag: 'angle_sorting',
+    alias: [],
+  },
+  {
+    id: 230,
+    name: '조화수',
+    englishName: 'Harmonic Number',
+    tag: 'harmonic_number',
+    alias: [],
+  },
+  {
+    id: 231,
+    name: '소인수분해',
+    englishName: 'Prime Factorization',
+    tag: 'prime_factorization',
     alias: [],
   },
 ];

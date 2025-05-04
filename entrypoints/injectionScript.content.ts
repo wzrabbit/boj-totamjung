@@ -148,7 +148,7 @@ const executeInjectionScript = () => {
         }
       `;
       const cafe24ClassicTypeElement = document.createElement('style');
-      cookieRunStyleElement.innerHTML = `
+      cafe24ClassicTypeElement.innerHTML = `
         @font-face {
           font-family: 'Cafe24ClassicType';
           src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Cafe24ClassicType-Regular.woff2')

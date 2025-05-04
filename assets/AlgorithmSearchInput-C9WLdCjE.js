@@ -1,4 +1,4 @@
-import{j as s}from"./jsx-runtime-DEdD30eg.js";import{d as I,l as x}from"./styled-components.browser.esm-CkAH7aAm.js";import{M as $}from"./MiniAlgorithmButton-BnJqfcSq.js";import{r as h}from"./index-RYns6xqu.js";import{g as N}from"./getSearchResults-DBgwL6bf.js";import{b as S}from"./randomDefense-BrQ0TErT.js";import{A as b}from"./algorithmInfos-DmSx-FdP.js";const k=I.div`
+import{j as s}from"./jsx-runtime-DEdD30eg.js";import{d as I,l as x}from"./styled-components.browser.esm-CkAH7aAm.js";import{M as $}from"./MiniAlgorithmButton-BnJqfcSq.js";import{r as h}from"./index-RYns6xqu.js";import{g as N}from"./getSearchResults-B-QY19XD.js";import{b as S}from"./randomDefense-BrQ0TErT.js";import{A as b}from"./algorithmInfos-w49mooiO.js";const k=I.div`
   position: relative;
 
   width: 446px;

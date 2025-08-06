@@ -81,8 +81,10 @@ export const circleProgressBarColors: Record<MainTheme, string> = {
 export const Container = styled.div<{
   $open: boolean;
   $totamjungTheme: MainTheme;
+  $visible: boolean;
 }>`
   display: flex;
+  visibility: ${({ $visible }) => ($visible ? 'visible' : 'hidden')};
   column-gap: 10px;
   position: fixed;
   left: 30px;

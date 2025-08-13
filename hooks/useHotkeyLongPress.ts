@@ -130,6 +130,13 @@ const useHotKeyLongPress = (params: UseHotkeyLongPressParams) => {
     }
   };
 
+  const resetHotKeyStatusOnWindowFocusChange = () => {
+    pressingBaseKeyRef.current = null;
+    pressingNumberKeyRef.current = null;
+    isHotkeyPressingRef.current = false;
+    clearTimeout(keyPressTimerRef.current);
+  };
+
   /**
    * 랜덤 디펜스 실행 조건이 만족되는 경우에는 중복 실행을 방지하도록 잠금이 설정됩니다.
    * 랜덤 디펜스에 실패했거나 다른 처리를 해야하는 이유로 이 잠금을 해제하고 싶은 경우에 사용해 주세요.
@@ -148,10 +155,20 @@ const useHotKeyLongPress = (params: UseHotkeyLongPressParams) => {
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
+    document.addEventListener(
+      'visibilitychange',
+      resetHotKeyStatusOnWindowFocusChange,
+    );
+    window.addEventListener('blur', resetHotKeyStatusOnWindowFocusChange);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('keyup', handleKeyUp);
+      document.removeEventListener(
+        'visibilitychange',
+        resetHotKeyStatusOnWindowFocusChange,
+      );
+      window.removeEventListener('blur', resetHotKeyStatusOnWindowFocusChange);
       clearTimeout(keyPressTimerRef.current);
     };
   }, [baseKey, isHotkeyLocked]);

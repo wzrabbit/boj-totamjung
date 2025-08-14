@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-DEdD30eg.js";import{d as o}from"./styled-components.browser.esm-CkAH7aAm.js";import{A as r}from"./AppearanceFieldsetMenu-Bh7rOtN0.js";import{O as p}from"./OptionsDataManageMenu-DmbyWgZ4.js";const s=o.section`
+import{j as e}from"./jsx-runtime-DEdD30eg.js";import{d as o}from"./styled-components.browser.esm-CkAH7aAm.js";import{A as r}from"./AppearanceFieldsetMenu-Bh7rOtN0.js";import{O as p}from"./OptionsDataManageMenu-Bhn8yqRj.js";const s=o.section`
   display: flex;
   column-gap: 20px;
   flex-shrink: 0;

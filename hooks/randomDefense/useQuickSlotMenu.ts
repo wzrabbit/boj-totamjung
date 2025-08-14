@@ -30,7 +30,17 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
       return;
     }
 
-    onHotkeyChange(hotkey === 'Alt' ? 'F2' : 'Alt');
+    if (hotkey === null) {
+      onHotkeyChange('Alt');
+      return;
+    }
+
+    if (hotkey === 'Alt') {
+      onHotkeyChange('F2');
+      return;
+    }
+
+    onHotkeyChange(null);
   };
 
   const getOccupiedSlotNos = () => {

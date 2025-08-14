@@ -9,7 +9,7 @@ import type {
 import type { V1 } from '@/types/legacyData';
 
 export const isHotkey = (data: unknown): data is Hotkey => {
-  return data === 'Alt' || data === 'F2';
+  return data === null || data === 'Alt' || data === 'F2';
 };
 
 export const isSlot = (data: unknown): data is Slot => {

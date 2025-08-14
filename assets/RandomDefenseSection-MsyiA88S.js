@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-Cf8x2fCZ.js";import{R as f}from"./RandomDefenseCreateMenu-B-YuTsFi.js";import{Q as x}from"./QuickSlotsMenu-DCAY5kze.js";import{u as h}from"./useRandomDefenseSection-4y7haKXS.js";import{R as S}from"./RandomDefenseHistoryMenu-Buxlm1nN.js";import{M as g}from"./MenuTitle-C7FRvFNi.js";import{d as o}from"./styled-components.browser.esm-CIS6JKSM.js";const y=o.section`
+import{j as e}from"./jsx-runtime-Cf8x2fCZ.js";import{R as f}from"./RandomDefenseCreateMenu-DjFNzOaA.js";import{Q as x}from"./QuickSlotsMenu-By4EtoUL.js";import{u as h}from"./useRandomDefenseSection-4y7haKXS.js";import{R as S}from"./RandomDefenseHistoryMenu-Buxlm1nN.js";import{M as g}from"./MenuTitle-C7FRvFNi.js";import{d as o}from"./styled-components.browser.esm-CIS6JKSM.js";const y=o.section`
   display: flex;
   flex-direction: column;
   flex-shrink: 0;

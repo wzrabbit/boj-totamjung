@@ -46,7 +46,8 @@ const getTierGradientCss = (
 ) => {
   if (isHidden) {
     return css`
-      background-image: ${isHover
+      background-image:
+        ${isHover
           ? theme.solvedAcTier.HIDDEN_DARK_GRADIENT200
           : theme.solvedAcTier.HIDDEN_DARK_GRADIENT100},
         ${theme.solvedAcTier.HIDDEN_GRADIENT};
@@ -55,7 +56,8 @@ const getTierGradientCss = (
 
   if (tier >= 1 && tier <= 5) {
     return css`
-      background-image: ${isHover
+      background-image:
+        ${isHover
           ? theme.solvedAcTier.BRONZE_DARK_GRADIENT200
           : theme.solvedAcTier.BRONZE_DARK_GRADIENT100},
         ${theme.solvedAcTier.BRONZE_GRADIENT};
@@ -64,7 +66,8 @@ const getTierGradientCss = (
 
   if (tier >= 6 && tier <= 10) {
     return css`
-      background-image: ${isHover
+      background-image:
+        ${isHover
           ? theme.solvedAcTier.SILVER_DARK_GRADIENT200
           : theme.solvedAcTier.SILVER_DARK_GRADIENT100},
         ${theme.solvedAcTier.SILVER_GRADIENT};
@@ -73,7 +76,8 @@ const getTierGradientCss = (
 
   if (tier >= 11 && tier <= 15) {
     return css`
-      background-image: ${isHover
+      background-image:
+        ${isHover
           ? theme.solvedAcTier.GOLD_DARK_GRADIENT200
           : theme.solvedAcTier.GOLD_DARK_GRADIENT100},
         ${theme.solvedAcTier.GOLD_GRADIENT};
@@ -82,7 +86,8 @@ const getTierGradientCss = (
 
   if (tier >= 16 && tier <= 20) {
     return css`
-      background-image: ${isHover
+      background-image:
+        ${isHover
           ? theme.solvedAcTier.PLATINUM_DARK_GRADIENT200
           : theme.solvedAcTier.PLATINUM_DARK_GRADIENT100},
         ${theme.solvedAcTier.PLATINUM_GRADIENT};
@@ -91,7 +96,8 @@ const getTierGradientCss = (
 
   if (tier >= 21 && tier <= 25) {
     return css`
-      background-image: ${isHover
+      background-image:
+        ${isHover
           ? theme.solvedAcTier.DIAMOND_DARK_GRADIENT200
           : theme.solvedAcTier.DIAMOND_DARK_GRADIENT100},
         ${theme.solvedAcTier.DIAMOND_GRADIENT};
@@ -100,7 +106,8 @@ const getTierGradientCss = (
 
   if (tier >= 26 && tier <= 30) {
     return css`
-      background-image: ${isHover
+      background-image:
+        ${isHover
           ? theme.solvedAcTier.RUBY_DARK_GRADIENT200
           : theme.solvedAcTier.RUBY_DARK_GRADIENT100},
         ${theme.solvedAcTier.RUBY_GRADIENT};
@@ -108,7 +115,8 @@ const getTierGradientCss = (
   }
 
   return css`
-    background-image: ${isHover
+    background-image:
+      ${isHover
         ? theme.solvedAcTier.UNRATED_DARK_GRADIENT200
         : theme.solvedAcTier.UNRATED_DARK_GRADIENT100},
       ${theme.solvedAcTier.UNRATED_GRADIENT};

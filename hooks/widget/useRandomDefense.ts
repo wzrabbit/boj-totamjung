@@ -6,7 +6,7 @@ import { isRandomDefenseResult } from '@/domains/dataHandlers/validators/RandomD
 import useHotKeyLongPress from '../useHotkeyLongPress';
 import type { ToastInfo } from '@/types/toast';
 import type { FilledSlot, QuickSlots, SlotNo } from '@/types/randomDefense';
-import type { Storage } from 'wxt/browser';
+import type { Browser } from '#imports';
 
 interface UseRandomDefenseParams {
   onToast: (toastInfo: ToastInfo, duration: number) => void;
@@ -50,7 +50,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   }, []);
 
   const updateQuickSlotsIfLocalChanged = (
-    changes: { [key: string]: Storage.StorageChange },
+    changes: { [key: string]: Browser.storage.StorageChange },
     areaName: string,
   ) => {
     if (areaName !== 'local' || !('quickSlots' in changes)) {

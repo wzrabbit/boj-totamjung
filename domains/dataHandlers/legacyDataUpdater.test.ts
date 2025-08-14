@@ -1,5 +1,3 @@
-import { STORAGE_KEY } from '@/constants/commands';
-import { updateAllLegacyData } from './legacyDataUpdater';
 import {
   convertV1ToV2OptionsData,
   convertV2ToLatestOptionsData,
@@ -8,12 +6,10 @@ import {
   DEFAULT_CHECKED_ALGORITHM_IDS,
   DEFAULT_FONT_NO,
   DEFAULT_GACHA_OPTIONS,
-  DEFAULT_HIDER_OPTIONS,
   DEFAULT_IS_TIER_HIDDEN,
   DEFAULT_QUICK_SLOTS,
   DEFAULT_RANDOM_DEFENSE_HISTORY,
   DEFAULT_TIMERS,
-  DEFAULT_TOTAMJUNG_THEME,
 } from '@/constants/defaultValues';
 import { V2 } from '@/types/legacyData';
 import { OptionsData } from '@/types/options';

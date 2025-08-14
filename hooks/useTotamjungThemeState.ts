@@ -3,14 +3,14 @@ import { COMMANDS } from '@/constants/commands';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
 import { isExternalThemeActive } from '@/domains/isExternalThemeActive';
 import type { TotamjungTheme } from '@/types/mainTheme';
-import type { Storage } from 'wxt/browser';
+import type { Browser } from '#imports';
 
 const useTotamjungThemeState = () => {
   const [totamjungTheme, setTotamjungTheme] = useState<TotamjungTheme>('none');
   const [isLoaded, setIsLoaded] = useState(false);
 
   const updateTotamjungThemeIfLocalChanged = (
-    changes: { [key: string]: Storage.StorageChange },
+    changes: { [key: string]: Browser.storage.StorageChange },
     areaName: string,
   ) => {
     if (areaName !== 'local' || !('totamjungTheme' in changes)) {

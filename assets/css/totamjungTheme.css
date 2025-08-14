@@ -555,15 +555,15 @@ html[totamjungTheme='totamjung'] .result-ac,
 html[totamjungTheme='totamjung'] .result-ac:hover,
 html[totamjungTheme='totamjung'] .result-ac:active,
 html[totamjungTheme='totamjung'] .result-ac:focus {
-  color: #57ffa9;
-  text-decoration-color: #57ffa9;
+  color: #25f188;
+  text-decoration-color: #25f188;
 }
 
 html[totamjungTheme='totamjung'] td.result > .result-ac {
   background-clip: text !important;
   -webkit-background-clip: text !important;
   color: transparent;
-  background: linear-gradient(to right, #5cff9c, #57ffe9);
+  background: linear-gradient(to right, #25f188, #0ed8bd);
 }
 
 html[totamjungTheme='totamjung'] td.result > .result-ac > a {
@@ -582,7 +582,7 @@ html[totamjungTheme='totamjung'] .result-wa,
 html[totamjungTheme='totamjung'] .result-wa:hover,
 html[totamjungTheme='totamjung'] .result-wa:active,
 html[totamjungTheme='totamjung'] .result-wa:focus {
-  color: #ff684a;
+  color: #f16448;
 }
 
 html[totamjungTheme='totamjung'] .result-pe,
@@ -593,11 +593,15 @@ html[totamjungTheme='totamjung'] .result-ole {
 }
 
 html[totamjungTheme='totamjung'] .result-rte {
-  color: #b290ff;
+  color: #9f7df0;
 }
 
 html[totamjungTheme='totamjung'] .result-ce {
-  color: #4e93cf;
+  color: #4f93cf;
+}
+
+html[totamjungTheme='totamjung'] .result-del {
+  color: #777777;
 }
 
 html[totamjungTheme='totamjung'] .kb-text::after,

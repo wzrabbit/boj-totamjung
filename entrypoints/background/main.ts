@@ -1,6 +1,6 @@
 import { isObject } from '@/types/typeGuards';
 import { COMMANDS } from '@/constants/commands';
-import { browser } from 'wxt/browser/chrome';
+import { browser } from '#imports';
 import {
   fetchCheckedAlgorithmIds,
   saveCheckedAlgorithmIds,

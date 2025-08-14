@@ -535,16 +535,79 @@ html[totamjungTheme='totamjung'] .blog-twitter-inner:hover::after {
   border-right: 25px solid transparent;
 }
 
-html[totamjungTheme='totamjung'] .result-ac {
-  color: rgb(0, 152, 116);
+html[totamjungTheme='totamjung'] .result-wait,
+html[totamjungTheme='totamjung'] .result-rejudge-wait,
+html[totamjungTheme='totamjung'] .result-no-judge {
+  color: #cfcfcf;
 }
 
-html[totamjungTheme='totamjung'] .result-pac {
-  color: rgb(239, 192, 80);
+html[totamjungTheme='totamjung'] .result-compile,
+html[totamjungTheme='totamjung'] .result-judging {
+  color: #ff9e48;
 }
 
-html[totamjungTheme='totamjung'] .result-wa {
-  color: rgb(221, 65, 36);
+html[totamjungTheme='totamjung'] .result-compile,
+html[totamjungTheme='totamjung'] .result-judging {
+  color: #ff9e48;
+}
+
+html[totamjungTheme='totamjung'] .result-ac,
+html[totamjungTheme='totamjung'] .result-ac:hover,
+html[totamjungTheme='totamjung'] .result-ac:active,
+html[totamjungTheme='totamjung'] .result-ac:focus {
+  color: #25f188;
+  text-decoration-color: #25f188;
+}
+
+html[totamjungTheme='totamjung'] td.result > .result-ac {
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent;
+  background: linear-gradient(to right, #25f188, #0ed8bd);
+}
+
+html[totamjungTheme='totamjung'] td.result > .result-ac > a {
+  text-decoration: underline;
+}
+
+html[totamjungTheme='totamjung'] .result-pac,
+html[totamjungTheme='totamjung'] .result-pac:hover,
+html[totamjungTheme='totamjung'] .result-pac:active,
+html[totamjungTheme='totamjung'] .result-pac:focus {
+  color: #ffe199;
+  text-decoration-color: #ffe199;
+}
+
+html[totamjungTheme='totamjung'] .result-wa,
+html[totamjungTheme='totamjung'] .result-wa:hover,
+html[totamjungTheme='totamjung'] .result-wa:active,
+html[totamjungTheme='totamjung'] .result-wa:focus {
+  color: #f16448;
+}
+
+html[totamjungTheme='totamjung'] .result-pe,
+html[totamjungTheme='totamjung'] .result-tle,
+html[totamjungTheme='totamjung'] .result-mle,
+html[totamjungTheme='totamjung'] .result-ole {
+  color: #ff9d95;
+}
+
+html[totamjungTheme='totamjung'] .result-rte {
+  color: #9f7df0;
+}
+
+html[totamjungTheme='totamjung'] .result-ce {
+  color: #4f93cf;
+}
+
+html[totamjungTheme='totamjung'] .result-del {
+  color: #777777;
+}
+
+html[totamjungTheme='totamjung'] .kb-text::after,
+html[totamjungTheme='totamjung'] .ms-text::after,
+html[totamjungTheme='totamjung'] .b-text::after {
+  color: #ff684a !important;
 }
 
 html[totamjungTheme='totamjung'] #favorite_button,

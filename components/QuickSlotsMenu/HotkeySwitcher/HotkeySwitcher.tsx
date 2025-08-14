@@ -11,14 +11,29 @@ interface HotkeySwitcherProps {
 
 const isMac = navigator.userAgent.toLowerCase().indexOf('mac') !== -1;
 
+const getHotkeyText = (
+  hotkey: Hotkey,
+  selectedSlotNo: HotkeySwitcherProps['selectedSlotNo'],
+) => {
+  if (!hotkey) {
+    return '단축키: 미사용';
+  }
+
+  if (hotkey === 'F2') {
+    return `단축키: F2 + ${selectedSlotNo}`;
+  }
+
+  return `단축키: ${isMac ? 'Option' : 'Alt'} + ${selectedSlotNo}`;
+};
+
 const HotkeySwitcher = (props: HotkeySwitcherProps) => {
   const { selectedSlotNo, hotkey, onClick } = props;
 
   return (
     <S.Container>
-      <Text type="primary" fontSize="16px">{`단축키: ${
-        hotkey === 'Alt' ? (isMac ? 'Option' : 'Alt') : 'F2'
-      } + ${selectedSlotNo}`}</Text>
+      <Text type="primary" fontSize="16px">
+        {getHotkeyText(hotkey, selectedSlotNo)}
+      </Text>
       <S.SwitchButton aria-label="단축키 전환하기" onClick={onClick}>
         <SwitchIcon />
       </S.SwitchButton>

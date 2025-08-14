@@ -1,4 +1,5 @@
 import * as S from './LeftSlideToast.styled';
+import { useState, useEffect } from 'react';
 import { circleProgressBarColors } from './LeftSlideToast.styled';
 import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 import { CheckIcon, CloseIcon } from '@/assets/svg';
@@ -19,12 +20,30 @@ interface LeftSlideToastProps {
 const LeftSlideToast = (props: LeftSlideToastProps) => {
   const { mainIconSrc, theme, progress, title, descriptions, open, onClose } =
     props;
+  const [isVisible, setIsVisible] = useState(false);
   const listedDescriptions = Array.isArray(descriptions)
     ? descriptions
     : [descriptions];
 
+  useEffect(() => {
+    if (open) {
+      setIsVisible(true);
+    }
+  }, [open]);
+
+  const handleTransitionEnd = () => {
+    if (!open) {
+      setIsVisible(false);
+    }
+  };
+
   return (
-    <S.Container $open={open} $totamjungTheme={theme}>
+    <S.Container
+      $open={open}
+      $totamjungTheme={theme}
+      $visible={isVisible}
+      onTransitionEnd={handleTransitionEnd}
+    >
       <S.LeftIconWrapper>
         {mainIconSrc &&
           (typeof mainIconSrc === 'string' ? (

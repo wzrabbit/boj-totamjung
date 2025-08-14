@@ -1,3 +1,0 @@
-import{L as a}from"./Loading-B_gIuuyx.js";import"./jsx-runtime-DEdD30eg.js";import"./index-RYns6xqu.js";import"./loading-D5dlFyPz.js";import"./styled-components.browser.esm-CkAH7aAm.js";const i={title:"components/common/Loading",component:a,parameters:{docs:{description:{component:"`Loading`은 콘텐츠가 로딩 중일 경우 이를 시각적으로 전달하는 역할을 하는 공통 컴포넌트입니다. 이 컴포넌트는 항상 부모 요소를 기준으로 상하좌우로 중앙에 배치됩니다."}}}},o={args:{}};var r,e,t;o.parameters={...o.parameters,docs:{...(r=o.parameters)==null?void 0:r.docs,source:{originalSource:`{
-  args: {}
-}`,...(t=(e=o.parameters)==null?void 0:e.docs)==null?void 0:t.source}}};const d=["Default"];export{o as Default,d as __namedExportsOrder,i as default};

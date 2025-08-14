@@ -1,1 +1,0 @@
-import{r as t}from"./index-RYns6xqu.js";const f=o=>{const{confirmText:e}=o,[n,s]=t.useState(""),[u,r]=t.useState(e);return t.useEffect(()=>{r(u)},[e]),{inputValue:n,isSameWithConfirmText:n===u,updateInputValue:a=>{s(a.target.value)}}};export{f as u};

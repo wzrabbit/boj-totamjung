@@ -1,10 +1,13 @@
 import * as S from './AlgorithmPool.styled';
 import AlgorithmList from './AlgorithmList';
 import SimpleModal from '@/components/common/SimpleModal';
+import Text from '@/components/common/Text';
+import Loading from '@/components/common/Loading';
 import useAlgorithmPool from '@/hooks/algorithm/useAlgorithmPool';
 import useModal from '@/hooks/useModal';
+
 import { SearchIcon } from '@/assets/svg';
-import { allCheckedIcon, allUncheckedIcon } from '@/assets/png';
+import { allCheckedIcon, allUncheckedIcon, noSearchResult } from '@/assets/png';
 
 const AlgorithmPool = () => {
   const {
@@ -24,12 +27,28 @@ const AlgorithmPool = () => {
   return (
     <S.Container>
       <S.AlgorithmPanel>
-        {isLoaded && (
-          <AlgorithmList
-            items={items}
-            checkedAlgorithmIds={checkedAlgorithmIds}
-            onChange={toggleAlgorithm}
-          />
+        {isLoaded ? (
+          items.length > 0 ? (
+            <AlgorithmList
+              items={items}
+              checkedAlgorithmIds={checkedAlgorithmIds}
+              onChange={toggleAlgorithm}
+            />
+          ) : (
+            <S.NoSearchResultFallback>
+              <S.NoSearchResultImage
+                src={noSearchResult}
+                alt=""
+                draggable={false}
+              />
+              <S.FallbackTitle>검색 결과가 없습니다.</S.FallbackTitle>
+              <Text type="normal" fontSize="14px">
+                검색어에 오탈자가 있는지 확인해주세요.
+              </Text>
+            </S.NoSearchResultFallback>
+          )
+        ) : (
+          <Loading />
         )}
       </S.AlgorithmPanel>
       <S.ControlPanel>

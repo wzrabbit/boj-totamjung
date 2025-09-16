@@ -69,6 +69,7 @@ const AlgorithmPool = () => {
               openModal('checkAll');
             }}
             aria-label="알고리즘 분류 전체 선택"
+            disabled={!isLoaded}
           >
             <S.CheckButtonImage src={allCheckedIcon} />
             <S.CheckButtonLabel>전체 선택</S.CheckButtonLabel>
@@ -79,6 +80,7 @@ const AlgorithmPool = () => {
               openModal('uncheckAll');
             }}
             aria-label="알고리즘 분류 전체 해제"
+            disabled={!isLoaded}
           >
             <S.CheckButtonImage src={allUncheckedIcon} />
             <S.CheckButtonLabel>전체 해제</S.CheckButtonLabel>

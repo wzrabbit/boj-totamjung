@@ -93,6 +93,10 @@
 
 https://github.com/user-attachments/assets/a17af3ef-435d-48a9-bcce-1b00fb442121
 
+### 🃏 즉석 추첨
+
+https://github.com/user-attachments/assets/437466312-7cd71dc7-38a2-4791-b2ea-6c908bff069e
+
 ### 🛡️ 티어 가리개
 
 <p>

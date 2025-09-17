@@ -3,14 +3,17 @@ import useRandomDefenseHistoryMenu from '@/hooks/randomDefense/useRandomDefenseH
 import * as S from './RandomDefenseHistoryMenu.styled';
 import Switch from '@/components/common/Switch';
 import NamedFrame from '@/components/common/NamedFrame/NamedFrame';
+import Text from '@/components/common/Text';
+import SimpleModal from '@/components/common/SimpleModal';
+import Loading from '@/components/common/Loading';
 import { TrashIcon, PackageIcon } from '@/assets/svg';
 import {
   MAX_HISTORY_LIMIT,
   MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE,
 } from '@/constants/randomDefense';
-import SimpleModal from '@/components/common/SimpleModal';
 import useModal from '@/hooks/useModal';
 import { theme } from '@/styles/theme';
+import { tierParcel } from '@/assets/png';
 
 const getIndicatorMessageInfo = (itemsCount: number) => {
   const historyCapacityLeftSpaceCount = MAX_HISTORY_LIMIT - itemsCount;
@@ -59,7 +62,7 @@ const RandomDefenseHistoryMenu = () => {
   return (
     <NamedFrame width="370px" height="553px" padding="10px" title="추첨 기록">
       <S.Container>
-        {isLoaded && (
+        {isLoaded ? (
           <>
             <S.TierSwitchPanel>
               <S.Text>티어 숨기기</S.Text>
@@ -71,11 +74,25 @@ const RandomDefenseHistoryMenu = () => {
               />
             </S.TierSwitchPanel>
             <S.HistoryListContainer>
-              <RandomDefenseHistoryList
-                items={items}
-                isHidden={isHidden}
-                onDelete={deleteHistoryById}
-              />
+              {items.length > 0 ? (
+                <RandomDefenseHistoryList
+                  items={items}
+                  isHidden={isHidden}
+                  onDelete={deleteHistoryById}
+                />
+              ) : (
+                <S.NoHistoryFallback>
+                  <S.TierParcelImage
+                    src={tierParcel}
+                    alt=""
+                    draggable={false}
+                  />
+                  <S.FallbackTitle>추첨 기록</S.FallbackTitle>
+                  <Text type="normal" fontSize="14px">
+                    문제를 추첨하면 여기에 기록이 표시될 거에요.
+                  </Text>
+                </S.NoHistoryFallback>
+              )}
             </S.HistoryListContainer>
             <S.HistoryManagePanel>
               <S.Indicator title={indicatorMessage}>
@@ -98,6 +115,8 @@ const RandomDefenseHistoryMenu = () => {
               </S.DeleteButton>
             </S.HistoryManagePanel>
           </>
+        ) : (
+          <Loading />
         )}
         <SimpleModal
           title="추첨 기록 전체 제거 확인"

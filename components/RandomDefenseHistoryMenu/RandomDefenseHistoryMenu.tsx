@@ -3,8 +3,8 @@ import useRandomDefenseHistoryMenu from '@/hooks/randomDefense/useRandomDefenseH
 import * as S from './RandomDefenseHistoryMenu.styled';
 import Switch from '@/components/common/Switch';
 import NamedFrame from '@/components/common/NamedFrame/NamedFrame';
-import Text from '@/components/common/Text';
 import SimpleModal from '@/components/common/SimpleModal';
+import FallbackWithImage from '../common/FallbackWithImage';
 import Loading from '@/components/common/Loading';
 import { TrashIcon, PackageIcon } from '@/assets/svg';
 import {
@@ -81,17 +81,13 @@ const RandomDefenseHistoryMenu = () => {
                   onDelete={deleteHistoryById}
                 />
               ) : (
-                <S.NoHistoryFallback>
-                  <S.TierParcelImage
-                    src={tierParcel}
-                    alt=""
-                    draggable={false}
-                  />
-                  <S.FallbackTitle>추첨 기록</S.FallbackTitle>
-                  <Text type="normal" fontSize="14px">
-                    문제를 추첨하면 여기에 기록이 표시될 거에요.
-                  </Text>
-                </S.NoHistoryFallback>
+                <FallbackWithImage
+                  imageSrc={tierParcel}
+                  imageWidth={100}
+                  imageHeight={86}
+                  title="추첨 기록"
+                  description="문제를 추첨하면 여기에 기록이 표시될 거에요."
+                />
               )}
             </S.HistoryListContainer>
             <S.HistoryManagePanel>

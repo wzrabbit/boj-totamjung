@@ -1,7 +1,7 @@
 import * as S from './AlgorithmPool.styled';
 import AlgorithmList from './AlgorithmList';
 import SimpleModal from '@/components/common/SimpleModal';
-import Text from '@/components/common/Text';
+import FallbackWithImage from '@/components/common/FallbackWithImage';
 import Loading from '@/components/common/Loading';
 import useAlgorithmPool from '@/hooks/algorithm/useAlgorithmPool';
 import useModal from '@/hooks/useModal';
@@ -35,17 +35,13 @@ const AlgorithmPool = () => {
               onChange={toggleAlgorithm}
             />
           ) : (
-            <S.NoSearchResultFallback>
-              <S.NoSearchResultImage
-                src={noSearchResult}
-                alt=""
-                draggable={false}
-              />
-              <S.FallbackTitle>검색 결과가 없습니다.</S.FallbackTitle>
-              <Text type="normal" fontSize="14px">
-                검색어에 오탈자가 있는지 확인해주세요.
-              </Text>
-            </S.NoSearchResultFallback>
+            <FallbackWithImage
+              imageSrc={noSearchResult}
+              imageWidth={136}
+              imageHeight={125}
+              title="검색 결과가 없습니다."
+              description="검색어에 오탈자가 있는지 확인해주세요."
+            />
           )
         ) : (
           <Loading />

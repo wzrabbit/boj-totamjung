@@ -2,17 +2,17 @@ import * as S from './CircleProgressBar.styled';
 
 interface CircleProgressBar {
   size: number;
+  strokeWidth: number;
   progress: number;
   color: string;
   trackColor: string;
 }
 
 const CircleProgressBar = (props: CircleProgressBar) => {
-  const { size, progress, color, trackColor } = props;
-  const strokeWidth = size / 8;
+  const { size, strokeWidth, progress, color, trackColor } = props;
   const center = size / 2;
-  const radius = (size - strokeWidth * 2) / 2;
-  const round = 2 * Math.PI * radius;
+  const radius = size / 2 - strokeWidth / 2;
+  const round = (2 * Math.PI * (size - strokeWidth)) / 2;
   const dashOffset = (round * (100 - progress)) / 100;
 
   return (

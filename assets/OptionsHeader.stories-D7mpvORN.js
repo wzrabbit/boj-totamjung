@@ -1,6 +1,0 @@
-import{O as a}from"./OptionsHeader-ZeneIRrq.js";import{f as p}from"./index-BAc7KiQ7.js";import"./jsx-runtime-Cf8x2fCZ.js";import"./index-yBjzXJbu.js";import"./index--qcDGAq6.js";import"./OptionsNav-oYhGpsQY.js";import"./styled-components.browser.esm-CIS6JKSM.js";import"./SimpleModal-D_HuuXF6.js";import"./Modal-JaXjAa2V.js";import"./theme-CqSsbPCW.js";import"./close-BziWfrbF.js";import"./index-B5qaPpLJ.js";import"./index-B6ujFmsw.js";import"./IconButton-B9x6gfbo.js";import"./close-circle-Dx72CTk1.js";import"./check-circle-B-abXz3w.js";import"./TotamjungInfoModal-DOd8ACT3.js";import"./Text-Dme1Zv7W.js";import"./useModal-BJrESIr1.js";const S={title:"components/OptionsHeader",component:a,argTypes:{selectedCategory:{description:"현재 선택되어 있는 메뉴 카테고리입니다."},onCategoryChange:{description:"카테고리를 변경할 때 호출할 콜백 함수입니다."}},parameters:{docs:{description:{component:"`OptionsHeader`는 설정 페이지의 헤더 컴포넌트입니다."}}}},r={args:{selectedCategory:"algorithmHider",onCategoryChange:p()}};var o,t,e;r.parameters={...r.parameters,docs:{...(o=r.parameters)==null?void 0:o.docs,source:{originalSource:`{
-  args: {
-    selectedCategory: 'algorithmHider',
-    onCategoryChange: fn()
-  }
-}`,...(e=(t=r.parameters)==null?void 0:t.docs)==null?void 0:e.source}}};const T=["Default"];export{r as Default,T as __namedExportsOrder,S as default};

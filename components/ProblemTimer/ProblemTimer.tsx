@@ -2,6 +2,8 @@ import * as S from './ProblemTimer.styled';
 import CircleProgressBar from '@/components/common/CircleProgressBar';
 import { PlayIcon, PauseIcon, StopIcon, ClockEditIcon } from '@/assets/svg';
 import { theme } from '@/styles/theme';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
+import type { MainTheme } from '@/types/mainTheme';
 
 interface ProblemTimerProps {
   hours: number;
@@ -9,6 +11,7 @@ interface ProblemTimerProps {
   seconds: number;
   progress: number;
   status: 'play' | 'pause' | 'stop';
+  theme: MainTheme;
   onPlay: () => void;
   onPause: () => void;
   onStop: () => void;
@@ -22,6 +25,7 @@ const ProblemTimer = (props: ProblemTimerProps) => {
     seconds,
     progress,
     status,
+    theme: mainTheme,
     onPlay,
     onPause,
     onStop,
@@ -33,18 +37,19 @@ const ProblemTimer = (props: ProblemTimerProps) => {
     .join(':');
 
   return (
-    <S.Container>
+    <S.Container $timerTheme={mainTheme}>
       <CircleProgressBar
         progress={progress}
         size={28}
         strokeWidth={14}
-        color={theme.color.LIGHTEST_BROWN}
-        trackColor={theme.color.DARK_BROWN}
+        color={S.circleProgressBarColors[mainTheme]}
+        trackColor={S.circleProgressBarTrackColors[mainTheme]}
       />
-      <S.TimeDisplay>{timeString}</S.TimeDisplay>
+      <S.TimeDisplay $timerTheme={mainTheme}>{timeString}</S.TimeDisplay>
       <S.ButtonContainer>
         {status === 'play' && (
           <S.ControlButton
+            $timerTheme={mainTheme}
             aria-label="문제 타이머 일시정지하기"
             onClick={onPause}
           >
@@ -52,17 +57,26 @@ const ProblemTimer = (props: ProblemTimerProps) => {
           </S.ControlButton>
         )}
         {status === 'pause' && (
-          <S.ControlButton aria-label="문제 타이머 시작하기" onClick={onPlay}>
+          <S.ControlButton
+            $timerTheme={mainTheme}
+            aria-label="문제 타이머 시작하기"
+            onClick={onPlay}
+          >
             <PlayIcon />
           </S.ControlButton>
         )}
         {status !== 'stop' && (
-          <S.ControlButton aria-label="문제 타이머 정지하기" onClick={onStop}>
+          <S.ControlButton
+            $timerTheme={mainTheme}
+            aria-label="문제 타이머 정지하기"
+            onClick={onStop}
+          >
             <StopIcon />
           </S.ControlButton>
         )}
         {status === 'stop' && (
           <S.ControlButton
+            $timerTheme={mainTheme}
             aria-label="문제 타이머 시간 설정하기"
             onClick={onTimeEdit}
           >

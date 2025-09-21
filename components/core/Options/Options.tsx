@@ -1,6 +1,7 @@
 import OptionsHeader from '@/components/OptionsHeader';
 import HiderSection from '@/components/sections/HiderSection';
 import RandomDefenseSection from '@/components/sections/RandomDefenseSection';
+import ProblemTimerSection from '@/components/sections/ProblemTimerSection';
 import AppearanceAndDataManageSection from '@/components/sections/AppearanceAndDataManageSection';
 import useOptionsPage from '@/hooks/options/useOptionsPage';
 import { totamjung } from '@/assets/png';
@@ -18,6 +19,7 @@ const Options = () => {
         <S.OptionsBody>
           <HiderSection show={selectedCategory === 'algorithmHider'} />
           <RandomDefenseSection show={selectedCategory === 'randomDefense'} />
+          <ProblemTimerSection show={selectedCategory === 'problemTimer'} />
           <AppearanceAndDataManageSection
             show={selectedCategory === 'appearanceAndDataManage'}
           />

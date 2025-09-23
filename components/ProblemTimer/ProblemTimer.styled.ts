@@ -23,7 +23,7 @@ const timerBorderColors: Record<MainTheme, string> = {
   solvedAcBlack: theme.solvedAcColor.GRAY,
 };
 
-const timerTextColors: Record<MainTheme, string> = {
+export const timerTextColors: Record<MainTheme, string> = {
   none: theme.color.WHITE,
   totamjung: theme.color.BEIGE,
   bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
@@ -31,16 +31,6 @@ const timerTextColors: Record<MainTheme, string> = {
   solvedAcLight: theme.color.BLACK,
   solvedAcDark: theme.solvedAcColor.OFF_WHITE,
   solvedAcBlack: theme.solvedAcColor.OFF_WHITE,
-};
-
-const timerIconColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
-  totamjung: theme.color.LIGHTEST_BROWN,
-  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
-  bojExtendedRigel: theme.color.WHITE,
-  solvedAcLight: theme.solvedAcColor.GRAY,
-  solvedAcDark: theme.solvedAcColor.LIGHT_GRAY,
-  solvedAcBlack: theme.solvedAcColor.LIGHT_GRAY,
 };
 
 export const circleProgressBarColors: Record<MainTheme, string> = {
@@ -74,46 +64,4 @@ export const Container = styled.div<{ $timerTheme: MainTheme }>`
   border-radius: 20px;
 
   user-select: none;
-`;
-
-export const TimeDisplay = styled.span<{ $timerTheme: MainTheme }>`
-  margin: 0 2px 0 6px;
-
-  color: ${({ $timerTheme }) => timerTextColors[$timerTheme]};
-  font-size: 20px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-`;
-
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  width: 50px;
-`;
-
-export const ControlButton = styled.button<{ $timerTheme: MainTheme }>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 26px;
-  height: 26px;
-
-  background: transparent;
-
-  cursor: pointer;
-  transition: opacity 0.1s;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  & > svg {
-    width: 100%;
-    height: 100%;
-
-    color: ${({ $timerTheme }) => timerIconColors[$timerTheme]};
-  }
 `;

@@ -29,4 +29,5 @@ export interface OptionsSectionProps {
 export type OptionsNavCategory =
   | 'algorithmHider'
   | 'randomDefense'
+  | 'problemTimer'
   | 'appearanceAndDataManage';

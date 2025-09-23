@@ -12,6 +12,7 @@ const OPTIONS_NAV_CATEGORIES: {
 }[] = [
   { displayName: '알고리즘 가리개', category: 'algorithmHider' },
   { displayName: '랜덤 디펜스', category: 'randomDefense' },
+  { displayName: '문제 타이머', category: 'problemTimer' },
   { displayName: '외관 및 데이터 관리', category: 'appearanceAndDataManage' },
 ];
 

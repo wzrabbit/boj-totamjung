@@ -6,6 +6,7 @@ import {
   ClockEditIcon,
   TrashIcon,
 } from '@/assets/svg';
+import { toPx } from '@/utils/toPx';
 
 interface BaseTimerControls {
   hours: number;
@@ -13,7 +14,7 @@ interface BaseTimerControls {
   seconds: number;
   status: 'play' | 'pause' | 'stop';
   color: string;
-  height: number;
+  height: number | string;
   onPlay: () => void;
   onPause: () => void;
   onStop: () => void;
@@ -72,7 +73,7 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
   );
 
   return (
-    <S.Container $color={color} $height={height}>
+    <S.Container $color={color} $height={toPx(height)}>
       <S.TimeDisplay>
         <S.TransparentDisplay>{transparent}</S.TransparentDisplay>
         {normal}

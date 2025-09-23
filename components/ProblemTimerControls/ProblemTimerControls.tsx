@@ -13,6 +13,7 @@ interface BaseTimerControls {
   seconds: number;
   status: 'play' | 'pause' | 'stop';
   color: string;
+  height: number;
   onPlay: () => void;
   onPause: () => void;
   onStop: () => void;
@@ -39,6 +40,7 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
     seconds,
     status,
     color,
+    height,
     hasDeleteButton,
     onPlay,
     onPause,
@@ -51,7 +53,7 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
     .join(':');
 
   return (
-    <S.Container $color={color}>
+    <S.Container $color={color} $height={height}>
       <S.TimeDisplay>{timeString}</S.TimeDisplay>
       <S.ButtonContainer>
         {status === 'play' && (

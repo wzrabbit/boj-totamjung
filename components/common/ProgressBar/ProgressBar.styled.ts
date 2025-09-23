@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
 
-export const Container = styled.div<{ $width: number; $height: number }>`
+export const Container = styled.div<{ $width: string; $height: string }>`
   position: relative;
 
-  width: ${({ $width }) => `${$width}px`};
-  height: ${({ $height }) => `${$height}px`};
+  width: ${({ $width }) => `${$width}`};
+  height: ${({ $height }) => `${$height}`};
 `;
 
 export const ProgressBar = styled.div<{

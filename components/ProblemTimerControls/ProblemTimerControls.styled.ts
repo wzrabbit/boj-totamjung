@@ -48,13 +48,16 @@ export const ControlButton = styled.button`
   }
 `;
 
-export const Container = styled.div<{ $color: string; $height: number }>`
+export const Container = styled.div<{
+  $color: string;
+  $height: number | string;
+}>`
   display: inline-flex;
   align-items: center;
   padding: 0.1em;
   height: 1em;
 
-  font-size: ${({ $height }) => $height}px;
+  font-size: ${({ $height }) => $height};
 
   user-select: none;
 

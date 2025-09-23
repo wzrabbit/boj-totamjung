@@ -33,6 +33,24 @@ type ProblemTimerControlsProps =
   | NonDeletableTimerControls
   | DeletableTimerControls;
 
+const getTransparentAndNormalTimeParts = (
+  hours: number,
+  minutes: number,
+  seconds: number,
+) => {
+  const timeString = [hours, minutes, seconds]
+    .map((value) => String(value).padStart(2, '0'))
+    .join(':');
+
+  const transparentPart = timeString.match(/^[0:]*/)?.[0] ?? '';
+  const normalPart = timeString.substring(transparentPart.length);
+
+  return {
+    transparent: transparentPart,
+    normal: normalPart,
+  };
+};
+
 const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
   const {
     hours,
@@ -47,14 +65,18 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
     onStop,
     onEdit,
   } = props;
-
-  const timeString = [hours, minutes, seconds]
-    .map((value) => String(value).padStart(2, '0'))
-    .join(':');
+  const { transparent, normal } = getTransparentAndNormalTimeParts(
+    hours,
+    minutes,
+    seconds,
+  );
 
   return (
     <S.Container $color={color} $height={height}>
-      <S.TimeDisplay>{timeString}</S.TimeDisplay>
+      <S.TimeDisplay>
+        <S.TransparentDisplay>{transparent}</S.TransparentDisplay>
+        {normal}
+      </S.TimeDisplay>
       <S.ButtonContainer>
         {status === 'play' && (
           <S.ControlButton

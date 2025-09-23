@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const TimeDisplay = styled.div`
   flex-shrink: 0;
@@ -9,6 +8,10 @@ export const TimeDisplay = styled.div`
   font-size: 0.5em;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+`;
+
+export const TransparentDisplay = styled.span`
+  opacity: 0.5;
 `;
 
 export const ButtonContainer = styled.div`

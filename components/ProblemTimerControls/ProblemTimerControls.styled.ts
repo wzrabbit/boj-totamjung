@@ -11,15 +11,15 @@ export const TimeDisplay = styled.div`
 `;
 
 export const TransparentDisplay = styled.span`
-  opacity: 0.5;
+  opacity: 0.2;
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<{ $maxButtonCount: number }>`
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
-  min-width: 1.25em;
+  min-width: ${({ $maxButtonCount }) => $maxButtonCount * 0.65}em;
 `;
 
 export const ControlButton = styled.button`
@@ -54,7 +54,6 @@ export const Container = styled.div<{
 }>`
   display: inline-flex;
   align-items: center;
-  padding: 0.1em;
   height: 1em;
 
   font-size: ${({ $height }) => $height};

@@ -78,7 +78,7 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
         <S.TransparentDisplay>{transparent}</S.TransparentDisplay>
         {normal}
       </S.TimeDisplay>
-      <S.ButtonContainer>
+      <S.ButtonContainer $maxButtonCount={hasDeleteButton ? 3 : 2}>
         {status === 'play' && (
           <S.ControlButton
             aria-label="문제 타이머 일시정지하기"

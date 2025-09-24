@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import type { ChangeEvent } from 'react';
 import type { CSSProperties } from 'styled-components';
 import * as S from './Input.styled';
+import type { MainTheme } from '@/types/mainTheme';
 
 interface InputProps {
   type: 'text' | 'number';
@@ -10,6 +11,7 @@ interface InputProps {
   value: string;
   minLength?: number;
   maxLength?: number;
+  theme?: MainTheme;
   textAlign: 'left' | 'center';
   placeholder: string;
   hasError: boolean;
@@ -18,12 +20,20 @@ interface InputProps {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { width, hasError, textAlign, ariaLabel, ...rest } = props;
+  const {
+    width,
+    hasError,
+    theme = 'totamjung',
+    textAlign,
+    ariaLabel,
+    ...rest
+  } = props;
 
   return (
     <S.Input
       $width={width}
       $hasError={hasError}
+      $totamjungTheme={theme}
       $textAlign={textAlign}
       aria-label={ariaLabel}
       spellCheck={false}

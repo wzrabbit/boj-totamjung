@@ -7,6 +7,7 @@ import { useState } from 'react';
  * `GachaProblemCountInputModal` 컴포넌트는 본격적인 즉석 추첨에 앞서 뽑을 문제 수를 사용자가 선택할 수 있도록 하는 모달 컴포넌트입니다.
  */
 const meta = {
+  title: 'components/GachaProblemCountInputModal',
   component: GachaProblemCountInputModal,
   argTypes: {
     open: {

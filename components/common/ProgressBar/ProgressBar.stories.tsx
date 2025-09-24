@@ -1,15 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CircleProgressBar from './CircleProgressBar';
+import ProgressBar from './ProgressBar';
 
 /**
- * `CircleProgressBar`는 진행 상황을 시각적으로 보여주는 컴포넌트입니다.
+ * `ProgressBar`는 진행 상황을 막대 형태로 보여주는 컴포넌트입니다.
  */
 const meta = {
-  title: 'components/CircleProgressBar',
-  component: CircleProgressBar,
+  title: 'components/common/ProgressBar',
+  component: ProgressBar,
   argTypes: {
-    size: {
-      description: '프로그레스 바의 크기입니다.',
+    width: {
+      description: '프로그레스 바의 가로 길이입니다.',
+    },
+    height: {
+      description: '프로그레스 바의 세로 길이입니다.',
     },
     progress: {
       description:
@@ -27,7 +30,7 @@ const meta = {
       description: '프로그레스 바의, **채워져 있지 않은 부분**의 색상입니다.',
     },
   },
-} satisfies Meta<typeof CircleProgressBar>;
+} satisfies Meta<typeof ProgressBar>;
 
 export default meta;
 
@@ -35,23 +38,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: 45,
-    strokeWidth: 5.625,
+    width: 300,
+    height: 10,
     progress: 65,
     color: '#ffe091',
-    trackColor: '#362b28',
-  },
-};
-
-/**
- * `strokeWidth` 값을 `size`의 절반으로 조절하면 꽉 찬 프로그레스 바를 만들 수 있습니다.
- */
-export const Filled: Story = {
-  args: {
-    size: 45,
-    strokeWidth: 22.5,
-    progress: 65,
-    color: '#ffe091',
-    trackColor: '#362b28',
+    trackColor: '#ffe09130',
   },
 };

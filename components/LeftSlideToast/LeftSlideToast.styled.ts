@@ -136,7 +136,7 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   row-gap: 6px;
 
-  width: 264px;
+  width: 240px;
 `;
 
 export const Title = styled.p<{ $totamjungTheme: MainTheme }>`
@@ -184,10 +184,10 @@ export const DescriptionContainer = styled.li<{
 export const RightControlPanel = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
 
-  width: 32px;
+  width: 30px;
 `;
 
 export const CloseButton = styled.button<{ $totamjungTheme: MainTheme }>`

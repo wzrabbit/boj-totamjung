@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 import type { MainTheme } from '@/types/mainTheme';
-import type { CSSProperties } from 'styled-components';
 import { theme } from '@/styles/theme';
+import type { CSSProperties } from 'react';
 
 const inputBorderColors: Record<MainTheme, string> = {
   none: theme.color.LIGHT_GRAY,
@@ -32,14 +32,19 @@ const inputBackgroundColors: Record<MainTheme, string> = {
 const lightThemes: readonly MainTheme[] = ['none', 'solvedAcLight'];
 
 export const Input = styled.input<{
-  $width: CSSProperties['width'];
+  $width: string;
+  $height: string;
+  $horizontalPadding: string;
+  $fontSize: string;
+  $fontWeight: CSSProperties['fontWeight'];
   $hasError: boolean;
+  $color: string | undefined;
   $totamjungTheme: MainTheme;
   $textAlign: 'left' | 'center';
 }>`
   width: ${({ $width }) => $width};
-  height: 30px;
-  padding: 0 6px;
+  height: ${({ $height }) => $height};
+  padding: 0 ${({ $horizontalPadding }) => $horizontalPadding};
 
   border: 1.5px solid
     ${({ $totamjungTheme }) => inputBorderColors[$totamjungTheme]};
@@ -47,12 +52,16 @@ export const Input = styled.input<{
   background-color: ${({ $totamjungTheme }) =>
     inputBackgroundColors[$totamjungTheme]};
 
-  color: ${({ theme, $totamjungTheme }) =>
-    lightThemes.includes($totamjungTheme)
-      ? theme.color.BLACK
-      : theme.color.WHITE};
   text-align: ${({ $textAlign }) => $textAlign};
-  font-size: 13px;
+  font-size: ${({ $fontSize }) => $fontSize};
+  font-weight: ${({ $fontWeight }) => $fontWeight};
+
+  color: ${({ theme, $color, $totamjungTheme }) =>
+    $color
+      ? $color
+      : lightThemes.includes($totamjungTheme)
+        ? theme.color.BLACK
+        : theme.color.WHITE};
 
   &:focus,
   &:active {

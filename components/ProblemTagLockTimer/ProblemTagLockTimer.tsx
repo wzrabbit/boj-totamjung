@@ -1,6 +1,7 @@
 import * as S from './ProblemTagLockTimer.styled';
 import { lockWithClockIcon } from '@/assets/png';
 import Text from '@/components/common/Text';
+import Input from '@/components/common/Input';
 import useProblemTagLockTimer from '@/hooks/tagLock/useProblemTagLockTimer';
 import { MAX_HOURS, MAX_MINUTES } from '@/constants/tagLock';
 
@@ -24,9 +25,11 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
   return (
     <S.Container>
       <img src={lockWithClockIcon} width="54px" height="46px" alt="" />
-      <S.Input
+      <Input
         name="hours"
         type="number"
+        width={60}
+        height={46}
         min={0}
         max={MAX_HOURS}
         value={hours}
@@ -38,9 +41,11 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
       <Text type="normal" fontSize="16px">
         시간
       </Text>
-      <S.Input
+      <Input
         name="minutes"
         type="number"
+        width={60}
+        height={46}
         min={0}
         max={MAX_MINUTES}
         value={minutes}

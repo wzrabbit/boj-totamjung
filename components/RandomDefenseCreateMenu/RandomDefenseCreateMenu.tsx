@@ -87,9 +87,10 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             ref={titleRef}
             type="text"
             width="100%"
+            height="30px"
             textAlign="left"
             placeholder="0 ~ 30자"
-            ariaLabel="추첨 이름"
+            aria-label="추첨 이름"
             name="title"
             value={title}
             maxLength={30}
@@ -108,9 +109,10 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                   ref={handleRef}
                   type="text"
                   width="100%"
+                  height="30px"
                   textAlign="left"
                   placeholder="3 ~ 20자"
-                  ariaLabel="검색에서 제외할 닉네임"
+                  aria-label="검색에서 제외할 닉네임"
                   name="handle"
                   value={handle}
                   minLength={3}
@@ -128,9 +130,10 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                     ref={solvedMinRef}
                     type="number"
                     width="70px"
+                    height="30px"
                     textAlign="center"
                     placeholder=""
-                    ariaLabel="맞은 사람 수의 하한"
+                    aria-label="맞은 사람 수의 하한"
                     name="solvedMin"
                     value={solvedMin}
                     hasError={errorElementName === 'solvedMin'}
@@ -143,9 +146,10 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                     ref={solvedMaxRef}
                     type="number"
                     width="70px"
+                    height="30px"
                     textAlign="center"
                     placeholder=""
-                    ariaLabel="맞은 사람 수의 상한"
+                    aria-label="맞은 사람 수의 상한"
                     name="solvedMax"
                     value={solvedMax}
                     hasError={errorElementName === 'solvedMax'}

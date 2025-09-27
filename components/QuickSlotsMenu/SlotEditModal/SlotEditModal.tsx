@@ -54,6 +54,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           <Input
             type="text"
             width="100%"
+            height="30px"
             name="title"
             value={title}
             ref={titleRef}
@@ -61,7 +62,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
             maxLength={30}
             placeholder="0 ~ 30자"
             hasError={isTitleElementHasErrors}
-            ariaLabel="새로운 추첨 이름을 입력해주세요"
+            aria-label="새로운 추첨 이름을 입력해주세요"
             onChange={(event) => {
               setTitle(event.target.value);
             }}

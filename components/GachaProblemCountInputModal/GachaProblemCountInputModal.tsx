@@ -1,5 +1,6 @@
 import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
 import IconButton from '@/components/common/IconButton';
+import Input from '@/components/common/Input';
 import * as S from './GachaProblemCountInputModal.styled';
 import { CheckCircleIcon } from '@/assets/svg';
 import useGachaProblemCount from '@/hooks/useGachaProblemCount';
@@ -44,12 +45,16 @@ const GachaProblemCountInputModal = (
         <S.Text $totamjungTheme={theme} $fontSize="16px" $textAlign="left">
           추첨을 진행할 문제 수를 입력해 주세요.
         </S.Text>
-        <S.ProblemCountInput
+        <Input
           type="number"
+          width="100%"
+          height={40}
+          horizontalPadding={8}
+          fontSize={18}
           min={1}
           max={MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE}
           value={inputValue}
-          $totamjungTheme={theme}
+          theme={theme}
           onChange={updateInputValue}
           autoFocus
         />

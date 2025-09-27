@@ -50,11 +50,12 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
           <Input
             type="text"
             width="300px"
+            height="36px"
+            fontSize="15px"
             value={inputValue}
             textAlign="center"
             placeholder={`"${DATA_RESET_CONFIRM_TEXT}"를 입력해 주세요`}
             hasError={false}
-            ariaLabel=""
             onChange={updateInputValue}
           />
         </S.ConfirmInputWrapper>

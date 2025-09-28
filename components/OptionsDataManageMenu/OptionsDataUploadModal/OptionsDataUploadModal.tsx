@@ -52,6 +52,7 @@ const OptionsDataUploadModal = (props: OptionsDataUploadModalProps) => {
             width="300px"
             height="36px"
             fontSize="15px"
+            borderWidth={2}
             value={inputValue}
             textAlign="center"
             placeholder={`"${DATA_UPLOAD_CONFIRM_TEXT}"를 입력해 주세요`}

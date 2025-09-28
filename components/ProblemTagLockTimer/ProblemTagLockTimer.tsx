@@ -4,6 +4,7 @@ import Text from '@/components/common/Text';
 import Input from '@/components/common/Input';
 import useProblemTagLockTimer from '@/hooks/tagLock/useProblemTagLockTimer';
 import { MAX_HOURS, MAX_MINUTES } from '@/constants/tagLock';
+import { theme } from '@/styles/theme';
 
 interface ProblemTagLockTimerProps {
   hours: number;
@@ -33,6 +34,12 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         min={0}
         max={MAX_HOURS}
         value={hours}
+        borderWidth={2}
+        borderRadius={8}
+        fontSize={26}
+        fontWeight={800}
+        color={theme.color.GOLD}
+        textAlign="center"
         disabled={disabled}
         onChange={updateHours}
         onBlur={submitHours}
@@ -49,6 +56,12 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         min={0}
         max={MAX_MINUTES}
         value={minutes}
+        borderWidth={2}
+        borderRadius={8}
+        fontSize={26}
+        fontWeight={800}
+        color={theme.color.GOLD}
+        textAlign="center"
         disabled={disabled}
         onChange={updateMinutes}
         onBlur={submitMinutes}

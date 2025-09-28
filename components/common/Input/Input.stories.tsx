@@ -68,6 +68,14 @@ const meta = {
       description:
         '인풋의 글자 색상입니다. **지정하지 않아도 적용된 테마에 따라 적절한 색이 결정됩니다. 지정해야 할 특별한 이유가 있을 때에만 지정하세요.**',
     },
+    borderWidth: {
+      description: '인풋의 윤곽선의 굵기입니다.',
+      defaultValue: { summary: '1.5' },
+    },
+    borderRadius: {
+      description: '인풋의 모서리를 얼마나 둥글게 할 지를 의미합니다.',
+      defaultValue: { summary: '4px' },
+    },
   },
 } satisfies Meta<typeof Input>;
 

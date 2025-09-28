@@ -34,6 +34,8 @@ const lightThemes: readonly MainTheme[] = ['none', 'solvedAcLight'];
 export const Input = styled.input<{
   $width: string;
   $height: string;
+  $borderWidth: number;
+  $borderRadius: string;
   $horizontalPadding: string;
   $fontSize: string;
   $fontWeight: CSSProperties['fontWeight'];
@@ -46,9 +48,9 @@ export const Input = styled.input<{
   height: ${({ $height }) => $height};
   padding: 0 ${({ $horizontalPadding }) => $horizontalPadding};
 
-  border: 1.5px solid
+  border: ${({ $borderWidth }) => `${$borderWidth}px`} solid
     ${({ $totamjungTheme }) => inputBorderColors[$totamjungTheme]};
-  border-radius: 4px;
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   background-color: ${({ $totamjungTheme }) =>
     inputBackgroundColors[$totamjungTheme]};
 

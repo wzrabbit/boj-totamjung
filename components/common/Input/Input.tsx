@@ -9,6 +9,8 @@ interface InputProps
   type: 'text' | 'number';
   width: string | number;
   height: string | number;
+  borderWidth?: number;
+  borderRadius?: string | number;
   horizontalPadding?: number;
   fontSize?: string | number;
   fontWeight?: CSSProperties['fontWeight'];
@@ -23,6 +25,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     width,
     height,
+    borderWidth = 1.5,
+    borderRadius = '4px',
     horizontalPadding = '6px',
     fontSize = '13px',
     fontWeight = 400,
@@ -37,6 +41,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     <S.Input
       $width={toPx(width)}
       $height={toPx(height)}
+      $borderWidth={borderWidth}
+      $borderRadius={toPx(borderRadius)}
       $horizontalPadding={toPx(horizontalPadding)}
       $fontSize={toPx(fontSize)}
       $fontWeight={fontWeight}

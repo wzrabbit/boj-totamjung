@@ -65,8 +65,7 @@ export const Input = styled.input<{
         ? theme.color.BLACK
         : theme.color.WHITE};
 
-  &:focus,
-  &:active {
+  &:focus {
     border-color: ${({ theme, $totamjungTheme, $hasError }) =>
       $hasError ? theme.color.RED : inputFocusedBorderColors[$totamjungTheme]};
     outline: 3px solid
@@ -77,6 +76,10 @@ export const Input = styled.input<{
             : inputFocusedBorderColors[$totamjungTheme],
           0.5,
         )};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 
   transition: outline 0.05s;

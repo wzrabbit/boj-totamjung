@@ -86,7 +86,6 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             width="100%"
             color={theme.color.LIGHT_PURPLE}
             iconSrc={bug}
-            ariaLabel="버그/건의 제보하기"
             disabled={false}
             onClick={() => {
               window.open('mailto:curious.wzrabbit@gmail.com');
@@ -99,7 +98,6 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             width="100%"
             color={theme.color.LEMON}
             iconSrc={<StickyNoteIcon />}
-            ariaLabel="테스트"
             disabled={false}
             onClick={() => {
               window.open('https://github.com/wzrabbit/boj-totamjung/releases');
@@ -112,7 +110,6 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             width="100%"
             color={theme.color.WHITE}
             iconSrc={<GithubIcon />}
-            ariaLabel="테스트"
             disabled={false}
             onClick={() => {
               window.open('https://github.com/wzrabbit/boj-totamjung');

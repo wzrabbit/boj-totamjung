@@ -102,7 +102,6 @@ export const TextModal: Story = {
           name="모달 열기"
           size="large"
           color="#a15eff"
-          ariaLabel="모달 열기"
           disabled={false}
           onClick={() => {
             setIsOpen(true);
@@ -150,7 +149,6 @@ export const TextModal: Story = {
  *       color="#ff665e"
  *       iconSrc={<CloseCircleIcon />}
  *       disabled={false}
- *       ariaLabel="취소"
  *       onClick={() => {
  *          alert('민트초코의 위대함을 모르는 당신이 불쌍해');
  *          setIsOpen(false);
@@ -163,7 +161,6 @@ export const TextModal: Story = {
  *       color="#5eff69"
  *       iconSrc={<CheckCircleIcon />}
  *       disabled={false}
- *       ariaLabel="확인"
  *       onClick={() => {
  *         alert('그럴 바엔 치약을 3,000개 구매하는 게 낫지 않나요?');
  *         setIsOpen(false);
@@ -205,7 +202,6 @@ export const TextWithControlButtons: Story = {
               color="#ff665e"
               iconSrc={<CloseCircleIcon />}
               disabled={false}
-              ariaLabel="취소"
               onClick={() => {
                 alert('민트초코의 위대함을 모르는 당신이 불쌍해');
                 setIsOpen(false);
@@ -218,7 +214,6 @@ export const TextWithControlButtons: Story = {
               color="#5eff69"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 alert('그럴 바엔 치약을 3,000개 구매하는 게 낫지 않나요?');
                 setIsOpen(false);
@@ -232,7 +227,6 @@ export const TextWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -285,7 +279,6 @@ export const VeryLongTitle: Story = {
               color="#a3a3a3"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="전혀 안 궁금하지만 이해했다고 대충 대답하기"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -298,7 +291,6 @@ export const VeryLongTitle: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -343,7 +335,6 @@ export const PlainThemeWithControlButtons: Story = {
               color="#333333"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -356,7 +347,6 @@ export const PlainThemeWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -398,7 +388,6 @@ export const SolvedAcLightWithControlButtons: Story = {
               color="#333333"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -411,7 +400,6 @@ export const SolvedAcLightWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -453,7 +441,6 @@ export const SolvedAcDarkWithControlButtons: Story = {
               color="#eeeeee"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -466,7 +453,6 @@ export const SolvedAcDarkWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -508,7 +494,6 @@ export const SolvedAcBlackWithControlButtons: Story = {
               color="#eeeeee"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -521,7 +506,6 @@ export const SolvedAcBlackWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -563,7 +547,6 @@ export const BojExtendedDarkWithControlButtons: Story = {
               color="#555555"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -576,7 +559,6 @@ export const BojExtendedDarkWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -618,7 +600,6 @@ export const BojExtendedRigelWithControlButtons: Story = {
               color="#eeeeee"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -631,7 +612,6 @@ export const BojExtendedRigelWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}

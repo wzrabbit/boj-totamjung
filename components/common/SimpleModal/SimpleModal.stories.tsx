@@ -98,7 +98,6 @@ export const Confirm: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(() => true);
           }}
@@ -150,7 +149,6 @@ export const CancelConfirm: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(() => true);
           }}
@@ -204,7 +202,6 @@ export const YesNo: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(() => true);
           }}
@@ -247,7 +244,6 @@ export const PlainConfirm: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(() => true);
           }}
@@ -286,7 +282,6 @@ export const PlainCancelConfirm: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(() => true);
           }}
@@ -327,7 +322,6 @@ export const PlainYesNo: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(() => true);
           }}

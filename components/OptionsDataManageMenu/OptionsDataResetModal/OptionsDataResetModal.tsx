@@ -69,7 +69,6 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
           iconSrc={<CloseCircleIcon />}
           color={theme.color.LIGHT_GRAY}
           disabled={false}
-          ariaLabel="취소"
           onClick={onClose}
         />
         <IconButton
@@ -79,7 +78,6 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
           iconSrc={<TrashIcon />}
           color={theme.color.RED}
           disabled={!isSameWithConfirmText}
-          ariaLabel="초기화"
           onClick={onReset}
         />
       </ModalActionButtonsContainer>

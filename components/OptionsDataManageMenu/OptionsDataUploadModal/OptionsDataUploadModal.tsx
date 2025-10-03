@@ -69,7 +69,6 @@ const OptionsDataUploadModal = (props: OptionsDataUploadModalProps) => {
           iconSrc={<CloseCircleIcon />}
           color={theme.color.LIGHT_GRAY}
           disabled={false}
-          ariaLabel="취소"
           onClick={onClose}
         />
         <IconButton
@@ -79,7 +78,6 @@ const OptionsDataUploadModal = (props: OptionsDataUploadModalProps) => {
           iconSrc={<FileUploadIcon />}
           color={theme.color.LIME}
           disabled={!isSameWithConfirmText}
-          ariaLabel="업로드"
           onClick={onUpload}
         />
       </ModalActionButtonsContainer>

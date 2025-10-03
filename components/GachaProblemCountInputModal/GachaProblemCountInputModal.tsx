@@ -94,7 +94,6 @@ const GachaProblemCountInputModal = (
               : styledTheme.color.GOLD
           }
           disabled={!isInputValueValid}
-          ariaLabel="확인"
           onClick={() => onSubmitProblemCount(Number(inputValue))}
         />
       </ModalActionButtonsContainer>

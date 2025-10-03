@@ -110,7 +110,6 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           iconSrc={<CloseCircleIcon />}
           color={theme.color.LIGHT_GRAY}
           disabled={false}
-          ariaLabel="취소"
           onClick={onClose}
         />
         <IconButton
@@ -120,7 +119,6 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           iconSrc={<CheckCircleIcon />}
           color={theme.color.GOLD}
           disabled={false}
-          ariaLabel="확인"
           onClick={submitSlotInfo}
         />
       </ModalActionButtonsContainer>

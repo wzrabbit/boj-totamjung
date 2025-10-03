@@ -31,7 +31,6 @@ const OptionsDataManageMenu = () => {
         size="large"
         color="cyan"
         disabled={false}
-        ariaLabel="설정 데이터 내보내기"
         iconSrc={<FileDownloadIcon />}
         onClick={() => {
           setActiveModal('extract');
@@ -44,7 +43,6 @@ const OptionsDataManageMenu = () => {
         size="large"
         color="#ff5050"
         disabled={false}
-        ariaLabel="설정 데이터 초기화"
         iconSrc={<FileDeleteIcon />}
         onClick={() => {
           setActiveModal('reset');

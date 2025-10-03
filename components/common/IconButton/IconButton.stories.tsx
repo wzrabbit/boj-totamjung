@@ -29,9 +29,6 @@ const meta = {
     disabled: {
       description: '버튼이 비활성화되어 있는지의 여부입니다.',
     },
-    ariaLabel: {
-      description: '버튼의 `aria-label`입니다.',
-    },
     onClick: {
       description: '버튼이 클릭될 경우 실행시킬 콜백 함수입니다.',
     },
@@ -66,7 +63,6 @@ export const MediumWithSvgIcon: Story = {
     color: '#49aaff',
     iconSrc: <PackageIcon />,
     disabled: false,
-    ariaLabel: '테스트용 버튼',
     onClick: () => fn(),
   },
 };
@@ -79,7 +75,6 @@ export const MediumWithSvgIconDisabled: Story = {
     color: '#49aaff',
     iconSrc: <PackageIcon />,
     disabled: true,
-    ariaLabel: '테스트용 버튼',
     onClick: () => fn(),
   },
 };
@@ -92,7 +87,6 @@ export const LargeWithSvgIcon: Story = {
     color: '#49aaff',
     iconSrc: <PackageIcon />,
     disabled: false,
-    ariaLabel: '테스트용 버튼',
     onClick: () => fn(),
   },
 };
@@ -105,7 +99,6 @@ export const MediumWithImageIcon: Story = {
     color: '#ff4949',
     iconSrc: YOUTUBE_IMAGE_ICON_SRC,
     disabled: false,
-    ariaLabel: '테스트용 버튼',
     onClick: () => fn(),
   },
 };
@@ -118,7 +111,6 @@ export const LargeWithImageIcon: Story = {
     color: '#ff4949',
     iconSrc: YOUTUBE_IMAGE_ICON_SRC,
     disabled: false,
-    ariaLabel: '테스트용 버튼',
     onClick: () => fn(),
   },
 };
@@ -130,7 +122,6 @@ export const MediumWithNoIcon: Story = {
     size: 'medium',
     color: '#d9d9d9',
     disabled: false,
-    ariaLabel: '테스트용 버튼',
     onClick: () => fn(),
   },
 };
@@ -142,7 +133,6 @@ export const LargeWithNoIcon: Story = {
     size: 'large',
     color: '#d9d9d9',
     disabled: false,
-    ariaLabel: '테스트용 버튼',
     onClick: () => fn(),
   },
 };

@@ -27,23 +27,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default16px: Story = {
+export const Default: Story = {
   args: {
-    fontSize: '16px',
-    errorMessage: '쿼리가 너무 길어요. 300자 이하로 입력해 주세요.',
-  },
-};
-
-export const Default14px: Story = {
-  args: {
-    fontSize: '14px',
-    errorMessage: '쿼리가 너무 길어요. 300자 이하로 입력해 주세요.',
-  },
-};
-
-export const Default13px: Story = {
-  args: {
-    fontSize: '13px',
+    fontSize: 16,
     errorMessage: '쿼리가 너무 길어요. 300자 이하로 입력해 주세요.',
   },
 };
@@ -55,9 +41,9 @@ export const Default13px: Story = {
  *
  * `height` prop은 필수값이 아니며, 명시하지 않을 경우 `height`는 `auto`가 됩니다. 한 줄짜리 에러 메시지를 표시해야 할 때 적합합니다.
  */
-export const LongMessage16px: Story = {
+export const LongMessage: Story = {
   args: {
-    fontSize: '16px',
+    fontSize: 16,
     height: '200px',
     errorMessage:
       '오류 메시지가 굉장히 긴 경우에는 한 줄 안에 모든 내용을 담기 어려울 수도 있을 것입니다. 오류 메시지는 생략되어서는 안 되므로 한 줄을 넘어갈 정도의 긴 오류 메시지의 경우에는 다음 줄로 넘어가 오류 메시지를 보여주게 됩니다. 단, 이 경우 오류 메시지가 없을 때와 있을 때가 토글되는 상황에서 불필요한 Layout shift가 발생할 수 있습니다. 이에 대응하기 위해서 고정적인 높이를 정해 레이아웃의 높이가 변하는 현상을 방지할 수 있습니다. height 프로퍼티를 활용해 보세요.',

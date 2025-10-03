@@ -74,7 +74,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     <NamedFrame width="650px" height="373px" padding="10px" title="추첨 만들기">
       <S.Form>
         <S.ErrorTextWrapper>
-          <ErrorText errorMessage={errorMessage} fontSize="14px" />
+          <ErrorText errorMessage={errorMessage} fontSize={14} />
         </S.ErrorTextWrapper>
         <S.RandomDefenseCapsuleButtonWrapper>
           <RandomDefenseCapsuleButton mode={mode} onClick={setMode} />
@@ -223,7 +223,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             <S.InformationTextContainer>
               <Text type="normal" fontSize={14}>
                 solved.ac 검색 쿼리 작성법을 모르신다면,{' '}
-                <TextLink href="https://solved.ac/search" fontSize="14px">
+                <TextLink href="https://solved.ac/search" fontSize={14}>
                   solved.ac 문제 고급 검색
                 </TextLink>{' '}
                 페이지를 확인해 보세요!

@@ -90,7 +90,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
         <S.InformationTextContainer>
           <Text type="normal" fontSize={14}>
             solved.ac 검색 쿼리 작성법을 모르신다면,{' '}
-            <TextLink href="https://solved.ac/search" fontSize="14px">
+            <TextLink href="https://solved.ac/search" fontSize={14}>
               solved.ac 문제 고급 검색
             </TextLink>{' '}
             페이지를 확인해 보세요!
@@ -100,7 +100,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
             없음에 유의해 주세요.
           </Text>
         </S.InformationTextContainer>
-        <ErrorText fontSize="14px" errorMessage={errorMessage} />
+        <ErrorText fontSize={14} errorMessage={errorMessage} />
       </S.Form>
       <ModalActionButtonsContainer>
         <IconButton

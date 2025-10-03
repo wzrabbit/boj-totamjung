@@ -45,7 +45,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         onBlur={submitHours}
         aria-label="시간"
       />
-      <Text type="normal" fontSize="16px">
+      <Text type="normal" fontSize={16}>
         시간
       </Text>
       <Input
@@ -67,7 +67,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         onBlur={submitMinutes}
         aria-label="분"
       />
-      <Text type="normal" fontSize="16px">
+      <Text type="normal" fontSize={16}>
         분
       </Text>
     </S.Container>

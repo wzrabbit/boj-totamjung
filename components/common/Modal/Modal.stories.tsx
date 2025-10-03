@@ -71,7 +71,7 @@ type Story = StoryObj<typeof meta>;
  *   }}
  * >
  *   <div style={{ width: '300px' }}>
- *     <Text type="normal" fontSize="16px">
+ *     <Text type="normal" fontSize={16}>
  *       테스트용 메시지입니다.
  *     </Text>
  *   </div>
@@ -92,7 +92,7 @@ export const TextModal: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               테스트용 메시지입니다.
             </Text>
           </div>
@@ -102,8 +102,8 @@ export const TextModal: Story = {
           name="모달 열기"
           size="large"
           color="#a15eff"
-          disabled={false}
           ariaLabel="모달 열기"
+          disabled={false}
           onClick={() => {
             setIsOpen(true);
           }}
@@ -133,7 +133,7 @@ export const TextModal: Story = {
  *   }}
  * >
  *   <div style={{ width: '350px' }}>
- *     <Text type="normal" fontSize="16px">
+ *     <Text type="normal" fontSize={16}>
  *       <span style={{ color: '#00ffcc', fontWeight: 600 }}>
  *         민트 초코
  *       </span>{' '}
@@ -188,7 +188,7 @@ export const TextWithControlButtons: Story = {
           }}
         >
           <div style={{ maxWidth: '350px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               <span style={{ color: '#00ffcc', fontWeight: 600 }}>
                 민트 초코
               </span>{' '}
@@ -266,13 +266,13 @@ export const VeryLongTitle: Story = {
           }}
         >
           <div style={{ maxWidth: '100%' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               기본적으로 콘텐츠가 차지하는 크기가 작더라도, 제목의 길이가 길면,
               모달의 길이는 제목의 길이를 한 줄에 표시할 수 있도록 늘어나요.
               그렇지만, 모달을 띄운 창의 크기가 작다면 이마저도 한계가 있을
               거에요.
             </Text>
-            <Text type="primary" fontSize="16px">
+            <Text type="primary" fontSize={16}>
               그 때에는, 줄임표(...)를 사용해 제목을 생략시켜서 표시하도록
               작동해요.
             </Text>
@@ -331,7 +331,7 @@ export const PlainThemeWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="darkGray" fontSize="16px">
+            <Text type="black" fontSize={16}>
               토탐정 테마가 적용되지 않은 모달입니다.
             </Text>
           </div>
@@ -386,7 +386,7 @@ export const SolvedAcLightWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="darkGray" fontSize="16px">
+            <Text type="black" fontSize={16}>
               토탐정 테마가 적용되지 않은 모달입니다.
             </Text>
           </div>
@@ -441,7 +441,7 @@ export const SolvedAcDarkWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               solved.ac의 다크 테마가 적용된 모달입니다.
             </Text>
           </div>
@@ -496,7 +496,7 @@ export const SolvedAcBlackWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               solved.ac의 암전 테마가 적용된 모달입니다.
             </Text>
           </div>
@@ -551,7 +551,7 @@ export const BojExtendedDarkWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               BOJ Extended의 Dark 테마가 적용된 모달입니다.
             </Text>
           </div>
@@ -606,7 +606,7 @@ export const BojExtendedRigelWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               BOJ Extended의 Rigel 테마가 적용된 모달입니다.
             </Text>
           </div>

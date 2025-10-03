@@ -1,5 +1,6 @@
 import * as S from './AlgorithmListItem.styled';
 import Checkbox from '@/components/common/Checkbox';
+import Text from '@/components/common/Text';
 
 interface AlgorithmListItemProps {
   id: number;
@@ -15,7 +16,9 @@ const AlgorithmListItem = (props: AlgorithmListItemProps) => {
   return (
     <S.Container $backgroundColor={backgroundColor}>
       <S.Label>
-        <S.Text>{name}</S.Text>
+        <Text type="semiPrimary" fontSize={16} width="auto">
+          {name}
+        </Text>
         <Checkbox
           isChecked={isChecked}
           onChange={() => onChange(id)}

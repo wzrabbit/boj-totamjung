@@ -62,13 +62,6 @@ export const DeleteButton = styled.button`
   }
 `;
 
-export const Text = styled.p`
-  display: inline-block;
-
-  color: ${({ theme }) => theme.color.WHITE};
-  font-size: 16px;
-`;
-
 export const Indicator = styled.div`
   display: flex;
   column-gap: 4px;

@@ -80,7 +80,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
           <RandomDefenseCapsuleButton mode={mode} onClick={setMode} />
         </S.RandomDefenseCapsuleButtonWrapper>
         <S.Label $width="380px">
-          <Text type="primary" fontSize="16px">
+          <Text type="primary" fontSize={16}>
             추첨 이름
           </Text>
           <Input
@@ -102,7 +102,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
           <>
             <S.Row $columnGap="50px">
               <S.Label $width="190px">
-                <Text type="primary" fontSize="16px">
+                <Text type="primary" fontSize={16}>
                   검색에서 제외할 닉네임
                 </Text>
                 <Input
@@ -122,7 +122,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                 />
               </S.Label>
               <S.PanelContainer $width="166px">
-                <Text type="primary" fontSize="16px">
+                <Text type="primary" fontSize={16}>
                   맞은 사람 수
                 </Text>
                 <S.SolvedRangeInputsContainer>
@@ -139,7 +139,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                     hasError={errorElementName === 'solvedMin'}
                     onChange={setRandomDefenseInputValue}
                   />
-                  <Text type="primary" fontSize="16px">
+                  <Text type="primary" fontSize={16}>
                     ~
                   </Text>
                   <Input
@@ -158,7 +158,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                 </S.SolvedRangeInputsContainer>
               </S.PanelContainer>
               <S.PanelContainer $width="190px">
-                <Text type="primary" fontSize="16px">
+                <Text type="primary" fontSize={16}>
                   문제 언어
                 </Text>
                 <Select
@@ -171,7 +171,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               </S.PanelContainer>
             </S.Row>
             <S.PanelContainer $width="100%">
-              <Text type="primary" fontSize="16px">
+              <Text type="primary" fontSize={16}>
                 난이도 범위
               </Text>
               <S.DifficultyAdjustMenuWrapper>
@@ -184,7 +184,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             </S.PanelContainer>
             <S.PanelContainer $width="446px">
               <S.Row $columnGap="110px">
-                <Text type="primary" fontSize="16px">
+                <Text type="primary" fontSize={16}>
                   검색에 포함할 알고리즘
                 </Text>
                 <SearchOperatorSelect
@@ -203,7 +203,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
         ) : (
           <>
             <S.Label $width="100%">
-              <Text type="primary" fontSize="16px">
+              <Text type="primary" fontSize={16}>
                 쿼리
               </Text>
               <Textarea
@@ -221,14 +221,14 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               />
             </S.Label>
             <S.InformationTextContainer>
-              <Text type="normal" fontSize="14px">
+              <Text type="normal" fontSize={14}>
                 solved.ac 검색 쿼리 작성법을 모르신다면,{' '}
                 <TextLink href="https://solved.ac/search" fontSize="14px">
                   solved.ac 문제 고급 검색
                 </TextLink>{' '}
                 페이지를 확인해 보세요!
               </Text>
-              <Text type="normal" fontSize="14px">
+              <Text type="normal" fontSize={14}>
                 추첨은 비로그인 상태에서 진행되므로, 서포터 전용 쿼리는 사용할
                 수 없음에 유의해 주세요.
               </Text>

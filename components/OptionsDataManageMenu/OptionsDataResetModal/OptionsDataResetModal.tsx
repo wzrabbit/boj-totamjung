@@ -25,7 +25,7 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
   return (
     <Modal title="데이터 초기화" open={open} onClose={onClose}>
       <S.ContentContainer>
-        <Text type="normal" fontSize="16px">
+        <Text type="normal" fontSize={16}>
           초기화 전 아래의 주의사항을 읽어 주십시오:
         </Text>
         <S.WarnList>
@@ -42,7 +42,7 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
             초기화 이후에는 설정 페이지가 자동으로 새로고침됩니다.
           </S.WarnListItem>
         </S.WarnList>
-        <Text type="normal" fontSize="16px">
+        <Text type="normal" fontSize={16}>
           위의 주의사항을 이해하셨고, 데이터 초기화를 진행하고 싶으시면, 하단의
           입력창에 <b>{DATA_RESET_CONFIRM_TEXT}</b>를 입력해 주십시오.
         </Text>

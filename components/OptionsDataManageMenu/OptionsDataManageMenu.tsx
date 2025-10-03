@@ -50,12 +50,12 @@ const OptionsDataManageMenu = () => {
           setActiveModal('reset');
         }}
       />
-      <Text type="normal" fontSize="16px">
+      <Text type="normal" fontSize={16}>
         현재 설정을 백업해 두고 싶으시거나, 다른 기기로 데이터를 옮기고 싶으실
         경우 설정 파일에 대한 데이터를 세이브파일 형태로 내보내거나, 업로드할 수
         있습니다.
       </Text>
-      <Text type="normal" fontSize="16px">
+      <Text type="normal" fontSize={16}>
         토탐정 세이브파일의 확장자는 <b>.ttj</b>입니다.
       </Text>
       <SimpleModal

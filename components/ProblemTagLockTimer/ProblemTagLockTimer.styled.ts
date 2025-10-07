@@ -5,6 +5,5 @@ export const Container = styled.div`
   align-items: center;
   column-gap: 8px;
 
-  width: 250px;
   height: 46px;
 `;

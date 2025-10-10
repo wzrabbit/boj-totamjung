@@ -17,14 +17,17 @@ export const Container = styled.div<{
   background-color: ${({ theme }) => theme.color.DARK_BROWN};
 
   &:focus-within {
-    box-shadow: 0 0 15px
+    border-color: ${({ theme, $hasError }) =>
+      $hasError ? theme.color.RED : theme.color.LEMON};
+    outline: 3px solid
       ${({ theme, $hasError }) =>
-        $hasError
-          ? theme.color.RED
-          : getTransparentHexColor(theme.color.GOLD, 0.5)};
+        getTransparentHexColor(
+          $hasError ? theme.color.RED : theme.color.LEMON,
+          0.5,
+        )};
   }
 
-  transition: 0.2s;
+  transition: outline 0.05s;
 `;
 
 export const Textarea = styled.textarea`

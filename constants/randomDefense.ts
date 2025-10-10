@@ -25,3 +25,5 @@ export const NUMBER_REGEX = /^([1-9][0-9]*|0)$/;
 export const MAX_CUSTOM_QUERY_LENGTH = 512;
 
 export const MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE = 50;
+
+export const MAX_QUERY_SUGGESTION_COUNT = 5;

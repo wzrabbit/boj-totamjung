@@ -40,10 +40,12 @@ const QueryInput = (props: QueryInputProps) => {
       <S.AutoCompletePanel>
         {suggestions.map((suggestion) => (
           <S.Suggestion
+            key={suggestion.caption}
+            title={suggestion.description}
             type="button"
             onClick={() => applySuggestion(suggestion)}
           >
-            {suggestion}
+            {suggestion.caption}
           </S.Suggestion>
         ))}
       </S.AutoCompletePanel>

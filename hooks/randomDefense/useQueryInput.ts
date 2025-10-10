@@ -1,4 +1,6 @@
-import { useState, useRef } from 'react';
+import { fetchQuerySuggestion } from '@/domains/randomDefense/querySuggestionFetcher';
+import type { QuerySuggestion } from '@/types/randomDefense';
+import { useState, useEffect, useRef } from 'react';
 import type { ChangeEventHandler, KeyboardEventHandler } from 'react';
 
 const getLastTokenInfo = (text: string) => {
@@ -17,10 +19,10 @@ const getLastTokenInfo = (text: string) => {
   return { token: text, startIndex: 0 };
 };
 
-const autocomplete = (text: string, suggestion: string) => {
+const autocomplete = (text: string, caption: string) => {
   const { startIndex } = getLastTokenInfo(text);
 
-  return `${text.slice(0, startIndex)}${suggestion} `;
+  return `${text.slice(0, startIndex)}${caption} `;
 };
 
 interface useQueryInputParams {
@@ -30,7 +32,24 @@ interface useQueryInputParams {
 const useQueryInput = (params: useQueryInputParams) => {
   const { onChange } = params;
   const [query, setQuery] = useState('');
+  const [suggestions, setSuggestions] = useState<QuerySuggestion[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    (async () => {
+      const querySuggestionResult = await fetchQuerySuggestion(query);
+
+      if (querySuggestionResult.success) {
+        setSuggestions(querySuggestionResult.suggestions);
+        setErrorMessage(null);
+        return;
+      }
+
+      setSuggestions([]);
+      setErrorMessage(querySuggestionResult.errorMessage);
+    })();
+  }, [query]);
 
   const updateQuery: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     const newQuery = event.target.value.replace(/\n/g, '');
@@ -38,8 +57,8 @@ const useQueryInput = (params: useQueryInputParams) => {
     onChange(newQuery);
   };
 
-  const applySuggestion = (suggestion: string) => {
-    const newQuery = autocomplete(query, suggestion);
+  const applySuggestion = (suggestion: QuerySuggestion) => {
+    const newQuery = autocomplete(query, suggestion.caption);
     setQuery(newQuery);
     onChange(newQuery);
     textareaRef.current?.focus();
@@ -48,20 +67,17 @@ const useQueryInput = (params: useQueryInputParams) => {
   const applyFirstSuggestionIfEnterKeyPressed: KeyboardEventHandler<
     HTMLTextAreaElement
   > = (event) => {
-    if (event.code === 'Enter') {
-      setQuery((query) => autocomplete(query, 'foo').replace('\n', ''));
+    if (event.code === 'Enter' && suggestions.length > 0) {
+      setQuery((query) =>
+        autocomplete(query, suggestions[0].caption).replace('\n', ''),
+      );
     }
   };
 
   return {
     query,
-    suggestions: [
-      'tag:math',
-      'tag:implementation',
-      'tag:dp',
-      'solved_by:',
-      's#',
-    ],
+    suggestions,
+    errorMessage,
     textareaRef,
     updateQuery,
     applySuggestion,

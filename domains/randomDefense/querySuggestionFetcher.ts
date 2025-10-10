@@ -54,7 +54,7 @@ const simplifySuggestionResponse = (
 ): QuerySuggestion[] => {
   const { autocomplete, tags } = suggestionResponse;
   const suggestions = [
-    ...autocomplete.slice(0, -1),
+    ...autocomplete.filter(({ description }) => description !== ''),
     ...tags.map(({ name, caption }) => ({ caption, description: name })),
   ].slice(0, MAX_QUERY_SUGGESTION_COUNT);
 

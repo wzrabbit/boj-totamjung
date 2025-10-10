@@ -2,6 +2,7 @@ import useQueryInput from '@/hooks/randomDefense/useQueryInput';
 import * as S from './QueryInput.styled';
 import { toPx } from '@/utils/toPx';
 import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
+import { EnterKeyIcon } from '@/assets/svg';
 
 interface QueryInputProps {
   width: string | number;
@@ -39,14 +40,18 @@ const QueryInput = (props: QueryInputProps) => {
       />
       <S.AutoCompletePanel>
         {suggestions.map((suggestion) => (
-          <S.Suggestion
-            key={suggestion.caption}
-            title={suggestion.description}
-            type="button"
-            onClick={() => applySuggestion(suggestion)}
-          >
-            {suggestion.caption}
-          </S.Suggestion>
+          <S.SuggestionButtonContainer key={suggestion.caption}>
+            <S.SuggestionButton
+              title={suggestion.description}
+              type="button"
+              onClick={() => applySuggestion(suggestion)}
+            >
+              {suggestion.caption}
+            </S.SuggestionButton>
+            <S.EnterKeyIconWrapper>
+              <EnterKeyIcon />
+            </S.EnterKeyIconWrapper>
+          </S.SuggestionButtonContainer>
         ))}
       </S.AutoCompletePanel>
     </S.Container>

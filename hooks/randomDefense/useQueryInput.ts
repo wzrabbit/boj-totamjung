@@ -34,11 +34,23 @@ const useQueryInput = (params: useQueryInputParams) => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<QuerySuggestion[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const queryRef = useRef(query);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const throttleRef = useRef(false);
 
   useEffect(() => {
-    (async () => {
-      const querySuggestionResult = await fetchQuerySuggestion(query);
+    queryRef.current = query;
+
+    if (throttleRef.current) {
+      return;
+    }
+
+    throttleRef.current = true;
+
+    const fetchQuerySuggestionResult = async () => {
+      const querySuggestionResult = await fetchQuerySuggestion(
+        queryRef.current,
+      );
 
       if (querySuggestionResult.success) {
         setSuggestions(querySuggestionResult.suggestions);
@@ -48,7 +60,12 @@ const useQueryInput = (params: useQueryInputParams) => {
 
       setSuggestions([]);
       setErrorMessage(querySuggestionResult.errorMessage);
-    })();
+    };
+
+    setTimeout(() => {
+      throttleRef.current = false;
+      fetchQuerySuggestionResult();
+    }, 300);
   }, [query]);
 
   const updateQuery: ChangeEventHandler<HTMLTextAreaElement> = (event) => {

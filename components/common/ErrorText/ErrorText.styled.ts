@@ -9,14 +9,14 @@ export const Container = styled.div<{
   column-gap: 4px;
 
   width: 100%;
-  min-height: ${({ $fontSize }) => $fontSize + 3};
-  height: ${({ $height }) => ($height === undefined ? 'auto' : $height)};
+  min-height: ${({ $fontSize }) => $fontSize + 3}px;
+  height: ${({ $height }) => ($height === undefined ? 'auto' : $height)}px;
 
   & > svg {
     flex-shrink: 0;
 
-    width: ${({ $fontSize }) => $fontSize + 3};
-    height: ${({ $fontSize }) => $fontSize + 3};
+    width: ${({ $fontSize }) => $fontSize + 3}px;
+    height: ${({ $fontSize }) => $fontSize + 3}px;
 
     color: ${({ theme }) => theme.color.LIGHT_RED};
   }
@@ -25,7 +25,7 @@ export const Container = styled.div<{
 export const ErrorText = styled.p<{
   $fontSize: number;
 }>`
-  font-size: ${({ $fontSize }) => $fontSize};
+  font-size: ${({ $fontSize }) => $fontSize}px;
 
   color: ${({ theme }) => theme.color.LIGHT_RED};
 `;

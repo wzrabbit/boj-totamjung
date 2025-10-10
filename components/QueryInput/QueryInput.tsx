@@ -1,3 +1,4 @@
+import Text from '@/components/common/Text';
 import useQueryInput from '@/hooks/randomDefense/useQueryInput';
 import * as S from './QueryInput.styled';
 import { toPx } from '@/utils/toPx';
@@ -16,6 +17,7 @@ const QueryInput = (props: QueryInputProps) => {
   const {
     query,
     suggestions,
+    errorMessage,
     textareaRef,
     updateQuery,
     applySuggestion,
@@ -39,20 +41,30 @@ const QueryInput = (props: QueryInputProps) => {
         spellCheck={false}
       />
       <S.AutoCompletePanel>
-        {suggestions.map((suggestion) => (
-          <S.SuggestionButtonContainer key={suggestion.caption}>
-            <S.SuggestionButton
-              title={suggestion.description}
-              type="button"
-              onClick={() => applySuggestion(suggestion)}
-            >
-              {suggestion.caption}
-            </S.SuggestionButton>
-            <S.EnterKeyIconWrapper>
-              <EnterKeyIcon />
-            </S.EnterKeyIconWrapper>
-          </S.SuggestionButtonContainer>
-        ))}
+        {errorMessage ? (
+          <Text as="span" type="gray" fontSize={13}>
+            {errorMessage}
+          </Text>
+        ) : suggestions.length === 0 ? (
+          <Text as="span" type="gray" fontSize={13}>
+            자동완성 결과가 없습니다.
+          </Text>
+        ) : (
+          suggestions.map((suggestion) => (
+            <S.SuggestionButtonContainer key={suggestion.caption}>
+              <S.SuggestionButton
+                title={suggestion.description}
+                type="button"
+                onClick={() => applySuggestion(suggestion)}
+              >
+                {suggestion.caption}
+              </S.SuggestionButton>
+              <S.EnterKeyIconWrapper>
+                <EnterKeyIcon />
+              </S.EnterKeyIconWrapper>
+            </S.SuggestionButtonContainer>
+          ))
+        )}
       </S.AutoCompletePanel>
     </S.Container>
   );

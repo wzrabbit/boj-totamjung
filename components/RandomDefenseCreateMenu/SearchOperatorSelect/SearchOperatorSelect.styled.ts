@@ -4,7 +4,7 @@ export const Container = styled.ul`
   display: flex;
   justify-content: space-between;
 
-  width: 180px;
+  width: 210px;
   height: 18px;
 
   user-select: none;
@@ -16,7 +16,7 @@ export const ButtonContainer = styled.li`
   align-items: flex-end;
   column-gap: 2px;
 
-  width: 52px;
+  width: 70px;
   height: 18px;
 `;
 

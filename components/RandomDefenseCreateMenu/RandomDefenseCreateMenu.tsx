@@ -183,7 +183,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               </S.DifficultyAdjustMenuWrapper>
             </S.PanelContainer>
             <S.PanelContainer $width="446px">
-              <S.Row $columnGap="110px">
+              <S.Row>
                 <Text type="primary" fontSize={16}>
                   검색에 포함할 알고리즘
                 </Text>

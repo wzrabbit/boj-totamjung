@@ -49,7 +49,7 @@ const QueryInput = forwardRef<HTMLTextAreaElement, QueryInputProps>(
           maxLength={MAX_CUSTOM_QUERY_LENGTH}
           spellCheck={false}
         />
-        <S.AutoCompletePanel>
+        <S.AutoCompletePanel tabIndex={-1}>
           {errorMessage ? (
             <Text as="span" type="gray" fontSize={13}>
               {errorMessage}

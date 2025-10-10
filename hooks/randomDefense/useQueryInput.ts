@@ -84,10 +84,12 @@ const useQueryInput = (params: useQueryInputParams) => {
   const applyFirstSuggestionIfEnterKeyPressed: KeyboardEventHandler<
     HTMLTextAreaElement
   > = (event) => {
-    if (event.code === 'Enter' && suggestions.length > 0) {
-      setQuery((query) =>
-        autocomplete(query, suggestions[0].caption).replace('\n', ''),
-      );
+    if (
+      event.code === 'Enter' &&
+      suggestions.length > 0 &&
+      !event.nativeEvent.isComposing
+    ) {
+      applySuggestion(suggestions[0]);
     }
   };
 

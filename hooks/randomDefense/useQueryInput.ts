@@ -62,17 +62,16 @@ const partialCaptions = [
   'a*',
   'µ*',
 ];
+const plainTextRegex = /^[A-z가-힣 ]+$/;
+const queryDelimiters = ['|', '&', '(', ')', '!', '~', '-', ' '];
 
 const getLastTokenStartIndex = (text: string) => {
-  const plainTextRegex = /^[A-z가-힣 ]+$/;
-  const delimiters = ['|', '&', '(', ')', '!', '~', '-', ' '];
-
   if (plainTextRegex.test(text)) {
     return 0;
   }
 
   for (let index = text.length - 1; index >= 0; index -= 1) {
-    if (delimiters.includes(text[index])) {
+    if (queryDelimiters.includes(text[index])) {
       return index + 1;
     }
   }

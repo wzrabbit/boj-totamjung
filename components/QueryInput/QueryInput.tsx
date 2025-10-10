@@ -27,7 +27,7 @@ const QueryInput = forwardRef<HTMLTextAreaElement, QueryInputProps>(
     } = props;
     const {
       suggestions,
-      errorMessage,
+      fallbackMessage,
       updateQuery,
       applySuggestion,
       applyFirstSuggestionIfEnterKeyPressed,
@@ -50,9 +50,9 @@ const QueryInput = forwardRef<HTMLTextAreaElement, QueryInputProps>(
           spellCheck={false}
         />
         <S.AutoCompletePanel tabIndex={-1}>
-          {errorMessage ? (
+          {fallbackMessage ? (
             <Text as="span" type="gray" fontSize={13}>
-              {errorMessage}
+              {fallbackMessage}
             </Text>
           ) : suggestions.length === 0 ? (
             <Text as="span" type="gray" fontSize={13}>

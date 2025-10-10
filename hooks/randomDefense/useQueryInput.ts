@@ -94,7 +94,9 @@ interface useQueryInputParams {
 const useQueryInput = (params: useQueryInputParams) => {
   const { value, textareaRef, onChange } = params;
   const [suggestions, setSuggestions] = useState<QuerySuggestion[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [fallbackMessage, setFallbackMessage] = useState<string | null>(
+    '잠시만 기다려주세요...',
+  );
   const valueRef = useRef(value);
   const throttleRef = useRef(false);
 
@@ -114,12 +116,12 @@ const useQueryInput = (params: useQueryInputParams) => {
 
       if (querySuggestionResult.success) {
         setSuggestions(querySuggestionResult.suggestions);
-        setErrorMessage(null);
+        setFallbackMessage(null);
         return;
       }
 
       setSuggestions([]);
-      setErrorMessage(querySuggestionResult.errorMessage);
+      setFallbackMessage(querySuggestionResult.errorMessage);
     };
 
     setTimeout(() => {
@@ -156,7 +158,7 @@ const useQueryInput = (params: useQueryInputParams) => {
 
   return {
     suggestions,
-    errorMessage,
+    fallbackMessage,
     textareaRef,
     updateQuery,
     applySuggestion,

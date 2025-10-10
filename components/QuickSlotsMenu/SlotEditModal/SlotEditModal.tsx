@@ -3,13 +3,12 @@ import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
 import IconButton from '@/components/common/IconButton';
 import Text from '@/components/common/Text';
 import TextLink from '@/components/common/TextLink';
-import Textarea from '@/components/common/Textarea';
 import Input from '@/components/common/Input';
 import ErrorText from '@/components/common/ErrorText';
 import useSlotEditModal from '@/hooks/randomDefense/useSlotEditModal';
 import { CloseCircleIcon, CheckCircleIcon } from '@/assets/svg';
 import * as S from './SlotEditModal.styled';
-import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
+import QueryInput from '@/components/QueryInput/QueryInput';
 
 interface SlotEditModalProps {
   title: string;
@@ -72,19 +71,14 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           <Text type="primary" fontSize={16}>
             쿼리
           </Text>
-          <Textarea
+          <QueryInput
             width="100%"
             height="150px"
-            name="query"
             value={query}
             ref={queryRef}
-            maxLength={MAX_CUSTOM_QUERY_LENGTH}
-            placeholder={`1 ~ ${MAX_CUSTOM_QUERY_LENGTH}자`}
             hasError={isQueryElementHasErrors}
-            ariaLabel="새로운 쿼리를 입력해주세요"
-            onChange={(event) => {
-              setQuery(event.target.value);
-            }}
+            placeholder="새로운 쿼리를 입력해주세요"
+            onChange={setQuery}
           />
         </S.Label>
         <S.InformationTextContainer>

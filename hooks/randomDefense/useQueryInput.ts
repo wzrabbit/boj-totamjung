@@ -1,7 +1,11 @@
 import { fetchQuerySuggestion } from '@/domains/randomDefense/querySuggestionFetcher';
 import type { QuerySuggestion } from '@/types/randomDefense';
 import { useState, useEffect, useRef } from 'react';
-import type { ChangeEventHandler, KeyboardEventHandler } from 'react';
+import type {
+  ChangeEventHandler,
+  ForwardedRef,
+  KeyboardEventHandler,
+} from 'react';
 
 /**
  * solved.ac에서의 미완성 쿼리 목록입니다. 이 쿼리들은 단독으로 작동하지 않으며, 반드시 뒤에 내용이 와야 하므로
@@ -82,20 +86,20 @@ const autocomplete = (text: string, caption: string) => {
 };
 
 interface useQueryInputParams {
-  onChange: (query: string) => void;
+  value: string;
+  textareaRef: ForwardedRef<HTMLTextAreaElement>;
+  onChange: (value: string) => void;
 }
 
 const useQueryInput = (params: useQueryInputParams) => {
-  const { onChange } = params;
-  const [query, setQuery] = useState('');
+  const { value, textareaRef, onChange } = params;
   const [suggestions, setSuggestions] = useState<QuerySuggestion[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const queryRef = useRef(query);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const valueRef = useRef(value);
   const throttleRef = useRef(false);
 
   useEffect(() => {
-    queryRef.current = query;
+    valueRef.current = value;
 
     if (throttleRef.current) {
       return;
@@ -105,7 +109,7 @@ const useQueryInput = (params: useQueryInputParams) => {
 
     const fetchQuerySuggestionResult = async () => {
       const querySuggestionResult = await fetchQuerySuggestion(
-        queryRef.current,
+        valueRef.current,
       );
 
       if (querySuggestionResult.success) {
@@ -121,20 +125,21 @@ const useQueryInput = (params: useQueryInputParams) => {
     setTimeout(() => {
       throttleRef.current = false;
       fetchQuerySuggestionResult();
-    }, 300);
-  }, [query]);
+    }, 200);
+  }, [value]);
 
   const updateQuery: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     const newQuery = event.target.value.replace(/\n/g, '');
-    setQuery(newQuery);
     onChange(newQuery);
   };
 
   const applySuggestion = (suggestion: QuerySuggestion) => {
-    const newQuery = autocomplete(query, suggestion.caption);
-    setQuery(newQuery);
+    const newQuery = autocomplete(value, suggestion.caption);
     onChange(newQuery);
-    textareaRef.current?.focus();
+
+    if (textareaRef && 'current' in textareaRef) {
+      textareaRef.current?.focus();
+    }
   };
 
   const applyFirstSuggestionIfEnterKeyPressed: KeyboardEventHandler<
@@ -150,7 +155,6 @@ const useQueryInput = (params: useQueryInputParams) => {
   };
 
   return {
-    query,
     suggestions,
     errorMessage,
     textareaRef,

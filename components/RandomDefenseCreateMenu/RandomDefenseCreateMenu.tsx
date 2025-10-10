@@ -14,6 +14,7 @@ import * as S from './RandomDefenseCreateMenu.styled';
 import type { SlotNo } from '@/types/randomDefense';
 import Select from '@/components/common/Select';
 import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
+import QueryInput from '../QueryInput/QueryInput';
 
 interface RandomDefenseCreateMenuProps {
   selectedSlotNo: SlotNo;
@@ -62,6 +63,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     setTierRange,
     setSearchOperator,
     setAlgorithmIds,
+    setCustomQuery,
     submitRandomDefense,
     titleRef,
     handleRef,
@@ -206,18 +208,14 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               <Text type="primary" fontSize={16}>
                 쿼리
               </Text>
-              <Textarea
+              <QueryInput
                 ref={customQueryRef}
                 width="100%"
                 height="160px"
-                name="customQuery"
                 value={customQuery}
                 placeholder={`1 ~ ${MAX_CUSTOM_QUERY_LENGTH}자`}
-                minLength={1}
-                maxLength={MAX_CUSTOM_QUERY_LENGTH}
                 hasError={errorElementName === 'customQuery'}
-                ariaLabel="쿼리"
-                onChange={setRandomDefenseInputValue}
+                onChange={setCustomQuery}
               />
             </S.Label>
             <S.InformationTextContainer>

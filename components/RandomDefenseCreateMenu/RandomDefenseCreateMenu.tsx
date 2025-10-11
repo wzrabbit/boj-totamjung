@@ -14,6 +14,7 @@ import * as S from './RandomDefenseCreateMenu.styled';
 import type { SlotNo } from '@/types/randomDefense';
 import Select from '@/components/common/Select';
 import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
+import QueryInput from '../QueryInput/QueryInput';
 
 interface RandomDefenseCreateMenuProps {
   selectedSlotNo: SlotNo;
@@ -62,6 +63,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     setTierRange,
     setSearchOperator,
     setAlgorithmIds,
+    setCustomQuery,
     submitRandomDefense,
     titleRef,
     handleRef,
@@ -206,31 +208,26 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               <Text type="primary" fontSize={16}>
                 쿼리
               </Text>
-              <Textarea
+              <QueryInput
                 ref={customQueryRef}
                 width="100%"
                 height="160px"
-                name="customQuery"
                 value={customQuery}
                 placeholder={`1 ~ ${MAX_CUSTOM_QUERY_LENGTH}자`}
-                minLength={1}
-                maxLength={MAX_CUSTOM_QUERY_LENGTH}
                 hasError={errorElementName === 'customQuery'}
-                ariaLabel="쿼리"
-                onChange={setRandomDefenseInputValue}
+                onChange={setCustomQuery}
               />
             </S.Label>
             <S.InformationTextContainer>
               <Text type="normal" fontSize={14}>
-                solved.ac 검색 쿼리 작성법을 모르신다면,{' '}
                 <TextLink href="https://solved.ac/search" fontSize={14}>
                   solved.ac 문제 고급 검색
                 </TextLink>{' '}
-                페이지를 확인해 보세요!
+                페이지를 통해 solved.ac 검색 쿼리 작성법을 확인하실 수 있습니다!
               </Text>
               <Text type="normal" fontSize={14}>
-                추첨은 비로그인 상태에서 진행되므로, 서포터 전용 쿼리는 사용할
-                수 없음에 유의해 주세요.
+                추첨은 비로그인 상태에서 진행되므로, 솔브드 프로 플랜 전용
+                쿼리는 사용하실 수 없습니다.
               </Text>
             </S.InformationTextContainer>
           </>

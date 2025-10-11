@@ -1,10 +1,13 @@
 import * as S from './AlgorithmPool.styled';
 import AlgorithmList from './AlgorithmList';
 import SimpleModal from '@/components/common/SimpleModal';
+import FallbackWithImage from '@/components/common/FallbackWithImage';
+import Loading from '@/components/common/Loading';
 import useAlgorithmPool from '@/hooks/algorithm/useAlgorithmPool';
 import useModal from '@/hooks/useModal';
+
 import { SearchIcon } from '@/assets/svg';
-import { allCheckedIcon, allUncheckedIcon } from '@/assets/png';
+import { allCheckedIcon, allUncheckedIcon, noSearchResult } from '@/assets/png';
 
 const AlgorithmPool = () => {
   const {
@@ -24,12 +27,24 @@ const AlgorithmPool = () => {
   return (
     <S.Container>
       <S.AlgorithmPanel>
-        {isLoaded && (
-          <AlgorithmList
-            items={items}
-            checkedAlgorithmIds={checkedAlgorithmIds}
-            onChange={toggleAlgorithm}
-          />
+        {isLoaded ? (
+          items.length > 0 ? (
+            <AlgorithmList
+              items={items}
+              checkedAlgorithmIds={checkedAlgorithmIds}
+              onChange={toggleAlgorithm}
+            />
+          ) : (
+            <FallbackWithImage
+              imageSrc={noSearchResult}
+              imageWidth={136}
+              imageHeight={125}
+              title="검색 결과가 없습니다."
+              description="검색어에 오탈자가 있는지 확인해주세요."
+            />
+          )
+        ) : (
+          <Loading />
         )}
       </S.AlgorithmPanel>
       <S.ControlPanel>
@@ -50,6 +65,7 @@ const AlgorithmPool = () => {
               openModal('checkAll');
             }}
             aria-label="알고리즘 분류 전체 선택"
+            disabled={!isLoaded}
           >
             <S.CheckButtonImage src={allCheckedIcon} />
             <S.CheckButtonLabel>전체 선택</S.CheckButtonLabel>
@@ -60,6 +76,7 @@ const AlgorithmPool = () => {
               openModal('uncheckAll');
             }}
             aria-label="알고리즘 분류 전체 해제"
+            disabled={!isLoaded}
           >
             <S.CheckButtonImage src={allUncheckedIcon} />
             <S.CheckButtonLabel>전체 해제</S.CheckButtonLabel>

@@ -40,7 +40,7 @@ export const SearchPanelContainer = styled.div`
   display: flex;
   column-gap: 6px;
 
-  width: 300px;
+  width: 420px;
   height: 100%;
   margin-right: auto;
 `;

@@ -154,3 +154,22 @@ export interface ProblemInfo {
   title: string;
   tier: Tier;
 }
+
+export type QuerySuggestionResult =
+  | QuerySuggestionSuccessResult
+  | QuerySuggestionFailureResult;
+
+export interface QuerySuggestionSuccessResult {
+  success: true;
+  suggestions: QuerySuggestion[];
+}
+
+export interface QuerySuggestionFailureResult {
+  success: false;
+  errorMessage: string;
+}
+
+export interface QuerySuggestion {
+  caption: string;
+  description: string;
+}

@@ -10,3 +10,5 @@ export { default as totamjung } from './totamjung.png';
 export { default as logoSquare } from './logo-square.png';
 export { default as bug } from './bug.png';
 export { default as woodBackground } from './wood-background.png';
+export { default as noSearchResult } from './no-search-result.png';
+export { default as tierParcel } from './tier-parcel.png';

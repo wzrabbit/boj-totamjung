@@ -68,12 +68,12 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
           </S.IntroductoryTextContainer>
         </S.IntroductoryContainer>
         <S.InfoContainer>
-          <Text type="normal" fontSize="14px" textAlign="center">
+          <Text type="normal" fontSize={14} textAlign="center">
             버전:{' '}
             <b>{`v${browser.runtime.getManifest().version} - MV${browser.runtime.getManifest().manifest_version}`}</b>{' '}
             {process.env.BUILD_DATE ? `/ ${process.env.BUILD_DATE} 빌드` : ''}
           </Text>
-          <Text type="normal" fontSize="14px" textAlign="center">
+          <Text type="normal" fontSize={14} textAlign="center">
             개발: <b>요술토끼</b>(
             <S.LightGrayText>curious.wzrabbit@gmail.com</S.LightGrayText>)
           </Text>
@@ -86,7 +86,6 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             width="100%"
             color={theme.color.LIGHT_PURPLE}
             iconSrc={bug}
-            ariaLabel="버그/건의 제보하기"
             disabled={false}
             onClick={() => {
               window.open('mailto:curious.wzrabbit@gmail.com');
@@ -99,7 +98,6 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             width="100%"
             color={theme.color.LEMON}
             iconSrc={<StickyNoteIcon />}
-            ariaLabel="테스트"
             disabled={false}
             onClick={() => {
               window.open('https://github.com/wzrabbit/boj-totamjung/releases');
@@ -112,7 +110,6 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             width="100%"
             color={theme.color.WHITE}
             iconSrc={<GithubIcon />}
-            ariaLabel="테스트"
             disabled={false}
             onClick={() => {
               window.open('https://github.com/wzrabbit/boj-totamjung');

@@ -77,7 +77,8 @@ const LeftSlideToast = (props: LeftSlideToastProps) => {
           <CloseIcon />
         </S.CloseButton>
         <CircleProgressBar
-          size={32}
+          size={28}
+          strokeWidth={4}
           progress={progress}
           color={circleProgressBarColors[theme]}
           trackColor={getTransparentHexColor(

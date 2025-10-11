@@ -71,7 +71,7 @@ type Story = StoryObj<typeof meta>;
  *   }}
  * >
  *   <div style={{ width: '300px' }}>
- *     <Text type="normal" fontSize="16px">
+ *     <Text type="normal" fontSize={16}>
  *       테스트용 메시지입니다.
  *     </Text>
  *   </div>
@@ -92,7 +92,7 @@ export const TextModal: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               테스트용 메시지입니다.
             </Text>
           </div>
@@ -103,7 +103,6 @@ export const TextModal: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -133,7 +132,7 @@ export const TextModal: Story = {
  *   }}
  * >
  *   <div style={{ width: '350px' }}>
- *     <Text type="normal" fontSize="16px">
+ *     <Text type="normal" fontSize={16}>
  *       <span style={{ color: '#00ffcc', fontWeight: 600 }}>
  *         민트 초코
  *       </span>{' '}
@@ -150,7 +149,6 @@ export const TextModal: Story = {
  *       color="#ff665e"
  *       iconSrc={<CloseCircleIcon />}
  *       disabled={false}
- *       ariaLabel="취소"
  *       onClick={() => {
  *          alert('민트초코의 위대함을 모르는 당신이 불쌍해');
  *          setIsOpen(false);
@@ -163,7 +161,6 @@ export const TextModal: Story = {
  *       color="#5eff69"
  *       iconSrc={<CheckCircleIcon />}
  *       disabled={false}
- *       ariaLabel="확인"
  *       onClick={() => {
  *         alert('그럴 바엔 치약을 3,000개 구매하는 게 낫지 않나요?');
  *         setIsOpen(false);
@@ -188,7 +185,7 @@ export const TextWithControlButtons: Story = {
           }}
         >
           <div style={{ maxWidth: '350px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               <span style={{ color: '#00ffcc', fontWeight: 600 }}>
                 민트 초코
               </span>{' '}
@@ -205,7 +202,6 @@ export const TextWithControlButtons: Story = {
               color="#ff665e"
               iconSrc={<CloseCircleIcon />}
               disabled={false}
-              ariaLabel="취소"
               onClick={() => {
                 alert('민트초코의 위대함을 모르는 당신이 불쌍해');
                 setIsOpen(false);
@@ -218,7 +214,6 @@ export const TextWithControlButtons: Story = {
               color="#5eff69"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 alert('그럴 바엔 치약을 3,000개 구매하는 게 낫지 않나요?');
                 setIsOpen(false);
@@ -232,7 +227,6 @@ export const TextWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -266,13 +260,13 @@ export const VeryLongTitle: Story = {
           }}
         >
           <div style={{ maxWidth: '100%' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               기본적으로 콘텐츠가 차지하는 크기가 작더라도, 제목의 길이가 길면,
               모달의 길이는 제목의 길이를 한 줄에 표시할 수 있도록 늘어나요.
               그렇지만, 모달을 띄운 창의 크기가 작다면 이마저도 한계가 있을
               거에요.
             </Text>
-            <Text type="primary" fontSize="16px">
+            <Text type="primary" fontSize={16}>
               그 때에는, 줄임표(...)를 사용해 제목을 생략시켜서 표시하도록
               작동해요.
             </Text>
@@ -285,7 +279,6 @@ export const VeryLongTitle: Story = {
               color="#a3a3a3"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="전혀 안 궁금하지만 이해했다고 대충 대답하기"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -298,7 +291,6 @@ export const VeryLongTitle: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -331,7 +323,7 @@ export const PlainThemeWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="darkGray" fontSize="16px">
+            <Text type="black" fontSize={16}>
               토탐정 테마가 적용되지 않은 모달입니다.
             </Text>
           </div>
@@ -343,7 +335,6 @@ export const PlainThemeWithControlButtons: Story = {
               color="#333333"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -356,7 +347,6 @@ export const PlainThemeWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -386,7 +376,7 @@ export const SolvedAcLightWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="darkGray" fontSize="16px">
+            <Text type="black" fontSize={16}>
               토탐정 테마가 적용되지 않은 모달입니다.
             </Text>
           </div>
@@ -398,7 +388,6 @@ export const SolvedAcLightWithControlButtons: Story = {
               color="#333333"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -411,7 +400,6 @@ export const SolvedAcLightWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -441,7 +429,7 @@ export const SolvedAcDarkWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               solved.ac의 다크 테마가 적용된 모달입니다.
             </Text>
           </div>
@@ -453,7 +441,6 @@ export const SolvedAcDarkWithControlButtons: Story = {
               color="#eeeeee"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -466,7 +453,6 @@ export const SolvedAcDarkWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -496,7 +482,7 @@ export const SolvedAcBlackWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               solved.ac의 암전 테마가 적용된 모달입니다.
             </Text>
           </div>
@@ -508,7 +494,6 @@ export const SolvedAcBlackWithControlButtons: Story = {
               color="#eeeeee"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -521,7 +506,6 @@ export const SolvedAcBlackWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -551,7 +535,7 @@ export const BojExtendedDarkWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               BOJ Extended의 Dark 테마가 적용된 모달입니다.
             </Text>
           </div>
@@ -563,7 +547,6 @@ export const BojExtendedDarkWithControlButtons: Story = {
               color="#555555"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -576,7 +559,6 @@ export const BojExtendedDarkWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -606,7 +588,7 @@ export const BojExtendedRigelWithControlButtons: Story = {
           }}
         >
           <div style={{ width: '300px' }}>
-            <Text type="normal" fontSize="16px">
+            <Text type="normal" fontSize={16}>
               BOJ Extended의 Rigel 테마가 적용된 모달입니다.
             </Text>
           </div>
@@ -618,7 +600,6 @@ export const BojExtendedRigelWithControlButtons: Story = {
               color="#eeeeee"
               iconSrc={<CheckCircleIcon />}
               disabled={false}
-              ariaLabel="확인"
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -631,7 +612,6 @@ export const BojExtendedRigelWithControlButtons: Story = {
           size="large"
           color="#a15eff"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}

@@ -3,7 +3,7 @@ import { WarningIcon } from '@/assets/svg';
 import type { CSSProperties } from 'styled-components';
 
 interface ErrorTextProps {
-  fontSize: '16px' | '14px' | '13px';
+  fontSize: number;
   errorMessage: string;
   height?: CSSProperties['height'];
 }

@@ -11,7 +11,7 @@ const SlotInfo = (props: Slot) => {
           {props.isEmpty ? (
             <S.NameEmptyText>{'(비어 있음)'}</S.NameEmptyText>
           ) : (
-            <Text type="primary" fontSize="16px">
+            <Text type="primary" fontSize={16}>
               {props.title}
             </Text>
           )}
@@ -23,7 +23,7 @@ const SlotInfo = (props: Slot) => {
           {props.isEmpty ? (
             <S.QueryEmptyText>{'(비어 있음)'}</S.QueryEmptyText>
           ) : (
-            <Text type="code" fontSize="13px">
+            <Text type="code" fontSize={13}>
               {props.query}
             </Text>
           )}

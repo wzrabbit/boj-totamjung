@@ -1,8 +1,10 @@
 import * as S from './ProblemTagLockTimer.styled';
 import { lockWithClockIcon } from '@/assets/png';
 import Text from '@/components/common/Text';
+import Input from '@/components/common/Input';
 import useProblemTagLockTimer from '@/hooks/tagLock/useProblemTagLockTimer';
 import { MAX_HOURS, MAX_MINUTES } from '@/constants/tagLock';
+import { theme } from '@/styles/theme';
 
 interface ProblemTagLockTimerProps {
   hours: number;
@@ -24,32 +26,48 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
   return (
     <S.Container>
       <img src={lockWithClockIcon} width="54px" height="46px" alt="" />
-      <S.Input
+      <Input
         name="hours"
         type="number"
+        width={60}
+        height={46}
         min={0}
         max={MAX_HOURS}
         value={hours}
+        borderWidth={2}
+        borderRadius={8}
+        fontSize={26}
+        fontWeight={800}
+        color={theme.color.GOLD}
+        textAlign="center"
         disabled={disabled}
         onChange={updateHours}
         onBlur={submitHours}
         aria-label="시간"
       />
-      <Text type="normal" fontSize="16px">
+      <Text type="normal" as="span" fontSize={16} width={30}>
         시간
       </Text>
-      <S.Input
+      <Input
         name="minutes"
         type="number"
+        width={60}
+        height={46}
         min={0}
         max={MAX_MINUTES}
         value={minutes}
+        borderWidth={2}
+        borderRadius={8}
+        fontSize={26}
+        fontWeight={800}
+        color={theme.color.GOLD}
+        textAlign="center"
         disabled={disabled}
         onChange={updateMinutes}
         onBlur={submitMinutes}
         aria-label="분"
       />
-      <Text type="normal" fontSize="16px">
+      <Text type="normal" as="span" fontSize={16} width={30}>
         분
       </Text>
     </S.Container>

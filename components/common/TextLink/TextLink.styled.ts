@@ -8,8 +8,8 @@ export const Container = styled.a`
   color: ${({ theme }) => theme.color.LEMON};
 `;
 
-export const TextLink = styled.span<{ $fontSize: '16px' | '14px' | '13px' }>`
-  font-size: ${({ $fontSize }) => $fontSize};
+export const TextLink = styled.span<{ $fontSize: number }>`
+  font-size: ${({ $fontSize }) => $fontSize}px;
   text-decoration: underline 2px dotted;
   -webkit-text-decoration-color: ${({ theme }) =>
     theme.color.TRANSPARENT_LEMON};
@@ -23,14 +23,14 @@ export const TextLink = styled.span<{ $fontSize: '16px' | '14px' | '13px' }>`
 `;
 
 export const LinkIconWrapper = styled.span<{
-  $fontSize: '16px' | '14px' | '13px';
+  $fontSize: number;
 }>`
   display: flex;
   align-items: center;
   flex-shrink: 0;
 
-  width: ${({ $fontSize }) => $fontSize};
-  height: ${({ $fontSize }) => $fontSize};
+  width: ${({ $fontSize }) => $fontSize}px;
+  height: ${({ $fontSize }) => $fontSize}px;
 
   & > svg {
     width: 100%;

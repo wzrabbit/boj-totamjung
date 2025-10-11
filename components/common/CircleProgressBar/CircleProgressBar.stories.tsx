@@ -36,6 +36,20 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     size: 45,
+    strokeWidth: 5.625,
+    progress: 65,
+    color: '#ffe091',
+    trackColor: '#362b28',
+  },
+};
+
+/**
+ * `strokeWidth` 값을 `size`의 절반으로 조절하면 꽉 찬 프로그레스 바를 만들 수 있습니다.
+ */
+export const Filled: Story = {
+  args: {
+    size: 45,
+    strokeWidth: 22.5,
     progress: 65,
     color: '#ffe091',
     trackColor: '#362b28',

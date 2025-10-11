@@ -11,6 +11,7 @@ import {
   MAX_HISTORY_LIMIT,
   MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE,
 } from '@/constants/randomDefense';
+import Text from '@/components/common/Text';
 import useModal from '@/hooks/useModal';
 import { theme } from '@/styles/theme';
 import { tierParcel } from '@/assets/png';
@@ -65,7 +66,9 @@ const RandomDefenseHistoryMenu = () => {
         {isLoaded ? (
           <>
             <S.TierSwitchPanel>
-              <S.Text>티어 숨기기</S.Text>
+              <Text type="normal" fontSize={16} width="auto" as="span">
+                티어 숨기기
+              </Text>
               <Switch
                 size="large"
                 isChecked={isHidden}
@@ -99,7 +102,9 @@ const RandomDefenseHistoryMenu = () => {
                   $color={indicatorColor}
                 >{`${items.length} / ${MAX_HISTORY_LIMIT}`}</S.IndicatorText>
               </S.Indicator>
-              <S.Text>추첨 기록 비우기</S.Text>
+              <Text type="normal" fontSize={16} width="auto" as="span">
+                추첨 기록 비우기
+              </Text>
               <S.DeleteButton
                 onClick={() => {
                   openModal('confirmClearHistory');

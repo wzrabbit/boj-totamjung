@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 export const Size16px: Story = {
   args: {
     children: 'BOJ 실험실 페이지',
-    fontSize: '16px',
+    fontSize: 16,
     href: 'https://www.acmicpc.net/labs',
   },
 };
@@ -36,7 +36,7 @@ export const Size16px: Story = {
 export const Size14px: Story = {
   args: {
     children: 'BOJ 실험실 페이지',
-    fontSize: '14px',
+    fontSize: 14,
     href: 'https://www.acmicpc.net/labs',
   },
 };
@@ -44,7 +44,7 @@ export const Size14px: Story = {
 export const Size13px: Story = {
   args: {
     children: 'BOJ 실험실 페이지',
-    fontSize: '13px',
+    fontSize: 13,
     href: 'https://www.acmicpc.net/labs',
   },
 };
@@ -55,13 +55,13 @@ export const Size13px: Story = {
 export const TextLinkWithText: Story = {
   decorators: [
     () => (
-      <Text type="normal" fontSize="16px">
+      <Text type="normal" fontSize={16}>
         Mathjax 수식을 간단하게 테스트해볼 수 있는 사이트로는{' '}
-        <TextLink href="https://www.mathjax.org/#demo" fontSize="16px">
+        <TextLink href="https://www.mathjax.org/#demo" fontSize={16}>
           Mathjax 데모 테스트 페이지
         </TextLink>
         , 또는{' '}
-        <TextLink href="https://www.acmicpc.net/labs" fontSize="16px">
+        <TextLink href="https://www.acmicpc.net/labs" fontSize={16}>
           BOJ 실험실 페이지
         </TextLink>
         가 있으니, 참고하시기 바랍니다.
@@ -70,7 +70,7 @@ export const TextLinkWithText: Story = {
   ],
   args: {
     href: '',
-    fontSize: '16px',
+    fontSize: 16,
     children: '',
   },
 };

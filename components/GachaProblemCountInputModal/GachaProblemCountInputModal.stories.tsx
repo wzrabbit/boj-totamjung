@@ -7,6 +7,7 @@ import { useState } from 'react';
  * `GachaProblemCountInputModal` 컴포넌트는 본격적인 즉석 추첨에 앞서 뽑을 문제 수를 사용자가 선택할 수 있도록 하는 모달 컴포넌트입니다.
  */
 const meta = {
+  title: 'components/GachaProblemCountInputModal',
   component: GachaProblemCountInputModal,
   argTypes: {
     open: {
@@ -54,7 +55,6 @@ export const ModalWithHotkeyMessage: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -86,7 +86,6 @@ export const ModalWithNoHotkeyMessage: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -118,7 +117,6 @@ export const PlainTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -152,7 +150,6 @@ export const SolvedAcLightTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -179,7 +176,6 @@ export const SolvedAcDarkTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -206,7 +202,6 @@ export const SolvedAcBlackTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -233,7 +228,6 @@ export const BojExtendedDarkTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -260,7 +254,6 @@ export const BojExtendedRigelTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal

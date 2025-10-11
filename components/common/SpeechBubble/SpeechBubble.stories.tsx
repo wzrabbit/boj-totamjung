@@ -125,10 +125,10 @@ export const UsingReactComponentAsChild: Story = {
     open: true,
     content: (
       <div style={{ display: 'flex', flexDirection: 'column', rowGap: '4px' }}>
-        <Text type="normal" fontSize="14px">
+        <Text type="normal" fontSize={14}>
           토탐정을 설치해 주셔서 감사합니다!
         </Text>
-        <Text type="normal" fontSize="14px">
+        <Text type="normal" fontSize={14}>
           <strong>위젯을 우클릭</strong>하여 토탐정의 여러 기능들을 활용해
           보세요.
         </Text>

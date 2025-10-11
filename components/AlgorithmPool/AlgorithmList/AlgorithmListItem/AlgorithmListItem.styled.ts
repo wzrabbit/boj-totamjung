@@ -26,12 +26,3 @@ export const Label = styled.label`
 
   cursor: pointer;
 `;
-
-export const Text = styled.p`
-  font-family: 'Pretendard';
-  font-size: 16px;
-  line-height: 16px;
-  color: ${({ theme }) => theme.color.LEMON};
-
-  cursor: pointer;
-`;

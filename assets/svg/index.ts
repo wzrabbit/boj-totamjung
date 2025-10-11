@@ -28,6 +28,11 @@ import DicesIcon from './dices.svg?react';
 import DownloadIcon from './download.svg?react';
 import VolumeOnIcon from './volume-on.svg?react';
 import VolumeOffIcon from './volume-off.svg?react';
+import PlayIcon from './play.svg?react';
+import PauseIcon from './pause.svg?react';
+import StopIcon from './stop.svg?react';
+import ClockEditIcon from './clock-edit.svg?react';
+import EnterKeyIcon from './enter-key.svg?react';
 
 export {
   SearchIcon,
@@ -60,4 +65,9 @@ export {
   DownloadIcon,
   VolumeOnIcon,
   VolumeOffIcon,
+  PlayIcon,
+  PauseIcon,
+  StopIcon,
+  ClockEditIcon,
+  EnterKeyIcon,
 };

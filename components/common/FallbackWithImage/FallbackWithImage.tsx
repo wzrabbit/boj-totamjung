@@ -23,7 +23,7 @@ const FallbackWithImage = (props: FallbackWithImageProps) => {
       />
       <S.Title>{title}</S.Title>
       {description && (
-        <Text type="normal" fontSize="14px">
+        <Text type="normal" fontSize={14} textAlign="center">
           {description}
         </Text>
       )}

@@ -43,7 +43,7 @@ const Fieldset = (props: FieldsetProps) => {
               onChange={onChange}
             />
             {typeof label === 'string' ? (
-              <Text type="semiPrimary" fontSize="16px">
+              <Text type="semiPrimary" fontSize={16}>
                 {label}
               </Text>
             ) : (

@@ -67,9 +67,9 @@ const useRandomDefenseCreateMenu = (
     setErrorElementName(undefined);
   };
 
-  const setRandomDefenseInputValue: ChangeEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
-  > = (event) => {
+  const setRandomDefenseInputValue: ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
     const { name, value } = event.target;
 
     if (!(name in initialRandomDefenseFormData)) {
@@ -119,6 +119,15 @@ const useRandomDefenseCreateMenu = (
     setRandomDefenseFormData((prev) => ({
       ...prev,
       algorithmIds,
+    }));
+  };
+
+  const setCustomQuery = (
+    customQuery: RandomDefenseFormData['customQuery'],
+  ) => {
+    setRandomDefenseFormData((prev) => ({
+      ...prev,
+      customQuery,
     }));
   };
 
@@ -188,6 +197,7 @@ const useRandomDefenseCreateMenu = (
     setTierRange,
     setSearchOperator,
     setAlgorithmIds,
+    setCustomQuery,
     submitRandomDefense,
     titleRef,
     handleRef,

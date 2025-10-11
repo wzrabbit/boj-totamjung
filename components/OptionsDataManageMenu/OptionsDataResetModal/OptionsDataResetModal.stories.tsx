@@ -40,7 +40,6 @@ export const Default: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => {
             setIsOpen(true);
           }}

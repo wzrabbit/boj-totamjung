@@ -62,7 +62,7 @@ const HiderFieldsetMenu = () => {
             label: (
               <S.WarningTierLabel>
                 <TierSelect selectedTier={warnTier} onChange={updateWarnTier} />
-                <Text type="semiPrimary" fontSize="16px">
+                <Text type="semiPrimary" fontSize={16}>
                   이상 난이도일 경우 경고
                 </Text>
               </S.WarningTierLabel>

@@ -14,6 +14,7 @@ import * as S from './RandomDefenseCreateMenu.styled';
 import type { SlotNo } from '@/types/randomDefense';
 import Select from '@/components/common/Select';
 import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
+import QueryInput from '../QueryInput/QueryInput';
 
 interface RandomDefenseCreateMenuProps {
   selectedSlotNo: SlotNo;
@@ -62,6 +63,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     setTierRange,
     setSearchOperator,
     setAlgorithmIds,
+    setCustomQuery,
     submitRandomDefense,
     titleRef,
     handleRef,
@@ -74,22 +76,23 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     <NamedFrame width="650px" height="373px" padding="10px" title="추첨 만들기">
       <S.Form>
         <S.ErrorTextWrapper>
-          <ErrorText errorMessage={errorMessage} fontSize="14px" />
+          <ErrorText errorMessage={errorMessage} fontSize={14} />
         </S.ErrorTextWrapper>
         <S.RandomDefenseCapsuleButtonWrapper>
           <RandomDefenseCapsuleButton mode={mode} onClick={setMode} />
         </S.RandomDefenseCapsuleButtonWrapper>
         <S.Label $width="380px">
-          <Text type="primary" fontSize="16px">
+          <Text type="primary" fontSize={16}>
             추첨 이름
           </Text>
           <Input
             ref={titleRef}
             type="text"
             width="100%"
+            height="30px"
             textAlign="left"
             placeholder="0 ~ 30자"
-            ariaLabel="추첨 이름"
+            aria-label="추첨 이름"
             name="title"
             value={title}
             maxLength={30}
@@ -101,16 +104,17 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
           <>
             <S.Row $columnGap="50px">
               <S.Label $width="190px">
-                <Text type="primary" fontSize="16px">
+                <Text type="primary" fontSize={16}>
                   검색에서 제외할 닉네임
                 </Text>
                 <Input
                   ref={handleRef}
                   type="text"
                   width="100%"
+                  height="30px"
                   textAlign="left"
                   placeholder="3 ~ 20자"
-                  ariaLabel="검색에서 제외할 닉네임"
+                  aria-label="검색에서 제외할 닉네임"
                   name="handle"
                   value={handle}
                   minLength={3}
@@ -120,7 +124,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                 />
               </S.Label>
               <S.PanelContainer $width="166px">
-                <Text type="primary" fontSize="16px">
+                <Text type="primary" fontSize={16}>
                   맞은 사람 수
                 </Text>
                 <S.SolvedRangeInputsContainer>
@@ -128,24 +132,26 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                     ref={solvedMinRef}
                     type="number"
                     width="70px"
+                    height="30px"
                     textAlign="center"
                     placeholder=""
-                    ariaLabel="맞은 사람 수의 하한"
+                    aria-label="맞은 사람 수의 하한"
                     name="solvedMin"
                     value={solvedMin}
                     hasError={errorElementName === 'solvedMin'}
                     onChange={setRandomDefenseInputValue}
                   />
-                  <Text type="primary" fontSize="16px">
+                  <Text type="primary" fontSize={16}>
                     ~
                   </Text>
                   <Input
                     ref={solvedMaxRef}
                     type="number"
                     width="70px"
+                    height="30px"
                     textAlign="center"
                     placeholder=""
-                    ariaLabel="맞은 사람 수의 상한"
+                    aria-label="맞은 사람 수의 상한"
                     name="solvedMax"
                     value={solvedMax}
                     hasError={errorElementName === 'solvedMax'}
@@ -154,7 +160,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                 </S.SolvedRangeInputsContainer>
               </S.PanelContainer>
               <S.PanelContainer $width="190px">
-                <Text type="primary" fontSize="16px">
+                <Text type="primary" fontSize={16}>
                   문제 언어
                 </Text>
                 <Select
@@ -167,7 +173,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               </S.PanelContainer>
             </S.Row>
             <S.PanelContainer $width="100%">
-              <Text type="primary" fontSize="16px">
+              <Text type="primary" fontSize={16}>
                 난이도 범위
               </Text>
               <S.DifficultyAdjustMenuWrapper>
@@ -179,8 +185,8 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               </S.DifficultyAdjustMenuWrapper>
             </S.PanelContainer>
             <S.PanelContainer $width="446px">
-              <S.Row $columnGap="110px">
-                <Text type="primary" fontSize="16px">
+              <S.Row>
+                <Text type="primary" fontSize={16}>
                   검색에 포함할 알고리즘
                 </Text>
                 <SearchOperatorSelect
@@ -199,34 +205,29 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
         ) : (
           <>
             <S.Label $width="100%">
-              <Text type="primary" fontSize="16px">
+              <Text type="primary" fontSize={16}>
                 쿼리
               </Text>
-              <Textarea
+              <QueryInput
                 ref={customQueryRef}
                 width="100%"
                 height="160px"
-                name="customQuery"
                 value={customQuery}
                 placeholder={`1 ~ ${MAX_CUSTOM_QUERY_LENGTH}자`}
-                minLength={1}
-                maxLength={MAX_CUSTOM_QUERY_LENGTH}
                 hasError={errorElementName === 'customQuery'}
-                ariaLabel="쿼리"
-                onChange={setRandomDefenseInputValue}
+                onChange={setCustomQuery}
               />
             </S.Label>
             <S.InformationTextContainer>
-              <Text type="normal" fontSize="14px">
-                solved.ac 검색 쿼리 작성법을 모르신다면,{' '}
-                <TextLink href="https://solved.ac/search" fontSize="14px">
+              <Text type="normal" fontSize={14}>
+                <TextLink href="https://solved.ac/search" fontSize={14}>
                   solved.ac 문제 고급 검색
                 </TextLink>{' '}
-                페이지를 확인해 보세요!
+                페이지를 통해 solved.ac 검색 쿼리 작성법을 확인하실 수 있습니다!
               </Text>
-              <Text type="normal" fontSize="14px">
-                추첨은 비로그인 상태에서 진행되므로, 서포터 전용 쿼리는 사용할
-                수 없음에 유의해 주세요.
+              <Text type="normal" fontSize={14}>
+                추첨은 비로그인 상태에서 진행되므로, 솔브드 프로 플랜 전용
+                쿼리는 사용하실 수 없습니다.
               </Text>
             </S.InformationTextContainer>
           </>

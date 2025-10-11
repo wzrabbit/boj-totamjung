@@ -1,15 +1,31 @@
-import { styled, css } from 'styled-components';
+import { styled, css, CSSProperties } from 'styled-components';
 
 export const Text = styled.p<{
-  $type: 'primary' | 'semiPrimary' | 'normal' | 'gray' | 'darkGray' | 'code';
-  $fontSize: '16px' | '14px' | '13px';
+  $type:
+    | 'primary'
+    | 'semiPrimary'
+    | 'normal'
+    | 'gray'
+    | 'black'
+    | 'code'
+    | 'custom';
+  $fontSize: number;
   $textAlign: 'left' | 'center' | 'right';
+  $width: string;
+  $color: string | undefined;
+  $fontFamily?: string;
+  $fontWeight?: CSSProperties['fontWeight'];
+  $opacity?: number;
 }>`
+  display: inline-block;
+
+  width: ${({ $width }) => $width};
+
   text-align: ${({ $textAlign }) => $textAlign};
-  font-size: ${({ $fontSize }) => $fontSize};
+  font-size: ${({ $fontSize }) => $fontSize}px;
   line-height: 1.2;
 
-  ${({ theme, $type }) => {
+  ${({ theme, $type, $color, $fontFamily, $fontWeight, $opacity }) => {
     if ($type === 'primary') {
       return css`
         font-family: Pretendard;
@@ -25,6 +41,13 @@ export const Text = styled.p<{
       `;
     }
 
+    if ($type === 'normal') {
+      return css`
+        font-family: Pretendard;
+        color: ${theme.color.WHITE};
+      `;
+    }
+
     if ($type === 'gray') {
       return css`
         font-family: Pretendard;
@@ -32,10 +55,10 @@ export const Text = styled.p<{
       `;
     }
 
-    if ($type === 'darkGray') {
+    if ($type === 'black') {
       return css`
         font-family: Pretendard;
-        color: ${theme.color.DARK_GRAY};
+        color: ${theme.color.BLACK};
       `;
     }
 
@@ -47,8 +70,10 @@ export const Text = styled.p<{
     }
 
     return css`
-      font-family: Pretendard;
-      color: ${theme.color.WHITE};
+      color: ${$color ?? theme.color.WHITE};
+      font-family: ${$fontFamily ?? 'Pretendard'};
+      font-weight: ${$fontWeight ?? 400};
+      opacity: ${$opacity ?? 1};
     `;
   }}
 `;

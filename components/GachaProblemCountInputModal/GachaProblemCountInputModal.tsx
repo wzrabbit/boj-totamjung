@@ -1,5 +1,7 @@
 import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
 import IconButton from '@/components/common/IconButton';
+import Input from '@/components/common/Input';
+import Text from '@/components/common/Text';
 import * as S from './GachaProblemCountInputModal.styled';
 import { CheckCircleIcon } from '@/assets/svg';
 import useGachaProblemCount from '@/hooks/useGachaProblemCount';
@@ -32,6 +34,8 @@ const GachaProblemCountInputModal = (
   const { inputValue, updateInputValue, isInputValueValid } =
     useGachaProblemCount();
 
+  const isLightTheme = lightThemes.includes(theme);
+
   return (
     <Modal
       title="즉석 추첨"
@@ -41,31 +45,41 @@ const GachaProblemCountInputModal = (
       onClose={onClose}
     >
       <S.ContentContainer>
-        <S.Text $totamjungTheme={theme} $fontSize="16px" $textAlign="left">
+        <Text type={isLightTheme ? 'black' : 'normal'} fontSize={16}>
           추첨을 진행할 문제 수를 입력해 주세요.
-        </S.Text>
-        <S.ProblemCountInput
+        </Text>
+        <Input
           type="number"
+          width="100%"
+          height={40}
+          borderWidth={2}
+          borderRadius={6}
+          horizontalPadding={8}
+          fontSize={18}
           min={1}
           max={MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE}
           value={inputValue}
-          $totamjungTheme={theme}
+          theme={theme}
           onChange={updateInputValue}
           autoFocus
         />
-        <S.Text $totamjungTheme={theme} $fontSize="14px" $textAlign="right">
-          {`1문제 이상, ${MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE}문제 이하`}
-        </S.Text>
+        <Text
+          type={isLightTheme ? 'black' : 'normal'}
+          fontSize={14}
+          textAlign="right"
+        >{`1문제 이상, ${MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE}문제 이하`}</Text>
         {shouldShowHotkeyMessage && (
-          <S.Text
-            $totamjungTheme={theme}
-            $fontSize="16px"
-            $textAlign="left"
-            $isTransparent={true}
+          <Text
+            type="custom"
+            fontSize={16}
+            color={
+              isLightTheme ? styledTheme.color.BLACK : styledTheme.color.WHITE
+            }
+            opacity={0.8}
           >
             TIP: 즉석 추첨은 백준 사이트 내에서 슬롯 번호에 대응하는 단축키를
             길게 누르는 것으로도 진행할 수 있습니다.
-          </S.Text>
+          </Text>
         )}
       </S.ContentContainer>
       <ModalActionButtonsContainer theme={theme}>
@@ -80,7 +94,6 @@ const GachaProblemCountInputModal = (
               : styledTheme.color.GOLD
           }
           disabled={!isInputValueValid}
-          ariaLabel="확인"
           onClick={() => onSubmitProblemCount(Number(inputValue))}
         />
       </ModalActionButtonsContainer>

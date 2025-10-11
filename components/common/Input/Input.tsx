@@ -1,31 +1,55 @@
 import { forwardRef } from 'react';
-import type { ChangeEvent } from 'react';
-import type { CSSProperties } from 'styled-components';
+import type { ComponentProps, CSSProperties } from 'react';
+import { toPx } from '@/utils/toPx';
 import * as S from './Input.styled';
+import type { MainTheme } from '@/types/mainTheme';
 
-interface InputProps {
+interface InputProps
+  extends Omit<ComponentProps<'input'>, 'type' | 'color' | 'width' | 'height'> {
   type: 'text' | 'number';
-  width: CSSProperties['width'];
-  name?: string;
-  value: string;
-  minLength?: number;
-  maxLength?: number;
-  textAlign: 'left' | 'center';
-  placeholder: string;
-  hasError: boolean;
-  ariaLabel: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  width: string | number;
+  height: string | number;
+  borderWidth?: number;
+  borderRadius?: string | number;
+  horizontalPadding?: number;
+  fontSize?: string | number;
+  fontWeight?: CSSProperties['fontWeight'];
+  value: string | number;
+  theme?: MainTheme;
+  color?: string;
+  textAlign?: 'left' | 'center';
+  hasError?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { width, hasError, textAlign, ariaLabel, ...rest } = props;
+  const {
+    width,
+    height,
+    borderWidth = 1.5,
+    borderRadius = '4px',
+    horizontalPadding = '6px',
+    fontSize = '13px',
+    fontWeight = 400,
+    hasError = false,
+    theme = 'totamjung',
+    color,
+    textAlign = 'left',
+    ...rest
+  } = props;
 
   return (
     <S.Input
-      $width={width}
+      $width={toPx(width)}
+      $height={toPx(height)}
+      $borderWidth={borderWidth}
+      $borderRadius={toPx(borderRadius)}
+      $horizontalPadding={toPx(horizontalPadding)}
+      $fontSize={toPx(fontSize)}
+      $fontWeight={fontWeight}
       $hasError={hasError}
+      $color={color}
+      $totamjungTheme={theme}
       $textAlign={textAlign}
-      aria-label={ariaLabel}
       spellCheck={false}
       ref={ref}
       {...rest}

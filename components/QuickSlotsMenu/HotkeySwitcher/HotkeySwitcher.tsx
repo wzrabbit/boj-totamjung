@@ -31,7 +31,7 @@ const HotkeySwitcher = (props: HotkeySwitcherProps) => {
 
   return (
     <S.Container>
-      <Text type="primary" fontSize="16px">
+      <Text type="primary" fontSize={16}>
         {getHotkeyText(hotkey, selectedSlotNo)}
       </Text>
       <S.SwitchButton aria-label="단축키 전환하기" onClick={onClick}>

@@ -70,7 +70,6 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               color={theme.color.LIGHT_GRAY}
               iconSrc={<CopyIcon />}
               disabled={slot.isEmpty}
-              ariaLabel="쿼리 클립보드에 복사하기"
               onClick={() => {
                 if (!slot.isEmpty) {
                   navigator.clipboard.writeText(slot.query);
@@ -85,7 +84,6 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               color={theme.color.SKY_BLUE}
               iconSrc={<EditIcon />}
               disabled={slot.isEmpty}
-              ariaLabel="슬롯 수정하기"
               onClick={openEditModal}
             />
             <IconButton
@@ -95,7 +93,6 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               color={theme.color.RED}
               iconSrc={<TrashIcon />}
               disabled={slot.isEmpty}
-              ariaLabel="슬롯 삭제하기"
               onClick={() => {
                 openModal('confirmDeleteSlot');
               }}
@@ -107,7 +104,6 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               color={theme.color.PURPLE}
               iconSrc={<DicesIcon />}
               disabled={slot.isEmpty}
-              ariaLabel="즉석 추첨 진행"
               onClick={() => {
                 openModal('gachaProblemCount');
               }}

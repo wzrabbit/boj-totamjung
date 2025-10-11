@@ -82,8 +82,9 @@ const optionsWithImages = [
         type="text"
         textAlign="left"
         width="200px"
+        height="30px"
         placeholder="직접 입력..."
-        ariaLabel="좋아하는 과일 직접 입력"
+        aria-label="좋아하는 과일 직접 입력"
         value=""
         hasError={false}
         onChange={() => {}}

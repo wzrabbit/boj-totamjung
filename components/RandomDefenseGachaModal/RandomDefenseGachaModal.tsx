@@ -143,7 +143,6 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 color={theme.color.LIGHT_RED}
                 iconSrc={<RepeatIcon />}
                 disabled={false}
-                ariaLabel="다시 시도하기"
                 onClick={restartGacha}
               />
             </S.BottomControlList>
@@ -172,7 +171,6 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 color={theme.color.LIGHT_GRAY}
                 iconSrc={<CopyIcon />}
                 disabled={false}
-                ariaLabel="문제 목록 복사"
                 onClick={copyProblemInfosMarkdownToClipboard}
               />
               <IconButton
@@ -182,7 +180,6 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 color={theme.color.LEMON}
                 iconSrc={isSavedToHistory ? <CheckIcon /> : <DownloadIcon />}
                 disabled={isSavedToHistory}
-                ariaLabel="추첨 기록 저장"
                 onClick={saveGachaResultToStorage}
               />
               <IconButton
@@ -192,7 +189,6 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 color={theme.color.ORANGE}
                 iconSrc={<DicesIcon />}
                 disabled={false}
-                ariaLabel="다시 추첨하기!"
                 onClick={restartGacha}
               />
             </S.ResultBottomControlList>

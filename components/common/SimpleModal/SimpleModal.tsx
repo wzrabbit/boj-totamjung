@@ -100,7 +100,6 @@ const ConfirmButton = (props: Omit<ConfirmModalProps, 'actionType'>) => {
           : styledTheme.color.GOLD
       }
       disabled={false}
-      ariaLabel="확인"
       onClick={onClose}
       autoFocus={true}
     />
@@ -125,7 +124,6 @@ const CancelConfirmButtons = (
             : styledTheme.color.LIGHT_GRAY
         }
         disabled={false}
-        ariaLabel="취소"
         onClick={onClose}
       />
       <IconButton
@@ -139,7 +137,6 @@ const CancelConfirmButtons = (
             : styledTheme.color.GOLD
         }
         disabled={false}
-        ariaLabel="확인"
         onClick={onConfirm}
       />
     </>
@@ -163,7 +160,6 @@ const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
             : styledTheme.color.LIME
         }
         disabled={false}
-        ariaLabel="예"
         onClick={onYesSelect}
       />
       <IconButton
@@ -173,7 +169,6 @@ const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
         iconSrc={<CloseCircleIcon />}
         color={styledTheme.color.RED}
         disabled={false}
-        ariaLabel="아니요"
         onClick={onNoSelect}
       />
     </>

@@ -3,7 +3,7 @@ import { LinkIcon } from '@/assets/svg';
 
 interface TextLinkProps {
   href: string;
-  fontSize: '16px' | '14px' | '13px';
+  fontSize: number;
   children: string;
 }
 

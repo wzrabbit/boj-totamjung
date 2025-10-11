@@ -55,7 +55,6 @@ export const ModalWithHotkeyMessage: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -87,7 +86,6 @@ export const ModalWithNoHotkeyMessage: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -119,7 +117,6 @@ export const PlainTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -153,7 +150,6 @@ export const SolvedAcLightTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -180,7 +176,6 @@ export const SolvedAcDarkTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -207,7 +202,6 @@ export const SolvedAcBlackTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -234,7 +228,6 @@ export const BojExtendedDarkTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal
@@ -261,7 +254,6 @@ export const BojExtendedRigelTheme: Story = {
           size="large"
           color="#d1b072"
           disabled={false}
-          ariaLabel="모달 열기"
           onClick={() => setIsOpen(true)}
         />
         <GachaProblemCountInputModal

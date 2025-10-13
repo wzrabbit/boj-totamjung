@@ -73,6 +73,11 @@ interface SlotInvalidVerdict {
 
 export type SlotVerdict = SlotValidVerdict | SlotInvalidVerdict;
 
+export interface SearchOperatorInfo {
+  operator: SearchOperator;
+  description: string;
+}
+
 export type SearchOperator = 'OR' | 'AND' | 'NOR';
 
 export type Language = 'ko' | 'en' | 'ko/en' | 'all';

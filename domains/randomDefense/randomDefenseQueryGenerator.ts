@@ -3,6 +3,7 @@ import type {
   RandomDefenseFormData,
   Language,
   SearchOperator,
+  TierWithoutNotRatable,
 } from '@/types/randomDefense';
 
 export const generateRandomDefenseQuery = (
@@ -30,17 +31,12 @@ export const generateRandomDefenseQuery = (
   const convertedOperator = convertOperator(searchOperator);
 
   const shouldGenerateHandleBanQuery = handle.trim() !== '';
-  const shouldGenerateSolvedRangeQuery =
-    solvedMin.trim() !== '' || solvedMax.trim() !== '';
   const shouldGenerateAlgorithmNamesQuery = algorithmTags.length > 0;
 
   const handleBanQuery = shouldGenerateHandleBanQuery ? `~@${handle} ` : '';
-  const solvedRangeQuery = shouldGenerateSolvedRangeQuery
-    ? `s#${solvedMin}..${solvedMax} `
-    : '';
+  const solvedRangeQuery = getSolvedRangeQuery(solvedMin, solvedMax);
   const languageQuery = convertedLanguage === '' ? '' : `${convertedLanguage} `;
-  const difficultyRangeQuery =
-    startTier === endTier ? `*${startTier} ` : `*${startTier}..${endTier} `;
+  const difficultyRangeQuery = getDifficultyRangeQuery(startTier, endTier);
   const algorithmNamesQuery = shouldGenerateAlgorithmNamesQuery
     ? algorithmTags.length === 1
       ? algorithmTags[0]
@@ -50,6 +46,46 @@ export const generateRandomDefenseQuery = (
     : '';
 
   return `(*0&!s?|!*0) o? -w? ${handleBanQuery}${solvedRangeQuery}${languageQuery}${difficultyRangeQuery}${algorithmNamesQuery}`.trim();
+};
+
+const getSolvedRangeQuery = (solvedMin: string, solvedMax: string) => {
+  if (solvedMin.trim() === '' && solvedMax.trim() === '') {
+    return '';
+  }
+
+  if (solvedMin === solvedMax) {
+    return `s#${solvedMin} `;
+  }
+
+  return `s#${solvedMin}..${solvedMax} `;
+};
+
+const rankFirstLetters = ['b', 's', 'g', 'p', 'd', 'r'] as const;
+
+const getDifficultyRangeQuery = (
+  startTier: TierWithoutNotRatable,
+  endTier: TierWithoutNotRatable,
+) => {
+  if (startTier === 0 && endTier === 30) {
+    return '';
+  }
+
+  if (startTier % 5 === 1 && startTier + 4 === endTier) {
+    return `*${rankFirstLetters[Math.floor(startTier / 5)]} `;
+  }
+
+  if (startTier % 5 === 1 && endTier % 5 === 0) {
+    const startRankLetter = rankFirstLetters[Math.floor(startTier / 5)];
+    const endRankLetter = rankFirstLetters[Math.floor(endTier / 5) - 1];
+
+    return `*${startRankLetter}..${endRankLetter} `;
+  }
+
+  if (startTier === endTier) {
+    return `*${startTier} `;
+  }
+
+  return `*${startTier}..${endTier} `;
 };
 
 const generateAlgorithmTags = (algorithmIds: number[]) => {
@@ -71,11 +107,11 @@ const generateAlgorithmTags = (algorithmIds: number[]) => {
 export const convertLanguage = (language: Language) => {
   switch (language) {
     case 'ko':
-      return 'lang:ko';
+      return '%ko';
     case 'en':
-      return '(lang:en~lang:ko~lang:ja~lang:sv)';
+      return '(%en~%ko~%ja~%sv)';
     case 'ko/en':
-      return '(lang:ko|(lang:en~lang:ja~lang:sv))';
+      return '(%ko|(%en~%ja~%sv))';
     default:
       return '';
   }

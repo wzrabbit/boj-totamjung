@@ -17,7 +17,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [],
         customQuery: '',
       },
-      '(*0&!s?|!*0) o? -w? ~@test_user s#100..500 lang:ko *10..16',
+      '(*0&!s?|!*0) o? -w? ~@test_user s#100..500 %ko *10..16',
     ],
     [
       {
@@ -33,7 +33,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [],
         customQuery: '',
       },
-      '(*0&!s?|!*0) o? -w? (lang:en~lang:ko~lang:ja~lang:sv) *11..15',
+      '(*0&!s?|!*0) o? -w? (%en~%ko~%ja~%sv) *g',
     ],
     [
       {
@@ -49,7 +49,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [7],
         customQuery: '',
       },
-      '(*0&!s?|!*0) o? -w? ~@silverlove1234 s#200.. (lang:ko|(lang:en~lang:ja~lang:sv)) *6..10 #greedy',
+      '(*0&!s?|!*0) o? -w? ~@silverlove1234 s#200.. (%ko|(%en~%ja~%sv)) *s #greedy',
     ],
     [
       {
@@ -75,13 +75,13 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         language: 'ko',
         solvedMin: '',
         solvedMax: '10000',
-        startTier: 1,
+        startTier: 0,
         endTier: 30,
         searchOperator: 'AND',
         algorithmIds: [4, 9, 16],
         customQuery: '',
       },
-      '(*0&!s?|!*0) o? -w? s#..10000 lang:ko *1..30 (#graphs&#graph_traversal&#bfs)',
+      '(*0&!s?|!*0) o? -w? s#..10000 %ko (#graphs&#graph_traversal&#bfs)',
     ],
     [
       {
@@ -97,7 +97,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
         algorithmIds: [1, 14],
         customQuery: '',
       },
-      '(*0&!s?|!*0) o? -w? s#0.. (lang:en~lang:ko~lang:ja~lang:sv) *1..30 (~#math~#geometry)',
+      '(*0&!s?|!*0) o? -w? s#0.. (%en~%ko~%ja~%sv) *b..r (~#math~#geometry)',
     ],
   ];
 

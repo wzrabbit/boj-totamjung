@@ -24,6 +24,17 @@ export const getRandomDefenseResult = async (
         };
       }
 
+      if (response.status === 403) {
+        return {
+          success: false,
+          errorMessage: '문제 추첨 중 에러가 발생했습니다.',
+          errorDescriptions: [
+            '현재 접속하신 IP에서는 솔브드 API를 이용하실 수 없도록 차단되어 있습니다.',
+            'VPN을 사용하고 계시다면 VPN을 끄신 후 다시 시도해 주세요.',
+          ],
+        };
+      }
+
       if (response.status === 429) {
         return {
           success: false,

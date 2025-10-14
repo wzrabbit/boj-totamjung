@@ -9,7 +9,7 @@ const meta = {
   title: 'components/RandomDefenseCreateMenu/SearchOperatorSelect',
   component: SearchOperatorSelect,
   argTypes: {
-    searchOperator: {
+    selectedOperator: {
       description:
         '선택되어 있는 **연산자**를 의미합니다. **연산자**의 값이 어떤가에 따라 추첨 생성 시 생성되는 쿼리의 방식이 달라집니다. `AND`가 선택된 경우에는 해당되는 알고리즘을 포함하는 경우, `OR`는 해당되는 알고리즘 중 적어도 하나를 포함하는 경우, `NOR`는 해당되는 알고리즘을 모두 포함하지 않는 경우를 의미합니다.',
     },
@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    searchOperator: 'AND',
+    selectedOperator: 'AND',
     onClick: fn(),
   },
 };

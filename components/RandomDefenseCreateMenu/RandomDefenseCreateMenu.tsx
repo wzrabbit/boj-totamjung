@@ -190,7 +190,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                   검색에 포함할 알고리즘
                 </Text>
                 <SearchOperatorSelect
-                  searchOperator={searchOperator}
+                  selectedOperator={searchOperator}
                   onClick={setSearchOperator}
                 />
               </S.Row>

@@ -29,6 +29,24 @@ export default defineConfig({
           label: '퀵 스타트',
           items: [{ label: '퀵 스타트', slug: 'quick-start' }],
         },
+        {
+          label: '기능',
+          items: [
+            { label: '알고리즘 가리개', slug: 'features/algorithm-hider' },
+            { label: '랜덤 디펜스', slug: 'features/random-defense' },
+            { label: '티어 가리개', slug: 'features/tier-hider' },
+            { label: '즉석 추첨', slug: 'features/gacha' },
+            { label: '그 외 기능들', slug: 'features/miscellaneous' },
+          ],
+        },
+        {
+          label: '토탐정에 기여하기',
+          items: [{ label: '기여 방법', slug: 'contribute' }],
+        },
+        {
+          label: '문의하기',
+          items: [{ label: '문의하기', slug: 'contact' }],
+        },
       ],
       customCss: ['./src/fonts/font-face.css', './src/styles/custom.css'],
     }),

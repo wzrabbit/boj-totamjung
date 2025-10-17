@@ -6,25 +6,28 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'My Docs',
+      title: '토탐정',
+      locales: {
+        root: {
+          label: '한국어',
+          lang: 'ko',
+        },
+      },
       social: [
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/withastro/starlight',
+          href: 'https://github.com/wzrabbit/boj-totamjung',
         },
       ],
       sidebar: [
         {
-          label: 'Guides',
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', slug: 'guides/example' },
-          ],
+          label: '다운로드',
+          items: [{ label: '다운로드', slug: 'downloads' }],
         },
         {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
+          label: '퀵 스타트',
+          items: [{ label: '퀵 스타트', slug: 'quick-start' }],
         },
       ],
       customCss: ['./src/fonts/font-face.css', './src/styles/custom.css'],

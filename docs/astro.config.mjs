@@ -49,6 +49,7 @@ export default defineConfig({
         },
       ],
       customCss: ['./src/fonts/font-face.css', './src/styles/custom.css'],
+      favicon: '/favicon.png',
     }),
   ],
 });

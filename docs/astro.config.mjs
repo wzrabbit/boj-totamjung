@@ -7,6 +7,8 @@ export default defineConfig({
   integrations: [
     starlight({
       title: '토탐정',
+      description:
+        '토탐정은 백준에서 사용할 수 있는 확장 프로그램입니다. 알고리즘 분류와 랜덤 디펜스 관련 기능들을 주로 제공하고, 그 외에 여러 유용한 기능들도 제공합니다.',
       locales: {
         root: {
           label: '한국어',

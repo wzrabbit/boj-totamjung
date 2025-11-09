@@ -1,0 +1,46 @@
+---
+title: 토탐정
+description: 토탐정은 백준에서 사용할 수 있는 확장 프로그램입니다. 알고리즘 분류와 랜덤 디펜스 관련 기능들을 주로 제공하고, 그 외에 여러 유용한 기능들도 제공합니다.
+editUrl: false
+lastUpdated: false
+template: splash
+hero:
+  tagline: 토탐정은 백준에서 사용할 수 있는 확장 프로그램입니다. 알고리즘 분류와 랜덤 디펜스 관련 기능들을 주로 제공하고, 그 외에 여러 유용한 기능들도 제공합니다.
+  image:
+    file: ../../assets/totamjung.png
+  actions:
+    - text: 다운로드
+      link: downloads
+      icon: right-arrow
+    - text: 사용 가이드
+      link: quick-start
+      icon: right-arrow
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## 제공하는 기능
+
+<CardGrid stagger>
+  <Card title="알고리즘 가리개" icon="seti:code-search">
+    알고리즘 분류를 공개하지 않고도 알고 있는 알고리즘만으로 풀 수 있는 문제인지
+    알 수 있으며, 알고리즘 분류를 공개할 수 없도록 타이머를 활용하여 일정
+    시간동안 잠글 수 있어요.
+  </Card>
+  <Card title="편리한 랜덤 디펜스" icon="seti:favicon">
+    자주 사용하는 솔브드의 검색 쿼리들을 슬롯에 저장해 두고, 백준 내에서 단축키
+    한 번으로 해당 쿼리로 랜덤 디펜스를 진행할 수 있어요.
+  </Card>
+  <Card title="티어 가리개" icon="seti:ignored">
+    솔브드에서 제공하는 어려운 난이도 경고 기능을 백준에서도 사용할 수 있어요.
+    난이도는 감추면서 내 실력에 맞지 않는 어려운 문제인지 알 수 있어요.
+  </Card>
+  <Card title="즉석 추첨" icon="heart">
+    가챠 게임과 같은 연출과 함께 여러 문제들을 한꺼번에 추첨할 수 있어요.
+  </Card>
+  <Card title="테마와 폰트" icon="moon">
+    멋지고 웅장한 토탐정 테마를 사용할 수 있고, 문제 본문에 다양한 폰트를 취향에
+    맞게 적용할 수 있어요.
+  </Card>
+</CardGrid>

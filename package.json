@@ -10,17 +10,21 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
+    "compile:docs": "npm run compile --workspace docs",
     "postinstall": "wxt prepare",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "build:storybook": "storybook build",
     "lint": "eslint .",
     "test": "cross-env TZ='Asia/Seoul' jest --watchAll",
-    "test:ci": "cross-env TZ='Asia/Seoul' jest --ci"
+    "test:ci": "cross-env TZ='Asia/Seoul' jest --ci",
+    "docs": "npm run dev --workspace docs",
+    "build:docs": "npm run build --workspace docs"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "styled-components": "^6.1.1"
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -61,5 +65,8 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
-  }
+  },
+  "workspaces": [
+    "docs"
+  ]
 }

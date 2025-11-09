@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install Dependencies
         run: |
@@ -32,9 +32,17 @@ jobs:
         run: |
           npm run compile
 
+      - name: Compile Docs
+        run: |
+          npm run compile:docs
+
       - name: Build Project
         run: |
           npm run build
+
+      - name: Build Docs
+        run: |
+          npm run build:docs
 
       - name: Test Project
         run: |

@@ -2,7 +2,7 @@ name: Deploy Guide Docs And Storybook
 
 on:
   push:
-    branches: ['develop', 'main', 'chore/make-astro-project']
+    branches: ['develop', 'main']
 
 jobs:
   build-and-deploy:

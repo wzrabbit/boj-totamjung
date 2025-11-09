@@ -37,6 +37,7 @@ export default defineConfig({
         {
           label: '기능',
           items: [
+            { label: '토탐정 위젯', slug: 'features/widget' },
             { label: '알고리즘 가리개', slug: 'features/algorithm-hider' },
             { label: '랜덤 디펜스', slug: 'features/random-defense' },
             { label: '티어 가리개', slug: 'features/tier-hider' },

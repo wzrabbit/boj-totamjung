@@ -4,6 +4,8 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://wzrabbit.github.io',
+  base: process.env.NODE_ENV === 'development' ? '/' : '/boj-totamjung',
   integrations: [
     starlight({
       title: '토탐정',

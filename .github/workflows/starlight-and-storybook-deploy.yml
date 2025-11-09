@@ -1,8 +1,8 @@
-name: Deploy Storybook
+name: Deploy Guide Docs And Storybook
 
 on:
   push:
-    branches: ['develop', 'main']
+    branches: ['develop', 'main', 'chore/make-astro-project']
 
 jobs:
   build-and-deploy:
@@ -24,13 +24,25 @@ jobs:
         run: |
           npm ci
 
+      - name: Build Guide Docs
+        run: |
+          npm run build:docs
+
       - name: Build Storybook
         run: |
-          npm run build-storybook
+          npm run build:storybook
+
+      - name: Deploy Guide Docs
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/dist
+          publish_branch: guide-docs-deploy
 
       - name: Deploy Storybook
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
-          publish_branch: storybook-deploy
+          publish_branch: guide-docs-deploy
+          destination_dir: storybook

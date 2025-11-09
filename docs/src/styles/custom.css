@@ -47,3 +47,7 @@
   background-color: var(--sl-color-accent);
   color: var(--sl-color-black);
 }
+
+starlight-theme-select select {
+  width: 8rem;
+}

@@ -10,6 +10,7 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
+    "compile:docs": "npm run compile --workspace docs",
     "postinstall": "wxt prepare",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

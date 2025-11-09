@@ -32,9 +32,17 @@ jobs:
         run: |
           npm run compile
 
+      - name: Compile Docs
+        run: |
+          npm run compile:docs
+
       - name: Build Project
         run: |
           npm run build
+
+      - name: Build Docs
+        run: |
+          npm run build:docs
 
       - name: Test Project
         run: |

@@ -46,13 +46,13 @@ import { fetchOptionsData } from '@/domains/dataHandlers/optionsDataHandler';
 import { isUserSolvedProblem } from '@/domains/tierHider/userSolvedChecker';
 import { getRandomDefenseResult } from '@/domains/randomDefense/randomDefenseProblemChooser';
 import { initializeDataOnFirstInstall } from '@/domains/dataHandlers/dataInitializer';
-import { TOTAMJUNG_GUIDE_PAGE_URL } from '@/constants/urls';
+import { TOTAMJUNG_GUIDE_URL } from '@/constants/urls';
 
 const executeBackground = () => {
   browser.runtime.onInstalled.addListener(({ reason }) => {
     if (reason === 'install') {
       initializeDataOnFirstInstall();
-      browser.tabs.create({ url: TOTAMJUNG_GUIDE_PAGE_URL });
+      browser.tabs.create({ url: TOTAMJUNG_GUIDE_URL.QUICK_START });
       return;
     }
 

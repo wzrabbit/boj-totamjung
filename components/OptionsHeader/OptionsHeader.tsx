@@ -4,7 +4,7 @@ import SimpleModal from '@/components/common/SimpleModal';
 import TotamjungInfoModal from './TotamjungInfoModal';
 import { settingsTitle, guidebookButton, infoButton } from '@/assets/png';
 import type { OptionsNavCategory } from '@/types/options';
-import { TOTAMJUNG_GUIDE_PAGE_URL } from '@/constants/urls';
+import { TOTAMJUNG_GUIDE_URL } from '@/constants/urls';
 import * as S from './OptionsHeader.styled';
 
 interface OptionsHeaderProps {
@@ -58,7 +58,7 @@ const OptionsHeader = (props: OptionsHeaderProps) => {
         open={activeModal === 'guidePageOpenConfirm'}
         message="토탐정 사용 가이드 페이지를 열람하시겠어요?"
         onYesSelect={() => {
-          window.open(TOTAMJUNG_GUIDE_PAGE_URL);
+          window.open(TOTAMJUNG_GUIDE_URL.LANDING);
           setActiveModal('none');
         }}
         onNoSelect={() => {

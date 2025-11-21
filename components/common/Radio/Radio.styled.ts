@@ -1,6 +1,8 @@
 import { styled, css } from 'styled-components';
 
 export const Label = styled.label`
+  position: relative;
+
   width: 16px;
   height: 16px;
 `;
@@ -35,5 +37,10 @@ export const FakeVisualRadio = styled.div<{
 `;
 
 export const Radio = styled.input.attrs({ type: 'radio' })`
-  display: none;
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
 `;

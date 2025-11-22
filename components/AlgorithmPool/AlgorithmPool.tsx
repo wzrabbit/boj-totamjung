@@ -5,7 +5,6 @@ import FallbackWithImage from '@/components/common/FallbackWithImage';
 import Loading from '@/components/common/Loading';
 import useAlgorithmPool from '@/hooks/algorithm/useAlgorithmPool';
 import useModal from '@/hooks/useModal';
-
 import { SearchIcon } from '@/assets/svg';
 import { allCheckedIcon, allUncheckedIcon, noSearchResult } from '@/assets/png';
 
@@ -25,7 +24,7 @@ const AlgorithmPool = () => {
   >();
 
   return (
-    <S.Container>
+    <S.Container role="group">
       <S.AlgorithmPanel>
         {isLoaded ? (
           items.length > 0 ? (

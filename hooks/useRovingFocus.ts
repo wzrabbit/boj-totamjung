@@ -12,12 +12,12 @@ import type { KeyboardEvent } from 'react';
  * @param count 항목의 개수입니다.
  * @returns 각 항목에 필요한 props를 포함한 객체입니다. 각 항목의 props에 spread operator를 이용해 분해한 채로 주입해주시면 됩니다. 적용 대상이 되는 컴포넌트는 ref를 통한 접근이 가능해야 합니다.
  */
-const useRovingFocus = (count: number) => {
+const useRovingFocus = <T extends HTMLElement>(count: number) => {
   const [currentFocusIndex, setCurrentFocusIndex] = useState(0);
-  const refs = useRef<(HTMLInputElement | null)[]>([]);
+  const refs = useRef<(T | null)[]>([]);
 
   const handleKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLInputElement>, index: number) => {
+    (event: KeyboardEvent<T>, index: number) => {
       let nextFocusIndex = index;
 
       switch (event.key) {
@@ -51,15 +51,15 @@ const useRovingFocus = (count: number) => {
     setCurrentFocusIndex(index);
   };
 
-  const getRovingProps = (index: number) => ({
-    ref: (element: HTMLInputElement | null) => {
-      refs.current[index] = element;
-    },
-    tabIndex: currentFocusIndex === index ? 0 : -1,
-    onKeyDown: (event: KeyboardEvent<HTMLInputElement>) =>
-      handleKeyDown(event, index),
-    onClick: () => handleClick(index),
-  });
+  const getRovingProps = (index: number) =>
+    ({
+      ref: (element: T | null) => {
+        refs.current[index] = element;
+      },
+      tabIndex: currentFocusIndex === index ? 0 : -1,
+      onKeyDown: (event: KeyboardEvent<T>) => handleKeyDown(event, index),
+      onClick: () => handleClick(index),
+    }) as const;
 
   return { getRovingProps };
 };

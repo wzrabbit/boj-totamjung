@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import type { KeyboardEvent } from 'react';
 
 /**
@@ -15,6 +15,10 @@ import type { KeyboardEvent } from 'react';
 const useRovingFocus = <T extends HTMLElement>(count: number) => {
   const [currentFocusIndex, setCurrentFocusIndex] = useState(0);
   const refs = useRef<(T | null)[]>([]);
+
+  useEffect(() => {
+    setCurrentFocusIndex(0);
+  }, [count]);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<T>, index: number) => {

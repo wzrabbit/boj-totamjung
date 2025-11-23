@@ -11,7 +11,9 @@ interface AlgorithmListProps {
 
 const AlgorithmList = (props: AlgorithmListProps) => {
   const { items, checkedAlgorithmIds, onChange } = props;
-  const { getRovingProps } = useRovingFocus<HTMLInputElement>(items.length);
+  const { getRovingProps } = useRovingFocus<HTMLInputElement>({
+    count: items.length,
+  });
 
   return (
     <S.Container>

@@ -26,9 +26,9 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
     onChange,
   });
   const { getRovingProps: getSelectedRovingProps } =
-    useRovingFocus<HTMLButtonElement>(selectedAlgorithmIds.length);
+    useRovingFocus<HTMLButtonElement>({ count: selectedAlgorithmIds.length });
   const { getRovingProps: getSearchedRovingProps } =
-    useRovingFocus<HTMLButtonElement>(searchedAlgorithmIds.length);
+    useRovingFocus<HTMLButtonElement>({ count: searchedAlgorithmIds.length });
 
   return (
     <S.Container ref={containerRef} $isOpen={isOpen} tabIndex={-1}>

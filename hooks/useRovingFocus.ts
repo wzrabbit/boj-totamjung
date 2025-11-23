@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import type { KeyboardEvent } from 'react';
 
+interface UseRovingFocusParams {
+  count: number;
+  shouldResetFocusIndexOnItemChange?: boolean;
+}
+
 /**
  * 리스트에 있는 항목을 키보드 방향키(←, →)와 Home, End 키로 순회하며
  * 포커스를 관리하는 Roving Tabindex 패턴을 구현한 훅입니다. 리스트의 항목이 많을 경우 사용을 추천합니다.
@@ -14,17 +19,25 @@ import type { KeyboardEvent } from 'react';
  * 이벤트 위임 등으로 포커스 요소와 이벤트 수신 요소가 다른 경우 사용합니다.
  * 별도로 지정하지 않으면 T와 동일한 타입으로 설정됩니다.
  *
- * @param count 항목의 개수입니다.
+ * @param params 이 훅의 사용 옵션이 될 객체입니다.
+ * @param params.count 항목의 개수입니다.
+ * @param params.shouldResetFocusIndexOnItemChange 항목의 개수가 바뀔 경우 인덱스를 0으로 초기화할 지의 여부입니다.
  * @returns 각 항목에 필요한 props를 포함한 객체입니다. 각 항목의 props에 spread operator를 이용해 분해한 채로 주입해주시면 됩니다. 적용 대상이 되는 컴포넌트는 ref를 통한 접근이 가능해야 합니다.
  */
 const useRovingFocus = <T extends HTMLElement, U extends HTMLElement = T>(
-  count: number,
+  params: UseRovingFocusParams,
 ) => {
+  const { count, shouldResetFocusIndexOnItemChange = true } = params;
   const [currentFocusIndex, setCurrentFocusIndex] = useState(0);
   const refs = useRef<(T | null)[]>([]);
 
   useEffect(() => {
-    setCurrentFocusIndex(0);
+    if (shouldResetFocusIndexOnItemChange) {
+      setCurrentFocusIndex(0);
+      return;
+    }
+
+    setCurrentFocusIndex(Math.min(count - 1, currentFocusIndex));
   }, [count]);
 
   const handleKeyDown = useCallback(

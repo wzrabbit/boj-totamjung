@@ -11,7 +11,9 @@ interface RandomDefenseHistoryList {
 
 const RandomDefenseHistoryList = (props: RandomDefenseHistoryList) => {
   const { items, isHidden, onDelete } = props;
-  const { getRovingProps } = useRovingFocus<HTMLAnchorElement>(items.length);
+  const { getRovingProps } = useRovingFocus<HTMLAnchorElement, HTMLLIElement>(
+    items.length,
+  );
 
   return (
     <S.Container>

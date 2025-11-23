@@ -13,7 +13,7 @@ interface RandomDefenseHistoryItemProps {
   isHidden: boolean;
   tabIndex: number;
   linkButtonRef: Ref<HTMLAnchorElement>;
-  onKeyDown: KeyboardEventHandler<HTMLDivElement>;
+  onKeyDown: KeyboardEventHandler<HTMLLIElement>;
   onDelete: () => void;
 }
 

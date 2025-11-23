@@ -9,10 +9,17 @@ import type { KeyboardEvent } from 'react';
  * - 방향키(Left/Right): 항목 간 포커스 이동
  * - Home/End: 첫 번째 또는 마지막 항목으로 이동
  *
+ * @template T 활성화된 항목으로 이동할 때 실제 포커스를 받을 요소의 타입입니다. ref는 이 요소에 연결되어야 합니다.
+ * @template U 사용자의 키보드 입력을 감지할 요소의 타입입니다.
+ * 이벤트 위임 등으로 포커스 요소와 이벤트 수신 요소가 다른 경우 사용합니다.
+ * 별도로 지정하지 않으면 T와 동일한 타입으로 설정됩니다.
+ *
  * @param count 항목의 개수입니다.
  * @returns 각 항목에 필요한 props를 포함한 객체입니다. 각 항목의 props에 spread operator를 이용해 분해한 채로 주입해주시면 됩니다. 적용 대상이 되는 컴포넌트는 ref를 통한 접근이 가능해야 합니다.
  */
-const useRovingFocus = <T extends HTMLElement>(count: number) => {
+const useRovingFocus = <T extends HTMLElement, U extends HTMLElement = T>(
+  count: number,
+) => {
   const [currentFocusIndex, setCurrentFocusIndex] = useState(0);
   const refs = useRef<(T | null)[]>([]);
 
@@ -21,7 +28,7 @@ const useRovingFocus = <T extends HTMLElement>(count: number) => {
   }, [count]);
 
   const handleKeyDown = useCallback(
-    (event: KeyboardEvent<T>, index: number) => {
+    (event: KeyboardEvent<U>, index: number) => {
       let nextFocusIndex = index;
 
       switch (event.key) {
@@ -61,7 +68,7 @@ const useRovingFocus = <T extends HTMLElement>(count: number) => {
         refs.current[index] = element;
       },
       tabIndex: currentFocusIndex === index ? 0 : -1,
-      onKeyDown: (event: KeyboardEvent<T>) => handleKeyDown(event, index),
+      onKeyDown: (event: KeyboardEvent<U>) => handleKeyDown(event, index),
       onClick: () => handleClick(index),
     }) as const;
 

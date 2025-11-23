@@ -20,10 +20,10 @@ const RandomDefenseHistoryList = (props: RandomDefenseHistoryList) => {
       {items.map((item, index) => {
         const id = `${item.problemId}-${item.createdAt}`;
         const isCurrentTierHidden = ![0, 31].includes(item.tier) && isHidden;
-        const rovingProps = getRovingProps(index);
-        const modifiedRovingProps = {
-          ...rovingProps,
-          linkButtonRef: rovingProps.ref,
+        const { ref, ...restRawRovingProps } = getRovingProps(index);
+        const historyItemRovingProps = {
+          ...restRawRovingProps,
+          linkButtonRef: ref,
         };
 
         return (
@@ -34,7 +34,7 @@ const RandomDefenseHistoryList = (props: RandomDefenseHistoryList) => {
               onDelete(id);
             }}
             {...item}
-            {...modifiedRovingProps}
+            {...historyItemRovingProps}
           />
         );
       })}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useModal = <T>() => {
+const useModalState = <T>() => {
   const [activeModalName, setActiveModalName] = useState<T | null>(null);
 
   const openModal = (modalName: T) => {
@@ -14,4 +14,4 @@ const useModal = <T>() => {
   return { activeModalName, openModal, closeModal };
 };
 
-export default useModal;
+export default useModalState;

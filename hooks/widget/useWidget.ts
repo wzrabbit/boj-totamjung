@@ -5,7 +5,7 @@ import { isValidCheckedAlgorithmIds } from '@/domains/dataHandlers/validators/ch
 import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
-import useModal from '@/hooks/useModal';
+import useModalState from '@/hooks/useModalState';
 import useMouseLongPress from '@/hooks/useMouseLongPress';
 import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
 import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
@@ -38,7 +38,7 @@ const useWidget = (params: UseWidgetParams) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
     useInjectedProblemTags({ checkedAlgorithmIds, hiderOptions });
-  const { activeModalName, openModal, closeModal } = useModal<
+  const { activeModalName, openModal, closeModal } = useModalState<
     'gachaProblemCount' | 'gacha'
   >();
   const {

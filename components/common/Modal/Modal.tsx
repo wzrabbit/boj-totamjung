@@ -32,7 +32,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     onClose,
     children,
   } = props;
-  const { modalRef } = useModal(open);
+  const { closeButtonRef } = useModal(open);
   useEscKey({ onEscKeyPress: onClose });
 
   return (
@@ -46,15 +46,14 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
             }
           }}
         />
-        <S.Modal
-          role="dialog"
-          $totamjungTheme={theme}
-          tabIndex={-1}
-          ref={modalRef}
-        >
+        <S.Modal role="dialog" $totamjungTheme={theme}>
           <S.Header>
             <S.Title>{title}</S.Title>
-            <S.CloseButton onClick={onClose} aria-label="모달 닫기">
+            <S.CloseButton
+              onClick={onClose}
+              aria-label="모달 닫기"
+              ref={closeButtonRef}
+            >
               <CloseIcon />
             </S.CloseButton>
           </S.Header>

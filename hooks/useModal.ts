@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 const useModal = (open: boolean) => {
-  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const prevElementRef = useRef<HTMLElement | null>(null);
   const prevModalOpen = useRef(open);
 
@@ -18,10 +18,10 @@ const useModal = (open: boolean) => {
   useEffect(() => {
     if (
       open &&
-      modalRef.current &&
-      !modalRef.current.contains(document.activeElement)
+      closeButtonRef.current &&
+      !closeButtonRef.current.contains(document.activeElement)
     ) {
-      modalRef.current.focus();
+      closeButtonRef.current.focus();
     }
 
     return () => {
@@ -31,7 +31,7 @@ const useModal = (open: boolean) => {
     };
   }, [open]);
 
-  return { modalRef };
+  return { closeButtonRef };
 };
 
 export default useModal;

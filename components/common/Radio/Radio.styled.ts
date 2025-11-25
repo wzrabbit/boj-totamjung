@@ -42,5 +42,10 @@ export const Radio = styled.input.attrs({ type: 'radio' })`
   width: 100%;
   height: 100%;
 
-  opacity: 0;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+
+  appearance: none;
+  -webkit-appearance: none;
 `;

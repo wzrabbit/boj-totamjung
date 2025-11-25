@@ -117,6 +117,7 @@ export const CloseButton = styled.button`
     outline-color: ${({ theme }) => theme.color.LEMON};
     outline-offset: 2px;
     outline-style: dashed;
+    outline-width: 1px;
   }
 
   & > svg {

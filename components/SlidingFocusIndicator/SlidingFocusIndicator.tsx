@@ -6,7 +6,9 @@ const SlidingFocusIndicator = () => {
   const { indicatorInfo } = useSlidingFocusIndicator();
 
   return createPortal(
-    <S.FocusIndicatorBox style={{ ...indicatorInfo }} />,
+    <S.Container>
+      <S.FocusIndicatorBox style={{ ...indicatorInfo }} />
+    </S.Container>,
     document.body,
   );
 };

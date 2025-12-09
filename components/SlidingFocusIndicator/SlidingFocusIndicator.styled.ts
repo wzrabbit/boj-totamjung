@@ -17,6 +17,18 @@ const glowLoop = keyframes`
   }
 `;
 
+export const Container = styled.div`
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  pointer-events: none;
+`;
+
 export const FocusIndicatorBox = styled.div`
   position: absolute;
 
@@ -26,7 +38,7 @@ export const FocusIndicatorBox = styled.div`
   box-shadow: 0 0 12px
     ${({ theme }) => getTransparentHexColor(theme.color.ORANGE, 0.6)};
   will-change: top, left, width, height, opacity;
-  pointer-events: none;
+
   z-index: 9999;
   transition:
     top 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),

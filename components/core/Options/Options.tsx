@@ -3,6 +3,7 @@ import HiderSection from '@/components/sections/HiderSection';
 import RandomDefenseSection from '@/components/sections/RandomDefenseSection';
 import AppearanceAndDataManageSection from '@/components/sections/AppearanceAndDataManageSection';
 import useOptionsPage from '@/hooks/options/useOptionsPage';
+import SlidingFocusIndicator from '@/components/SlidingFocusIndicator';
 import { totamjung } from '@/assets/png';
 import * as S from './Options.styled';
 
@@ -26,6 +27,7 @@ const Options = () => {
       <S.TotamjungImageWrapper>
         <S.TotamjungImage src={totamjung} alt="" />
       </S.TotamjungImageWrapper>
+      <SlidingFocusIndicator />
     </S.Container>
   );
 };

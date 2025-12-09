@@ -29,12 +29,12 @@ export const theme = {
     BLACK_DARKER_TRANSPARENT: '#000000aa',
     ORANGE: '#ff8533',
     DARK_ORANGE: '#bb4b00',
-    ORANGE_TRANSPARENT: '#ff853340',
     BEIGE: '#c8aaa0',
     LIME: '#00ed28',
     GREEN: '#008000',
     LIGHT_PURPLE: '#dcbfff',
     PURPLE: '#963eff',
+    MANGO: '#ffd900',
   },
 
   solvedAcTier: {

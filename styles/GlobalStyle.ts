@@ -1,5 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import { theme } from './theme';
+
+const isExtensionPage = window.location.protocol === 'chrome-extension:';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -62,6 +64,28 @@ const GlobalStyle = createGlobalStyle`
   * {
     scrollbar-width: 15px;
     scrollbar-color: ${theme.color.LIGHTEST_BROWN} ${theme.color.SLIGHT_DARK_BROWN};
+  }
+
+  /**
+   * 확장 프로그램 설정 페이지인 경우 포커스된 항목을 표시하기 위해 <SlidingFocus> 컴포넌트를 사용하므로, 여기에서는 비활성화합니다.
+   */
+  ${
+    isExtensionPage &&
+    css`
+      * {
+        outline: none;
+      }
+    `
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.001s !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001s !important;
+    }
   }
 `;
 

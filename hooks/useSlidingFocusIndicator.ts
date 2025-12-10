@@ -93,8 +93,8 @@ const useSlidingFocusIndicator = () => {
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('focusin', handleFocus);
     window.addEventListener('focusout', handleBlur);
-    window.removeEventListener('resize', handleResizeOrScroll);
-    window.removeEventListener('scroll', handleResizeOrScroll);
+    window.addEventListener('resize', handleResizeOrScroll);
+    window.addEventListener('scroll', handleResizeOrScroll);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);

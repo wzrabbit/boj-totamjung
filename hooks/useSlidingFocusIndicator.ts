@@ -22,6 +22,7 @@ const useSlidingFocusIndicator = () => {
     opacity: 0,
   });
   const isKeyboardRef = useRef(false);
+  const visitedShadowRootsRef = useRef(new Set<ShadowRoot>());
 
   const updateIndicatorPosition = useCallback((target: HTMLElement) => {
     if (!target.getBoundingClientRect) {
@@ -73,8 +74,22 @@ const useSlidingFocusIndicator = () => {
         return;
       }
 
-      if (event.target instanceof HTMLElement) {
-        setFocusedElement(event.target);
+      const composedPath = event.composedPath();
+      const target = event.target;
+      const realTarget = composedPath[0];
+
+      if (realTarget instanceof HTMLElement) {
+        setFocusedElement(realTarget);
+      }
+
+      if (target instanceof HTMLElement) {
+        const shadowRoot = target.shadowRoot;
+
+        if (shadowRoot instanceof HTMLElement) {
+          shadowRoot.addEventListener('focusin', handleFocus);
+          shadowRoot.addEventListener('focusout', handleBlur);
+          visitedShadowRootsRef.current.add(shadowRoot);
+        }
       }
     };
 

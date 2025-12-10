@@ -30,8 +30,8 @@ const useSlidingFocusIndicator = () => {
     const rect = target.getBoundingClientRect();
 
     setIndicatorInfo({
-      top: `${rect.top + window.scrollY - OFFSET_SIZE}px`,
-      left: `${rect.left + window.scrollX - OFFSET_SIZE}px`,
+      top: `${rect.top - OFFSET_SIZE}px`,
+      left: `${rect.left - OFFSET_SIZE}px`,
       width: `${rect.width + OFFSET_SIZE * 2}px`,
       height: `${rect.height + OFFSET_SIZE * 2}px`,
       opacity: 1,

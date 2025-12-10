@@ -18,7 +18,7 @@ const glowLoop = keyframes`
 `;
 
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   top: 0;
   left: 0;

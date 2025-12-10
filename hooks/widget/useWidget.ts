@@ -119,6 +119,20 @@ const useWidget = (params: UseWidgetParams) => {
     );
   }, [theme]);
 
+  useEffect(() => {
+    const toggleWidgetOpenByHotkey = (event: KeyboardEvent) => {
+      if (event.altKey && event.shiftKey && event.code === 'KeyW') {
+        setIsExpanded((prev) => !prev);
+      }
+    };
+
+    document.addEventListener('keydown', toggleWidgetOpenByHotkey);
+
+    return () => {
+      document.removeEventListener('keydown', toggleWidgetOpenByHotkey);
+    };
+  }, []);
+
   const scrollToTop = () => {
     if (isScrollingToTop) {
       return;

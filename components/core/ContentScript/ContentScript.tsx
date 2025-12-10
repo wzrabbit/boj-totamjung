@@ -24,6 +24,7 @@ const ContentScript = () => {
             onToast={showToast}
           />
           <LeftSlideToast theme={theme} onClose={closeToast} {...toastState} />
+          <SlidingFocusIndicator portalTarget={totamjungRootRef.current} />
         </>
       )}
     </div>

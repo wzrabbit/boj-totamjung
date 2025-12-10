@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { MouseEvent } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { isValidCheckedAlgorithmIds } from '@/domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
@@ -58,6 +58,9 @@ const useWidget = (params: UseWidgetParams) => {
     onClick: performRandomDefenseByClick,
     onLongPress: performRandomDefenseByMouseLongPress,
   });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const topButtonRef = useRef<HTMLButtonElement>(null);
+  const prevActiveElementRef = useRef<HTMLElement | null>(null);
 
   const isRandomDefenseButtonDisabled = !isRandomDefenseAvailable;
   const isInspectButtonDisabled =
@@ -109,7 +112,26 @@ const useWidget = (params: UseWidgetParams) => {
       setIsLoaded(true);
     };
 
+    const updatePrevElement = (event: FocusEvent) => {
+      const composedPath = event.composedPath();
+      const prevElement = composedPath[0];
+
+      if (
+        prevElement === null ||
+        (prevElement instanceof Node &&
+          prevElement instanceof HTMLElement &&
+          !containerRef.current?.contains(prevElement))
+      ) {
+        prevActiveElementRef.current = prevElement;
+      }
+    };
+
     loadWidgetData();
+    document.addEventListener('focusin', updatePrevElement);
+
+    return () => {
+      document.removeEventListener('focusin', updatePrevElement);
+    };
   }, []);
 
   useEffect(() => {
@@ -123,6 +145,14 @@ const useWidget = (params: UseWidgetParams) => {
     const toggleWidgetOpenByHotkey = (event: KeyboardEvent) => {
       if (event.altKey && event.shiftKey && event.code === 'KeyW') {
         setIsExpanded((prev) => !prev);
+
+        if (isExpanded && prevActiveElementRef.current) {
+          prevActiveElementRef.current.focus();
+        }
+
+        if (!isExpanded) {
+          topButtonRef.current?.focus();
+        }
       }
     };
 
@@ -131,7 +161,7 @@ const useWidget = (params: UseWidgetParams) => {
     return () => {
       document.removeEventListener('keydown', toggleWidgetOpenByHotkey);
     };
-  }, []);
+  }, [isExpanded]);
 
   const scrollToTop = () => {
     if (isScrollingToTop) {
@@ -248,6 +278,8 @@ const useWidget = (params: UseWidgetParams) => {
     showInspectResultUsingPopup,
     toggleTimer,
     closeWelcomeMessage,
+    containerRef,
+    topButtonRef,
     randomDefenseButtonRef,
   };
 };

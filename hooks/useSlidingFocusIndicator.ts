@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
 
 const OFFSET_SIZE = 6;
@@ -22,7 +23,7 @@ const useSlidingFocusIndicator = () => {
     opacity: 0,
   });
   const isKeyboardRef = useRef(false);
-  const visitedShadowRootsRef = useRef(new Set<ShadowRoot>());
+  const visitedShadowRootsRef = useRef(new WeakSet<ShadowRoot>());
 
   const updateIndicatorPosition = useCallback((target: HTMLElement) => {
     if (!target.getBoundingClientRect) {
@@ -85,7 +86,7 @@ const useSlidingFocusIndicator = () => {
       if (target instanceof HTMLElement) {
         const shadowRoot = target.shadowRoot;
 
-        if (shadowRoot instanceof HTMLElement) {
+        if (shadowRoot && !visitedShadowRootsRef.current.has(shadowRoot)) {
           shadowRoot.addEventListener('focusin', handleFocus);
           shadowRoot.addEventListener('focusout', handleBlur);
           visitedShadowRootsRef.current.add(shadowRoot);

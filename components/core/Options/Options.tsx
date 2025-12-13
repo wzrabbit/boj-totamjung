@@ -27,7 +27,7 @@ const Options = () => {
       <S.TotamjungImageWrapper>
         <S.TotamjungImage src={totamjung} alt="" />
       </S.TotamjungImageWrapper>
-      <SlidingFocusIndicator />
+      <SlidingFocusIndicator activeScope={document.body} />
     </S.Container>
   );
 };

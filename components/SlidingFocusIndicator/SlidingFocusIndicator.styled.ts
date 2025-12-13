@@ -26,6 +26,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
+  z-index: 3;
   pointer-events: none;
 `;
 
@@ -38,8 +39,6 @@ export const FocusIndicatorBox = styled.div`
   box-shadow: 0 0 12px
     ${({ theme }) => getTransparentHexColor(theme.color.ORANGE, 0.6)};
   will-change: top, left, width, height, opacity;
-
-  z-index: 9999;
   transition:
     top 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
     left 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),

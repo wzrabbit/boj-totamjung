@@ -1,29 +1,34 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import type { CSSProperties } from 'react';
 
 const OFFSET_SIZE = 6;
 
-interface IndicatorInfo {
+interface IndicatorPosition {
   top: CSSProperties['top'];
   left: CSSProperties['left'];
   width: CSSProperties['width'];
   height: CSSProperties['height'];
-  opacity: number;
 }
 
-const useSlidingFocusIndicator = () => {
+interface UseSlidingFocusIndicatorParams {
+  activeScope: HTMLElement;
+}
+
+const useSlidingFocusIndicator = (params: UseSlidingFocusIndicatorParams) => {
+  const { activeScope } = params;
   const [focusedElement, setFocusedElement] = useState<HTMLElement | null>(
     null,
   );
-  const [indicatorInfo, setIndicatorInfo] = useState<IndicatorInfo>({
-    top: 0,
-    left: 0,
-    width: 0,
-    height: 0,
-    opacity: 0,
-  });
-  const isKeyboardRef = useRef(false);
-  const visitedShadowRootsRef = useRef(new WeakSet<ShadowRoot>());
+  const [isMouseClickDetected, setIsMouseClickDetected] = useState(true);
+  const [indicatorPosition, setIndicatorPosition] = useState<IndicatorPosition>(
+    {
+      top: 0,
+      left: 0,
+      width: 0,
+      height: 0,
+    },
+  );
+  const opacity = focusedElement && !isMouseClickDetected ? 1 : 0;
 
   const updateIndicatorPosition = useCallback((target: HTMLElement) => {
     if (!target.getBoundingClientRect) {
@@ -31,17 +36,16 @@ const useSlidingFocusIndicator = () => {
     }
     const rect = target.getBoundingClientRect();
 
-    setIndicatorInfo({
+    setIndicatorPosition({
       top: `${rect.top - OFFSET_SIZE}px`,
       left: `${rect.left - OFFSET_SIZE}px`,
       width: `${rect.width + OFFSET_SIZE * 2}px`,
       height: `${rect.height + OFFSET_SIZE * 2}px`,
-      opacity: 1,
     });
   }, []);
 
   useEffect(() => {
-    if (!focusedElement) {
+    if (!focusedElement || isMouseClickDetected) {
       return;
     }
 
@@ -54,75 +58,59 @@ const useSlidingFocusIndicator = () => {
 
     repeatUpdatingIndicatorPosition();
 
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [focusedElement, updateIndicatorPosition]);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [focusedElement, isMouseClickDetected, updateIndicatorPosition]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Tab' || event.key.startsWith('Arrow')) {
-        isKeyboardRef.current = true;
+      if (['Tab', 'ArrowLeft', 'ArrowRight'].includes(event.code)) {
+        setIsMouseClickDetected(false);
       }
     };
 
     const handleMouseDown = () => {
-      isKeyboardRef.current = false;
-      setFocusedElement(null);
-      setIndicatorInfo((prev) => ({ ...prev, opacity: 0 }));
+      setIsMouseClickDetected(true);
     };
 
     const handleFocus = (event: FocusEvent) => {
-      if (!isKeyboardRef.current) {
-        return;
-      }
-
-      const composedPath = event.composedPath();
-      const target = event.target;
-      const realTarget = composedPath[0];
-
-      if (realTarget instanceof HTMLElement) {
-        setFocusedElement(realTarget);
-      }
-
-      if (target instanceof HTMLElement) {
-        const shadowRoot = target.shadowRoot;
-
-        if (shadowRoot && !visitedShadowRootsRef.current.has(shadowRoot)) {
-          shadowRoot.addEventListener('focusin', handleFocus);
-          shadowRoot.addEventListener('focusout', handleBlur);
-          visitedShadowRootsRef.current.add(shadowRoot);
-        }
+      if (
+        event.target instanceof HTMLElement &&
+        activeScope.contains(event.target)
+      ) {
+        setFocusedElement(event.target);
       }
     };
 
-    const handleBlur = () => {
-      setFocusedElement(null);
-      setIndicatorInfo((prev) => ({ ...prev, opacity: 0 }));
-    };
-
-    const handleResizeOrScroll = () => {
-      if (focusedElement) {
-        updateIndicatorPosition(focusedElement);
+    const handleBlur = (event: FocusEvent) => {
+      if (
+        !(event.relatedTarget instanceof HTMLElement) ||
+        !activeScope.contains(event.relatedTarget)
+      ) {
+        setFocusedElement(null);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('focusin', handleFocus);
-    window.addEventListener('focusout', handleBlur);
-    window.addEventListener('resize', handleResizeOrScroll);
-    window.addEventListener('scroll', handleResizeOrScroll);
+    activeScope.addEventListener('focusin', handleFocus);
+    activeScope.addEventListener('focusout', handleBlur);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('focusin', handleFocus);
-      window.removeEventListener('focusout', handleBlur);
-      window.removeEventListener('resize', handleResizeOrScroll);
-      window.removeEventListener('scroll', handleResizeOrScroll);
+      activeScope.removeEventListener('focusin', handleFocus);
+      activeScope.removeEventListener('focusout', handleBlur);
     };
-  }, []);
+  }, [activeScope]);
 
-  return { indicatorInfo };
+  return {
+    indicatorInfo: {
+      ...indicatorPosition,
+      opacity,
+    },
+  };
 };
 
 export default useSlidingFocusIndicator;

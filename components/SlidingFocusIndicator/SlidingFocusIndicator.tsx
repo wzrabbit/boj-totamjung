@@ -3,12 +3,13 @@ import { createPortal } from 'react-dom';
 import * as S from './SlidingFocusIndicator.styled';
 
 interface SlidingFocusIndicatorProps {
+  activeScope: HTMLElement;
   portalTarget?: HTMLElement;
 }
 
 const SlidingFocusIndicator = (props: SlidingFocusIndicatorProps) => {
-  const { portalTarget } = props;
-  const { indicatorInfo } = useSlidingFocusIndicator();
+  const { activeScope, portalTarget } = props;
+  const { indicatorInfo } = useSlidingFocusIndicator({ activeScope });
 
   return createPortal(
     <S.Container>

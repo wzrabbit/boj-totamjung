@@ -1,7 +1,5 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
-
-const isExtensionPage = window.location.protocol === 'chrome-extension:';
 
 const GlobalStyle = createGlobalStyle`
   *,

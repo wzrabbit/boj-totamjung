@@ -32,7 +32,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     onClose,
     children,
   } = props;
-  const { closeButtonRef } = useModal(open);
+  const { modalRef, closeButtonRef } = useModal(open);
   useEscKey({ onEscKeyPress: onClose });
 
   return (
@@ -46,7 +46,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
             }
           }}
         />
-        <S.Modal role="dialog" $totamjungTheme={theme}>
+        <S.Modal role="dialog" $totamjungTheme={theme} ref={modalRef}>
           <S.Header>
             <S.Title>{title}</S.Title>
             <S.CloseButton

@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
+import { getDeepActiveElement } from '@/utils/getDeepActiveElement';
 
 const useModal = (open: boolean) => {
+  const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const prevElementRef = useRef<HTMLElement | null>(null);
   const prevModalOpen = useRef(open);
@@ -18,8 +20,9 @@ const useModal = (open: boolean) => {
   useEffect(() => {
     if (
       open &&
+      modalRef.current &&
       closeButtonRef.current &&
-      !closeButtonRef.current.contains(document.activeElement)
+      !modalRef.current.contains(getDeepActiveElement())
     ) {
       closeButtonRef.current.focus();
     }
@@ -31,7 +34,7 @@ const useModal = (open: boolean) => {
     };
   }, [open]);
 
-  return { closeButtonRef };
+  return { modalRef, closeButtonRef };
 };
 
 export default useModal;

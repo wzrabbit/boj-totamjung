@@ -68,7 +68,6 @@ export const Container = styled.div`
   height: 216px;
 
   pointer-events: none;
-  z-index: 1000000;
   transition: 0.3s;
 
   & * {

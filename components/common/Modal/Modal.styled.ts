@@ -61,7 +61,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  z-index: 1;
+  z-index: 2;
 `;
 
 export const Backdrop = styled.div`
@@ -110,7 +110,15 @@ export const CloseButton = styled.button`
   width: 28px;
   height: 28px;
 
+  border-radius: 2px;
   background-color: transparent;
+
+  &:focus-visible {
+    outline-color: ${({ theme }) => theme.color.LEMON};
+    outline-offset: 2px;
+    outline-style: dashed;
+    outline-width: 1px;
+  }
 
   & > svg {
     width: 100%;

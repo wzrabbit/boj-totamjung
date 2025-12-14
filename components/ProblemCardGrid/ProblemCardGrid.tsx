@@ -1,6 +1,7 @@
 import * as S from './ProblemCardGrid.styled';
 import ProblemCard from '@/components/ProblemCard';
 import useProblemCardGrid from '@/hooks/gacha/useProblemCardGrid';
+import useRovingFocus from '@/hooks/useRovingFocus';
 import type { ProblemInfo } from '@/types/randomDefense';
 
 interface ProblemCardGridProps {
@@ -15,6 +16,9 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
   const cardGridInfo = useProblemCardGrid({ cardCount });
   const { cardWidth, cardGridGap, isOverflow, isLoaded, cardGridRef } =
     cardGridInfo;
+  const { getRovingProps } = useRovingFocus<HTMLAnchorElement>({
+    count: cardCount,
+  });
 
   let renderingCardIndex = 0;
 
@@ -30,15 +34,29 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
           $height={cardGridInfo.innerGridHeight}
           $gap={cardGridGap}
         >
-          {problemInfos.map((problemInfo) => (
-            <ProblemCard
-              key={problemInfo.problemId}
-              width={cardWidth}
-              problemInfo={problemInfo}
-              isTierHidden={![0, 31].includes(problemInfo.tier) && isTierHidden}
-              onHover={onCardHover}
-            />
-          ))}
+          {problemInfos.map((problemInfo) => {
+            const { ref, ...restRawRovingProps } =
+              getRovingProps(renderingCardIndex);
+            const cardItemRovingProps = {
+              ...restRawRovingProps,
+              linkButtonRef: ref,
+            };
+
+            renderingCardIndex += 1;
+
+            return (
+              <ProblemCard
+                key={problemInfo.problemId}
+                width={cardWidth}
+                problemInfo={problemInfo}
+                isTierHidden={
+                  ![0, 31].includes(problemInfo.tier) && isTierHidden
+                }
+                onHover={onCardHover}
+                {...cardItemRovingProps}
+              />
+            );
+          })}
         </S.StaticGrid>
       ) : (
         <S.DynamicGrid $gap={cardGridGap}>
@@ -50,6 +68,13 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
                 }
 
                 const problemInfo = problemInfos[renderingCardIndex];
+                const { ref, ...restRawRovingProps } =
+                  getRovingProps(renderingCardIndex);
+                const cardItemRovingProps = {
+                  ...restRawRovingProps,
+                  linkButtonRef: ref,
+                };
+
                 renderingCardIndex += 1;
 
                 return (
@@ -61,6 +86,7 @@ const ProblemCardGrid = (props: ProblemCardGridProps) => {
                       ![0, 31].includes(problemInfo.tier) && isTierHidden
                     }
                     onHover={onCardHover}
+                    {...cardItemRovingProps}
                   />
                 );
               })}

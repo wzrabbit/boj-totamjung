@@ -3,6 +3,7 @@ import LeftSlideToast from '@/components/LeftSlideToast/LeftSlideToast';
 import useTotamjungThemeState from '@/hooks/useTotamjungThemeState';
 import useToastState from '@/hooks/useToastState';
 import useExternalThemeInfo from '@/hooks/widget/useExternalThemeInfo';
+import SlidingFocusIndicator from '@/components/SlidingFocusIndicator';
 
 const ContentScript = () => {
   const { totamjungTheme, isLoaded, updateTotamjungTheme } =
@@ -14,7 +15,10 @@ const ContentScript = () => {
   const theme = externalTheme ?? totamjungTheme;
 
   return (
-    <div ref={totamjungRootRef} style={{ position: 'relative', zIndex: 10000 }}>
+    <div
+      ref={totamjungRootRef}
+      style={{ position: 'relative', zIndex: 1000000 }}
+    >
       {isLoaded && totamjungRootRef.current && (
         <>
           <Widget
@@ -24,6 +28,10 @@ const ContentScript = () => {
             onToast={showToast}
           />
           <LeftSlideToast theme={theme} onClose={closeToast} {...toastState} />
+          <SlidingFocusIndicator
+            activeScope={totamjungRootRef.current}
+            portalTarget={totamjungRootRef.current}
+          />
         </>
       )}
     </div>

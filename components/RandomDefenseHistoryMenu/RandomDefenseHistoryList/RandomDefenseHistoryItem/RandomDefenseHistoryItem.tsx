@@ -3,6 +3,7 @@ import { solvedAcNumericTierIcons, solvedAcRankIcons } from '@/assets/svg/tier';
 import { ClockIcon, TrashIcon } from '@/assets/svg';
 import { formatDate } from '@/utils/formatDate';
 import type { IsoString } from '@/types/utils';
+import type { KeyboardEventHandler, Ref } from 'react';
 
 interface RandomDefenseHistoryItemProps {
   problemId: number;
@@ -10,18 +11,33 @@ interface RandomDefenseHistoryItemProps {
   tier: keyof typeof solvedAcNumericTierIcons;
   createdAt: IsoString;
   isHidden: boolean;
+  tabIndex: number;
+  linkButtonRef: Ref<HTMLAnchorElement>;
+  onKeyDown: KeyboardEventHandler<HTMLLIElement>;
   onDelete: () => void;
 }
 
 const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
-  const { problemId, title, tier, createdAt, isHidden, onDelete } = props;
+  const {
+    problemId,
+    title,
+    tier,
+    createdAt,
+    isHidden,
+    tabIndex,
+    linkButtonRef,
+    onKeyDown,
+    onDelete,
+  } = props;
 
   return (
-    <S.Container $tier={tier} $isHidden={isHidden}>
+    <S.Container $tier={tier} $isHidden={isHidden} onKeyDown={onKeyDown}>
       <S.LinkButton
         href={`https://icpc.me/${problemId}`}
         target="__blank"
         aria-label={`${problemId}번 ${title} 문제`}
+        ref={linkButtonRef}
+        tabIndex={tabIndex}
       >
         <S.TierBadge
           src={
@@ -49,6 +65,7 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
       <S.DeleteButton
         $tier={tier}
         $isHidden={isHidden}
+        tabIndex={tabIndex}
         onClick={onDelete}
         aria-label="추첨 기록에서 제거하기"
       >

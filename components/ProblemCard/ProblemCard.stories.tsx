@@ -34,7 +34,10 @@ export const Unrated: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -47,7 +50,10 @@ export const NotRatable: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -60,7 +66,10 @@ export const Hidden: Story = {
     },
     isTierHidden: true,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -73,7 +82,10 @@ export const Bronze: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -86,7 +98,10 @@ export const Silver: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -99,7 +114,10 @@ export const Gold: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -112,7 +130,10 @@ export const Platinum: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -125,7 +146,10 @@ export const Diamond: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -138,7 +162,10 @@ export const Ruby: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };
 
@@ -155,6 +182,9 @@ export const LongTitle: Story = {
     },
     isTierHidden: false,
     width: 240,
+    tabIndex: 1,
     onHover: fn(),
+    onKeyDown: fn(),
+    linkButtonRef: fn(),
   },
 };

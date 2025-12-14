@@ -10,6 +10,7 @@ const useSelect = <T>(params: UseSelectParams<T>) => {
   const [selectedValue, setSelectedValue] = useState<T>(initSelectedValue);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const selectButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setSelectedValue(initSelectedValue);
@@ -39,13 +40,14 @@ const useSelect = <T>(params: UseSelectParams<T>) => {
     };
   }, [containerRef]);
 
-  const openSelect = () => {
-    setIsSelectOpen(true);
+  const toggleSelect = () => {
+    setIsSelectOpen((prev) => !prev);
   };
 
   const updateSelectedValue = (value: T) => {
     setSelectedValue(value);
     setIsSelectOpen(false);
+    selectButtonRef.current?.focus();
     onChange(value);
   };
 
@@ -53,8 +55,9 @@ const useSelect = <T>(params: UseSelectParams<T>) => {
     selectedValue,
     isSelectOpen,
     updateSelectedValue,
-    openSelect,
+    toggleSelect,
     containerRef,
+    selectButtonRef,
   };
 };
 

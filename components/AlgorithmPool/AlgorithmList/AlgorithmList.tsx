@@ -1,5 +1,6 @@
 import * as S from './AlgorithmList.styled';
 import AlgorithmListItem from './AlgorithmListItem';
+import useRovingFocus from '@/hooks/useRovingFocus';
 import type { Algorithm } from '@/types/algorithm';
 
 interface AlgorithmListProps {
@@ -10,6 +11,9 @@ interface AlgorithmListProps {
 
 const AlgorithmList = (props: AlgorithmListProps) => {
   const { items, checkedAlgorithmIds, onChange } = props;
+  const { getRovingProps } = useRovingFocus<HTMLInputElement>({
+    count: items.length,
+  });
 
   return (
     <S.Container>
@@ -21,6 +25,7 @@ const AlgorithmList = (props: AlgorithmListProps) => {
           isChecked={checkedAlgorithmIds.includes(item.id)}
           backgroundColor={index % 2 === 0 ? 'brown' : 'light-brown'}
           onChange={onChange}
+          {...getRovingProps(index)}
         />
       ))}
     </S.Container>

@@ -8,7 +8,7 @@ import { StickyNoteIcon, GithubIcon } from '@/assets/svg';
 import { theme } from '@/styles/theme';
 import * as S from './TotamjungInfoModal.styled';
 import SimpleModal from '@/components/common/SimpleModal';
-import useModal from '@/hooks/useModal';
+import useModalState from '@/hooks/useModalState';
 import useTotamjungClickHandler from '@/hooks/options/useTotamjungClickHandler';
 
 interface TotamjungInfoModalProps {
@@ -34,7 +34,7 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
     erasingTime: 500,
   });
   const { activeModalName, openModal, closeModal } =
-    useModal<'totamjungComplain'>();
+    useModalState<'totamjungComplain'>();
   const { increaseClickCount, totamjungScaleX, totamjungScaleY } =
     useTotamjungClickHandler({
       onShowComplainModal: () => openModal('totamjungComplain'),

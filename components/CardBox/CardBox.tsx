@@ -22,6 +22,7 @@ const CardBox = (props: CardBoxProps) => {
   return (
     <S.ScaleUpAnimationContainer>
       <S.InnerContainer
+        autoFocus
         onClick={() => {
           setIsCardBoxOpening((isCardBoxOpening) => {
             if (!isCardBoxOpening) {

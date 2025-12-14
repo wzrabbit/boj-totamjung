@@ -12,7 +12,7 @@ import {
   MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE,
 } from '@/constants/randomDefense';
 import Text from '@/components/common/Text';
-import useModal from '@/hooks/useModal';
+import useModalState from '@/hooks/useModalState';
 import { theme } from '@/styles/theme';
 import { tierParcel } from '@/assets/png';
 
@@ -55,7 +55,7 @@ const RandomDefenseHistoryMenu = () => {
     updateIsHidden,
   } = useRandomDefenseHistoryMenu();
   const { activeModalName, openModal, closeModal } =
-    useModal<'confirmClearHistory'>();
+    useModalState<'confirmClearHistory'>();
   const { indicatorMessage, indicatorColor } = getIndicatorMessageInfo(
     items.length,
   );

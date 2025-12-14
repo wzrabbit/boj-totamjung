@@ -1,4 +1,5 @@
 import { solvedAcRankIcons, solvedAcNumericTierIcons } from '@/assets/svg/tier';
+import type { KeyboardEventHandler, Ref } from 'react';
 import type { ProblemInfo } from '@/types/randomDefense';
 import useCardTweak from '@/hooks/gacha/useCardTweak';
 import * as S from './ProblemCard.styled';
@@ -7,11 +8,22 @@ interface ProblemCardProps {
   problemInfo: ProblemInfo;
   isTierHidden: boolean;
   width: number;
+  tabIndex?: number;
+  linkButtonRef: Ref<HTMLAnchorElement>;
   onHover: () => void;
+  onKeyDown: KeyboardEventHandler<HTMLAnchorElement>;
 }
 
 const ProblemCard = (props: ProblemCardProps) => {
-  const { problemInfo, isTierHidden, width, onHover } = props;
+  const {
+    problemInfo,
+    isTierHidden,
+    width,
+    tabIndex,
+    linkButtonRef,
+    onHover,
+    onKeyDown,
+  } = props;
   const { problemId, title, tier } = problemInfo;
   const { rotateX, rotateY, adjustCardTweak, resetCardTweak } = useCardTweak();
 
@@ -32,6 +44,9 @@ const ProblemCard = (props: ProblemCardProps) => {
           rel="noreferrer noopener"
           href={`https://icpc.me/${problemId}`}
           aria-label={`문제 번호 ${problemId}번 ${title}`}
+          tabIndex={tabIndex}
+          ref={linkButtonRef}
+          onKeyDown={onKeyDown}
           $cardWidth={width}
         >
           <S.TierBadge

@@ -1,5 +1,6 @@
 import * as S from './Modal.styled';
 import useEscKey from '@/hooks/useEscKey';
+import useModal from '@/hooks/useModal';
 import { CloseIcon } from '@/assets/svg';
 import { createPortal } from 'react-dom';
 import type { PropsWithChildren, ReactNode } from 'react';
@@ -31,6 +32,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     onClose,
     children,
   } = props;
+  const { modalRef, closeButtonRef } = useModal(open);
   useEscKey({ onEscKeyPress: onClose });
 
   return (
@@ -44,10 +46,14 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
             }
           }}
         />
-        <S.Modal role="dialog" $totamjungTheme={theme}>
+        <S.Modal role="dialog" $totamjungTheme={theme} ref={modalRef}>
           <S.Header>
             <S.Title>{title}</S.Title>
-            <S.CloseButton onClick={onClose} aria-label="모달 닫기">
+            <S.CloseButton
+              onClick={onClose}
+              aria-label="모달 닫기"
+              ref={closeButtonRef}
+            >
               <CloseIcon />
             </S.CloseButton>
           </S.Header>

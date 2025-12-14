@@ -38,7 +38,9 @@ export const DeleteMode: Story = {
     id: 2,
     name: '그리디 알고리즘',
     mode: 'delete',
+    tabIndex: 1,
     onClick: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -50,6 +52,8 @@ export const AddMode: Story = {
     id: 1,
     name: '그리디 알고리즘',
     mode: 'add',
+    tabIndex: 1,
     onClick: fn(),
+    onKeyDown: fn(),
   },
 };

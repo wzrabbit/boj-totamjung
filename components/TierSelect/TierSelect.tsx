@@ -53,8 +53,9 @@ const TierSelect = (props: TierSelectProps) => {
     selectedValue,
     updateSelectedValue,
     isSelectOpen,
-    openSelect,
+    toggleSelect,
     containerRef,
+    selectButtonRef,
   } = useSelect<RatedTier>({
     initSelectedValue,
     onChange,
@@ -66,7 +67,8 @@ const TierSelect = (props: TierSelectProps) => {
         type="button"
         aria-label="난이도 경고 시작 티어 변경하기"
         $isActivated={isSelectOpen}
-        onClick={openSelect}
+        ref={selectButtonRef}
+        onClick={toggleSelect}
       >
         <S.TierBadge src={solvedAcNumericTierIcons[selectedValue]} alt="" />
         <S.TierText $tier={selectedValue} $isBold={true}>

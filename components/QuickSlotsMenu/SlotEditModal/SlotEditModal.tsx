@@ -44,7 +44,12 @@ const SlotEditModal = (props: SlotEditModalProps) => {
   });
 
   return (
-    <Modal title="추첨 수정" open={open} onClose={onClose}>
+    <Modal
+      title="추첨 수정"
+      open={open}
+      onClose={onClose}
+      closeOnBackdropClick={false}
+    >
       <S.Form>
         <S.Label>
           <Text type="primary" fontSize={16}>

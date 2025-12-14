@@ -41,7 +41,10 @@ export const Bronze: Story = {
     tier: 1,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -52,7 +55,10 @@ export const Silver: Story = {
     tier: 6,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -63,7 +69,10 @@ export const Gold: Story = {
     tier: 11,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -74,7 +83,10 @@ export const Platinum: Story = {
     tier: 16,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -85,7 +97,10 @@ export const Diamond: Story = {
     tier: 21,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -96,7 +111,10 @@ export const Ruby: Story = {
     tier: 26,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -107,7 +125,10 @@ export const Unrated: Story = {
     tier: 0,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -118,7 +139,10 @@ export const NotRatable: Story = {
     tier: 31,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -129,7 +153,10 @@ export const Hidden: Story = {
     tier: 1,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: true,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -140,6 +167,9 @@ export const LongTitle: Story = {
     tier: 15,
     createdAt: '2025-01-01T23:35:00.123Z',
     isHidden: false,
+    tabIndex: 1,
+    linkButtonRef: fn(),
     onDelete: fn(),
+    onKeyDown: fn(),
   },
 };

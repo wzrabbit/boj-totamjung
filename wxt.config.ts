@@ -22,4 +22,7 @@ export default defineConfig({
       },
     ],
   },
+  webExt: {
+    startUrls: ['https://solved.ac', 'https://www.acmicpc.net'],
+  },
 });

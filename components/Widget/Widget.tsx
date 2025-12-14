@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 import { $ } from '@/utils/querySelector';
 import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
 import RandomDefenseGachaModal from '../RandomDefenseGachaModal';
-import { isSolvedAcTheme } from '@/domains/dataHandlers/validators/solvedAcThemeValidadtor';
+import { isSolvedAcTheme } from '@/domains/dataHandlers/validators/solvedAcThemeValidator';
 import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
 
 interface WidgetProps {
@@ -43,6 +43,8 @@ const Widget = (props: WidgetProps) => {
     showInspectResultUsingPopup,
     toggleTimer,
     closeWelcomeMessage,
+    containerRef,
+    topButtonRef,
     randomDefenseButtonRef,
   } = useWidget(props);
 
@@ -50,7 +52,7 @@ const Widget = (props: WidgetProps) => {
   const isExternalThemeEnabled = theme !== 'none' && theme !== 'totamjung';
 
   return (
-    <S.Container>
+    <S.Container ref={containerRef}>
       {isLoaded && (
         <>
           <S.TopButton
@@ -60,6 +62,7 @@ const Widget = (props: WidgetProps) => {
             onClick={scrollToTop}
             onContextMenu={toggleWidgetOpen}
             aria-label="토탐정 위젯입니다. 클릭하여 웹사이트의 상단으로 이동하거나, 우클릭하여 위젯을 여세요."
+            ref={topButtonRef}
           >
             <S.TopIconContainer onAnimationEnd={endScrollingAnimation}>
               <S.TopIconFrag $direction="left" />

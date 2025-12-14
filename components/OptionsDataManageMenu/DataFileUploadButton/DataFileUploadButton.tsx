@@ -1,4 +1,4 @@
-import type { MouseEvent, ChangeEvent } from 'react';
+import type { MouseEvent, ChangeEvent, KeyboardEventHandler } from 'react';
 import { FileUploadIcon } from '@/assets/svg';
 import * as S from './DataFileUploadButton.styled';
 
@@ -8,10 +8,22 @@ interface DataFileUploadButtonProps {
 
 const DataFileUploadButton = (props: DataFileUploadButtonProps) => {
   const { onChange } = props;
+  const fakeUploadButtonRef = useRef<HTMLInputElement>(null);
+
+  const triggerFileInput: KeyboardEventHandler = (event) => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      fakeUploadButtonRef.current?.click();
+    }
+  };
 
   return (
     <S.Container>
-      <S.FakeUploadButton role="button">
+      <S.FakeUploadButton
+        role="button"
+        tabIndex={0}
+        ref={fakeUploadButtonRef}
+        onKeyDown={triggerFileInput}
+      >
         <S.UploadIconWrapper>
           <FileUploadIcon />
         </S.UploadIconWrapper>

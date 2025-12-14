@@ -27,8 +27,9 @@ const Select = (props: SelectProps) => {
     selectedValue,
     updateSelectedValue,
     isSelectOpen,
-    openSelect,
+    toggleSelect,
     containerRef,
+    selectButtonRef,
   } = useSelect<string>({
     initSelectedValue,
     onChange,
@@ -43,7 +44,8 @@ const Select = (props: SelectProps) => {
         aria-label={ariaLabel}
         aria-haspopup="listbox"
         aria-expanded={isSelectOpen}
-        onClick={openSelect}
+        onClick={toggleSelect}
+        ref={selectButtonRef}
         $isActivated={isSelectOpen}
       >
         <S.OptionText $isBold={true}>{selectedLabel}</S.OptionText>

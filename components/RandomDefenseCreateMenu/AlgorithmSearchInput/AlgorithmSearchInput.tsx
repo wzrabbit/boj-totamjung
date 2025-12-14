@@ -1,6 +1,7 @@
 import * as S from './AlgorithmSearchInput.styled';
 import MiniAlgorithmButton from './MiniAlgorithmButton';
 import useAlgorithmSearchInput from '@/hooks/randomDefense/useAlgorithmSearchInput';
+import useRovingFocus from '@/hooks/useRovingFocus';
 import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
 
 interface AlgorithmSearchInputProps {
@@ -24,12 +25,16 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
     selectedAlgorithmIds,
     onChange,
   });
+  const { getRovingProps: getSelectedRovingProps } =
+    useRovingFocus<HTMLButtonElement>({ count: selectedAlgorithmIds.length });
+  const { getRovingProps: getSearchedRovingProps } =
+    useRovingFocus<HTMLButtonElement>({ count: searchedAlgorithmIds.length });
 
   return (
     <S.Container ref={containerRef} $isOpen={isOpen} tabIndex={-1}>
       <S.InputPanel tabIndex={-1}>
         <>
-          {selectedAlgorithmIds.map((selectedId) => {
+          {selectedAlgorithmIds.map((selectedId, index) => {
             const searchedAlgorithm = ALGORITHM_INFOS.find(
               ({ id }) => id === selectedId,
             );
@@ -43,6 +48,7 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
                 mode="delete"
                 id={selectedId}
                 name={searchedName}
+                {...getSelectedRovingProps(index)}
                 onClick={deleteAlgorithmId}
               />
             );
@@ -59,7 +65,7 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
         </>
       </S.InputPanel>
       <S.SearchResultPanel $isOpen={isOpen} tabIndex={-1}>
-        {searchedAlgorithmIds.map((selectedId) => {
+        {searchedAlgorithmIds.map((selectedId, index) => {
           const searchedAlgorithm = ALGORITHM_INFOS.find(
             ({ id }) => id === selectedId,
           );
@@ -71,6 +77,7 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
               mode="add"
               id={selectedId}
               name={searchedName}
+              {...getSearchedRovingProps(index)}
               onClick={addAlgorithmId}
             />
           );

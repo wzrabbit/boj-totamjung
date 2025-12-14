@@ -4,8 +4,7 @@ import SimpleModal from '@/components/common/SimpleModal';
 import FallbackWithImage from '@/components/common/FallbackWithImage';
 import Loading from '@/components/common/Loading';
 import useAlgorithmPool from '@/hooks/algorithm/useAlgorithmPool';
-import useModal from '@/hooks/useModal';
-
+import useModalState from '@/hooks/useModalState';
 import { SearchIcon } from '@/assets/svg';
 import { allCheckedIcon, allUncheckedIcon, noSearchResult } from '@/assets/png';
 
@@ -20,12 +19,12 @@ const AlgorithmPool = () => {
     checkAllAlgorithms,
     uncheckAllAlgorithms,
   } = useAlgorithmPool();
-  const { activeModalName, openModal, closeModal } = useModal<
+  const { activeModalName, openModal, closeModal } = useModalState<
     'checkAll' | 'uncheckAll'
   >();
 
   return (
-    <S.Container>
+    <S.Container role="group">
       <S.AlgorithmPanel>
         {isLoaded ? (
           items.length > 0 ? (

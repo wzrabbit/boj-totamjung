@@ -7,8 +7,9 @@ const GlobalStyle = createGlobalStyle`
   *::after {
     margin: 0;
     padding: 0;
-    
+
     box-sizing: border-box;
+    outline: none;
   }
   
   body,
@@ -62,6 +63,17 @@ const GlobalStyle = createGlobalStyle`
   * {
     scrollbar-width: 15px;
     scrollbar-color: ${theme.color.LIGHTEST_BROWN} ${theme.color.SLIGHT_DARK_BROWN};
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.001s !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001s !important;
+    }
   }
 `;
 

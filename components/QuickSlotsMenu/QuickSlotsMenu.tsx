@@ -7,7 +7,7 @@ import IconButton from '@/components/common/IconButton';
 import useQuickSlotMenu from '@/hooks/randomDefense/useQuickSlotMenu';
 import SlotEditModal from './SlotEditModal';
 import Loading from '@/components/common/Loading';
-import useModal from '@/hooks/useModal';
+import useModalState from '@/hooks/useModalState';
 import { CopyIcon, DicesIcon, EditIcon, TrashIcon } from '@/assets/svg';
 import type { QuickSlots, SlotNo, Hotkey } from '@/types/randomDefense';
 import { theme } from '@/styles/theme';
@@ -26,7 +26,7 @@ interface QuickSlotMenuProps {
 
 const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
   const { isLoaded } = props;
-  const { activeModalName, openModal, closeModal } = useModal<
+  const { activeModalName, openModal, closeModal } = useModalState<
     'copiedQuery' | 'confirmDeleteSlot' | 'gachaProblemCount' | 'gacha'
   >();
   const {

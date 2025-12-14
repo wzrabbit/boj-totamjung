@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { MouseEvent } from 'react';
 import { COMMANDS } from '@/constants/commands';
 import { isValidCheckedAlgorithmIds } from '@/domains/dataHandlers/validators/checkedAlgorithmIdsValidator';
 import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
-import useModal from '@/hooks/useModal';
-import useMouseLongPress from '@/hooks/useMouseLongPress';
+import useModalState from '@/hooks/useModalState';
+import useRandomDefenseButtonLongPress from '@/hooks/useRandomDefenseButtonLongPress';
 import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
 import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
 import type { ToastInfo } from '@/types/toast';
@@ -38,7 +38,7 @@ const useWidget = (params: UseWidgetParams) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
     useInjectedProblemTags({ checkedAlgorithmIds, hiderOptions });
-  const { activeModalName, openModal, closeModal } = useModal<
+  const { activeModalName, openModal, closeModal } = useModalState<
     'gachaProblemCount' | 'gacha'
   >();
   const {
@@ -53,11 +53,13 @@ const useWidget = (params: UseWidgetParams) => {
   const {
     isPressing: isRandomDefenseButtonPressing,
     longPressRef: randomDefenseButtonRef,
-  } = useMouseLongPress({
-    requiredLongPressTimeInMilliseconds: 1000,
+  } = useRandomDefenseButtonLongPress({
     onClick: performRandomDefenseByClick,
     onLongPress: performRandomDefenseByMouseLongPress,
   });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const topButtonRef = useRef<HTMLButtonElement>(null);
+  const prevActiveElementRef = useRef<HTMLElement | null>(null);
 
   const isRandomDefenseButtonDisabled = !isRandomDefenseAvailable;
   const isInspectButtonDisabled =
@@ -109,7 +111,26 @@ const useWidget = (params: UseWidgetParams) => {
       setIsLoaded(true);
     };
 
+    const updatePrevElement = (event: FocusEvent) => {
+      const composedPath = event.composedPath();
+      const prevElement = composedPath[0];
+
+      if (
+        prevElement === null ||
+        (prevElement instanceof Node &&
+          prevElement instanceof HTMLElement &&
+          !containerRef.current?.contains(prevElement))
+      ) {
+        prevActiveElementRef.current = prevElement;
+      }
+    };
+
     loadWidgetData();
+    document.addEventListener('focusin', updatePrevElement);
+
+    return () => {
+      document.removeEventListener('focusin', updatePrevElement);
+    };
   }, []);
 
   useEffect(() => {
@@ -118,6 +139,28 @@ const useWidget = (params: UseWidgetParams) => {
       theme === 'totamjung' ? 'totamjung' : 'none',
     );
   }, [theme]);
+
+  useEffect(() => {
+    const toggleWidgetOpenByHotkey = (event: KeyboardEvent) => {
+      if (event.altKey && event.shiftKey && event.code === 'KeyW') {
+        setIsExpanded((prev) => !prev);
+
+        if (isExpanded && prevActiveElementRef.current) {
+          prevActiveElementRef.current.focus();
+        }
+
+        if (!isExpanded) {
+          topButtonRef.current?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', toggleWidgetOpenByHotkey);
+
+    return () => {
+      document.removeEventListener('keydown', toggleWidgetOpenByHotkey);
+    };
+  }, [isExpanded]);
 
   const scrollToTop = () => {
     if (isScrollingToTop) {
@@ -234,6 +277,8 @@ const useWidget = (params: UseWidgetParams) => {
     showInspectResultUsingPopup,
     toggleTimer,
     closeWelcomeMessage,
+    containerRef,
+    topButtonRef,
     randomDefenseButtonRef,
   };
 };

@@ -6,7 +6,7 @@ import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsVa
 import useInjectedProblemTags from './useInjectedProblemTags';
 import useRandomDefense from './useRandomDefense';
 import useModalState from '@/hooks/useModalState';
-import useMouseLongPress from '@/hooks/useMouseLongPress';
+import useRandomDefenseButtonLongPress from '@/hooks/useRandomDefenseButtonLongPress';
 import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
 import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
 import type { ToastInfo } from '@/types/toast';
@@ -53,8 +53,7 @@ const useWidget = (params: UseWidgetParams) => {
   const {
     isPressing: isRandomDefenseButtonPressing,
     longPressRef: randomDefenseButtonRef,
-  } = useMouseLongPress({
-    requiredLongPressTimeInMilliseconds: 1000,
+  } = useRandomDefenseButtonLongPress({
     onClick: performRandomDefenseByClick,
     onLongPress: performRandomDefenseByMouseLongPress,
   });

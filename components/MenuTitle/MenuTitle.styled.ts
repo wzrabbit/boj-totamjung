@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const Container = styled.div`
   display: inline-flex;
@@ -64,7 +65,8 @@ export const Underline = styled.div`
   margin-left: -3px;
   height: 10px;
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.color.ORANGE_TRANSPARENT};
+  background-color: ${({ theme }) =>
+    getTransparentHexColor(theme.color.ORANGE, 0.25)};
 
   z-index: -1;
 `;

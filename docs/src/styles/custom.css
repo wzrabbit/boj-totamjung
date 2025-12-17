@@ -51,3 +51,16 @@
 starlight-theme-select select {
   width: 8rem;
 }
+
+.sl-markdown-content kbd {
+  background-color: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-gray-4);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-family: var(--sl-font-mono);
+  font-size: 0.85em;
+  line-height: 1;
+  color: var(--sl-color-white);
+  box-shadow: 0 1px 0 var(--sl-color-gray-4);
+  white-space: nowrap;
+}

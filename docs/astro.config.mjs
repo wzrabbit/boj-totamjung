@@ -48,6 +48,10 @@ export default defineConfig({
           ],
         },
         {
+          label: '접근성',
+          items: [{ label: '키보드 탐색 가이드', slug: 'accessibility' }],
+        },
+        {
           label: '토탐정에 기여하기',
           items: [{ label: '기여 방법', slug: 'contribute' }],
         },

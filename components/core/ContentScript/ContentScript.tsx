@@ -18,6 +18,7 @@ const ContentScript = () => {
     <div
       ref={totamjungRootRef}
       style={{ position: 'relative', zIndex: 1000000 }}
+      id="totamjung-root"
     >
       {isLoaded && totamjungRootRef.current && (
         <>

@@ -1,7 +1,29 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import { theme } from './theme';
 
-const GlobalStyle = createGlobalStyle`
+interface GlobalStyleProps {
+  usesShadowRoot?: boolean;
+}
+
+const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
+  ${({ usesShadowRoot = false }) =>
+    usesShadowRoot
+      ? css`
+          :host {
+            all: initial !important;
+            display: block;
+          }
+
+          :host #totamjung-root {
+            font-family: Pretendard;
+          }
+        `
+      : css`
+          body {
+            font-family: Pretendard;
+          }
+        `};
+    
   *,
   *::before,
   *::after {
@@ -12,7 +34,6 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
   }
   
-  body,
   input,
   select,
   textarea,
@@ -63,7 +84,6 @@ const GlobalStyle = createGlobalStyle`
   * {
     scrollbar-width: 15px;
     scrollbar-color: ${theme.color.LIGHTEST_BROWN} ${theme.color.SLIGHT_DARK_BROWN};
-    outline: none;
   }
 
   @media (prefers-reduced-motion: reduce) {

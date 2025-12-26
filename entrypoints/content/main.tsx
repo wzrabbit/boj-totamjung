@@ -30,7 +30,7 @@ const executeContentScript = () => {
     <StrictMode>
       <StyleSheetManager target={styleContainer}>
         <ThemeProvider theme={theme}>
-          <GlobalStyle />
+          <GlobalStyle usesShadowRoot={true} />
           <ContentScript />
         </ThemeProvider>
       </StyleSheetManager>

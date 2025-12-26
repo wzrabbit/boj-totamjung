@@ -143,7 +143,6 @@ export const ContentWrapper = styled.div`
 export const Content = styled.span<{ $totamjungTheme: MainTheme }>`
   font-size: 14px;
   line-height: 14px;
-  font-family: Pretendard;
   color: ${({ $totamjungTheme }) => bubbleTextColors[$totamjungTheme]};
 `;
 

@@ -142,7 +142,6 @@ export const ContentContainer = styled.div`
 export const Title = styled.p<{ $totamjungTheme: MainTheme }>`
   font-size: 16px;
   font-weight: 700;
-  font-family: Pretendard;
   word-break: break-all;
   color: ${({ $totamjungTheme }) => toastTitleColors[$totamjungTheme]};
 `;

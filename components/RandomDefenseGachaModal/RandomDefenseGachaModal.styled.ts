@@ -98,11 +98,6 @@ export const Container = styled.div`
   & > div {
     flex-grow: 1;
   }
-
-  &,
-  & * {
-    font-family: Pretendard;
-  }
 `;
 
 export const ToggleButtonContainer = styled.div<{ $align: 'left' | 'right' }>`

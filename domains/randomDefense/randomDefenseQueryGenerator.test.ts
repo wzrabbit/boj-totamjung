@@ -86,6 +86,22 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
     [
       {
         mode: 'easy',
+        title: '단일 알고리즘 밴 테스트',
+        handle: '',
+        language: 'ko',
+        solvedMin: '',
+        solvedMax: '',
+        startTier: 1,
+        endTier: 30,
+        searchOperator: 'NOR',
+        algorithmIds: [43],
+        customQuery: '',
+      },
+      '(*0&!s?|!*0) o? -w? %ko *b..r ~#arbitrary_precision',
+    ],
+    [
+      {
+        mode: 'easy',
         title: '수학시러',
         handle: '',
         solvedMin: '0',

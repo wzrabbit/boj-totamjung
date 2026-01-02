@@ -39,7 +39,7 @@ export const generateRandomDefenseQuery = (
   const difficultyRangeQuery = getDifficultyRangeQuery(startTier, endTier);
   const algorithmNamesQuery = shouldGenerateAlgorithmNamesQuery
     ? algorithmTags.length === 1
-      ? algorithmTags[0]
+      ? `${convertedOperator === '~' ? '~' : ''}${algorithmTags[0]}`
       : `(${convertedOperator === '~' ? '~' : ''}${algorithmTags.join(
           convertedOperator,
         )})`

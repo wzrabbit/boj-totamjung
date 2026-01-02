@@ -1,5 +1,6 @@
 import type { MouseEvent, ChangeEvent, KeyboardEventHandler } from 'react';
 import { FileUploadIcon } from '@/assets/svg';
+import { useRef } from 'react';
 import * as S from './DataFileUploadButton.styled';
 
 interface DataFileUploadButtonProps {

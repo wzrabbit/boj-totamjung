@@ -290,7 +290,6 @@ export const SpeechBubbleWrapper = styled.div`
 export const SpeechBubbleText = styled.span`
   font-size: 14px;
   line-height: 14px;
-  font-family: Pretendard;
 `;
 
 export const SpeechBubbleContentContainer = styled.div<{

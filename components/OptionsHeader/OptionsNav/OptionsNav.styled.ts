@@ -26,7 +26,6 @@ export const CategoryButton = styled.button<{ $isSelected: boolean }>`
   border-bottom: 0px solid ${({ theme }) => theme.color.GOLD};
   background: none;
 
-  font-family: Pretendard;
   font-size: 20px;
   font-weight: ${({ $isSelected }) => ($isSelected ? 800 : 600)};
   color: ${({ theme }) => theme.color.GOLD};

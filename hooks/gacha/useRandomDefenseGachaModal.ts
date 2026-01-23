@@ -74,8 +74,7 @@ const useRandomDefenseGachaModal = (
   const fetchRandomDefenseResult = useCallback(async () => {
     const randomDefenseResult = await browser.runtime.sendMessage({
       command: COMMANDS.GET_RANDOM_DEFENSE_RESULT,
-      query: slot.query,
-      problemCount,
+      data: { query: slot.query, problemCount },
     });
 
     if (!isRandomDefenseResult(randomDefenseResult)) {
@@ -179,7 +178,7 @@ const useRandomDefenseGachaModal = (
 
     browser.runtime.sendMessage({
       command: COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS,
-      randomDefenseHistoryInfos,
+      data: randomDefenseHistoryInfos,
     });
 
     setIsSavedToHistory(true);
@@ -205,8 +204,7 @@ const useRandomDefenseGachaModal = (
 
     browser.runtime.sendMessage({
       command: COMMANDS.SAVE_GACHA_OPTIONS,
-      isTierHidden,
-      isAudioMuted,
+      data: { isTierHidden, isAudioMuted },
     });
   }, [isLoaded, isTierHidden, isAudioMuted]);
 

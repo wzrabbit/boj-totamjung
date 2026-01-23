@@ -249,7 +249,7 @@ const useWidget = (params: UseWidgetParams) => {
     setShouldShowWelcomeMessage(false);
     browser.runtime.sendMessage({
       command: COMMANDS.SAVE_SHOULD_SHOW_WELCOME_MESSAGE,
-      shouldShowWelcomeMessage: false,
+      data: false,
     });
   };
 

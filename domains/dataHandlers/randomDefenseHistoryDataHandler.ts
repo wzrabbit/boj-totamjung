@@ -2,7 +2,10 @@ import { STORAGE_KEY } from '@/constants/commands';
 import { sanitizeRandomDefenseHistory } from './sanitizers/randomDefenseHistorySanitizer';
 import { sanitizeIsTierHidden } from './sanitizers/isTierHiddenSanitizer';
 import type { RandomDefenseHistoryResponse } from '@/types/randomDefense';
-import { isRandomDefenseHistoryInfos } from './validators/randomDefenseHistoryValidator';
+import {
+  isRandomDefenseHistoryInfos,
+  isRandomDefenseHistoryResponse,
+} from './validators/randomDefenseHistoryValidator';
 
 export const fetchRandomDefenseHistory =
   async (): Promise<RandomDefenseHistoryResponse> => {
@@ -23,12 +26,16 @@ export const fetchRandomDefenseHistory =
   };
 
 export const saveRandomDefenseHistory = async (
-  randomDefenseHistory: unknown,
-  isHidden: unknown,
+  randomDefenseHistoryResponse: unknown,
 ) => {
-  if (!Array.isArray(randomDefenseHistory) || typeof isHidden !== 'boolean') {
+  console.log('start', randomDefenseHistoryResponse);
+  if (!isRandomDefenseHistoryResponse(randomDefenseHistoryResponse)) {
     return;
   }
+
+  console.log('vali correct', randomDefenseHistoryResponse);
+
+  const { randomDefenseHistory, isHidden } = randomDefenseHistoryResponse;
 
   const sanitizedRandomDefenseHistory =
     sanitizeRandomDefenseHistory(randomDefenseHistory);
@@ -51,8 +58,11 @@ export const addRandomDefenseInfosToHistory = async (
     return;
   }
 
-  saveRandomDefenseHistory(
-    [...randomDefenseHistory, ...newRandomDefenseHistoryInfos],
+  saveRandomDefenseHistory({
+    randomDefenseHistory: [
+      ...randomDefenseHistory,
+      ...newRandomDefenseHistoryInfos,
+    ],
     isHidden,
-  );
+  });
 };

@@ -1,35 +1,23 @@
-import { useState, useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
-import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
 import {
   fetchRandomDefenseHistory,
   saveRandomDefenseHistory,
 } from '@/domains/dataHandlers/randomDefenseHistoryDataHandler';
+import useStorageState from '@/hooks/useStorageState';
+import { STORAGE_KEY } from '@/constants/commands';
+import { isRandomDefenseHistoryResponse } from '@/domains/dataHandlers/validators/randomDefenseHistoryValidator';
 
 const useRandomDefenseHistoryMenu = () => {
-  const [items, setItems] = useState<RandomDefenseHistoryInfo[]>([]);
-  const [isHidden, setIsHidden] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
-
+  const [historyData, setHistoryData, isLoaded] = useStorageState({
+    interactionMode: 'direct',
+    initialValue: { randomDefenseHistory: [], isHidden: true },
+    storageKey: STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
+    fetchFunction: fetchRandomDefenseHistory,
+    saveFunction: saveRandomDefenseHistory,
+    validatorFunction: isRandomDefenseHistoryResponse,
+  });
+  const { randomDefenseHistory: items, isHidden } = historyData;
   const isEmpty = items.length === 0;
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetchRandomDefenseHistory();
-
-      setIsHidden(response.isHidden);
-      setItems(response.randomDefenseHistory);
-      setIsLoaded(true);
-    })();
-  }, []);
-
-  useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
-
-    saveRandomDefenseHistory(items, isHidden);
-  }, [items, isHidden]);
 
   const deleteHistoryById = (id: string) => {
     const newItems = items.filter((item) => {
@@ -38,15 +26,15 @@ const useRandomDefenseHistoryMenu = () => {
       return currentItemId !== id;
     });
 
-    setItems(newItems);
+    setHistoryData({ ...historyData, randomDefenseHistory: newItems });
   };
 
   const clearHistory = () => {
-    setItems([]);
+    setHistoryData({ ...historyData, randomDefenseHistory: [] });
   };
 
   const updateIsHidden: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setIsHidden(event.target.checked);
+    setHistoryData({ ...historyData, isHidden: event.target.checked });
   };
 
   return {

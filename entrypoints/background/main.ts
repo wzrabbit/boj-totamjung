@@ -48,6 +48,53 @@ import { getRandomDefenseResult } from '@/domains/randomDefense/randomDefensePro
 import { initializeDataOnFirstInstall } from '@/domains/dataHandlers/dataInitializer';
 import { TOTAMJUNG_GUIDE_URL } from '@/constants/urls';
 
+type FetchCommand = Extract<
+  (typeof COMMANDS)[keyof typeof COMMANDS],
+  `fetch${string}`
+>;
+
+type SaveCommand = Exclude<
+  Extract<(typeof COMMANDS)[keyof typeof COMMANDS], `save${string}`>,
+  'saveAndGetRemainingLockTime'
+>;
+
+const fetchFunctions: Record<FetchCommand, () => Promise<unknown>> = {
+  [COMMANDS.FETCH_CHECKED_ALGORITHM_IDS]: () => fetchCheckedAlgorithmIds(),
+  [COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY]: () => fetchRandomDefenseHistory(),
+  [COMMANDS.FETCH_QUICK_SLOTS]: () => fetchQuickSlots(),
+  [COMMANDS.FETCH_TOTAMJUNG_THEME]: () => fetchTotamjungTheme(),
+  [COMMANDS.FETCH_HIDER_OPTIONS]: () => fetchHiderOptions(),
+  [COMMANDS.FETCH_FONT_NO]: () => fetchFontNo(),
+  [COMMANDS.FETCH_TIMERS]: () => fetchTimers(),
+  [COMMANDS.FETCH_GACHA_OPTIONS]: () => fetchGachaOptions(),
+  [COMMANDS.FETCH_OPTIONS_DATA]: () => fetchOptionsData(),
+  [COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE]: () =>
+    fetchShouldShowWelcomeMessage(),
+} as const;
+
+const saveFunctions: Record<SaveCommand, (data: unknown) => void> = {
+  [COMMANDS.SAVE_CHECKED_ALGORITHM_IDS]: (data: unknown) =>
+    saveCheckedAlgorithmIds(data),
+  [COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY]: (data: unknown) =>
+    saveRandomDefenseHistory(data),
+  [COMMANDS.SAVE_QUICK_SLOTS]: (data: unknown) => saveQuickSlots(data),
+  [COMMANDS.SAVE_TOTAMJUNG_THEME]: (data: unknown) => saveTotamjungTheme(data),
+  [COMMANDS.SAVE_HIDER_OPTIONS]: (data: unknown) => saveHiderOptions(data),
+  [COMMANDS.SAVE_FONT_NO]: (data: unknown) => saveFontNo(data),
+  [COMMANDS.SAVE_TIMERS]: (data: unknown) => saveTimers(data),
+  [COMMANDS.SAVE_GACHA_OPTIONS]: (data: unknown) => saveGachaOptions(data),
+  [COMMANDS.SAVE_SHOULD_SHOW_WELCOME_MESSAGE]: (data: unknown) =>
+    saveShouldShowWelcomeMessage(data),
+} as const;
+
+const isFetchCommand = (data: unknown): data is FetchCommand => {
+  return typeof data === 'string' && data in fetchFunctions;
+};
+
+const isSaveCommand = (data: unknown): data is SaveCommand => {
+  return typeof data === 'string' && data in saveFunctions;
+};
+
 const executeBackground = () => {
   browser.runtime.onInstalled.addListener(({ reason }) => {
     if (reason === 'install') {
@@ -73,148 +120,20 @@ const executeBackground = () => {
 
       const { command } = message;
 
+      if (isFetchCommand(command)) {
+        fetchFunctions[command]().then((result: unknown) => {
+          sendResponse(result);
+        });
+        return true;
+      }
+
+      if ('data' in message && isSaveCommand(command)) {
+        saveFunctions[command](message.data);
+      }
+
       if (command === COMMANDS.OPEN_OPTIONS_PAGE) {
         browser.runtime.openOptionsPage();
       }
-
-      if (command === COMMANDS.FETCH_CHECKED_ALGORITHM_IDS) {
-        fetchCheckedAlgorithmIds().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_CHECKED_ALGORITHM_IDS) {
-        if (!('checkedAlgorithmIds' in message)) {
-          return;
-        }
-
-        saveCheckedAlgorithmIds(message.checkedAlgorithmIds);
-      }
-
-      if (command === COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY) {
-        fetchRandomDefenseHistory().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY) {
-        if (!('randomDefenseHistory' in message) || !('isHidden' in message)) {
-          return;
-        }
-
-        const { randomDefenseHistory, isHidden } = message;
-
-        saveRandomDefenseHistory(randomDefenseHistory, isHidden);
-      }
-
-      if (command === COMMANDS.FETCH_QUICK_SLOTS) {
-        fetchQuickSlots().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_QUICK_SLOTS) {
-        if (
-          !('selectedSlotNo' in message) ||
-          !('slots' in message) ||
-          !('hotkey' in message)
-        ) {
-          return;
-        }
-
-        const { selectedSlotNo, slots, hotkey } = message;
-
-        saveQuickSlots(selectedSlotNo, slots, hotkey);
-      }
-
-      if (command === COMMANDS.FETCH_TOTAMJUNG_THEME) {
-        fetchTotamjungTheme().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_TOTAMJUNG_THEME) {
-        if (!('totamjungTheme' in message)) {
-          return;
-        }
-
-        saveTotamjungTheme(message.totamjungTheme);
-      }
-
-      if (command === COMMANDS.FETCH_HIDER_OPTIONS) {
-        fetchHiderOptions().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_HIDER_OPTIONS) {
-        if (!('hiderOptions' in message)) {
-          return;
-        }
-
-        saveHiderOptions(message.hiderOptions);
-      }
-
-      if (command === COMMANDS.FETCH_FONT_NO) {
-        fetchFontNo().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_FONT_NO) {
-        if (!('fontNo' in message)) {
-          return;
-        }
-
-        const { fontNo } = message;
-        saveFontNo(fontNo);
-      }
-
-      if (command === COMMANDS.FETCH_TIMERS) {
-        fetchTimers().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_TIMERS) {
-        if (!('timers' in message)) {
-          return;
-        }
-
-        const { timers } = message;
-        saveTimers(timers);
-      }
-
-      if (command === COMMANDS.FETCH_GACHA_OPTIONS) {
-        fetchGachaOptions().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_GACHA_OPTIONS) {
-        if (!('isTierHidden' in message && 'isAudioMuted' in message)) {
-          return;
-        }
-
-        const { isTierHidden, isAudioMuted } = message;
-        saveGachaOptions({ isTierHidden, isAudioMuted });
-      }
-
-      if (command === COMMANDS.FETCH_OPTIONS_DATA) {
-        fetchOptionsData().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
       if (command === COMMANDS.GET_REMAINING_LOCK_TIME) {
         const matchedProblemId = sender.url?.match(
           /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
@@ -302,22 +221,6 @@ const executeBackground = () => {
         }
 
         addRandomDefenseInfosToHistory(message.randomDefenseHistoryInfos);
-      }
-
-      if (command === COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE) {
-        fetchShouldShowWelcomeMessage().then((result) => {
-          sendResponse(result);
-        });
-        return true;
-      }
-
-      if (command === COMMANDS.SAVE_SHOULD_SHOW_WELCOME_MESSAGE) {
-        if (!('shouldShowWelcomeMessage' in message)) {
-          return;
-        }
-
-        const { shouldShowWelcomeMessage } = message;
-        saveShouldShowWelcomeMessage(shouldShowWelcomeMessage);
       }
     },
   );

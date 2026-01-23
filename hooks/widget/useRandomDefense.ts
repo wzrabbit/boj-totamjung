@@ -107,8 +107,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
 
     const randomDefenseResult = await browser.runtime.sendMessage({
       command: COMMANDS.GET_RANDOM_DEFENSE_RESULT,
-      query: selectedSlot.query,
-      problemCount: 1,
+      data: { query: selectedSlot.query, problemCount: 1 },
     });
 
     if (!isRandomDefenseResult(randomDefenseResult)) {
@@ -146,12 +145,14 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
 
     browser.runtime.sendMessage({
       command: COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS,
-      randomDefenseHistoryInfos: [
-        {
-          ...problemInfos[0],
-          createdAt: new Date().toISOString(),
-        },
-      ],
+      data: {
+        randomDefenseHistoryInfos: [
+          {
+            ...problemInfos[0],
+            createdAt: new Date().toISOString(),
+          },
+        ],
+      },
     });
 
     location.href = `https://acmicpc.net/problem/${problemId}`;

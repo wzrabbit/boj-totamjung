@@ -38,7 +38,7 @@ const useTotamjungThemeState = () => {
 
     browser.runtime.sendMessage({
       command: COMMANDS.SAVE_TOTAMJUNG_THEME,
-      totamjungTheme,
+      data: totamjungTheme,
     });
   };
 

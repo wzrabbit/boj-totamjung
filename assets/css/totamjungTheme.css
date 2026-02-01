@@ -2643,11 +2643,11 @@ html[totamjungTheme='totamjung'] .problem-list span[style='color:#000000'] {
 }
 
 /* FOR BAECHU */
-html[totamjungTheme='totamjung'] .label.label-badge {
+html[totamjungTheme='totamjung'] .label.baechu-label-badge {
   background: var(--label-mango-gradient-color);
 }
 
-html[totamjungTheme='totamjung'] .label.label-background {
+html[totamjungTheme='totamjung'] .label.baechu-label-background {
   background: var(--label-purple-gradient-color);
 }
 

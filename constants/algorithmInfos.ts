@@ -456,7 +456,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 67,
     name: '접미사 배열과 lcp 배열',
-    englishName: 'Suffix ARray And Lcp Array',
+    englishName: 'Suffix Array And Lcp Array',
     tag: 'suffix_array',
     alias: ['서픽스 어레이'],
   },
@@ -1018,10 +1018,10 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   },
   {
     id: 150,
-    name: '키타마사',
+    name: '다항식을 이용한 선형점화식 계산',
     englishName: 'Kitamasa',
     tag: 'kitamasa',
-    alias: [],
+    alias: ['키타마사'],
   },
   {
     id: 151,

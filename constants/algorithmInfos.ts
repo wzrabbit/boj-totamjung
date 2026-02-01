@@ -456,7 +456,7 @@ export const ALGORITHM_INFOS: Readonly<AlgorithmInfo[]> = [
   {
     id: 67,
     name: '접미사 배열과 lcp 배열',
-    englishName: 'Suffix ARray And Lcp Array',
+    englishName: 'Suffix Array And Lcp Array',
     tag: 'suffix_array',
     alias: ['서픽스 어레이'],
   },

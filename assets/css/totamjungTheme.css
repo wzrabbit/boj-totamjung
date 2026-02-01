@@ -2655,3 +2655,10 @@ html[totamjungTheme='totamjung'] .label.baechu-label-background {
 html[totamjungTheme='totamjung'] .problem-label.problem-label-tr {
   background: var(--label-purple-gradient-color);
 }
+
+/* FOR BOJ Verdict Beautify */
+html[totamjungtheme='totamjung'] td.result > .result-ac.b-result-ac {
+  background: linear-gradient(130deg, rgb(50, 203, 62), rgb(6, 160, 98));
+  background-clip: initial !important;
+  -webkit-background-clip: initial !important;
+}

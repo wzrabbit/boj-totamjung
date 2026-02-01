@@ -1,9 +1,0 @@
-import{H as i}from"./HiderFieldsetMenu-BqavSGDm.js";import"./jsx-runtime-Cf8x2fCZ.js";import"./index-yBjzXJbu.js";import"./MenuTitle-B_OAahsS.js";import"./styled-components.browser.esm-CIS6JKSM.js";import"./index--qcDGAq6.js";import"./getTransparentHexColor-DN69VCBw.js";import"./Fieldset-j6uOD0PW.js";import"./Radio-DPMLzWfU.js";import"./Text-Bm9VDKPH.js";import"./toPx-DeOSKary.js";import"./TierSelect-DgzN0DlO.js";import"./check-BIa-lIjI.js";import"./useSelect-BouOI_-d.js";import"./index-CElCL35T.js";import"./ProblemTagLockTimer-Dwy5_JyL.js";import"./Input-CKTE7mug.js";import"./theme-DpyODYgC.js";import"./hidden-tier-badge-CukGKv-l.js";import"./commands-BoKETmK5.js";import"./defaultValues-BGh_tAG0.js";import"./hiderOptionsValidator-CGMdHXNl.js";import"./typeGuards-Bsa9ERJp.js";const k={title:"components/HiderFieldsetMenu",component:i,parameters:{docs:{description:{component:`\`HiderFieldsetMenu\`는 토탐정의 "가리개" 관련 기능들에 대한 설정을 조작할 수 있는 필드셋 형식의 메뉴 컴포넌트입니다.
-
-해당 메뉴에서는 아래의 설정들을 조작할 수 있습니다.
-1. 잠금 시간 설정
-2. 티어 가리개 활성화 여부 및 어려운 문제 경고 난이도 설정
-3. 알고리즘 가리개에서의 단서 제공 방법
-4. 잠금 타이머 실행 설정`}}}},r={args:{}};var t,o,e;r.parameters={...r.parameters,docs:{...(t=r.parameters)==null?void 0:t.docs,source:{originalSource:`{
-  args: {}
-}`,...(e=(o=r.parameters)==null?void 0:o.docs)==null?void 0:e.source}}};const q=["Default"];export{r as Default,q as __namedExportsOrder,k as default};

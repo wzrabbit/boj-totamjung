@@ -2,8 +2,8 @@ export const COMMANDS = {
   OPEN_OPTIONS_PAGE: 'openOptionsPage',
   FETCH_CHECKED_ALGORITHM_IDS: 'fetchCheckedAlgorithmIds',
   SAVE_CHECKED_ALGORITHM_IDS: 'saveCheckedAlgorithmIds',
-  FETCH_RANDOM_DEFENSE_HISTORY: 'fetchRandomDefenseHistory',
-  SAVE_RANDOM_DEFENSE_HISTORY: 'saveRandomDefenseHistory',
+  FETCH_RANDOM_DEFENSE_HISTORY_OPTIONS: 'fetchRandomDefenseHistoryOptions',
+  SAVE_RANDOM_DEFENSE_HISTORY_OPTIONS: 'saveRandomDefenseHistoryOptions',
   FETCH_QUICK_SLOTS: 'fetchQuickSlots',
   SAVE_QUICK_SLOTS: 'saveQuickSlots',
   FETCH_TOTAMJUNG_THEME: 'fetchTotamjungTheme',
@@ -65,9 +65,24 @@ export const V2_STORAGE_KEY = {
 } as const;
 
 /**
- * v1.3.* / dataVersion 3에서 쓰이는 키 값들입니다. **최신 버전의 키 값들입니다.**
+ * v1.3 ~ v1.3.3.1 / dataVersion 3에서 쓰이는 키 값들입니다.
  */
-export const STORAGE_KEY = {
+export const V3_STORAGE_KEY = {
   ...V2_STORAGE_KEY,
   GACHA_OPTIONS: 'gachaOptions',
+} as const;
+
+/**
+ * v1.3.3.2 ~ / dataVersion 4에서 쓰이는 키 값들입니다.
+ */
+export const STORAGE_KEY = {
+  DATA_VERSION: 'dataVersion',
+  GACHA_OPTIONS: 'gachaOptions',
+  QUICK_SLOT_OPTIONS: 'quickSlotOptions',
+  HIDER_OPTIONS: 'hiderOptions',
+  RANDOM_DEFENSE_HISTORY_OPTIONS: 'randomDefenseHistoryOptions',
+  PROBLEM_TIMER_OPTIONS: 'problemTimerOptions',
+  SHOULD_SHOW_WELCOME_MESSAGE: 'shouldShowWelcomeMessage',
+  THEME: 'theme',
+  FONT_NO: 'fontNo',
 } as const;

@@ -1,15 +1,15 @@
 import type { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type { IsoString } from '@/types/utils';
 
-export interface RandomDefenseHistoryInfo {
+export interface RandomDefenseHistoryItem {
   problemId: number;
   title: string;
   tier: keyof typeof solvedAcNumericTierIcons;
   createdAt: IsoString;
 }
 
-export interface RandomDefenseHistoryResponse {
-  randomDefenseHistory: RandomDefenseHistoryInfo[];
+export interface RandomDefenseHistoryOptions {
+  history: RandomDefenseHistoryItem[];
   isHidden: boolean;
 }
 
@@ -28,50 +28,50 @@ export type TierWithoutNotRatable = Exclude<Tier, 31>;
 
 export type Hotkey = 'Alt' | 'F2' | null;
 
-export interface FilledSlot {
+export interface FilledQuickSlot {
   isEmpty: false;
   title: string;
   query: string;
 }
 
-interface EmptySlot {
+interface EmptyQuickSlot {
   isEmpty: true;
 }
 
-export type Slot = FilledSlot | EmptySlot;
+export type QuickSlot = FilledQuickSlot | EmptyQuickSlot;
 
-export type Slots = {
-  1: Slot;
-  2: Slot;
-  3: Slot;
-  4: Slot;
-  5: Slot;
-  6: Slot;
-  7: Slot;
-  8: Slot;
-  9: Slot;
-  0: Slot;
+export type QuickSlots = {
+  1: QuickSlot;
+  2: QuickSlot;
+  3: QuickSlot;
+  4: QuickSlot;
+  5: QuickSlot;
+  6: QuickSlot;
+  7: QuickSlot;
+  8: QuickSlot;
+  9: QuickSlot;
+  0: QuickSlot;
 };
 
-export type SlotNo = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0;
+export type QuickSlotNo = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0;
 
-export interface QuickSlots {
+export interface QuickSlotOptions {
   hotkey: Hotkey;
-  selectedSlotNo: SlotNo;
-  slots: Slots;
+  selectedSlotNo: QuickSlots;
+  slots: QuickSlots;
 }
 
-interface SlotValidVerdict {
+interface QuickSlotValidVerdict {
   isValid: true;
 }
 
-interface SlotInvalidVerdict {
+interface QuickSlotInvalidVerdict {
   isValid: false;
   errorMessage: string;
   focusElementName?: string;
 }
 
-export type SlotVerdict = SlotValidVerdict | SlotInvalidVerdict;
+export type QuickSlotVerdict = QuickSlotValidVerdict | QuickSlotInvalidVerdict;
 
 export interface SearchOperatorInfo {
   operator: SearchOperator;
@@ -111,10 +111,10 @@ interface RandomDefenseFormDataInvalidVerdict {
 }
 
 /**
- * RepairableLegacyQuickSlots 타입은, LegacyQuickSlots보다 넓은 범위의 타입으로써, 구버전의 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
- * LegacyQuickSlots가 아니지만, RepairableLegacyQuickSlots에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
+ * RepairableLegacyQuickSlotOptions 타입은, LegacyQuickSlotOptions보다 넓은 범위의 타입으로써, 구버전의 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
+ * LegacyQuickSlotOptions가 아니지만, RepairableLegacyQuickSlotOptions에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
  */
-export interface RepairableLegacyQuickSlots {
+export interface RepairableLegacyQuickSlotOptions {
   1: unknown;
   2: unknown;
   3: unknown;
@@ -129,11 +129,11 @@ export interface RepairableLegacyQuickSlots {
 }
 
 /**
- * RepairableQuickSlots 타입은, QuickSlots보다 넓은 범위의 타입으로써, 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
- * QuickSlots가 아니지만, RepairableQuickSlots에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
+ * RepairableQuickSlotOptions 타입은, QuickSlotOptions보다 넓은 범위의 타입으로써, 퀵슬롯 데이터의 형식이 유효하지 않더라도 복구할 수 있는 타입을 의미합니다.
+ * QuickSlotOptions가 아니지만, RepairableQuickSlotOptions에 부합하는 경우, 잘못된 데이터만 초기화하는 식으로 복구가 진행됩니다.
  */
-export interface RepairableQuickSlots {
-  slots: Omit<RepairableLegacyQuickSlots, 'selectedNo'>;
+export interface RepairableQuickSlotOptions {
+  slots: Omit<RepairableLegacyQuickSlotOptions, 'selectedNo'>;
   hotkey?: unknown;
   selectedSlotNo?: unknown;
 }

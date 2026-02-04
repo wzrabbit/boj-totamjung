@@ -25,11 +25,13 @@ export interface HiderOptions {
   warnTier: RatedTier;
   algorithmHiderUsage: 'click' | 'always';
   problemTagLockUsage: 'click' | 'auto';
+  checkedAlgorithmIds: CheckedAlgorithmIds;
+  timers: TagLockTimer[];
 }
 
 export type CheckedAlgorithmIds = number[];
 
-export interface Timer {
+export interface TagLockTimer {
   problemId: number;
   expiresAt: IsoString;
 }

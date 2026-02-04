@@ -1,5 +1,7 @@
-import { isObject, isRatedTier } from '@/types/typeGuards';
+import { isObject, isRatedTier, isIsoString } from '@/types/typeGuards';
 import type { HiderOptions } from '@/types/algorithm';
+import type { TagLockTimer } from '@/types/algorithm';
+import type { CheckedAlgorithmIds } from '@/types/algorithm';
 import type { V1, V2 } from '@/types/legacyData';
 import {
   isNumericString,
@@ -45,7 +47,7 @@ export const isV2HiderOptions = (data: unknown): data is V2.HiderOptions => {
   );
 };
 
-export const isHiderOptions = (data: unknown): data is HiderOptions => {
+export const isV3HiderOptions = (data: unknown): data is V3.HiderOptions => {
   return (
     isV2HiderOptions(data) &&
     'shouldRevealTierOnHover' in data &&
@@ -53,7 +55,17 @@ export const isHiderOptions = (data: unknown): data is HiderOptions => {
   );
 };
 
-export const isV1Timer = (data: unknown): data is V1.Timer => {
+export const isHiderOptions = (data: unknown): data is HiderOptions => {
+  return (
+    isV3HiderOptions(data) &&
+    'timers' in data &&
+    'checkedAlgorithmIds' in data &&
+    isTagLockTimers(data.timers) &&
+    isValidCheckedAlgorithmIds(data.checkedAlgorithmIds)
+  );
+};
+
+export const isV1TagLockTimer = (data: unknown): data is V1.Timer => {
   return (
     isObject(data) &&
     'expire' in data &&
@@ -71,6 +83,39 @@ export const isV1Timer = (data: unknown): data is V1.Timer => {
     data.minute.length <= 2 &&
     isNumericStringAllowsLeadingZeroes(data.minute) &&
     ((data.problem >= 1_000 && data.problem % 1 === 0) || data.problem === -1)
+  );
+};
+
+export const isTagLockTimers = (data: unknown): data is TagLockTimer[] => {
+  return Array.isArray(data) && data.every((item) => isTagLockTimer(item));
+};
+
+export const isTagLockTimer = (data: unknown): data is TagLockTimer => {
+  return (
+    isObject(data) &&
+    'problemId' in data &&
+    'expiresAt' in data &&
+    typeof data.problemId === 'number' &&
+    isIsoString(data.expiresAt) &&
+    !isNaN(data.problemId) &&
+    data.problemId % 1 === 0 &&
+    data.problemId >= 1000
+  );
+};
+
+export const isValidCheckedAlgorithmIds = (
+  data: unknown,
+): data is CheckedAlgorithmIds => {
+  if (!Array.isArray(data)) {
+    return false;
+  }
+
+  return data.every(
+    (value) =>
+      typeof value === 'number' &&
+      !isNaN(value) &&
+      value % 1 === 0 &&
+      value >= 1,
   );
 };
 

@@ -2,9 +2,9 @@ import { isNumericObject, isObject } from '@/types/typeGuards';
 import type {
   Hotkey,
   QuickSlots,
-  RepairableQuickSlots,
-  Slot,
-  SlotNo,
+  RepairableQuickSlotOptions,
+  QuickSlot,
+  QuickSlotNo,
 } from '@/types/randomDefense';
 import type { V1 } from '@/types/legacyData';
 
@@ -12,7 +12,7 @@ export const isHotkey = (data: unknown): data is Hotkey => {
   return data === null || data === 'Alt' || data === 'F2';
 };
 
-export const isSlot = (data: unknown): data is Slot => {
+export const isQuickSlot = (data: unknown): data is QuickSlot => {
   if (
     !isObject(data) ||
     !('isEmpty' in data) ||
@@ -33,7 +33,7 @@ export const isSlot = (data: unknown): data is Slot => {
   );
 };
 
-export const isSlotNo = (data: unknown): data is SlotNo => {
+export const isQuickSlotNo = (data: unknown): data is QuickSlotNo => {
   if (typeof data !== 'number') {
     return false;
   }
@@ -41,7 +41,9 @@ export const isSlotNo = (data: unknown): data is SlotNo => {
   return [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].includes(data);
 };
 
-export const isV1QuickSlots = (data: unknown): data is V1.QuickSlots => {
+export const isV1QuickSlotOptions = (
+  data: unknown,
+): data is V1.QuickSlotOptions => {
   if (
     !(
       isObject(data) &&
@@ -63,11 +65,11 @@ export const isV1QuickSlots = (data: unknown): data is V1.QuickSlots => {
   }
 
   return Array.from({ length: 10 }).every(
-    (_, key) => key in slots && isSlot(slots[key]),
+    (_, key) => key in slots && isQuickSlot(slots[key]),
   );
 };
 
-export const isQuickSlots = (data: unknown): data is QuickSlots => {
+export const isQuickSlotOptions = (data: unknown): data is QuickSlots => {
   if (
     !(
       isObject(data) &&
@@ -76,7 +78,7 @@ export const isQuickSlots = (data: unknown): data is QuickSlots => {
       'slots' in data &&
       typeof data.hotkey === 'string' &&
       ['Alt', 'F2'].includes(data.hotkey) &&
-      isSlotNo(data.selectedSlotNo)
+      isQuickSlotNo(data.selectedSlotNo)
     )
   ) {
     return false;
@@ -89,21 +91,21 @@ export const isQuickSlots = (data: unknown): data is QuickSlots => {
   }
 
   return Array.from({ length: 10 }).every(
-    (_, key) => key in slots && isSlot(slots[key]),
+    (_, key) => key in slots && isQuickSlot(slots[key]),
   );
 };
 
-export const isV1RepairableQuickSlots = (
+export const isV1RepairableQuickSlotOptions = (
   data: unknown,
-): data is V1.RepairableQuickSlots => {
+): data is V1.RepairableQuickSlotOptions => {
   return (
     isObject(data) && Array.from({ length: 10 }).every((_, key) => key in data)
   );
 };
 
-export const isRepairableQuickSlots = (
+export const isRepairableQuickSlotOptions = (
   data: unknown,
-): data is RepairableQuickSlots => {
+): data is RepairableQuickSlotOptions => {
   if (!isObject(data) || !('slots' in data)) {
     return false;
   }

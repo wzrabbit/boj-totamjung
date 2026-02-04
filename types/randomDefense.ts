@@ -57,7 +57,7 @@ export type QuickSlotNo = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0;
 
 export interface QuickSlotOptions {
   hotkey: Hotkey;
-  selectedSlotNo: QuickSlots;
+  selectedSlotNo: QuickSlotNo;
   slots: QuickSlots;
 }
 

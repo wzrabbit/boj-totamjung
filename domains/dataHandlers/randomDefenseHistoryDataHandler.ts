@@ -4,11 +4,10 @@ import { sanitizeIsTierHidden } from './sanitizers/isTierHiddenSanitizer';
 import type { RandomDefenseHistoryResponse } from '@/types/randomDefense';
 import { isRandomDefenseHistoryInfos } from './validators/randomDefenseHistoryValidator';
 
-export const fetchRandomDefenseHistory =
+export const fetchRandomDefenseHistoryOptions =
   async (): Promise<RandomDefenseHistoryResponse> => {
     const data = await browser.storage.local.get([
-      STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
-      STORAGE_KEY.IS_TIER_HIDDEN,
+      STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS,
     ]);
     const randomDefenseHistory = data[STORAGE_KEY.RANDOM_DEFENSE_HISTORY];
     const isTierHidden = data[STORAGE_KEY.IS_TIER_HIDDEN];

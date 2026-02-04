@@ -1,11 +1,11 @@
 import {
-  isSlot,
+  isQuickSlot,
   isHotkey,
-  isV1RepairableQuickSlots,
-  isRepairableQuickSlots,
-  isV1QuickSlots,
-  isQuickSlots,
-  isSlotNo,
+  isV1RepairableQuickSlotOptions,
+  isRepairableQuickSlotOptions,
+  isV1QuickSlotOptions,
+  isQuickSlotOptions,
+  isQuickSlotNo,
 } from '../validators/quickSlotsValidator';
 import {
   DEFAULT_QUICK_SLOTS,
@@ -15,13 +15,13 @@ import {
   MAX_CUSTOM_QUERY_LENGTH,
   TITLE_MAX_LENGTH,
 } from '@/constants/randomDefense';
-import type { QuickSlots, SlotNo, Slot } from '@/types/randomDefense';
+import type { QuickSlots, QuickSlot, QuickSlotNo } from '@/types/randomDefense';
 import { V1 } from '@/types/legacyData';
 
-const SLOT_NOS: SlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const QUICK_SLOT_NOS: QuickSlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
-const sanitizeSlot = (slot: unknown, slotNo: SlotNo): Slot => {
-  if (!isSlot(slot)) {
+const sanitizeQuickSlot = (slot: unknown, slotNo: QuickSlotNo): QuickSlot => {
+  if (!isQuickSlot(slot)) {
     return { isEmpty: true };
   }
 
@@ -45,7 +45,7 @@ const sanitizeSlot = (slot: unknown, slotNo: SlotNo): Slot => {
 };
 
 export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlots => {
-  if (!isRepairableQuickSlots(quickSlots)) {
+  if (!isRepairableQuickSlotOptions(quickSlots)) {
     return DEFAULT_QUICK_SLOTS;
   }
 
@@ -64,7 +64,7 @@ export const sanitizeQuickSlots = (quickSlots: unknown): QuickSlots => {
     selectedSlotNo,
   };
 
-  SLOT_NOS.forEach((slotNo) => {
+  QUICK_SLOT_NOS.forEach((slotNo) => {
     const slot = sanitizedQuickSlots.slots[slotNo];
     sanitizedQuickSlots.slots[slotNo] = sanitizeSlot(slot, slotNo);
   });
@@ -92,7 +92,7 @@ export const sanitizeV1QuickSlots = (
     selectedNo: sanitizedSlotNo,
   };
 
-  SLOT_NOS.forEach((slotNo) => {
+  QUICK_SLOT_NOS.forEach((slotNo) => {
     const slot = sanitizedLegacyQuickSlots[slotNo];
     sanitizedLegacyQuickSlots[slotNo] = sanitizeSlot(slot, slotNo);
   });

@@ -20,40 +20,37 @@ import { updateAllLegacyData } from './legacyDataUpdater';
 
 export const fetchOptionsData = async (): Promise<OptionsData> => {
   const [
-    checkedAlgorithmIds,
-    quickSlots,
-    totamjungTheme,
-    hiderOptions,
-    randomDefenseHistoryResponse,
-    timers,
     gachaOptions,
-    fontNo,
+    quickSlotOptions,
+    hiderOptions,
+    randomDefenseHistoryOptions,
+    problemTimerOptions,
     shouldShowWelcomeMessage,
+    totamjungTheme,
+    fontNo,
   ] = await Promise.all([
+    fetchGachaOptions(),
+    fetchHiderOptions(),
     fetchCheckedAlgorithmIds(),
     fetchQuickSlots(),
     fetchTotamjungTheme(),
-    fetchHiderOptions(),
+
     fetchRandomDefenseHistory(),
     fetchTimers(),
-    fetchGachaOptions(),
+
     fetchFontNo(),
     fetchShouldShowWelcomeMessage(),
   ]);
 
   return {
-    [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIds,
-    [STORAGE_KEY.QUICK_SLOTS]: quickSlots,
-    [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,
+    [STORAGE_KEY.QUICK_SLOT_OPTIONS]: quickSlots,
+    [STORAGE_KEY.THEME]: totamjungTheme,
     [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
-    [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]:
-      randomDefenseHistoryResponse.randomDefenseHistory,
-    [STORAGE_KEY.IS_TIER_HIDDEN]: randomDefenseHistoryResponse.isHidden,
+    [STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS]: isRandomDefenseHistoryOptions,
     [STORAGE_KEY.FONT_NO]: fontNo,
-    [STORAGE_KEY.TIMERS]: timers,
     [STORAGE_KEY.GACHA_OPTIONS]: gachaOptions,
     [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: shouldShowWelcomeMessage,
-    [STORAGE_KEY.DATA_VERSION]: 3,
+    [STORAGE_KEY.DATA_VERSION]: 4,
   };
 };
 

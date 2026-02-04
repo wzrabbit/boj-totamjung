@@ -1,4 +1,8 @@
-import type { Slots, QuickSlots } from '@/types/randomDefense';
+import type {
+  Slots,
+  QuickSlots,
+  QuickSlotOptions,
+} from '@/types/randomDefense';
 import type { V1, V2 } from '@/types/legacyData';
 import { STORAGE_KEY } from './commands';
 import { HiderOptions } from '@/types/algorithm';
@@ -18,7 +22,7 @@ export const DEFAULT_SLOTS: Slots = {
   0: { isEmpty: true },
 } as const;
 
-export const DEFAULT_QUICK_SLOTS: QuickSlots = {
+export const DEFAULT_QUICK_SLOTS: QuickSlotOptions = {
   hotkey: 'Alt',
   selectedSlotNo: 1,
   slots: DEFAULT_SLOTS,

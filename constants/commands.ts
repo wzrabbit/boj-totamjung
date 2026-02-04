@@ -65,7 +65,7 @@ export const V2_STORAGE_KEY = {
 } as const;
 
 /**
- * v1.3 ~ v1.3.3.1 / dataVersion 3에서 쓰이는 키 값들입니다.
+ * v1.3 ~ v1.3.3.2 / dataVersion 3에서 쓰이는 키 값들입니다.
  */
 export const V3_STORAGE_KEY = {
   ...V2_STORAGE_KEY,
@@ -73,7 +73,7 @@ export const V3_STORAGE_KEY = {
 } as const;
 
 /**
- * v1.3.3.2 ~ / dataVersion 4에서 쓰이는 키 값들입니다.
+ * v1.3.4 ~ / dataVersion 4에서 쓰이는 키 값들입니다.
  */
 export const STORAGE_KEY = {
   DATA_VERSION: 'dataVersion',

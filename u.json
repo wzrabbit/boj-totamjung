@@ -1,0 +1,84 @@
+{
+  "dataVersion": 4,
+  "fontNo": 0,
+  "gachaOptions": {
+    "isAudioMuted": true,
+    "isTierHidden": false
+  },
+  "hiderOptions": {
+    "algorithmHiderUsage": "click",
+    "problemTagLockDuration": {
+      "hours": 0,
+      "minutes": 20
+    },
+    "problemTagLockUsage": "click",
+    "shouldHideTier": false,
+    "shouldRevealTierOnHover": false,
+    "shouldWarnHighTier": false,
+    "warnTier": 1,
+    "checkedAlgorithmIds": [1, 2],
+    "timers": []
+  },
+  "quickSlotOptions": {
+    "hotkey": "Alt",
+    "selectedSlotNo": 1,
+    "slots": {
+      "0": {
+        "isEmpty": true
+      },
+      "1": {
+        "isEmpty": false,
+        "query": "o? -w? *g lang:ko",
+        "title": "골드 랜덤 디펜스"
+      },
+      "2": {
+        "isEmpty": false,
+        "query": "o? -w? *s lang:ko",
+        "title": "실버 랜덤 디펜스"
+      },
+      "3": {
+        "isEmpty": false,
+        "query": "(*0&!s?|!*0) o? -w? lang:ko",
+        "title": "올 랜덤"
+      },
+      "4": {
+        "isEmpty": true
+      },
+      "5": {
+        "isEmpty": true
+      },
+      "6": {
+        "isEmpty": true
+      },
+      "7": {
+        "isEmpty": true
+      },
+      "8": {
+        "isEmpty": true
+      },
+      "9": {
+        "isEmpty": true
+      }
+    }
+  },
+  "randomDefenseHistoryOptions": {
+    "history": [
+      {
+        "createdAt": "2025-12-14T14:12:53.445Z",
+        "problemId": 10478,
+        "tier": 13,
+        "title": "단위"
+      }
+    ],
+    "isTierHidden": false
+  },
+  "problemTimerOptions": {
+    "mode": "basic",
+    "duration": 1800,
+    "timers": [],
+    "isTierHidden": false,
+    "shouldDeleteExpiredTimers": true
+  },
+  "shouldShowWelcomeMessage": false,
+  "theme": "totamjung"
+}

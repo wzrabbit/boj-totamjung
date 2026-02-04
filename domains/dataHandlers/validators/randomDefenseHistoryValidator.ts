@@ -1,14 +1,14 @@
 import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type {
-  RandomDefenseHistoryInfo,
-  RandomDefenseHistoryResponse,
+  RandomDefenseHistoryItem,
+  RandomDefenseHistoryOptions,
 } from '@/types/randomDefense';
 import type { V1 } from '@/types/legacyData';
 import { isIsoString, isObject } from '@/types/typeGuards';
 
-export const isV1RandomDefenseHistoryInfo = (
+export const isV1RandomDefenseHistoryItem = (
   data: unknown,
-): data is V1.RandomDefenseHistoryInfo => {
+): data is V1.RandomDefenseHistoryItem => {
   return (
     isObject(data) &&
     'no' in data &&
@@ -23,9 +23,9 @@ export const isV1RandomDefenseHistoryInfo = (
   );
 };
 
-export const isRandomDefenseHistoryInfo = (
+export const isRandomDefenseHistoryItem = (
   data: unknown,
-): data is RandomDefenseHistoryInfo => {
+): data is RandomDefenseHistoryItem => {
   return (
     isObject(data) &&
     'problemId' in data &&
@@ -40,23 +40,23 @@ export const isRandomDefenseHistoryInfo = (
   );
 };
 
-export const isRandomDefenseHistoryInfos = (
+export const isRandomDefenseHistoryItems = (
   data: unknown,
-): data is RandomDefenseHistoryInfo[] => {
+): data is RandomDefenseHistoryItem[] => {
   return (
     Array.isArray(data) &&
-    data.every((item) => isRandomDefenseHistoryInfo(item))
+    data.every((item) => isRandomDefenseHistoryItem(item))
   );
 };
 
-export const isRandomDefenseHistoryResponse = (
+export const isRandomDefenseHistoryOptions = (
   data: unknown,
-): data is RandomDefenseHistoryResponse => {
+): data is RandomDefenseHistoryOptions => {
   return (
     isObject(data) &&
     'randomDefenseHistory' in data &&
     'isHidden' in data &&
-    isRandomDefenseHistoryInfos(data.randomDefenseHistory) &&
+    isRandomDefenseHistoryItems(data.randomDefenseHistory) &&
     typeof data.isHidden === 'boolean'
   );
 };

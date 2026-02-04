@@ -1,6 +1,10 @@
 import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
-import type { SlotNo, Slots } from '@/types/randomDefense';
-import type { HiderOptions as LatestHiderOptions } from './algorithm';
+import type { QuickSlots, SlotNo, Slots } from '@/types/randomDefense';
+import type {
+  CheckedAlgorithmIds,
+  HiderOptions as LatestHiderOptions,
+  TagLockTimer,
+} from './algorithm';
 import type { OptionsData as LatestOptionsData } from './options';
 import { STORAGE_KEY } from '@/constants/commands';
 
@@ -27,14 +31,14 @@ export namespace V1 {
 
   export type FontNo = 'none' | `font-${number}`;
 
-  export interface RandomDefenseHistoryInfo {
+  export interface RandomDefenseHistoryItem {
     no: number;
     title: string;
     tier: keyof typeof solvedAcNumericTierIcons;
     date: string;
   }
 
-  export interface RepairableQuickSlots {
+  export interface RepairableQuickSlotOptions {
     1: unknown;
     2: unknown;
     3: unknown;
@@ -48,9 +52,9 @@ export namespace V1 {
     selectedNo?: unknown;
   }
 
-  export type QuickSlots = {
+  export type QuickSlotOptions = {
     selectedNo: SlotNo;
-  } & Slots;
+  } & QuickSlots;
 }
 
 /**
@@ -72,6 +76,22 @@ export namespace V2 {
 
   export type HiderOptions = Omit<
     LatestHiderOptions,
-    'shouldRevealTierOnHover'
+    'shouldRevealTierOnHover' | 'checkedAlgorithmIds' | 'tagLockTimers'
+  >;
+}
+
+export namespace V3 {
+  export type OptionsData = Omit<
+    LatestOptionsData,
+    typeof STORAGE_KEY.HIDER_OPTIONS
+  > & { hiderOptions: V3.HiderOptions } & {
+    shouldShowWelcomeMessage?: boolean;
+  } & { checkedAlgorithmIds: CheckedAlgorithmIds } & {
+    timers: TagLockTimer[];
+  };
+
+  export type HiderOptions = Omit<
+    LatestHiderOptions,
+    'checkedAlgorithmIds' | 'tagLockTimers'
   >;
 }

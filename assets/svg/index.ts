@@ -33,6 +33,7 @@ import PauseIcon from './pause.svg?react';
 import StopIcon from './stop.svg?react';
 import ClockEditIcon from './clock-edit.svg?react';
 import EnterKeyIcon from './enter-key.svg?react';
+import BookIcon from './book.svg?react';
 
 export {
   SearchIcon,
@@ -70,4 +71,5 @@ export {
   StopIcon,
   ClockEditIcon,
   EnterKeyIcon,
+  BookIcon,
 };

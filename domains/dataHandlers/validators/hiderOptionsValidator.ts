@@ -1,6 +1,6 @@
 import { isObject, isRatedTier } from '@/types/typeGuards';
 import type { HiderOptions } from '@/types/algorithm';
-import type { V1, V2 } from '@/types/legacyData';
+import type { V1, V2, V3 } from '@/types/legacyData';
 import {
   isNumericString,
   isNumericStringAllowsLeadingZeroes,
@@ -45,11 +45,19 @@ export const isV2HiderOptions = (data: unknown): data is V2.HiderOptions => {
   );
 };
 
-export const isHiderOptions = (data: unknown): data is HiderOptions => {
+export const isV3HiderOptions = (data: unknown): data is V3.HiderOptions => {
   return (
     isV2HiderOptions(data) &&
     'shouldRevealTierOnHover' in data &&
     typeof data.shouldRevealTierOnHover === 'boolean'
+  );
+};
+
+export const isHiderOptions = (data: unknown): data is HiderOptions => {
+  return (
+    isV3HiderOptions(data) &&
+    'shouldHideSource' in data &&
+    typeof data.shouldHideSource === 'boolean'
   );
 };
 

@@ -14,6 +14,7 @@ const fallbackHiderOptions = {
   shouldHideTier: undefined,
   shouldWarnHighTier: undefined,
   shouldRevealTierOnHover: undefined,
+  shouldHideSource: undefined,
   warnTier: 1 as const,
   algorithmHiderUsage: undefined,
   problemTagLockUsage: undefined,
@@ -122,6 +123,18 @@ const useHiderFieldsetMenu = () => {
     });
   };
 
+  const updateShouldHideSource = (shouldHideSourceString: string) => {
+    const shouldHideSource = shouldHideSourceString === 'true';
+
+    setHiderOptionsState((prev) => {
+      if (!prev.isLoaded) {
+        return prev;
+      }
+
+      return { ...prev, shouldHideSource };
+    });
+  };
+
   const updateAlgorithmHiderUsage = (usage: string) => {
     if (usage !== 'click' && usage !== 'always') {
       return;
@@ -159,6 +172,7 @@ const useHiderFieldsetMenu = () => {
     updateShouldHideTier,
     updateShouldWarnHighTier,
     updateShouldRevealTierOnHover,
+    updateShouldHideSource,
     updateWarnTier,
     updateAlgorithmHiderUsage,
     updateProblemTagLockUsage,

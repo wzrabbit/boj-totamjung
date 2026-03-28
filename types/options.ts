@@ -19,7 +19,7 @@ export interface OptionsData {
   [STORAGE_KEY.TIMERS]: Timer[];
   [STORAGE_KEY.GACHA_OPTIONS]: GachaOptions;
   [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: boolean;
-  [STORAGE_KEY.DATA_VERSION]: 3;
+  [STORAGE_KEY.DATA_VERSION]: 4;
 }
 
 export interface OptionsSectionProps {

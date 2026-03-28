@@ -4,7 +4,7 @@ export const Container = styled.div`
   flex-shrink: 0;
 
   width: 700px;
-  height: 490px;
+  height: 555px;
 
   border-radius: 16px;
   box-shadow: 0 0 8px ${({ theme }) => theme.color.GOLD};
@@ -14,7 +14,7 @@ export const AlgorithmPanel = styled.div`
   position: relative;
 
   width: 700px;
-  height: 440px;
+  height: 505px;
   padding: 14px;
 
   border: 2px solid ${({ theme }) => theme.color.GOLD};

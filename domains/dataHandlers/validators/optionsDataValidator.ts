@@ -1,7 +1,11 @@
 import { isValidCheckedAlgorithmIds } from './checkedAlgorithmIdsValidator';
 import { isQuickSlots } from './quickSlotsValidator';
 import { isTotamjungTheme } from './totamjungThemeValidator';
-import { isHiderOptions, isV2HiderOptions, isV3HiderOptions } from './hiderOptionsValidator';
+import {
+  isHiderOptions,
+  isV2HiderOptions,
+  isV3HiderOptions,
+} from './hiderOptionsValidator';
 import { isRandomDefenseHistoryInfos } from './randomDefenseHistoryValidator';
 import { isFontNo } from './fontNoValidator';
 import { isTimers } from './isTimersValidator';

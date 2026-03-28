@@ -47,9 +47,7 @@ export const updateAllLegacyData = async () => {
 
   if (dataVersion === 2) {
     await browser.storage.local.set(
-      convertV3ToLatestOptionsData(
-        convertV2ToV3OptionsData(localStorageData),
-      ),
+      convertV3ToLatestOptionsData(convertV2ToV3OptionsData(localStorageData)),
     );
     return;
   }

@@ -7,7 +7,10 @@ import {
 import type { OptionsData } from '@/types/options';
 import type { V2, V3 } from '@/types/legacyData';
 import { DEFAULT_GACHA_OPTIONS } from '@/constants/defaultValues';
-import { sanitizeV2HiderOptions, sanitizeV3HiderOptions } from '@/domains/dataHandlers/sanitizers/hiderOptionsSanitizer';
+import {
+  sanitizeV2HiderOptions,
+  sanitizeV3HiderOptions,
+} from '@/domains/dataHandlers/sanitizers/hiderOptionsSanitizer';
 import { sanitizeCheckedAlgorithmIds } from '@/domains/dataHandlers/sanitizers/checkedAlgorithmIdsSanitizer';
 import {
   sanitizeQuickSlots,
@@ -148,7 +151,6 @@ export const convertV3ToLatestOptionsData = (
   );
   const fontNo = sanitizeFontNo(legacyData[STORAGE_KEY.FONT_NO]);
   const timers = sanitizeTimers(legacyData[STORAGE_KEY.TIMERS]);
-  const gachaOptions = legacyData[STORAGE_KEY.GACHA_OPTIONS];
   const shouldShowWelcomeMessage = sanitizeShouldShowWelcomeMessage(
     legacyData[STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE],
   );

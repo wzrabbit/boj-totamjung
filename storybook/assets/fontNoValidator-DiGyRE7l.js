@@ -1,1 +1,0 @@
-const e=n=>n==="none"||n==="totamjung",s=n=>n==="totamjung"?"totamjung":"none",o=n=>typeof n=="number"&&!isNaN(n)&&n%1===0?n:0,t=/^(none|font-\d{1,2})$/,r=n=>typeof n=="string"&&t.test(n),u=n=>typeof n=="number"&&!isNaN(n)&&n%1===0;export{u as a,o as b,r as c,e as i,s};

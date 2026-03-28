@@ -3,7 +3,7 @@ import Fieldset from '@/components/common/Fieldset';
 import TierSelect from '@/components/TierSelect';
 import Text from '@/components/common/Text';
 import ProblemTagLockTimer from '@/components/ProblemTagLockTimer';
-import { ToolsIcon } from '@/assets/svg';
+import { ToolsIcon, BookIcon } from '@/assets/svg';
 import { hiddenTierBadgeIcon } from '@/assets/png';
 import useHiderFieldsetMenu from '@/hooks/algorithm/useHiderFieldsetMenu';
 import * as S from './HiderFieldsetMenu.styled';
@@ -14,6 +14,7 @@ const HiderFieldsetMenu = () => {
     shouldHideTier,
     shouldWarnHighTier,
     shouldRevealTierOnHover,
+    shouldHideSource,
     warnTier,
     algorithmHiderUsage,
     problemTagLockUsage,
@@ -21,6 +22,7 @@ const HiderFieldsetMenu = () => {
     updateShouldHideTier,
     updateShouldWarnHighTier,
     updateShouldRevealTierOnHover,
+    updateShouldHideSource,
     updateWarnTier,
     updateAlgorithmHiderUsage,
     updateProblemTagLockUsage,
@@ -83,6 +85,23 @@ const HiderFieldsetMenu = () => {
         ]}
         checkedValue={shouldRevealTierOnHover ? 'true' : 'false'}
         onChange={updateShouldRevealTierOnHover}
+      />
+      <MenuTitle title="출처 가리개 설정" iconSrc={<BookIcon />} />
+      <Fieldset
+        legend="문제의 출처 숨기기"
+        name="shouldHideSource"
+        options={[
+          { label: '숨기기', value: 'true' },
+          { label: '숨기지 않기', value: 'false' },
+        ]}
+        checkedValue={
+          shouldHideSource
+            ? 'true'
+            : shouldHideSource === undefined
+              ? ''
+              : 'false'
+        }
+        onChange={updateShouldHideSource}
       />
       <MenuTitle title="기본 설정" iconSrc={<ToolsIcon />} />
       <Fieldset

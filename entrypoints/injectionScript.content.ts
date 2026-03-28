@@ -7,112 +7,167 @@ import '@/assets/css/palette.css';
 import '@/assets/css/totamjungTheme.css';
 import '@/assets/css/tierHider.css';
 import '@/assets/css/problemTheme.css';
+import '@/assets/css/sourceHider.css';
 
 export default defineContentScript({
   matches: ['https://www.acmicpc.net/*', 'https://solved.ac/*'],
   runAt: 'document_start',
   main() {
-    executeInjectionScript();
+    const htmlElement = document.documentElement;
+
+    injectTheme(htmlElement);
+    injectHiderAttributes(htmlElement);
+    injectFontNo(htmlElement);
+    injectWebFonts(htmlElement);
   },
 });
 
-const executeInjectionScript = () => {
-  const TOTAMJUNG_THEME_BACKGROUND_COLOR = '#1a0e0a';
+const TOTAMJUNG_THEME_BACKGROUND_COLOR = '#1a0e0a';
 
-  const injectFontsAndThemes = () => {
-    const htmlElement = document.documentElement;
-    htmlElement.setAttribute('hideTier', 'loading');
-
-    browser.runtime
-      .sendMessage({ command: COMMANDS.FETCH_TOTAMJUNG_THEME })
-      .then((totamjungTheme) => {
-        if (!isTotamjungTheme(totamjungTheme)) {
-          return;
-        }
-
-        if (totamjungTheme === 'totamjung' && !isExternalThemeActive()) {
-          htmlElement.style.backgroundColor = TOTAMJUNG_THEME_BACKGROUND_COLOR;
-          htmlElement.setAttribute('totamjungTheme', 'totamjung');
-        } else {
-          htmlElement.setAttribute('totamjungTheme', 'none');
-        }
-      });
-
-    browser.runtime
-      .sendMessage({ command: COMMANDS.FETCH_HIDER_OPTIONS })
-      .then((response) => {
-        if (!isHiderOptions(response)) {
-          return;
-        }
-
-        const { shouldHideTier, shouldRevealTierOnHover } = response;
-
-        if (!shouldHideTier) {
-          htmlElement.setAttribute('hideTier', 'false');
-          return;
-        }
-
-        if (shouldRevealTierOnHover) {
-          htmlElement.setAttribute('hideTier', 'revealOnHover');
-          return;
-        }
-
-        htmlElement.setAttribute('hideTier', 'true');
-      });
-
-    browser.runtime
-      .sendMessage({ command: COMMANDS.FETCH_FONT_NO })
-      .then((fontNo) => {
-        if (!isFontNo(fontNo)) {
-          return;
-        }
-
-        htmlElement.setAttribute('fontNo', String(fontNo));
-      });
-
-    const headInjectionObserver = new MutationObserver(() => {
-      const headElement = document.head;
-
-      if (!headElement) {
+const injectTheme = (htmlElement: HTMLElement) => {
+  browser.runtime
+    .sendMessage({ command: COMMANDS.FETCH_TOTAMJUNG_THEME })
+    .then((totamjungTheme) => {
+      if (!isTotamjungTheme(totamjungTheme)) {
         return;
       }
 
-      const pretendardLinkElement = Object.assign(
-        document.createElement('link'),
-        {
-          rel: 'stylesheet',
-          type: 'text/css',
-          href: 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css',
-        },
-      );
-      const googleApisLinkElement = Object.assign(
-        document.createElement('link'),
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.googleapis.com',
-        },
-      );
-      const googleStaticLinkElement = Object.assign(
-        document.createElement('link'),
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-        },
-      );
+      if (totamjungTheme === 'totamjung' && !isExternalThemeActive()) {
+        htmlElement.style.backgroundColor = TOTAMJUNG_THEME_BACKGROUND_COLOR;
+        htmlElement.setAttribute('totamjungTheme', 'totamjung');
+      } else {
+        htmlElement.setAttribute('totamjungTheme', 'none');
+      }
+    });
+};
 
-      const fontsLinkElement = Object.assign(document.createElement('link'), {
+const injectHiderAttributes = (htmlElement: HTMLElement) => {
+  htmlElement.setAttribute('hideTier', 'loading');
+
+  browser.runtime
+    .sendMessage({ command: COMMANDS.FETCH_HIDER_OPTIONS })
+    .then((response) => {
+      if (!isHiderOptions(response)) {
+        return;
+      }
+
+      const { shouldHideTier, shouldRevealTierOnHover, shouldHideSource } =
+        response;
+
+      if (!shouldHideTier) {
+        htmlElement.setAttribute('hideTier', 'false');
+      } else if (shouldRevealTierOnHover) {
+        htmlElement.setAttribute('hideTier', 'revealOnHover');
+      } else {
+        htmlElement.setAttribute('hideTier', 'true');
+      }
+
+      if (shouldHideSource) {
+        htmlElement.setAttribute('hideSource', 'true');
+
+        if (location.pathname.startsWith('/problem/')) {
+          injectSourceToggleButton(htmlElement);
+        }
+      }
+    });
+};
+
+const injectSourceToggleButton = (htmlElement: HTMLElement) => {
+  const observer = new MutationObserver(() => {
+    const sourceSection = document.querySelector<HTMLElement>('section#source');
+
+    if (!sourceSection) {
+      return;
+    }
+
+    observer.disconnect();
+
+    const headline = sourceSection.querySelector('.headline');
+    const wrapper = document.createElement('p');
+    wrapper.className = 'totamjung-source-toggle';
+
+    const showButton = document.createElement('a');
+    showButton.href = '#';
+    showButton.style.fontSize = '16px';
+    showButton.textContent = '보기';
+
+    showButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      htmlElement.removeAttribute('hideSource');
+      wrapper.remove();
+    });
+
+    wrapper.appendChild(showButton);
+
+    if (headline) {
+      headline.after(wrapper);
+    } else {
+      sourceSection.prepend(wrapper);
+    }
+  });
+
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
+};
+
+const injectFontNo = (htmlElement: HTMLElement) => {
+  browser.runtime
+    .sendMessage({ command: COMMANDS.FETCH_FONT_NO })
+    .then((fontNo) => {
+      if (!isFontNo(fontNo)) {
+        return;
+      }
+
+      htmlElement.setAttribute('fontNo', String(fontNo));
+    });
+};
+
+const injectWebFonts = (htmlElement: HTMLElement) => {
+  const headInjectionObserver = new MutationObserver(() => {
+    const headElement = document.head;
+
+    if (!headElement) {
+      return;
+    }
+
+    const pretendardLinkElement = Object.assign(
+      document.createElement('link'),
+      {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Cute+Font&family=Do+Hyeon&family=Gaegu&family=Gothic+A1&family=Gowun+Batang&family=Gowun+Dodum&family=Hi+Melody&family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&family=IBM+Plex+Mono&family=Hahmlet&family=Diphylleia&family=Oxanium:wght@200..800&display=swap',
-      });
-      const dunggeunmoNeoLinkElement = Object.assign(
-        document.createElement('link'),
-        {
-          rel: 'stylesheet',
-          href: 'https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css',
-        },
-      );
-      const spoqaHanSansNeoStyleElement = document.createElement('style');
-      spoqaHanSansNeoStyleElement.innerHTML = `
+        type: 'text/css',
+        href: 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css',
+      },
+    );
+    const googleApisLinkElement = Object.assign(
+      document.createElement('link'),
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+    );
+    const googleStaticLinkElement = Object.assign(
+      document.createElement('link'),
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+      },
+    );
+
+    const fontsLinkElement = Object.assign(document.createElement('link'), {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Cute+Font&family=Do+Hyeon&family=Gaegu&family=Gothic+A1&family=Gowun+Batang&family=Gowun+Dodum&family=Hi+Melody&family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&family=IBM+Plex+Mono&family=Hahmlet&family=Diphylleia&family=Oxanium:wght@200..800&display=swap',
+    });
+    const dunggeunmoNeoLinkElement = Object.assign(
+      document.createElement('link'),
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css',
+      },
+    );
+    const spoqaHanSansNeoStyleElement = document.createElement('style');
+    spoqaHanSansNeoStyleElement.innerHTML = `
         @font-face {
           font-family: 'Spoqa Han Sans Neo';
           src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff')
@@ -137,8 +192,8 @@ const executeInjectionScript = () => {
           font-style: normal;
         }
       `;
-      const cookieRunStyleElement = document.createElement('style');
-      cookieRunStyleElement.innerHTML = `
+    const cookieRunStyleElement = document.createElement('style');
+    cookieRunStyleElement.innerHTML = `
         @font-face {
           font-family: 'CookieRun';
           src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff')
@@ -147,8 +202,8 @@ const executeInjectionScript = () => {
           font-style: normal;
         }
       `;
-      const cafe24ClassicTypeElement = document.createElement('style');
-      cafe24ClassicTypeElement.innerHTML = `
+    const cafe24ClassicTypeElement = document.createElement('style');
+    cafe24ClassicTypeElement.innerHTML = `
         @font-face {
           font-family: 'Cafe24ClassicType';
           src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Cafe24ClassicType-Regular.woff2')
@@ -158,22 +213,19 @@ const executeInjectionScript = () => {
         }
       `;
 
-      [
-        pretendardLinkElement,
-        googleApisLinkElement,
-        googleStaticLinkElement,
-        fontsLinkElement,
-        dunggeunmoNeoLinkElement,
-        spoqaHanSansNeoStyleElement,
-        cookieRunStyleElement,
-        cafe24ClassicTypeElement,
-      ].forEach((element) => {
-        headElement.appendChild(element);
-      });
+    [
+      pretendardLinkElement,
+      googleApisLinkElement,
+      googleStaticLinkElement,
+      fontsLinkElement,
+      dunggeunmoNeoLinkElement,
+      spoqaHanSansNeoStyleElement,
+      cookieRunStyleElement,
+      cafe24ClassicTypeElement,
+    ].forEach((element) => {
+      headElement.appendChild(element);
     });
+  });
 
-    headInjectionObserver.observe(htmlElement, { childList: true });
-  };
-
-  injectFontsAndThemes();
+  headInjectionObserver.observe(htmlElement, { childList: true });
 };

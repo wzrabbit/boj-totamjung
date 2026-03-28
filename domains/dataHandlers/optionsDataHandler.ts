@@ -11,6 +11,7 @@ import { DEFAULT_EMPTY_DATA } from '@/constants/defaultValues';
 import {
   isOptionsData,
   isV2OptionsData,
+  isV3OptionsData,
 } from './validators/optionsDataValidator';
 import { fetchGachaOptions } from './gachaOptionsHandler';
 import { fetchShouldShowWelcomeMessage } from './shouldShowWelcomeMessageDataHandler';
@@ -53,7 +54,7 @@ export const fetchOptionsData = async (): Promise<OptionsData> => {
     [STORAGE_KEY.TIMERS]: timers,
     [STORAGE_KEY.GACHA_OPTIONS]: gachaOptions,
     [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: shouldShowWelcomeMessage,
-    [STORAGE_KEY.DATA_VERSION]: 3,
+    [STORAGE_KEY.DATA_VERSION]: 4,
   };
 };
 
@@ -75,7 +76,11 @@ export const saveOptionsData = async (data: unknown) => {
     return false;
   }
 
-  if (dataVersion !== 3) {
+  if (dataVersion === 3 && !isV3OptionsData(data)) {
+    return false;
+  }
+
+  if (dataVersion !== 4) {
     await browser.storage.local.set(data);
     await updateAllLegacyData();
     return true;

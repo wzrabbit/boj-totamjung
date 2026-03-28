@@ -1,6 +1,7 @@
 import {
   convertV1ToV2OptionsData,
-  convertV2ToLatestOptionsData,
+  convertV2ToV3OptionsData,
+  convertV3ToLatestOptionsData,
 } from '@/domains/dataHandlers/converters/legacyToLatestOptionsDataConverter';
 
 const getDataVersion = (data: Record<string, unknown>) => {
@@ -14,6 +15,10 @@ const getDataVersion = (data: Record<string, unknown>) => {
     return 3;
   }
 
+  if (dataVersion === 4) {
+    return 4;
+  }
+
   return 1;
 };
 
@@ -25,20 +30,31 @@ export const updateAllLegacyData = async () => {
 
   const dataVersion = getDataVersion(localStorageData);
 
-  if (dataVersion === 3) {
+  if (dataVersion === 4) {
     return;
   }
 
   if (dataVersion === 1) {
-    browser.storage.local.set(
-      convertV2ToLatestOptionsData(
-        convertV1ToV2OptionsData(syncStorageData, localStorageData),
+    await browser.storage.local.set(
+      convertV3ToLatestOptionsData(
+        convertV2ToV3OptionsData(
+          convertV1ToV2OptionsData(syncStorageData, localStorageData),
+        ),
+      ),
+    );
+    return;
+  }
+
+  if (dataVersion === 2) {
+    await browser.storage.local.set(
+      convertV3ToLatestOptionsData(
+        convertV2ToV3OptionsData(localStorageData),
       ),
     );
     return;
   }
 
   await browser.storage.local.set(
-    convertV2ToLatestOptionsData(localStorageData),
+    convertV3ToLatestOptionsData(localStorageData),
   );
 };

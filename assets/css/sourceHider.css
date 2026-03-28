@@ -1,7 +1,7 @@
 /**
  * 문제 페이지의 출처 섹션을 가리기 위한 스타일입니다.
  */
-html[hideSource='true']
+html[hideSource='true']:not(:has(.problem-label-ac))
   section#source
   > *:not(.headline):not(.totamjung-source-toggle) {
   display: none;

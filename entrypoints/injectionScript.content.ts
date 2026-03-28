@@ -82,6 +82,14 @@ const injectSourceToggleButton = (htmlElement: HTMLElement) => {
 
     observer.disconnect();
 
+    const isSolved = document.querySelector(
+      '.page-header:has(#problem_title) .problem-label-ac',
+    );
+
+    if (isSolved) {
+      return;
+    }
+
     const headline = sourceSection.querySelector('.headline');
     const wrapper = document.createElement('p');
     wrapper.className = 'totamjung-source-toggle';

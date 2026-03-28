@@ -18,7 +18,7 @@ export const Container = styled.div`
   display: flex;
 
   width: 1310px;
-  height: 665px;
+  height: 685px;
   margin: 10px 0 0 20px;
 `;
 
@@ -33,7 +33,7 @@ export const OptionsBody = styled.main`
   column-gap: 20px;
 
   width: 1060px;
-  height: 580px;
+  height: 600px;
 `;
 
 export const TotamjungImageWrapper = styled.div`

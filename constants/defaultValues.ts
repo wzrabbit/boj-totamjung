@@ -1,5 +1,5 @@
 import type { Slots, QuickSlots } from '@/types/randomDefense';
-import type { V1, V2 } from '@/types/legacyData';
+import type { V1, V2, V3 } from '@/types/legacyData';
 import { STORAGE_KEY } from './commands';
 import { HiderOptions } from '@/types/algorithm';
 
@@ -36,9 +36,14 @@ export const DEFAULT_V2_HIDER_OPTIONS: V2.HiderOptions = {
   problemTagLockUsage: 'click',
 } as const;
 
-export const DEFAULT_HIDER_OPTIONS: HiderOptions = {
+export const DEFAULT_V3_HIDER_OPTIONS: V3.HiderOptions = {
   ...DEFAULT_V2_HIDER_OPTIONS,
   shouldRevealTierOnHover: false,
+} as const;
+
+export const DEFAULT_HIDER_OPTIONS: HiderOptions = {
+  ...DEFAULT_V3_HIDER_OPTIONS,
+  shouldHideSource: false,
 } as const;
 
 export const DEFAULT_TOTAMJUNG_THEME = 'none';
@@ -74,8 +79,15 @@ export const DEFAULT_V2_EMPTY_DATA = {
   [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: false,
 };
 
-export const DEFAULT_EMPTY_DATA = {
+export const DEFAULT_V3_EMPTY_DATA = {
   ...DEFAULT_V2_EMPTY_DATA,
   [STORAGE_KEY.DATA_VERSION]: 3,
+  [STORAGE_KEY.HIDER_OPTIONS]: DEFAULT_V3_HIDER_OPTIONS,
   [STORAGE_KEY.GACHA_OPTIONS]: DEFAULT_GACHA_OPTIONS,
+};
+
+export const DEFAULT_EMPTY_DATA = {
+  ...DEFAULT_V3_EMPTY_DATA,
+  [STORAGE_KEY.DATA_VERSION]: 4,
+  [STORAGE_KEY.HIDER_OPTIONS]: DEFAULT_HIDER_OPTIONS,
 };

@@ -5,9 +5,12 @@ import {
   V2_STORAGE_KEY,
 } from '@/constants/commands';
 import type { OptionsData } from '@/types/options';
-import type { V2 } from '@/types/legacyData';
+import type { V2, V3 } from '@/types/legacyData';
 import { DEFAULT_GACHA_OPTIONS } from '@/constants/defaultValues';
-import { sanitizeV2HiderOptions } from '@/domains/dataHandlers/sanitizers/hiderOptionsSanitizer';
+import {
+  sanitizeV2HiderOptions,
+  sanitizeV3HiderOptions,
+} from '@/domains/dataHandlers/sanitizers/hiderOptionsSanitizer';
 import { sanitizeCheckedAlgorithmIds } from '@/domains/dataHandlers/sanitizers/checkedAlgorithmIdsSanitizer';
 import {
   sanitizeQuickSlots,
@@ -24,7 +27,8 @@ import { sanitizeTimers } from '@/domains/dataHandlers/sanitizers/timersSanitize
 import { sanitizeShouldShowWelcomeMessage } from '@/domains/dataHandlers/sanitizers/shouldShowWelcomeMessageSanitizer';
 import {
   convertV1ToV2HiderOptions,
-  convertV2ToLatestHiderOptions,
+  convertV2ToV3HiderOptions,
+  convertV3ToLatestHiderOptions,
 } from './legacyToLatestHiderOptionsConverter';
 
 import { convertV1ToLatestTotamjungThemeBySettings } from '@/domains/dataHandlers/converters/legacyToLatestTotamjungThemeConverter';
@@ -82,9 +86,9 @@ export const convertV1ToV2OptionsData = (
   };
 };
 
-export const convertV2ToLatestOptionsData = (
+export const convertV2ToV3OptionsData = (
   legacyData: Record<string, unknown>,
-): OptionsData => {
+): V3.OptionsData => {
   const legacyHiderOptions = sanitizeV2HiderOptions(
     legacyData[V2_STORAGE_KEY.HIDER_OPTIONS],
   );
@@ -96,7 +100,7 @@ export const convertV2ToLatestOptionsData = (
   const totamjungTheme = sanitizeTotamjungTheme(
     legacyData[V2_STORAGE_KEY.TOTAMJUNG_THEME],
   );
-  const hiderOptions = convertV2ToLatestHiderOptions(legacyHiderOptions);
+  const hiderOptions = convertV2ToV3HiderOptions(legacyHiderOptions);
   const randomDefenseHistory = sanitizeRandomDefenseHistory(
     legacyData[V2_STORAGE_KEY.RANDOM_DEFENSE_HISTORY],
   );
@@ -121,5 +125,47 @@ export const convertV2ToLatestOptionsData = (
     [STORAGE_KEY.GACHA_OPTIONS]: DEFAULT_GACHA_OPTIONS,
     [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: shouldShowWelcomeMessage,
     [STORAGE_KEY.DATA_VERSION]: 3,
+  };
+};
+
+export const convertV3ToLatestOptionsData = (
+  legacyData: Record<string, unknown>,
+): OptionsData => {
+  const legacyHiderOptions = sanitizeV3HiderOptions(
+    legacyData[STORAGE_KEY.HIDER_OPTIONS],
+  );
+
+  const checkedAlgorithmIds = sanitizeCheckedAlgorithmIds(
+    legacyData[STORAGE_KEY.CHECKED_ALGORITHM_IDS],
+  );
+  const quickSlots = sanitizeQuickSlots(legacyData[STORAGE_KEY.QUICK_SLOTS]);
+  const totamjungTheme = sanitizeTotamjungTheme(
+    legacyData[STORAGE_KEY.TOTAMJUNG_THEME],
+  );
+  const hiderOptions = convertV3ToLatestHiderOptions(legacyHiderOptions);
+  const randomDefenseHistory = sanitizeRandomDefenseHistory(
+    legacyData[STORAGE_KEY.RANDOM_DEFENSE_HISTORY],
+  );
+  const isTierHidden = sanitizeIsTierHidden(
+    legacyData[STORAGE_KEY.IS_TIER_HIDDEN],
+  );
+  const fontNo = sanitizeFontNo(legacyData[STORAGE_KEY.FONT_NO]);
+  const timers = sanitizeTimers(legacyData[STORAGE_KEY.TIMERS]);
+  const shouldShowWelcomeMessage = sanitizeShouldShowWelcomeMessage(
+    legacyData[STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE],
+  );
+
+  return {
+    [STORAGE_KEY.CHECKED_ALGORITHM_IDS]: checkedAlgorithmIds,
+    [STORAGE_KEY.QUICK_SLOTS]: quickSlots,
+    [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,
+    [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
+    [STORAGE_KEY.RANDOM_DEFENSE_HISTORY]: randomDefenseHistory,
+    [STORAGE_KEY.IS_TIER_HIDDEN]: isTierHidden,
+    [STORAGE_KEY.FONT_NO]: fontNo,
+    [STORAGE_KEY.TIMERS]: timers,
+    [STORAGE_KEY.GACHA_OPTIONS]: DEFAULT_GACHA_OPTIONS,
+    [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: shouldShowWelcomeMessage,
+    [STORAGE_KEY.DATA_VERSION]: 4,
   };
 };

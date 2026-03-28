@@ -72,6 +72,21 @@ export namespace V2 {
 
   export type HiderOptions = Omit<
     LatestHiderOptions,
-    'shouldRevealTierOnHover'
+    'shouldRevealTierOnHover' | 'shouldHideSource'
   >;
+}
+
+/**
+ * v1.3 ~ v1.3.3.2 버전에서의 데이터 타입입니다.
+ * 데이터 버전은 3입니다.
+ */
+export namespace V3 {
+  export type DataVersion = 3;
+
+  export type OptionsData = Omit<
+    LatestOptionsData,
+    typeof STORAGE_KEY.HIDER_OPTIONS | typeof STORAGE_KEY.DATA_VERSION
+  > & { hiderOptions: V3.HiderOptions } & { dataVersion: V3.DataVersion };
+
+  export type HiderOptions = Omit<LatestHiderOptions, 'shouldHideSource'>;
 }

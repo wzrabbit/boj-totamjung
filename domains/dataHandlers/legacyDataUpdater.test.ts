@@ -1,6 +1,7 @@
 import {
   convertV1ToV2OptionsData,
-  convertV2ToLatestOptionsData,
+  convertV2ToV3OptionsData,
+  convertV3ToLatestOptionsData,
 } from './converters/legacyToLatestOptionsDataConverter';
 import {
   DEFAULT_CHECKED_ALGORITHM_IDS,
@@ -11,7 +12,7 @@ import {
   DEFAULT_RANDOM_DEFENSE_HISTORY,
   DEFAULT_TIMERS,
 } from '@/constants/defaultValues';
-import { V2 } from '@/types/legacyData';
+import { V2, V3 } from '@/types/legacyData';
 import { OptionsData } from '@/types/options';
 
 describe('Test #1 - 데이터 변환 테스트', () => {
@@ -231,7 +232,7 @@ describe('Test #1 - 데이터 변환 테스트', () => {
     );
   });
 
-  test('2버전 데이터가 올바른 경우 온전하게 최신 버전의 데이터로 변환하여 값을 반환해야 한다.', async () => {
+  test('2버전 데이터가 올바른 경우 온전하게 3버전 데이터로 변환하여 값을 반환해야 한다.', async () => {
     const legacyData: V2.OptionsData = {
       checkedAlgorithmIds: [1, 2, 4, 7, 14, 156, 171, 194, 200, 1234],
       dataVersion: 2,
@@ -354,7 +355,7 @@ describe('Test #1 - 데이터 변환 테스트', () => {
       shouldShowWelcomeMessage: false,
     };
 
-    const expected: OptionsData = {
+    const expected: V3.OptionsData = {
       checkedAlgorithmIds: [1, 2, 4, 7, 14, 156, 171, 194, 200, 1234],
       dataVersion: 3,
       hiderOptions: {
@@ -478,7 +479,86 @@ describe('Test #1 - 데이터 변환 테스트', () => {
       shouldShowWelcomeMessage: false,
     };
 
-    expect(convertV2ToLatestOptionsData(legacyData)).toEqual(expected);
+    expect(convertV2ToV3OptionsData(legacyData)).toEqual(expected);
+  });
+
+  test('3버전 데이터가 올바른 경우 온전하게 최신 버전의 데이터로 변환하여 값을 반환해야 한다.', async () => {
+    const legacyData: V3.OptionsData = {
+      checkedAlgorithmIds: [1, 2, 4, 7, 14, 156],
+      dataVersion: 3,
+      hiderOptions: {
+        algorithmHiderUsage: 'click',
+        problemTagLockDuration: { hours: 0, minutes: 20 },
+        problemTagLockUsage: 'click',
+        shouldHideTier: true,
+        shouldWarnHighTier: false,
+        shouldRevealTierOnHover: false,
+        warnTier: 1,
+      },
+      isTierHidden: true,
+      quickSlots: {
+        hotkey: 'Alt',
+        selectedSlotNo: 1,
+        slots: {
+          1: { isEmpty: true },
+          2: { isEmpty: true },
+          3: { isEmpty: true },
+          4: { isEmpty: true },
+          5: { isEmpty: true },
+          6: { isEmpty: true },
+          7: { isEmpty: true },
+          8: { isEmpty: true },
+          9: { isEmpty: true },
+          0: { isEmpty: true },
+        },
+      },
+      randomDefenseHistory: [],
+      timers: [],
+      gachaOptions: { isTierHidden: false, isAudioMuted: false },
+      totamjungTheme: 'totamjung',
+      fontNo: 1,
+      shouldShowWelcomeMessage: false,
+    };
+
+    const expected: OptionsData = {
+      checkedAlgorithmIds: [1, 2, 4, 7, 14, 156],
+      dataVersion: 4,
+      hiderOptions: {
+        algorithmHiderUsage: 'click',
+        problemTagLockDuration: { hours: 0, minutes: 20 },
+        problemTagLockUsage: 'click',
+        shouldHideTier: true,
+        shouldWarnHighTier: false,
+        shouldRevealTierOnHover: false,
+        shouldHideSource: false,
+        warnTier: 1,
+      },
+      isTierHidden: true,
+      quickSlots: {
+        hotkey: 'Alt',
+        selectedSlotNo: 1,
+        slots: {
+          1: { isEmpty: true },
+          2: { isEmpty: true },
+          3: { isEmpty: true },
+          4: { isEmpty: true },
+          5: { isEmpty: true },
+          6: { isEmpty: true },
+          7: { isEmpty: true },
+          8: { isEmpty: true },
+          9: { isEmpty: true },
+          0: { isEmpty: true },
+        },
+      },
+      randomDefenseHistory: [],
+      timers: [],
+      gachaOptions: DEFAULT_GACHA_OPTIONS,
+      totamjungTheme: 'totamjung',
+      fontNo: 1,
+      shouldShowWelcomeMessage: false,
+    };
+
+    expect(convertV3ToLatestOptionsData(legacyData)).toEqual(expected);
   });
 });
 
@@ -721,7 +801,7 @@ describe('Test #2 - 손상된 데이터 변환 테스트', () => {
   });
 
   test('손상된 2버전 데이터를 3버전 데이터로 변환할 경우 복구 가능한 범위 내에서 복구한 데이터를 반환해야 한다.', async () => {
-    const legacyData = {
+    const legacyData: Record<string, unknown> = {
       checkedAlgorithmIds: ['', -2.3, -5, 'foo', 1, 2, 3, undefined, null],
       dataVersion: 2,
       hiderOptions: {
@@ -793,7 +873,7 @@ describe('Test #2 - 손상된 데이터 변환 테스트', () => {
       shouldShowWelcomeMessage: true,
     };
 
-    const expected: OptionsData = {
+    const expected: V3.OptionsData = {
       checkedAlgorithmIds: [1, 2, 3],
       quickSlots: {
         hotkey: 'F2',
@@ -863,6 +943,55 @@ describe('Test #2 - 손상된 데이터 변환 테스트', () => {
       isTierHidden: false,
     };
 
-    expect(convertV2ToLatestOptionsData(legacyData)).toEqual(expected);
+    expect(convertV2ToV3OptionsData(legacyData)).toEqual(expected);
+  });
+
+  test('손상된 3버전 데이터를 최신 버전의 데이터로 변환할 경우 복구 가능한 범위 내에서 복구한 데이터를 반환해야 한다.', async () => {
+    const legacyData: Record<string, unknown> = {
+      checkedAlgorithmIds: [1, 'invalid', null, 5],
+      dataVersion: 3,
+      hiderOptions: {
+        algorithmHiderUsage: 'click',
+        problemTagLockDuration: { hours: 0, minutes: 20 },
+        problemTagLockUsage: 'click',
+        shouldHideTier: true,
+        shouldWarnHighTier: false,
+        shouldRevealTierOnHover: 'invalid',
+        warnTier: 1,
+      },
+      isTierHidden: true,
+      quickSlots: DEFAULT_QUICK_SLOTS,
+      randomDefenseHistory: [],
+      timers: [],
+      gachaOptions: DEFAULT_GACHA_OPTIONS,
+      totamjungTheme: 'totamjung',
+      fontNo: 1,
+      shouldShowWelcomeMessage: false,
+    };
+
+    const expected: OptionsData = {
+      checkedAlgorithmIds: [1, 5],
+      dataVersion: 4,
+      hiderOptions: {
+        algorithmHiderUsage: 'click',
+        problemTagLockDuration: { hours: 0, minutes: 20 },
+        problemTagLockUsage: 'click',
+        shouldHideTier: false,
+        shouldWarnHighTier: false,
+        shouldRevealTierOnHover: false,
+        shouldHideSource: false,
+        warnTier: 1,
+      },
+      isTierHidden: true,
+      quickSlots: DEFAULT_QUICK_SLOTS,
+      randomDefenseHistory: DEFAULT_RANDOM_DEFENSE_HISTORY,
+      timers: DEFAULT_TIMERS,
+      gachaOptions: DEFAULT_GACHA_OPTIONS,
+      totamjungTheme: 'totamjung',
+      fontNo: 1,
+      shouldShowWelcomeMessage: false,
+    };
+
+    expect(convertV3ToLatestOptionsData(legacyData)).toEqual(expected);
   });
 });

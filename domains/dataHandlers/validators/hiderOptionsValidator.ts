@@ -1,47 +1,31 @@
 import { isObject, isRatedTier } from '@/types/typeGuards';
 import type { HiderOptions } from '@/types/algorithm';
-import type { V1, V2, V3 } from '@/types/legacyData';
+import type { V1, V2, V3, V4 } from '@/types/legacyData';
 import {
   isNumericString,
   isNumericStringAllowsLeadingZeroes,
 } from '@/utils/numericStringChecker';
+import { isValidCheckedAlgorithmIds } from './checkedAlgorithmIdsValidator';
+import { isTagLockTimers } from './isTimersValidator';
+import { isHoursMinutes } from '@/types/typeGuards';
 
 export const isV2HiderOptions = (data: unknown): data is V2.HiderOptions => {
-  if (
-    !(
-      isObject(data) &&
-      'problemTagLockDuration' in data &&
-      'shouldHideTier' in data &&
-      'shouldWarnHighTier' in data &&
-      'warnTier' in data &&
-      'algorithmHiderUsage' in data &&
-      'problemTagLockUsage' in data &&
-      isObject(data.problemTagLockDuration) &&
-      'hours' in data.problemTagLockDuration &&
-      'minutes' in data.problemTagLockDuration &&
-      typeof data.problemTagLockDuration.hours === 'number' &&
-      typeof data.problemTagLockDuration.minutes === 'number' &&
-      typeof data.shouldHideTier === 'boolean' &&
-      typeof data.shouldWarnHighTier === 'boolean' &&
-      isRatedTier(data.warnTier) &&
-      typeof data.algorithmHiderUsage === 'string' &&
-      ['click', 'always'].includes(data.algorithmHiderUsage) &&
-      typeof data.problemTagLockUsage === 'string' &&
-      ['click', 'auto'].includes(data.problemTagLockUsage)
-    )
-  ) {
-    return false;
-  }
-
-  const { hours, minutes } = data.problemTagLockDuration;
-
   return (
-    hours >= 0 &&
-    hours < 100 &&
-    minutes >= 0 &&
-    minutes < 60 &&
-    hours % 1 === 0 &&
-    minutes % 1 === 0
+    isObject(data) &&
+    'problemTagLockDuration' in data &&
+    'shouldHideTier' in data &&
+    'shouldWarnHighTier' in data &&
+    'warnTier' in data &&
+    'algorithmHiderUsage' in data &&
+    'problemTagLockUsage' in data &&
+    isHoursMinutes(data.problemTagLockDuration) &&
+    typeof data.shouldHideTier === 'boolean' &&
+    typeof data.shouldWarnHighTier === 'boolean' &&
+    isRatedTier(data.warnTier) &&
+    typeof data.algorithmHiderUsage === 'string' &&
+    ['click', 'always'].includes(data.algorithmHiderUsage) &&
+    typeof data.problemTagLockUsage === 'string' &&
+    ['click', 'auto'].includes(data.problemTagLockUsage)
   );
 };
 
@@ -53,11 +37,21 @@ export const isV3HiderOptions = (data: unknown): data is V3.HiderOptions => {
   );
 };
 
-export const isHiderOptions = (data: unknown): data is HiderOptions => {
+export const isV4HiderOptions = (data: unknown): data is V4.HiderOptions => {
   return (
     isV3HiderOptions(data) &&
     'shouldHideSource' in data &&
     typeof data.shouldHideSource === 'boolean'
+  );
+};
+
+export const isHiderOptions = (data: unknown): data is HiderOptions => {
+  return (
+    isV4HiderOptions(data) &&
+    'checkedAlgorithmIds' in data &&
+    'timers' in data &&
+    isValidCheckedAlgorithmIds(data.checkedAlgorithmIds) &&
+    isTagLockTimers(data.timers)
   );
 };
 

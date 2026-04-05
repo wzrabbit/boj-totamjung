@@ -1,13 +1,13 @@
 import type { Hotkey } from '@/types/randomDefense';
 import { useState, useRef, useEffect } from 'react';
-import type { SlotNo } from '@/types/randomDefense';
-import { isSlotNo } from '@/domains/dataHandlers/validators/quickSlotsValidator';
+import type { QuickSlotNo } from '@/types/randomDefense';
+import { isQuickSlotNo } from '@/domains/dataHandlers/validators/quickSlotsValidator';
 
 interface UseHotkeyLongPressParams {
   requiredLongPressTimeInMilliseconds: number;
   baseKey: Hotkey;
-  onPress: (numberKey: SlotNo) => void;
-  onLongPress: (numberKey: SlotNo) => void;
+  onPress: (numberKey: QuickSlotNo) => void;
+  onLongPress: (numberKey: QuickSlotNo) => void;
 }
 
 type PressingBaseKey = 'F2' | 'AltLeft' | 'AltRight';
@@ -82,7 +82,7 @@ const useHotKeyLongPress = (params: UseHotkeyLongPressParams) => {
 
       if (
         typeof triggeredNumberKey === 'number' &&
-        isSlotNo(triggeredNumberKey)
+        isQuickSlotNo(triggeredNumberKey)
       ) {
         isHotkeyPressingRef.current = true;
 
@@ -121,7 +121,7 @@ const useHotKeyLongPress = (params: UseHotkeyLongPressParams) => {
 
       if (
         typeof triggeredNumberKey === 'number' &&
-        isSlotNo(triggeredNumberKey) &&
+        isQuickSlotNo(triggeredNumberKey) &&
         !isHotkeyLocked
       ) {
         onPress(triggeredNumberKey);

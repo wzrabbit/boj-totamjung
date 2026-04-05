@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import type { Slots, SlotNo, Hotkey } from '@/types/randomDefense';
+import type { QuickSlots, QuickSlotNo, Hotkey } from '@/types/randomDefense';
 import {
-  fetchQuickSlots,
-  saveQuickSlots,
+  fetchQuickSlotOptions,
+  saveQuickSlotOptions,
 } from '@/domains/dataHandlers/quickSlotsDataHandler';
 
-const emptySlots: Slots = {
+const emptySlots: QuickSlots = {
   1: { isEmpty: true },
   2: { isEmpty: true },
   3: { isEmpty: true },
@@ -19,14 +19,14 @@ const emptySlots: Slots = {
 };
 
 const useRandomDefenseManageMenu = () => {
-  const [slots, setSlots] = useState<Slots>(emptySlots);
-  const [selectedSlotNo, setSelectedSlotNo] = useState<SlotNo>(1);
+  const [slots, setSlots] = useState<QuickSlots>(emptySlots);
+  const [selectedSlotNo, setSelectedSlotNo] = useState<QuickSlotNo>(1);
   const [hotkey, setHotkey] = useState<Hotkey>('Alt');
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const { slots, selectedSlotNo, hotkey } = await fetchQuickSlots();
+      const { slots, selectedSlotNo, hotkey } = await fetchQuickSlotOptions();
 
       setSlots(slots);
       setSelectedSlotNo(selectedSlotNo);
@@ -40,7 +40,7 @@ const useRandomDefenseManageMenu = () => {
       return;
     }
 
-    saveQuickSlots(selectedSlotNo, slots, hotkey);
+    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
   }, [selectedSlotNo, slots, hotkey]);
 
   const updateSlot = (title: string, query: string) => {

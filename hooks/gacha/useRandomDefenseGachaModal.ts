@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { chooseByProbability } from '@/utils/chooseByProbability';
 import { pickIntegerInRange } from '@/utils/pickIntegerInRange';
 import { cardSlideAudios, gachaAudio } from '@/assets/audio';
-import type { FilledSlot } from '@/types/randomDefense';
+import type { FilledQuickSlot } from '@/types/randomDefense';
 import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
 import { isGachaOptions } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
@@ -13,7 +13,7 @@ import { getProblemInfosInMarkdownText } from '@/domains/gacha/getProblemInfosIn
 
 interface UseRandomDefenseGachaModalParams {
   open: boolean;
-  slot: FilledSlot;
+  slot: FilledQuickSlot;
   problemCount: number;
 }
 

@@ -6,13 +6,13 @@ import {
   saveCheckedAlgorithmIds,
 } from '@/domains/dataHandlers/checkedAlgorithmsHandler';
 import {
-  fetchQuickSlots,
-  saveQuickSlots,
+  fetchQuickSlotOptions,
+  saveQuickSlotOptions,
 } from '@/domains/dataHandlers/quickSlotsDataHandler';
 import {
   addRandomDefenseInfosToHistory,
-  fetchRandomDefenseHistory,
-  saveRandomDefenseHistory,
+  fetchRandomDefenseHistoryOptions,
+  saveRandomDefenseHistoryOptions,
 } from '@/domains/dataHandlers/randomDefenseHistoryDataHandler';
 import {
   fetchTotamjungTheme,
@@ -33,7 +33,7 @@ import {
   getRemainingLockTimeByProblemId,
   addSingleTimerByProblemId,
   removeSingleTimerByProblemId,
-} from '@/domains/dataHandlers/timersDataHandler';
+} from '@/domains/dataHandlers/tagLockTimersDataHandler';
 import {
   fetchShouldShowWelcomeMessage,
   saveShouldShowWelcomeMessage,
@@ -92,31 +92,31 @@ const executeBackground = () => {
         saveCheckedAlgorithmIds(message.checkedAlgorithmIds);
       }
 
-      if (command === COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY) {
-        fetchRandomDefenseHistory().then((result) => {
+      if (command === COMMANDS.FETCH_RANDOM_DEFENSE_HISTORY_OPTIONS) {
+        fetchRandomDefenseHistoryOptions().then((result) => {
           sendResponse(result);
         });
         return true;
       }
 
-      if (command === COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY) {
+      if (command === COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY_OPTIONS) {
         if (!('randomDefenseHistory' in message) || !('isHidden' in message)) {
           return;
         }
 
         const { randomDefenseHistory, isHidden } = message;
 
-        saveRandomDefenseHistory(randomDefenseHistory, isHidden);
+        saveRandomDefenseHistoryOptions(randomDefenseHistory, isHidden);
       }
 
-      if (command === COMMANDS.FETCH_QUICK_SLOTS) {
-        fetchQuickSlots().then((result) => {
+      if (command === COMMANDS.FETCH_QUICK_SLOT_OPTIONS) {
+        fetchQuickSlotOptions().then((result) => {
           sendResponse(result);
         });
         return true;
       }
 
-      if (command === COMMANDS.SAVE_QUICK_SLOTS) {
+      if (command === COMMANDS.SAVE_QUICK_SLOT_OPTIONS) {
         if (
           !('selectedSlotNo' in message) ||
           !('slots' in message) ||
@@ -127,17 +127,17 @@ const executeBackground = () => {
 
         const { selectedSlotNo, slots, hotkey } = message;
 
-        saveQuickSlots(selectedSlotNo, slots, hotkey);
+        saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
       }
 
-      if (command === COMMANDS.FETCH_TOTAMJUNG_THEME) {
+      if (command === COMMANDS.FETCH_THEME) {
         fetchTotamjungTheme().then((result) => {
           sendResponse(result);
         });
         return true;
       }
 
-      if (command === COMMANDS.SAVE_TOTAMJUNG_THEME) {
+      if (command === COMMANDS.SAVE_THEME) {
         if (!('totamjungTheme' in message)) {
           return;
         }
@@ -176,14 +176,14 @@ const executeBackground = () => {
         saveFontNo(fontNo);
       }
 
-      if (command === COMMANDS.FETCH_TIMERS) {
+      if (command === COMMANDS.FETCH_TAG_LOCK_TIMERS) {
         fetchTimers().then((result) => {
           sendResponse(result);
         });
         return true;
       }
 
-      if (command === COMMANDS.SAVE_TIMERS) {
+      if (command === COMMANDS.SAVE_TAG_LOCK_TIMERS) {
         if (!('timers' in message)) {
           return;
         }
@@ -232,7 +232,7 @@ const executeBackground = () => {
         return true;
       }
 
-      if (command === COMMANDS.ADD_SINGLE_TIMER) {
+      if (command === COMMANDS.ADD_SINGLE_TAG_LOCK_TIMER) {
         const matchedProblemId = sender.url?.match(
           /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
         );
@@ -245,7 +245,7 @@ const executeBackground = () => {
         addSingleTimerByProblemId(problemId);
       }
 
-      if (command === COMMANDS.REMOVE_SINGLE_TIMER) {
+      if (command === COMMANDS.REMOVE_SINGLE_TAG_LOCK_TIMER) {
         const matchedProblemId = sender.url?.match(
           /(?<=^https:\/\/www\.acmicpc\.net\/problem\/)\d+/,
         );

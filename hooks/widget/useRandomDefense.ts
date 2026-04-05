@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { COMMANDS } from '@/constants/commands';
-import { DEFAULT_QUICK_SLOTS } from '@/constants/defaultValues';
-import { isQuickSlots } from '@/domains/dataHandlers/validators/quickSlotsValidator';
+import { DEFAULT_QUICK_SLOT_OPTIONS } from '@/constants/defaultValues';
+import { isQuickSlotOptions } from '@/domains/dataHandlers/validators/quickSlotsValidator';
 import { isRandomDefenseResult } from '@/domains/dataHandlers/validators/RandomDefenseResultValidator';
 import useHotKeyLongPress from '../useHotkeyLongPress';
 import type { ToastInfo } from '@/types/toast';
-import type { FilledSlot, QuickSlots, SlotNo } from '@/types/randomDefense';
+import type { FilledQuickSlot, QuickSlotOptions, QuickSlotNo } from '@/types/randomDefense';
 import type { Browser } from '#imports';
 
 interface UseRandomDefenseParams {
   onToast: (toastInfo: ToastInfo, duration: number) => void;
-  onGachaStart: (slot: FilledSlot) => void;
+  onGachaStart: (slot: FilledQuickSlot) => void;
 }
 
 const useRandomDefense = (params: UseRandomDefenseParams) => {
@@ -18,56 +18,56 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   const [isRandomDefenseAvailable, setIsRandomDefenseAvailable] =
     useState(false);
   const isRandomDefenseAvailableRef = useRef(isRandomDefenseAvailable);
-  const quickSlotsRef = useRef<QuickSlots>(DEFAULT_QUICK_SLOTS);
+  const quickSlotOptionsRef = useRef<QuickSlotOptions>(DEFAULT_QUICK_SLOT_OPTIONS);
   const { unlockHotkey } = useHotKeyLongPress({
-    baseKey: quickSlotsRef.current.hotkey,
+    baseKey: quickSlotOptionsRef.current.hotkey,
     requiredLongPressTimeInMilliseconds: 1000,
     onPress: (numberKey) => performRandomDefense(numberKey, 'press'),
     onLongPress: (numberKey) => performRandomDefense(numberKey, 'keyLongPress'),
   });
 
   useEffect(() => {
-    const fetchQuickSlots = async () => {
+    const fetchQuickSlotOptions = async () => {
       const response = await browser.runtime.sendMessage({
-        command: COMMANDS.FETCH_QUICK_SLOTS,
+        command: COMMANDS.FETCH_QUICK_SLOT_OPTIONS,
       });
 
-      if (!isQuickSlots(response)) {
+      if (!isQuickSlotOptions(response)) {
         return;
       }
 
-      quickSlotsRef.current = response;
+      quickSlotOptionsRef.current = response;
       isRandomDefenseAvailableRef.current = true;
       setIsRandomDefenseAvailable(true);
     };
 
-    fetchQuickSlots();
-    browser.storage.onChanged.addListener(updateQuickSlotsIfLocalChanged);
+    fetchQuickSlotOptions();
+    browser.storage.onChanged.addListener(updateQuickSlotOptionsIfLocalChanged);
 
     return () => {
-      browser.storage.onChanged.removeListener(updateQuickSlotsIfLocalChanged);
+      browser.storage.onChanged.removeListener(updateQuickSlotOptionsIfLocalChanged);
     };
   }, []);
 
-  const updateQuickSlotsIfLocalChanged = (
+  const updateQuickSlotOptionsIfLocalChanged = (
     changes: { [key: string]: Browser.storage.StorageChange },
     areaName: string,
   ) => {
-    if (areaName !== 'local' || !('quickSlots' in changes)) {
+    if (areaName !== 'local' || !('quickSlotOptions' in changes)) {
       return;
     }
 
-    const { newValue } = changes.quickSlots;
+    const { newValue } = changes.quickSlotOptions;
 
-    if (!isQuickSlots(newValue)) {
+    if (!isQuickSlotOptions(newValue)) {
       return;
     }
 
-    quickSlotsRef.current = newValue;
+    quickSlotOptionsRef.current = newValue;
   };
 
   const performRandomDefense = async (
-    selectedSlotNo: SlotNo,
+    selectedSlotNo: QuickSlotNo,
     method: 'press' | 'keyLongPress' | 'click' | 'mouseLongPress',
   ) => {
     if (!isRandomDefenseAvailableRef.current) {
@@ -77,7 +77,7 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     isRandomDefenseAvailableRef.current = false;
     setIsRandomDefenseAvailable(false);
 
-    const { slots } = quickSlotsRef.current;
+    const { slots } = quickSlotOptionsRef.current;
     const selectedSlot = slots[selectedSlotNo];
 
     if (selectedSlot.isEmpty) {
@@ -158,12 +158,12 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   };
 
   const performRandomDefenseByClick = () => {
-    performRandomDefense(quickSlotsRef.current.selectedSlotNo, 'click');
+    performRandomDefense(quickSlotOptionsRef.current.selectedSlotNo, 'click');
   };
 
   const performRandomDefenseByMouseLongPress = () => {
     performRandomDefense(
-      quickSlotsRef.current.selectedSlotNo,
+      quickSlotOptionsRef.current.selectedSlotNo,
       'mouseLongPress',
     );
   };

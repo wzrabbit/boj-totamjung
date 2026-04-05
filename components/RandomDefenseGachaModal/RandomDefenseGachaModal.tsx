@@ -15,7 +15,7 @@ import {
 } from '@/assets/svg';
 import { hiddenTierBadgeIcon, tier1BadgeIcon } from '@/assets/png';
 import { theme } from '@/styles/theme';
-import type { FilledSlot } from '@/types/randomDefense';
+import type { FilledQuickSlot } from '@/types/randomDefense';
 import CardBox from '@/components/CardBox';
 import ProblemCardGrid from '@/components/ProblemCardGrid';
 import useRandomDefenseGachaModal from '@/hooks/gacha/useRandomDefenseGachaModal';
@@ -25,7 +25,7 @@ import type { MainTheme } from '@/types/mainTheme';
 interface RandomDefenseGachaModalProps {
   open: boolean;
   theme?: MainTheme;
-  slot: FilledSlot;
+  slot: FilledQuickSlot;
   problemCount: number;
   portalTarget?: HTMLElement | null;
   onClose: () => void;

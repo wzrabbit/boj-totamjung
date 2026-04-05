@@ -10,13 +10,13 @@ import SearchOperatorSelect from './SearchOperatorSelect';
 import AlgorithmSearchInput from './AlgorithmSearchInput';
 import useRandomDefenseCreateMenu from '@/hooks/randomDefense/useRandomDefenseCreateMenu';
 import * as S from './RandomDefenseCreateMenu.styled';
-import type { SlotNo } from '@/types/randomDefense';
+import type { QuickSlotNo } from '@/types/randomDefense';
 import Select from '@/components/common/Select';
 import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
 import QueryInput from '../QueryInput/QueryInput';
 
 interface RandomDefenseCreateMenuProps {
-  selectedSlotNo: SlotNo;
+  selectedSlotNo: QuickSlotNo;
   isLoaded: boolean;
   onSubmit: (title: string, query: string) => void;
 }

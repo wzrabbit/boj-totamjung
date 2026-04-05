@@ -57,21 +57,20 @@
 <script>
   const STORAGE_KEY = {
     DATA_VERSION: 'dataVersion',
-    CHECKED_ALGORITHM_IDS: 'checkedAlgorithmIds',
-    QUICK_SLOTS: 'quickSlots',
-    TOTAMJUNG_THEME: 'totamjungTheme',
+    QUICK_SLOT_OPTIONS: 'quickSlotOptions',
+    THEME: 'theme',
     HIDER_OPTIONS: 'hiderOptions',
-    RANDOM_DEFENSE_HISTORY: 'randomDefenseHistory',
-    IS_TIER_HIDDEN: 'isTierHidden',
+    RANDOM_DEFENSE_HISTORY_OPTIONS: 'randomDefenseHistoryOptions',
+    WIDGET_TIMER_OPTIONS: 'widgetTimerOptions',
     FONT_NO: 'fontNo',
-    TIMERS: 'timers',
+    GACHA_OPTIONS: 'gachaOptions',
     SHOULD_SHOW_WELCOME_MESSAGE: 'shouldShowWelcomeMessage',
   };
 
   const COMMANDS = {
     FETCH_CHECKED_ALGORITHM_IDS: 'fetchCheckedAlgorithmIds',
-    FETCH_QUICK_SLOTS: 'fetchQuickSlots',
-    FETCH_TOTAMJUNG_THEME: 'fetchTotamjungTheme',
+    FETCH_QUICK_SLOT_OPTIONS: 'fetchQuickSlotOptions',
+    FETCH_THEME: 'fetchTheme',
     FETCH_HIDER_OPTIONS: 'fetchHiderOptions',
     FETCH_OPTIONS_DATA: 'fetchOptionsData',
     FETCH_GACHA_OPTIONS: 'fetchGachaOptions',
@@ -84,62 +83,61 @@
     SAVE_SHOULD_SHOW_WELCOME_MESSAGE: 'saveShouldShowWelcomeMessage',
   };
 
-  const checkedAlgorithmIds = [1, 2, 4, 8];
+  const randomDefenseHistoryOptions = {
+    history: [
+      {
+        problemId: 27959,
+        title: '초코바',
+        tier: 1,
+        createdAt: '2024-03-04T01:00:00.000Z',
+      },
+      {
+        problemId: 27964,
+        title: '콰트로치즈피자',
+        tier: 6,
+        createdAt: '2024-03-02T06:04:10.000Z',
+      },
+      {
+        problemId: 27943,
+        title: '가지 사진 찾기',
+        tier: 11,
+        createdAt: '2024-02-29T22:12:33.040Z',
+      },
+      {
+        problemId: 27470,
+        title: '멋진 부분집합',
+        tier: 16,
+        createdAt: '2024-02-29T22:10:33.127Z',
+      },
+      {
+        problemId: 30243,
+        title: '🧩 N-Queen (Hard)',
+        tier: 21,
+        createdAt: '2023-01-11T10:20:44.790Z',
+      },
+      {
+        problemId: 31442,
+        title: '좋은 수열',
+        tier: 26,
+        createdAt: '2023-01-11T10:20:44.789Z',
+      },
+      {
+        problemId: 1223,
+        title: '마법의 돌',
+        tier: 0,
+        createdAt: '2022-03-17T18:00:40.000Z',
+      },
+      {
+        problemId: 27903,
+        title: '인생',
+        tier: 31,
+        createdAt: '2022-03-15T00:00:00.000Z',
+      },
+    ],
+    isTierHidden: false,
+  };
 
-  const randomDefenseHistory = [
-    {
-      problemId: 27959,
-      title: '초코바',
-      tier: 1,
-      createdAt: '2024-03-04T01:00:00.000Z',
-    },
-    {
-      problemId: 27964,
-      title: '콰트로치즈피자',
-      tier: 6,
-      createdAt: '2024-03-02T06:04:10.000Z',
-    },
-    {
-      problemId: 27943,
-      title: '가지 사진 찾기',
-      tier: 11,
-      createdAt: '2024-02-29T22:12:33.040Z',
-    },
-    {
-      problemId: 27470,
-      title: '멋진 부분집합',
-      tier: 16,
-      createdAt: '2024-02-29T22:10:33.127Z',
-    },
-    {
-      problemId: 30243,
-      title: '🧩 N-Queen (Hard)',
-      tier: 21,
-      createdAt: '2023-01-11T10:20:44.790Z',
-    },
-    {
-      problemId: 31442,
-      title: '좋은 수열',
-      tier: 26,
-      createdAt: '2023-01-11T10:20:44.789Z',
-    },
-    {
-      problemId: 1223,
-      title: '마법의 돌',
-      tier: 0,
-      createdAt: '2022-03-17T18:00:40.000Z',
-    },
-    {
-      problemId: 27903,
-      title: '인생',
-      tier: 31,
-      createdAt: '2022-03-15T00:00:00.000Z',
-    },
-  ];
-
-  const isTierHidden = false;
-
-  const quickSlots = {
+  const quickSlotOptions = {
     selectedSlotNo: 1,
     hotkey: 'Alt',
     slots: {
@@ -190,6 +188,9 @@
     algorithmHiderUsage: 'always',
     problemTagLockUsage: 'click',
     shouldRevealTierOnHover: true,
+    shouldHideSource: false,
+    checkedAlgorithmIds: [1, 2, 4, 8],
+    timers: [],
   };
 
   const gachaOptions = {
@@ -197,7 +198,23 @@
     isAudioMuted: true,
   };
 
-  const totamjungTheme = 'totamjung';
+  const widgetTimerOptions = {
+    mode: 'none',
+    durationInfo: {
+      type: 'fixed',
+      fixed: { hours: 1, minutes: 0 },
+      byTier: Array.from({ length: 31 }, () => ({ hours: 0, minutes: 0 })),
+    },
+    basicTimer: null,
+    problemTimers: [],
+    isTierHidden: false,
+    shouldDeleteExpiredTimers: false,
+    warnThreshold: { hours: 0, minutes: 15 },
+    dangerThreshold: { hours: 0, minutes: 5 },
+    isCollapsed: false,
+  };
+
+  const theme = 'totamjung';
 
   const fontNo = 22;
 
@@ -216,13 +233,13 @@
 
         switch (command) {
           case COMMANDS.FETCH_CHECKED_ALGORITHM_IDS:
-            return checkedAlgorithmIds;
+            return hiderOptions.checkedAlgorithmIds;
           case COMMANDS.FETCH_HIDER_OPTIONS:
             return hiderOptions;
           case COMMANDS.SAVE_AND_GET_REMAINING_LOCK_TIME:
             return 0;
-          case COMMANDS.FETCH_QUICK_SLOTS:
-            return quickSlots;
+          case COMMANDS.FETCH_QUICK_SLOT_OPTIONS:
+            return quickSlotOptions;
           case COMMANDS.FETCH_GACHA_OPTIONS:
             return gachaOptions;
           case COMMANDS.GET_RANDOM_DEFENSE_RESULT:
@@ -275,36 +292,36 @@
 
           commandList.forEach((currentCommand) => {
             switch (currentCommand) {
-              case STORAGE_KEY.CHECKED_ALGORITHM_IDS:
-                Object.assign(response, { checkedAlgorithmIds });
-                break;
-
-              case STORAGE_KEY.RANDOM_DEFENSE_HISTORY:
-                Object.assign(response, { randomDefenseHistory });
-                break;
-
-              case STORAGE_KEY.IS_TIER_HIDDEN:
-                Object.assign(response, { isTierHidden });
-                break;
-
               case STORAGE_KEY.HIDER_OPTIONS:
-                Object.assign(response, { hiderOptions });
+                Object.assign(response, { [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions });
                 break;
 
-              case STORAGE_KEY.QUICK_SLOTS:
-                Object.assign(response, quickSlots);
+              case STORAGE_KEY.QUICK_SLOT_OPTIONS:
+                Object.assign(response, { [STORAGE_KEY.QUICK_SLOT_OPTIONS]: quickSlotOptions });
                 break;
 
-              case STORAGE_KEY.TOTAMJUNG_THEME:
-                Object.assign(response, { totamjungTheme });
+              case STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS:
+                Object.assign(response, { [STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS]: randomDefenseHistoryOptions });
+                break;
+
+              case STORAGE_KEY.THEME:
+                Object.assign(response, { [STORAGE_KEY.THEME]: theme });
                 break;
 
               case STORAGE_KEY.GACHA_OPTIONS:
-                Object.assign(response, { gachaOptions });
+                Object.assign(response, { [STORAGE_KEY.GACHA_OPTIONS]: gachaOptions });
                 break;
 
               case STORAGE_KEY.FONT_NO:
-                Object.assign(response, { fontNo });
+                Object.assign(response, { [STORAGE_KEY.FONT_NO]: fontNo });
+                break;
+
+              case STORAGE_KEY.WIDGET_TIMER_OPTIONS:
+                Object.assign(response, { [STORAGE_KEY.WIDGET_TIMER_OPTIONS]: widgetTimerOptions });
+                break;
+
+              case STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE:
+                Object.assign(response, { [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: true });
                 break;
 
               default:

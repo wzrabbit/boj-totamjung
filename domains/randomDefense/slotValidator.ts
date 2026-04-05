@@ -2,9 +2,9 @@ import {
   MAX_CUSTOM_QUERY_LENGTH,
   TITLE_MAX_LENGTH,
 } from '@/constants/randomDefense';
-import type { SlotVerdict } from '@/types/randomDefense';
+import type { QuickSlotVerdict } from '@/types/randomDefense';
 
-export const validateSlot = (title: string, query: string): SlotVerdict => {
+export const validateSlot = (title: string, query: string): QuickSlotVerdict => {
   if (title.length > TITLE_MAX_LENGTH) {
     return {
       isValid: false,

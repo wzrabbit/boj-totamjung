@@ -1,29 +1,29 @@
 import { STORAGE_KEY } from '@/constants/commands';
-import { sanitizeQuickSlots } from './sanitizers/quickSlotsSanitizer';
-import { isRepairableQuickSlots } from './validators/quickSlotsValidator';
+import { sanitizeQuickSlotOptions } from './sanitizers/quickSlotsSanitizer';
+import { isRepairableQuickSlotOptions } from './validators/quickSlotsValidator';
 
-export const fetchQuickSlots = async () => {
-  const data = await browser.storage.local.get(STORAGE_KEY.QUICK_SLOTS);
-  const quickSlots = data[STORAGE_KEY.QUICK_SLOTS];
+export const fetchQuickSlotOptions = async () => {
+  const data = await browser.storage.local.get(STORAGE_KEY.QUICK_SLOT_OPTIONS);
+  const quickSlotOptions = data[STORAGE_KEY.QUICK_SLOT_OPTIONS];
 
-  const sanitizedQuickSlots = sanitizeQuickSlots(quickSlots);
-  return sanitizedQuickSlots;
+  const sanitizedQuickSlotOptions = sanitizeQuickSlotOptions(quickSlotOptions);
+  return sanitizedQuickSlotOptions;
 };
 
-export const saveQuickSlots = (
+export const saveQuickSlotOptions = (
   selectedSlotNo: unknown,
   slots: unknown,
   hotkey: unknown,
 ) => {
-  const quickSlotsData = { selectedSlotNo, slots, hotkey };
+  const quickSlotOptionsData = { selectedSlotNo, slots, hotkey };
 
-  if (!isRepairableQuickSlots(quickSlotsData)) {
+  if (!isRepairableQuickSlotOptions(quickSlotOptionsData)) {
     return;
   }
 
-  const sanitizedQuickSlots = sanitizeQuickSlots(quickSlotsData);
+  const sanitizedQuickSlotOptions = sanitizeQuickSlotOptions(quickSlotOptionsData);
 
   browser.storage.local.set({
-    [STORAGE_KEY.QUICK_SLOTS]: sanitizedQuickSlots,
+    [STORAGE_KEY.QUICK_SLOT_OPTIONS]: sanitizedQuickSlotOptions,
   });
 };

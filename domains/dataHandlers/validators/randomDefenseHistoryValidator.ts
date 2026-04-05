@@ -1,7 +1,7 @@
 import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type {
   RandomDefenseHistoryInfo,
-  RandomDefenseHistoryResponse,
+  RandomDefenseHistoryOptions,
 } from '@/types/randomDefense';
 import type { V1 } from '@/types/legacyData';
 import { isIsoString, isObject } from '@/types/typeGuards';
@@ -49,14 +49,14 @@ export const isRandomDefenseHistoryInfos = (
   );
 };
 
-export const isRandomDefenseHistoryResponse = (
+export const isRandomDefenseHistoryOptions = (
   data: unknown,
-): data is RandomDefenseHistoryResponse => {
+): data is RandomDefenseHistoryOptions => {
   return (
     isObject(data) &&
-    'randomDefenseHistory' in data &&
-    'isHidden' in data &&
-    isRandomDefenseHistoryInfos(data.randomDefenseHistory) &&
-    typeof data.isHidden === 'boolean'
+    'history' in data &&
+    'isTierHidden' in data &&
+    isRandomDefenseHistoryInfos(data.history) &&
+    typeof data.isTierHidden === 'boolean'
   );
 };

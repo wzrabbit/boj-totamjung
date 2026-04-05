@@ -1,19 +1,18 @@
 import {
   convertV1ToV2OptionsData,
   convertV2ToV3OptionsData,
-  convertV3ToLatestOptionsData,
+  convertV3ToV4OptionsData,
 } from './converters/legacyToLatestOptionsDataConverter';
 import {
   DEFAULT_CHECKED_ALGORITHM_IDS,
   DEFAULT_FONT_NO,
   DEFAULT_GACHA_OPTIONS,
   DEFAULT_IS_TIER_HIDDEN,
-  DEFAULT_QUICK_SLOTS,
+  DEFAULT_QUICK_SLOT_OPTIONS,
   DEFAULT_RANDOM_DEFENSE_HISTORY,
   DEFAULT_TIMERS,
 } from '@/constants/defaultValues';
-import { V2, V3 } from '@/types/legacyData';
-import { OptionsData } from '@/types/options';
+import { V2, V3, V4 } from '@/types/legacyData';
 
 describe('Test #1 - 데이터 변환 테스트', () => {
   test('1버전 데이터가 올바를 경우 온전하게 2버전 데이터로 변환하여 값을 반환해야 한다.', async () => {
@@ -520,7 +519,7 @@ describe('Test #1 - 데이터 변환 테스트', () => {
       shouldShowWelcomeMessage: false,
     };
 
-    const expected: OptionsData = {
+    const expected: V4.OptionsData = {
       checkedAlgorithmIds: [1, 2, 4, 7, 14, 156],
       dataVersion: 4,
       hiderOptions: {
@@ -552,13 +551,13 @@ describe('Test #1 - 데이터 변환 테스트', () => {
       },
       randomDefenseHistory: [],
       timers: [],
-      gachaOptions: DEFAULT_GACHA_OPTIONS,
+      gachaOptions: { isTierHidden: false, isAudioMuted: false },
       totamjungTheme: 'totamjung',
       fontNo: 1,
       shouldShowWelcomeMessage: false,
     };
 
-    expect(convertV3ToLatestOptionsData(legacyData)).toEqual(expected);
+    expect(convertV3ToV4OptionsData(legacyData)).toEqual(expected);
   });
 });
 
@@ -787,7 +786,7 @@ describe('Test #2 - 손상된 데이터 변환 테스트', () => {
         warnTier: 1,
       },
       isTierHidden: DEFAULT_IS_TIER_HIDDEN,
-      quickSlots: DEFAULT_QUICK_SLOTS,
+      quickSlots: DEFAULT_QUICK_SLOT_OPTIONS,
       randomDefenseHistory: DEFAULT_RANDOM_DEFENSE_HISTORY,
       timers: DEFAULT_TIMERS,
       totamjungTheme: 'totamjung',
@@ -960,7 +959,7 @@ describe('Test #2 - 손상된 데이터 변환 테스트', () => {
         warnTier: 1,
       },
       isTierHidden: true,
-      quickSlots: DEFAULT_QUICK_SLOTS,
+      quickSlots: DEFAULT_QUICK_SLOT_OPTIONS,
       randomDefenseHistory: [],
       timers: [],
       gachaOptions: DEFAULT_GACHA_OPTIONS,
@@ -969,7 +968,7 @@ describe('Test #2 - 손상된 데이터 변환 테스트', () => {
       shouldShowWelcomeMessage: false,
     };
 
-    const expected: OptionsData = {
+    const expected: V4.OptionsData = {
       checkedAlgorithmIds: [1, 5],
       dataVersion: 4,
       hiderOptions: {
@@ -983,7 +982,7 @@ describe('Test #2 - 손상된 데이터 변환 테스트', () => {
         warnTier: 1,
       },
       isTierHidden: true,
-      quickSlots: DEFAULT_QUICK_SLOTS,
+      quickSlots: DEFAULT_QUICK_SLOT_OPTIONS,
       randomDefenseHistory: DEFAULT_RANDOM_DEFENSE_HISTORY,
       timers: DEFAULT_TIMERS,
       gachaOptions: DEFAULT_GACHA_OPTIONS,
@@ -992,6 +991,6 @@ describe('Test #2 - 손상된 데이터 변환 테스트', () => {
       shouldShowWelcomeMessage: false,
     };
 
-    expect(convertV3ToLatestOptionsData(legacyData)).toEqual(expected);
+    expect(convertV3ToV4OptionsData(legacyData)).toEqual(expected);
   });
 });

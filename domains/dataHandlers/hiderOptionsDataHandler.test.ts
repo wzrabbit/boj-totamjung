@@ -18,6 +18,8 @@ describe('Test #1 - 가리개 관련 설정 불러오기', () => {
         warnTier: 30,
         algorithmHiderUsage: 'always',
         problemTagLockUsage: 'auto',
+        checkedAlgorithmIds: [1, 2, 3],
+        timers: [],
       },
       {
         problemTagLockDuration: {
@@ -31,6 +33,8 @@ describe('Test #1 - 가리개 관련 설정 불러오기', () => {
         warnTier: 12,
         algorithmHiderUsage: 'click',
         problemTagLockUsage: 'auto',
+        checkedAlgorithmIds: [],
+        timers: [{ problemId: 1000, expiresAt: '2025-01-01T00:00:00.000Z' }],
       },
     ];
 
@@ -118,6 +122,8 @@ describe('Test #3 - 가리개 관련 설정 저장하기', () => {
       warnTier: 29,
       algorithmHiderUsage: 'always',
       problemTagLockUsage: 'auto',
+      checkedAlgorithmIds: [5, 10],
+      timers: [],
     };
 
     jest

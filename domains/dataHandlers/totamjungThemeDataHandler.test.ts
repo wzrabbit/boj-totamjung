@@ -11,7 +11,7 @@ describe('Test #1 - 테마 불러오기', () => {
     async (totamjungTheme) => {
       jest
         .spyOn(browser.storage.local, 'get')
-        .mockImplementation(() => Promise.resolve({ totamjungTheme }));
+        .mockImplementation(() => Promise.resolve({ theme: totamjungTheme }));
 
       expect(await fetchTotamjungTheme()).toEqual(totamjungTheme);
     },
@@ -26,7 +26,7 @@ describe('Test #2 - 유효하지 않은 테마 값을 불러왔을 때 대응하
     async (totamjungTheme) => {
       jest
         .spyOn(browser.storage.local, 'get')
-        .mockImplementation(() => Promise.resolve({ totamjungTheme }));
+        .mockImplementation(() => Promise.resolve({ theme: totamjungTheme }));
 
       expect(await fetchTotamjungTheme()).toEqual('none');
     },
@@ -46,7 +46,7 @@ describe('Test #3 - 테마 저장하기', () => {
       saveTotamjungTheme(totamjungTheme);
 
       expect(browser.storage.local.set).toHaveBeenCalledWith({
-        totamjungTheme,
+        theme: totamjungTheme,
       });
     },
   );

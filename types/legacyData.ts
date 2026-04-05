@@ -1,8 +1,12 @@
 import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
-import type { SlotNo, Slots } from '@/types/randomDefense';
-import type { HiderOptions as LatestHiderOptions } from './algorithm';
-import type { OptionsData as LatestOptionsData } from './options';
-import { STORAGE_KEY } from '@/constants/commands';
+import type { QuickSlotNo, QuickSlots } from '@/types/randomDefense';
+import type { IsoString } from '@/types/utils';
+import type { RatedTier } from '@/types/tierHider';
+import type { FontNo } from '@/types/font';
+import type { GachaOptions } from '@/types/gacha';
+import type { TotamjungTheme } from '@/types/mainTheme';
+import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
+import type { HoursMinutes } from '@/types/utils';
 
 /**
  * v1.2 이전 버전에서의 데이터 타입입니다.
@@ -34,7 +38,7 @@ export namespace V1 {
     date: string;
   }
 
-  export interface RepairableQuickSlots {
+  export interface RepairableLegacyQuickSlotOptions {
     1: unknown;
     2: unknown;
     3: unknown;
@@ -48,9 +52,9 @@ export namespace V1 {
     selectedNo?: unknown;
   }
 
-  export type QuickSlots = {
-    selectedNo: SlotNo;
-  } & Slots;
+  export type QuickSlotOptions = {
+    selectedNo: QuickSlotNo;
+  } & QuickSlots;
 }
 
 /**
@@ -60,20 +64,27 @@ export namespace V1 {
 export namespace V2 {
   export type DataVersion = 2 | 'v1.2';
 
-  export type OptionsData = Omit<
-    LatestOptionsData,
-    | typeof STORAGE_KEY.GACHA_OPTIONS
-    | typeof STORAGE_KEY.HIDER_OPTIONS
-    | typeof STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE
-    | typeof STORAGE_KEY.DATA_VERSION
-  > & { hiderOptions: V2.HiderOptions } & {
-    shouldShowWelcomeMessage?: boolean;
-  } & { dataVersion: V2.DataVersion };
+  export interface HiderOptions {
+    problemTagLockDuration: HoursMinutes;
+    shouldHideTier: boolean;
+    shouldWarnHighTier: boolean;
+    warnTier: RatedTier;
+    algorithmHiderUsage: 'click' | 'always';
+    problemTagLockUsage: 'click' | 'auto';
+  }
 
-  export type HiderOptions = Omit<
-    LatestHiderOptions,
-    'shouldRevealTierOnHover' | 'shouldHideSource'
-  >;
+  export type OptionsData = {
+    dataVersion: V2.DataVersion;
+    checkedAlgorithmIds: number[];
+    quickSlots: V4.QuickSlotOptions;
+    totamjungTheme: string;
+    hiderOptions: V2.HiderOptions;
+    randomDefenseHistory: RandomDefenseHistoryInfo[];
+    isTierHidden: boolean;
+    fontNo: FontNo;
+    timers: V4.TagLockTimer[];
+    shouldShowWelcomeMessage?: boolean;
+  };
 }
 
 /**
@@ -83,10 +94,71 @@ export namespace V2 {
 export namespace V3 {
   export type DataVersion = 3;
 
-  export type OptionsData = Omit<
-    LatestOptionsData,
-    typeof STORAGE_KEY.HIDER_OPTIONS | typeof STORAGE_KEY.DATA_VERSION
-  > & { hiderOptions: V3.HiderOptions } & { dataVersion: V3.DataVersion };
+  export interface HiderOptions {
+    problemTagLockDuration: HoursMinutes;
+    shouldHideTier: boolean;
+    shouldWarnHighTier: boolean;
+    shouldRevealTierOnHover: boolean;
+    warnTier: RatedTier;
+    algorithmHiderUsage: 'click' | 'always';
+    problemTagLockUsage: 'click' | 'auto';
+  }
 
-  export type HiderOptions = Omit<LatestHiderOptions, 'shouldHideSource'>;
+  export type OptionsData = {
+    dataVersion: V3.DataVersion;
+    checkedAlgorithmIds: number[];
+    quickSlots: V4.QuickSlotOptions;
+    totamjungTheme: string;
+    hiderOptions: V3.HiderOptions;
+    randomDefenseHistory: RandomDefenseHistoryInfo[];
+    isTierHidden: boolean;
+    fontNo: FontNo;
+    timers: V4.TagLockTimer[];
+    gachaOptions: GachaOptions;
+    shouldShowWelcomeMessage: boolean;
+  };
+}
+
+/**
+ * v1.3.4 버전에서의 데이터 타입입니다.
+ * 데이터 버전은 4입니다.
+ */
+export namespace V4 {
+  export type DataVersion = 4;
+
+  export interface HiderOptions {
+    problemTagLockDuration: HoursMinutes;
+    shouldHideTier: boolean;
+    shouldWarnHighTier: boolean;
+    shouldRevealTierOnHover: boolean;
+    shouldHideSource: boolean;
+    warnTier: RatedTier;
+    algorithmHiderUsage: 'click' | 'always';
+    problemTagLockUsage: 'click' | 'auto';
+  }
+
+  export interface TagLockTimer {
+    problemId: number;
+    expiresAt: IsoString;
+  }
+
+  export interface QuickSlotOptions {
+    hotkey: 'Alt' | 'F2' | null;
+    selectedSlotNo: QuickSlotNo;
+    slots: QuickSlots;
+  }
+
+  export type OptionsData = {
+    dataVersion: V4.DataVersion;
+    checkedAlgorithmIds: number[];
+    quickSlots: V4.QuickSlotOptions;
+    totamjungTheme: TotamjungTheme;
+    hiderOptions: V4.HiderOptions;
+    randomDefenseHistory: RandomDefenseHistoryInfo[];
+    isTierHidden: boolean;
+    fontNo: FontNo;
+    timers: V4.TagLockTimer[];
+    gachaOptions: GachaOptions;
+    shouldShowWelcomeMessage: boolean;
+  };
 }

@@ -1,4 +1,4 @@
-import type { IsoString } from '@/types/utils';
+import type { IsoString, HoursMinutes } from '@/types/utils';
 import type { Rank, Tier, TierWithoutNotRatable } from '@/types/randomDefense';
 import { RatedTier } from '@/types/tierHider';
 
@@ -39,6 +39,22 @@ export const isTierWithoutNotRatable = (
 
 export const isRatedTier = (data: unknown): data is RatedTier => {
   return isTier(data) && data !== 0 && data !== 31;
+};
+
+export const isHoursMinutes = (data: unknown): data is HoursMinutes => {
+  return (
+    isObject(data) &&
+    'hours' in data &&
+    'minutes' in data &&
+    typeof data.hours === 'number' &&
+    typeof data.minutes === 'number' &&
+    data.hours >= 0 &&
+    data.hours < 100 &&
+    data.minutes >= 0 &&
+    data.minutes < 60 &&
+    data.hours % 1 === 0 &&
+    data.minutes % 1 === 0
+  );
 };
 
 export const isRank = (data: unknown): data is Rank => {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import QuickSlotsMenu from './QuickSlotsMenu';
-import type { QuickSlots } from '@/types/randomDefense';
+import type { QuickSlotOptions } from '@/types/randomDefense';
 import { fn } from '@storybook/test';
 
 /**
@@ -31,7 +31,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const quickSlots: QuickSlots = {
+const quickSlots: QuickSlotOptions = {
   selectedSlotNo: 2,
   hotkey: 'Alt',
   slots: {

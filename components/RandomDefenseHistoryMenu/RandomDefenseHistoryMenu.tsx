@@ -47,12 +47,12 @@ const getIndicatorMessageInfo = (itemsCount: number) => {
 const RandomDefenseHistoryMenu = () => {
   const {
     items,
-    isHidden,
+    isTierHidden,
     isLoaded,
     isEmpty,
     deleteHistoryById,
     clearHistory,
-    updateIsHidden,
+    updateIsTierHidden,
   } = useRandomDefenseHistoryMenu();
   const { activeModalName, openModal, closeModal } =
     useModalState<'confirmClearHistory'>();
@@ -71,16 +71,16 @@ const RandomDefenseHistoryMenu = () => {
               </Text>
               <Switch
                 size="large"
-                isChecked={isHidden}
+                isChecked={isTierHidden}
                 ariaLabel="티어 숨기기"
-                onChange={updateIsHidden}
+                onChange={updateIsTierHidden}
               />
             </S.TierSwitchPanel>
             <S.HistoryListContainer>
               {items.length > 0 ? (
                 <RandomDefenseHistoryList
                   items={items}
-                  isHidden={isHidden}
+                  isHidden={isTierHidden}
                   onDelete={deleteHistoryById}
                 />
               ) : (

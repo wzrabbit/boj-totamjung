@@ -1,15 +1,15 @@
 import { isObject, isIsoString } from '@/types/typeGuards';
-import type { Timer } from '@/types/algorithm';
+import type { TagLockTimer } from '@/types/algorithm';
 
-export const isTimers = (data: unknown): data is Timer[] => {
+export const isTagLockTimers = (data: unknown): data is TagLockTimer[] => {
   if (!Array.isArray(data)) {
     return false;
   }
 
-  return Array.isArray(data) && data.every((item) => isTimer(item));
+  return Array.isArray(data) && data.every((item) => isTagLockTimer(item));
 };
 
-export const isTimer = (data: unknown): data is Timer => {
+export const isTagLockTimer = (data: unknown): data is TagLockTimer => {
   return (
     isObject(data) &&
     'problemId' in data &&

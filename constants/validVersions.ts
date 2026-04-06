@@ -1,1 +1,1 @@
-export const VALID_VERSIONS = ['v1.2', 2, 3, 4];
+export const VALID_VERSIONS = ['v1.2', 2, 3, 4, 5];

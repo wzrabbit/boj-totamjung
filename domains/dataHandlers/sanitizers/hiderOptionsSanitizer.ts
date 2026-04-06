@@ -2,11 +2,13 @@ import {
   DEFAULT_HIDER_OPTIONS,
   DEFAULT_V2_HIDER_OPTIONS,
   DEFAULT_V3_HIDER_OPTIONS,
+  DEFAULT_V4_HIDER_OPTIONS,
 } from '@/constants/defaultValues';
 import {
   isHiderOptions,
   isV2HiderOptions,
   isV3HiderOptions,
+  isV4HiderOptions,
 } from '../validators/hiderOptionsValidator';
 
 export const sanitizeV2HiderOptions = (legacyHiderOptions: unknown) => {
@@ -19,6 +21,12 @@ export const sanitizeV3HiderOptions = (legacyHiderOptions: unknown) => {
   return isV3HiderOptions(legacyHiderOptions)
     ? legacyHiderOptions
     : DEFAULT_V3_HIDER_OPTIONS;
+};
+
+export const sanitizeV4HiderOptions = (legacyHiderOptions: unknown) => {
+  return isV4HiderOptions(legacyHiderOptions)
+    ? legacyHiderOptions
+    : DEFAULT_V4_HIDER_OPTIONS;
 };
 
 export const sanitizeHiderOptions = (hiderOptions: unknown) => {

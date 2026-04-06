@@ -1,13 +1,13 @@
-import type { SlotNo } from '@/types/randomDefense';
+import type { QuickSlotNo } from '@/types/randomDefense';
 import * as S from './SlotPagination.styled';
 
 interface SlotPaginationProps {
-  selectedSlotNo: SlotNo;
-  occupiedSlotNos: SlotNo[];
-  onChange: (slotNo: SlotNo) => void;
+  selectedSlotNo: QuickSlotNo;
+  occupiedSlotNos: QuickSlotNo[];
+  onChange: (slotNo: QuickSlotNo) => void;
 }
 
-const SLOT_NOS: SlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const SLOT_NOS: QuickSlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 const SlotPagination = (props: SlotPaginationProps) => {
   const { selectedSlotNo, occupiedSlotNos, onChange } = props;

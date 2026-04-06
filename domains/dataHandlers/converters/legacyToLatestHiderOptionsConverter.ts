@@ -1,7 +1,7 @@
 import { isV1Timer, isV1Settings } from '../validators/hiderOptionsValidator';
 import { DEFAULT_V2_HIDER_OPTIONS } from '@/constants/defaultValues';
 import type { HiderOptions } from '@/types/algorithm';
-import type { V2, V3 } from '@/types/legacyData';
+import type { V2, V3, V4 } from '@/types/legacyData';
 
 interface HiderOptionsUsage {
   algorithmHiderUsage: 'click' | 'always';
@@ -45,11 +45,23 @@ export const convertV2ToV3HiderOptions = (
   };
 };
 
-export const convertV3ToLatestHiderOptions = (
+export const convertV3ToV4HiderOptions = (
   legacyHiderOptions: V3.HiderOptions,
-): HiderOptions => {
+): V4.HiderOptions => {
   return {
     ...legacyHiderOptions,
     shouldHideSource: false,
+  };
+};
+
+export const convertV4ToLatestHiderOptions = (
+  legacyHiderOptions: V4.HiderOptions,
+  checkedAlgorithmIds: number[],
+  timers: V4.TagLockTimer[],
+): HiderOptions => {
+  return {
+    ...legacyHiderOptions,
+    checkedAlgorithmIds,
+    timers,
   };
 };

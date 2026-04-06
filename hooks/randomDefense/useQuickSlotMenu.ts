@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import type { SlotNo, Hotkey, QuickSlots } from '@/types/randomDefense';
+import type {
+  QuickSlotNo,
+  Hotkey,
+  QuickSlotOptions,
+} from '@/types/randomDefense';
 
 interface UseQuickSlotMenuParams {
-  quickSlotsInfo: QuickSlots;
+  quickSlotsInfo: QuickSlotOptions;
   isLoaded: boolean;
   onHotkeyChange: (hotkey: Hotkey) => void;
   onSlotChange: (title: string, query: string) => void;
   onSlotDelete: () => void;
-  onSlotNoChange: (slotNo: SlotNo) => void;
+  onSlotNoChange: (slotNo: QuickSlotNo) => void;
 }
 
-const SLOT_NOS: SlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const SLOT_NOS: QuickSlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
   const {
@@ -44,7 +48,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
   };
 
   const getOccupiedSlotNos = () => {
-    const occupiedSlotNos: SlotNo[] = [];
+    const occupiedSlotNos: QuickSlotNo[] = [];
 
     SLOT_NOS.forEach((slotNo) => {
       if (!slots[slotNo].isEmpty) {
@@ -82,7 +86,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
     onSlotDelete();
   };
 
-  const setSelectedSlotNo = (slotNo: SlotNo) => {
+  const setSelectedSlotNo = (slotNo: QuickSlotNo) => {
     onSlotNoChange(slotNo);
   };
 

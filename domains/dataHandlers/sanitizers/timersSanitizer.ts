@@ -1,10 +1,10 @@
 import { DEFAULT_TIMERS } from '@/constants/defaultValues';
-import { isTimer } from '../validators/isTimersValidator';
-import type { Timer } from '@/types/algorithm';
+import { isTagLockTimer } from '../validators/isTimersValidator';
+import type { TagLockTimer } from '@/types/algorithm';
 
 const MAX_TIMER_LENGTH = 300;
 
-export const sanitizeTimers = (timers: unknown): Timer[] => {
+export const sanitizeTimers = (timers: unknown): TagLockTimer[] => {
   if (!Array.isArray(timers)) {
     return DEFAULT_TIMERS;
   }
@@ -12,6 +12,8 @@ export const sanitizeTimers = (timers: unknown): Timer[] => {
   const now = Date.now();
 
   return timers
-    .filter((timer) => isTimer(timer) && now < Date.parse(timer.expiresAt))
+    .filter(
+      (timer) => isTagLockTimer(timer) && now < Date.parse(timer.expiresAt),
+    )
     .slice(-MAX_TIMER_LENGTH);
 };

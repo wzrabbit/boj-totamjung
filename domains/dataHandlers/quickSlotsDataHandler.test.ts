@@ -4,13 +4,13 @@ import {
 } from '@/constants/randomDefense';
 import { STORAGE_KEY } from '@/constants/commands';
 import {
-  fetchQuickSlots,
-  saveQuickSlots,
+  fetchQuickSlotOptions,
+  saveQuickSlotOptions,
 } from '../dataHandlers/quickSlotsDataHandler';
-import { DEFAULT_QUICK_SLOTS } from '@/constants/defaultValues';
-import type { QuickSlots } from '@/types/randomDefense';
+import { DEFAULT_QUICK_SLOT_OPTIONS } from '@/constants/defaultValues';
+import type { QuickSlotOptions } from '@/types/randomDefense';
 
-const validQuickSlots: QuickSlots = {
+const validQuickSlots: QuickSlotOptions = {
   slots: {
     1: {
       isEmpty: true,
@@ -69,11 +69,11 @@ describe('Test #1 - 퀵슬롯 정보 불러오기', () => {
   test('올바른 퀵슬롯이 저장되어 있다면, 이를 그대로 불러온 값을 반환해야 한다.', async () => {
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({
-        [STORAGE_KEY.QUICK_SLOTS]: validQuickSlots,
+        [STORAGE_KEY.QUICK_SLOT_OPTIONS]: validQuickSlots,
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(validQuickSlots);
+    expect(await fetchQuickSlotOptions()).toEqual(validQuickSlots);
   });
 });
 
@@ -149,11 +149,11 @@ describe('Test #2 - 유효하지 않은 퀵슬롯 정보를 불러올 경우 대
 
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({
-        [STORAGE_KEY.QUICK_SLOTS]: partiallyInvalidQuickSlots,
+        [STORAGE_KEY.QUICK_SLOT_OPTIONS]: partiallyInvalidQuickSlots,
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(expectedResult);
+    expect(await fetchQuickSlotOptions()).toEqual(expectedResult);
   });
 
   test('단축키, 선택된 슬롯이 누락되었더라도 복구가 가능한 형태인 경우 데이터를 보존하여 반환해야 한다.', async () => {
@@ -226,11 +226,11 @@ describe('Test #2 - 유효하지 않은 퀵슬롯 정보를 불러올 경우 대
 
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({
-        [STORAGE_KEY.QUICK_SLOTS]: partiallyInvalidQuickSlots,
+        [STORAGE_KEY.QUICK_SLOT_OPTIONS]: partiallyInvalidQuickSlots,
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(expectedResult);
+    expect(await fetchQuickSlotOptions()).toEqual(expectedResult);
   });
 
   test('슬롯이 있는 자리를 찾을 수 없는 경우, 복구가 불가능한 것으로 판정하고, 초기 데이터를 반환해야 한다.', async () => {
@@ -256,11 +256,11 @@ describe('Test #2 - 유효하지 않은 퀵슬롯 정보를 불러올 경우 대
 
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({
-        [STORAGE_KEY.QUICK_SLOTS]: invalidQuickSlots,
+        [STORAGE_KEY.QUICK_SLOT_OPTIONS]: invalidQuickSlots,
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS);
+    expect(await fetchQuickSlotOptions()).toEqual(DEFAULT_QUICK_SLOT_OPTIONS);
   });
 
   test('slots 프로퍼티를 찾을 수 없는 경우, 복구가 불가능한 것으로 판정하고, 초기 데이터를 반환해야 한다.', async () => {
@@ -271,11 +271,11 @@ describe('Test #2 - 유효하지 않은 퀵슬롯 정보를 불러올 경우 대
 
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({
-        [STORAGE_KEY.QUICK_SLOTS]: invalidQuickSlots,
+        [STORAGE_KEY.QUICK_SLOT_OPTIONS]: invalidQuickSlots,
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS);
+    expect(await fetchQuickSlotOptions()).toEqual(DEFAULT_QUICK_SLOT_OPTIONS);
   });
 
   test('데이터가 오브젝트 형태가 아닌 경우, 복구가 불가능한 것으로 판정하고, 초기 데이터를 반환해야 한다.', async () => {
@@ -283,11 +283,11 @@ describe('Test #2 - 유효하지 않은 퀵슬롯 정보를 불러올 경우 대
 
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({
-        [STORAGE_KEY.QUICK_SLOTS]: invalidQuickSlots,
+        [STORAGE_KEY.QUICK_SLOT_OPTIONS]: invalidQuickSlots,
       }),
     );
 
-    expect(await fetchQuickSlots()).toEqual(DEFAULT_QUICK_SLOTS);
+    expect(await fetchQuickSlotOptions()).toEqual(DEFAULT_QUICK_SLOT_OPTIONS);
   });
 });
 
@@ -298,10 +298,10 @@ describe('Test #3 - 퀵슬롯 정보 저장하기', () => {
       .mockImplementation(() => Promise.resolve());
     const { selectedSlotNo, slots, hotkey } = validQuickSlots;
 
-    saveQuickSlots(selectedSlotNo, slots, hotkey);
+    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
 
     expect(browser.storage.local.set).toHaveBeenCalledWith({
-      quickSlots: validQuickSlots,
+      quickSlotOptions: validQuickSlots,
     });
   });
 });
@@ -348,10 +348,10 @@ describe('Test #5 - 유효하지 않은 퀵슬롯 정보 저장에 대응하기'
     };
     const { selectedSlotNo, slots, hotkey } = partiallyInvalidQuickSlots;
 
-    saveQuickSlots(selectedSlotNo, slots, hotkey);
+    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
 
     expect(browser.storage.local.set).toHaveBeenCalledWith({
-      quickSlots: expected,
+      quickSlotOptions: expected,
     });
   });
 
@@ -382,7 +382,7 @@ describe('Test #5 - 유효하지 않은 퀵슬롯 정보 저장에 대응하기'
       .spyOn(browser.storage.local, 'set')
       .mockImplementation(() => Promise.resolve());
 
-    saveQuickSlots(selectedSlotNo, slots, hotkey);
+    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
 
     expect(browser.storage.local.set).not.toHaveBeenCalled();
   });

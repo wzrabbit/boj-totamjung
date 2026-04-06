@@ -37,7 +37,7 @@ const useTotamjungThemeState = () => {
     }
 
     browser.runtime.sendMessage({
-      command: COMMANDS.SAVE_TOTAMJUNG_THEME,
+      command: COMMANDS.SAVE_THEME,
       totamjungTheme,
     });
   };
@@ -45,7 +45,7 @@ const useTotamjungThemeState = () => {
   useEffect(() => {
     const fetchTotamjungTheme = async () => {
       const totamjungTheme = await browser.runtime.sendMessage({
-        command: COMMANDS.FETCH_TOTAMJUNG_THEME,
+        command: COMMANDS.FETCH_THEME,
       });
 
       if (!isTotamjungTheme(totamjungTheme)) {

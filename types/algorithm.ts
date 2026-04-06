@@ -1,5 +1,6 @@
 import type { IsoString } from '@/types/utils';
 import type { RatedTier } from '@/types/tierHider';
+import type { HoursMinutes } from '@/types/utils';
 
 export interface Algorithm {
   id: number;
@@ -15,10 +16,7 @@ export interface AlgorithmInfo {
 }
 
 export interface HiderOptions {
-  problemTagLockDuration: {
-    hours: number;
-    minutes: number;
-  };
+  problemTagLockDuration: HoursMinutes;
   shouldHideTier: boolean;
   shouldWarnHighTier: boolean;
   shouldRevealTierOnHover: boolean;
@@ -26,11 +24,13 @@ export interface HiderOptions {
   warnTier: RatedTier;
   algorithmHiderUsage: 'click' | 'always';
   problemTagLockUsage: 'click' | 'auto';
+  checkedAlgorithmIds: CheckedAlgorithmIds;
+  timers: TagLockTimer[];
 }
 
 export type CheckedAlgorithmIds = number[];
 
-export interface Timer {
+export interface TagLockTimer {
   problemId: number;
   expiresAt: IsoString;
 }

@@ -5,13 +5,13 @@ import type { ChangeEventHandler, MouseEventHandler } from 'react';
 import { isLanguage } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import type {
   RandomDefenseFormData,
-  SlotNo,
+  QuickSlotNo,
   TierWithoutNotRatable,
 } from '@/types/randomDefense';
 import { generateRandomDefenseQuery } from '@/domains/randomDefense/randomDefenseQueryGenerator';
 
 interface UseRandomDefenseCreateMenuParams {
-  selectedSlotNo: SlotNo;
+  selectedSlotNo: QuickSlotNo;
   onSubmit: (title: string, query: string) => void;
 }
 

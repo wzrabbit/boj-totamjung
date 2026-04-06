@@ -4,8 +4,8 @@ import { sanitizeTotamjungTheme } from './sanitizers/totamjungThemeSanitizer';
 import type { TotamjungTheme } from '@/types/mainTheme';
 
 export const fetchTotamjungTheme = async (): Promise<TotamjungTheme> => {
-  const data = await browser.storage.local.get(STORAGE_KEY.TOTAMJUNG_THEME);
-  const totamjungTheme = data[STORAGE_KEY.TOTAMJUNG_THEME];
+  const data = await browser.storage.local.get(STORAGE_KEY.THEME);
+  const totamjungTheme = data[STORAGE_KEY.THEME];
 
   return sanitizeTotamjungTheme(totamjungTheme);
 };
@@ -16,6 +16,6 @@ export const saveTotamjungTheme = (totamjungTheme: unknown) => {
   }
 
   browser.storage.local.set({
-    [STORAGE_KEY.TOTAMJUNG_THEME]: totamjungTheme,
+    [STORAGE_KEY.THEME]: totamjungTheme,
   });
 };

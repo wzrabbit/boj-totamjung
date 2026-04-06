@@ -1,8 +1,8 @@
 import * as S from './SlotInfo.styled';
 import Text from '@/components/common/Text';
-import type { Slot } from '@/types/randomDefense';
+import type { QuickSlot } from '@/types/randomDefense';
 
-const SlotInfo = (props: Slot) => {
+const SlotInfo = (props: QuickSlot) => {
   return (
     <S.Container>
       <S.NamePanel>

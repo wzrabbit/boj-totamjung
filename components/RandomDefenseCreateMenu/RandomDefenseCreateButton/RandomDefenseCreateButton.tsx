@@ -1,9 +1,9 @@
-import { SlotNo } from '@/types/randomDefense';
+import { QuickSlotNo } from '@/types/randomDefense';
 import type { MouseEvent } from 'react';
 import * as S from './RandomDefenseCreateButton.styled';
 
 interface RandomDefenseCreateButtonProps {
-  selectedSlotNo: SlotNo;
+  selectedSlotNo: QuickSlotNo;
   isLoaded: boolean;
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }

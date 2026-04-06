@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import IconButton from '@/components/common/IconButton';
 import RandomDefenseGachaModal from './RandomDefenseGachaModal';
 import { useState } from 'react';
-import type { FilledSlot } from '@/types/randomDefense';
+import type { FilledQuickSlot } from '@/types/randomDefense';
 
 /**
  * `RandomDefenseGachaModal`는 즉석 추첨 기능을 전체적으로 제공하는 모달 컴포넌트입니다.
@@ -43,7 +43,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const sampleFilledSlot: FilledSlot = {
+const sampleFilledSlot: FilledQuickSlot = {
   isEmpty: false,
   title: 'All Random',
   query: '*0..30',

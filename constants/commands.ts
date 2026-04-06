@@ -2,22 +2,22 @@ export const COMMANDS = {
   OPEN_OPTIONS_PAGE: 'openOptionsPage',
   FETCH_CHECKED_ALGORITHM_IDS: 'fetchCheckedAlgorithmIds',
   SAVE_CHECKED_ALGORITHM_IDS: 'saveCheckedAlgorithmIds',
-  FETCH_RANDOM_DEFENSE_HISTORY: 'fetchRandomDefenseHistory',
-  SAVE_RANDOM_DEFENSE_HISTORY: 'saveRandomDefenseHistory',
-  FETCH_QUICK_SLOTS: 'fetchQuickSlots',
-  SAVE_QUICK_SLOTS: 'saveQuickSlots',
-  FETCH_TOTAMJUNG_THEME: 'fetchTotamjungTheme',
-  SAVE_TOTAMJUNG_THEME: 'saveTotamjungTheme',
+  FETCH_RANDOM_DEFENSE_HISTORY_OPTIONS: 'fetchRandomDefenseHistoryOptions',
+  SAVE_RANDOM_DEFENSE_HISTORY_OPTIONS: 'saveRandomDefenseHistoryOptions',
+  FETCH_QUICK_SLOT_OPTIONS: 'fetchQuickSlotOptions',
+  SAVE_QUICK_SLOT_OPTIONS: 'saveQuickSlotOptions',
+  FETCH_THEME: 'fetchTheme',
+  SAVE_THEME: 'saveTheme',
   FETCH_HIDER_OPTIONS: 'fetchHiderOptions',
   SAVE_HIDER_OPTIONS: 'saveHiderOptions',
   FETCH_FONT_NO: 'fetchFontNo',
   SAVE_FONT_NO: 'saveFontNo',
-  FETCH_TIMERS: 'fetchTimers',
-  SAVE_TIMERS: 'saveTimers',
+  FETCH_TAG_LOCK_TIMERS: 'fetchTagLockTimers',
+  SAVE_TAG_LOCK_TIMERS: 'saveTagLockTimers',
   FETCH_OPTIONS_DATA: 'fetchOptionsData',
   GET_REMAINING_LOCK_TIME: 'saveAndGetRemainingLockTime',
-  ADD_SINGLE_TIMER: 'addSingleTimer',
-  REMOVE_SINGLE_TIMER: 'removeSingleTimer',
+  ADD_SINGLE_TAG_LOCK_TIMER: 'addSingleTagLockTimer',
+  REMOVE_SINGLE_TAG_LOCK_TIMER: 'removeSingleTagLockTimer',
   IS_USER_SOLVED_PROBLEM: 'isUserSolvedProblem',
   GET_RANDOM_DEFENSE_RESULT: 'getRandomDefenseResult',
   ADD_RANDOM_DEFENSE_HISTORY_INFOS: 'addRandomDefenseHistoryInfos',
@@ -65,9 +65,45 @@ export const V2_STORAGE_KEY = {
 } as const;
 
 /**
- * v1.3.* / dataVersion 3에서 쓰이는 키 값들입니다. **최신 버전의 키 값들입니다.**
+ * v1.3 ~ v1.3.3.2 / dataVersion 3에서 쓰이는 키 값들입니다.
  */
-export const STORAGE_KEY = {
+export const V3_STORAGE_KEY = {
   ...V2_STORAGE_KEY,
   GACHA_OPTIONS: 'gachaOptions',
+} as const;
+
+/**
+ * v1.3.4 / dataVersion 4에서 쓰이는 키 값들입니다.
+ */
+export const V4_STORAGE_KEY = {
+  ...V3_STORAGE_KEY,
+} as const;
+
+/**
+ * 마이그레이션 완료 후 제거해야 하는 레거시 로컬 스토리지 키들입니다.
+ * v5에서 다른 키로 흡수되었거나 이름이 변경된 키들의 목록입니다.
+ */
+export const LEGACY_LOCAL_STORAGE_KEYS = [
+  V1_LOCAL_STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
+  V2_STORAGE_KEY.CHECKED_ALGORITHM_IDS,
+  V2_STORAGE_KEY.QUICK_SLOTS,
+  V2_STORAGE_KEY.TOTAMJUNG_THEME,
+  V2_STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
+  V2_STORAGE_KEY.IS_TIER_HIDDEN,
+  V2_STORAGE_KEY.TIMERS,
+];
+
+/**
+ * 최신 버전의 키 값들입니다. dataVersion 5에서 쓰이는 키 값들입니다.
+ */
+export const STORAGE_KEY = {
+  DATA_VERSION: 'dataVersion',
+  GACHA_OPTIONS: 'gachaOptions',
+  QUICK_SLOT_OPTIONS: 'quickSlotOptions',
+  HIDER_OPTIONS: 'hiderOptions',
+  RANDOM_DEFENSE_HISTORY_OPTIONS: 'randomDefenseHistoryOptions',
+  WIDGET_TIMER_OPTIONS: 'widgetTimerOptions',
+  SHOULD_SHOW_WELCOME_MESSAGE: 'shouldShowWelcomeMessage',
+  THEME: 'theme',
+  FONT_NO: 'fontNo',
 } as const;

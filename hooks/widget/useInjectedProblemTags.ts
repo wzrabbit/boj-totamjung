@@ -163,11 +163,15 @@ const UseInjectedProblemTags = (params: UseInjectedProblemTags) => {
   const toggleTimer = async () => {
     if (isTimerRunning) {
       clearTimer();
-      browser.runtime.sendMessage({ command: COMMANDS.REMOVE_SINGLE_TIMER });
+      browser.runtime.sendMessage({
+        command: COMMANDS.REMOVE_SINGLE_TAG_LOCK_TIMER,
+      });
       return;
     }
 
-    browser.runtime.sendMessage({ command: COMMANDS.ADD_SINGLE_TIMER });
+    browser.runtime.sendMessage({
+      command: COMMANDS.ADD_SINGLE_TAG_LOCK_TIMER,
+    });
     const hiderOptions = await browser.runtime.sendMessage({
       command: COMMANDS.FETCH_HIDER_OPTIONS,
     });

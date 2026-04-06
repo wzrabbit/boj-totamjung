@@ -26,7 +26,7 @@ const TOTAMJUNG_THEME_BACKGROUND_COLOR = '#1a0e0a';
 
 const injectTheme = (htmlElement: HTMLElement) => {
   browser.runtime
-    .sendMessage({ command: COMMANDS.FETCH_TOTAMJUNG_THEME })
+    .sendMessage({ command: COMMANDS.FETCH_THEME })
     .then((totamjungTheme) => {
       if (!isTotamjungTheme(totamjungTheme)) {
         return;

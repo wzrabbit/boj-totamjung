@@ -12,7 +12,7 @@ import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/is
 import type { ToastInfo } from '@/types/toast';
 import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
 import type { HiderOptions } from '@/types/algorithm';
-import { FilledSlot } from '@/types/randomDefense';
+import { FilledQuickSlot } from '@/types/randomDefense';
 
 interface UseWidgetParams {
   theme: MainTheme;
@@ -33,7 +33,7 @@ const useWidget = (params: UseWidgetParams) => {
   const [inspectIconState, setInspectIconState] = useState(false);
   const [shouldShowWelcomeMessage, setShouldShowWelcomeMessage] =
     useState(false);
-  const [gachaSlot, setGachaSlot] = useState<FilledSlot | null>(null);
+  const [gachaSlot, setGachaSlot] = useState<FilledQuickSlot | null>(null);
   const [gachaProblemCount, setGachaProblemCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const { hasUnknownAlgorithms, isSpoilerExist, isSpoilerOpened, toggleTimer } =
@@ -225,7 +225,7 @@ const useWidget = (params: UseWidgetParams) => {
     }
   };
 
-  const openGachaProblemCountModalWithSlotInfo = (slot: FilledSlot) => {
+  const openGachaProblemCountModalWithSlotInfo = (slot: FilledQuickSlot) => {
     openModal('gachaProblemCount');
     setGachaSlot(slot);
   };

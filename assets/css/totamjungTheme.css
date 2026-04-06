@@ -516,23 +516,13 @@ html[totamjungTheme='totamjung'] .blog-twitter-inner a:nth-child(3) {
   color: var(--text-color);
 }
 
-html[totamjungTheme='totamjung'] .blog-twitter-inner::before {
-  border-bottom-color: var(--secondary-menu-color);
-}
-
 html[totamjungTheme='totamjung'] .blog-twitter-inner::after {
-  border-top-color: var(--title-color);
-}
-
-html[totamjungTheme='totamjung'] .blog-twitter-inner:hover::before {
-  border-bottom: 25px solid var(--secondary-menu-color);
-  border-left: 25px solid transparent;
+  border-top: 15px solid var(--menu-line-color);
+  border-right: 15px solid var(--secondary-menu-color);
 }
 
 html[totamjungTheme='totamjung'] .blog-twitter-inner:hover::after {
-  border-top-color: var(--title-color);
-  border-top: 25px solid var(--title-color);
-  border-right: 25px solid transparent;
+  border-top: 15px solid var(--title-color);
 }
 
 html[totamjungTheme='totamjung'] .result-wait,

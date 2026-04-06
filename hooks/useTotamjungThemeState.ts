@@ -13,11 +13,11 @@ const useTotamjungThemeState = () => {
     changes: { [key: string]: Browser.storage.StorageChange },
     areaName: string,
   ) => {
-    if (areaName !== 'local' || !('totamjungTheme' in changes)) {
+    if (areaName !== 'local' || !('theme' in changes)) {
       return;
     }
 
-    const { newValue } = changes.totamjungTheme;
+    const { newValue } = changes.theme;
 
     if (!isTotamjungTheme(newValue)) {
       return;

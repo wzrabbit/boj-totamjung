@@ -174,8 +174,11 @@ const useOptionsDataManageMenu = () => {
       return;
     }
 
-    saveOptionsData(saveFileData);
-    location.reload();
+    const isSaveSuccessful = await saveOptionsData(saveFileData);
+
+    if (isSaveSuccessful) {
+      location.reload();
+    }
   };
 
   const closeModal = () => {

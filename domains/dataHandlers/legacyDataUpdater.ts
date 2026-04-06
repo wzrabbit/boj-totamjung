@@ -4,6 +4,7 @@ import {
   convertV3ToV4OptionsData,
   convertV4ToLatestOptionsData,
 } from '@/domains/dataHandlers/converters/legacyToLatestOptionsDataConverter';
+import { LEGACY_LOCAL_STORAGE_KEYS } from '@/constants/commands';
 
 const getDataVersion = (data: Record<string, unknown>) => {
   const { dataVersion } = data;
@@ -47,4 +48,5 @@ export const updateAllLegacyData = async () => {
     .reduce((acc, convert) => convert(acc), data);
 
   await browser.storage.local.set(result);
+  await browser.storage.local.remove(LEGACY_LOCAL_STORAGE_KEYS);
 };

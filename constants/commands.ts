@@ -80,6 +80,20 @@ export const V4_STORAGE_KEY = {
 } as const;
 
 /**
+ * 마이그레이션 완료 후 제거해야 하는 레거시 로컬 스토리지 키들입니다.
+ * v5에서 다른 키로 흡수되었거나 이름이 변경된 키들의 목록입니다.
+ */
+export const LEGACY_LOCAL_STORAGE_KEYS = [
+  V1_LOCAL_STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
+  V2_STORAGE_KEY.CHECKED_ALGORITHM_IDS,
+  V2_STORAGE_KEY.QUICK_SLOTS,
+  V2_STORAGE_KEY.TOTAMJUNG_THEME,
+  V2_STORAGE_KEY.RANDOM_DEFENSE_HISTORY,
+  V2_STORAGE_KEY.IS_TIER_HIDDEN,
+  V2_STORAGE_KEY.TIMERS,
+];
+
+/**
  * 최신 버전의 키 값들입니다. dataVersion 5에서 쓰이는 키 값들입니다.
  */
 export const STORAGE_KEY = {

@@ -293,15 +293,22 @@
           commandList.forEach((currentCommand) => {
             switch (currentCommand) {
               case STORAGE_KEY.HIDER_OPTIONS:
-                Object.assign(response, { [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions });
+                Object.assign(response, {
+                  [STORAGE_KEY.HIDER_OPTIONS]: hiderOptions,
+                });
                 break;
 
               case STORAGE_KEY.QUICK_SLOT_OPTIONS:
-                Object.assign(response, { [STORAGE_KEY.QUICK_SLOT_OPTIONS]: quickSlotOptions });
+                Object.assign(response, {
+                  [STORAGE_KEY.QUICK_SLOT_OPTIONS]: quickSlotOptions,
+                });
                 break;
 
               case STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS:
-                Object.assign(response, { [STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS]: randomDefenseHistoryOptions });
+                Object.assign(response, {
+                  [STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS]:
+                    randomDefenseHistoryOptions,
+                });
                 break;
 
               case STORAGE_KEY.THEME:
@@ -309,7 +316,9 @@
                 break;
 
               case STORAGE_KEY.GACHA_OPTIONS:
-                Object.assign(response, { [STORAGE_KEY.GACHA_OPTIONS]: gachaOptions });
+                Object.assign(response, {
+                  [STORAGE_KEY.GACHA_OPTIONS]: gachaOptions,
+                });
                 break;
 
               case STORAGE_KEY.FONT_NO:
@@ -317,11 +326,15 @@
                 break;
 
               case STORAGE_KEY.WIDGET_TIMER_OPTIONS:
-                Object.assign(response, { [STORAGE_KEY.WIDGET_TIMER_OPTIONS]: widgetTimerOptions });
+                Object.assign(response, {
+                  [STORAGE_KEY.WIDGET_TIMER_OPTIONS]: widgetTimerOptions,
+                });
                 break;
 
               case STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE:
-                Object.assign(response, { [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: true });
+                Object.assign(response, {
+                  [STORAGE_KEY.SHOULD_SHOW_WELCOME_MESSAGE]: true,
+                });
                 break;
 
               default:

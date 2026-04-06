@@ -12,6 +12,8 @@ export const sanitizeTimers = (timers: unknown): TagLockTimer[] => {
   const now = Date.now();
 
   return timers
-    .filter((timer) => isTagLockTimer(timer) && now < Date.parse(timer.expiresAt))
+    .filter(
+      (timer) => isTagLockTimer(timer) && now < Date.parse(timer.expiresAt),
+    )
     .slice(-MAX_TIMER_LENGTH);
 };

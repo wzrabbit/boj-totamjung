@@ -3,9 +3,7 @@ import { sanitizeRandomDefenseHistory } from './sanitizers/randomDefenseHistoryS
 import type { RandomDefenseHistoryOptions } from '@/types/randomDefense';
 import { isRandomDefenseHistoryInfos } from './validators/randomDefenseHistoryValidator';
 import { isObject } from '@/types/typeGuards';
-import {
-  DEFAULT_RANDOM_DEFENSE_HISTORY_OPTIONS,
-} from '@/constants/defaultValues';
+import { DEFAULT_RANDOM_DEFENSE_HISTORY_OPTIONS } from '@/constants/defaultValues';
 
 export const fetchRandomDefenseHistoryOptions =
   async (): Promise<RandomDefenseHistoryOptions> => {
@@ -24,9 +22,7 @@ export const fetchRandomDefenseHistoryOptions =
 
     const history = sanitizeRandomDefenseHistory(options.history);
     const isTierHidden =
-      typeof options.isTierHidden === 'boolean'
-        ? options.isTierHidden
-        : false;
+      typeof options.isTierHidden === 'boolean' ? options.isTierHidden : false;
 
     return { history, isTierHidden };
   };
@@ -41,7 +37,7 @@ export const saveRandomDefenseHistoryOptions = async (
 
   const sanitizedHistory = sanitizeRandomDefenseHistory(history);
 
-  browser.storage.local.set({
+  await browser.storage.local.set({
     [STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS]: {
       history: sanitizedHistory,
       isTierHidden,
@@ -49,11 +45,8 @@ export const saveRandomDefenseHistoryOptions = async (
   });
 };
 
-export const addRandomDefenseInfosToHistory = async (
-  newItems: unknown,
-) => {
-  const { history, isTierHidden } =
-    await fetchRandomDefenseHistoryOptions();
+export const addRandomDefenseInfosToHistory = async (newItems: unknown) => {
+  const { history, isTierHidden } = await fetchRandomDefenseHistoryOptions();
 
   if (
     !isRandomDefenseHistoryInfos(history) ||
@@ -62,7 +55,7 @@ export const addRandomDefenseInfosToHistory = async (
     return;
   }
 
-  saveRandomDefenseHistoryOptions(
+  await saveRandomDefenseHistoryOptions(
     [...history, ...newItems],
     isTierHidden,
   );

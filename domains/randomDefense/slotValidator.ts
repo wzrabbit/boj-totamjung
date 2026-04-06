@@ -4,7 +4,10 @@ import {
 } from '@/constants/randomDefense';
 import type { QuickSlotVerdict } from '@/types/randomDefense';
 
-export const validateSlot = (title: string, query: string): QuickSlotVerdict => {
+export const validateSlot = (
+  title: string,
+  query: string,
+): QuickSlotVerdict => {
   if (title.length > TITLE_MAX_LENGTH) {
     return {
       isValid: false,

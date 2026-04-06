@@ -69,9 +69,7 @@ export const isV1QuickSlotOptions = (
   );
 };
 
-export const isQuickSlotOptions = (
-  data: unknown,
-): data is QuickSlotOptions => {
+export const isQuickSlotOptions = (data: unknown): data is QuickSlotOptions => {
   if (
     !(
       isObject(data) &&

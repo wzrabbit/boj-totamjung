@@ -9,7 +9,11 @@ import SlotEditModal from './SlotEditModal';
 import Loading from '@/components/common/Loading';
 import useModalState from '@/hooks/useModalState';
 import { CopyIcon, DicesIcon, EditIcon, TrashIcon } from '@/assets/svg';
-import type { QuickSlotOptions, QuickSlotNo, Hotkey } from '@/types/randomDefense';
+import type {
+  QuickSlotOptions,
+  QuickSlotNo,
+  Hotkey,
+} from '@/types/randomDefense';
 import { theme } from '@/styles/theme';
 import SimpleModal from '@/components/common/SimpleModal';
 import RandomDefenseGachaModal from '@/components/RandomDefenseGachaModal';

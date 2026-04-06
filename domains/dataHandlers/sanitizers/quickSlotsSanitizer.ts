@@ -15,7 +15,11 @@ import {
   MAX_CUSTOM_QUERY_LENGTH,
   TITLE_MAX_LENGTH,
 } from '@/constants/randomDefense';
-import type { QuickSlotOptions, QuickSlotNo, QuickSlot } from '@/types/randomDefense';
+import type {
+  QuickSlotOptions,
+  QuickSlotNo,
+  QuickSlot,
+} from '@/types/randomDefense';
 import { V1 } from '@/types/legacyData';
 
 const SLOT_NOS: QuickSlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
@@ -44,7 +48,9 @@ const sanitizeQuickSlot = (slot: unknown, slotNo: QuickSlotNo): QuickSlot => {
   return slot;
 };
 
-export const sanitizeQuickSlotOptions = (quickSlots: unknown): QuickSlotOptions => {
+export const sanitizeQuickSlotOptions = (
+  quickSlots: unknown,
+): QuickSlotOptions => {
   if (!isRepairableQuickSlotOptions(quickSlots)) {
     return DEFAULT_QUICK_SLOT_OPTIONS;
   }

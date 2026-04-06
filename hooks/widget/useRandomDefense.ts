@@ -5,7 +5,11 @@ import { isQuickSlotOptions } from '@/domains/dataHandlers/validators/quickSlots
 import { isRandomDefenseResult } from '@/domains/dataHandlers/validators/RandomDefenseResultValidator';
 import useHotKeyLongPress from '../useHotkeyLongPress';
 import type { ToastInfo } from '@/types/toast';
-import type { FilledQuickSlot, QuickSlotOptions, QuickSlotNo } from '@/types/randomDefense';
+import type {
+  FilledQuickSlot,
+  QuickSlotOptions,
+  QuickSlotNo,
+} from '@/types/randomDefense';
 import type { Browser } from '#imports';
 
 interface UseRandomDefenseParams {
@@ -18,7 +22,9 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
   const [isRandomDefenseAvailable, setIsRandomDefenseAvailable] =
     useState(false);
   const isRandomDefenseAvailableRef = useRef(isRandomDefenseAvailable);
-  const quickSlotOptionsRef = useRef<QuickSlotOptions>(DEFAULT_QUICK_SLOT_OPTIONS);
+  const quickSlotOptionsRef = useRef<QuickSlotOptions>(
+    DEFAULT_QUICK_SLOT_OPTIONS,
+  );
   const { unlockHotkey } = useHotKeyLongPress({
     baseKey: quickSlotOptionsRef.current.hotkey,
     requiredLongPressTimeInMilliseconds: 1000,
@@ -45,7 +51,9 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     browser.storage.onChanged.addListener(updateQuickSlotOptionsIfLocalChanged);
 
     return () => {
-      browser.storage.onChanged.removeListener(updateQuickSlotOptionsIfLocalChanged);
+      browser.storage.onChanged.removeListener(
+        updateQuickSlotOptionsIfLocalChanged,
+      );
     };
   }, []);
 

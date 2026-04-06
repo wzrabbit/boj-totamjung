@@ -21,7 +21,8 @@ export const saveQuickSlotOptions = (
     return;
   }
 
-  const sanitizedQuickSlotOptions = sanitizeQuickSlotOptions(quickSlotOptionsData);
+  const sanitizedQuickSlotOptions =
+    sanitizeQuickSlotOptions(quickSlotOptionsData);
 
   browser.storage.local.set({
     [STORAGE_KEY.QUICK_SLOT_OPTIONS]: sanitizedQuickSlotOptions,

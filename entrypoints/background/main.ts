@@ -301,7 +301,12 @@ const executeBackground = () => {
           return;
         }
 
-        addRandomDefenseInfosToHistory(message.randomDefenseHistoryInfos);
+        addRandomDefenseInfosToHistory(message.randomDefenseHistoryInfos).then(
+          () => {
+            sendResponse();
+          },
+        );
+        return true;
       }
 
       if (command === COMMANDS.FETCH_SHOULD_SHOW_WELCOME_MESSAGE) {

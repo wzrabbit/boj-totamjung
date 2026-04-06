@@ -168,7 +168,7 @@ const useRandomDefenseGachaModal = (
     setNotificationMessage('');
   };
 
-  const saveGachaResultToStorage = () => {
+  const saveGachaResultToStorage = async () => {
     const currentIsoString = new Date().toISOString();
     const randomDefenseHistoryInfos = problemInfos
       .map((problemInfo) => ({
@@ -177,7 +177,7 @@ const useRandomDefenseGachaModal = (
       }))
       .reverse();
 
-    browser.runtime.sendMessage({
+    await browser.runtime.sendMessage({
       command: COMMANDS.ADD_RANDOM_DEFENSE_HISTORY_INFOS,
       randomDefenseHistoryInfos,
     });

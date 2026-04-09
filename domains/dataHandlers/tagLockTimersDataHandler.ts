@@ -16,7 +16,7 @@ export const saveTimers = async (timers: unknown) => {
 
   const hiderOptions = await fetchHiderOptions();
 
-  browser.storage.local.set({
+  await browser.storage.local.set({
     [STORAGE_KEY.HIDER_OPTIONS]: {
       ...hiderOptions,
       timers,
@@ -69,7 +69,7 @@ export const addSingleTimerByProblemId = async (problemId: number) => {
   const newTimers = [...timers, { problemId, expiresAt }];
   const sanitizedNewTimers = sanitizeTimers(newTimers);
 
-  browser.storage.local.set({
+  await browser.storage.local.set({
     [STORAGE_KEY.HIDER_OPTIONS]: {
       ...hiderOptions,
       timers: sanitizedNewTimers,
@@ -82,7 +82,7 @@ export const removeSingleTimerByProblemId = async (problemId: number) => {
   const timers = sanitizeTimers(hiderOptions.timers);
   const newTimers = timers.filter((timer) => timer.problemId !== problemId);
 
-  browser.storage.local.set({
+  await browser.storage.local.set({
     [STORAGE_KEY.HIDER_OPTIONS]: {
       ...hiderOptions,
       timers: newTimers,

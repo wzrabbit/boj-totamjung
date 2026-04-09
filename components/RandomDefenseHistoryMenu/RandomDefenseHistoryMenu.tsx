@@ -4,7 +4,7 @@ import * as S from './RandomDefenseHistoryMenu.styled';
 import Switch from '@/components/common/Switch';
 import NamedFrame from '@/components/common/NamedFrame/NamedFrame';
 import SimpleModal from '@/components/common/SimpleModal';
-import FallbackWithImage from '../common/FallbackWithImage';
+import FallbackWithImage from '@/components/common/FallbackWithImage';
 import Loading from '@/components/common/Loading';
 import { TrashIcon, PackageIcon } from '@/assets/svg';
 import {

@@ -13,7 +13,7 @@ import * as S from './RandomDefenseCreateMenu.styled';
 import type { QuickSlotNo } from '@/types/randomDefense';
 import Select from '@/components/common/Select';
 import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
-import QueryInput from '../QueryInput/QueryInput';
+import QueryInput from '@/components/QueryInput/QueryInput';
 
 interface RandomDefenseCreateMenuProps {
   selectedSlotNo: QuickSlotNo;

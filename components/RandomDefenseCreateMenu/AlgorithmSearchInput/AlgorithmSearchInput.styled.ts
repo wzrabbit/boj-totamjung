@@ -10,8 +10,8 @@ export const Container = styled.div<{ $isOpen: boolean }>`
     $isOpen &&
     css`
       & > ul {
-        border-color: ${theme.color.LEMON};
-        box-shadow: 0 0 12px ${theme.color.GOLD}70;
+        border-color: ${theme.colors.LEMON};
+        box-shadow: 0 0 12px ${theme.colors.GOLD}70;
       }
     `}
 `;
@@ -26,9 +26,9 @@ const panel = css`
   width: 100%;
   padding: 4px;
 
-  border: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
+  border: 1.5px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.BROWN_900};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 `;
 
 export const InputPanel = styled.ul`
@@ -49,11 +49,11 @@ export const SearchInput = styled.input<{ $isOpen: boolean }>`
   height: 26px;
   padding: 0 4px;
 
-  border: 1px solid ${({ theme }) => theme.color.BROWN_500};
+  border: 1px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.BROWN_900};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 
-  color: ${({ theme }) => theme.color.OFF_WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
 
   transition: outline 0.05s;
 
@@ -66,8 +66,8 @@ export const SearchInput = styled.input<{ $isOpen: boolean }>`
   ${({ theme, $isOpen }) =>
     $isOpen &&
     css`
-      border-color: ${theme.color.LEMON};
-      outline: 3px solid ${theme.color.LEMON}70;
+      border-color: ${theme.colors.LEMON};
+      outline: 3px solid ${theme.colors.LEMON}70;
     `}
 `;
 

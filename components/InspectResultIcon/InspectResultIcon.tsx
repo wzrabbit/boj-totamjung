@@ -18,10 +18,10 @@ const descriptions = {
 };
 
 const filters: Record<TotamjungTheme | BojExtendedTheme, string> = {
-  none: styledTheme.filter.BOJ_BLUE_FILTER,
-  totamjung: styledTheme.filter.LIGHT_BROWN_FILTER,
-  bojExtendedRigel: styledTheme.bojExtendedFilter.SKY_BLUE,
-  bojExtendedDark: styledTheme.bojExtendedFilter.DARK_GRAY,
+  none: styledTheme.filters.BOJ_BLUE_FILTER,
+  totamjung: styledTheme.filters.LIGHT_BROWN_FILTER,
+  bojExtendedRigel: styledTheme.bojExtendedFilters.SKY_BLUE,
+  bojExtendedDark: styledTheme.bojExtendedFilters.DARK_GRAY,
 };
 
 /**

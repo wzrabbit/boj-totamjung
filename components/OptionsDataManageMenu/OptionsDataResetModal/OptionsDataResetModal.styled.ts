@@ -18,12 +18,12 @@ export const WarnList = styled.ul`
   padding: 16px;
 
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.color.LIGHT_RED_TRANSPARENT};
+  background-color: ${({ theme }) => theme.colors.LIGHT_RED_TRANSPARENT};
 `;
 
 export const WarnListItem = styled.li`
   font-size: 14px;
-  color: ${({ theme }) => theme.color.LIGHT_RED};
+  color: ${({ theme }) => theme.colors.LIGHT_RED};
 `;
 
 export const ConfirmInputWrapper = styled.div`

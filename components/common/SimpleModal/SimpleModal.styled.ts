@@ -12,6 +12,6 @@ export const Text = styled.p<{ $totamjungTheme: MainTheme }>`
   font-size: 16px;
   color: ${({ theme, $totamjungTheme }) =>
     lightThemes.includes($totamjungTheme)
-      ? theme.color.BLACK
-      : theme.color.OFF_WHITE};
+      ? theme.colors.BLACK
+      : theme.colors.OFF_WHITE};
 `;

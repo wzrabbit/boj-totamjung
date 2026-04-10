@@ -24,8 +24,8 @@ export const Track = styled.div`
           return '';
         }
 
-        return `${theme.solvedAcTier[index]} ${(index / TIER_COUNT) * 100}%, ${
-          theme.solvedAcTier[index]
+        return `${theme.solvedAcTiers[index]} ${(index / TIER_COUNT) * 100}%, ${
+          theme.solvedAcTiers[index]
         } ${((index + 1) / TIER_COUNT) * 100}%, `;
       })
       .join('')
@@ -62,8 +62,8 @@ export const Thumb = styled.input<{ value: TierWithoutNotRatable }>`
     width: 15px;
 
     border-radius: 7.5px;
-    background-color: ${({ theme, value }) => theme.solvedAcTier[value]};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.TRANSPARENT_FAINT_WHITE}
+    background-color: ${({ theme, value }) => theme.solvedAcTiers[value]};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.TRANSPARENT_FAINT_WHITE}
       inset;
 
     -webkit-appearance: none;
@@ -78,8 +78,8 @@ export const Thumb = styled.input<{ value: TierWithoutNotRatable }>`
     width: 15px;
 
     border-radius: 7.5px;
-    background-color: ${({ theme, value }) => theme.solvedAcTier[value]};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.TRANSPARENT_FAINT_WHITE}
+    background-color: ${({ theme, value }) => theme.solvedAcTiers[value]};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.TRANSPARENT_FAINT_WHITE}
       inset;
 
     -webkit-appearance: none;

@@ -41,34 +41,34 @@ const getTierColor = (
   theme: DefaultTheme,
 ) => {
   if (isTierHidden) {
-    return theme.color.GRAY_500;
+    return theme.colors.GRAY_500;
   }
 
   if (tier >= 1 && tier <= 5) {
-    return theme.solvedAcTier[5];
+    return theme.solvedAcTiers[5];
   }
 
   if (tier >= 6 && tier <= 10) {
-    return theme.solvedAcTier[10];
+    return theme.solvedAcTiers[10];
   }
 
   if (tier >= 11 && tier <= 15) {
-    return theme.solvedAcTier[15];
+    return theme.solvedAcTiers[15];
   }
 
   if (tier >= 16 && tier <= 20) {
-    return theme.solvedAcTier[20];
+    return theme.solvedAcTiers[20];
   }
 
   if (tier >= 21 && tier <= 25) {
-    return theme.solvedAcTier[25];
+    return theme.solvedAcTiers[25];
   }
 
   if (tier >= 26 && tier <= 30) {
-    return theme.solvedAcTier[30];
+    return theme.solvedAcTiers[30];
   }
 
-  return theme.color.OFF_WHITE;
+  return theme.colors.OFF_WHITE;
 };
 
 export const HoverTransformContainer = styled.div`
@@ -106,7 +106,7 @@ export const InnerContainer = styled.div.attrs<{
   overflow: hidden;
   flex-shrink: 0;
 
-  box-shadow: 0 0 15px ${({ theme }) => theme.color.BLACK_DARKER_TRANSPARENT};
+  box-shadow: 0 0 15px ${({ theme }) => theme.colors.BLACK_DARKER_TRANSPARENT};
   background-image: ${({ $tier, $isTierHidden }) =>
     `url(${getProblemCardSrcByTier($tier, $isTierHidden)})`};
   background-size: 100% 100%;
@@ -115,7 +115,7 @@ export const InnerContainer = styled.div.attrs<{
   user-select: none;
 
   &:hover {
-    box-shadow: 0 0 15px ${({ theme }) => theme.color.TRANSPARENT_LEMON};
+    box-shadow: 0 0 15px ${({ theme }) => theme.colors.TRANSPARENT_LEMON};
   }
 `;
 
@@ -167,7 +167,7 @@ export const Title = styled.div.attrs<{ $cardWidth: number }>(
   ({ $cardWidth, theme }) => ({
     style: {
       height: `${Math.max(28, $cardWidth / 6.694)}px`,
-      color: `${theme.color.OFF_WHITE}`,
+      color: `${theme.colors.OFF_WHITE}`,
       fontSize: `${Math.max(14, $cardWidth / 13.388)}px`,
       lineHeight: `${Math.max(14, $cardWidth / 13.388)}px`,
     },

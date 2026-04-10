@@ -23,17 +23,17 @@ export const NavItem = styled.li`
 export const CategoryButton = styled.button<{ $isSelected: boolean }>`
   padding: 2px;
 
-  border-bottom: 0px solid ${({ theme }) => theme.color.GOLD};
+  border-bottom: 0px solid ${({ theme }) => theme.colors.GOLD};
   background: none;
 
   font-size: 20px;
   font-weight: ${({ $isSelected }) => ($isSelected ? 800 : 600)};
-  color: ${({ theme }) => theme.color.GOLD};
+  color: ${({ theme }) => theme.colors.GOLD};
 
   transition: 0.25s;
 
   &:hover {
-    color: ${({ theme }) => theme.color.LEMON};
+    color: ${({ theme }) => theme.colors.LEMON};
   }
 `;
 
@@ -43,11 +43,11 @@ export const Underline = styled.span<{ $isSelected: boolean }>`
   width: ${({ $isSelected }) => ($isSelected ? '100%' : '0')};
   height: 2px;
 
-  background-color: ${({ theme }) => theme.color.GOLD};
+  background-color: ${({ theme }) => theme.colors.GOLD};
 
   transition: 0.25s;
 
   button:hover + & {
-    background-color: ${({ theme }) => theme.color.LEMON};
+    background-color: ${({ theme }) => theme.colors.LEMON};
   }
 `;

@@ -5,20 +5,20 @@ export const Container = styled.a`
   align-items: center;
   column-gap: 2px;
 
-  color: ${({ theme }) => theme.color.LEMON};
+  color: ${({ theme }) => theme.colors.LEMON};
 `;
 
 export const TextLink = styled.span<{ $fontSize: number }>`
   font-size: ${({ $fontSize }) => $fontSize}px;
   text-decoration: underline 2px dotted;
   -webkit-text-decoration-color: ${({ theme }) =>
-    theme.color.TRANSPARENT_LEMON};
-  text-decoration-color: ${({ theme }) => theme.color.TRANSPARENT_LEMON};
+    theme.colors.TRANSPARENT_LEMON};
+  text-decoration-color: ${({ theme }) => theme.colors.TRANSPARENT_LEMON};
   text-underline-offset: 2px;
 
   &:hover {
     text-decoration: underline 2px dotted;
-    text-decoration-color: ${({ theme }) => theme.color.LEMON};
+    text-decoration-color: ${({ theme }) => theme.colors.LEMON};
   }
 `;
 

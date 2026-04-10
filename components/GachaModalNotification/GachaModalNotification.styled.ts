@@ -46,12 +46,12 @@ export const NotificationIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
   }
 `;
 
 export const NotificationText = styled.div`
   font-size: 16px;
-  color: ${({ theme }) => theme.color.GOLD};
+  color: ${({ theme }) => theme.colors.GOLD};
   font-weight: 600;
 `;

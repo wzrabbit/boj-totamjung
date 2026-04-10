@@ -29,7 +29,7 @@ export const Text = styled.p<{
     if ($type === 'primary') {
       return css`
         font-family: Pretendard;
-        color: ${theme.color.GOLD};
+        color: ${theme.colors.GOLD};
         font-weight: 600;
       `;
     }
@@ -37,40 +37,40 @@ export const Text = styled.p<{
     if ($type === 'semiPrimary') {
       return css`
         font-family: Pretendard;
-        color: ${theme.color.LEMON};
+        color: ${theme.colors.LEMON};
       `;
     }
 
     if ($type === 'normal') {
       return css`
         font-family: Pretendard;
-        color: ${theme.color.OFF_WHITE};
+        color: ${theme.colors.OFF_WHITE};
       `;
     }
 
     if ($type === 'gray') {
       return css`
         font-family: Pretendard;
-        color: ${theme.color.GRAY_300};
+        color: ${theme.colors.GRAY_300};
       `;
     }
 
     if ($type === 'black') {
       return css`
         font-family: Pretendard;
-        color: ${theme.color.BLACK};
+        color: ${theme.colors.BLACK};
       `;
     }
 
     if ($type === 'code') {
       return css`
         font-family: 'IBM Plex Mono', Consolas, Pretendard;
-        color: ${theme.color.OFF_WHITE};
+        color: ${theme.colors.OFF_WHITE};
       `;
     }
 
     return css`
-      color: ${$color ?? theme.color.OFF_WHITE};
+      color: ${$color ?? theme.colors.OFF_WHITE};
       font-family: ${$fontFamily ?? 'Pretendard'};
       font-weight: ${$fontWeight ?? 400};
       opacity: ${$opacity ?? 1};

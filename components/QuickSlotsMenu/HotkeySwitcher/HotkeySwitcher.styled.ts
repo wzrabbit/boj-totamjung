@@ -18,13 +18,13 @@ export const SwitchButton = styled.button`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
 
     transition: 0.2s;
   }
 
   & > svg:hover {
-    color: ${({ theme }) => theme.color.LEMON};
+    color: ${({ theme }) => theme.colors.LEMON};
 
     transform: scale(1.1);
   }

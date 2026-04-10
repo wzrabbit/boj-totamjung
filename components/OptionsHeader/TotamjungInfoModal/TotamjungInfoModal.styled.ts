@@ -34,7 +34,7 @@ export const DarkBrownGradientElement = styled.div`
   width: 100%;
   height: 200px;
 
-  background: ${({ theme }) => theme.gradient.BROWN_GRADIENT};
+  background: ${({ theme }) => theme.gradients.BROWN_GRADIENT};
 
   z-index: 0;
 `;
@@ -60,7 +60,7 @@ export const LogoSquareImage = styled.img.attrs<{
 export const ContentTitle = styled.span`
   font-size: 30px;
   font-family: 'Do Hyeon';
-  color: ${({ theme }) => theme.color.GOLD};
+  color: ${({ theme }) => theme.colors.GOLD};
 `;
 
 export const IntroductoryTextContainer = styled.div`
@@ -72,7 +72,7 @@ export const IntroductoryTextContainer = styled.div`
 export const TypewriterText = styled.span`
   margin: 0 2px;
 
-  color: ${({ theme }) => theme.color.LEMON};
+  color: ${({ theme }) => theme.colors.LEMON};
 `;
 
 export const Pointer = styled.span`
@@ -82,7 +82,7 @@ export const Pointer = styled.span`
   height: 18px;
   margin: -3px 0 -3px 1px;
 
-  background-color: ${({ theme }) => theme.color.LEMON};
+  background-color: ${({ theme }) => theme.colors.LEMON};
 
   animation: ${blink} 0.8s infinite forwards;
 `;
@@ -96,7 +96,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const LightGrayText = styled.span`
-  color: ${({ theme }) => theme.color.GRAY_300};
+  color: ${({ theme }) => theme.colors.GRAY_300};
 `;
 
 export const ControlButtonsContainer = styled.div`

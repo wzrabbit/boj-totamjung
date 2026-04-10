@@ -12,17 +12,17 @@ export const Container = styled.div<{
   width: ${({ $width }) => $width};
   height: ${({ $height }) => $height};
 
-  border: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
+  border: 1.5px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.BROWN_900};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 
   &:focus-within {
     border-color: ${({ theme, $hasError }) =>
-      $hasError ? theme.color.RED : theme.color.LEMON};
+      $hasError ? theme.colors.RED : theme.colors.LEMON};
     outline: 3px solid
       ${({ theme, $hasError }) =>
         getTransparentHexColor(
-          $hasError ? theme.color.RED : theme.color.LEMON,
+          $hasError ? theme.colors.RED : theme.colors.LEMON,
           0.5,
         )};
   }
@@ -38,10 +38,10 @@ export const Textarea = styled.textarea`
   padding: 6px;
 
   border: none;
-  border-bottom: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
+  border-bottom: 1.5px solid ${({ theme }) => theme.colors.BROWN_500};
   background: transparent;
 
-  color: ${({ theme }) => theme.color.OFF_WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
   font-size: 13px;
 
   resize: none;
@@ -76,7 +76,7 @@ export const SuggestionButton = styled.button`
   height: 100%;
   padding: 0 4px;
 
-  color: ${({ theme }) => theme.color.GOLD};
+  color: ${({ theme }) => theme.colors.GOLD};
   font-size: 13px;
   line-height: 20px;
 
@@ -87,7 +87,7 @@ export const SuggestionButton = styled.button`
   &:hover,
   &:focus {
     opacity: 1;
-    text-shadow: 0 0 5px ${({ theme }) => theme.color.GOLD};
+    text-shadow: 0 0 5px ${({ theme }) => theme.colors.GOLD};
   }
 `;
 
@@ -103,7 +103,7 @@ export const EnterKeyIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
   }
 
   ${AutoCompletePanel}:not(:has(:focus-visible)) ${SuggestionButtonContainer}:first-child & {

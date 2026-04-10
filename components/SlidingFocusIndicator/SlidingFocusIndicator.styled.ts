@@ -4,16 +4,16 @@ import { theme } from '@/styles/theme';
 
 const glowLoop = keyframes`
   0% {
-    border-color: ${theme.color.ORANGE};
-    box-shadow: 0 0 12px ${getTransparentHexColor(theme.color.ORANGE, 0.6)};
+    border-color: ${theme.colors.ORANGE};
+    box-shadow: 0 0 12px ${getTransparentHexColor(theme.colors.ORANGE, 0.6)};
   }
   50% {
-    border-color: ${theme.color.MANGO};
-    box-shadow: 0 0 12px ${getTransparentHexColor(theme.color.MANGO, 0.6)};
+    border-color: ${theme.colors.MANGO};
+    box-shadow: 0 0 12px ${getTransparentHexColor(theme.colors.MANGO, 0.6)};
   }
   100% {
-    border-color: ${theme.color.ORANGE};
-    box-shadow: 0 0 12px ${getTransparentHexColor(theme.color.ORANGE, 0.6)};
+    border-color: ${theme.colors.ORANGE};
+    box-shadow: 0 0 12px ${getTransparentHexColor(theme.colors.ORANGE, 0.6)};
   }
 `;
 
@@ -33,11 +33,11 @@ export const Container = styled.div`
 export const FocusIndicatorBox = styled.div`
   position: absolute;
 
-  border: 3px solid ${({ theme }) => theme.color.ORANGE};
+  border: 3px solid ${({ theme }) => theme.colors.ORANGE};
   border-radius: 4px;
 
   box-shadow: 0 0 12px
-    ${({ theme }) => getTransparentHexColor(theme.color.ORANGE, 0.6)};
+    ${({ theme }) => getTransparentHexColor(theme.colors.ORANGE, 0.6)};
   will-change: top, left, width, height, opacity;
   transition:
     top 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),

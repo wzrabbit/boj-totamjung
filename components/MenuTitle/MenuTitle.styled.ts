@@ -28,7 +28,7 @@ export const IconImage = styled.img`
   width: auto;
   height: 30px;
 
-  filter: ${({ theme }) => theme.filter.ORANGE_FILTER};
+  filter: ${({ theme }) => theme.filters.ORANGE_FILTER};
   object-fit: contain;
 `;
 
@@ -42,7 +42,7 @@ export const IconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.ORANGE};
+    color: ${({ theme }) => theme.colors.ORANGE};
   }
 `;
 
@@ -51,7 +51,7 @@ export const Title = styled.h2`
   overflow: hidden;
 
   font-size: 26px;
-  color: ${({ theme }) => theme.color.ORANGE};
+  color: ${({ theme }) => theme.colors.ORANGE};
   font-weight: 400;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -66,7 +66,7 @@ export const Underline = styled.div`
   height: 10px;
   border-radius: 5px;
   background-color: ${({ theme }) =>
-    getTransparentHexColor(theme.color.ORANGE, 0.25)};
+    getTransparentHexColor(theme.colors.ORANGE, 0.25)};
 
   z-index: -1;
 `;

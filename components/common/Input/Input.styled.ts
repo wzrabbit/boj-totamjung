@@ -5,28 +5,28 @@ import { theme } from '@/styles/theme';
 import type { CSSProperties } from 'react';
 
 const inputBorderColors: Record<MainTheme, string> = {
-  none: theme.color.GRAY_300,
-  totamjung: theme.color.BROWN_500,
-  bojExtendedDark: theme.bojExtendedColor.GRAY_300,
-  bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
-  solvedAcLight: theme.color.GRAY_300,
-  solvedAcDark: theme.color.GRAY_300,
-  solvedAcBlack: theme.color.GRAY_300,
+  none: theme.colors.GRAY_300,
+  totamjung: theme.colors.BROWN_500,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_300,
+  bojExtendedRigel: theme.bojExtendedColors.SKY_BLUE,
+  solvedAcLight: theme.colors.GRAY_300,
+  solvedAcDark: theme.colors.GRAY_300,
+  solvedAcBlack: theme.colors.GRAY_300,
 };
 
 const inputFocusedBorderColors: Record<MainTheme, string> = {
   ...inputBorderColors,
-  totamjung: theme.color.LEMON,
+  totamjung: theme.colors.LEMON,
 };
 
 const inputBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.OFF_WHITE,
-  totamjung: theme.color.BROWN_900,
-  bojExtendedDark: theme.bojExtendedColor.GRAY_900,
-  bojExtendedRigel: theme.bojExtendedColor.DARK_INDIGO,
-  solvedAcLight: theme.color.OFF_WHITE,
-  solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
-  solvedAcBlack: theme.color.BLACK,
+  none: theme.colors.OFF_WHITE,
+  totamjung: theme.colors.BROWN_900,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_900,
+  bojExtendedRigel: theme.bojExtendedColors.DARK_INDIGO,
+  solvedAcLight: theme.colors.OFF_WHITE,
+  solvedAcDark: theme.solvedAcColors.DARK_INDIGO,
+  solvedAcBlack: theme.colors.BLACK,
 };
 
 const lightThemes: readonly MainTheme[] = ['none', 'solvedAcLight'];
@@ -62,17 +62,17 @@ export const Input = styled.input<{
     $color
       ? $color
       : lightThemes.includes($totamjungTheme)
-        ? theme.color.BLACK
-        : theme.color.OFF_WHITE};
+        ? theme.colors.BLACK
+        : theme.colors.OFF_WHITE};
 
   &:focus {
     border-color: ${({ theme, $totamjungTheme, $hasError }) =>
-      $hasError ? theme.color.RED : inputFocusedBorderColors[$totamjungTheme]};
+      $hasError ? theme.colors.RED : inputFocusedBorderColors[$totamjungTheme]};
     outline: 3px solid
       ${({ theme, $totamjungTheme, $hasError }) =>
         getTransparentHexColor(
           $hasError
-            ? theme.color.RED
+            ? theme.colors.RED
             : inputFocusedBorderColors[$totamjungTheme],
           0.5,
         )};

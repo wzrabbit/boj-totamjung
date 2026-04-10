@@ -131,7 +131,7 @@ export const ToggleButtonContainer = styled.div<{ $align: 'left' | 'right' }>`
 export const ToggleButtonText = styled.div`
   display: inline-block;
 
-  color: ${({ theme }) => theme.color.GRAY_300};
+  color: ${({ theme }) => theme.colors.GRAY_300};
 `;
 
 const transparentButtonStyle = css`
@@ -142,12 +142,12 @@ const transparentButtonStyle = css`
   width: 35px;
   height: 35px;
 
-  border: 2px solid ${({ theme }) => theme.color.GRAY_300};
+  border: 2px solid ${({ theme }) => theme.colors.GRAY_300};
   border-radius: 50%;
   background: transparent;
 
   &:hover {
-    box-shadow: 0 0 10px ${({ theme }) => theme.color.GRAY_300};
+    box-shadow: 0 0 10px ${({ theme }) => theme.colors.GRAY_300};
     transform: scale(1.1);
   }
 
@@ -166,7 +166,7 @@ export const TierVisibilityToggleButton = styled.button`
   & > img {
     height: 70%;
 
-    filter: ${({ theme }) => theme.filter.LIGHT_GRAY_FILTER};
+    filter: ${({ theme }) => theme.filters.LIGHT_GRAY_FILTER};
   }
 `;
 
@@ -177,7 +177,7 @@ export const AudioToggleButton = styled.button`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.GRAY_300};
+    color: ${({ theme }) => theme.colors.GRAY_300};
   }
 `;
 
@@ -208,7 +208,7 @@ export const ErrorMessageBox = styled.div`
   max-width: 80%;
 
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.color.LIGHT_RED_TRANSPARENT};
+  background-color: ${({ theme }) => theme.colors.LIGHT_RED_TRANSPARENT};
 `;
 
 export const ErrorMessageContainer = styled.div`
@@ -228,14 +228,14 @@ export const WarningIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.LIGHT_RED};
+    color: ${({ theme }) => theme.colors.LIGHT_RED};
   }
 `;
 
 export const ErrorMessage = styled.span`
   font-size: 24px;
   font-weight: 600;
-  color: ${({ theme }) => theme.color.LIGHT_RED};
+  color: ${({ theme }) => theme.colors.LIGHT_RED};
   text-align: center;
 `;
 
@@ -247,7 +247,7 @@ export const DescriptionList = styled.ul`
 
 export const Description = styled.li`
   font-size: 16px;
-  color: ${({ theme }) => theme.color.OFF_WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
   word-break: break-all;
 `;
 
@@ -279,7 +279,7 @@ export const LoadingIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.OFF_WHITE};
+    color: ${({ theme }) => theme.colors.OFF_WHITE};
   }
 
   animation: ${rotate} 3s linear infinite;
@@ -295,7 +295,7 @@ export const LoadingMessage = styled.span`
   line-height: 20px;
   font-weight: 500;
 
-  color: ${({ theme }) => theme.color.GRAY_300};
+  color: ${({ theme }) => theme.colors.GRAY_300};
 
   animation: ${blink} 2s linear infinite;
 `;
@@ -326,7 +326,7 @@ export const MouseClickIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.WHITE};
+    color: ${({ theme }) => theme.colors.WHITE};
   }
 
   animation: ${tremble} 1.5s infinite;
@@ -337,7 +337,7 @@ export const ReadyMessage = styled.span`
   line-height: 25px;
   font-weight: 500;
 
-  color: ${({ theme }) => theme.color.OFF_WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
 `;
 
 export const ResultScreen = styled.div`

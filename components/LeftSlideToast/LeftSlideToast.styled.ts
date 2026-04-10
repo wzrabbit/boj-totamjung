@@ -3,79 +3,79 @@ import { theme } from '@/styles/theme';
 import type { MainTheme } from '@/types/mainTheme';
 
 const toastBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.BOJ_BLUE,
-  totamjung: theme.color.BROWN_900,
-  bojExtendedDark: theme.bojExtendedColor.GRAY_900,
-  bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
-  solvedAcLight: theme.solvedAcColor.OFF_WHITE,
-  solvedAcDark: theme.solvedAcColor.INDIGO,
-  solvedAcBlack: theme.solvedAcColor.DARK_INDIGO,
+  none: theme.colors.BOJ_BLUE,
+  totamjung: theme.colors.BROWN_900,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_900,
+  bojExtendedRigel: theme.bojExtendedColors.SKY_BLUE,
+  solvedAcLight: theme.solvedAcColors.OFF_WHITE,
+  solvedAcDark: theme.solvedAcColors.INDIGO,
+  solvedAcBlack: theme.solvedAcColors.DARK_INDIGO,
 };
 
 const toastBorderColors: Record<MainTheme, string> = {
-  none: theme.color.BOJ_BLUE,
-  totamjung: theme.color.BROWN_500,
-  bojExtendedDark: theme.bojExtendedColor.GRAY_600,
-  bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
-  solvedAcLight: theme.solvedAcColor.GRAY_200,
-  solvedAcDark: theme.solvedAcColor.GRAY_400,
-  solvedAcBlack: theme.solvedAcColor.GRAY_400,
+  none: theme.colors.BOJ_BLUE,
+  totamjung: theme.colors.BROWN_500,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_600,
+  bojExtendedRigel: theme.bojExtendedColors.DARK_SKY_BLUE,
+  solvedAcLight: theme.solvedAcColors.GRAY_200,
+  solvedAcDark: theme.solvedAcColors.GRAY_400,
+  solvedAcBlack: theme.solvedAcColors.GRAY_400,
 };
 
 const toastBoxShadowColors: Record<MainTheme, string> = {
   none: 'transparent',
-  totamjung: theme.color.BROWN_500,
-  bojExtendedDark: theme.bojExtendedColor.GRAY_800,
+  totamjung: theme.colors.BROWN_500,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_800,
   bojExtendedRigel: 'transparent',
-  solvedAcLight: theme.solvedAcColor.OFF_WHITE,
-  solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
-  solvedAcBlack: theme.color.BLACK,
+  solvedAcLight: theme.solvedAcColors.OFF_WHITE,
+  solvedAcDark: theme.solvedAcColors.DARK_INDIGO,
+  solvedAcBlack: theme.colors.BLACK,
 };
 
 const toastTitleColors: Record<MainTheme, string> = {
-  none: theme.color.OFF_WHITE,
-  totamjung: theme.color.BEIGE,
-  bojExtendedDark: theme.bojExtendedColor.GRAY_300,
-  bojExtendedRigel: theme.color.OFF_WHITE,
-  solvedAcLight: theme.color.BLACK,
-  solvedAcDark: theme.solvedAcColor.OFF_WHITE,
-  solvedAcBlack: theme.solvedAcColor.OFF_WHITE,
+  none: theme.colors.OFF_WHITE,
+  totamjung: theme.colors.BEIGE,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_300,
+  bojExtendedRigel: theme.colors.OFF_WHITE,
+  solvedAcLight: theme.colors.BLACK,
+  solvedAcDark: theme.solvedAcColors.OFF_WHITE,
+  solvedAcBlack: theme.solvedAcColors.OFF_WHITE,
 };
 
 const toastDescriptionColors: Record<MainTheme, string> = {
   ...toastTitleColors,
-  totamjung: theme.color.OFF_WHITE,
-  bojExtendedDark: theme.color.OFF_WHITE,
+  totamjung: theme.colors.OFF_WHITE,
+  bojExtendedDark: theme.colors.OFF_WHITE,
 };
 
 const toastIconColors: Record<MainTheme, string> = {
-  none: theme.color.OFF_WHITE,
-  totamjung: theme.color.BROWN_300,
-  bojExtendedDark: theme.bojExtendedColor.GRAY_300,
-  bojExtendedRigel: theme.color.OFF_WHITE,
-  solvedAcLight: theme.solvedAcColor.GRAY_400,
-  solvedAcDark: theme.solvedAcColor.GRAY_200,
-  solvedAcBlack: theme.solvedAcColor.GRAY_200,
+  none: theme.colors.OFF_WHITE,
+  totamjung: theme.colors.BROWN_300,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_300,
+  bojExtendedRigel: theme.colors.OFF_WHITE,
+  solvedAcLight: theme.solvedAcColors.GRAY_400,
+  solvedAcDark: theme.solvedAcColors.GRAY_200,
+  solvedAcBlack: theme.solvedAcColors.GRAY_200,
 };
 
 const toastIconFilters: Record<MainTheme, string> = {
-  none: theme.filter.WHITE_FILTER,
-  totamjung: theme.filter.LIGHT_BROWN_FILTER,
-  bojExtendedDark: theme.bojExtendedFilter.LIGHT_GRAY,
-  bojExtendedRigel: theme.filter.WHITE_FILTER,
-  solvedAcLight: theme.solvedAcFilter.LIGHT_GRAY,
-  solvedAcDark: theme.solvedAcFilter.LIGHT_GRAY,
-  solvedAcBlack: theme.solvedAcFilter.LIGHT_GRAY,
+  none: theme.filters.WHITE_FILTER,
+  totamjung: theme.filters.LIGHT_BROWN_FILTER,
+  bojExtendedDark: theme.bojExtendedFilters.LIGHT_GRAY,
+  bojExtendedRigel: theme.filters.WHITE_FILTER,
+  solvedAcLight: theme.solvedAcFilters.LIGHT_GRAY,
+  solvedAcDark: theme.solvedAcFilters.LIGHT_GRAY,
+  solvedAcBlack: theme.solvedAcFilters.LIGHT_GRAY,
 };
 
 export const circleProgressBarColors: Record<MainTheme, string> = {
-  none: theme.color.OFF_WHITE,
-  totamjung: theme.color.BROWN_300,
-  bojExtendedDark: theme.bojExtendedColor.GRAY_300,
-  bojExtendedRigel: theme.color.OFF_WHITE,
-  solvedAcLight: theme.solvedAcColor.GRAY_400,
-  solvedAcDark: theme.solvedAcColor.GRAY_200,
-  solvedAcBlack: theme.solvedAcColor.GRAY_200,
+  none: theme.colors.OFF_WHITE,
+  totamjung: theme.colors.BROWN_300,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_300,
+  bojExtendedRigel: theme.colors.OFF_WHITE,
+  solvedAcLight: theme.solvedAcColors.GRAY_400,
+  solvedAcDark: theme.solvedAcColors.GRAY_200,
+  solvedAcBlack: theme.solvedAcColors.GRAY_200,
 };
 
 export const Container = styled.div<{

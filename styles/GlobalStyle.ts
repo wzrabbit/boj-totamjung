@@ -83,7 +83,7 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
 
   * {
     scrollbar-width: 15px;
-    scrollbar-color: ${theme.color.BROWN_300} ${theme.color.BROWN_800};
+    scrollbar-color: ${theme.colors.BROWN_300} ${theme.colors.BROWN_800};
   }
 
   @media (prefers-reduced-motion: reduce) {

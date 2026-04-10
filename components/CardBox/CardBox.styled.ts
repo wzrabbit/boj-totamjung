@@ -119,16 +119,16 @@ export const GlowingBox = styled.div<{ $isCardBoxOpening: boolean }>`
 
   transition: 0.3s;
 
-  box-shadow: 0 0 70px ${({ theme }) => theme.color.BLACK};
+  box-shadow: 0 0 70px ${({ theme }) => theme.colors.BLACK};
 
   ${InnerContainer}:hover > & {
-    box-shadow: 0 0 75px ${({ theme }) => theme.color.GOLD};
+    box-shadow: 0 0 75px ${({ theme }) => theme.colors.GOLD};
   }
 
   ${({ theme, $isCardBoxOpening }) =>
     $isCardBoxOpening &&
     css`
-      box-shadow: 0 0 75px ${theme.color.GOLD};
+      box-shadow: 0 0 75px ${theme.colors.GOLD};
     `};
 `;
 

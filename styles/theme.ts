@@ -1,5 +1,5 @@
 export const theme = {
-  color: {
+  colors: {
     LEMON: '#fff2c8',
     TRANSPARENT_LEMON: '#fff2c87f',
     GOLD: '#d1b072',
@@ -37,7 +37,7 @@ export const theme = {
     MANGO: '#ffd900',
   },
 
-  solvedAcTier: {
+  solvedAcTiers: {
     0: '#2d2d2d',
     1: '#9d4900',
     2: '#a54f00',
@@ -125,11 +125,11 @@ export const theme = {
       'linear-gradient(to right, #4d001d 0%, #4d0000 100%)',
   },
 
-  gradient: {
+  gradients: {
     BROWN_GRADIENT: 'linear-gradient(to top, #1a0e0a 0%, transparent 100%)',
   },
 
-  filter: {
+  filters: {
     BOJ_BLUE_FILTER:
       'brightness(0) saturate(100%) invert(29%) sepia(66%) saturate(1717%) hue-rotate(179deg) brightness(101%) contrast(101%)',
     LIGHT_BROWN_FILTER:
@@ -148,7 +148,7 @@ export const theme = {
       'brightness(0) saturate(100%) invert(86%) sepia(0%) saturate(1969%) hue-rotate(175deg) brightness(78%) contrast(96%)',
   },
 
-  solvedAcColor: {
+  solvedAcColors: {
     LIME: '#17ce3a',
     OFF_WHITE: '#f7f8f9',
     GRAY_400: '#8a8f95',
@@ -158,7 +158,7 @@ export const theme = {
     DARK_INDIGO: '#0b131b',
   },
 
-  bojExtendedColor: {
+  bojExtendedColors: {
     SKY_BLUE: '#008db4',
     DARK_SKY_BLUE: '#002635',
     DARK_INDIGO: '#001a26',
@@ -168,13 +168,13 @@ export const theme = {
     GRAY_300: '#a2a4a5',
   },
 
-  solvedAcFilter: {
+  solvedAcFilters: {
     LIME: 'brightness(0) saturate(100%) invert(60%) sepia(34%) saturate(3800%) hue-rotate(87deg) brightness(105%) contrast(86%)',
     LIGHT_GRAY:
       'brightness(0) saturate(100%) invert(79%) sepia(4%) saturate(201%) hue-rotate(163deg) brightness(94%) contrast(93%)',
   },
 
-  bojExtendedFilter: {
+  bojExtendedFilters: {
     DARK_GRAY:
       'brightness(0) saturate(100%) invert(31%) sepia(0%) saturate(1005%) hue-rotate(147deg) brightness(100%) contrast(88%)',
     SKY_BLUE:

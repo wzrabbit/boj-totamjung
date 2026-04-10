@@ -10,11 +10,11 @@ export const Textarea = styled.textarea<{
   height: ${({ $height }) => $height};
   padding: 6px;
 
-  border: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
+  border: 1.5px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.BROWN_900};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 
-  color: ${({ theme }) => theme.color.OFF_WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
   font-size: 13px;
 
   resize: none;
@@ -22,10 +22,10 @@ export const Textarea = styled.textarea<{
   &:focus,
   &:active {
     border-color: ${({ theme, $hasError }) =>
-      $hasError ? theme.color.RED : theme.color.LEMON};
+      $hasError ? theme.colors.RED : theme.colors.LEMON};
     outline: 3px solid
       ${({ theme, $hasError }) =>
-        $hasError ? theme.color.RED : theme.color.LEMON}70;
+        $hasError ? theme.colors.RED : theme.colors.LEMON}70;
   }
 
   transition: outline 0.05s;

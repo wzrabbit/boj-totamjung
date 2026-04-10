@@ -15,7 +15,7 @@ export const HistoryListContainer = styled.div`
   height: 429px;
   padding: 8px;
 
-  border: 1px solid ${({ theme }) => theme.color.BROWN_600};
+  border: 1px solid ${({ theme }) => theme.colors.BROWN_600};
   border-radius: 6px;
 `;
 
@@ -42,18 +42,18 @@ export const DeleteButton = styled.button`
   width: 36px;
   height: 36px;
 
-  border: 1px solid ${({ theme }) => theme.color.RED};
+  border: 1px solid ${({ theme }) => theme.colors.RED};
   border-radius: 4px;
   background: none;
 
   transition: 0.2s;
 
   svg {
-    color: ${({ theme }) => theme.color.RED};
+    color: ${({ theme }) => theme.colors.RED};
   }
 
   &:hover {
-    box-shadow: 0 0 8px ${({ theme }) => theme.color.RED};
+    box-shadow: 0 0 8px ${({ theme }) => theme.colors.RED};
   }
 
   &:disabled {
@@ -85,6 +85,6 @@ export const PackageIconWrapper = styled.div`
     width: 20px;
     height: 20px;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
   }
 `;

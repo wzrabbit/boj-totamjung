@@ -67,7 +67,7 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
           name="취소"
           size="medium"
           iconSrc={<CloseCircleIcon />}
-          color={theme.color.GRAY_300}
+          color={theme.colors.GRAY_300}
           disabled={false}
           onClick={onClose}
         />
@@ -76,7 +76,7 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
           name="초기화"
           size="medium"
           iconSrc={<TrashIcon />}
-          color={theme.color.RED}
+          color={theme.colors.RED}
           disabled={!isSameWithConfirmText}
           onClick={onReset}
         />

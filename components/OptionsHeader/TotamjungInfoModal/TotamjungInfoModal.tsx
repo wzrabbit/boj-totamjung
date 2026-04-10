@@ -84,7 +84,7 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             name="버그/건의 제보하기"
             size="medium"
             width="100%"
-            color={theme.color.LIGHT_PURPLE}
+            color={theme.colors.LIGHT_PURPLE}
             iconSrc={bug}
             disabled={false}
             onClick={() => {
@@ -96,7 +96,7 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             name="릴리즈 노트 보기"
             size="medium"
             width="100%"
-            color={theme.color.LEMON}
+            color={theme.colors.LEMON}
             iconSrc={<StickyNoteIcon />}
             disabled={false}
             onClick={() => {
@@ -108,7 +108,7 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             name="Github 저장소 방문하기"
             size="medium"
             width="100%"
-            color={theme.color.OFF_WHITE}
+            color={theme.colors.OFF_WHITE}
             iconSrc={<GithubIcon />}
             disabled={false}
             onClick={() => {

@@ -16,7 +16,7 @@ export const Fallback = styled.div`
 export const Title = styled.div`
   display: inline-block;
 
-  color: ${({ theme }) => theme.color.GOLD};
+  color: ${({ theme }) => theme.colors.GOLD};
   font-family: 'Do Hyeon';
   font-size: 22px;
 `;

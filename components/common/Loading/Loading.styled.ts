@@ -21,7 +21,7 @@ export const Container = styled.div`
     width: 24px;
     height: 24px;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
 
     animation: ${spin} 2s forwards infinite linear;
   }

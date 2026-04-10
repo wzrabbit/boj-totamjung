@@ -166,7 +166,7 @@ export const TierVisibilityToggleButton = styled.button`
   & > img {
     height: 70%;
 
-    filter: ${({ theme }) => theme.filters.LIGHT_GRAY_FILTER};
+    filter: ${({ theme }) => theme.filters.GRAY_300};
   }
 `;
 

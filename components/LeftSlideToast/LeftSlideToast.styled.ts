@@ -59,13 +59,13 @@ const toastIconColors: Record<MainTheme, string> = {
 };
 
 const toastIconFilters: Record<MainTheme, string> = {
-  none: theme.filters.WHITE_FILTER,
-  totamjung: theme.filters.LIGHT_BROWN_FILTER,
-  bojExtendedDark: theme.bojExtendedFilters.LIGHT_GRAY,
-  bojExtendedRigel: theme.filters.WHITE_FILTER,
-  solvedAcLight: theme.solvedAcFilters.LIGHT_GRAY,
-  solvedAcDark: theme.solvedAcFilters.LIGHT_GRAY,
-  solvedAcBlack: theme.solvedAcFilters.LIGHT_GRAY,
+  none: theme.filters.WHITE,
+  totamjung: theme.filters.BROWN_300,
+  bojExtendedDark: theme.bojExtendedFilters.GRAY_300,
+  bojExtendedRigel: theme.filters.WHITE,
+  solvedAcLight: theme.solvedAcFilters.GRAY_200,
+  solvedAcDark: theme.solvedAcFilters.GRAY_200,
+  solvedAcBlack: theme.solvedAcFilters.GRAY_200,
 };
 
 export const circleProgressBarColors: Record<MainTheme, string> = {

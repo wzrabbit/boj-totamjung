@@ -24,12 +24,12 @@ const topButtonArrowBackgroundColors: Record<MainTheme, string> = {
 } as const;
 
 const dropdownIconsFilters: Record<MainTheme, string> = {
-  none: theme.filters.BOJ_BLUE_FILTER,
-  totamjung: theme.filters.LIGHTEST_BROWN_FILTER,
+  none: theme.filters.BOJ_BLUE,
+  totamjung: theme.filters.BROWN_300,
   solvedAcLight: theme.solvedAcFilters.LIME,
   solvedAcDark: theme.solvedAcFilters.LIME,
   solvedAcBlack: theme.solvedAcFilters.LIME,
-  bojExtendedDark: theme.bojExtendedFilters.DARK_GRAY,
+  bojExtendedDark: theme.bojExtendedFilters.GRAY_600,
   bojExtendedRigel: theme.bojExtendedFilters.SKY_BLUE,
 } as const;
 
@@ -266,7 +266,7 @@ export const RandomDefenseButton = styled.button<{
 
     background-image: url(${browser.runtime.getURL('/dice.png')});
     background-size: 24.79px 26px;
-    filter: ${({ theme }) => theme.filters.LIGHT_GRAY_FILTER};
+    filter: ${({ theme }) => theme.filters.GRAY_300};
     mix-blend-mode: color-dodge;
     opacity: 0.4;
     mask-image: linear-gradient(to bottom, transparent 50%, black 50%);

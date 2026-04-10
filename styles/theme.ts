@@ -130,21 +130,18 @@ export const theme = {
   },
 
   filters: {
-    BOJ_BLUE_FILTER:
+    BOJ_BLUE:
       'brightness(0) saturate(100%) invert(29%) sepia(66%) saturate(1717%) hue-rotate(179deg) brightness(101%) contrast(101%)',
-    LIGHT_BROWN_FILTER:
+    BROWN_300:
       'brightness(0) saturate(100%) invert(49%) sepia(26%) saturate(568%) hue-rotate(330deg) brightness(93%) contrast(86%)',
-    ORANGE_FILTER:
+    ORANGE:
       'brightness(0) saturate(100%) invert(49%) sepia(34%) saturate(983%) hue-rotate(339deg) brightness(115%) contrast(101%)',
-    DARK_ORANGE_FILTER:
+    DARK_ORANGE:
       'brightness(0) saturate(100%) invert(26%) sepia(97%) saturate(1465%) hue-rotate(11deg) brightness(97%) contrast(101%)',
-    GOLD_FILTER:
-      'brightness(0) saturate(100%) invert(77%) sepia(25%) saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);',
-    WHITE_FILTER:
+    GOLD: 'brightness(0) saturate(100%) invert(77%) sepia(25%) saturate(571%) hue-rotate(1deg) brightness(89%) contrast(91%);',
+    WHITE:
       'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(342deg) brightness(102%) contrast(102%)',
-    LIGHTEST_BROWN_FILTER:
-      'brightness(0) saturate(100%) invert(52%) sepia(15%) saturate(936%) hue-rotate(330deg) brightness(89%) contrast(88%)',
-    LIGHT_GRAY_FILTER:
+    GRAY_300:
       'brightness(0) saturate(100%) invert(86%) sepia(0%) saturate(1969%) hue-rotate(175deg) brightness(78%) contrast(96%)',
   },
 
@@ -170,16 +167,16 @@ export const theme = {
 
   solvedAcFilters: {
     LIME: 'brightness(0) saturate(100%) invert(60%) sepia(34%) saturate(3800%) hue-rotate(87deg) brightness(105%) contrast(86%)',
-    LIGHT_GRAY:
+    GRAY_200:
       'brightness(0) saturate(100%) invert(79%) sepia(4%) saturate(201%) hue-rotate(163deg) brightness(94%) contrast(93%)',
   },
 
   bojExtendedFilters: {
-    DARK_GRAY:
+    GRAY_600:
       'brightness(0) saturate(100%) invert(31%) sepia(0%) saturate(1005%) hue-rotate(147deg) brightness(100%) contrast(88%)',
     SKY_BLUE:
       'brightness(0) saturate(100%) invert(31%) sepia(81%) saturate(2692%) hue-rotate(171deg) brightness(96%) contrast(101%)',
-    LIGHT_GRAY:
+    GRAY_300:
       'brightness(0) saturate(100%) invert(76%) sepia(5%) saturate(94%) hue-rotate(155deg) brightness(86%) contrast(88%)',
   },
 };

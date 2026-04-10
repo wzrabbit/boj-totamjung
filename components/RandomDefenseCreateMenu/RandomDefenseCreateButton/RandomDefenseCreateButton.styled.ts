@@ -58,7 +58,7 @@ export const DiceIcon = styled.img`
   height: 27px;
   margin: 4px;
 
-  filter: ${({ theme }) => theme.filters.DARK_ORANGE_FILTER};
+  filter: ${({ theme }) => theme.filters.DARK_ORANGE};
 `;
 
 export const TextContainer = styled.div`

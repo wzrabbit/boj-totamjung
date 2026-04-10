@@ -28,7 +28,7 @@ export const IconImage = styled.img`
   width: auto;
   height: 30px;
 
-  filter: ${({ theme }) => theme.filters.ORANGE_FILTER};
+  filter: ${({ theme }) => theme.filters.ORANGE};
   object-fit: contain;
 `;
 

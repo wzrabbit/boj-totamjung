@@ -35,12 +35,12 @@ const dropdownIconsFilters: Record<MainTheme, string> = {
 
 const dropdownBackgroundColors: Record<MainTheme, string> = {
   none: 'transparent',
-  totamjung: theme.colors.BLACK_TRANSPARENT,
+  totamjung: getTransparentHexColor(theme.colors.BLACK, 0.31),
   solvedAcLight: 'transparent',
-  solvedAcDark: theme.colors.BLACK_TRANSPARENT,
-  solvedAcBlack: theme.colors.BLACK_TRANSPARENT,
-  bojExtendedDark: theme.colors.BLACK_TRANSPARENT,
-  bojExtendedRigel: theme.colors.BLACK_TRANSPARENT,
+  solvedAcDark: getTransparentHexColor(theme.colors.BLACK, 0.31),
+  solvedAcBlack: getTransparentHexColor(theme.colors.BLACK, 0.31),
+  bojExtendedDark: getTransparentHexColor(theme.colors.BLACK, 0.31),
+  bojExtendedRigel: getTransparentHexColor(theme.colors.BLACK, 0.31),
 } as const;
 
 const speechBubbleTextColors: Record<MainTheme, string> = {

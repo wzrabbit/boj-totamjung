@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const Container = styled.a`
   display: inline-flex;
@@ -12,8 +13,9 @@ export const TextLink = styled.span<{ $fontSize: number }>`
   font-size: ${({ $fontSize }) => $fontSize}px;
   text-decoration: underline 2px dotted;
   -webkit-text-decoration-color: ${({ theme }) =>
-    theme.colors.TRANSPARENT_LEMON};
-  text-decoration-color: ${({ theme }) => theme.colors.TRANSPARENT_LEMON};
+    getTransparentHexColor(theme.colors.LEMON, 0.5)};
+  text-decoration-color: ${({ theme }) =>
+    getTransparentHexColor(theme.colors.LEMON, 0.5)};
   text-underline-offset: 2px;
 
   &:hover {

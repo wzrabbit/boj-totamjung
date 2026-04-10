@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 import { PROBLEM_CARDS } from '@/assets/png/problemCards';
 import type { DefaultTheme } from 'styled-components';
 import type { Tier } from '@/types/randomDefense';
@@ -106,7 +107,8 @@ export const InnerContainer = styled.div.attrs<{
   overflow: hidden;
   flex-shrink: 0;
 
-  box-shadow: 0 0 15px ${({ theme }) => theme.colors.BLACK_DARKER_TRANSPARENT};
+  box-shadow: 0 0 15px
+    ${({ theme }) => getTransparentHexColor(theme.colors.BLACK, 0.67)};
   background-image: ${({ $tier, $isTierHidden }) =>
     `url(${getProblemCardSrcByTier($tier, $isTierHidden)})`};
   background-size: 100% 100%;
@@ -115,7 +117,8 @@ export const InnerContainer = styled.div.attrs<{
   user-select: none;
 
   &:hover {
-    box-shadow: 0 0 15px ${({ theme }) => theme.colors.TRANSPARENT_LEMON};
+    box-shadow: 0 0 15px
+      ${({ theme }) => getTransparentHexColor(theme.colors.LEMON, 0.5)};
   }
 `;
 

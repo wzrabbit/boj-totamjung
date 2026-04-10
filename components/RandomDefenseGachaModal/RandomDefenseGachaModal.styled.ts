@@ -1,4 +1,5 @@
 import { styled, keyframes, css } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 import { woodBackground } from '@/assets/png';
 
 export const rotate = keyframes`
@@ -208,7 +209,8 @@ export const ErrorMessageBox = styled.div`
   max-width: 80%;
 
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.LIGHT_RED_TRANSPARENT};
+  background-color: ${({ theme }) =>
+    getTransparentHexColor(theme.colors.LIGHT_RED, 0.13)};
 `;
 
 export const ErrorMessageContainer = styled.div`

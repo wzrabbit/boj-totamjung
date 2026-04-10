@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import type { CSSProperties } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const Textarea = styled.textarea<{
   $width: CSSProperties['width'];
@@ -25,7 +26,10 @@ export const Textarea = styled.textarea<{
       $hasError ? theme.colors.RED : theme.colors.LEMON};
     outline: 3px solid
       ${({ theme, $hasError }) =>
-        $hasError ? theme.colors.RED : theme.colors.LEMON}70;
+        getTransparentHexColor(
+          $hasError ? theme.colors.RED : theme.colors.LEMON,
+          0.44,
+        )};
   }
 
   transition: outline 0.05s;

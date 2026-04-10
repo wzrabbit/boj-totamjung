@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const Container = styled.ol`
   display: inline-flex;
@@ -35,7 +36,7 @@ export const CircleSlotButton = styled.button<{
       return css`
         border-color: ${theme.colors.LEMON};
         background-color: ${theme.colors.LEMON};
-        outline: 3px solid ${theme.colors.LEMON}70;
+        outline: 3px solid ${getTransparentHexColor(theme.colors.LEMON, 0.44)};
 
         color: ${theme.colors.BROWN_900};
       `;

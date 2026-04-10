@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const Container = styled.div<{ $isOpen: boolean }>`
   position: relative;
@@ -11,7 +12,7 @@ export const Container = styled.div<{ $isOpen: boolean }>`
     css`
       & > ul {
         border-color: ${theme.colors.LEMON};
-        box-shadow: 0 0 12px ${theme.colors.GOLD}70;
+        box-shadow: 0 0 12px ${getTransparentHexColor(theme.colors.GOLD, 0.44)};
       }
     `}
 `;
@@ -67,7 +68,7 @@ export const SearchInput = styled.input<{ $isOpen: boolean }>`
     $isOpen &&
     css`
       border-color: ${theme.colors.LEMON};
-      outline: 3px solid ${theme.colors.LEMON}70;
+      outline: 3px solid ${getTransparentHexColor(theme.colors.LEMON, 0.44)};
     `}
 `;
 

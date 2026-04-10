@@ -1,14 +1,15 @@
 import type { MainTheme } from '@/types/mainTheme';
 import { styled, css } from 'styled-components';
 import { theme } from '@/styles/theme';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 const bubbleBackgroundColors: Record<MainTheme, string> = {
   none: theme.colors.BOJ_BLUE,
-  totamjung: theme.colors.BLACK_DARKER_TRANSPARENT,
+  totamjung: getTransparentHexColor(theme.colors.BLACK, 0.67),
   solvedAcLight: theme.solvedAcColors.OFF_WHITE,
   solvedAcDark: theme.solvedAcColors.DARK_INDIGO,
   solvedAcBlack: theme.solvedAcColors.DARK_INDIGO,
-  bojExtendedDark: theme.colors.BLACK_DARKER_TRANSPARENT,
+  bojExtendedDark: getTransparentHexColor(theme.colors.BLACK, 0.67),
   bojExtendedRigel: theme.bojExtendedColors.DARK_INDIGO,
 } as const;
 

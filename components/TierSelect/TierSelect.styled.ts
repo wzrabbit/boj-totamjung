@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 import type { RatedTier } from '@/types/tierHider';
 
 export const Container = styled.div`
@@ -34,7 +35,8 @@ export const Button = styled.button<{ $isActivated: boolean }>`
     $isActivated
       ? css`
           border: 1.5px solid ${theme.colors.LEMON};
-          box-shadow: 0 0 12px ${theme.colors.GOLD}70;
+          box-shadow: 0 0 12px
+            ${getTransparentHexColor(theme.colors.GOLD, 0.44)};
         `
       : css`
           border: 1.5px solid ${theme.colors.BROWN_700};
@@ -77,7 +79,8 @@ export const List = styled.ul<{ $isOpen: boolean }>`
   margin: 4px 0 0 -8px;
 
   border: 1.5px solid ${({ theme }) => theme.colors.LEMON};
-  box-shadow: 0 0 12px ${({ theme }) => theme.colors.GOLD}70;
+  box-shadow: 0 0 12px
+    ${({ theme }) => getTransparentHexColor(theme.colors.GOLD, 0.44)};
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.BROWN_900};
 

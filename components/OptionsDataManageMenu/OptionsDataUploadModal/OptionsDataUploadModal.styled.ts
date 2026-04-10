@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const ContentContainer = styled.div`
   display: flex;
@@ -18,7 +19,8 @@ export const WarnList = styled.ul`
   padding: 16px;
 
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.colors.LIGHT_RED_TRANSPARENT};
+  background-color: ${({ theme }) =>
+    getTransparentHexColor(theme.colors.LIGHT_RED, 0.13)};
 `;
 
 export const WarnListItem = styled.li`

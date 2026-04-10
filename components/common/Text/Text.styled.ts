@@ -44,14 +44,14 @@ export const Text = styled.p<{
     if ($type === 'normal') {
       return css`
         font-family: Pretendard;
-        color: ${theme.color.WHITE};
+        color: ${theme.color.OFF_WHITE};
       `;
     }
 
     if ($type === 'gray') {
       return css`
         font-family: Pretendard;
-        color: ${theme.color.LIGHT_GRAY};
+        color: ${theme.color.GRAY_300};
       `;
     }
 
@@ -65,12 +65,12 @@ export const Text = styled.p<{
     if ($type === 'code') {
       return css`
         font-family: 'IBM Plex Mono', Consolas, Pretendard;
-        color: ${theme.color.WHITE};
+        color: ${theme.color.OFF_WHITE};
       `;
     }
 
     return css`
-      color: ${$color ?? theme.color.WHITE};
+      color: ${$color ?? theme.color.OFF_WHITE};
       font-family: ${$fontFamily ?? 'Pretendard'};
       font-weight: ${$fontWeight ?? 400};
       opacity: ${$opacity ?? 1};

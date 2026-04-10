@@ -12,9 +12,9 @@ export const Container = styled.div<{
   width: ${({ $width }) => $width};
   height: ${({ $height }) => $height};
 
-  border: 1.5px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
   &:focus-within {
     border-color: ${({ theme, $hasError }) =>
@@ -38,10 +38,10 @@ export const Textarea = styled.textarea`
   padding: 6px;
 
   border: none;
-  border-bottom: 1.5px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border-bottom: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
   background: transparent;
 
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.color.OFF_WHITE};
   font-size: 13px;
 
   resize: none;

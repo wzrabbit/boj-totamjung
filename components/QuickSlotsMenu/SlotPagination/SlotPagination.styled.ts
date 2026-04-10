@@ -19,11 +19,11 @@ export const CircleSlotButton = styled.button<{
   width: 100%;
   height: 100%;
 
-  border: 2px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 2px solid ${({ theme }) => theme.color.BROWN_500};
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
-  color: ${({ theme }) => theme.color.LIGHTER_BROWN};
+  color: ${({ theme }) => theme.color.BROWN_500};
   font-size: 14px;
   font-weight: 600;
 
@@ -37,7 +37,7 @@ export const CircleSlotButton = styled.button<{
         background-color: ${theme.color.LEMON};
         outline: 3px solid ${theme.color.LEMON}70;
 
-        color: ${theme.color.DARK_BROWN};
+        color: ${theme.color.BROWN_900};
       `;
     }
 

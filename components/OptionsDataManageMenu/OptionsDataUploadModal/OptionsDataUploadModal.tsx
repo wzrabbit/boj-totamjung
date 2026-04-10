@@ -67,7 +67,7 @@ const OptionsDataUploadModal = (props: OptionsDataUploadModalProps) => {
           name="취소"
           size="medium"
           iconSrc={<CloseCircleIcon />}
-          color={theme.color.LIGHT_GRAY}
+          color={theme.color.GRAY_300}
           disabled={false}
           onClick={onClose}
         />

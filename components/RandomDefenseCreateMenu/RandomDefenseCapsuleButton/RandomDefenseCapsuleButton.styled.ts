@@ -13,12 +13,12 @@ export const Container = styled.div`
 const capsuleButton = css`
   width: 50%;
 
-  border: 1.5px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  border: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
   font-size: 16px;
   font-weight: 800;
-  color: ${({ theme }) => theme.color.LIGHTER_BROWN};
+  color: ${({ theme }) => theme.color.BROWN_500};
 
   transition: 0.2s;
 `;
@@ -38,7 +38,7 @@ export const LeftButton = styled.button<{ $isActivated: boolean }>`
           background-color: ${({ theme }) => theme.color.MAGENTA};
           box-shadow: 0 0 12px ${({ theme }) => theme.color.MAGENTA};
 
-          color: ${({ theme }) => theme.color.WHITE};
+          color: ${({ theme }) => theme.color.OFF_WHITE};
         `
       : css`
           &:hover {
@@ -65,7 +65,7 @@ export const RightButton = styled.button<{ $isActivated: boolean }>`
           background-color: ${({ theme }) => theme.color.AZURE_BLUE};
           box-shadow: 0 0 12px ${({ theme }) => theme.color.AZURE_BLUE};
 
-          color: ${({ theme }) => theme.color.WHITE};
+          color: ${({ theme }) => theme.color.OFF_WHITE};
         `
       : css`
           &:hover {
@@ -86,11 +86,11 @@ export const MidCircle = styled.span`
   width: 32px;
   height: 32px;
 
-  border: 1.5px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
-  color: ${({ theme }) => theme.color.LIGHTER_BROWN};
+  color: ${({ theme }) => theme.color.BROWN_500};
   font-size: 12px;
   font-weight: 800;
   text-align: center;

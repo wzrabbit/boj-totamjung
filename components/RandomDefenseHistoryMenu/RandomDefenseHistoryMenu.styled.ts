@@ -15,7 +15,7 @@ export const HistoryListContainer = styled.div`
   height: 429px;
   padding: 8px;
 
-  border: 1px solid ${({ theme }) => theme.color.LIGHT_BROWN};
+  border: 1px solid ${({ theme }) => theme.color.BROWN_600};
   border-radius: 6px;
 `;
 

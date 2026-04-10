@@ -19,7 +19,7 @@ export const AlgorithmPanel = styled.div`
 
   border: 2px solid ${({ theme }) => theme.color.GOLD};
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 `;
 
 export const ControlPanel = styled.div`
@@ -33,7 +33,7 @@ export const ControlPanel = styled.div`
   border: 2px solid ${({ theme }) => theme.color.GOLD};
   border-radius: 16px;
   border-top: none;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 `;
 
 export const SearchPanelContainer = styled.div`
@@ -64,7 +64,7 @@ export const SearchInput = styled.input`
 
   font-size: 16px;
 
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.color.OFF_WHITE};
 `;
 
 export const CheckButtonPanel = styled.div`

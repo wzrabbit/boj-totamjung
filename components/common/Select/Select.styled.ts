@@ -23,7 +23,7 @@ export const Button = styled.button<{ $isActivated: boolean }>`
   padding: 6px;
 
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
   transition: 0.2s;
   pointer-events: auto;
@@ -35,7 +35,7 @@ export const Button = styled.button<{ $isActivated: boolean }>`
           box-shadow: 0 0 12px ${theme.color.GOLD}70;
         `
       : css`
-          border: 1.5px solid ${theme.color.LIGHTER_BROWN};
+          border: 1.5px solid ${theme.color.BROWN_500};
         `}
 `;
 
@@ -46,7 +46,7 @@ export const TierBadge = styled.img`
 
 export const OptionText = styled.p<{ $isBold: boolean }>`
   font-size: 14px;
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.color.OFF_WHITE};
   font-weight: ${({ $isBold }) => ($isBold ? 700 : 400)};
 
   transition: font-weight 0.1s;
@@ -78,7 +78,7 @@ export const List = styled.ul<{ $isOpen: boolean }>`
   border: 1.5px solid ${({ theme }) => theme.color.LEMON};
   box-shadow: 0 0 12px ${({ theme }) => theme.color.GOLD}70;
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
   scrollbar-width: none;
 
@@ -114,12 +114,12 @@ export const ListButton = styled.button`
   padding: 0 10px;
 
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
   transition: 0.15s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.BROWN};
+    background-color: ${({ theme }) => theme.color.BROWN_700};
   }
 `;
 

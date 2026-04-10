@@ -108,7 +108,7 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
             name="Github 저장소 방문하기"
             size="medium"
             width="100%"
-            color={theme.color.WHITE}
+            color={theme.color.OFF_WHITE}
             iconSrc={<GithubIcon />}
             disabled={false}
             onClick={() => {

@@ -5,13 +5,13 @@ import { theme } from '@/styles/theme';
 import type { CSSProperties } from 'react';
 
 const inputBorderColors: Record<MainTheme, string> = {
-  none: theme.color.LIGHT_GRAY,
-  totamjung: theme.color.LIGHTER_BROWN,
-  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
+  none: theme.color.GRAY_300,
+  totamjung: theme.color.BROWN_500,
+  bojExtendedDark: theme.bojExtendedColor.GRAY_300,
   bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
-  solvedAcLight: theme.color.LIGHT_GRAY,
-  solvedAcDark: theme.color.LIGHT_GRAY,
-  solvedAcBlack: theme.color.LIGHT_GRAY,
+  solvedAcLight: theme.color.GRAY_300,
+  solvedAcDark: theme.color.GRAY_300,
+  solvedAcBlack: theme.color.GRAY_300,
 };
 
 const inputFocusedBorderColors: Record<MainTheme, string> = {
@@ -20,11 +20,11 @@ const inputFocusedBorderColors: Record<MainTheme, string> = {
 };
 
 const inputBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
-  totamjung: theme.color.DARK_BROWN,
-  bojExtendedDark: theme.bojExtendedColor.DARKEST_GRAY,
+  none: theme.color.OFF_WHITE,
+  totamjung: theme.color.BROWN_900,
+  bojExtendedDark: theme.bojExtendedColor.GRAY_900,
   bojExtendedRigel: theme.bojExtendedColor.DARK_INDIGO,
-  solvedAcLight: theme.color.WHITE,
+  solvedAcLight: theme.color.OFF_WHITE,
   solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
   solvedAcBlack: theme.color.BLACK,
 };
@@ -63,7 +63,7 @@ export const Input = styled.input<{
       ? $color
       : lightThemes.includes($totamjungTheme)
         ? theme.color.BLACK
-        : theme.color.WHITE};
+        : theme.color.OFF_WHITE};
 
   &:focus {
     border-color: ${({ theme, $totamjungTheme, $hasError }) =>

@@ -8,7 +8,7 @@ export const getTierColor = (
   theme: DefaultTheme,
 ) => {
   if (isHidden) {
-    return theme.color.GRAY;
+    return theme.color.GRAY_500;
   }
 
   if (tier >= 1 && tier <= 5) {
@@ -35,7 +35,7 @@ export const getTierColor = (
     return theme.solvedAcTier[30];
   }
 
-  return theme.color.WHITE;
+  return theme.color.OFF_WHITE;
 };
 
 const getTierGradientCss = (
@@ -234,7 +234,7 @@ export const CreatedAtContainer = styled.div`
     width: 16px;
     height: 16px;
 
-    color: ${({ theme }) => theme.color.WHITE};
+    color: ${({ theme }) => theme.color.OFF_WHITE};
   }
 `;
 
@@ -246,7 +246,7 @@ export const CreatedAt = styled.p`
   font-size: 13px;
   font-weight: 500;
   font-family: 'Oxanium', 'Pretendard';
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.color.OFF_WHITE};
 `;
 
 export const ProgressBarWrapper = styled.div`

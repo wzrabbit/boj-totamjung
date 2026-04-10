@@ -33,7 +33,7 @@ export const FakeVisualSwitch = styled.div<{ $isChecked: boolean }>`
   height: 100%;
 
   background-color: ${({ theme, $isChecked }) =>
-    $isChecked ? theme.color.GOLD : theme.color.LIGHTER_BROWN};
+    $isChecked ? theme.color.GOLD : theme.color.BROWN_500};
 
   box-shadow: ${({ theme, $isChecked }) =>
     $isChecked ? `0 0 12px ${theme.color.GOLD}` : `0 0 12px transparent`};
@@ -52,7 +52,7 @@ export const Handle = styled.div<{
   height: ${({ $size }) => ($size === 'large' ? '26px' : '20px')};
   margin: 2px;
 
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
   transition: transform 0.2s;
 

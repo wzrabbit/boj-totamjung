@@ -26,9 +26,9 @@ const panel = css`
   width: 100%;
   padding: 4px;
 
-  border: 1.5px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 `;
 
 export const InputPanel = styled.ul`
@@ -49,11 +49,11 @@ export const SearchInput = styled.input<{ $isOpen: boolean }>`
   height: 26px;
   padding: 0 4px;
 
-  border: 1px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 1px solid ${({ theme }) => theme.color.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.color.OFF_WHITE};
 
   transition: outline 0.05s;
 

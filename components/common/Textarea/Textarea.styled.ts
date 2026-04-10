@@ -10,11 +10,11 @@ export const Textarea = styled.textarea<{
   height: ${({ $height }) => $height};
   padding: 6px;
 
-  border: 1.5px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 1.5px solid ${({ theme }) => theme.color.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.color.OFF_WHITE};
   font-size: 13px;
 
   resize: none;

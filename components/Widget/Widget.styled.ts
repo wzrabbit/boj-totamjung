@@ -5,22 +5,22 @@ import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 const topButtonBackgroundColors: Record<MainTheme, string> = {
   none: theme.color.BOJ_BLUE,
-  totamjung: theme.color.LIGHTEST_BROWN,
+  totamjung: theme.color.BROWN_300,
   solvedAcLight: theme.solvedAcColor.LIME,
   solvedAcDark: theme.solvedAcColor.LIME,
   solvedAcBlack: theme.solvedAcColor.LIME,
-  bojExtendedDark: theme.bojExtendedColor.DARK_GRAY,
+  bojExtendedDark: theme.bojExtendedColor.GRAY_600,
   bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
 } as const;
 
 const topButtonArrowBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.PURE_WHITE,
-  totamjung: theme.color.BROWN,
-  solvedAcLight: theme.color.PURE_WHITE,
-  solvedAcDark: theme.color.PURE_WHITE,
-  solvedAcBlack: theme.color.PURE_WHITE,
-  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
-  bojExtendedRigel: theme.color.WHITE,
+  none: theme.color.WHITE,
+  totamjung: theme.color.BROWN_700,
+  solvedAcLight: theme.color.WHITE,
+  solvedAcDark: theme.color.WHITE,
+  solvedAcBlack: theme.color.WHITE,
+  bojExtendedDark: theme.bojExtendedColor.GRAY_300,
+  bojExtendedRigel: theme.color.OFF_WHITE,
 } as const;
 
 const dropdownIconsFilters: Record<MainTheme, string> = {
@@ -44,13 +44,13 @@ const dropdownBackgroundColors: Record<MainTheme, string> = {
 } as const;
 
 const speechBubbleTextColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
-  totamjung: theme.color.WHITE,
+  none: theme.color.OFF_WHITE,
+  totamjung: theme.color.OFF_WHITE,
   solvedAcLight: theme.color.BLACK,
-  solvedAcDark: theme.color.WHITE,
-  solvedAcBlack: theme.color.WHITE,
-  bojExtendedDark: theme.color.WHITE,
-  bojExtendedRigel: theme.color.WHITE,
+  solvedAcDark: theme.color.OFF_WHITE,
+  solvedAcBlack: theme.color.OFF_WHITE,
+  bojExtendedDark: theme.color.OFF_WHITE,
+  bojExtendedRigel: theme.color.OFF_WHITE,
 } as const;
 
 export const Container = styled.div`

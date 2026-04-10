@@ -27,7 +27,7 @@ const getRankColor = (theme: Theme, rank: Rank) => {
     return theme.solvedAcTier.RUBY;
   }
 
-  return theme.color.GRAY;
+  return theme.color.GRAY_500;
 };
 
 export const Container = styled.li`

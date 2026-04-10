@@ -34,9 +34,9 @@ export const TextLabel = styled.span<{
 
   border-radius: 10px;
   background-color: ${({ theme, $backgroundColor }) =>
-    $backgroundColor === 'gold' ? theme.color.GOLD : theme.color.WHITE};
+    $backgroundColor === 'gold' ? theme.color.GOLD : theme.color.OFF_WHITE};
 
-  color: ${({ theme }) => theme.color.DARK_BROWN};
+  color: ${({ theme }) => theme.color.BROWN_900};
   font-size: 14px;
   text-align: center;
   font-weight: 800;
@@ -46,12 +46,12 @@ export const TextLabel = styled.span<{
 `;
 
 export const NameEmptyText = styled.p`
-  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+  color: ${({ theme }) => theme.color.GRAY_300};
   font-size: 16px;
 `;
 
 export const QueryEmptyText = styled.p`
-  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+  color: ${({ theme }) => theme.color.GRAY_300};
   font-size: 14px;
 `;
 

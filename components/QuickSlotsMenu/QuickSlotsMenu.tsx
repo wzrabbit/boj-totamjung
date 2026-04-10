@@ -71,7 +71,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               type="button"
               name="쿼리 복사"
               size="medium"
-              color={theme.color.LIGHT_GRAY}
+              color={theme.color.GRAY_300}
               iconSrc={<CopyIcon />}
               disabled={slot.isEmpty}
               onClick={() => {

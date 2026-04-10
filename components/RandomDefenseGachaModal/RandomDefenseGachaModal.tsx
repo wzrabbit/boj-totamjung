@@ -168,7 +168,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 type="button"
                 name="문제 목록 복사"
                 size="large"
-                color={theme.color.LIGHT_GRAY}
+                color={theme.color.GRAY_300}
                 iconSrc={<CopyIcon />}
                 disabled={false}
                 onClick={copyProblemInfosMarkdownToClipboard}

@@ -96,7 +96,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const LightGrayText = styled.span`
-  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+  color: ${({ theme }) => theme.color.GRAY_300};
 `;
 
 export const ControlButtonsContainer = styled.div`

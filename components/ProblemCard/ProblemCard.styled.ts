@@ -41,7 +41,7 @@ const getTierColor = (
   theme: DefaultTheme,
 ) => {
   if (isTierHidden) {
-    return theme.color.GRAY;
+    return theme.color.GRAY_500;
   }
 
   if (tier >= 1 && tier <= 5) {
@@ -68,7 +68,7 @@ const getTierColor = (
     return theme.solvedAcTier[30];
   }
 
-  return theme.color.WHITE;
+  return theme.color.OFF_WHITE;
 };
 
 export const HoverTransformContainer = styled.div`
@@ -167,7 +167,7 @@ export const Title = styled.div.attrs<{ $cardWidth: number }>(
   ({ $cardWidth, theme }) => ({
     style: {
       height: `${Math.max(28, $cardWidth / 6.694)}px`,
-      color: `${theme.color.WHITE}`,
+      color: `${theme.color.OFF_WHITE}`,
       fontSize: `${Math.max(14, $cardWidth / 13.388)}px`,
       lineHeight: `${Math.max(14, $cardWidth / 13.388)}px`,
     },

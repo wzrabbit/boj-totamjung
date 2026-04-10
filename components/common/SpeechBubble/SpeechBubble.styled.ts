@@ -14,26 +14,26 @@ const bubbleBackgroundColors: Record<MainTheme, string> = {
 
 const bubbleArrowColors: Record<MainTheme, string> = {
   ...bubbleBackgroundColors,
-  solvedAcLight: theme.solvedAcColor.LIGHTER_GRAY,
+  solvedAcLight: theme.solvedAcColor.GRAY_100,
 } as const;
 
 const bubbleTextColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
-  totamjung: theme.color.WHITE,
+  none: theme.color.OFF_WHITE,
+  totamjung: theme.color.OFF_WHITE,
   solvedAcLight: theme.color.BLACK,
-  solvedAcDark: theme.color.WHITE,
-  solvedAcBlack: theme.color.WHITE,
-  bojExtendedDark: theme.color.WHITE,
-  bojExtendedRigel: theme.color.WHITE,
+  solvedAcDark: theme.color.OFF_WHITE,
+  solvedAcBlack: theme.color.OFF_WHITE,
+  bojExtendedDark: theme.color.OFF_WHITE,
+  bojExtendedRigel: theme.color.OFF_WHITE,
 } as const;
 
 const closeButtonColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
-  totamjung: theme.color.LIGHTEST_BROWN,
-  solvedAcLight: theme.color.GRAY,
-  solvedAcDark: theme.solvedAcColor.GRAY,
-  solvedAcBlack: theme.solvedAcColor.GRAY,
-  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
+  none: theme.color.OFF_WHITE,
+  totamjung: theme.color.BROWN_300,
+  solvedAcLight: theme.color.GRAY_500,
+  solvedAcDark: theme.solvedAcColor.GRAY_400,
+  solvedAcBlack: theme.solvedAcColor.GRAY_400,
+  bojExtendedDark: theme.bojExtendedColor.GRAY_300,
   bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
 } as const;
 
@@ -53,7 +53,7 @@ export const Container = styled.div<{
   ${({ theme, $totamjungTheme }) =>
     $totamjungTheme === 'solvedAcLight' &&
     css`
-      border: 1px solid ${theme.solvedAcColor.LIGHTER_GRAY};
+      border: 1px solid ${theme.solvedAcColor.GRAY_100};
     `};
 
   border-radius: 8px;

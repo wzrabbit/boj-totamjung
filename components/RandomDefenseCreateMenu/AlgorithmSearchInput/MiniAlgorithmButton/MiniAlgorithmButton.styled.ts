@@ -15,9 +15,9 @@ export const Button = styled.button`
 
   padding: 0 6px;
 
-  border: 1px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 1px solid ${({ theme }) => theme.color.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
 `;
 
 export const Text = styled.p`

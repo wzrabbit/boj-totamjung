@@ -23,8 +23,8 @@ const buttonSide = css`
   width: 126px;
   height: 50px;
 
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
-  border: 2px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  background-color: ${({ theme }) => theme.color.BROWN_900};
+  border: 2px solid ${({ theme }) => theme.color.BROWN_500};
   border-radius: 6px;
 `;
 
@@ -75,5 +75,5 @@ export const TitleText = styled.p`
 
 export const SlotNoText = styled.p`
   font-size: 12px;
-  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+  color: ${({ theme }) => theme.color.GRAY_300};
 `;

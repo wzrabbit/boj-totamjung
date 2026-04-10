@@ -96,7 +96,7 @@ const ConfirmButton = (props: Omit<ConfirmModalProps, 'actionType'>) => {
       iconSrc={<CheckCircleIcon />}
       color={
         lightThemes.includes(theme)
-          ? styledTheme.color.DARK_GRAY
+          ? styledTheme.color.GRAY_800
           : styledTheme.color.GOLD
       }
       disabled={false}
@@ -120,8 +120,8 @@ const CancelConfirmButtons = (
         iconSrc={<CloseCircleIcon />}
         color={
           lightThemes.includes(theme)
-            ? styledTheme.color.DARK_GRAY
-            : styledTheme.color.LIGHT_GRAY
+            ? styledTheme.color.GRAY_800
+            : styledTheme.color.GRAY_300
         }
         disabled={false}
         onClick={onClose}
@@ -133,7 +133,7 @@ const CancelConfirmButtons = (
         iconSrc={<CheckCircleIcon />}
         color={
           lightThemes.includes(theme)
-            ? styledTheme.color.DARK_GRAY
+            ? styledTheme.color.GRAY_800
             : styledTheme.color.GOLD
         }
         disabled={false}

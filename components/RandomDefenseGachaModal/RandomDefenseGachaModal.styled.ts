@@ -131,7 +131,7 @@ export const ToggleButtonContainer = styled.div<{ $align: 'left' | 'right' }>`
 export const ToggleButtonText = styled.div`
   display: inline-block;
 
-  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+  color: ${({ theme }) => theme.color.GRAY_300};
 `;
 
 const transparentButtonStyle = css`
@@ -142,12 +142,12 @@ const transparentButtonStyle = css`
   width: 35px;
   height: 35px;
 
-  border: 2px solid ${({ theme }) => theme.color.LIGHT_GRAY};
+  border: 2px solid ${({ theme }) => theme.color.GRAY_300};
   border-radius: 50%;
   background: transparent;
 
   &:hover {
-    box-shadow: 0 0 10px ${({ theme }) => theme.color.LIGHT_GRAY};
+    box-shadow: 0 0 10px ${({ theme }) => theme.color.GRAY_300};
     transform: scale(1.1);
   }
 
@@ -177,7 +177,7 @@ export const AudioToggleButton = styled.button`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.LIGHT_GRAY};
+    color: ${({ theme }) => theme.color.GRAY_300};
   }
 `;
 
@@ -247,7 +247,7 @@ export const DescriptionList = styled.ul`
 
 export const Description = styled.li`
   font-size: 16px;
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.color.OFF_WHITE};
   word-break: break-all;
 `;
 
@@ -279,7 +279,7 @@ export const LoadingIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.WHITE};
+    color: ${({ theme }) => theme.color.OFF_WHITE};
   }
 
   animation: ${rotate} 3s linear infinite;
@@ -295,7 +295,7 @@ export const LoadingMessage = styled.span`
   line-height: 20px;
   font-weight: 500;
 
-  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+  color: ${({ theme }) => theme.color.GRAY_300};
 
   animation: ${blink} 2s linear infinite;
 `;
@@ -326,7 +326,7 @@ export const MouseClickIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.PURE_WHITE};
+    color: ${({ theme }) => theme.color.WHITE};
   }
 
   animation: ${tremble} 1.5s infinite;
@@ -337,7 +337,7 @@ export const ReadyMessage = styled.span`
   line-height: 25px;
   font-weight: 500;
 
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.color.OFF_WHITE};
 `;
 
 export const ResultScreen = styled.div`

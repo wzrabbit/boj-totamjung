@@ -52,5 +52,5 @@ export const Button = styled.button<{ $isSelected: boolean }>`
   font-size: 16px;
   font-weight: 600;
   color: ${({ theme, $isSelected }) =>
-    $isSelected ? theme.color.GOLD : theme.color.LIGHT_GRAY};
+    $isSelected ? theme.color.GOLD : theme.color.GRAY_300};
 `;

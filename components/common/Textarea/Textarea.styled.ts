@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import type { CSSProperties } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const Textarea = styled.textarea<{
   $width: CSSProperties['width'];
@@ -10,11 +11,11 @@ export const Textarea = styled.textarea<{
   height: ${({ $height }) => $height};
   padding: 6px;
 
-  border: 1.5px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 1.5px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
   font-size: 13px;
 
   resize: none;
@@ -22,10 +23,13 @@ export const Textarea = styled.textarea<{
   &:focus,
   &:active {
     border-color: ${({ theme, $hasError }) =>
-      $hasError ? theme.color.RED : theme.color.LEMON};
+      $hasError ? theme.colors.RED : theme.colors.LEMON};
     outline: 3px solid
       ${({ theme, $hasError }) =>
-        $hasError ? theme.color.RED : theme.color.LEMON}70;
+        getTransparentHexColor(
+          $hasError ? theme.colors.RED : theme.colors.LEMON,
+          0.44,
+        )};
   }
 
   transition: outline 0.05s;

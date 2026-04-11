@@ -73,7 +73,9 @@ const GachaProblemCountInputModal = (
             type="custom"
             fontSize={16}
             color={
-              isLightTheme ? styledTheme.color.BLACK : styledTheme.color.WHITE
+              isLightTheme
+                ? styledTheme.colors.BLACK
+                : styledTheme.colors.OFF_WHITE
             }
             opacity={0.8}
           >
@@ -90,8 +92,8 @@ const GachaProblemCountInputModal = (
           iconSrc={<CheckCircleIcon />}
           color={
             lightThemes.includes(theme)
-              ? styledTheme.color.DARK_GRAY
-              : styledTheme.color.GOLD
+              ? styledTheme.colors.GRAY_800
+              : styledTheme.colors.GOLD
           }
           disabled={!isInputValueValid}
           onClick={() => onSubmitProblemCount(Number(inputValue))}

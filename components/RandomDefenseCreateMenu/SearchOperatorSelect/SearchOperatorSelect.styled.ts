@@ -38,7 +38,7 @@ export const CheckIconWrapper = styled.div`
     width: 16px;
     height: 16px;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
 
     animation: ${zoomInOut} 0.15s forwards;
   }
@@ -52,5 +52,5 @@ export const Button = styled.button<{ $isSelected: boolean }>`
   font-size: 16px;
   font-weight: 600;
   color: ${({ theme, $isSelected }) =>
-    $isSelected ? theme.color.GOLD : theme.color.LIGHT_GRAY};
+    $isSelected ? theme.colors.GOLD : theme.colors.GRAY_300};
 `;

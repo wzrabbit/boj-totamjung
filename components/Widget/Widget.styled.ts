@@ -4,53 +4,53 @@ import { styled, keyframes, css } from 'styled-components';
 import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 const topButtonBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.BOJ_BLUE,
-  totamjung: theme.color.LIGHTEST_BROWN,
-  solvedAcLight: theme.solvedAcColor.LIME,
-  solvedAcDark: theme.solvedAcColor.LIME,
-  solvedAcBlack: theme.solvedAcColor.LIME,
-  bojExtendedDark: theme.bojExtendedColor.DARK_GRAY,
-  bojExtendedRigel: theme.bojExtendedColor.SKY_BLUE,
+  none: theme.colors.BOJ_BLUE,
+  totamjung: theme.colors.BROWN_300,
+  solvedAcLight: theme.solvedAcColors.LIME,
+  solvedAcDark: theme.solvedAcColors.LIME,
+  solvedAcBlack: theme.solvedAcColors.LIME,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_600,
+  bojExtendedRigel: theme.bojExtendedColors.SKY_BLUE,
 } as const;
 
 const topButtonArrowBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.PURE_WHITE,
-  totamjung: theme.color.BROWN,
-  solvedAcLight: theme.color.PURE_WHITE,
-  solvedAcDark: theme.color.PURE_WHITE,
-  solvedAcBlack: theme.color.PURE_WHITE,
-  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
-  bojExtendedRigel: theme.color.WHITE,
+  none: theme.colors.WHITE,
+  totamjung: theme.colors.BROWN_700,
+  solvedAcLight: theme.colors.WHITE,
+  solvedAcDark: theme.colors.WHITE,
+  solvedAcBlack: theme.colors.WHITE,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_300,
+  bojExtendedRigel: theme.colors.OFF_WHITE,
 } as const;
 
 const dropdownIconsFilters: Record<MainTheme, string> = {
-  none: theme.filter.BOJ_BLUE_FILTER,
-  totamjung: theme.filter.LIGHTEST_BROWN_FILTER,
-  solvedAcLight: theme.solvedAcFilter.LIME,
-  solvedAcDark: theme.solvedAcFilter.LIME,
-  solvedAcBlack: theme.solvedAcFilter.LIME,
-  bojExtendedDark: theme.bojExtendedFilter.DARK_GRAY,
-  bojExtendedRigel: theme.bojExtendedFilter.SKY_BLUE,
+  none: theme.filters.BOJ_BLUE,
+  totamjung: theme.filters.BROWN_300,
+  solvedAcLight: theme.solvedAcFilters.LIME,
+  solvedAcDark: theme.solvedAcFilters.LIME,
+  solvedAcBlack: theme.solvedAcFilters.LIME,
+  bojExtendedDark: theme.bojExtendedFilters.GRAY_600,
+  bojExtendedRigel: theme.bojExtendedFilters.SKY_BLUE,
 } as const;
 
 const dropdownBackgroundColors: Record<MainTheme, string> = {
   none: 'transparent',
-  totamjung: theme.color.BLACK_TRANSPARENT,
+  totamjung: getTransparentHexColor(theme.colors.BLACK, 0.31),
   solvedAcLight: 'transparent',
-  solvedAcDark: theme.color.BLACK_TRANSPARENT,
-  solvedAcBlack: theme.color.BLACK_TRANSPARENT,
-  bojExtendedDark: theme.color.BLACK_TRANSPARENT,
-  bojExtendedRigel: theme.color.BLACK_TRANSPARENT,
+  solvedAcDark: getTransparentHexColor(theme.colors.BLACK, 0.31),
+  solvedAcBlack: getTransparentHexColor(theme.colors.BLACK, 0.31),
+  bojExtendedDark: getTransparentHexColor(theme.colors.BLACK, 0.31),
+  bojExtendedRigel: getTransparentHexColor(theme.colors.BLACK, 0.31),
 } as const;
 
 const speechBubbleTextColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
-  totamjung: theme.color.WHITE,
-  solvedAcLight: theme.color.BLACK,
-  solvedAcDark: theme.color.WHITE,
-  solvedAcBlack: theme.color.WHITE,
-  bojExtendedDark: theme.color.WHITE,
-  bojExtendedRigel: theme.color.WHITE,
+  none: theme.colors.OFF_WHITE,
+  totamjung: theme.colors.OFF_WHITE,
+  solvedAcLight: theme.colors.BLACK,
+  solvedAcDark: theme.colors.OFF_WHITE,
+  solvedAcBlack: theme.colors.OFF_WHITE,
+  bojExtendedDark: theme.colors.OFF_WHITE,
+  bojExtendedRigel: theme.colors.OFF_WHITE,
 } as const;
 
 export const Container = styled.div`
@@ -103,7 +103,7 @@ export const TopButton = styled.button<{
 
   border-radius: 20px !important;
   background-color: ${({ theme, $widgetTheme }) =>
-    topButtonBackgroundColors[$widgetTheme] ?? theme.color.BOJ_BLUE};
+    topButtonBackgroundColors[$widgetTheme] ?? theme.colors.BOJ_BLUE};
 
   transition:
     0.3s transform,
@@ -266,7 +266,7 @@ export const RandomDefenseButton = styled.button<{
 
     background-image: url(${browser.runtime.getURL('/dice.png')});
     background-size: 24.79px 26px;
-    filter: ${({ theme }) => theme.filter.LIGHT_GRAY_FILTER};
+    filter: ${({ theme }) => theme.filters.GRAY_300};
     mix-blend-mode: color-dodge;
     opacity: 0.4;
     mask-image: linear-gradient(to bottom, transparent 50%, black 50%);

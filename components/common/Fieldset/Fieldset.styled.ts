@@ -13,7 +13,7 @@ export const Fieldset = styled.fieldset`
 
 export const Legend = styled.legend`
   font-size: 16px;
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
   margin-bottom: 6px;
 `;
 

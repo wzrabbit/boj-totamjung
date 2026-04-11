@@ -14,9 +14,9 @@ export const Container = styled.div<{
 
   padding: ${({ $padding }) => $padding};
 
-  border: 2px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 2px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 `;
 
 export const Title = styled.div`
@@ -31,7 +31,7 @@ export const Title = styled.div`
 
   padding: 0 8px 0 8px;
   border-radius: 0 6px 0 6px;
-  background-color: ${({ theme }) => theme.color.LIGHTER_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_500};
 
   font-size: 14px;
   font-weight: 800;

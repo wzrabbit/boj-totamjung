@@ -3,51 +3,51 @@ import type { MainTheme } from '@/types/mainTheme';
 import { css, styled } from 'styled-components';
 
 const modalHeaderBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.WHITE,
-  totamjung: theme.color.DARK_BROWN,
-  bojExtendedDark: theme.bojExtendedColor.DARKEST_GRAY,
-  bojExtendedRigel: theme.bojExtendedColor.DARK_INDIGO,
-  solvedAcLight: theme.color.WHITE,
-  solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
-  solvedAcBlack: theme.color.BLACK,
+  none: theme.colors.OFF_WHITE,
+  totamjung: theme.colors.BROWN_900,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_900,
+  bojExtendedRigel: theme.bojExtendedColors.DARK_INDIGO,
+  solvedAcLight: theme.colors.OFF_WHITE,
+  solvedAcDark: theme.solvedAcColors.DARK_INDIGO,
+  solvedAcBlack: theme.colors.BLACK,
 };
 
 const modalTitleColors: Record<MainTheme, string> = {
-  none: theme.color.BLACK,
-  totamjung: theme.color.GOLD,
-  bojExtendedDark: theme.bojExtendedColor.LIGHT_GRAY,
-  bojExtendedRigel: theme.color.WHITE,
-  solvedAcLight: theme.color.BLACK,
-  solvedAcDark: theme.color.WHITE,
-  solvedAcBlack: theme.color.WHITE,
+  none: theme.colors.BLACK,
+  totamjung: theme.colors.GOLD,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_300,
+  bojExtendedRigel: theme.colors.OFF_WHITE,
+  solvedAcLight: theme.colors.BLACK,
+  solvedAcDark: theme.colors.OFF_WHITE,
+  solvedAcBlack: theme.colors.OFF_WHITE,
 };
 
 const modalCloseButtonIconColors: Record<MainTheme, string> = {
   ...modalTitleColors,
-  none: theme.solvedAcColor.GRAY,
-  solvedAcLight: theme.solvedAcColor.GRAY,
-  solvedAcDark: theme.solvedAcColor.LIGHT_GRAY,
-  solvedAcBlack: theme.solvedAcColor.LIGHT_GRAY,
+  none: theme.solvedAcColors.GRAY_400,
+  solvedAcLight: theme.solvedAcColors.GRAY_400,
+  solvedAcDark: theme.solvedAcColors.GRAY_200,
+  solvedAcBlack: theme.solvedAcColors.GRAY_200,
 };
 
 const modalBodyBackgroundColors: Record<MainTheme, string> = {
-  none: theme.color.PURE_WHITE,
-  totamjung: theme.color.BROWN,
-  bojExtendedDark: theme.bojExtendedColor.DARKER_GRAY,
-  bojExtendedRigel: theme.bojExtendedColor.DARK_SKY_BLUE,
-  solvedAcLight: theme.color.PURE_WHITE,
-  solvedAcDark: theme.solvedAcColor.INDIGO,
-  solvedAcBlack: theme.solvedAcColor.DARK_INDIGO,
+  none: theme.colors.WHITE,
+  totamjung: theme.colors.BROWN_700,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_800,
+  bojExtendedRigel: theme.bojExtendedColors.DARK_SKY_BLUE,
+  solvedAcLight: theme.colors.WHITE,
+  solvedAcDark: theme.solvedAcColors.INDIGO,
+  solvedAcBlack: theme.solvedAcColors.DARK_INDIGO,
 };
 
 const modalBoxShadowColors: Record<MainTheme, string> = {
-  none: theme.color.LIGHT_GRAY,
-  totamjung: theme.color.GOLD,
-  bojExtendedDark: theme.bojExtendedColor.DARKEST_GRAY,
-  bojExtendedRigel: theme.bojExtendedColor.DARK_INDIGO,
-  solvedAcLight: theme.color.WHITE,
-  solvedAcDark: theme.solvedAcColor.DARK_INDIGO,
-  solvedAcBlack: theme.color.BLACK,
+  none: theme.colors.GRAY_300,
+  totamjung: theme.colors.GOLD,
+  bojExtendedDark: theme.bojExtendedColors.GRAY_900,
+  bojExtendedRigel: theme.bojExtendedColors.DARK_INDIGO,
+  solvedAcLight: theme.colors.OFF_WHITE,
+  solvedAcDark: theme.solvedAcColors.DARK_INDIGO,
+  solvedAcBlack: theme.colors.BLACK,
 };
 
 export const Container = styled.div`
@@ -114,7 +114,7 @@ export const CloseButton = styled.button`
   background-color: transparent;
 
   &:focus-visible {
-    outline-color: ${({ theme }) => theme.color.LEMON};
+    outline-color: ${({ theme }) => theme.colors.LEMON};
     outline-offset: 2px;
     outline-style: dashed;
     outline-width: 1px;
@@ -192,7 +192,7 @@ export const Modal = styled.div<{ $totamjungTheme: MainTheme }>`
     & ${Body} {
       background-color: ${modalBodyBackgroundColors[$totamjungTheme]};
 
-      color: ${({ theme }) => theme.color.DARK_GRAY};
+      color: ${({ theme }) => theme.colors.GRAY_800};
     }
   `};
 `;

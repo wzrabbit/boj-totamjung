@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const FontText = styled.p<{ $fontFamily: string; $fontSize: string }>`
-  color: ${({ theme }) => theme.color.LEMON};
+  color: ${({ theme }) => theme.colors.LEMON};
   font-size: ${({ $fontSize }) => $fontSize};
   font-family: ${({ $fontFamily }) => $fontFamily};
 `;

@@ -18,7 +18,7 @@ export const FakeVisualRadio = styled.div<{
   width: 16px;
   height: 16px;
 
-  border: 3px solid ${({ theme }) => theme.color.GOLD};
+  border: 3px solid ${({ theme }) => theme.colors.GOLD};
 
   border-radius: 8px;
   transition: 0.15s;
@@ -27,11 +27,11 @@ export const FakeVisualRadio = styled.div<{
   ${({ theme, $checked }) =>
     $checked
       ? css`
-          box-shadow: 0 0 8px ${theme.color.GOLD};
-          background-color: ${theme.color.GOLD};
+          box-shadow: 0 0 8px ${theme.colors.GOLD};
+          background-color: ${theme.colors.GOLD};
         `
       : css`
-          box-shadow: 0 0 8px ${theme.color.DARK_BROWN};
+          box-shadow: 0 0 8px ${theme.colors.BROWN_900};
           background-color: transparent;
         `}
 `;

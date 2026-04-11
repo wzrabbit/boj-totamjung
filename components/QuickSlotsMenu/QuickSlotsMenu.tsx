@@ -71,7 +71,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               type="button"
               name="쿼리 복사"
               size="medium"
-              color={theme.color.LIGHT_GRAY}
+              color={theme.colors.GRAY_300}
               iconSrc={<CopyIcon />}
               disabled={slot.isEmpty}
               onClick={() => {
@@ -85,7 +85,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               type="button"
               name="수정"
               size="medium"
-              color={theme.color.SKY_BLUE}
+              color={theme.colors.SKY_BLUE}
               iconSrc={<EditIcon />}
               disabled={slot.isEmpty}
               onClick={openEditModal}
@@ -94,7 +94,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               type="button"
               name="삭제"
               size="medium"
-              color={theme.color.RED}
+              color={theme.colors.RED}
               iconSrc={<TrashIcon />}
               disabled={slot.isEmpty}
               onClick={() => {
@@ -105,7 +105,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
               type="button"
               name="즉석 추첨"
               size="medium"
-              color={theme.color.PURPLE}
+              color={theme.colors.PURPLE}
               iconSrc={<DicesIcon />}
               disabled={slot.isEmpty}
               onClick={() => {

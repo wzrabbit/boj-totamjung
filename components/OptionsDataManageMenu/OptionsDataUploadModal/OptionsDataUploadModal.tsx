@@ -67,7 +67,7 @@ const OptionsDataUploadModal = (props: OptionsDataUploadModalProps) => {
           name="취소"
           size="medium"
           iconSrc={<CloseCircleIcon />}
-          color={theme.color.LIGHT_GRAY}
+          color={theme.colors.GRAY_300}
           disabled={false}
           onClick={onClose}
         />
@@ -76,7 +76,7 @@ const OptionsDataUploadModal = (props: OptionsDataUploadModalProps) => {
           name="업로드"
           size="medium"
           iconSrc={<FileUploadIcon />}
-          color={theme.color.LIME}
+          color={theme.colors.LIME}
           disabled={!isSameWithConfirmText}
           onClick={onUpload}
         />

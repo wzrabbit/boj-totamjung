@@ -15,7 +15,7 @@ export const FakeVisualCheckbox = styled.div<{ $isChecked: boolean }>`
   width: 100%;
   height: 100%;
 
-  border: 3px solid ${({ theme }) => theme.color.GOLD};
+  border: 3px solid ${({ theme }) => theme.colors.GOLD};
 
   border-radius: 3px;
   transition: 0.15s;
@@ -24,11 +24,11 @@ export const FakeVisualCheckbox = styled.div<{ $isChecked: boolean }>`
   ${({ theme, $isChecked }) =>
     $isChecked
       ? css`
-          box-shadow: 0 0 8px ${theme.color.GOLD};
-          background-color: ${theme.color.GOLD};
+          box-shadow: 0 0 8px ${theme.colors.GOLD};
+          background-color: ${theme.colors.GOLD};
         `
       : css`
-          box-shadow: 0 0 8px ${theme.color.DARK_BROWN};
+          box-shadow: 0 0 8px ${theme.colors.BROWN_900};
           background-color: transparent;
         `}
 `;

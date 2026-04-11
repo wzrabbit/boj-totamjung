@@ -38,7 +38,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         borderRadius={8}
         fontSize={26}
         fontWeight={800}
-        color={theme.color.GOLD}
+        color={theme.colors.GOLD}
         textAlign="center"
         disabled={disabled}
         onChange={updateHours}
@@ -60,7 +60,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         borderRadius={8}
         fontSize={26}
         fontWeight={800}
-        color={theme.color.GOLD}
+        color={theme.colors.GOLD}
         textAlign="center"
         disabled={disabled}
         onChange={updateMinutes}

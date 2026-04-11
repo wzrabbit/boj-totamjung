@@ -15,17 +15,17 @@ export const FakeUploadButton = styled.div`
   height: 40px;
   padding: 4px 6px;
 
-  border: 3px solid ${({ theme }) => theme.color.LIME};
+  border: 3px solid ${({ theme }) => theme.colors.LIME};
   border-radius: 6px;
   background-color: transparent;
 
-  color: ${({ theme }) => theme.color.LIME};
+  color: ${({ theme }) => theme.colors.LIME};
 
   cursor: pointer;
   transition: 0.2s;
 
   &:hover {
-    box-shadow: 0 0 10px ${({ theme }) => theme.color.LIME};
+    box-shadow: 0 0 10px ${({ theme }) => theme.colors.LIME};
   }
 `;
 
@@ -39,7 +39,7 @@ export const UploadIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.LIME};
+    color: ${({ theme }) => theme.colors.LIME};
   }
 `;
 
@@ -50,7 +50,7 @@ export const Text = styled.span`
   font-weight: 600;
   text-align: center;
   white-space: nowrap;
-  color: ${({ theme }) => theme.color.LIME};
+  color: ${({ theme }) => theme.colors.LIME};
 `;
 
 export const UploadInput = styled.input`

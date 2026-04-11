@@ -8,34 +8,34 @@ export const getTierColor = (
   theme: DefaultTheme,
 ) => {
   if (isHidden) {
-    return theme.color.GRAY;
+    return theme.colors.GRAY_500;
   }
 
   if (tier >= 1 && tier <= 5) {
-    return theme.solvedAcTier[5];
+    return theme.solvedAcTiers[5];
   }
 
   if (tier >= 6 && tier <= 10) {
-    return theme.solvedAcTier[10];
+    return theme.solvedAcTiers[10];
   }
 
   if (tier >= 11 && tier <= 15) {
-    return theme.solvedAcTier[15];
+    return theme.solvedAcTiers[15];
   }
 
   if (tier >= 16 && tier <= 20) {
-    return theme.solvedAcTier[20];
+    return theme.solvedAcTiers[20];
   }
 
   if (tier >= 21 && tier <= 25) {
-    return theme.solvedAcTier[25];
+    return theme.solvedAcTiers[25];
   }
 
   if (tier >= 26 && tier <= 30) {
-    return theme.solvedAcTier[30];
+    return theme.solvedAcTiers[30];
   }
 
-  return theme.color.WHITE;
+  return theme.colors.OFF_WHITE;
 };
 
 const getTierGradientCss = (
@@ -46,63 +46,63 @@ const getTierGradientCss = (
   if (isHidden) {
     return css`
       background-image:
-        ${theme.solvedAcTier.HIDDEN_DARK_GRADIENT100},
-        ${theme.solvedAcTier.HIDDEN_GRADIENT};
+        ${theme.solvedAcTiers.HIDDEN_DARK_GRADIENT_100},
+        ${theme.solvedAcTiers.HIDDEN_GRADIENT};
     `;
   }
 
   if (tier >= 1 && tier <= 5) {
     return css`
       background-image:
-        ${theme.solvedAcTier.BRONZE_DARK_GRADIENT100},
-        ${theme.solvedAcTier.BRONZE_GRADIENT};
+        ${theme.solvedAcTiers.BRONZE_DARK_GRADIENT_100},
+        ${theme.solvedAcTiers.BRONZE_GRADIENT};
     `;
   }
 
   if (tier >= 6 && tier <= 10) {
     return css`
       background-image:
-        ${theme.solvedAcTier.SILVER_DARK_GRADIENT100},
-        ${theme.solvedAcTier.SILVER_GRADIENT};
+        ${theme.solvedAcTiers.SILVER_DARK_GRADIENT_100},
+        ${theme.solvedAcTiers.SILVER_GRADIENT};
     `;
   }
 
   if (tier >= 11 && tier <= 15) {
     return css`
       background-image:
-        ${theme.solvedAcTier.GOLD_DARK_GRADIENT100},
-        ${theme.solvedAcTier.GOLD_GRADIENT};
+        ${theme.solvedAcTiers.GOLD_DARK_GRADIENT_100},
+        ${theme.solvedAcTiers.GOLD_GRADIENT};
     `;
   }
 
   if (tier >= 16 && tier <= 20) {
     return css`
       background-image:
-        ${theme.solvedAcTier.PLATINUM_DARK_GRADIENT100},
-        ${theme.solvedAcTier.PLATINUM_GRADIENT};
+        ${theme.solvedAcTiers.PLATINUM_DARK_GRADIENT_100},
+        ${theme.solvedAcTiers.PLATINUM_GRADIENT};
     `;
   }
 
   if (tier >= 21 && tier <= 25) {
     return css`
       background-image:
-        ${theme.solvedAcTier.DIAMOND_DARK_GRADIENT100},
-        ${theme.solvedAcTier.DIAMOND_GRADIENT};
+        ${theme.solvedAcTiers.DIAMOND_DARK_GRADIENT_100},
+        ${theme.solvedAcTiers.DIAMOND_GRADIENT};
     `;
   }
 
   if (tier >= 26 && tier <= 30) {
     return css`
       background-image:
-        ${theme.solvedAcTier.RUBY_DARK_GRADIENT100},
-        ${theme.solvedAcTier.RUBY_GRADIENT};
+        ${theme.solvedAcTiers.RUBY_DARK_GRADIENT_100},
+        ${theme.solvedAcTiers.RUBY_GRADIENT};
     `;
   }
 
   return css`
     background-image:
-      ${theme.solvedAcTier.UNRATED_DARK_GRADIENT100},
-      ${theme.solvedAcTier.UNRATED_GRADIENT};
+      ${theme.solvedAcTiers.UNRATED_DARK_GRADIENT_100},
+      ${theme.solvedAcTiers.UNRATED_GRADIENT};
   `;
 };
 
@@ -234,7 +234,7 @@ export const CreatedAtContainer = styled.div`
     width: 16px;
     height: 16px;
 
-    color: ${({ theme }) => theme.color.WHITE};
+    color: ${({ theme }) => theme.colors.OFF_WHITE};
   }
 `;
 
@@ -246,7 +246,7 @@ export const CreatedAt = styled.p`
   font-size: 13px;
   font-weight: 500;
   font-family: 'Oxanium', 'Pretendard';
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
 `;
 
 export const ProgressBarWrapper = styled.div`

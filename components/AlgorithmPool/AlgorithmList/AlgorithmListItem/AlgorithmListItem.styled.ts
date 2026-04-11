@@ -9,7 +9,9 @@ export const Container = styled.li<{
 
   border-radius: 10px;
   background-color: ${({ theme, $backgroundColor }) =>
-    $backgroundColor === 'brown' ? theme.color.BROWN : theme.color.LIGHT_BROWN};
+    $backgroundColor === 'brown'
+      ? theme.colors.BROWN_700
+      : theme.colors.BROWN_600};
 
   cursor: pointer;
   user-select: none;

@@ -106,7 +106,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           name="취소"
           size="medium"
           iconSrc={<CloseCircleIcon />}
-          color={theme.color.LIGHT_GRAY}
+          color={theme.colors.GRAY_300}
           disabled={false}
           onClick={onClose}
         />
@@ -115,7 +115,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
           name="확인"
           size="medium"
           iconSrc={<CheckCircleIcon />}
-          color={theme.color.GOLD}
+          color={theme.colors.GOLD}
           disabled={false}
           onClick={submitSlotInfo}
         />

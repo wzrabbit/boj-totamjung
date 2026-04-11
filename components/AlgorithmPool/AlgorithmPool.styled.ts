@@ -7,7 +7,7 @@ export const Container = styled.div`
   height: 555px;
 
   border-radius: 16px;
-  box-shadow: 0 0 8px ${({ theme }) => theme.color.GOLD};
+  box-shadow: 0 0 8px ${({ theme }) => theme.colors.GOLD};
 `;
 
 export const AlgorithmPanel = styled.div`
@@ -17,9 +17,9 @@ export const AlgorithmPanel = styled.div`
   height: 505px;
   padding: 14px;
 
-  border: 2px solid ${({ theme }) => theme.color.GOLD};
+  border: 2px solid ${({ theme }) => theme.colors.GOLD};
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 `;
 
 export const ControlPanel = styled.div`
@@ -30,10 +30,10 @@ export const ControlPanel = styled.div`
   margin-top: -50px;
   padding: 54px 12px 6px 12px;
 
-  border: 2px solid ${({ theme }) => theme.color.GOLD};
+  border: 2px solid ${({ theme }) => theme.colors.GOLD};
   border-radius: 16px;
   border-top: none;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 `;
 
 export const SearchPanelContainer = styled.div`
@@ -49,7 +49,7 @@ export const SearchIconWrapper = styled.div`
   & svg {
     height: 100%;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
   }
 `;
 
@@ -64,7 +64,7 @@ export const SearchInput = styled.input`
 
   font-size: 16px;
 
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
 `;
 
 export const CheckButtonPanel = styled.div`
@@ -91,11 +91,11 @@ export const CheckButtonImage = styled.img`
 
 export const CheckButtonLabel = styled.p`
   font-size: 16px;
-  color: ${({ theme }) => theme.color.GOLD};
+  color: ${({ theme }) => theme.colors.GOLD};
 
   transition: 0.2s;
 
   button:hover > & {
-    text-shadow: 0 0 12px ${({ theme }) => theme.color.GOLD};
+    text-shadow: 0 0 12px ${({ theme }) => theme.colors.GOLD};
   }
 `;

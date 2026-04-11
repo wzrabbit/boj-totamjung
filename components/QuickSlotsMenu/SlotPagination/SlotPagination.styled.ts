@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const Container = styled.ol`
   display: inline-flex;
@@ -19,11 +20,11 @@ export const CircleSlotButton = styled.button<{
   width: 100%;
   height: 100%;
 
-  border: 2px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 2px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 
-  color: ${({ theme }) => theme.color.LIGHTER_BROWN};
+  color: ${({ theme }) => theme.colors.BROWN_500};
   font-size: 14px;
   font-weight: 600;
 
@@ -33,19 +34,19 @@ export const CircleSlotButton = styled.button<{
   ${({ theme, $isSelected, $isOccupied }) => {
     if ($isSelected) {
       return css`
-        border-color: ${theme.color.LEMON};
-        background-color: ${theme.color.LEMON};
-        outline: 3px solid ${theme.color.LEMON}70;
+        border-color: ${theme.colors.LEMON};
+        background-color: ${theme.colors.LEMON};
+        outline: 3px solid ${getTransparentHexColor(theme.colors.LEMON, 0.44)};
 
-        color: ${theme.color.DARK_BROWN};
+        color: ${theme.colors.BROWN_900};
       `;
     }
 
     if ($isOccupied) {
       return css`
-        border-color: ${theme.color.GOLD};
+        border-color: ${theme.colors.GOLD};
 
-        color: ${theme.color.GOLD};
+        color: ${theme.colors.GOLD};
       `;
     }
   }}

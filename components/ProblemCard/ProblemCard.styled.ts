@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 import { PROBLEM_CARDS } from '@/assets/png/problemCards';
 import type { DefaultTheme } from 'styled-components';
 import type { Tier } from '@/types/randomDefense';
@@ -41,34 +42,34 @@ const getTierColor = (
   theme: DefaultTheme,
 ) => {
   if (isTierHidden) {
-    return theme.color.GRAY;
+    return theme.colors.GRAY_500;
   }
 
   if (tier >= 1 && tier <= 5) {
-    return theme.solvedAcTier[5];
+    return theme.solvedAcTiers[5];
   }
 
   if (tier >= 6 && tier <= 10) {
-    return theme.solvedAcTier[10];
+    return theme.solvedAcTiers[10];
   }
 
   if (tier >= 11 && tier <= 15) {
-    return theme.solvedAcTier[15];
+    return theme.solvedAcTiers[15];
   }
 
   if (tier >= 16 && tier <= 20) {
-    return theme.solvedAcTier[20];
+    return theme.solvedAcTiers[20];
   }
 
   if (tier >= 21 && tier <= 25) {
-    return theme.solvedAcTier[25];
+    return theme.solvedAcTiers[25];
   }
 
   if (tier >= 26 && tier <= 30) {
-    return theme.solvedAcTier[30];
+    return theme.solvedAcTiers[30];
   }
 
-  return theme.color.WHITE;
+  return theme.colors.OFF_WHITE;
 };
 
 export const HoverTransformContainer = styled.div`
@@ -106,7 +107,8 @@ export const InnerContainer = styled.div.attrs<{
   overflow: hidden;
   flex-shrink: 0;
 
-  box-shadow: 0 0 15px ${({ theme }) => theme.color.BLACK_DARKER_TRANSPARENT};
+  box-shadow: 0 0 15px
+    ${({ theme }) => getTransparentHexColor(theme.colors.BLACK, 0.67)};
   background-image: ${({ $tier, $isTierHidden }) =>
     `url(${getProblemCardSrcByTier($tier, $isTierHidden)})`};
   background-size: 100% 100%;
@@ -115,7 +117,8 @@ export const InnerContainer = styled.div.attrs<{
   user-select: none;
 
   &:hover {
-    box-shadow: 0 0 15px ${({ theme }) => theme.color.TRANSPARENT_LEMON};
+    box-shadow: 0 0 15px
+      ${({ theme }) => getTransparentHexColor(theme.colors.LEMON, 0.5)};
   }
 `;
 
@@ -167,7 +170,7 @@ export const Title = styled.div.attrs<{ $cardWidth: number }>(
   ({ $cardWidth, theme }) => ({
     style: {
       height: `${Math.max(28, $cardWidth / 6.694)}px`,
-      color: `${theme.color.WHITE}`,
+      color: `${theme.colors.OFF_WHITE}`,
       fontSize: `${Math.max(14, $cardWidth / 13.388)}px`,
       lineHeight: `${Math.max(14, $cardWidth / 13.388)}px`,
     },

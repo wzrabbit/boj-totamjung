@@ -18,7 +18,7 @@ export const Container = styled.div<{
     width: ${({ $fontSize }) => $fontSize + 3}px;
     height: ${({ $fontSize }) => $fontSize + 3}px;
 
-    color: ${({ theme }) => theme.color.LIGHT_RED};
+    color: ${({ theme }) => theme.colors.LIGHT_RED};
   }
 `;
 
@@ -27,5 +27,5 @@ export const ErrorText = styled.p<{
 }>`
   font-size: ${({ $fontSize }) => $fontSize}px;
 
-  color: ${({ theme }) => theme.color.LIGHT_RED};
+  color: ${({ theme }) => theme.colors.LIGHT_RED};
 `;

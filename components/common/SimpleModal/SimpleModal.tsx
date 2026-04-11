@@ -96,8 +96,8 @@ const ConfirmButton = (props: Omit<ConfirmModalProps, 'actionType'>) => {
       iconSrc={<CheckCircleIcon />}
       color={
         lightThemes.includes(theme)
-          ? styledTheme.color.DARK_GRAY
-          : styledTheme.color.GOLD
+          ? styledTheme.colors.GRAY_800
+          : styledTheme.colors.GOLD
       }
       disabled={false}
       onClick={onClose}
@@ -120,8 +120,8 @@ const CancelConfirmButtons = (
         iconSrc={<CloseCircleIcon />}
         color={
           lightThemes.includes(theme)
-            ? styledTheme.color.DARK_GRAY
-            : styledTheme.color.LIGHT_GRAY
+            ? styledTheme.colors.GRAY_800
+            : styledTheme.colors.GRAY_300
         }
         disabled={false}
         onClick={onClose}
@@ -133,8 +133,8 @@ const CancelConfirmButtons = (
         iconSrc={<CheckCircleIcon />}
         color={
           lightThemes.includes(theme)
-            ? styledTheme.color.DARK_GRAY
-            : styledTheme.color.GOLD
+            ? styledTheme.colors.GRAY_800
+            : styledTheme.colors.GOLD
         }
         disabled={false}
         onClick={onConfirm}
@@ -156,8 +156,8 @@ const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
         iconSrc={<CheckCircleIcon />}
         color={
           lightThemes.includes(theme)
-            ? styledTheme.color.GREEN
-            : styledTheme.color.LIME
+            ? styledTheme.colors.GREEN
+            : styledTheme.colors.LIME
         }
         disabled={false}
         onClick={onYesSelect}
@@ -167,7 +167,7 @@ const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
         name="아니요"
         size="medium"
         iconSrc={<CloseCircleIcon />}
-        color={styledTheme.color.RED}
+        color={styledTheme.colors.RED}
         disabled={false}
         onClick={onNoSelect}
       />

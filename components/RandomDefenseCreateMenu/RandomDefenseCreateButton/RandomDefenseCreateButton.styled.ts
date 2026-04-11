@@ -23,8 +23,8 @@ const buttonSide = css`
   width: 126px;
   height: 50px;
 
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
-  border: 2px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
+  border: 2px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 6px;
 `;
 
@@ -58,7 +58,7 @@ export const DiceIcon = styled.img`
   height: 27px;
   margin: 4px;
 
-  filter: ${({ theme }) => theme.filter.DARK_ORANGE_FILTER};
+  filter: ${({ theme }) => theme.filters.DARK_ORANGE};
 `;
 
 export const TextContainer = styled.div`
@@ -70,10 +70,10 @@ export const TextContainer = styled.div`
 export const TitleText = styled.p`
   font-size: 20px;
   font-family: 'Do Hyeon', Pretendard;
-  color: ${({ theme }) => theme.color.ORANGE};
+  color: ${({ theme }) => theme.colors.ORANGE};
 `;
 
 export const SlotNoText = styled.p`
   font-size: 12px;
-  color: ${({ theme }) => theme.color.LIGHT_GRAY};
+  color: ${({ theme }) => theme.colors.GRAY_300};
 `;

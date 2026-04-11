@@ -39,7 +39,7 @@ export const VersionText = styled.span`
 
   font-size: 18px;
   font-family: 'Jua';
-  color: ${({ theme }) => theme.color.GOLD};
+  color: ${({ theme }) => theme.colors.GOLD};
 `;
 
 export const Button = styled.button`

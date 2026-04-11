@@ -15,15 +15,15 @@ export const Button = styled.button`
 
   padding: 0 6px;
 
-  border: 1px solid ${({ theme }) => theme.color.LIGHTER_BROWN};
+  border: 1px solid ${({ theme }) => theme.colors.BROWN_500};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 `;
 
 export const Text = styled.p`
   overflow: hidden;
 
-  color: ${({ theme }) => theme.color.LEMON};
+  color: ${({ theme }) => theme.colors.LEMON};
   font-size: 13px;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -41,6 +41,6 @@ export const CloseIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.LEMON};
+    color: ${({ theme }) => theme.colors.LEMON};
   }
 `;

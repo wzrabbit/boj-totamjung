@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components';
+import { getTransparentHexColor } from '@/utils/getTransparentHexColor';
 
 export const Container = styled.div<{ $width: string }>`
   overflow: visible;
@@ -23,7 +24,7 @@ export const Button = styled.button<{ $isActivated: boolean }>`
   padding: 6px;
 
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 
   transition: 0.2s;
   pointer-events: auto;
@@ -31,11 +32,12 @@ export const Button = styled.button<{ $isActivated: boolean }>`
   ${({ theme, $isActivated }) =>
     $isActivated
       ? css`
-          border: 1.5px solid ${theme.color.LEMON};
-          box-shadow: 0 0 12px ${theme.color.GOLD}70;
+          border: 1.5px solid ${theme.colors.LEMON};
+          box-shadow: 0 0 12px
+            ${getTransparentHexColor(theme.colors.GOLD, 0.44)};
         `
       : css`
-          border: 1.5px solid ${theme.color.LIGHTER_BROWN};
+          border: 1.5px solid ${theme.colors.BROWN_500};
         `}
 `;
 
@@ -46,7 +48,7 @@ export const TierBadge = styled.img`
 
 export const OptionText = styled.p<{ $isBold: boolean }>`
   font-size: 14px;
-  color: ${({ theme }) => theme.color.WHITE};
+  color: ${({ theme }) => theme.colors.OFF_WHITE};
   font-weight: ${({ $isBold }) => ($isBold ? 700 : 400)};
 
   transition: font-weight 0.1s;
@@ -60,7 +62,7 @@ export const ArrowDownTriangleIconWrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
   }
 `;
 
@@ -75,10 +77,11 @@ export const List = styled.ul<{ $isOpen: boolean }>`
   max-height: 172px;
   margin: 4px 0 0 -8px;
 
-  border: 1.5px solid ${({ theme }) => theme.color.LEMON};
-  box-shadow: 0 0 12px ${({ theme }) => theme.color.GOLD}70;
+  border: 1.5px solid ${({ theme }) => theme.colors.LEMON};
+  box-shadow: 0 0 12px
+    ${({ theme }) => getTransparentHexColor(theme.colors.GOLD, 0.44)};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 
   scrollbar-width: none;
 
@@ -114,12 +117,12 @@ export const ListButton = styled.button`
   padding: 0 10px;
 
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.color.DARK_BROWN};
+  background-color: ${({ theme }) => theme.colors.BROWN_900};
 
   transition: 0.15s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.BROWN};
+    background-color: ${({ theme }) => theme.colors.BROWN_700};
   }
 `;
 
@@ -132,6 +135,6 @@ export const CheckIconWrapper = styled.div`
     width: 16px;
     height: 16px;
 
-    color: ${({ theme }) => theme.color.GOLD};
+    color: ${({ theme }) => theme.colors.GOLD};
   }
 `;

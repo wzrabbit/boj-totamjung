@@ -4,30 +4,30 @@ import type { Rank } from '@/types/randomDefense';
 
 const getRankColor = (theme: Theme, rank: Rank) => {
   if (rank === 'bronze') {
-    return theme.solvedAcTier.BRONZE;
+    return theme.solvedAcTiers.BRONZE;
   }
 
   if (rank === 'silver') {
-    return theme.solvedAcTier.SILVER;
+    return theme.solvedAcTiers.SILVER;
   }
 
   if (rank === 'gold') {
-    return theme.solvedAcTier.GOLD;
+    return theme.solvedAcTiers.GOLD;
   }
 
   if (rank === 'platinum') {
-    return theme.solvedAcTier.PLATINUM;
+    return theme.solvedAcTiers.PLATINUM;
   }
 
   if (rank === 'diamond') {
-    return theme.solvedAcTier.DIAMOND;
+    return theme.solvedAcTiers.DIAMOND;
   }
 
   if (rank === 'ruby') {
-    return theme.solvedAcTier.RUBY;
+    return theme.solvedAcTiers.RUBY;
   }
 
-  return theme.color.GRAY;
+  return theme.colors.GRAY_500;
 };
 
 export const Container = styled.li`
@@ -67,6 +67,6 @@ export const Tilde = styled.div`
   width: 16px;
 
   font-size: 24px;
-  color: ${({ theme }) => theme.color.GOLD};
+  color: ${({ theme }) => theme.colors.GOLD};
   font-weight: 800;
 `;

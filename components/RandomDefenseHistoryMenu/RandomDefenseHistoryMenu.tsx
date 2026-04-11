@@ -36,10 +36,10 @@ const getIndicatorMessageInfo = (itemsCount: number) => {
   const indicatorMessage = `${indicatorDefaultMessage}${indicatorExtraMessage}`;
   const indicatorColor =
     historyCapacityStatus === 'normal'
-      ? theme.color.WHITE
+      ? theme.colors.WHITE
       : historyCapacityStatus === 'warn'
-        ? theme.color.ORANGE
-        : theme.color.LIGHT_RED;
+        ? theme.colors.ORANGE
+        : theme.colors.LIGHT_RED;
 
   return { indicatorMessage, indicatorColor };
 };

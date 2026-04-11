@@ -77,37 +77,37 @@ export const theme = {
     PLATINUM_GRADIENT: 'linear-gradient(to right, #27e2a4 0%, #27d9e2 100%)',
     DIAMOND_GRADIENT: 'linear-gradient(to right, #00b4fc 0%, #0068fc 100%)',
     RUBY_GRADIENT: 'linear-gradient(to right, #ff0062 0%, #ff0000 100%)',
-    UNRATED_DARK_GRADIENT100:
+    UNRATED_DARK_GRADIENT_100:
       'linear-gradient(to right, #1a1c1f 0%, #1c242b 100%)',
-    HIDDEN_DARK_GRADIENT100:
+    HIDDEN_DARK_GRADIENT_100:
       'linear-gradient(to right, #161616 0%, #0f0f0f 100%)',
-    BRONZE_DARK_GRADIENT100:
+    BRONZE_DARK_GRADIENT_100:
       'linear-gradient(to right, #1a0d00 0%, #230c02 100%)',
-    SILVER_DARK_GRADIENT100:
+    SILVER_DARK_GRADIENT_100:
       'linear-gradient(to right, #0e1216 0%, #0b1927 100%)',
-    GOLD_DARK_GRADIENT100:
+    GOLD_DARK_GRADIENT_100:
       'linear-gradient(to right, #231700 0%, #261f00 100%)',
-    PLATINUM_DARK_GRADIENT100:
+    PLATINUM_DARK_GRADIENT_100:
       'linear-gradient(to right, #052319 0%, #052123 100%)',
-    DIAMOND_DARK_GRADIENT100:
+    DIAMOND_DARK_GRADIENT_100:
       'linear-gradient(to right, #001b25 0%, #001025 100%)',
-    RUBY_DARK_GRADIENT100:
+    RUBY_DARK_GRADIENT_100:
       'linear-gradient(to right, #26000f 0%, #260000 100%)',
-    UNRATED_DARK_GRADIENT200:
+    UNRATED_DARK_GRADIENT_200:
       'linear-gradient(to right, #35383e 0%, #384757 100%)',
-    HIDDEN_DARK_GRADIENT200:
+    HIDDEN_DARK_GRADIENT_200:
       'linear-gradient(to right, #35383e 0%, #384757 100%)',
-    BRONZE_DARK_GRADIENT200:
+    BRONZE_DARK_GRADIENT_200:
       'linear-gradient(to right, #351b00 0%, #461703 100%)',
-    SILVER_DARK_GRADIENT200:
+    SILVER_DARK_GRADIENT_200:
       'linear-gradient(to right, #1c242c 0%, #16334d 100%)',
-    GOLD_DARK_GRADIENT200:
+    GOLD_DARK_GRADIENT_200:
       'linear-gradient(to right, #462e00 0%, #4d3e00 100%)',
-    PLATINUM_DARK_GRADIENT200:
+    PLATINUM_DARK_GRADIENT_200:
       'linear-gradient(to right, #0a4632 0%, #0a4346 100%)',
-    DIAMOND_DARK_GRADIENT200:
+    DIAMOND_DARK_GRADIENT_200:
       'linear-gradient(to right, #00364b 0%, #001f4b 100%)',
-    RUBY_DARK_GRADIENT200:
+    RUBY_DARK_GRADIENT_200:
       'linear-gradient(to right, #4d001d 0%, #4d0000 100%)',
   },
 

@@ -48,8 +48,8 @@ const getTierGradientCss = (
     return css`
       background-image:
         ${isHover
-          ? theme.solvedAcTiers.HIDDEN_DARK_GRADIENT200
-          : theme.solvedAcTiers.HIDDEN_DARK_GRADIENT100},
+          ? theme.solvedAcTiers.HIDDEN_DARK_GRADIENT_200
+          : theme.solvedAcTiers.HIDDEN_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.HIDDEN_GRADIENT};
     `;
   }
@@ -58,8 +58,8 @@ const getTierGradientCss = (
     return css`
       background-image:
         ${isHover
-          ? theme.solvedAcTiers.BRONZE_DARK_GRADIENT200
-          : theme.solvedAcTiers.BRONZE_DARK_GRADIENT100},
+          ? theme.solvedAcTiers.BRONZE_DARK_GRADIENT_200
+          : theme.solvedAcTiers.BRONZE_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.BRONZE_GRADIENT};
     `;
   }
@@ -68,8 +68,8 @@ const getTierGradientCss = (
     return css`
       background-image:
         ${isHover
-          ? theme.solvedAcTiers.SILVER_DARK_GRADIENT200
-          : theme.solvedAcTiers.SILVER_DARK_GRADIENT100},
+          ? theme.solvedAcTiers.SILVER_DARK_GRADIENT_200
+          : theme.solvedAcTiers.SILVER_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.SILVER_GRADIENT};
     `;
   }
@@ -78,8 +78,8 @@ const getTierGradientCss = (
     return css`
       background-image:
         ${isHover
-          ? theme.solvedAcTiers.GOLD_DARK_GRADIENT200
-          : theme.solvedAcTiers.GOLD_DARK_GRADIENT100},
+          ? theme.solvedAcTiers.GOLD_DARK_GRADIENT_200
+          : theme.solvedAcTiers.GOLD_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.GOLD_GRADIENT};
     `;
   }
@@ -88,8 +88,8 @@ const getTierGradientCss = (
     return css`
       background-image:
         ${isHover
-          ? theme.solvedAcTiers.PLATINUM_DARK_GRADIENT200
-          : theme.solvedAcTiers.PLATINUM_DARK_GRADIENT100},
+          ? theme.solvedAcTiers.PLATINUM_DARK_GRADIENT_200
+          : theme.solvedAcTiers.PLATINUM_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.PLATINUM_GRADIENT};
     `;
   }
@@ -98,8 +98,8 @@ const getTierGradientCss = (
     return css`
       background-image:
         ${isHover
-          ? theme.solvedAcTiers.DIAMOND_DARK_GRADIENT200
-          : theme.solvedAcTiers.DIAMOND_DARK_GRADIENT100},
+          ? theme.solvedAcTiers.DIAMOND_DARK_GRADIENT_200
+          : theme.solvedAcTiers.DIAMOND_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.DIAMOND_GRADIENT};
     `;
   }
@@ -108,8 +108,8 @@ const getTierGradientCss = (
     return css`
       background-image:
         ${isHover
-          ? theme.solvedAcTiers.RUBY_DARK_GRADIENT200
-          : theme.solvedAcTiers.RUBY_DARK_GRADIENT100},
+          ? theme.solvedAcTiers.RUBY_DARK_GRADIENT_200
+          : theme.solvedAcTiers.RUBY_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.RUBY_GRADIENT};
     `;
   }
@@ -117,8 +117,8 @@ const getTierGradientCss = (
   return css`
     background-image:
       ${isHover
-        ? theme.solvedAcTiers.UNRATED_DARK_GRADIENT200
-        : theme.solvedAcTiers.UNRATED_DARK_GRADIENT100},
+        ? theme.solvedAcTiers.UNRATED_DARK_GRADIENT_200
+        : theme.solvedAcTiers.UNRATED_DARK_GRADIENT_100},
       ${theme.solvedAcTiers.UNRATED_GRADIENT};
   `;
 };

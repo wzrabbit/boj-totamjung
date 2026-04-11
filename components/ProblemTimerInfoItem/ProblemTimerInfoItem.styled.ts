@@ -46,7 +46,7 @@ const getTierGradientCss = (
   if (isHidden) {
     return css`
       background-image:
-        ${theme.solvedAcTiers.HIDDEN_DARK_GRADIENT100},
+        ${theme.solvedAcTiers.HIDDEN_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.HIDDEN_GRADIENT};
     `;
   }
@@ -54,7 +54,7 @@ const getTierGradientCss = (
   if (tier >= 1 && tier <= 5) {
     return css`
       background-image:
-        ${theme.solvedAcTiers.BRONZE_DARK_GRADIENT100},
+        ${theme.solvedAcTiers.BRONZE_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.BRONZE_GRADIENT};
     `;
   }
@@ -62,7 +62,7 @@ const getTierGradientCss = (
   if (tier >= 6 && tier <= 10) {
     return css`
       background-image:
-        ${theme.solvedAcTiers.SILVER_DARK_GRADIENT100},
+        ${theme.solvedAcTiers.SILVER_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.SILVER_GRADIENT};
     `;
   }
@@ -70,7 +70,7 @@ const getTierGradientCss = (
   if (tier >= 11 && tier <= 15) {
     return css`
       background-image:
-        ${theme.solvedAcTiers.GOLD_DARK_GRADIENT100},
+        ${theme.solvedAcTiers.GOLD_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.GOLD_GRADIENT};
     `;
   }
@@ -78,7 +78,7 @@ const getTierGradientCss = (
   if (tier >= 16 && tier <= 20) {
     return css`
       background-image:
-        ${theme.solvedAcTiers.PLATINUM_DARK_GRADIENT100},
+        ${theme.solvedAcTiers.PLATINUM_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.PLATINUM_GRADIENT};
     `;
   }
@@ -86,7 +86,7 @@ const getTierGradientCss = (
   if (tier >= 21 && tier <= 25) {
     return css`
       background-image:
-        ${theme.solvedAcTiers.DIAMOND_DARK_GRADIENT100},
+        ${theme.solvedAcTiers.DIAMOND_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.DIAMOND_GRADIENT};
     `;
   }
@@ -94,14 +94,14 @@ const getTierGradientCss = (
   if (tier >= 26 && tier <= 30) {
     return css`
       background-image:
-        ${theme.solvedAcTiers.RUBY_DARK_GRADIENT100},
+        ${theme.solvedAcTiers.RUBY_DARK_GRADIENT_100},
         ${theme.solvedAcTiers.RUBY_GRADIENT};
     `;
   }
 
   return css`
     background-image:
-      ${theme.solvedAcTiers.UNRATED_DARK_GRADIENT100},
+      ${theme.solvedAcTiers.UNRATED_DARK_GRADIENT_100},
       ${theme.solvedAcTiers.UNRATED_GRADIENT};
   `;
 };

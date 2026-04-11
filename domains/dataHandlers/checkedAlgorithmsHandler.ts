@@ -17,7 +17,7 @@ export const saveCheckedAlgorithmIds = async (checkedAlgorithmIds: unknown) => {
 
   const hiderOptions = await fetchHiderOptions();
 
-  browser.storage.local.set({
+  await browser.storage.local.set({
     [STORAGE_KEY.HIDER_OPTIONS]: {
       ...hiderOptions,
       checkedAlgorithmIds,

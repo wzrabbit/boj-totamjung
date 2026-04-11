@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Fieldset from './Fieldset';
-import Input from '../Input';
+import Input from '@/components/common/Input';
 import { fn } from '@storybook/test';
 
 /**

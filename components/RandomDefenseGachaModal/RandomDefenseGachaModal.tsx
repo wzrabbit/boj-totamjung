@@ -1,4 +1,4 @@
-import IconButton from '../common/IconButton';
+import IconButton from '@/components/common/IconButton';
 import * as S from './RandomDefenseGachaModal.styled';
 import Modal from '@/components/common/Modal';
 import {
@@ -19,7 +19,7 @@ import type { FilledQuickSlot } from '@/types/randomDefense';
 import CardBox from '@/components/CardBox';
 import ProblemCardGrid from '@/components/ProblemCardGrid';
 import useRandomDefenseGachaModal from '@/hooks/gacha/useRandomDefenseGachaModal';
-import GachaModalNotification from '../GachaModalNotification/GachaModalNotification';
+import GachaModalNotification from '@/components/GachaModalNotification';
 import type { MainTheme } from '@/types/mainTheme';
 
 interface RandomDefenseGachaModalProps {

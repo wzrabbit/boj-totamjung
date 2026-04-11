@@ -306,7 +306,7 @@ describe('Test #3 - 퀵슬롯 정보 저장하기', () => {
   });
 });
 
-describe('Test #5 - 유효하지 않은 퀵슬롯 정보 저장에 대응하기', () => {
+describe('Test #4 - 유효하지 않은 퀵슬롯 정보 저장에 대응하기', () => {
   test('일부 데이터가 유효하지 않은 퀵슬롯을 저장해야 할 경우, 올바른 데이터에 한해서만 저장해야 한다.', async () => {
     jest
       .spyOn(browser.storage.local, 'set')

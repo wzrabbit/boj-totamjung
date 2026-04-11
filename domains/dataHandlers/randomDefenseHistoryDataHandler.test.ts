@@ -390,7 +390,7 @@ describe('Test #3 - 추첨 기록 정렬', () => {
   });
 });
 
-describe('Test #3 - 추첨 기록 한도 대응', () => {
+describe('Test #4 - 추첨 기록 한도 대응', () => {
   test(`추첨 기록의 개수가 한도(${MAX_HISTORY_LIMIT}문제) 미만일 경우 모든 추첨 기록을 온전히 반환해야 한다.`, async () => {
     const randomDefenseHistory = Array.from({
       length: Math.max(0, MAX_HISTORY_LIMIT - 1),
@@ -500,7 +500,7 @@ describe('Test #3 - 추첨 기록 한도 대응', () => {
   });
 });
 
-describe('Test #4 - 추첨 기록 티어 활성화 여부 불러오기', () => {
+describe('Test #5 - 추첨 기록 티어 활성화 여부 불러오기', () => {
   test('추첨 기록의 티어 활성화 여부가 활성화되어 있다면, true를 반환해야 한다.', async () => {
     jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
       Promise.resolve({
@@ -541,7 +541,7 @@ describe('Test #4 - 추첨 기록 티어 활성화 여부 불러오기', () => {
   });
 });
 
-describe('Test #5 - 추첨 기록 저장하기', () => {
+describe('Test #6 - 추첨 기록 저장하기', () => {
   test('여러 문제가 포함된 올바른 데이터를 저장할 경우, 모든 데이터가 온전하게 저장되어야 한다.', async () => {
     const randomDefenseHistory = [
       {
@@ -578,7 +578,7 @@ describe('Test #5 - 추첨 기록 저장하기', () => {
   });
 });
 
-describe('Test #6 - 잘못된 추첨 기록 저장에 대응하기', () => {
+describe('Test #7 - 잘못된 추첨 기록 저장에 대응하기', () => {
   test('여러 문제가 포함된, 일부가 잘못된 데이터를 저장할 경우, 올바른 데이터에 한해서만 온전하게 저장되어야 한다.', () => {
     const randomDefenseHistory = [
       {
@@ -712,7 +712,7 @@ describe('Test #6 - 잘못된 추첨 기록 저장에 대응하기', () => {
   );
 });
 
-describe('Test #7 - 추첨 기록 추가하기', () => {
+describe('Test #8 - 추첨 기록 추가하기', () => {
   test('추가해야 하는 올바른 추첨 기록들이 주어진 경우 그 추첨 기록들이 전체 추첨 기록에 시간순으로 정렬된 채로 추가되어야 한다.', async () => {
     const randomDefenseHistory = [
       {

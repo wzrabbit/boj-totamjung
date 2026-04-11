@@ -6,7 +6,7 @@ import type { ToastInfo } from '@/types/toast';
 import { createPortal } from 'react-dom';
 import { $ } from '@/utils/querySelector';
 import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
-import RandomDefenseGachaModal from '../RandomDefenseGachaModal';
+import RandomDefenseGachaModal from '@/components/RandomDefenseGachaModal';
 import { isSolvedAcTheme } from '@/domains/dataHandlers/validators/solvedAcThemeValidator';
 import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
 

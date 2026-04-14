@@ -130,6 +130,20 @@ const injectFontNo = (htmlElement: HTMLElement) => {
 
       htmlElement.setAttribute('fontNo', String(fontNo));
     });
+
+  browser.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== 'local' || !('fontNo' in changes)) {
+      return;
+    }
+
+    const { newValue } = changes.fontNo;
+
+    if (!isFontNo(newValue)) {
+      return;
+    }
+
+    htmlElement.setAttribute('fontNo', String(newValue));
+  });
 };
 
 const injectWebFonts = (htmlElement: HTMLElement) => {

@@ -1,60 +1,55 @@
-import { useState, useEffect } from 'react';
-import type { QuickSlots, QuickSlotNo, Hotkey } from '@/types/randomDefense';
+import type { QuickSlotOptions, QuickSlotNo } from '@/types/randomDefense';
+import { STORAGE_KEY } from '@/constants/commands';
+import { DEFAULT_QUICK_SLOT_OPTIONS } from '@/constants/defaultValues';
 import {
   fetchQuickSlotOptions,
   saveQuickSlotOptions,
 } from '@/domains/dataHandlers/quickSlotsDataHandler';
-
-const emptySlots: QuickSlots = {
-  1: { isEmpty: true },
-  2: { isEmpty: true },
-  3: { isEmpty: true },
-  4: { isEmpty: true },
-  5: { isEmpty: true },
-  6: { isEmpty: true },
-  7: { isEmpty: true },
-  8: { isEmpty: true },
-  9: { isEmpty: true },
-  0: { isEmpty: true },
-};
+import { isQuickSlotOptions } from '@/domains/dataHandlers/validators/quickSlotsValidator';
+import useStorageState from '@/hooks/useStorageState';
 
 const useRandomDefenseManageMenu = () => {
-  const [slots, setSlots] = useState<QuickSlots>(emptySlots);
-  const [selectedSlotNo, setSelectedSlotNo] = useState<QuickSlotNo>(1);
-  const [hotkey, setHotkey] = useState<Hotkey>('Alt');
-  const [isLoaded, setIsLoaded] = useState(false);
+  const {
+    data: quickSlotOptions,
+    setData: setQuickSlotOptions,
+    isLoaded,
+  } = useStorageState<QuickSlotOptions>({
+    type: 'function',
+    storageKey: STORAGE_KEY.QUICK_SLOT_OPTIONS,
+    defaultValue: DEFAULT_QUICK_SLOT_OPTIONS,
+    fetchFunction: fetchQuickSlotOptions,
+    saveFunction: saveQuickSlotOptions,
+    validatorFunction: isQuickSlotOptions,
+  });
 
-  useEffect(() => {
-    (async () => {
-      const { slots, selectedSlotNo, hotkey } = await fetchQuickSlotOptions();
+  const { slots, selectedSlotNo, hotkey } = quickSlotOptions;
 
-      setSlots(slots);
-      setSelectedSlotNo(selectedSlotNo);
-      setHotkey(hotkey);
-      setIsLoaded(true);
-    })();
-  }, []);
+  const setSelectedSlotNo = (slotNo: QuickSlotNo) => {
+    setQuickSlotOptions({ ...quickSlotOptions, selectedSlotNo: slotNo });
+  };
 
-  useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
-
-    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
-  }, [selectedSlotNo, slots, hotkey]);
+  const setHotkey = (hotkey: QuickSlotOptions['hotkey']) => {
+    setQuickSlotOptions({ ...quickSlotOptions, hotkey });
+  };
 
   const updateSlot = (title: string, query: string) => {
-    setSlots((prev) => ({
-      ...prev,
-      [selectedSlotNo]: { isEmpty: false, title, query },
-    }));
+    setQuickSlotOptions({
+      ...quickSlotOptions,
+      slots: {
+        ...slots,
+        [selectedSlotNo]: { isEmpty: false, title, query },
+      },
+    });
   };
 
   const deleteSlot = () => {
-    setSlots((prev) => ({
-      ...prev,
-      [selectedSlotNo]: { isEmpty: true },
-    }));
+    setQuickSlotOptions({
+      ...quickSlotOptions,
+      slots: {
+        ...slots,
+        [selectedSlotNo]: { isEmpty: true },
+      },
+    });
   };
 
   return {

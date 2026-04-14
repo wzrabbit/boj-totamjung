@@ -567,7 +567,10 @@ describe('Test #6 - 추첨 기록 저장하기', () => {
     jest
       .spyOn(browser.storage.local, 'set')
       .mockImplementation(() => Promise.resolve());
-    saveRandomDefenseHistoryOptions(randomDefenseHistory, true);
+    saveRandomDefenseHistoryOptions({
+      history: randomDefenseHistory,
+      isTierHidden: true,
+    });
 
     expect(browser.storage.local.set).toHaveBeenCalledWith({
       randomDefenseHistoryOptions: {
@@ -671,7 +674,10 @@ describe('Test #7 - 잘못된 추첨 기록 저장에 대응하기', () => {
     jest
       .spyOn(browser.storage.local, 'set')
       .mockImplementation(() => Promise.resolve());
-    saveRandomDefenseHistoryOptions(randomDefenseHistory, true);
+    saveRandomDefenseHistoryOptions({
+      history: randomDefenseHistory,
+      isTierHidden: true,
+    });
 
     expect(browser.storage.local.set).toHaveBeenCalledWith({
       randomDefenseHistoryOptions: {
@@ -705,7 +711,10 @@ describe('Test #7 - 잘못된 추첨 기록 저장에 대응하기', () => {
       jest
         .spyOn(browser.storage.local, 'set')
         .mockImplementation(() => Promise.resolve());
-      saveRandomDefenseHistoryOptions(invalidInput, true);
+      saveRandomDefenseHistoryOptions({
+        history: invalidInput,
+        isTierHidden: true,
+      });
 
       expect(browser.storage.local.set).not.toHaveBeenCalled();
     },

@@ -100,13 +100,11 @@ const executeBackground = () => {
       }
 
       if (command === COMMANDS.SAVE_RANDOM_DEFENSE_HISTORY_OPTIONS) {
-        if (!('randomDefenseHistory' in message) || !('isHidden' in message)) {
+        if (!('randomDefenseHistoryOptions' in message)) {
           return;
         }
 
-        const { randomDefenseHistory, isHidden } = message;
-
-        saveRandomDefenseHistoryOptions(randomDefenseHistory, isHidden);
+        saveRandomDefenseHistoryOptions(message.randomDefenseHistoryOptions);
       }
 
       if (command === COMMANDS.FETCH_QUICK_SLOT_OPTIONS) {
@@ -117,17 +115,11 @@ const executeBackground = () => {
       }
 
       if (command === COMMANDS.SAVE_QUICK_SLOT_OPTIONS) {
-        if (
-          !('selectedSlotNo' in message) ||
-          !('slots' in message) ||
-          !('hotkey' in message)
-        ) {
+        if (!('quickSlotOptions' in message)) {
           return;
         }
 
-        const { selectedSlotNo, slots, hotkey } = message;
-
-        saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
+        saveQuickSlotOptions(message.quickSlotOptions);
       }
 
       if (command === COMMANDS.FETCH_THEME) {
@@ -200,12 +192,11 @@ const executeBackground = () => {
       }
 
       if (command === COMMANDS.SAVE_GACHA_OPTIONS) {
-        if (!('isTierHidden' in message && 'isAudioMuted' in message)) {
+        if (!('gachaOptions' in message)) {
           return;
         }
 
-        const { isTierHidden, isAudioMuted } = message;
-        saveGachaOptions({ isTierHidden, isAudioMuted });
+        saveGachaOptions(message.gachaOptions);
       }
 
       if (command === COMMANDS.FETCH_OPTIONS_DATA) {

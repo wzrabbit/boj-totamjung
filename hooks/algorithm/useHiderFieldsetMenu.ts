@@ -1,137 +1,90 @@
-import { useState, useEffect } from 'react';
 import type { HiderOptions } from '@/types/algorithm';
 import { RatedTier } from '@/types/tierHider';
+import { STORAGE_KEY } from '@/constants/commands';
+import { DEFAULT_HIDER_OPTIONS } from '@/constants/defaultValues';
 import {
   fetchHiderOptions,
   saveHiderOptions,
 } from '@/domains/dataHandlers/hiderOptionsDataHandler';
-
-const fallbackHiderOptions = {
-  problemTagLockDuration: {
-    hours: 0,
-    minutes: 0,
-  },
-  shouldHideTier: undefined,
-  shouldWarnHighTier: undefined,
-  shouldRevealTierOnHover: undefined,
-  shouldHideSource: undefined,
-  warnTier: 1 as const,
-  algorithmHiderUsage: undefined,
-  problemTagLockUsage: undefined,
-};
-
-type HiderOptionsState = HiderOptionsReadyState | HiderOptionsNotReadyState;
-
-type HiderOptionsReadyState = {
-  isLoaded: true;
-} & HiderOptions;
-
-type HiderOptionsNotReadyState = {
-  isLoaded: false;
-} & typeof fallbackHiderOptions;
+import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import useStorageState from '@/hooks/useStorageState';
 
 const useHiderFieldsetMenu = () => {
-  const [hiderOptionsState, setHiderOptionsState] = useState<HiderOptionsState>(
-    {
-      ...fallbackHiderOptions,
-      isLoaded: false,
-    },
-  );
+  const {
+    data: hiderOptions,
+    setData: setHiderOptions,
+    isLoaded,
+  } = useStorageState<HiderOptions>({
+    type: 'function',
+    storageKey: STORAGE_KEY.HIDER_OPTIONS,
+    defaultValue: DEFAULT_HIDER_OPTIONS,
+    fetchFunction: fetchHiderOptions,
+    saveFunction: saveHiderOptions,
+    validatorFunction: isHiderOptions,
+  });
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetchHiderOptions();
-
-      setHiderOptionsState({
-        ...response,
-        isLoaded: true,
-      });
-    })();
-  }, []);
-
-  useEffect(() => {
-    const { isLoaded, ...hiderOptionsWithoutLoadingParam } = hiderOptionsState;
-
+  const updateProblemTagLockDuration = (hours: number, minutes: number) => {
     if (!isLoaded) {
       return;
     }
 
-    saveHiderOptions(hiderOptionsWithoutLoadingParam);
-  }, [hiderOptionsState]);
-
-  const updateProblemTagLockDuration = (hours: number, minutes: number) => {
-    setHiderOptionsState((prev) => {
-      if (!prev.isLoaded) {
-        return prev;
-      }
-
-      return {
-        ...prev,
-        problemTagLockDuration: {
-          hours,
-          minutes,
-        },
-      };
+    setHiderOptions({
+      ...hiderOptions,
+      problemTagLockDuration: { hours, minutes },
     });
   };
 
   const updateShouldHideTier = (shouldHideTierString: string) => {
-    const shouldHideTier = shouldHideTierString === 'true';
+    if (!isLoaded) {
+      return;
+    }
 
-    setHiderOptionsState((prev) => {
-      if (!prev.isLoaded) {
-        return prev;
-      }
-
-      return { ...prev, shouldHideTier };
+    setHiderOptions({
+      ...hiderOptions,
+      shouldHideTier: shouldHideTierString === 'true',
     });
   };
 
   const updateShouldWarnHighTier = (shouldWarnHighTierString: string) => {
-    const shouldWarnHighTier = shouldWarnHighTierString === 'true';
+    if (!isLoaded) {
+      return;
+    }
 
-    setHiderOptionsState((prev) => {
-      if (!prev.isLoaded) {
-        return prev;
-      }
-
-      return { ...prev, shouldWarnHighTier };
+    setHiderOptions({
+      ...hiderOptions,
+      shouldWarnHighTier: shouldWarnHighTierString === 'true',
     });
   };
 
   const updateShouldRevealTierOnHover = (
     shouldRevealTierOnHoverString: string,
   ) => {
-    const shouldRevealTierOnHover = shouldRevealTierOnHoverString === 'true';
+    if (!isLoaded) {
+      return;
+    }
 
-    setHiderOptionsState((prev) => {
-      if (!prev.isLoaded) {
-        return prev;
-      }
-
-      return { ...prev, shouldRevealTierOnHover };
+    setHiderOptions({
+      ...hiderOptions,
+      shouldRevealTierOnHover: shouldRevealTierOnHoverString === 'true',
     });
   };
 
   const updateWarnTier = (warnTier: RatedTier) => {
-    setHiderOptionsState((prev) => {
-      if (!prev.isLoaded) {
-        return prev;
-      }
+    if (!isLoaded) {
+      return;
+    }
 
-      return { ...prev, warnTier };
-    });
+    setHiderOptions({ ...hiderOptions, warnTier });
   };
 
   const updateShouldHideSource = (shouldHideSourceString: string) => {
-    const shouldHideSource = shouldHideSourceString === 'true';
+    if (!isLoaded) {
+      return;
+    }
 
-    setHiderOptionsState((prev) => {
-      if (!prev.isLoaded) {
-        return prev;
-      }
-
-      return { ...prev, shouldHideSource };
+    setHiderOptions({
+      ...hiderOptions,
+      shouldHideSource: shouldHideSourceString === 'true',
     });
   };
 
@@ -140,16 +93,11 @@ const useHiderFieldsetMenu = () => {
       return;
     }
 
-    setHiderOptionsState((prev) => {
-      if (!prev.isLoaded) {
-        return prev;
-      }
+    if (!isLoaded) {
+      return;
+    }
 
-      return {
-        ...prev,
-        algorithmHiderUsage: usage,
-      };
-    });
+    setHiderOptions({ ...hiderOptions, algorithmHiderUsage: usage });
   };
 
   const updateProblemTagLockUsage = (usage: string) => {
@@ -157,17 +105,16 @@ const useHiderFieldsetMenu = () => {
       return;
     }
 
-    setHiderOptionsState((prev) => {
-      if (!prev.isLoaded) {
-        return prev;
-      }
+    if (!isLoaded) {
+      return;
+    }
 
-      return { ...prev, problemTagLockUsage: usage };
-    });
+    setHiderOptions({ ...hiderOptions, problemTagLockUsage: usage });
   };
 
   return {
-    ...hiderOptionsState,
+    ...hiderOptions,
+    isLoaded,
     updateProblemTagLockDuration,
     updateShouldHideTier,
     updateShouldWarnHighTier,

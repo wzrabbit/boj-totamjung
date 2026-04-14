@@ -1,35 +1,34 @@
-import { useState, useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
-import type { RandomDefenseHistoryInfo } from '@/types/randomDefense';
+import type { RandomDefenseHistoryOptions } from '@/types/randomDefense';
+import { STORAGE_KEY } from '@/constants/commands';
 import {
   fetchRandomDefenseHistoryOptions,
   saveRandomDefenseHistoryOptions,
 } from '@/domains/dataHandlers/randomDefenseHistoryDataHandler';
+import { isRandomDefenseHistoryOptions } from '@/domains/dataHandlers/validators/randomDefenseHistoryValidator';
+import useStorageState from '@/hooks/useStorageState';
+
+const DEFAULT_RANDOM_DEFENSE_HISTORY_OPTIONS: RandomDefenseHistoryOptions = {
+  history: [],
+  isTierHidden: true,
+};
 
 const useRandomDefenseHistoryMenu = () => {
-  const [items, setItems] = useState<RandomDefenseHistoryInfo[]>([]);
-  const [isTierHidden, setIsTierHidden] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const {
+    data: randomDefenseHistoryOptions,
+    setData: setRandomDefenseHistoryOptions,
+    isLoaded,
+  } = useStorageState<RandomDefenseHistoryOptions>({
+    type: 'function',
+    storageKey: STORAGE_KEY.RANDOM_DEFENSE_HISTORY_OPTIONS,
+    defaultValue: DEFAULT_RANDOM_DEFENSE_HISTORY_OPTIONS,
+    fetchFunction: fetchRandomDefenseHistoryOptions,
+    saveFunction: saveRandomDefenseHistoryOptions,
+    validatorFunction: isRandomDefenseHistoryOptions,
+  });
 
+  const { history: items, isTierHidden } = randomDefenseHistoryOptions;
   const isEmpty = items.length === 0;
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetchRandomDefenseHistoryOptions();
-
-      setIsTierHidden(response.isTierHidden);
-      setItems(response.history);
-      setIsLoaded(true);
-    })();
-  }, []);
-
-  useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
-
-    saveRandomDefenseHistoryOptions(items, isTierHidden);
-  }, [items, isTierHidden]);
 
   const deleteHistoryById = (id: string) => {
     const newItems = items.filter((item) => {
@@ -38,15 +37,18 @@ const useRandomDefenseHistoryMenu = () => {
       return currentItemId !== id;
     });
 
-    setItems(newItems);
+    setRandomDefenseHistoryOptions({ ...randomDefenseHistoryOptions, history: newItems });
   };
 
   const clearHistory = () => {
-    setItems([]);
+    setRandomDefenseHistoryOptions({ ...randomDefenseHistoryOptions, history: [] });
   };
 
   const updateIsTierHidden: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setIsTierHidden(event.target.checked);
+    setRandomDefenseHistoryOptions({
+      ...randomDefenseHistoryOptions,
+      isTierHidden: event.target.checked,
+    });
   };
 
   return {

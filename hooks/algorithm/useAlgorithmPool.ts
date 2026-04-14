@@ -1,33 +1,38 @@
 import { getSearchResults } from '@/domains/algorithm/getSearchResults';
 import { ALGORITHMS_COUNT } from '@/constants/algorithmInfos';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { ChangeEventHandler } from 'react';
+import type { HiderOptions } from '@/types/algorithm';
+import { STORAGE_KEY } from '@/constants/commands';
+import { DEFAULT_HIDER_OPTIONS } from '@/constants/defaultValues';
 import {
-  fetchCheckedAlgorithmIds,
-  saveCheckedAlgorithmIds,
-} from '@/domains/dataHandlers/checkedAlgorithmsHandler';
+  fetchHiderOptions,
+  saveHiderOptions,
+} from '@/domains/dataHandlers/hiderOptionsDataHandler';
+import { isHiderOptions } from '@/domains/dataHandlers/validators/hiderOptionsValidator';
+import useStorageState from '@/hooks/useStorageState';
 
 const useAlgorithmPool = () => {
   const [keyword, setKeyword] = useState('');
-  const [checkedAlgorithmIds, setCheckedAlgorithmIds] = useState<number[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      const checkedAlgorithmIds = await fetchCheckedAlgorithmIds();
+  const {
+    data: hiderOptions,
+    setData: setHiderOptions,
+    isLoaded,
+  } = useStorageState<HiderOptions>({
+    type: 'function',
+    storageKey: STORAGE_KEY.HIDER_OPTIONS,
+    defaultValue: DEFAULT_HIDER_OPTIONS,
+    fetchFunction: fetchHiderOptions,
+    saveFunction: saveHiderOptions,
+    validatorFunction: isHiderOptions,
+  });
 
-      setCheckedAlgorithmIds(checkedAlgorithmIds);
-      setIsLoaded(true);
-    })();
-  }, []);
+  const { checkedAlgorithmIds } = hiderOptions;
 
-  useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
-
-    saveCheckedAlgorithmIds(checkedAlgorithmIds);
-  }, [checkedAlgorithmIds]);
+  const setCheckedAlgorithmIds = (newIds: number[]) => {
+    setHiderOptions({ ...hiderOptions, checkedAlgorithmIds: newIds });
+  };
 
   const handleChangeKeyword: ChangeEventHandler<HTMLInputElement> = (event) => {
     setKeyword(event.target.value);

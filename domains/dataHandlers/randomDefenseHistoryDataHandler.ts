@@ -28,9 +28,18 @@ export const fetchRandomDefenseHistoryOptions =
   };
 
 export const saveRandomDefenseHistoryOptions = async (
-  history: unknown,
-  isTierHidden: unknown,
+  randomDefenseHistoryOptions: unknown,
 ) => {
+  if (
+    !isObject(randomDefenseHistoryOptions) ||
+    !('history' in randomDefenseHistoryOptions) ||
+    !('isTierHidden' in randomDefenseHistoryOptions)
+  ) {
+    return;
+  }
+
+  const { history, isTierHidden } = randomDefenseHistoryOptions;
+
   if (!Array.isArray(history) || typeof isTierHidden !== 'boolean') {
     return;
   }
@@ -55,8 +64,8 @@ export const addRandomDefenseInfosToHistory = async (newItems: unknown) => {
     return;
   }
 
-  await saveRandomDefenseHistoryOptions(
-    [...history, ...newItems],
+  await saveRandomDefenseHistoryOptions({
+    history: [...history, ...newItems],
     isTierHidden,
-  );
+  });
 };

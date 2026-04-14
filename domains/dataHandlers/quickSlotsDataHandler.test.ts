@@ -296,9 +296,7 @@ describe('Test #3 - 퀵슬롯 정보 저장하기', () => {
     jest
       .spyOn(browser.storage.local, 'set')
       .mockImplementation(() => Promise.resolve());
-    const { selectedSlotNo, slots, hotkey } = validQuickSlots;
-
-    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
+    saveQuickSlotOptions(validQuickSlots);
 
     expect(browser.storage.local.set).toHaveBeenCalledWith({
       quickSlotOptions: validQuickSlots,
@@ -312,9 +310,8 @@ describe('Test #3.5 - 단축키가 미사용(null)인 퀵슬롯 정보 저장하
       .spyOn(browser.storage.local, 'set')
       .mockImplementation(() => Promise.resolve());
     const nullHotkeyQuickSlots = { ...validQuickSlots, hotkey: null };
-    const { selectedSlotNo, slots, hotkey } = nullHotkeyQuickSlots;
 
-    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
+    saveQuickSlotOptions(nullHotkeyQuickSlots);
 
     expect(browser.storage.local.set).toHaveBeenCalledWith({
       quickSlotOptions: nullHotkeyQuickSlots,
@@ -374,9 +371,7 @@ describe('Test #4 - 유효하지 않은 퀵슬롯 정보 저장에 대응하기'
         8: { isEmpty: true },
       },
     };
-    const { selectedSlotNo, slots, hotkey } = partiallyInvalidQuickSlots;
-
-    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
+    saveQuickSlotOptions(partiallyInvalidQuickSlots);
 
     expect(browser.storage.local.set).toHaveBeenCalledWith({
       quickSlotOptions: expected,
@@ -403,14 +398,12 @@ describe('Test #4 - 유효하지 않은 퀵슬롯 정보 저장에 대응하기'
       hotkey: 'Alt',
       selectedSlotNo: 0,
     };
-    const { selectedSlotNo, slots, hotkey } = invalidQuickSlots;
-
     jest.clearAllMocks();
     jest
       .spyOn(browser.storage.local, 'set')
       .mockImplementation(() => Promise.resolve());
 
-    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
+    saveQuickSlotOptions(invalidQuickSlots);
 
     expect(browser.storage.local.set).not.toHaveBeenCalled();
   });

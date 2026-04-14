@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
 import { isTotamjungTheme } from '@/domains/dataHandlers/validators/totamjungThemeValidator';
-import { TotamjungTheme } from '@/types/mainTheme';
+import { isFontNo } from '@/domains/dataHandlers/validators/fontNoValidator';
+import type { TotamjungTheme } from '@/types/mainTheme';
+import type { FontNo } from '@/types/font';
+import { STORAGE_KEY } from '@/constants/commands';
 import {
   fetchTotamjungTheme,
   saveTotamjungTheme,
@@ -9,44 +11,36 @@ import {
   fetchFontNo,
   saveFontNo,
 } from '@/domains/dataHandlers/fontNoDataHandler';
+import useStorageState from '@/hooks/useStorageState';
 
 const useAppearanceFieldsetMenu = () => {
-  const [totamjungTheme, setTotamjungTheme] = useState<
-    TotamjungTheme | undefined
-  >(undefined);
-  const [fontNo, setFontNo] = useState<number | undefined>(undefined);
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const {
+    data: totamjungTheme,
+    setData: setTotamjungTheme,
+    isLoaded: isThemeLoaded,
+  } = useStorageState<TotamjungTheme>({
+    type: 'function',
+    storageKey: STORAGE_KEY.THEME,
+    defaultValue: 'none',
+    fetchFunction: fetchTotamjungTheme,
+    saveFunction: saveTotamjungTheme,
+    validatorFunction: isTotamjungTheme,
+  });
 
-  useEffect(() => {
-    const loadAppearanceFieldsetMenuData = async () => {
-      const [currentTotamjungTheme, currentFontNo] = await Promise.all([
-        fetchTotamjungTheme(),
-        fetchFontNo(),
-      ]);
+  const {
+    data: fontNo,
+    setData: setFontNo,
+    isLoaded: isFontNoLoaded,
+  } = useStorageState<FontNo>({
+    type: 'function',
+    storageKey: STORAGE_KEY.FONT_NO,
+    defaultValue: 0,
+    fetchFunction: fetchFontNo,
+    saveFunction: saveFontNo,
+    validatorFunction: isFontNo,
+  });
 
-      setTotamjungTheme(currentTotamjungTheme);
-      setFontNo(currentFontNo);
-      setIsLoaded(true);
-    };
-
-    loadAppearanceFieldsetMenuData();
-  }, []);
-
-  useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
-
-    saveTotamjungTheme(totamjungTheme);
-  }, [totamjungTheme]);
-
-  useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
-
-    saveFontNo(fontNo);
-  }, [fontNo]);
+  const isLoaded = isThemeLoaded && isFontNoLoaded;
 
   const updateTotamjungTheme = (totamjungTheme: string) => {
     if (!isLoaded) {

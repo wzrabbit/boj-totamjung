@@ -205,8 +205,7 @@ const useRandomDefenseGachaModal = (
 
     browser.runtime.sendMessage({
       command: COMMANDS.SAVE_GACHA_OPTIONS,
-      isTierHidden,
-      isAudioMuted,
+      gachaOptions: { isTierHidden, isAudioMuted },
     });
   }, [isLoaded, isTierHidden, isAudioMuted]);
 

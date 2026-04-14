@@ -10,19 +10,13 @@ export const fetchQuickSlotOptions = async () => {
   return sanitizedQuickSlotOptions;
 };
 
-export const saveQuickSlotOptions = (
-  selectedSlotNo: unknown,
-  slots: unknown,
-  hotkey: unknown,
-) => {
-  const quickSlotOptionsData = { selectedSlotNo, slots, hotkey };
-
-  if (!isRepairableQuickSlotOptions(quickSlotOptionsData)) {
+export const saveQuickSlotOptions = (quickSlotOptions: unknown) => {
+  if (!isRepairableQuickSlotOptions(quickSlotOptions)) {
     return;
   }
 
   const sanitizedQuickSlotOptions =
-    sanitizeQuickSlotOptions(quickSlotOptionsData);
+    sanitizeQuickSlotOptions(quickSlotOptions);
 
   browser.storage.local.set({
     [STORAGE_KEY.QUICK_SLOT_OPTIONS]: sanitizedQuickSlotOptions,

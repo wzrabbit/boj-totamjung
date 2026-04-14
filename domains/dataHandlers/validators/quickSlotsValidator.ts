@@ -76,8 +76,7 @@ export const isQuickSlotOptions = (data: unknown): data is QuickSlotOptions => {
       'hotkey' in data &&
       'selectedSlotNo' in data &&
       'slots' in data &&
-      typeof data.hotkey === 'string' &&
-      ['Alt', 'F2'].includes(data.hotkey) &&
+      isHotkey(data.hotkey) &&
       isQuickSlotNo(data.selectedSlotNo)
     )
   ) {

@@ -306,6 +306,34 @@ describe('Test #3 - 퀵슬롯 정보 저장하기', () => {
   });
 });
 
+describe('Test #3.5 - 단축키가 미사용(null)인 퀵슬롯 정보 저장하기', () => {
+  test('단축키가 미사용(null)인 유효한 퀵슬롯을 저장해야 할 경우, 슬롯 데이터가 보존되고 단축키가 null인 채로 저장되어야 한다.', async () => {
+    jest
+      .spyOn(browser.storage.local, 'set')
+      .mockImplementation(() => Promise.resolve());
+    const nullHotkeyQuickSlots = { ...validQuickSlots, hotkey: null };
+    const { selectedSlotNo, slots, hotkey } = nullHotkeyQuickSlots;
+
+    saveQuickSlotOptions(selectedSlotNo, slots, hotkey);
+
+    expect(browser.storage.local.set).toHaveBeenCalledWith({
+      quickSlotOptions: nullHotkeyQuickSlots,
+    });
+  });
+
+  test('단축키가 미사용(null)인 퀵슬롯을 불러올 경우, 슬롯 데이터가 보존되고 단축키가 null인 채로 반환되어야 한다.', async () => {
+    const nullHotkeyQuickSlots = { ...validQuickSlots, hotkey: null };
+
+    jest.spyOn(browser.storage.local, 'get').mockImplementation(() =>
+      Promise.resolve({
+        [STORAGE_KEY.QUICK_SLOT_OPTIONS]: nullHotkeyQuickSlots,
+      }),
+    );
+
+    expect(await fetchQuickSlotOptions()).toEqual(nullHotkeyQuickSlots);
+  });
+});
+
 describe('Test #4 - 유효하지 않은 퀵슬롯 정보 저장에 대응하기', () => {
   test('일부 데이터가 유효하지 않은 퀵슬롯을 저장해야 할 경우, 올바른 데이터에 한해서만 저장해야 한다.', async () => {
     jest

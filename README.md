@@ -1,9 +1,4 @@
 <div align="center">
-  <img
-    src="https://user-images.githubusercontent.com/87642422/162562353-f28461f1-e563-4121-8187-493af1ee150e.png"
-    width="100%"
-    alt="토탐정 Logo"
-  />
   <h1>🐰 토탐정 🔍</h1>
   <p><strong>✨ 알고리즘 가리개 & 랜덤 디펜스, 토탐정! ✨</strong></p>
   <p>
@@ -11,37 +6,23 @@
     프로그램입니다. 알고리즘 학습자를 위해 <b>알고리즘 분류와 관련된 기능</b>을
     제공하며, 그 외에도 학습자를 도울 수 있는 여러 유용한 기능들을 제공합니다.
   </p>
-  <div style="display: flex; justify-content: center">
-    <a href="https://chromewebstore.google.com/detail/%ED%86%A0%ED%83%90%EC%A0%95/hannhecbnjnnbbafffmogdlnajpcomek?hl=ko">
-      <img src="https://github.com/user-attachments/assets/2438162f-68d0-41be-89f5-fa9084d2e50e" alt="Chrome 웹 스토어에서 다운로드" width="206px" height="58px" />
-    </a>
-      <a href="https://store.whale.naver.com/detail/pkigleffcifanlafphnjkdpkfippibcm">
-      <img src="https://github.com/user-attachments/assets/7415a6ef-fc26-4978-809d-159fa2133d88" alt="Whale 스토어에서 다운로드" width="206px" height="58px" />
-    </a>
-    <a href="https://addons.mozilla.org/ko/firefox/addon/%ED%86%A0%ED%83%90%EC%A0%95/">
-      <img src="https://github.com/user-attachments/assets/32da6f06-805d-48e3-8303-afd5ffce4c4b" alt="Firefox 애드온에서 다운로드" width="206px" height="58px" />
-    </a>
-  </div>
-  <div>
-    <img
-      src="https://img.shields.io/chrome-web-store/v/hannhecbnjnnbbafffmogdlnajpcomek?style=for-the-badge&label=Version&color=brown"
-      alt="Chrome Store Version"
-    />
-    <img
-      src="https://img.shields.io/chrome-web-store/users/hannhecbnjnnbbafffmogdlnajpcomek.svg?style=for-the-badge&logoColor=blue&label=Users&color=brown"
-      alt="Chrome Store Users"
-    />
-  </div>
 </div>
 
-## ⚠️ 중요 공지
-**백준은 2026년 4월 28일 서비스를 종료하게 됩니다. 토탐정 특성 상 백준에서 여러분에게 부가 기능을 제공하는 형태이기에, 백준의 서비스 종료와 동시에 토탐정 또한 더 이상 여러분들께 서비스를 제공해 드리기 어렵게 되었습니다.**
-- 향후 백준 사이트가 어떻게 존속되느냐에 따라 달라질 수 있지만, 별다른 상황 변화가 없다면 토탐정 또한 2026년 4월 28일을 시점으로 Chrome, Firefox, Whale 스토어에서 순차적으로 내려갈 것입니다.
-- 2026년 4월 16일부터 토탐정에 대한 문의(이메일, GitHub Issue) 대응은 종료됩니다.
+## 👋 서비스 종료
 
-**지금까지 토탐정을 이용해 주셔서 진심으로 감사드립니다.**
-- [백준 서비스 종료 공지](https://www.acmicpc.net/board/view/165799)
-- [토탐정 서비스 종료 공지](https://www.acmicpc.net/board/view/165919)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3638fca8-1d4f-453a-9ddd-9dadf781a89a" width="500px" />
+  <p>2022. 5. 6 ~ 2026. 4. 28</p>
+  <p>
+    <i>백준이 서비스를 종료함에 따라 토탐정도 서비스를 종료하게 되었습니다. 더 유용한 서비스로 추후 찾아뵙도록 하겠습니다.
+    </i>
+  </p>
+  <p>
+    <b>
+      <i>지금까지 토탐정을 이용해 주셔서 진심으로 감사드립니다.</i>
+    </b>
+  </p>
+</div>
 
 ## ✨ 제공하는 기능
 

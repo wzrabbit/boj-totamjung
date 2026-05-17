@@ -43,6 +43,26 @@ export const circleProgressBarColors: Record<MainTheme, string> = {
   solvedAcBlack: theme.solvedAcColors.GRAY_200,
 };
 
+export const timerWarnAccentColors: Record<MainTheme, string> = {
+  none: theme.colors.AMBER,
+  totamjung: theme.colors.MANGO,
+  bojExtendedDark: theme.colors.MANGO,
+  bojExtendedRigel: theme.colors.CANARY,
+  solvedAcLight: theme.colors.DARK_AMBER,
+  solvedAcDark: theme.colors.MANGO,
+  solvedAcBlack: theme.colors.MANGO,
+};
+
+export const timerDangerAccentColors: Record<MainTheme, string> = {
+  none: theme.colors.LIGHT_RED,
+  totamjung: theme.colors.LIGHT_RED,
+  bojExtendedDark: theme.colors.LIGHT_RED,
+  bojExtendedRigel: theme.colors.RED_400,
+  solvedAcLight: theme.colors.CRIMSON,
+  solvedAcDark: theme.colors.LIGHT_RED,
+  solvedAcBlack: theme.colors.LIGHT_RED,
+};
+
 export const circleProgressBarTrackColors: Record<MainTheme, string> = {
   none: getTransparentHexColor(theme.colors.OFF_WHITE, 0.3),
   totamjung: theme.colors.BROWN_900,
@@ -64,4 +84,8 @@ export const Container = styled.div<{ $timerTheme: MainTheme }>`
   border-radius: 20px;
 
   user-select: none;
+
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
 `;

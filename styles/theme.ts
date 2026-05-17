@@ -28,6 +28,11 @@ export const theme = {
     LIGHT_PURPLE: '#dcbfff',
     PURPLE: '#963eff',
     MANGO: '#ffd900',
+    AMBER: '#ffc107',
+    CANARY: '#ffeb3b',
+    DARK_AMBER: '#ad7000',
+    RED_400: '#ff3838',
+    CRIMSON: '#c8001a',
   },
 
   solvedAcTiers: {

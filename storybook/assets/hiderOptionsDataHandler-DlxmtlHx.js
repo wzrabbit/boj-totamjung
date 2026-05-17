@@ -1,0 +1,1 @@
+import{S as t}from"./commands-D5hbcPyT.js";import{a}from"./defaultValues-BTwcrrCx.js";import{i as r}from"./hiderOptionsValidator-C_fdjVEa.js";const n=async()=>{const o=(await browser.storage.local.get(t.HIDER_OPTIONS))[t.HIDER_OPTIONS];return r(o)?o:a},c=s=>{r(s)&&browser.storage.local.set({[t.HIDER_OPTIONS]:s})};export{n as f,c as s};

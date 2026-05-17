@@ -13,8 +13,16 @@ const MATRIX_THEMES: {
 }[] = [
   { key: 'none', label: '테마 없음', pageBackground: '#ffffff' },
   { key: 'totamjung', label: '토탐정', pageBackground: '#1a0e0a' },
-  { key: 'bojExtendedDark', label: 'BOJ 확장 · 어둡게', pageBackground: '#202020' },
-  { key: 'bojExtendedRigel', label: 'BOJ 확장 · Rigel', pageBackground: '#001a26' },
+  {
+    key: 'bojExtendedDark',
+    label: 'BOJ 확장 · 어둡게',
+    pageBackground: '#202020',
+  },
+  {
+    key: 'bojExtendedRigel',
+    label: 'BOJ 확장 · Rigel',
+    pageBackground: '#001a26',
+  },
   { key: 'solvedAcLight', label: '솔브드 · 밝게', pageBackground: '#f7f8f9' },
   { key: 'solvedAcDark', label: '솔브드 · 어둡게', pageBackground: '#15202b' },
   { key: 'solvedAcBlack', label: '솔브드 · 암전', pageBackground: '#000000' },

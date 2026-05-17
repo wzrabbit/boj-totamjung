@@ -84,4 +84,8 @@ export const Container = styled.div<{ $timerTheme: MainTheme }>`
   border-radius: 20px;
 
   user-select: none;
+
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
 `;

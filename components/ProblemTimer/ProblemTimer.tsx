@@ -39,6 +39,7 @@ const ProblemTimer = (props: ProblemTimerProps) => {
         strokeWidth={14}
         color={ringColor}
         trackColor={S.circleProgressBarTrackColors[mainTheme]}
+        colorTransitionMs={200}
       />
       <ProblemTimerControls
         {...rest}

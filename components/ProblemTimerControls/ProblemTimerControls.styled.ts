@@ -67,5 +67,6 @@ export const Container = styled.div<{
 
   & > ${TimeDisplay}, & ${ControlButton} > svg {
     color: ${({ $color }) => $color};
+    transition: color 0.2s;
   }
 `;

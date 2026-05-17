@@ -14,6 +14,12 @@ interface BaseTimerControls {
   seconds: number;
   status: 'play' | 'pause' | 'stop';
   color: string;
+  /**
+   * 비활성 시간 세그먼트("00:" 같은 leading-zero 부분)의 색상.
+   * 가시성을 위해 활성 세그먼트와 다르게 지정할 수 있다.
+   * 미지정 시 `color`를 그대로 사용한다.
+   */
+  transparentColor?: string;
   height: number | string;
   onPlay: () => void;
   onPause: () => void;
@@ -59,6 +65,7 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
     seconds,
     status,
     color,
+    transparentColor,
     height,
     hasDeleteButton,
     onPlay,
@@ -75,7 +82,9 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
   return (
     <S.Container $color={color} $height={toPx(height)}>
       <S.TimeDisplay>
-        <S.TransparentDisplay>{transparent}</S.TransparentDisplay>
+        <S.TransparentDisplay $transparentColor={transparentColor}>
+          {transparent}
+        </S.TransparentDisplay>
         {normal}
       </S.TimeDisplay>
       <S.ButtonContainer $maxButtonCount={hasDeleteButton ? 3 : 2}>

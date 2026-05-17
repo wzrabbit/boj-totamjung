@@ -10,8 +10,13 @@ export const TimeDisplay = styled.div`
   font-variant-numeric: tabular-nums;
 `;
 
-export const TransparentDisplay = styled.span`
+export const TransparentDisplay = styled.span<{
+  $transparentColor?: string;
+}>`
   opacity: 0.2;
+
+  ${({ $transparentColor }) =>
+    $transparentColor && `color: ${$transparentColor};`}
 `;
 
 export const ButtonContainer = styled.div<{ $maxButtonCount: number }>`

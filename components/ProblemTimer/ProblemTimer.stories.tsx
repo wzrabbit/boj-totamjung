@@ -1,7 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import ProblemTimer from './ProblemTimer';
-import type { MainTheme } from '@/types/mainTheme';
+import ProblemTimerThemeStateMatrix from './ProblemTimerMatrix';
+
+const baseArgs = {
+  hours: 0,
+  minutes: 8,
+  seconds: 30,
+  progress: 65,
+  status: 'play' as const,
+  theme: 'none' as const,
+  onPlay: fn(),
+  onPause: fn(),
+  onStop: fn(),
+  onEdit: fn(),
+};
 
 const meta = {
   title: 'components/ProblemTimer',
@@ -25,6 +38,12 @@ const meta = {
       description:
         '현재 타이머의 상태를 의미합니다. 타이머가 진행 중인 경우를 의미하는 `play`, 일시정지인 경우를 의미하는 `pause`, 타이머가 종료되어 시간 설정을 다시 할 수 있는 상태인 `stop`의 세 가지가 있습니다.',
     },
+    urgency: {
+      control: { type: 'select' },
+      options: ['normal', 'warn', 'danger'],
+      description:
+        '남은 시간에 따른 긴급도입니다. `normal`은 기본, `warn`은 경고(warnThreshold 이하), `danger`는 위험(dangerThreshold 이하)을 의미합니다. `warn`/`danger`일 때 텍스트와 진행 링 색상이 테마별 액센트로 교체됩니다.',
+    },
     onPlay: {
       description: '타이머의 재생 버튼이 눌렸을 때 실행할 콜백 함수입니다.',
     },
@@ -45,18 +64,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Play: Story = {
-  args: {
-    hours: 0,
-    minutes: 8,
-    seconds: 30,
-    progress: 65,
-    status: 'play',
-    theme: 'none',
-    onPlay: fn(),
-    onPause: fn(),
-    onStop: fn(),
-    onEdit: fn(),
-  },
+  args: baseArgs,
 };
 
 export const Pause: Story = {
@@ -73,16 +81,32 @@ export const Stop: Story = {
   },
 };
 
-const createThemeStory = (theme: MainTheme): Story => ({
+export const Warn: Story = {
   args: {
     ...Play.args,
-    theme,
+    hours: 0,
+    minutes: 0,
+    seconds: 18,
+    progress: 24,
+    urgency: 'warn',
   },
-});
+};
 
-export const Totamjung = createThemeStory('totamjung');
-export const SolvedAcLight = createThemeStory('solvedAcLight');
-export const SolvedAcDark = createThemeStory('solvedAcDark');
-export const SolvedAcBlack = createThemeStory('solvedAcBlack');
-export const BojExtendedDark = createThemeStory('bojExtendedDark');
-export const BojExtendedRigel = createThemeStory('bojExtendedRigel');
+export const Danger: Story = {
+  args: {
+    ...Play.args,
+    hours: 0,
+    minutes: 0,
+    seconds: 4,
+    progress: 5,
+    urgency: 'danger',
+  },
+};
+
+export const ThemeStateMatrix: Story = {
+  args: baseArgs,
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => <ProblemTimerThemeStateMatrix />,
+};

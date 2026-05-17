@@ -26,6 +26,11 @@ const meta = {
     trackColor: {
       description: '프로그레스 바의, **채워져 있지 않은 부분**의 색상입니다.',
     },
+    colorTransitionMs: {
+      description:
+        '`color`·`trackColor` 변경 시 적용할 stroke 전환 시간(ms)입니다. 0이면 즉시 전환되며, 기본값은 0입니다. Controls 패널에서 이 값을 0보다 크게 둔 뒤 `color`를 바꾸면 부드러운 전환을 확인할 수 있습니다.',
+      control: { type: 'range', min: 0, max: 1000, step: 50 },
+    },
   },
 } satisfies Meta<typeof CircleProgressBar>;
 

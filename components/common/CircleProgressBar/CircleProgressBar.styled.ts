@@ -10,6 +10,10 @@ export const Container = styled.div<{ $width: number; $height: number }>`
   }
 `;
 
-export const CircleProgressBar = styled.svg`
+export const CircleProgressBar = styled.svg<{ $colorTransitionMs: number }>`
   transform: rotate(-90deg);
+
+  & circle {
+    transition: stroke ${({ $colorTransitionMs }) => $colorTransitionMs}ms;
+  }
 `;

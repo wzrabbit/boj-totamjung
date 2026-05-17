@@ -9,6 +9,7 @@ interface ProblemTimerProps {
   seconds: number;
   progress: number;
   status: 'play' | 'pause' | 'stop';
+  urgency?: 'normal' | 'warn' | 'danger';
   theme: MainTheme;
   onPlay: () => void;
   onPause: () => void;
@@ -17,7 +18,18 @@ interface ProblemTimerProps {
 }
 
 const ProblemTimer = (props: ProblemTimerProps) => {
-  const { progress, theme: mainTheme, ...rest } = props;
+  const { progress, theme: mainTheme, urgency = 'normal', ...rest } = props;
+
+  const accentColor =
+    urgency === 'warn'
+      ? S.timerWarnAccentColors[mainTheme]
+      : urgency === 'danger'
+        ? S.timerDangerAccentColors[mainTheme]
+        : null;
+
+  const themeTextColor = S.timerTextColors[mainTheme];
+  const textColor = accentColor ?? themeTextColor;
+  const ringColor = accentColor ?? S.circleProgressBarColors[mainTheme];
 
   return (
     <S.Container $timerTheme={mainTheme}>
@@ -25,12 +37,13 @@ const ProblemTimer = (props: ProblemTimerProps) => {
         progress={progress}
         size={28}
         strokeWidth={14}
-        color={S.circleProgressBarColors[mainTheme]}
+        color={ringColor}
         trackColor={S.circleProgressBarTrackColors[mainTheme]}
       />
       <ProblemTimerControls
         {...rest}
-        color={S.timerTextColors[mainTheme]}
+        color={textColor}
+        transparentColor={themeTextColor}
         height={40}
         hasDeleteButton={false}
       />

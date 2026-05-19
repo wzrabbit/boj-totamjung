@@ -2,6 +2,7 @@ import MenuTitle from '@/components/MenuTitle';
 import Fieldset from '@/components/common/Fieldset';
 import { FontIcon } from '@/assets/svg';
 import useAppearanceFieldsetMenu from '@/hooks/appearance/useAppearanceFieldsetMenu';
+import { useTranslation } from '@/i18n';
 import * as S from './AppearanceFieldsetMenu.styled';
 
 const FONT_INFOS = [
@@ -45,26 +46,30 @@ const FONT_INFOS = [
 const AppearanceFieldsetMenu = () => {
   const { totamjungTheme, fontNo, updateTotamjungTheme, updateFontNo } =
     useAppearanceFieldsetMenu();
+  const { t } = useTranslation();
 
   return (
     <S.Container>
       <MenuTitle
-        title="테마 설정"
+        title={t('options.appearance.themeTitle')}
         iconSrc={browser.runtime.getURL('/palette.png')}
       />
       <Fieldset
-        legend="토탐정 테마 사용 여부"
+        legend={t('options.appearance.themeLegend')}
         name="shouldHideTier"
         options={[
-          { label: '사용', value: 'totamjung' },
-          { label: '사용하지 않음', value: 'none' },
+          { label: t('options.appearance.themeUse'), value: 'totamjung' },
+          { label: t('options.appearance.themeDoNotUse'), value: 'none' },
         ]}
         checkedValue={totamjungTheme ?? ''}
         onChange={updateTotamjungTheme}
       />
-      <MenuTitle title="폰트 설정" iconSrc={<FontIcon />} />
+      <MenuTitle
+        title={t('options.appearance.fontTitle')}
+        iconSrc={<FontIcon />}
+      />
       <Fieldset
-        legend="문제 본문 폰트 설정"
+        legend={t('options.appearance.fontBodyLegend')}
         name="shouldHideTier"
         options={FONT_INFOS.map(({ name, fontFamily, fontSize }, index) => ({
           label: (

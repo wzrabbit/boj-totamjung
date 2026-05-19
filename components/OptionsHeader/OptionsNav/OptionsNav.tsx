@@ -1,3 +1,5 @@
+import { useTranslation } from '@/i18n';
+import type { TranslationKey } from '@/i18n';
 import * as S from './OptionsNav.styled';
 import type { OptionsNavCategory } from '@/types/options';
 
@@ -7,29 +9,33 @@ interface OptionsNavProps {
 }
 
 const OPTIONS_NAV_CATEGORIES: {
-  displayName: string;
+  labelKey: TranslationKey;
   category: OptionsNavCategory;
 }[] = [
-  { displayName: '알고리즘 가리개', category: 'algorithmHider' },
-  { displayName: '랜덤 디펜스', category: 'randomDefense' },
-  { displayName: '외관 및 데이터 관리', category: 'appearanceAndDataManage' },
+  { labelKey: 'options.nav.algorithmHider', category: 'algorithmHider' },
+  { labelKey: 'options.nav.randomDefense', category: 'randomDefense' },
+  {
+    labelKey: 'options.nav.appearanceAndDataManage',
+    category: 'appearanceAndDataManage',
+  },
 ];
 
 const OptionsNav = (props: OptionsNavProps) => {
   const { selectedCategory, onChange } = props;
+  const { t } = useTranslation();
 
   return (
     <S.Container>
       <S.NavItemList>
-        {OPTIONS_NAV_CATEGORIES.map(({ displayName, category }) => (
-          <S.NavItem key={displayName}>
+        {OPTIONS_NAV_CATEGORIES.map(({ labelKey, category }) => (
+          <S.NavItem key={category}>
             <S.CategoryButton
               $isSelected={category === selectedCategory}
               onClick={() => {
                 onChange(category);
               }}
             >
-              {displayName}
+              {t(labelKey)}
             </S.CategoryButton>
             <S.Underline $isSelected={category === selectedCategory} />
           </S.NavItem>

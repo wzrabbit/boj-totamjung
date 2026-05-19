@@ -4,6 +4,7 @@ import * as S from './QueryInput.styled';
 import { toPx } from '@/utils/toPx';
 import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
 import { EnterKeyIcon } from '@/assets/svg';
+import { useTranslation } from '@/i18n';
 import { forwardRef } from 'react';
 
 interface QueryInputProps {
@@ -32,6 +33,7 @@ const QueryInput = forwardRef<HTMLTextAreaElement, QueryInputProps>(
       applySuggestion,
       applyFirstSuggestionIfEnterKeyPressed,
     } = useQueryInput({ value, textareaRef: ref, onChange });
+    const { t } = useTranslation();
 
     return (
       <S.Container
@@ -56,7 +58,7 @@ const QueryInput = forwardRef<HTMLTextAreaElement, QueryInputProps>(
             </Text>
           ) : suggestions.length === 0 ? (
             <Text as="span" type="gray" fontSize={13}>
-              자동완성 결과가 없습니다.
+              {t('options.queryInput.noAutocomplete')}
             </Text>
           ) : (
             suggestions.map((suggestion) => (

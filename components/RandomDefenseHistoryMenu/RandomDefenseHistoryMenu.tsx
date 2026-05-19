@@ -74,7 +74,7 @@ const RandomDefenseHistoryMenu = () => {
               <Switch
                 size="large"
                 isChecked={isTierHidden}
-                ariaLabel={t('randomDefenseHistory.hideTierLabel')}
+                ariaLabel={t('randomDefenseHistory.hideTierAriaLabel')}
                 onChange={updateIsTierHidden}
               />
             </S.TierSwitchPanel>

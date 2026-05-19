@@ -15,7 +15,7 @@
     "yes": "Yes",
     "no": "No",
     "close": "Close",
-    "modalCloseLabel": "Close modal",
+    "modalCloseAriaLabel": "Close modal",
     "on": "ON",
     "off": "OFF"
   },

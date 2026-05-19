@@ -53,7 +53,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
             <S.Title>{title}</S.Title>
             <S.CloseButton
               onClick={onClose}
-              aria-label={t('common.modalCloseLabel')}
+              aria-label={t('common.modalCloseAriaLabel')}
               ref={closeButtonRef}
             >
               <CloseIcon />

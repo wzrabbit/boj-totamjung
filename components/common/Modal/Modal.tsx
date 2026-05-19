@@ -2,6 +2,7 @@ import * as S from './Modal.styled';
 import useEscKey from '@/hooks/useEscKey';
 import useModal from '@/hooks/useModal';
 import { CloseIcon } from '@/assets/svg';
+import { useTranslation } from '@/i18n';
 import { createPortal } from 'react-dom';
 import type { PropsWithChildren, ReactNode } from 'react';
 import type { MainTheme } from '@/types/mainTheme';
@@ -33,6 +34,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     children,
   } = props;
   const { modalRef, closeButtonRef } = useModal(open);
+  const { t } = useTranslation();
   useEscKey({ onEscKeyPress: onClose });
 
   return (
@@ -51,7 +53,7 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
             <S.Title>{title}</S.Title>
             <S.CloseButton
               onClick={onClose}
-              aria-label="모달 닫기"
+              aria-label={t('common.modalCloseLabel')}
               ref={closeButtonRef}
             >
               <CloseIcon />

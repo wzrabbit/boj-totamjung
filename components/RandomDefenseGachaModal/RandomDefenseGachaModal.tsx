@@ -188,7 +188,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               />
               <IconButton
                 type="button"
-                name={t('randomDefenseGacha.drawAgainButton')}
+                name={t('randomDefenseGacha.pullAgainButton')}
                 size="large"
                 color={theme.colors.ORANGE}
                 iconSrc={<DicesIcon />}

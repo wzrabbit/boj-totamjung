@@ -204,7 +204,7 @@
     "copyQueryButton": "Copy Query",
     "editButton": "Edit",
     "deleteButton": "Delete",
-    "drawNowButton": "Draw Now",
+    "gachaPullButton": "Gacha Pull",
     "copyDoneTitle": "Query Copied",
     "copyDoneMessage": "Query copied to clipboard!",
     "deleteConfirmTitle": "Delete Draw",
@@ -329,13 +329,13 @@
   },
 
   "randomDefenseGacha": {
-    "modalTitle": "Draw Now",
+    "modalTitle": "Gacha Pull",
     "loadingMessage": "Please wait...",
     "cardClickHint": "Click the card box to see the result",
     "retryButton": "Retry",
     "copyProblemsButton": "Copy Problem List",
     "saveHistoryButton": "Save to Draw History",
-    "drawAgainButton": "Draw again!",
+    "pullAgainButton": "Pull again!",
     "showTierAriaLabel": "Show problem difficulty",
     "hideTierAriaLabel": "Hide problem difficulty",
     "tierHiddenLabel": "Hide tier: $1",
@@ -345,10 +345,10 @@
   },
 
   "gachaProblemCount": {
-    "modalTitle": "Draw Now",
-    "promptMessage": "Enter the number of problems to draw.",
+    "modalTitle": "Gacha Pull",
+    "promptMessage": "Enter the number of problems to pull.",
     "rangeLabel": "1 or more, up to $1 problems",
-    "hotkeyTip": "TIP: You can also start a Draw Now from within BOJ by long-pressing the hotkey for the corresponding slot number.",
+    "hotkeyTip": "TIP: You can also start a Gacha Pull from within BOJ by long-pressing the hotkey for the corresponding slot number.",
     "confirmButton": "Confirm"
   },
 

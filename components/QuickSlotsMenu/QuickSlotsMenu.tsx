@@ -110,7 +110,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
             />
             <IconButton
               type="button"
-              name={t('quickSlots.drawNowButton')}
+              name={t('quickSlots.gachaPullButton')}
               size="medium"
               color={theme.colors.PURPLE}
               iconSrc={<DicesIcon />}

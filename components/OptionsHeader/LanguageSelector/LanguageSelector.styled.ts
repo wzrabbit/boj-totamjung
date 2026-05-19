@@ -14,15 +14,11 @@ export const Button = styled.button<{ $isOpen: boolean }>`
 
   width: 51.5px;
   height: 50px;
+  padding: 0;
 
   background: none;
-  border: 1px dashed ${({ theme }) => theme.colors.GOLD};
-  border-radius: 4px;
+  border: none;
   cursor: pointer;
-
-  font-family: 'Galmuri11';
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.GOLD};
 
   transition: filter 0.2s;
 
@@ -35,6 +31,11 @@ export const Button = styled.button<{ $isOpen: boolean }>`
     `
       filter: brightness(140%);
     `}
+`;
+
+export const ButtonImage = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 export const Menu = styled.ul`

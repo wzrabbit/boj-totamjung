@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { CheckIcon } from '@/assets/svg';
+import { i18nButton } from '@/assets/png';
 import { useTranslation } from '@/i18n';
-import type { ResolvedLanguage, UserLanguagePreference } from '@/i18n';
+import type { UserLanguagePreference } from '@/i18n';
 import * as S from './LanguageSelector.styled';
 
 const LANGUAGE_PREFERENCES: readonly UserLanguagePreference[] = [
@@ -16,13 +17,8 @@ const LABEL_KEY_BY_PREFERENCE = {
   en: 'language.en',
 } as const;
 
-const SHORT_LABEL_BY_LANGUAGE: Record<ResolvedLanguage, string> = {
-  ko: '한',
-  en: 'EN',
-};
-
 const LanguageSelector = () => {
-  const { preference, updatePreference, language, t } = useTranslation();
+  const { preference, updatePreference, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -69,7 +65,7 @@ const LanguageSelector = () => {
         $isOpen={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        {SHORT_LABEL_BY_LANGUAGE[language]}
+        <S.ButtonImage src={i18nButton} alt="" />
       </S.Button>
       {isOpen && (
         <S.Menu role="listbox" aria-label={t('language.label')}>

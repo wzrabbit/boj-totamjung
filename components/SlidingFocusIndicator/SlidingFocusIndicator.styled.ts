@@ -26,7 +26,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  z-index: 3;
+  z-index: 9999;
   pointer-events: none;
 `;
 

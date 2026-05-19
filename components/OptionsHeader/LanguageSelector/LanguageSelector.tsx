@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { CheckIcon } from '@/assets/svg';
 import { i18nButton } from '@/assets/png';
+import useRovingFocus from '@/hooks/useRovingFocus';
 import { useTranslation } from '@/i18n';
 import type { UserLanguagePreference } from '@/i18n';
 import * as S from './LanguageSelector.styled';
@@ -21,9 +22,34 @@ const LanguageSelector = () => {
   const { preference, updatePreference, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const shouldRestoreFocusRef = useRef(false);
+
+  const handleSelectByIndex = async (index: number) => {
+    const option = LANGUAGE_PREFERENCES[index];
+    await updatePreference(option);
+    shouldRestoreFocusRef.current = true;
+    setIsOpen(false);
+  };
+
+  const { getRovingProps, focusItem } = useRovingFocus<HTMLLIElement>({
+    count: LANGUAGE_PREFERENCES.length,
+    direction: 'vertical',
+    shouldResetFocusIndexOnItemChange: false,
+    onSelect: handleSelectByIndex,
+  });
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      if (shouldRestoreFocusRef.current) {
+        buttonRef.current?.focus();
+        shouldRestoreFocusRef.current = false;
+      }
+      return;
+    }
+
+    const selectedIndex = LANGUAGE_PREFERENCES.indexOf(preference);
+    focusItem(selectedIndex === -1 ? 0 : selectedIndex);
 
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target;
@@ -31,12 +57,14 @@ const LanguageSelector = () => {
         return;
       }
       if (!wrapperRef.current?.contains(target)) {
+        shouldRestoreFocusRef.current = false;
         setIsOpen(false);
       }
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        shouldRestoreFocusRef.current = true;
         setIsOpen(false);
       }
     };
@@ -48,36 +76,42 @@ const LanguageSelector = () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, preference, focusItem]);
 
-  const handleSelect = async (option: UserLanguagePreference) => {
-    await updatePreference(option);
-    setIsOpen(false);
+  const handleToggle = () => {
+    setIsOpen((prev) => {
+      if (prev) {
+        shouldRestoreFocusRef.current = true;
+      }
+      return !prev;
+    });
   };
 
   return (
     <S.Wrapper ref={wrapperRef}>
       <S.Button
+        ref={buttonRef}
         type="button"
         aria-label={t('language.label')}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         $isOpen={isOpen}
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={handleToggle}
       >
         <S.ButtonImage src={i18nButton} alt="" />
       </S.Button>
       {isOpen && (
         <S.Menu role="listbox" aria-label={t('language.label')}>
-          {LANGUAGE_PREFERENCES.map((option) => {
+          {LANGUAGE_PREFERENCES.map((option, index) => {
             const isSelected = preference === option;
             return (
               <S.MenuItem
                 key={option}
+                {...getRovingProps(index)}
                 role="option"
                 aria-selected={isSelected}
                 $isSelected={isSelected}
-                onClick={() => handleSelect(option)}
+                onClick={() => handleSelectByIndex(index)}
               >
                 <span>{t(LABEL_KEY_BY_PREFERENCE[option])}</span>
                 {isSelected && (

@@ -169,8 +169,8 @@ describe('# Test 2 - 잘못된 추첨명에 대응하기', () => {
   });
 });
 
-describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
-  test('핸들 이름이 비어있지 않으면서, 핸들명이 3자 미만으로 너무 짧을 경우 관련 오류 메시지를 반환해야 한다.', () => {
+describe('# Test 3 - 잘못된 아이디에 대응하기', () => {
+  test('아이디가 비어있지 않으면서, 아이디 길이가 3자 미만으로 너무 짧을 경우 관련 오류 메시지를 반환해야 한다.', () => {
     const randomDefenseFormData: RandomDefenseFormData = {
       ...emptyValidFormData,
       handle: 'ab',
@@ -183,7 +183,7 @@ describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
     });
   });
 
-  test('핸들 이름이 비어있지 않으면서, 핸들명이 20자 초과로 너무 길 경우 관련 오류 메시지를 반환해야 한다.', () => {
+  test('아이디가 비어있지 않으면서, 아이디 길이가 20자 초과로 너무 길 경우 관련 오류 메시지를 반환해야 한다.', () => {
     const randomDefenseFormData: RandomDefenseFormData = {
       ...emptyValidFormData,
       handle: 'too_looooooooooooooooong_handle',
@@ -196,7 +196,7 @@ describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
     });
   });
 
-  describe(`핸들 이름이 비어있지 않으면서, 핸들명의 형식이 올바르지 않을 경우 관련 오류 메시지를 반환해야 한다.`, () => {
+  describe(`아이디가 비어있지 않으면서, 아이디 형식이 올바르지 않을 경우 관련 오류 메시지를 반환해야 한다.`, () => {
     const testcases: RandomDefenseFormData[] = [
       {
         ...emptyValidFormData,

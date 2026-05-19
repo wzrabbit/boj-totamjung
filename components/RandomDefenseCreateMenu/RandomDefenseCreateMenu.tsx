@@ -99,7 +99,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             <S.Row $columnGap="50px">
               <S.Label $width="190px">
                 <Text type="primary" fontSize={16}>
-                  {t('randomDefenseCreate.excludeNicknameLabel')}
+                  {t('randomDefenseCreate.excludeHandleLabel')}
                 </Text>
                 <Input
                   ref={handleRef}
@@ -108,9 +108,9 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                   height="30px"
                   textAlign="left"
                   placeholder={t(
-                    'randomDefenseCreate.excludeNicknamePlaceholder',
+                    'randomDefenseCreate.excludeHandlePlaceholder',
                   )}
-                  aria-label={t('randomDefenseCreate.excludeNicknameLabel')}
+                  aria-label={t('randomDefenseCreate.excludeHandleLabel')}
                   name="handle"
                   value={handle}
                   minLength={3}

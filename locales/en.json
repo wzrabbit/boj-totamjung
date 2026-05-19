@@ -246,9 +246,9 @@
     "nameLabel": "Draw Name",
     "namePlaceholder": "0 ~ 30 chars",
     "nameAriaLabel": "Draw name",
-    "excludeNicknameLabel": "Nickname to exclude from search",
-    "excludeNicknamePlaceholder": "3 ~ 20 chars",
-    "excludeNicknameAriaLabel": "Nickname to exclude from search",
+    "excludeHandleLabel": "Handle to exclude from search",
+    "excludeHandlePlaceholder": "3 ~ 20 chars",
+    "excludeHandleAriaLabel": "Handle to exclude from search",
     "solvedRangeLabel": "Solved count",
     "solvedMinAriaLabel": "Minimum solved count",
     "solvedMaxAriaLabel": "Maximum solved count",
@@ -291,7 +291,7 @@
     },
 
     "tierPreset": {
-      "unratedAriaLabel": "Set range to Unrated tier",
+      "unratedAriaLabel": "Set tier to Unrated",
       "bronzeAriaLabel": "Set range from Bronze V to Bronze I",
       "silverAriaLabel": "Set range from Silver V to Silver I",
       "goldAriaLabel": "Set range from Gold V to Gold I",
@@ -355,8 +355,8 @@
   "errors": {
     "randomDefenseForm": {
       "titleTooLong": "Draw name must be $1 characters or fewer.",
-      "handleLength": "Handle (nickname) must be 3 to 20 characters.",
-      "handleFormat": "Handle (nickname) must contain only letters, digits, underscore (_), and hyphen (-).",
+      "handleLength": "Handle must be 3 to 20 characters.",
+      "handleFormat": "Handle must contain only letters, digits, underscore (_), and hyphen (-).",
       "solvedMinFormat": "Solved count minimum must be a non-negative integer.",
       "solvedMaxFormat": "Solved count maximum must be a non-negative integer.",
       "solvedCountTooLarge": "Solved count must be $1 or fewer.",

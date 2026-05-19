@@ -398,6 +398,17 @@
     }
   },
 
+  "defaultSlots": {
+    "goldRandomDefense": "골드 랜덤 디펜스",
+    "silverRandomDefense": "실버 랜덤 디펜스",
+    "allRandom": "올 랜덤",
+    "fallbackTitle": "추첨 $1"
+  },
+
+  "browserTab": {
+    "optionsTitle": "토탐정 설정"
+  },
+
   "markdown": {
     "gacha": {
       "headingResult": "추첨 결과",

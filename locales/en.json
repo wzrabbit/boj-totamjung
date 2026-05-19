@@ -398,6 +398,17 @@
     }
   },
 
+  "defaultSlots": {
+    "goldRandomDefense": "Gold Random Defense",
+    "silverRandomDefense": "Silver Random Defense",
+    "allRandom": "All Random",
+    "fallbackTitle": "Draw $1"
+  },
+
+  "browserTab": {
+    "optionsTitle": "Totamjung Settings"
+  },
+
   "markdown": {
     "gacha": {
       "headingResult": "Draw Result",

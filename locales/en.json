@@ -1,6 +1,6 @@
 {
-  "extensionName": "Totamjung",
-  "extensionDescription": "[BOJ-Extension] Algorithm tag hider & Random Defense, Totamjung!",
+  "extensionName": "Detective Toh",
+  "extensionDescription": "[BOJ-Extension] Algorithm tag hider & Random Defense, Detective Toh!",
 
   "language": {
     "label": "Language",
@@ -28,7 +28,7 @@
       "guideAriaLabel": "Guide",
       "infoAriaLabel": "Version info & contact",
       "guideConfirmTitle": "Open Guide Page",
-      "guideConfirmMessage": "Open the Totamjung user guide page?"
+      "guideConfirmMessage": "Open the Detective Toh user guide page?"
     },
 
     "sections": {
@@ -65,7 +65,7 @@
 
     "appearance": {
       "themeTitle": "Theme Settings",
-      "themeLegend": "Use Totamjung theme",
+      "themeLegend": "Use Toh's theme",
       "themeUse": "Use",
       "themeDoNotUse": "Do not use",
       "fontTitle": "Font Settings",
@@ -78,7 +78,7 @@
       "uploadButton": "Upload Settings",
       "resetButton": "Reset Settings",
       "description1": "If you want to back up your current settings or move your data to another device, you can export the settings as a save file or upload one.",
-      "description2Prefix": "The Totamjung save file extension is",
+      "description2Prefix": "The Detective Toh save file extension is",
       "description2Suffix": ".",
 
       "extractModalTitle": "Export Data",
@@ -108,8 +108,8 @@
     },
 
     "totamjungInfo": {
-      "modalTitle": "About Totamjung",
-      "appName": "Totamjung",
+      "modalTitle": "About Detective Toh",
+      "appName": "Detective Toh",
       "versionLabel": "Version",
       "buildSuffix": "build",
       "developerLabel": "Developer",
@@ -122,7 +122,7 @@
       "intro1": "\"Check whether a problem is solvable using only algorithms you know, without revealing the algorithm tags\"",
       "intro2": "\"Use a timer to lock algorithm tags for a set duration so they cannot be revealed\"",
       "intro3": "\"Save frequently used solved.ac search queries in slots, and run Random Defense with a single hotkey from within BOJ\"",
-      "intro4": "\"Enjoy the gorgeous, immersive Totamjung theme\"",
+      "intro4": "\"Enjoy Toh's gorgeous, immersive theme\"",
       "intro5": "\"Apply a variety of fonts to the problem body to suit your taste\"",
       "intro6": "\"Use solved.ac's high-difficulty warning on BOJ as well\""
     },
@@ -153,14 +153,14 @@
   },
 
   "widget": {
-    "topButtonAriaLabel": "Totamjung widget. Click to scroll to the top of the page, or right-click to open the widget.",
-    "openOptionsAriaLabel": "Open Totamjung settings page",
-    "themeOnAriaLabel": "Turn on Totamjung theme",
-    "themeOffAriaLabel": "Turn off Totamjung theme",
+    "topButtonAriaLabel": "Detective Toh widget. Click to scroll to the top of the page, or right-click to open the widget.",
+    "openOptionsAriaLabel": "Open Detective Toh settings page",
+    "themeOnAriaLabel": "Turn on Toh's theme",
+    "themeOffAriaLabel": "Turn off Toh's theme",
     "randomDefenseAriaLabel": "Run Random Defense",
-    "welcomeLine1": "Thank you for installing Totamjung!",
+    "welcomeLine1": "Thank you for installing Detective Toh!",
     "welcomeLine2Prefix": "Right-click the widget",
-    "welcomeLine2Suffix": " to explore Totamjung's various features.",
+    "welcomeLine2Suffix": " to explore Detective Toh's various features.",
 
     "timer": {
       "pauseAriaLabel": "Pause problem timer",
@@ -379,14 +379,14 @@
       "tryDisableVpn": "If you are using a VPN, please turn it off and try again.",
       "rateLimitedAdvice": "Too many Random Defense runs in a short time. Usually resolved by waiting a few minutes and retrying.",
       "rateLimitedExplanation": "This occurs when too many requests are sent to the solved.ac API in a short time.",
-      "rateLimitedOtherCause": "If you haven't used the draw feature excessively, requests from other Totamjung features or other extensions may also be the cause.",
+      "rateLimitedOtherCause": "If you haven't used the draw feature excessively, requests from other Detective Toh features or other extensions may also be the cause.",
       "serverErrorRetry": "First, try refreshing the page and running Random Defense again.",
       "serverErrorUnstable": "If the issue persists after multiple retries, the solved.ac API server may be unstable. Please try again later.",
-      "unknownErrorIntro": "Sorry, this is an error Totamjung does not recognize yet.",
+      "unknownErrorIntro": "Sorry, this is an error Detective Toh does not recognize yet.",
       "unknownErrorAdvice": "Try refreshing, verifying the query, and checking whether the solved.ac API server is stable.",
       "statusCodeInfo": "Status Code is $1. Please include this information when reporting the issue to the developer.",
-      "responseShapeMismatch": "The data loaded from the API does not match the shape Totamjung expects.",
-      "responseShapeCause": "Most likely Totamjung's implementation is wrong, or solved.ac changed the API shape.",
+      "responseShapeMismatch": "The data loaded from the API does not match the shape Detective Toh expects.",
+      "responseShapeCause": "Most likely Detective Toh's implementation is wrong, or solved.ac changed the API shape.",
       "responseShapeReportPlease": "This is unlikely to be a transient issue. Please report this error to the developer.",
       "noMatchingProblem": "No problems match the draw conditions.",
       "checkTypo": "Check the query for typos.",
@@ -406,7 +406,7 @@
   },
 
   "browserTab": {
-    "optionsTitle": "Totamjung Settings"
+    "optionsTitle": "Detective Toh Settings"
   },
 
   "markdown": {
@@ -458,7 +458,7 @@
       "errorV3CorruptedMessage": "v1.3 ~ v1.3.3.2 save files are supported for upload, but this save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
       "errorV4CorruptedMessage": "v1.3.4 save files are supported for upload, but this save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
       "errorCorruptedMessage": "This save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
-      "errorInvalidDataMessage": "Data format is invalid. This can happen when a non-Totamjung file's extension is renamed to \".ttj\". Could you double-check the save file?"
+      "errorInvalidDataMessage": "Data format is invalid. This can happen when a file not created by Detective Toh has its extension renamed to \".ttj\". Could you double-check the save file?"
     }
   }
 }

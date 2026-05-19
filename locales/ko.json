@@ -274,8 +274,8 @@
     },
 
     "capsule": {
-      "easyAriaLabel": "간편 입력 모드로 변경하기",
-      "easyLabel": "간편 입력",
+      "simpleAriaLabel": "간편 입력 모드로 변경하기",
+      "simpleLabel": "간편 입력",
       "manualAriaLabel": "직접 입력 모드로 변경하기",
       "manualLabel": "직접 입력"
     },

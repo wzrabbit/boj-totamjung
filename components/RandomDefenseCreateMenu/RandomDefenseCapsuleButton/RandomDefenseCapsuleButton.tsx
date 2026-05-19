@@ -1,7 +1,7 @@
 import { useTranslation } from '@/i18n';
 import * as S from './RandomDefenseCapsuleButton.styled';
 
-type RandomDefenseFormMode = 'easy' | 'manual';
+type RandomDefenseFormMode = 'simple' | 'manual';
 
 interface RandomDefenseCapsuleButtonProps {
   mode: RandomDefenseFormMode;
@@ -16,13 +16,13 @@ const RandomDefenseCapsuleButton = (props: RandomDefenseCapsuleButtonProps) => {
     <S.Container>
       <S.LeftButton
         type="button"
-        $isActivated={mode === 'easy'}
+        $isActivated={mode === 'simple'}
         onClick={() => {
-          onClick('easy');
+          onClick('simple');
         }}
-        aria-label={t('randomDefenseCreate.capsule.easyAriaLabel')}
+        aria-label={t('randomDefenseCreate.capsule.simpleAriaLabel')}
       >
-        {t('randomDefenseCreate.capsule.easyLabel')}
+        {t('randomDefenseCreate.capsule.simpleLabel')}
       </S.LeftButton>
       <S.RightButton
         type="button"

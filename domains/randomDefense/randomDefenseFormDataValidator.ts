@@ -41,7 +41,7 @@ export const isRandomDefenseFormData = (
     'algorithmIds' in data &&
     'customQuery' in data &&
     typeof data.mode === 'string' &&
-    ['easy', 'manual'].includes(data.mode) &&
+    ['simple', 'manual'].includes(data.mode) &&
     typeof data.title === 'string' &&
     typeof data.handle === 'string' &&
     typeof data.language === 'string' &&
@@ -72,7 +72,7 @@ export const validateRandomDefenseFormData = (
   } = randomDefenseFormData;
 
   const validationResults =
-    mode === 'easy'
+    mode === 'simple'
       ? [
           validateTitle(title),
           validateHandle(handle),

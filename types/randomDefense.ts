@@ -83,7 +83,7 @@ export type SearchOperator = 'OR' | 'AND' | 'NOR';
 export type Language = 'ko' | 'en' | 'ko/en' | 'all';
 
 export interface RandomDefenseFormData {
-  mode: 'easy' | 'manual';
+  mode: 'simple' | 'manual';
   title: string;
   handle: string;
   solvedMin: string;

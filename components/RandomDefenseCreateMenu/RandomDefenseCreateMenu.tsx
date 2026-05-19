@@ -94,7 +94,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             onChange={setRandomDefenseInputValue}
           />
         </S.Label>
-        {mode === 'easy' ? (
+        {mode === 'simple' ? (
           <>
             <S.Row $columnGap="50px">
               <S.Label $width="190px">

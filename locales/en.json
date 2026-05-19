@@ -274,10 +274,10 @@
     },
 
     "capsule": {
-      "easyAriaLabel": "Switch to easy input mode",
-      "easyLabel": "Easy Input",
-      "manualAriaLabel": "Switch to manual input mode",
-      "manualLabel": "Manual Input"
+      "simpleAriaLabel": "Switch to Simple Mode",
+      "simpleLabel": "Simple Mode",
+      "manualAriaLabel": "Switch to Manual Mode",
+      "manualLabel": "Manual Mode"
     },
 
     "miniAlgorithm": {

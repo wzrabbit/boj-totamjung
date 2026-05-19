@@ -17,7 +17,7 @@ interface UseRandomDefenseCreateMenuParams {
 }
 
 const initialRandomDefenseFormData: RandomDefenseFormData = {
-  mode: 'easy',
+  mode: 'simple',
   title: '',
   handle: '',
   language: 'ko',

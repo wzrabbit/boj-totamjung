@@ -8,7 +8,7 @@ import {
 import type { RandomDefenseFormData } from '@/types/randomDefense';
 
 const emptyValidFormData: RandomDefenseFormData = {
-  mode: 'easy',
+  mode: 'simple',
   title: '',
   handle: '',
   solvedMin: '',
@@ -25,7 +25,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
   describe('정상적인 추첨을 이루는 값이 주어질 경우, true를 반환해야 한다.', () => {
     const testcases: RandomDefenseFormData[] = [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '연습 1',
         handle: 'testuser1234',
         solvedMin: '1',
@@ -38,7 +38,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: '',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '123123123123123123123123123123',
         handle: '1_ABc__DeFgHIJ0_KlM9',
         solvedMin: '0',
@@ -51,7 +51,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: 'asdf',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: 'X',
         handle: 'abc',
         solvedMin: '300',
@@ -64,7 +64,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: 'a'.repeat(999),
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '테스트 연습 1',
         handle: '',
         solvedMin: '',
@@ -77,7 +77,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: '',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: 'solved max',
         handle: '',
         solvedMin: '100000000',
@@ -90,7 +90,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: '',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '1★ Practice ☆@!?※△  NOR+=',
         handle: '      ',
         solvedMin: '   ',
@@ -103,7 +103,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: '',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '0',
         handle: '',
         solvedMin: '',

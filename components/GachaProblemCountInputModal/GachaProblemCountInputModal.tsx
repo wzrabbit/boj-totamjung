@@ -8,6 +8,7 @@ import useGachaProblemCount from '@/hooks/useGachaProblemCount';
 import { MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE } from '@/constants/randomDefense';
 import type { MainTheme } from '@/types/mainTheme';
 import { theme as styledTheme } from '@/styles/theme';
+import { useTranslation } from '@/i18n';
 
 export const lightThemes: readonly MainTheme[] = ['none', 'solvedAcLight'];
 
@@ -33,12 +34,13 @@ const GachaProblemCountInputModal = (
   } = props;
   const { inputValue, updateInputValue, isInputValueValid } =
     useGachaProblemCount();
+  const { t } = useTranslation();
 
   const isLightTheme = lightThemes.includes(theme);
 
   return (
     <Modal
-      title="즉석 추첨"
+      title={t('gachaProblemCount.modalTitle')}
       theme={theme}
       portalTarget={portalTarget}
       open={open}
@@ -46,7 +48,7 @@ const GachaProblemCountInputModal = (
     >
       <S.ContentContainer>
         <Text type={isLightTheme ? 'black' : 'normal'} fontSize={16}>
-          추첨을 진행할 문제 수를 입력해 주세요.
+          {t('gachaProblemCount.promptMessage')}
         </Text>
         <Input
           type="number"
@@ -67,7 +69,11 @@ const GachaProblemCountInputModal = (
           type={isLightTheme ? 'black' : 'normal'}
           fontSize={14}
           textAlign="right"
-        >{`1문제 이상, ${MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE}문제 이하`}</Text>
+        >
+          {t('gachaProblemCount.rangeLabel', [
+            String(MAX_PROBLEM_COUNT_PER_RANDOM_DEFENSE),
+          ])}
+        </Text>
         {shouldShowHotkeyMessage && (
           <Text
             type="custom"
@@ -79,15 +85,14 @@ const GachaProblemCountInputModal = (
             }
             opacity={0.8}
           >
-            TIP: 즉석 추첨은 백준 사이트 내에서 슬롯 번호에 대응하는 단축키를
-            길게 누르는 것으로도 진행할 수 있습니다.
+            {t('gachaProblemCount.hotkeyTip')}
           </Text>
         )}
       </S.ContentContainer>
       <ModalActionButtonsContainer theme={theme}>
         <IconButton
           type="button"
-          name="확인"
+          name={t('gachaProblemCount.confirmButton')}
           size="medium"
           iconSrc={<CheckCircleIcon />}
           color={

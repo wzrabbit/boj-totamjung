@@ -18,6 +18,7 @@ import { theme } from '@/styles/theme';
 import SimpleModal from '@/components/common/SimpleModal';
 import RandomDefenseGachaModal from '@/components/RandomDefenseGachaModal';
 import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
+import { useTranslation } from '@/i18n';
 
 interface QuickSlotMenuProps {
   quickSlotsInfo: QuickSlotOptions;
@@ -48,9 +49,15 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
     deleteSlot,
     setGachaProblemCount,
   } = useQuickSlotMenu(props);
+  const { t } = useTranslation();
 
   return (
-    <NamedFrame width="650px" height="168px" padding="10px" title="퀵 슬롯">
+    <NamedFrame
+      width="650px"
+      height="168px"
+      padding="10px"
+      title={t('quickSlots.frameTitle')}
+    >
       {isLoaded ? (
         <S.Container>
           <S.SlotNoPanel>
@@ -69,7 +76,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
           <S.SlotControlPanel>
             <IconButton
               type="button"
-              name="쿼리 복사"
+              name={t('quickSlots.copyQueryButton')}
               size="medium"
               color={theme.colors.GRAY_300}
               iconSrc={<CopyIcon />}
@@ -83,7 +90,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
             />
             <IconButton
               type="button"
-              name="수정"
+              name={t('quickSlots.editButton')}
               size="medium"
               color={theme.colors.SKY_BLUE}
               iconSrc={<EditIcon />}
@@ -92,7 +99,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
             />
             <IconButton
               type="button"
-              name="삭제"
+              name={t('quickSlots.deleteButton')}
               size="medium"
               color={theme.colors.RED}
               iconSrc={<TrashIcon />}
@@ -103,7 +110,7 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
             />
             <IconButton
               type="button"
-              name="즉석 추첨"
+              name={t('quickSlots.drawNowButton')}
               size="medium"
               color={theme.colors.PURPLE}
               iconSrc={<DicesIcon />}
@@ -130,8 +137,8 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
         height="auto"
         open={activeModalName === 'copiedQuery'}
         onClose={closeModal}
-        title="쿼리 복사 완료"
-        message="쿼리를 클립보드에 복사했어요!"
+        title={t('quickSlots.copyDoneTitle')}
+        message={t('quickSlots.copyDoneMessage')}
       />
       <SimpleModal
         actionType="yesNo"
@@ -143,8 +150,8 @@ const QuickSlotsMenu = (props: QuickSlotMenuProps) => {
           closeModal();
         }}
         onNoSelect={closeModal}
-        title="추첨 삭제 확인"
-        message={`${selectedSlotNo}번 슬롯에 저장되어 있는 추첨을 삭제할까요?`}
+        title={t('quickSlots.deleteConfirmTitle')}
+        message={t('quickSlots.deleteConfirmMessage', [String(selectedSlotNo)])}
       />
       <GachaProblemCountInputModal
         open={activeModalName === 'gachaProblemCount'}

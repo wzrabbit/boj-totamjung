@@ -14,31 +14,13 @@ import type { QuickSlotNo } from '@/types/randomDefense';
 import Select from '@/components/common/Select';
 import { MAX_CUSTOM_QUERY_LENGTH } from '@/constants/randomDefense';
 import QueryInput from '@/components/QueryInput/QueryInput';
+import { useTranslation } from '@/i18n';
 
 interface RandomDefenseCreateMenuProps {
   selectedSlotNo: QuickSlotNo;
   isLoaded: boolean;
   onSubmit: (title: string, query: string) => void;
 }
-
-const languageOptions = [
-  {
-    label: '한국어',
-    value: 'ko',
-  },
-  {
-    label: '영어',
-    value: 'en',
-  },
-  {
-    label: '한국어 및 영어',
-    value: 'ko/en',
-  },
-  {
-    label: '모든 언어',
-    value: 'all',
-  },
-];
 
 const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
   const { selectedSlotNo, isLoaded, onSubmit } = props;
@@ -70,9 +52,22 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
     solvedMaxRef,
     customQueryRef,
   } = useRandomDefenseCreateMenu({ selectedSlotNo, onSubmit });
+  const { t } = useTranslation();
+
+  const languageOptions = [
+    { label: t('randomDefenseCreate.languageKo'), value: 'ko' },
+    { label: t('randomDefenseCreate.languageEn'), value: 'en' },
+    { label: t('randomDefenseCreate.languageBoth'), value: 'ko/en' },
+    { label: t('randomDefenseCreate.languageAll'), value: 'all' },
+  ];
 
   return (
-    <NamedFrame width="650px" height="373px" padding="10px" title="추첨 만들기">
+    <NamedFrame
+      width="650px"
+      height="373px"
+      padding="10px"
+      title={t('randomDefenseCreate.frameTitle')}
+    >
       <S.Form>
         <S.ErrorTextWrapper>
           <ErrorText errorMessage={errorMessage} fontSize={14} />
@@ -82,7 +77,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
         </S.RandomDefenseCapsuleButtonWrapper>
         <S.Label $width="380px">
           <Text type="primary" fontSize={16}>
-            추첨 이름
+            {t('randomDefenseCreate.nameLabel')}
           </Text>
           <Input
             ref={titleRef}
@@ -90,8 +85,8 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             width="100%"
             height="30px"
             textAlign="left"
-            placeholder="0 ~ 30자"
-            aria-label="추첨 이름"
+            placeholder={t('randomDefenseCreate.namePlaceholder')}
+            aria-label={t('randomDefenseCreate.nameAriaLabel')}
             name="title"
             value={title}
             maxLength={30}
@@ -104,7 +99,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             <S.Row $columnGap="50px">
               <S.Label $width="190px">
                 <Text type="primary" fontSize={16}>
-                  검색에서 제외할 닉네임
+                  {t('randomDefenseCreate.excludeNicknameLabel')}
                 </Text>
                 <Input
                   ref={handleRef}
@@ -112,8 +107,10 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                   width="100%"
                   height="30px"
                   textAlign="left"
-                  placeholder="3 ~ 20자"
-                  aria-label="검색에서 제외할 닉네임"
+                  placeholder={t(
+                    'randomDefenseCreate.excludeNicknamePlaceholder',
+                  )}
+                  aria-label={t('randomDefenseCreate.excludeNicknameLabel')}
                   name="handle"
                   value={handle}
                   minLength={3}
@@ -124,7 +121,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               </S.Label>
               <S.PanelContainer $width="166px">
                 <Text type="primary" fontSize={16}>
-                  맞은 사람 수
+                  {t('randomDefenseCreate.solvedRangeLabel')}
                 </Text>
                 <S.SolvedRangeInputsContainer>
                   <Input
@@ -134,7 +131,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                     height="30px"
                     textAlign="center"
                     placeholder=""
-                    aria-label="맞은 사람 수의 하한"
+                    aria-label={t('randomDefenseCreate.solvedMinAriaLabel')}
                     name="solvedMin"
                     value={solvedMin}
                     hasError={errorElementName === 'solvedMin'}
@@ -150,7 +147,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
                     height="30px"
                     textAlign="center"
                     placeholder=""
-                    aria-label="맞은 사람 수의 상한"
+                    aria-label={t('randomDefenseCreate.solvedMaxAriaLabel')}
                     name="solvedMax"
                     value={solvedMax}
                     hasError={errorElementName === 'solvedMax'}
@@ -160,20 +157,20 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
               </S.PanelContainer>
               <S.PanelContainer $width="190px">
                 <Text type="primary" fontSize={16}>
-                  문제 언어
+                  {t('randomDefenseCreate.languageLabel')}
                 </Text>
                 <Select
                   options={languageOptions}
                   selectedValue={language}
                   width="130px"
-                  ariaLabel="문제 언어 고르기"
+                  ariaLabel={t('randomDefenseCreate.languageAriaLabel')}
                   onChange={setLanguage}
                 />
               </S.PanelContainer>
             </S.Row>
             <S.PanelContainer $width="100%">
               <Text type="primary" fontSize={16}>
-                난이도 범위
+                {t('randomDefenseCreate.tierRangeLabel')}
               </Text>
               <S.DifficultyAdjustMenuWrapper>
                 <DifficultyAdjustMenu
@@ -186,7 +183,7 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             <S.PanelContainer $width="446px">
               <S.Row>
                 <Text type="primary" fontSize={16}>
-                  검색에 포함할 알고리즘
+                  {t('randomDefenseCreate.includeAlgorithmsLabel')}
                 </Text>
                 <SearchOperatorSelect
                   selectedOperator={searchOperator}
@@ -205,14 +202,16 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
           <>
             <S.Label $width="100%">
               <Text type="primary" fontSize={16}>
-                쿼리
+                {t('randomDefenseCreate.queryLabel')}
               </Text>
               <QueryInput
                 ref={customQueryRef}
                 width="100%"
                 height="160px"
                 value={customQuery}
-                placeholder={`1 ~ ${MAX_CUSTOM_QUERY_LENGTH}자`}
+                placeholder={t('randomDefenseCreate.queryPlaceholder', [
+                  String(MAX_CUSTOM_QUERY_LENGTH),
+                ])}
                 hasError={errorElementName === 'customQuery'}
                 onChange={setCustomQuery}
               />
@@ -220,13 +219,12 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
             <S.InformationTextContainer>
               <Text type="normal" fontSize={14}>
                 <TextLink href="https://solved.ac/search" fontSize={14}>
-                  solved.ac 문제 고급 검색
+                  {t('randomDefenseCreate.advancedSearchLinkText')}
                 </TextLink>{' '}
-                페이지를 통해 solved.ac 검색 쿼리 작성법을 확인하실 수 있습니다!
+                {t('randomDefenseCreate.advancedSearchSuffix')}
               </Text>
               <Text type="normal" fontSize={14}>
-                추첨은 비로그인 상태에서 진행되므로, 솔브드 프로 플랜 전용
-                쿼리는 사용하실 수 없습니다.
+                {t('randomDefenseCreate.proPlanNotice')}
               </Text>
             </S.InformationTextContainer>
           </>

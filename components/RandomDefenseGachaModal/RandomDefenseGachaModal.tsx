@@ -20,6 +20,7 @@ import CardBox from '@/components/CardBox';
 import ProblemCardGrid from '@/components/ProblemCardGrid';
 import useRandomDefenseGachaModal from '@/hooks/gacha/useRandomDefenseGachaModal';
 import GachaModalNotification from '@/components/GachaModalNotification';
+import { useTranslation } from '@/i18n';
 import type { MainTheme } from '@/types/mainTheme';
 
 interface RandomDefenseGachaModalProps {
@@ -62,10 +63,11 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
     showResultScreenAndResetNotificationMessage,
     saveGachaResultToStorage,
   } = useRandomDefenseGachaModal({ open, slot, problemCount });
+  const { t } = useTranslation();
 
   return (
     <Modal
-      title="즉석 추첨"
+      title={t('randomDefenseGacha.modalTitle')}
       open={open}
       theme={modalTheme}
       padding="0"
@@ -84,7 +86,9 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                 <S.LoadingIconWrapper>
                   <LoadingIcon />
                 </S.LoadingIconWrapper>
-                <S.LoadingMessage>잠시만 기다려주세요...</S.LoadingMessage>
+                <S.LoadingMessage>
+                  {t('randomDefenseGacha.loadingMessage')}
+                </S.LoadingMessage>
               </S.IconMessageContainer>
             </S.BottomControlList>
           </S.LoadingScreen>
@@ -106,7 +110,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
                   <MouseClickIcon />
                 </S.MouseClickIconWrapper>
                 <S.ReadyMessage>
-                  카드 상자를 클릭하면 결과를 확인할 수 있습니다
+                  {t('randomDefenseGacha.cardClickHint')}
                 </S.ReadyMessage>
               </S.IconMessageContainer>
             </S.BottomControlList>
@@ -138,7 +142,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
             <S.BottomControlList>
               <IconButton
                 type="button"
-                name="다시 시도하기"
+                name={t('randomDefenseGacha.retryButton')}
                 size="large"
                 color={theme.colors.LIGHT_RED}
                 iconSrc={<RepeatIcon />}
@@ -166,7 +170,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
             <S.ResultBottomControlList>
               <IconButton
                 type="button"
-                name="문제 목록 복사"
+                name={t('randomDefenseGacha.copyProblemsButton')}
                 size="large"
                 color={theme.colors.GRAY_300}
                 iconSrc={<CopyIcon />}
@@ -175,7 +179,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               />
               <IconButton
                 type="button"
-                name="추첨 기록 저장"
+                name={t('randomDefenseGacha.saveHistoryButton')}
                 size="large"
                 color={theme.colors.LEMON}
                 iconSrc={isSavedToHistory ? <CheckIcon /> : <DownloadIcon />}
@@ -184,7 +188,7 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               />
               <IconButton
                 type="button"
-                name="다시 추첨하기!"
+                name={t('randomDefenseGacha.drawAgainButton')}
                 size="large"
                 color={theme.colors.ORANGE}
                 iconSrc={<DicesIcon />}
@@ -199,7 +203,9 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
           <S.TierVisibilityToggleButton
             onClick={toggleIsTierHidden}
             aria-label={
-              isTierHidden ? '문제 난이도 보이기' : '문제 난이도 감추기'
+              isTierHidden
+                ? t('randomDefenseGacha.showTierAriaLabel')
+                : t('randomDefenseGacha.hideTierAriaLabel')
             }
           >
             {isTierHidden ? (
@@ -208,13 +214,25 @@ const RandomDefenseGachaModal = (props: RandomDefenseGachaModalProps) => {
               <img src={tier1BadgeIcon} alt="" draggable={false} />
             )}
           </S.TierVisibilityToggleButton>
-          <S.ToggleButtonText>{`티어 숨기기: ${isTierHidden ? 'ON' : 'OFF'}`}</S.ToggleButtonText>
+          <S.ToggleButtonText>
+            {t('randomDefenseGacha.tierHiddenLabel', [
+              isTierHidden ? t('common.on') : t('common.off'),
+            ])}
+          </S.ToggleButtonText>
         </S.ToggleButtonContainer>
         <S.ToggleButtonContainer $align="right">
-          <S.ToggleButtonText>{`효과음: ${isAudioMuted ? 'OFF' : 'ON'}`}</S.ToggleButtonText>
+          <S.ToggleButtonText>
+            {t('randomDefenseGacha.audioLabel', [
+              isAudioMuted ? t('common.off') : t('common.on'),
+            ])}
+          </S.ToggleButtonText>
           <S.AudioToggleButton
             onClick={toggleIsAudioMuted}
-            aria-label={isAudioMuted ? '효과음 켜기' : '효과음 끄기'}
+            aria-label={
+              isAudioMuted
+                ? t('randomDefenseGacha.audioOnAriaLabel')
+                : t('randomDefenseGacha.audioOffAriaLabel')
+            }
           >
             {isAudioMuted ? <VolumeOffIcon /> : <VolumeOnIcon />}
           </S.AudioToggleButton>

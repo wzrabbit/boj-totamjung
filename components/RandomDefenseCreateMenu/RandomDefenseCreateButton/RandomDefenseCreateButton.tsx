@@ -1,5 +1,6 @@
 import { QuickSlotNo } from '@/types/randomDefense';
 import type { MouseEvent } from 'react';
+import { useTranslation } from '@/i18n';
 import * as S from './RandomDefenseCreateButton.styled';
 
 interface RandomDefenseCreateButtonProps {
@@ -10,20 +11,29 @@ interface RandomDefenseCreateButtonProps {
 
 const RandomDefenseCreateButton = (props: RandomDefenseCreateButtonProps) => {
   const { selectedSlotNo, isLoaded, onClick } = props;
+  const { t } = useTranslation();
 
   return (
     <S.Button
       type="button"
-      aria-label={`${selectedSlotNo}번 슬롯에 추첨 생성하기`}
+      aria-label={t('randomDefenseCreate.createButton.ariaLabel', [
+        String(selectedSlotNo),
+      ])}
       onClick={onClick}
       disabled={!isLoaded}
     >
       <S.UpperSide>
         <S.DiceIcon src={browser.runtime.getURL('/dice.png')} alt="" />
         <S.TextContainer>
-          <S.TitleText>추첨 생성</S.TitleText>
+          <S.TitleText>
+            {t('randomDefenseCreate.createButton.title')}
+          </S.TitleText>
           <S.SlotNoText>
-            {isLoaded ? `슬롯 번호 − ${selectedSlotNo}` : '로딩 중...'}
+            {isLoaded
+              ? t('randomDefenseCreate.createButton.slotNumber', [
+                  String(selectedSlotNo),
+                ])
+              : t('randomDefenseCreate.createButton.loading')}
           </S.SlotNoText>
         </S.TextContainer>
       </S.UpperSide>

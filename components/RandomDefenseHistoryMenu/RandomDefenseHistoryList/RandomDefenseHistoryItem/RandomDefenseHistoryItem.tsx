@@ -4,6 +4,7 @@ import { ClockIcon, TrashIcon } from '@/assets/svg';
 import { formatDate } from '@/utils/formatDate';
 import type { IsoString } from '@/types/utils';
 import type { KeyboardEventHandler, Ref } from 'react';
+import { useTranslation } from '@/i18n';
 
 interface RandomDefenseHistoryItemProps {
   problemId: number;
@@ -29,13 +30,17 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
     onKeyDown,
     onDelete,
   } = props;
+  const { t } = useTranslation();
 
   return (
     <S.Container $tier={tier} $isHidden={isHidden} onKeyDown={onKeyDown}>
       <S.LinkButton
         href={`https://icpc.me/${problemId}`}
         target="__blank"
-        aria-label={`${problemId}번 ${title} 문제`}
+        aria-label={t('randomDefenseHistory.item.problemAriaLabel', [
+          String(problemId),
+          title,
+        ])}
         ref={linkButtonRef}
         tabIndex={tabIndex}
       >
@@ -67,7 +72,7 @@ const RandomDefenseHistoryItem = (props: RandomDefenseHistoryItemProps) => {
         $isHidden={isHidden}
         tabIndex={tabIndex}
         onClick={onDelete}
-        aria-label="추첨 기록에서 제거하기"
+        aria-label={t('randomDefenseHistory.item.removeAriaLabel')}
       >
         <TrashIcon />
       </S.DeleteButton>

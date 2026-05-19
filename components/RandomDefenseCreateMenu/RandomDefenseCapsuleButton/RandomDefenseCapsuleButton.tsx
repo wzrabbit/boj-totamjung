@@ -1,3 +1,4 @@
+import { useTranslation } from '@/i18n';
 import * as S from './RandomDefenseCapsuleButton.styled';
 
 type RandomDefenseFormMode = 'easy' | 'manual';
@@ -9,6 +10,8 @@ interface RandomDefenseCapsuleButtonProps {
 
 const RandomDefenseCapsuleButton = (props: RandomDefenseCapsuleButtonProps) => {
   const { mode, onClick } = props;
+  const { t } = useTranslation();
+
   return (
     <S.Container>
       <S.LeftButton
@@ -17,9 +20,9 @@ const RandomDefenseCapsuleButton = (props: RandomDefenseCapsuleButtonProps) => {
         onClick={() => {
           onClick('easy');
         }}
-        aria-label="간편 입력 모드로 변경하기"
+        aria-label={t('randomDefenseCreate.capsule.easyAriaLabel')}
       >
-        간편 입력
+        {t('randomDefenseCreate.capsule.easyLabel')}
       </S.LeftButton>
       <S.RightButton
         type="button"
@@ -27,9 +30,9 @@ const RandomDefenseCapsuleButton = (props: RandomDefenseCapsuleButtonProps) => {
         onClick={() => {
           onClick('manual');
         }}
-        aria-label="직접 입력 모드로 변경하기"
+        aria-label={t('randomDefenseCreate.capsule.manualAriaLabel')}
       >
-        직접 입력
+        {t('randomDefenseCreate.capsule.manualLabel')}
       </S.RightButton>
       <S.MidCircle>OR</S.MidCircle>
     </S.Container>

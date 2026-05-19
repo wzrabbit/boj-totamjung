@@ -7,6 +7,7 @@ import Input from '@/components/common/Input';
 import ErrorText from '@/components/common/ErrorText';
 import useSlotEditModal from '@/hooks/randomDefense/useSlotEditModal';
 import { CloseCircleIcon, CheckCircleIcon } from '@/assets/svg';
+import { useTranslation } from '@/i18n';
 import * as S from './SlotEditModal.styled';
 import QueryInput from '@/components/QueryInput/QueryInput';
 
@@ -42,10 +43,11 @@ const SlotEditModal = (props: SlotEditModalProps) => {
     initQuery,
     onSlotChange,
   });
+  const { t } = useTranslation();
 
   return (
     <Modal
-      title="추첨 수정"
+      title={t('quickSlots.edit.modalTitle')}
       open={open}
       onClose={onClose}
       closeOnBackdropClick={false}
@@ -53,7 +55,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
       <S.Form>
         <S.Label>
           <Text type="primary" fontSize={16}>
-            추첨 이름
+            {t('quickSlots.edit.nameLabel')}
           </Text>
           <Input
             type="text"
@@ -64,9 +66,9 @@ const SlotEditModal = (props: SlotEditModalProps) => {
             ref={titleRef}
             textAlign="left"
             maxLength={30}
-            placeholder="0 ~ 30자"
+            placeholder={t('quickSlots.edit.namePlaceholder')}
             hasError={isTitleElementHasErrors}
-            aria-label="새로운 추첨 이름을 입력해주세요"
+            aria-label={t('quickSlots.edit.nameAriaLabel')}
             onChange={(event) => {
               setTitle(event.target.value);
             }}
@@ -74,7 +76,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
         </S.Label>
         <S.Label>
           <Text type="primary" fontSize={16}>
-            쿼리
+            {t('quickSlots.edit.queryLabel')}
           </Text>
           <QueryInput
             width="100%"
@@ -82,20 +84,19 @@ const SlotEditModal = (props: SlotEditModalProps) => {
             value={query}
             ref={queryRef}
             hasError={isQueryElementHasErrors}
-            placeholder="새로운 쿼리를 입력해주세요"
+            placeholder={t('quickSlots.edit.queryPlaceholder')}
             onChange={setQuery}
           />
         </S.Label>
         <S.InformationTextContainer>
           <Text type="normal" fontSize={14}>
             <TextLink href="https://solved.ac/search" fontSize={14}>
-              solved.ac 문제 고급 검색
+              {t('quickSlots.edit.advancedSearchLinkText')}
             </TextLink>{' '}
-            페이지를 통해 solved.ac 검색 쿼리 작성법을 확인하실 수 있습니다!
+            {t('quickSlots.edit.advancedSearchSuffix')}
           </Text>
           <Text type="normal" fontSize={14}>
-            추첨은 비로그인 상태에서 진행되므로, 솔브드 프로 플랜 전용 쿼리는
-            사용하실 수 없습니다.
+            {t('quickSlots.edit.proPlanNotice')}
           </Text>
         </S.InformationTextContainer>
         <ErrorText fontSize={14} errorMessage={errorMessage} />
@@ -103,7 +104,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
       <ModalActionButtonsContainer>
         <IconButton
           type="button"
-          name="취소"
+          name={t('common.cancel')}
           size="medium"
           iconSrc={<CloseCircleIcon />}
           color={theme.colors.GRAY_300}
@@ -112,7 +113,7 @@ const SlotEditModal = (props: SlotEditModalProps) => {
         />
         <IconButton
           type="button"
-          name="확인"
+          name={t('common.confirm')}
           size="medium"
           iconSrc={<CheckCircleIcon />}
           color={theme.colors.GOLD}

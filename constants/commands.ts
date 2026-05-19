@@ -106,4 +106,5 @@ export const STORAGE_KEY = {
   SHOULD_SHOW_WELCOME_MESSAGE: 'shouldShowWelcomeMessage',
   THEME: 'theme',
   FONT_NO: 'fontNo',
+  USER_LANGUAGE_PREFERENCE: 'userLanguagePreference',
 } as const;

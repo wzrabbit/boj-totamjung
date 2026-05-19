@@ -1,0 +1,396 @@
+{
+  "extensionName": "토탐정",
+  "extensionDescription": "[BOJ-Extension] 알고리즘 분류 가리개 & 랜덤 디펜스, 토탐정!",
+
+  "language": {
+    "label": "언어",
+    "auto": "자동 (브라우저 언어)",
+    "ko": "한국어",
+    "en": "English"
+  },
+
+  "common": {
+    "confirm": "확인",
+    "cancel": "취소",
+    "yes": "예",
+    "no": "아니요",
+    "close": "닫기",
+    "modalCloseLabel": "모달 닫기",
+    "on": "ON",
+    "off": "OFF"
+  },
+
+  "options": {
+    "nav": {
+      "algorithmHider": "알고리즘 가리개",
+      "randomDefense": "랜덤 디펜스",
+      "appearanceAndDataManage": "외관 및 데이터 관리",
+      "guideAriaLabel": "도움말",
+      "infoAriaLabel": "버전 정보 및 문의",
+      "guideConfirmTitle": "도움말 페이지 열기 확인",
+      "guideConfirmMessage": "토탐정 사용 가이드 페이지를 열람하시겠어요?"
+    },
+
+    "sections": {
+      "hider": {
+        "algorithmsTitle": "알고 있는 알고리즘 관리하기"
+      },
+      "randomDefense": {
+        "title": "랜덤 디펜스"
+      }
+    },
+
+    "hider": {
+      "lockTimeTitle": "잠금 시간 설정",
+      "tierHiderTitle": "티어 가리개 설정",
+      "hideTierLegend": "맞추지 않은 문제의 난이도 숨기기",
+      "hide": "숨기기",
+      "doNotHide": "숨기지 않기",
+      "warnHighTierLegend": "어려운 문제 경고",
+      "doNotUse": "사용하지 않음",
+      "warnAtHighTierSuffix": "이상 난이도일 경우 경고",
+      "revealOnHoverLegend": "티어 아이콘에 마우스를 올릴 경우 난이도 공개하기",
+      "reveal": "공개",
+      "doNotReveal": "공개하지 않음",
+      "sourceHiderTitle": "출처 가리개 설정",
+      "hideSourceLegend": "문제의 출처 숨기기",
+      "basicTitle": "기본 설정",
+      "algorithmHiderUsageLegend": "알고 있는 알고리즘만으로 문제를 풀 수 있는지의 여부 공개 방법",
+      "revealOnClick": "클릭하여 공개",
+      "revealAlways": "항상 공개",
+      "problemTagLockUsageLegend": "알고리즘 분류 잠금 방법",
+      "lockOnClick": "클릭하여 잠금",
+      "lockAuto": "자동으로 잠금"
+    },
+
+    "appearance": {
+      "themeTitle": "테마 설정",
+      "themeLegend": "토탐정 테마 사용 여부",
+      "themeUse": "사용",
+      "themeDoNotUse": "사용하지 않음",
+      "fontTitle": "폰트 설정",
+      "fontBodyLegend": "문제 본문 폰트 설정"
+    },
+
+    "dataManage": {
+      "title": "데이터 관리",
+      "exportButton": "설정 데이터 내보내기",
+      "uploadButton": "설정 데이터 업로드",
+      "resetButton": "설정 데이터 초기화",
+      "description1": "현재 설정을 백업해 두고 싶으시거나, 다른 기기로 데이터를 옮기고 싶으실 경우 설정 파일에 대한 데이터를 세이브파일 형태로 내보내거나, 업로드할 수 있습니다.",
+      "description2Prefix": "토탐정 세이브파일의 확장자는",
+      "description2Suffix": "입니다.",
+
+      "extractModalTitle": "데이터 내보내기",
+      "extractModalMessage": "현재 설정을 세이브파일로 내보냅니다. 계속하시려면 [확인] 버튼을 눌러 주세요.",
+
+      "resetModalTitle": "데이터 초기화",
+      "resetConfirmText": "초기화에 동의합니다",
+      "resetWarningIntro": "초기화 전 아래의 주의사항을 읽어 주십시오:",
+      "resetWarning1": "데이터를 초기화할 경우 퀵 슬롯의 쿼리, 추첨 기록 등의 중요한 데이터를 포함하여 모든 데이터가 초기화됩니다.",
+      "resetWarning2": "초기화를 진행할 경우 다시 되돌릴 수 없습니다. 중요한 데이터를 보존하시고 싶으신 경우 먼저 \"데이터 내보내기\" 를 이용해 데이터를 백업해 두실 것을 권장드립니다.",
+      "resetWarning3": "초기화 이후에는 설정 페이지가 자동으로 새로고침됩니다.",
+      "resetInstructionPrefix": "위의 주의사항을 이해하셨고, 데이터 초기화를 진행하고 싶으시면, 하단의 입력창에",
+      "resetInstructionSuffix": "를 입력해 주십시오.",
+      "resetInputPlaceholder": "\"$1\"를 입력해 주세요",
+      "resetActionButton": "초기화",
+
+      "uploadModalTitle": "데이터 업로드",
+      "uploadConfirmText": "숙지했습니다",
+      "uploadWarningIntro": "업로드 전 아래의 주의사항을 읽어 주십시오:",
+      "uploadWarning1": "데이터를 업로드할 경우 기존 데이터를 덮어씌우게 됩니다. 즉, 기존 데이터는 손실될 것입니다.",
+      "uploadWarning2": "업로드를 진행할 경우 다시 되돌릴 수 없습니다. 기존 데이터를 보존하시고 싶으신 경우 먼저 \"데이터 내보내기\" 를 이용해 데이터를 백업해 두실 것을 권장드립니다.",
+      "uploadWarning3": "업로드 이후에는 설정 페이지가 자동으로 새로고침됩니다.",
+      "uploadInstructionPrefix": "위의 주의사항을 이해하셨고, 업로드를 진행하고 싶으시면, 하단의 입력창에",
+      "uploadInstructionSuffix": "를 입력해 주십시오.",
+      "uploadInputPlaceholder": "\"$1\"를 입력해 주세요",
+      "uploadActionButton": "업로드"
+    },
+
+    "totamjungInfo": {
+      "modalTitle": "토탐정 정보",
+      "appName": "토탐정",
+      "versionLabel": "버전",
+      "buildSuffix": "빌드",
+      "developerLabel": "개발",
+      "developerHandle": "요술토끼",
+      "bugReportButton": "버그/건의 제보하기",
+      "releaseNotesButton": "릴리즈 노트 보기",
+      "githubButton": "Github 저장소 방문하기",
+      "complainTitle": "왜 그런 짓을...",
+      "complainMessage": "그만 좀 두드려 주시면 안 될까요!?",
+      "intro1": "\"알고리즘 분류를 공개하지 않고도 내가 알고 있는 알고리즘만을 이용하여 풀 수 있는 문제인지 확인해 볼 수 있어요\"",
+      "intro2": "\"알고리즘 분류를 공개할 수 없도록 타이머를 활용하여 일정 시간동안 잠글 수 있어요\"",
+      "intro3": "\"자주 사용하는 솔브드 검색 쿼리들을 슬롯에 저장해 두고, 백준 내에서 단축키 한 번으로 해당 쿼리로 랜덤 디펜스를 진행할 수 있어요\"",
+      "intro4": "\"멋지고 웅장한 토탐정 테마를 사용할 수 있어요\"",
+      "intro5": "\"문제 본문에 다양한 폰트를 취향에 맞게 적용할 수 있어요\"",
+      "intro6": "\"솔브드에서 제공하는 어려운 문제 경고를 백준에서도 사용할 수 있어요\""
+    },
+
+    "algorithmPool": {
+      "noResultTitle": "검색 결과가 없습니다.",
+      "noResultDescription": "검색어에 오탈자가 있는지 확인해주세요.",
+      "searchPlaceholder": "알고리즘 분류를 입력해 주세요...",
+      "checkAllLabel": "전체 선택",
+      "uncheckAllLabel": "전체 해제",
+      "checkAllAriaLabel": "알고리즘 분류 전체 선택",
+      "uncheckAllAriaLabel": "알고리즘 분류 전체 해제",
+      "checkAllConfirmTitle": "알고리즘 분류 전체 선택 확인",
+      "checkAllConfirmMessage": "모든 알고리즘 분류를 선택할까요?",
+      "uncheckAllConfirmTitle": "알고리즘 분류 전체 해제 확인",
+      "uncheckAllConfirmMessage": "모든 알고리즘 분류를 선택 해제할까요?",
+      "searchInputAriaLabel": "알고리즘을 입력해 주세요"
+    },
+
+    "tierSelect": {
+      "openAriaLabel": "난이도 경고 시작 티어 변경하기",
+      "selectTierAriaLabel": "$1를 경고 시작 티어로 설정하기"
+    },
+
+    "queryInput": {
+      "noAutocomplete": "자동완성 결과가 없습니다."
+    }
+  },
+
+  "widget": {
+    "topButtonAriaLabel": "토탐정 위젯입니다. 클릭하여 웹사이트의 상단으로 이동하거나, 우클릭하여 위젯을 여세요.",
+    "openOptionsAriaLabel": "토탐정 설정 페이지로 이동",
+    "themeOnAriaLabel": "토탐정 테마 켜기",
+    "themeOffAriaLabel": "토탐정 테마 끄기",
+    "randomDefenseAriaLabel": "랜덤 디펜스 진행하기",
+    "welcomeLine1": "토탐정을 설치해 주셔서 감사합니다!",
+    "welcomeLine2Prefix": "위젯을 우클릭",
+    "welcomeLine2Suffix": "하여 토탐정의 여러 기능들을 활용해 보세요.",
+
+    "timer": {
+      "pauseAriaLabel": "문제 타이머 일시정지하기",
+      "playAriaLabel": "문제 타이머 시작하기",
+      "stopAriaLabel": "문제 타이머 정지하기",
+      "setTimeAriaLabel": "문제 타이머 시간 설정하기",
+      "deleteAriaLabel": "타이머 삭제하기"
+    },
+
+    "tagLockTimer": {
+      "hoursAriaLabel": "시간",
+      "minutesAriaLabel": "분",
+      "hoursUnit": "시간",
+      "minutesUnit": "분"
+    },
+
+    "toast": {
+      "closeAriaLabel": "토스트 닫기"
+    },
+
+    "inspect": {
+      "check": "이 문제는 알고 있는 알고리즘만으로 풀 수 있는 문제입니다.",
+      "question": "이 문제를 풀기 위해서는 모르는 알고리즘을 사용해야 할 수 있습니다."
+    },
+
+    "problemCard": {
+      "ariaLabel": "문제 번호 $1번 $2"
+    },
+
+    "problemTimerInfo": {
+      "problemAriaLabel": "$1번 $2 문제"
+    },
+
+    "cardBox": {
+      "openAriaLabel": "카드 상자를 열어 추첨 진행하기"
+    }
+  },
+
+  "quickSlots": {
+    "frameTitle": "퀵 슬롯",
+    "copyQueryButton": "쿼리 복사",
+    "editButton": "수정",
+    "deleteButton": "삭제",
+    "drawNowButton": "즉석 추첨",
+    "copyDoneTitle": "쿼리 복사 완료",
+    "copyDoneMessage": "쿼리를 클립보드에 복사했어요!",
+    "deleteConfirmTitle": "추첨 삭제 확인",
+    "deleteConfirmMessage": "$1번 슬롯에 저장되어 있는 추첨을 삭제할까요?",
+
+    "hotkey": {
+      "notInUse": "단축키: 미사용",
+      "f2Combo": "단축키: F2 + $1",
+      "altCombo": "단축키: $1 + $2",
+      "switchAriaLabel": "단축키 전환하기"
+    },
+
+    "slotInfo": {
+      "nameLabel": "추첨 이름",
+      "queryLabel": "쿼리",
+      "empty": "(비어 있음)"
+    },
+
+    "pagination": {
+      "selectAriaLabel": "$1번 슬롯 선택하기.",
+      "alreadySelectedSuffix": "이미 선택되어 있는 슬롯입니다"
+    },
+
+    "edit": {
+      "modalTitle": "추첨 수정",
+      "nameLabel": "추첨 이름",
+      "namePlaceholder": "0 ~ 30자",
+      "nameAriaLabel": "새로운 추첨 이름을 입력해주세요",
+      "queryLabel": "쿼리",
+      "queryPlaceholder": "새로운 쿼리를 입력해주세요",
+      "advancedSearchLinkText": "solved.ac 문제 고급 검색",
+      "advancedSearchSuffix": "페이지를 통해 solved.ac 검색 쿼리 작성법을 확인하실 수 있습니다!",
+      "proPlanNotice": "추첨은 비로그인 상태에서 진행되므로, 솔브드 프로 플랜 전용 쿼리는 사용하실 수 없습니다."
+    }
+  },
+
+  "randomDefenseCreate": {
+    "frameTitle": "추첨 만들기",
+    "nameLabel": "추첨 이름",
+    "namePlaceholder": "0 ~ 30자",
+    "nameAriaLabel": "추첨 이름",
+    "excludeNicknameLabel": "검색에서 제외할 닉네임",
+    "excludeNicknamePlaceholder": "3 ~ 20자",
+    "excludeNicknameAriaLabel": "검색에서 제외할 닉네임",
+    "solvedRangeLabel": "맞은 사람 수",
+    "solvedMinAriaLabel": "맞은 사람 수의 하한",
+    "solvedMaxAriaLabel": "맞은 사람 수의 상한",
+    "languageLabel": "문제 언어",
+    "languageAriaLabel": "문제 언어 고르기",
+    "languageKo": "한국어",
+    "languageEn": "영어",
+    "languageBoth": "한국어 및 영어",
+    "languageAll": "모든 언어",
+    "tierRangeLabel": "난이도 범위",
+    "includeAlgorithmsLabel": "검색에 포함할 알고리즘",
+    "queryLabel": "쿼리",
+    "queryPlaceholder": "1 ~ $1자",
+    "advancedSearchLinkText": "solved.ac 문제 고급 검색",
+    "advancedSearchSuffix": "페이지를 통해 solved.ac 검색 쿼리 작성법을 확인하실 수 있습니다!",
+    "proPlanNotice": "추첨은 비로그인 상태에서 진행되므로, 솔브드 프로 플랜 전용 쿼리는 사용하실 수 없습니다.",
+
+    "createButton": {
+      "ariaLabel": "$1번 슬롯에 추첨 생성하기",
+      "title": "추첨 생성",
+      "slotNumber": "슬롯 번호 − $1",
+      "loading": "로딩 중..."
+    },
+
+    "capsule": {
+      "easyAriaLabel": "간편 입력 모드로 변경하기",
+      "easyLabel": "간편 입력",
+      "manualAriaLabel": "직접 입력 모드로 변경하기",
+      "manualLabel": "직접 입력"
+    },
+
+    "miniAlgorithm": {
+      "addAriaLabel": "$1을 검색에 포함할 알고리즘 목록에 추가하기",
+      "removeAriaLabel": "$1을 검색에 포함할 알고리즘 목록에서 제거하기"
+    },
+
+    "tierSlider": {
+      "startAriaLabel": "시작 범위 티어 설정하기",
+      "endAriaLabel": "끝 범위 티어 설정하기"
+    },
+
+    "tierPreset": {
+      "unratedAriaLabel": "언레이티드 티어로 범위 설정하기",
+      "bronzeAriaLabel": "브론즈 5부터 브론즈 1 티어까지로 범위 설정하기",
+      "silverAriaLabel": "실버 5부터 실버 1 티어까지로 범위 설정하기",
+      "goldAriaLabel": "골드 5부터 골드 1 티어까지로 범위 설정하기",
+      "platinumAriaLabel": "플래티넘 5부터 플래티넘 1 티어까지로 범위 설정하기",
+      "diamondAriaLabel": "다이아몬드 5부터 다이아몬드 1 티어까지로 범위 설정하기",
+      "rubyAriaLabel": "루비 5부터 루비 1 티어까지로 범위 설정하기"
+    },
+
+    "searchOperator": {
+      "orDescription": "OR: 선택된 알고리즘 분류 중 하나 이상 포함되는 문제들만 추첨에서 등장합니다.",
+      "andDescription": "AND: 선택된 알고리즘 분류 모두를 포함하는 문제들만 추첨에서 등장합니다.",
+      "norDescription": "NOR: 선택된 알고리즘 분류 모두를 포함하지 않는 문제들만 추첨에서 등장합니다.",
+      "setAriaLabel": "알고리즘 검색 옵션을 $1로 설정하기"
+    }
+  },
+
+  "randomDefenseHistory": {
+    "frameTitle": "추첨 기록",
+    "indicatorDefaultMessage": "현재 $1문제가 기록에 저장되어 있으며, 저장할 수 있는 최대 문제 수는 $2문제입니다.\n저장할 수 있는 최대 문제 수를 넘을 경우 오래된 문제 순으로 기록에서 삭제됩니다.",
+    "indicatorWarning": "\n\n저장된 문제 수가 최대 문제 수에 가까워지고 있습니다. 원치 않는 기록 삭제를 방지하려면 문제 공간을 확보해 주세요.",
+    "indicatorFull": "\n\n저장된 문제 수가 최대 문제 수에 도달했습니다. 이 상태에서는 추첨 진행 시 오래된 기록들이 삭제될 것입니다. 원치 않는 기록 삭제를 방지하려면 문제 공간을 확보해 주세요.",
+    "hideTierLabel": "티어 숨기기",
+    "hideTierAriaLabel": "티어 숨기기",
+    "emptyTitle": "추첨 기록",
+    "emptyDescription": "문제를 추첨하면 여기에 기록이 표시될 거에요.",
+    "clearButton": "추첨 기록 비우기",
+    "clearAriaLabel": "추첨 기록 비우기",
+    "clearConfirmTitle": "추첨 기록 전체 제거 확인",
+    "clearConfirmMessage": "모든 추첨 기록을 제거할까요?",
+
+    "item": {
+      "problemAriaLabel": "$1번 $2 문제",
+      "removeAriaLabel": "추첨 기록에서 제거하기"
+    }
+  },
+
+  "randomDefenseGacha": {
+    "modalTitle": "즉석 추첨",
+    "loadingMessage": "잠시만 기다려주세요...",
+    "cardClickHint": "카드 상자를 클릭하면 결과를 확인할 수 있습니다",
+    "retryButton": "다시 시도하기",
+    "copyProblemsButton": "문제 목록 복사",
+    "saveHistoryButton": "추첨 기록 저장",
+    "drawAgainButton": "다시 추첨하기!",
+    "showTierAriaLabel": "문제 난이도 보이기",
+    "hideTierAriaLabel": "문제 난이도 감추기",
+    "tierHiddenLabel": "티어 숨기기: $1",
+    "audioLabel": "효과음: $1",
+    "audioOnAriaLabel": "효과음 켜기",
+    "audioOffAriaLabel": "효과음 끄기"
+  },
+
+  "gachaProblemCount": {
+    "modalTitle": "즉석 추첨",
+    "promptMessage": "추첨을 진행할 문제 수를 입력해 주세요.",
+    "rangeLabel": "1문제 이상, $1문제 이하",
+    "hotkeyTip": "TIP: 즉석 추첨은 백준 사이트 내에서 슬롯 번호에 대응하는 단축키를 길게 누르는 것으로도 진행할 수 있습니다.",
+    "confirmButton": "확인"
+  },
+
+  "hooks": {
+    "gacha": {
+      "apiDataMismatch": "API로부터 불러온 데이터에서 데이터 불일치가 발견되었습니다.",
+      "contactDeveloper": "개발자에게 이 문제가 발생했음을 알려주세요.",
+      "settingsDataMismatch": "설정 데이터에서 불일치가 발견되었습니다.",
+      "copiedToClipboard": "문제 목록을 클립보드에 복사했어요!",
+      "savedToHistory": "문제 목록을 추첨 기록에 저장했어요!"
+    },
+    "queryInput": {
+      "loadingFallback": "잠시만 기다려주세요..."
+    },
+    "defaultSlotTitle": "추첨 $1",
+    "lockTimer": {
+      "show": "보기",
+      "lockedFormat": "잠김 (🔒︎$1:$2:$3 후 보기 가능)"
+    },
+    "randomDefense": {
+      "emptySlotTitle": "$1번 슬롯은 현재 비어 있습니다.",
+      "emptySlotDescription1": "추첨을 만들지 않으셨다면, 설정에서 해당 슬롯에 추첨을 먼저 만들어 주세요!",
+      "emptySlotDescription2": "설정의 퀵슬롯 메뉴에서 선택된 슬롯 번호를 변경하는 것으로 위젯 클릭 시 사용할 추첨의 슬롯을 정하실 수 있습니다.",
+      "dataMismatchTitle": "데이터 불일치가 발견되었습니다.",
+      "dataMismatchDescription": "개발자에게 이 문제가 발생했음을 알려 주세요."
+    },
+    "widget": {
+      "inspectQuestionTitle": "이 문제를 풀기 위해서는 모르는 알고리즘을 사용해야 할 수 있습니다.",
+      "inspectCheckTitle": "이 문제는 알고 있는 알고리즘만으로 풀 수 있습니다."
+    },
+    "dataUpload": {
+      "errorTitle": "데이터를 업로드하지 못했습니다",
+      "errorExtensionMessage": "세이브파일의 확장자는 \".ttj\" 여야 합니다.",
+      "errorSizeMessage": "세이브파일의 용량은 1MiB 이하여야 합니다.",
+      "errorFormatMessage": "세이브파일의 형식이 올바르지 않습니다.",
+      "errorUnknownVersionMessage": "데이터의 버전 정보를 알 수 없는 세이브파일입니다. 버그라고 생각하시는 경우 개발자에게 문의를 부탁드립니다.",
+      "errorTooHighVersionMessage": "이 세이브파일의 버전은 $1으로, 이 버전에서 다룰 수 있는 가장 높은 데이터 버전인 5보다 높거나, 이 버전에서 인식할 수 없는 버전입니다.",
+      "errorV2CorruptedMessage": "v1.2.* 버전 데이터의 세이브파일은 업로드 가능하나, 이 세이브파일은 데이터의 일부 또는 전부가 손실된 것 같습니다. 버그라고 생각하시는 경우 개발자에게 문의를 부탁드립니다.",
+      "errorV3CorruptedMessage": "v1.3 ~ v1.3.3.2 버전 데이터의 세이브파일은 업로드 가능하나, 이 세이브파일은 데이터의 일부 또는 전부가 손실된 것 같습니다. 버그라고 생각하시는 경우 개발자에게 문의를 부탁드립니다.",
+      "errorV4CorruptedMessage": "v1.3.4 버전 데이터의 세이브파일은 업로드 가능하나, 이 세이브파일은 데이터의 일부 또는 전부가 손실된 것 같습니다. 버그라고 생각하시는 경우 개발자에게 문의를 부탁드립니다.",
+      "errorCorruptedMessage": "데이터의 일부 또는 전부가 손실된 세이브파일인 것 같습니다. 버그라고 생각하시는 경우 개발자에게 문의를 부탁드립니다.",
+      "errorInvalidDataMessage": "데이터의 형식이 올바르지 않습니다. 토탐정의 세이브파일이 아닌 파일의 확장자를 \".ttj\"로 바꿨을 경우 이 문제가 발생할 수 있습니다. 세이브파일을 다시 검토해 주시겠어요?"
+    }
+  }
+}

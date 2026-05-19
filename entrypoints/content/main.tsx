@@ -4,6 +4,7 @@ import { StyleSheetManager, ThemeProvider } from 'styled-components';
 import GlobalStyle from '@/styles/GlobalStyle';
 import { theme } from '@/styles/theme';
 import ContentScript from '@/components/core/ContentScript';
+import { LocaleProvider } from '@/i18n';
 
 const executeContentScript = () => {
   const wrapper = document.createElement('div');
@@ -28,12 +29,14 @@ const executeContentScript = () => {
 
   root.render(
     <StrictMode>
-      <StyleSheetManager target={styleContainer}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle usesShadowRoot={true} />
-          <ContentScript />
-        </ThemeProvider>
-      </StyleSheetManager>
+      <LocaleProvider>
+        <StyleSheetManager target={styleContainer}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle usesShadowRoot={true} />
+            <ContentScript />
+          </ThemeProvider>
+        </StyleSheetManager>
+      </LocaleProvider>
     </StrictMode>,
   );
 };

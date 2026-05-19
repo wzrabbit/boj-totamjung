@@ -1,0 +1,396 @@
+{
+  "extensionName": "Totamjung",
+  "extensionDescription": "[BOJ-Extension] Algorithm tag hider & Random Defense, Totamjung!",
+
+  "language": {
+    "label": "Language",
+    "auto": "Auto (Browser language)",
+    "ko": "한국어",
+    "en": "English"
+  },
+
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No",
+    "close": "Close",
+    "modalCloseLabel": "Close modal",
+    "on": "ON",
+    "off": "OFF"
+  },
+
+  "options": {
+    "nav": {
+      "algorithmHider": "Algorithm Hider",
+      "randomDefense": "Random Defense",
+      "appearanceAndDataManage": "Appearance & Data",
+      "guideAriaLabel": "Guide",
+      "infoAriaLabel": "Version info & contact",
+      "guideConfirmTitle": "Open Guide Page",
+      "guideConfirmMessage": "Open the Totamjung user guide page?"
+    },
+
+    "sections": {
+      "hider": {
+        "algorithmsTitle": "Manage Known Algorithms"
+      },
+      "randomDefense": {
+        "title": "Random Defense"
+      }
+    },
+
+    "hider": {
+      "lockTimeTitle": "Lock Duration Settings",
+      "tierHiderTitle": "Tier Hider Settings",
+      "hideTierLegend": "Hide difficulty of unsolved problems",
+      "hide": "Hide",
+      "doNotHide": "Do not hide",
+      "warnHighTierLegend": "High difficulty warning",
+      "doNotUse": "Do not use",
+      "warnAtHighTierSuffix": "or higher will trigger a warning",
+      "revealOnHoverLegend": "Reveal difficulty when hovering over the tier icon",
+      "reveal": "Reveal",
+      "doNotReveal": "Do not reveal",
+      "sourceHiderTitle": "Source Hider Settings",
+      "hideSourceLegend": "Hide the problem source",
+      "basicTitle": "Basic Settings",
+      "algorithmHiderUsageLegend": "How to reveal whether a problem is solvable using only known algorithms",
+      "revealOnClick": "Reveal on click",
+      "revealAlways": "Always reveal",
+      "problemTagLockUsageLegend": "Algorithm tag lock method",
+      "lockOnClick": "Lock on click",
+      "lockAuto": "Lock automatically"
+    },
+
+    "appearance": {
+      "themeTitle": "Theme Settings",
+      "themeLegend": "Use Totamjung theme",
+      "themeUse": "Use",
+      "themeDoNotUse": "Do not use",
+      "fontTitle": "Font Settings",
+      "fontBodyLegend": "Problem body font"
+    },
+
+    "dataManage": {
+      "title": "Data Management",
+      "exportButton": "Export Settings",
+      "uploadButton": "Upload Settings",
+      "resetButton": "Reset Settings",
+      "description1": "If you want to back up your current settings or move your data to another device, you can export the settings as a save file or upload one.",
+      "description2Prefix": "The Totamjung save file extension is",
+      "description2Suffix": ".",
+
+      "extractModalTitle": "Export Data",
+      "extractModalMessage": "Export current settings to a save file. Click [Confirm] to proceed.",
+
+      "resetModalTitle": "Reset Data",
+      "resetConfirmText": "I agree to reset",
+      "resetWarningIntro": "Please read the warnings below before resetting:",
+      "resetWarning1": "Resetting will erase all data, including critical data such as Quick Slot queries and history records.",
+      "resetWarning2": "Reset cannot be undone. If you want to preserve important data, we recommend first using \"Export Settings\" to back up your data.",
+      "resetWarning3": "The settings page will reload automatically after reset.",
+      "resetInstructionPrefix": "If you understand the warnings above and want to proceed with the reset, please type",
+      "resetInstructionSuffix": "in the input field below.",
+      "resetInputPlaceholder": "Please type \"$1\"",
+      "resetActionButton": "Reset",
+
+      "uploadModalTitle": "Upload Data",
+      "uploadConfirmText": "I understand",
+      "uploadWarningIntro": "Please read the warnings below before uploading:",
+      "uploadWarning1": "Uploading will overwrite your existing data. That is, your existing data will be lost.",
+      "uploadWarning2": "Upload cannot be undone. If you want to preserve existing data, we recommend first using \"Export Settings\" to back up your data.",
+      "uploadWarning3": "The settings page will reload automatically after upload.",
+      "uploadInstructionPrefix": "If you understand the warnings above and want to proceed with the upload, please type",
+      "uploadInstructionSuffix": "in the input field below.",
+      "uploadInputPlaceholder": "Please type \"$1\"",
+      "uploadActionButton": "Upload"
+    },
+
+    "totamjungInfo": {
+      "modalTitle": "About Totamjung",
+      "appName": "Totamjung",
+      "versionLabel": "Version",
+      "buildSuffix": "build",
+      "developerLabel": "Developer",
+      "developerHandle": "WizardRabbit",
+      "bugReportButton": "Report Bug / Suggestion",
+      "releaseNotesButton": "View Release Notes",
+      "githubButton": "Visit GitHub Repository",
+      "complainTitle": "Why would you...",
+      "complainMessage": "Could you please stop poking me!?",
+      "intro1": "\"Check whether a problem is solvable using only algorithms you know, without revealing the algorithm tags\"",
+      "intro2": "\"Use a timer to lock algorithm tags for a set duration so they cannot be revealed\"",
+      "intro3": "\"Save frequently used solved.ac search queries in slots, and run Random Defense with a single hotkey from within BOJ\"",
+      "intro4": "\"Enjoy the gorgeous, immersive Totamjung theme\"",
+      "intro5": "\"Apply a variety of fonts to the problem body to suit your taste\"",
+      "intro6": "\"Use solved.ac's high-difficulty warning on BOJ as well\""
+    },
+
+    "algorithmPool": {
+      "noResultTitle": "No search results.",
+      "noResultDescription": "Please check your search keyword for typos.",
+      "searchPlaceholder": "Enter an algorithm tag...",
+      "checkAllLabel": "Select All",
+      "uncheckAllLabel": "Deselect All",
+      "checkAllAriaLabel": "Select all algorithm tags",
+      "uncheckAllAriaLabel": "Deselect all algorithm tags",
+      "checkAllConfirmTitle": "Confirm Select All",
+      "checkAllConfirmMessage": "Select all algorithm tags?",
+      "uncheckAllConfirmTitle": "Confirm Deselect All",
+      "uncheckAllConfirmMessage": "Deselect all algorithm tags?",
+      "searchInputAriaLabel": "Enter an algorithm"
+    },
+
+    "tierSelect": {
+      "openAriaLabel": "Change warning threshold tier",
+      "selectTierAriaLabel": "Set $1 as the warning threshold tier"
+    },
+
+    "queryInput": {
+      "noAutocomplete": "No autocomplete results."
+    }
+  },
+
+  "widget": {
+    "topButtonAriaLabel": "Totamjung widget. Click to scroll to the top of the page, or right-click to open the widget.",
+    "openOptionsAriaLabel": "Open Totamjung settings page",
+    "themeOnAriaLabel": "Turn on Totamjung theme",
+    "themeOffAriaLabel": "Turn off Totamjung theme",
+    "randomDefenseAriaLabel": "Run Random Defense",
+    "welcomeLine1": "Thank you for installing Totamjung!",
+    "welcomeLine2Prefix": "Right-click the widget",
+    "welcomeLine2Suffix": " to explore Totamjung's various features.",
+
+    "timer": {
+      "pauseAriaLabel": "Pause problem timer",
+      "playAriaLabel": "Start problem timer",
+      "stopAriaLabel": "Stop problem timer",
+      "setTimeAriaLabel": "Set problem timer duration",
+      "deleteAriaLabel": "Delete timer"
+    },
+
+    "tagLockTimer": {
+      "hoursAriaLabel": "Hours",
+      "minutesAriaLabel": "Minutes",
+      "hoursUnit": "h",
+      "minutesUnit": "m"
+    },
+
+    "toast": {
+      "closeAriaLabel": "Close toast"
+    },
+
+    "inspect": {
+      "check": "This problem can be solved using only algorithms you know.",
+      "question": "Solving this problem may require algorithms you don't know."
+    },
+
+    "problemCard": {
+      "ariaLabel": "Problem #$1 $2"
+    },
+
+    "problemTimerInfo": {
+      "problemAriaLabel": "Problem #$1 $2"
+    },
+
+    "cardBox": {
+      "openAriaLabel": "Open the card box and run the draw"
+    }
+  },
+
+  "quickSlots": {
+    "frameTitle": "Quick Slots",
+    "copyQueryButton": "Copy Query",
+    "editButton": "Edit",
+    "deleteButton": "Delete",
+    "drawNowButton": "Draw Now",
+    "copyDoneTitle": "Query Copied",
+    "copyDoneMessage": "Query copied to clipboard!",
+    "deleteConfirmTitle": "Delete Draw",
+    "deleteConfirmMessage": "Delete the draw saved in slot $1?",
+
+    "hotkey": {
+      "notInUse": "Hotkey: Disabled",
+      "f2Combo": "Hotkey: F2 + $1",
+      "altCombo": "Hotkey: $1 + $2",
+      "switchAriaLabel": "Switch hotkey"
+    },
+
+    "slotInfo": {
+      "nameLabel": "Draw Name",
+      "queryLabel": "Query",
+      "empty": "(empty)"
+    },
+
+    "pagination": {
+      "selectAriaLabel": "Select slot $1.",
+      "alreadySelectedSuffix": "This slot is already selected"
+    },
+
+    "edit": {
+      "modalTitle": "Edit Draw",
+      "nameLabel": "Draw Name",
+      "namePlaceholder": "0 ~ 30 chars",
+      "nameAriaLabel": "Enter a new draw name",
+      "queryLabel": "Query",
+      "queryPlaceholder": "Enter a new query",
+      "advancedSearchLinkText": "solved.ac advanced problem search",
+      "advancedSearchSuffix": " page to learn how to write solved.ac search queries!",
+      "proPlanNotice": "Draws are performed while signed out, so solved.ac Pro-only queries are not available."
+    }
+  },
+
+  "randomDefenseCreate": {
+    "frameTitle": "Create Draw",
+    "nameLabel": "Draw Name",
+    "namePlaceholder": "0 ~ 30 chars",
+    "nameAriaLabel": "Draw name",
+    "excludeNicknameLabel": "Nickname to exclude from search",
+    "excludeNicknamePlaceholder": "3 ~ 20 chars",
+    "excludeNicknameAriaLabel": "Nickname to exclude from search",
+    "solvedRangeLabel": "Solved count",
+    "solvedMinAriaLabel": "Minimum solved count",
+    "solvedMaxAriaLabel": "Maximum solved count",
+    "languageLabel": "Problem language",
+    "languageAriaLabel": "Choose problem language",
+    "languageKo": "Korean",
+    "languageEn": "English",
+    "languageBoth": "Korean & English",
+    "languageAll": "All languages",
+    "tierRangeLabel": "Difficulty range",
+    "includeAlgorithmsLabel": "Algorithms to include in search",
+    "queryLabel": "Query",
+    "queryPlaceholder": "1 ~ $1 chars",
+    "advancedSearchLinkText": "solved.ac advanced problem search",
+    "advancedSearchSuffix": " page to learn how to write solved.ac search queries!",
+    "proPlanNotice": "Draws are performed while signed out, so solved.ac Pro-only queries are not available.",
+
+    "createButton": {
+      "ariaLabel": "Create draw in slot $1",
+      "title": "Create Draw",
+      "slotNumber": "Slot − $1",
+      "loading": "Loading..."
+    },
+
+    "capsule": {
+      "easyAriaLabel": "Switch to easy input mode",
+      "easyLabel": "Easy Input",
+      "manualAriaLabel": "Switch to manual input mode",
+      "manualLabel": "Manual Input"
+    },
+
+    "miniAlgorithm": {
+      "addAriaLabel": "Add $1 to the search algorithm list",
+      "removeAriaLabel": "Remove $1 from the search algorithm list"
+    },
+
+    "tierSlider": {
+      "startAriaLabel": "Set start tier of the range",
+      "endAriaLabel": "Set end tier of the range"
+    },
+
+    "tierPreset": {
+      "unratedAriaLabel": "Set range to Unrated tier",
+      "bronzeAriaLabel": "Set range from Bronze V to Bronze I",
+      "silverAriaLabel": "Set range from Silver V to Silver I",
+      "goldAriaLabel": "Set range from Gold V to Gold I",
+      "platinumAriaLabel": "Set range from Platinum V to Platinum I",
+      "diamondAriaLabel": "Set range from Diamond V to Diamond I",
+      "rubyAriaLabel": "Set range from Ruby V to Ruby I"
+    },
+
+    "searchOperator": {
+      "orDescription": "OR: Only problems containing at least one of the selected algorithm tags appear in the draw.",
+      "andDescription": "AND: Only problems containing all of the selected algorithm tags appear in the draw.",
+      "norDescription": "NOR: Only problems containing none of the selected algorithm tags appear in the draw.",
+      "setAriaLabel": "Set algorithm search option to $1"
+    }
+  },
+
+  "randomDefenseHistory": {
+    "frameTitle": "Draw History",
+    "indicatorDefaultMessage": "$1 problem(s) currently saved in history; maximum is $2.\nWhen the limit is exceeded, the oldest entries are removed first.",
+    "indicatorWarning": "\n\nThe number of saved problems is approaching the limit. Make some space to avoid losing entries you want to keep.",
+    "indicatorFull": "\n\nThe maximum number of saved problems has been reached. New draws will remove the oldest entries. Make some space to avoid losing entries you want to keep.",
+    "hideTierLabel": "Hide tier",
+    "hideTierAriaLabel": "Hide tier",
+    "emptyTitle": "Draw History",
+    "emptyDescription": "Once you run a draw, your history will appear here.",
+    "clearButton": "Clear Draw History",
+    "clearAriaLabel": "Clear draw history",
+    "clearConfirmTitle": "Confirm Clear History",
+    "clearConfirmMessage": "Remove all draw history?",
+
+    "item": {
+      "problemAriaLabel": "Problem #$1 $2",
+      "removeAriaLabel": "Remove from draw history"
+    }
+  },
+
+  "randomDefenseGacha": {
+    "modalTitle": "Draw Now",
+    "loadingMessage": "Please wait...",
+    "cardClickHint": "Click the card box to see the result",
+    "retryButton": "Retry",
+    "copyProblemsButton": "Copy Problem List",
+    "saveHistoryButton": "Save to Draw History",
+    "drawAgainButton": "Draw again!",
+    "showTierAriaLabel": "Show problem difficulty",
+    "hideTierAriaLabel": "Hide problem difficulty",
+    "tierHiddenLabel": "Hide tier: $1",
+    "audioLabel": "Sound: $1",
+    "audioOnAriaLabel": "Turn on sound",
+    "audioOffAriaLabel": "Turn off sound"
+  },
+
+  "gachaProblemCount": {
+    "modalTitle": "Draw Now",
+    "promptMessage": "Enter the number of problems to draw.",
+    "rangeLabel": "1 or more, up to $1 problems",
+    "hotkeyTip": "TIP: You can also start a Draw Now from within BOJ by long-pressing the hotkey for the corresponding slot number.",
+    "confirmButton": "Confirm"
+  },
+
+  "hooks": {
+    "gacha": {
+      "apiDataMismatch": "Data mismatch detected in the data loaded from the API.",
+      "contactDeveloper": "Please notify the developer that this issue occurred.",
+      "settingsDataMismatch": "Data mismatch detected in the settings data.",
+      "copiedToClipboard": "Problem list copied to clipboard!",
+      "savedToHistory": "Problem list saved to draw history!"
+    },
+    "queryInput": {
+      "loadingFallback": "Please wait..."
+    },
+    "defaultSlotTitle": "Draw $1",
+    "lockTimer": {
+      "show": "Show",
+      "lockedFormat": "Locked (🔒︎$1:$2:$3 until viewable)"
+    },
+    "randomDefense": {
+      "emptySlotTitle": "Slot $1 is currently empty.",
+      "emptySlotDescription1": "If you haven't created a draw yet, create one in that slot from the settings page first!",
+      "emptySlotDescription2": "You can change which slot the widget click uses by changing the selected slot number in the Quick Slots menu in settings.",
+      "dataMismatchTitle": "Data mismatch detected.",
+      "dataMismatchDescription": "Please notify the developer that this issue occurred."
+    },
+    "widget": {
+      "inspectQuestionTitle": "Solving this problem may require algorithms you don't know.",
+      "inspectCheckTitle": "This problem can be solved using only algorithms you know."
+    },
+    "dataUpload": {
+      "errorTitle": "Failed to upload data",
+      "errorExtensionMessage": "Save file must have the \".ttj\" extension.",
+      "errorSizeMessage": "Save file must be 1MiB or smaller.",
+      "errorFormatMessage": "Save file format is invalid.",
+      "errorUnknownVersionMessage": "Cannot determine the version of this save file. If you believe this is a bug, please contact the developer.",
+      "errorTooHighVersionMessage": "This save file's version is $1, which is higher than the maximum data version (5) this build can handle, or is unrecognized.",
+      "errorV2CorruptedMessage": "v1.2.* save files are supported for upload, but this save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
+      "errorV3CorruptedMessage": "v1.3 ~ v1.3.3.2 save files are supported for upload, but this save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
+      "errorV4CorruptedMessage": "v1.3.4 save files are supported for upload, but this save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
+      "errorCorruptedMessage": "This save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
+      "errorInvalidDataMessage": "Data format is invalid. This can happen when a non-Totamjung file's extension is renamed to \".ttj\". Could you double-check the save file?"
+    }
+  }
+}

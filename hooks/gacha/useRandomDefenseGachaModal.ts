@@ -66,7 +66,7 @@ const useRandomDefenseGachaModal = (
   const [isSavedToHistory, setIsSavedToHistory] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   const previewCardRanks: PreviewCardRanks =
     problemInfos.length > 0
@@ -89,8 +89,20 @@ const useRandomDefenseGachaModal = (
 
     if (!randomDefenseResult.success) {
       const { errorMessage, errorDescriptions } = randomDefenseResult;
-      setErrorMessage(errorMessage);
-      setErrorDescriptions(errorDescriptions ?? []);
+      setErrorMessage(t(errorMessage.key, errorMessage.substitutions));
+      if (!errorDescriptions) {
+        setErrorDescriptions([]);
+      } else if (Array.isArray(errorDescriptions)) {
+        setErrorDescriptions(
+          errorDescriptions.map((message) =>
+            t(message.key, message.substitutions),
+          ),
+        );
+      } else {
+        setErrorDescriptions(
+          t(errorDescriptions.key, errorDescriptions.substitutions),
+        );
+      }
       setGachaStatus('error');
       return;
     }
@@ -156,7 +168,7 @@ const useRandomDefenseGachaModal = (
 
   const copyProblemInfosMarkdownToClipboard = () => {
     navigator.clipboard.writeText(
-      getProblemInfosInMarkdownText(slot.title, problemInfos),
+      getProblemInfosInMarkdownText(slot.title, problemInfos, language),
     );
     setNotificationMessage(t('hooks.gacha.copiedToClipboard'));
     setShouldNotificationFadeOut(false);

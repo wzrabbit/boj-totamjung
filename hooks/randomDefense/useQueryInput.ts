@@ -122,7 +122,12 @@ const useQueryInput = (params: useQueryInputParams) => {
       }
 
       setSuggestions([]);
-      setFallbackMessage(querySuggestionResult.errorMessage);
+      setFallbackMessage(
+        t(
+          querySuggestionResult.errorMessage.key,
+          querySuggestionResult.errorMessage.substitutions,
+        ),
+      );
     };
 
     setTimeout(() => {

@@ -101,7 +101,10 @@ const validateTitle = (
   if (title.length > TITLE_MAX_LENGTH) {
     return {
       isValid: false,
-      errorMessage: `추첨 이름은 ${TITLE_MAX_LENGTH}자 이하여야 해요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.titleTooLong',
+        substitutions: [String(TITLE_MAX_LENGTH)],
+      },
       focusElementName: 'title',
     };
   }
@@ -123,7 +126,7 @@ const validateHandle = (
   if (handle.length < 3 || handle.length > 20) {
     return {
       isValid: false,
-      errorMessage: '핸들(닉네임)은 3자 이상 20자 이하여야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.handleLength' },
       focusElementName: 'handle',
     };
   }
@@ -131,8 +134,7 @@ const validateHandle = (
   if (!HANDLE_REGEX.test(handle)) {
     return {
       isValid: false,
-      errorMessage:
-        '핸들(닉네임)은 영문자, 숫자, 언더바(_), 하이픈(-)으로만 이루어져야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.handleFormat' },
       focusElementName: 'handle',
     };
   }
@@ -154,7 +156,7 @@ const validateSolvedCount = (
   if (!isSolvedMinEmpty && !NUMBER_REGEX.test(solvedMin)) {
     return {
       isValid: false,
-      errorMessage: '맞은 사람 수의 하한은 양의 정수 또는 0이어야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.solvedMinFormat' },
       focusElementName: 'solvedMin',
     };
   }
@@ -162,7 +164,7 @@ const validateSolvedCount = (
   if (!isSolvedMaxEmpty && !NUMBER_REGEX.test(solvedMax)) {
     return {
       isValid: false,
-      errorMessage: '맞은 사람 수의 상한은 양의 정수 또는 0이어야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.solvedMaxFormat' },
       focusElementName: 'solvedMax',
     };
   }
@@ -170,7 +172,10 @@ const validateSolvedCount = (
   if (!isSolvedMinEmpty && numerizedSolvedMin > MAX_SOLVED_COUNT) {
     return {
       isValid: false,
-      errorMessage: `맞은 사람 수는 ${MAX_SOLVED_COUNT.toLocaleString()}명 이하여야 해요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.solvedCountTooLarge',
+        substitutions: [MAX_SOLVED_COUNT.toLocaleString()],
+      },
       focusElementName: 'solvedMin',
     };
   }
@@ -178,7 +183,10 @@ const validateSolvedCount = (
   if (!isSolvedMaxEmpty && numerizedSolvedMax > MAX_SOLVED_COUNT) {
     return {
       isValid: false,
-      errorMessage: `맞은 사람 수는 ${MAX_SOLVED_COUNT.toLocaleString()}명 이하여야 해요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.solvedCountTooLarge',
+        substitutions: [MAX_SOLVED_COUNT.toLocaleString()],
+      },
       focusElementName: 'solvedMax',
     };
   }
@@ -190,7 +198,7 @@ const validateSolvedCount = (
   ) {
     return {
       isValid: false,
-      errorMessage: '맞은 사람 수의 하한은 상한보다 클 수 없어요.',
+      errorMessage: { key: 'errors.randomDefenseForm.solvedMinGreaterThanMax' },
       focusElementName: 'solvedMin',
     };
   }
@@ -210,7 +218,7 @@ const validateDifficulty = (
   if (numerizedDifficultyMin > numerizedDifficultyMax) {
     return {
       isValid: false,
-      errorMessage: '난이도의 범위는 하한보다 상한이 더 낮을 수 없어요.',
+      errorMessage: { key: 'errors.randomDefenseForm.difficultyRangeInverted' },
     };
   }
 
@@ -225,7 +233,10 @@ const validateAlgorithmIds = (
   if (algorithmIds.length > MAX_SEARCH_ALGORITHMS_COUNT) {
     return {
       isValid: false,
-      errorMessage: `추첨에 사용할 알고리즘의 개수는 ${MAX_SEARCH_ALGORITHMS_COUNT.toLocaleString()}개 이하여야 해요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.algorithmCountTooMany',
+        substitutions: [MAX_SEARCH_ALGORITHMS_COUNT.toLocaleString()],
+      },
     };
   }
   const isAlgorithmIdsValid = algorithmIds.every(
@@ -239,8 +250,7 @@ const validateAlgorithmIds = (
   if (!isAlgorithmIdsValid) {
     return {
       isValid: false,
-      errorMessage:
-        '잘못된 알고리즘이 포함되어 있는 것 같습니다. 페이지 새로고침 후 다시 시도해 주세요.',
+      errorMessage: { key: 'errors.randomDefenseForm.invalidAlgorithm' },
     };
   }
 
@@ -255,7 +265,7 @@ const validateCustomQuery = (
   if (customQuery.trim() === '') {
     return {
       isValid: false,
-      errorMessage: '쿼리는 비워둘 수 없어요. 쿼리를 입력해 주세요.',
+      errorMessage: { key: 'errors.randomDefenseForm.queryEmpty' },
       focusElementName: 'customQuery',
     };
   }
@@ -263,7 +273,10 @@ const validateCustomQuery = (
   if (customQuery.length > MAX_CUSTOM_QUERY_LENGTH) {
     return {
       isValid: false,
-      errorMessage: `쿼리의 길이가 너무 길어요. ${MAX_CUSTOM_QUERY_LENGTH}자 이하가 되도록 줄여 주세요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.queryTooLong',
+        substitutions: [String(MAX_CUSTOM_QUERY_LENGTH)],
+      },
       focusElementName: 'customQuery',
     };
   }

@@ -140,11 +140,19 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     if (!randomDefenseResult.success) {
       const { errorMessage, errorDescriptions } = randomDefenseResult;
 
+      const translatedDescriptions = !errorDescriptions
+        ? undefined
+        : Array.isArray(errorDescriptions)
+          ? errorDescriptions.map((message) =>
+              t(message.key, message.substitutions),
+            )
+          : t(errorDescriptions.key, errorDescriptions.substitutions);
+
       onToast(
         {
-          title: errorMessage,
+          title: t(errorMessage.key, errorMessage.substitutions),
           mainIconSrc: browser.runtime.getURL('/dice.png'),
-          descriptions: errorDescriptions,
+          descriptions: translatedDescriptions,
         },
         8000,
       );

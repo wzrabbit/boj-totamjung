@@ -24,7 +24,7 @@ export const fetchQuerySuggestion = async (
     if (!response.ok) {
       return {
         success: false,
-        errorMessage: '자동 완성 결과를 불러오지 못했습니다.',
+        errorMessage: { key: 'errors.querySuggestion.fetchFailed' },
       };
     }
 
@@ -33,8 +33,7 @@ export const fetchQuerySuggestion = async (
     if (!isSolvedAcQuerySuggestionResponse(suggestionResponse)) {
       return {
         success: false,
-        errorMessage:
-          '예기치 못한 오류가 발생했습니다. 개발자에게 이 버그를 제보해주세요.',
+        errorMessage: { key: 'errors.querySuggestion.unexpected' },
       };
     }
 
@@ -44,7 +43,7 @@ export const fetchQuerySuggestion = async (
   } catch (error) {
     return {
       success: false,
-      errorMessage: '자동 완성 결과를 불러오지 못했습니다.',
+      errorMessage: { key: 'errors.querySuggestion.fetchFailed' },
     };
   }
 };

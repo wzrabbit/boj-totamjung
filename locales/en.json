@@ -352,6 +352,63 @@
     "confirmButton": "Confirm"
   },
 
+  "errors": {
+    "randomDefenseForm": {
+      "titleTooLong": "Draw name must be $1 characters or fewer.",
+      "handleLength": "Handle (nickname) must be 3 to 20 characters.",
+      "handleFormat": "Handle (nickname) must contain only letters, digits, underscore (_), and hyphen (-).",
+      "solvedMinFormat": "Solved count minimum must be a non-negative integer.",
+      "solvedMaxFormat": "Solved count maximum must be a non-negative integer.",
+      "solvedCountTooLarge": "Solved count must be $1 or fewer.",
+      "solvedMinGreaterThanMax": "Solved count minimum cannot be greater than the maximum.",
+      "difficultyRangeInverted": "Difficulty range maximum cannot be lower than the minimum.",
+      "algorithmCountTooMany": "The number of algorithms used in the draw must be $1 or fewer.",
+      "invalidAlgorithm": "An invalid algorithm seems to be included. Please reload the page and try again.",
+      "queryEmpty": "Query cannot be empty. Please enter a query.",
+      "queryTooLong": "Query is too long. Please shorten it to $1 characters or fewer."
+    },
+    "querySuggestion": {
+      "fetchFailed": "Failed to load autocomplete results.",
+      "unexpected": "An unexpected error occurred. Please report this bug to the developer."
+    },
+    "randomDefenseChoose": {
+      "title": "An error occurred while drawing the problem.",
+      "queryInvalid": "The query you wrote when creating the draw seems to be invalid.",
+      "queryTooLong": "This issue may occur if the query used to create the draw is excessively long.",
+      "ipBlocked": "Your current IP is blocked from using the solved.ac API.",
+      "tryDisableVpn": "If you are using a VPN, please turn it off and try again.",
+      "rateLimitedAdvice": "Too many Random Defense runs in a short time. Usually resolved by waiting a few minutes and retrying.",
+      "rateLimitedExplanation": "This occurs when too many requests are sent to the solved.ac API in a short time.",
+      "rateLimitedOtherCause": "If you haven't used the draw feature excessively, requests from other Totamjung features or other extensions may also be the cause.",
+      "serverErrorRetry": "First, try refreshing the page and running Random Defense again.",
+      "serverErrorUnstable": "If the issue persists after multiple retries, the solved.ac API server may be unstable. Please try again later.",
+      "unknownErrorIntro": "Sorry, this is an error Totamjung does not recognize yet.",
+      "unknownErrorAdvice": "Try refreshing, verifying the query, and checking whether the solved.ac API server is stable.",
+      "statusCodeInfo": "Status Code is $1. Please include this information when reporting the issue to the developer.",
+      "responseShapeMismatch": "The data loaded from the API does not match the shape Totamjung expects.",
+      "responseShapeCause": "Most likely Totamjung's implementation is wrong, or solved.ac changed the API shape.",
+      "responseShapeReportPlease": "This is unlikely to be a transient issue. Please report this error to the developer.",
+      "noMatchingProblem": "No problems match the draw conditions.",
+      "checkTypo": "Check the query for typos.",
+      "broadenQuery": "Try a different topic or a broader query.",
+      "notEnoughMatchingProblem": "Not enough problems match the draw conditions.",
+      "foundLessThanRequested": "Found $1 problem(s), which is fewer than the $2 you requested. The draw could not be performed.",
+      "broadenOrReduce": "Try a broader query, or reduce the problem count to $1 or fewer.",
+      "networkUnstable": "Your network connection may be unstable. Please check your connection."
+    }
+  },
+
+  "markdown": {
+    "gacha": {
+      "headingResult": "Draw Result",
+      "headingInfo": "Draw Info",
+      "headingProblemList": "Problem List",
+      "drawName": "Draw name: $1",
+      "problemCount": "Problem count: $1",
+      "problemListItem": "- #$1 - $2 (https://acmicpc.net/problem/$3)"
+    }
+  },
+
   "hooks": {
     "gacha": {
       "apiDataMismatch": "Data mismatch detected in the data loaded from the API.",

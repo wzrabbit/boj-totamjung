@@ -35,8 +35,8 @@ describe('Test #1 - 마크다운 텍스트 생성 테스트', () => {
 - 31002번 - 그래프 변환 (https://acmicpc.net/problem/31002)
 `.trim();
 
-    expect(getProblemInfosInMarkdownText('테스트용 연습', problemInfos)).toBe(
-      expectedMarkdownText,
-    );
+    expect(
+      getProblemInfosInMarkdownText('테스트용 연습', problemInfos, 'ko'),
+    ).toBe(expectedMarkdownText);
   });
 });

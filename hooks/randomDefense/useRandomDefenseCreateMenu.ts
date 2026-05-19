@@ -155,7 +155,12 @@ const useRandomDefenseCreateMenu = (
       return;
     }
 
-    setErrorMessage(validationResult.errorMessage);
+    setErrorMessage(
+      t(
+        validationResult.errorMessage.key,
+        validationResult.errorMessage.substitutions,
+      ),
+    );
     setErrorElementName(validationResult.focusElementName);
 
     const focusElementName = validationResult.focusElementName;

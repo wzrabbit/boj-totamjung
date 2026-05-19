@@ -106,7 +106,7 @@ interface RandomDefenseFormDataValidVerdict {
 
 interface RandomDefenseFormDataInvalidVerdict {
   isValid: false;
-  errorMessage: string;
+  errorMessage: import('@/i18n').LocalizableMessage;
   focusElementName?: string;
 }
 
@@ -145,8 +145,10 @@ export type RandomDefenseResult =
 interface RandomDefenseFailureResult {
   success: false;
   statusCode?: number;
-  errorMessage: string;
-  errorDescriptions?: string | string[];
+  errorMessage: import('@/i18n').LocalizableMessage;
+  errorDescriptions?:
+    | import('@/i18n').LocalizableMessage
+    | import('@/i18n').LocalizableMessage[];
 }
 
 interface RandomDefenseSuccessResult {
@@ -171,7 +173,7 @@ export interface QuerySuggestionSuccessResult {
 
 export interface QuerySuggestionFailureResult {
   success: false;
-  errorMessage: string;
+  errorMessage: import('@/i18n').LocalizableMessage;
 }
 
 export interface QuerySuggestion {

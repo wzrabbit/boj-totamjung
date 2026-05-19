@@ -69,7 +69,36 @@
       "themeUse": "Use",
       "themeDoNotUse": "Do not use",
       "fontTitle": "Font Settings",
-      "fontBodyLegend": "Problem body font"
+      "fontBodyLegend": "Problem body font",
+      "fonts": {
+        "default": "Default",
+        "nanumGothic": "Nanum Gothic",
+        "nanumGothicCoding": "Nanum Gothic Coding",
+        "nanumMyeongjo": "Nanum Myeongjo",
+        "doHyeon": "Do Hyeon",
+        "jua": "Jua",
+        "notoSerifKr": "Noto Serif KR",
+        "sunflower": "Sunflower",
+        "yeonSung": "Yeon Sung",
+        "cuteFont": "Cute Font",
+        "gaegu": "Gaegu",
+        "gothicA1": "Gothic A1",
+        "gowunBatang": "Gowun Batang",
+        "gowunDodum": "Gowun Dodum",
+        "hiMelody": "Hi Melody",
+        "ibmPlexSans": "IBM Plex Sans",
+        "poorStory": "Poor Story",
+        "singleDay": "Single Day",
+        "songMyung": "Song Myung",
+        "stylish": "Stylish",
+        "pretendard": "Pretendard",
+        "neoDunggeunmo": "NeoDunggeunmo",
+        "spoqaHanSansNeo": "Spoqa Han Sans Neo",
+        "notoSerif": "Noto Serif",
+        "hahmlet": "Hahmlet",
+        "diphylleia": "Diphylleia",
+        "cookieRun": "CookieRun"
+      }
     },
 
     "dataManage": {

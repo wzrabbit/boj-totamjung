@@ -69,7 +69,36 @@
       "themeUse": "사용",
       "themeDoNotUse": "사용하지 않음",
       "fontTitle": "폰트 설정",
-      "fontBodyLegend": "문제 본문 폰트 설정"
+      "fontBodyLegend": "문제 본문 폰트 설정",
+      "fonts": {
+        "default": "설정하지 않음",
+        "nanumGothic": "나눔고딕",
+        "nanumGothicCoding": "나눔고딕 코딩",
+        "nanumMyeongjo": "나눔명조",
+        "doHyeon": "배달의민족 도현",
+        "jua": "배달의민족 주아",
+        "notoSerifKr": "본명조",
+        "sunflower": "해바라기",
+        "yeonSung": "배달의민족 연성",
+        "cuteFont": "Cute Font",
+        "gaegu": "Gaegu",
+        "gothicA1": "고딕 A1",
+        "gowunBatang": "고운바탕체",
+        "gowunDodum": "고운돋움체",
+        "hiMelody": "하이멜로디",
+        "ibmPlexSans": "IBM Plex Sans",
+        "poorStory": "푸어스토리",
+        "singleDay": "DS싱글데이",
+        "songMyung": "송명체",
+        "stylish": "a스타일리쉬",
+        "pretendard": "Pretendard",
+        "neoDunggeunmo": "둥근모꼴 Neo",
+        "spoqaHanSansNeo": "Spoqa Han Sans Neo",
+        "notoSerif": "Noto Serif",
+        "hahmlet": "Hahmlet",
+        "diphylleia": "Diphylleia",
+        "cookieRun": "쿠키런"
+      }
     },
 
     "dataManage": {

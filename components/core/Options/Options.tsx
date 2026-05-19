@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import OptionsHeader from '@/components/OptionsHeader';
 import HiderSection from '@/components/sections/HiderSection';
 import RandomDefenseSection from '@/components/sections/RandomDefenseSection';
@@ -5,10 +6,17 @@ import AppearanceAndDataManageSection from '@/components/sections/AppearanceAndD
 import useOptionsPage from '@/hooks/options/useOptionsPage';
 import SlidingFocusIndicator from '@/components/SlidingFocusIndicator';
 import { totamjung } from '@/assets/png';
+import { useTranslation } from '@/i18n';
 import * as S from './Options.styled';
 
 const Options = () => {
   const { selectedCategory, setSelectedCategory } = useOptionsPage();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = t('browserTab.optionsTitle');
+  }, [t]);
+
   return (
     <S.Container>
       <S.OptionsContainer>

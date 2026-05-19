@@ -2,6 +2,7 @@ import { solvedAcRankIcons, solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import type { KeyboardEventHandler, Ref } from 'react';
 import type { ProblemInfo } from '@/types/randomDefense';
 import useCardTweak from '@/hooks/gacha/useCardTweak';
+import { useTranslation } from '@/i18n';
 import * as S from './ProblemCard.styled';
 
 interface ProblemCardProps {
@@ -26,6 +27,7 @@ const ProblemCard = (props: ProblemCardProps) => {
   } = props;
   const { problemId, title, tier } = problemInfo;
   const { rotateX, rotateY, adjustCardTweak, resetCardTweak } = useCardTweak();
+  const { t } = useTranslation();
 
   return (
     <S.HoverTransformContainer>
@@ -43,7 +45,10 @@ const ProblemCard = (props: ProblemCardProps) => {
           target="_blank"
           rel="noreferrer noopener"
           href={`https://icpc.me/${problemId}`}
-          aria-label={`문제 번호 ${problemId}번 ${title}`}
+          aria-label={t('widget.problemCard.ariaLabel', [
+            String(problemId),
+            title,
+          ])}
           tabIndex={tabIndex}
           ref={linkButtonRef}
           onKeyDown={onKeyDown}

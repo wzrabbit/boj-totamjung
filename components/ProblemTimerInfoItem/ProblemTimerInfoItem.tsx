@@ -7,6 +7,7 @@ import type { IsoString } from '@/types/utils';
 import ProgressBar from '@/components/common/ProgressBar';
 import { theme } from '@/styles/theme';
 import ProblemTimerControls from '@/components/ProblemTimerControls';
+import { useTranslation } from '@/i18n';
 
 interface ProblemTimerInfoItemProps {
   problemId: number;
@@ -29,6 +30,7 @@ interface ProblemTimerInfoItemProps {
 const ProblemTimerInfoItem = (props: ProblemTimerInfoItemProps) => {
   const { problemId, title, tier, createdAt, isHidden, progress, ...rest } =
     props;
+  const { t } = useTranslation();
 
   return (
     <S.Container $tier={tier} $isHidden={isHidden}>
@@ -45,7 +47,10 @@ const ProblemTimerInfoItem = (props: ProblemTimerInfoItemProps) => {
             <S.Title
               href={`https://icpc.me/${problemId}`}
               target="__blank"
-              aria-label={`${problemId}번 ${title} 문제`}
+              aria-label={t('widget.problemTimerInfo.problemAriaLabel', [
+                String(problemId),
+                title,
+              ])}
               title={title}
               $tier={tier}
               $isHidden={isHidden}

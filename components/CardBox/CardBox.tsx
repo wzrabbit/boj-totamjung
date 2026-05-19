@@ -2,6 +2,7 @@ import { PROBLEM_CARDS, CARD_BOXES } from '@/assets/png/problemCards';
 import type { Rank } from '@/types/randomDefense';
 import * as S from './CardBox.styled';
 import { useState } from 'react';
+import { useTranslation } from '@/i18n';
 
 interface CardBoxProps {
   color: 'black' | 'red' | 'green' | 'blue' | 'gold';
@@ -14,6 +15,7 @@ interface CardBoxProps {
 const CardBox = (props: CardBoxProps) => {
   const { color, isTierHidden, cardRanks, onFirstClick, onOpenAnimationEnd } =
     props;
+  const { t } = useTranslation();
   const [isCardBoxOpening, setIsCardBoxOpening] = useState(false);
   const firstCardRank = cardRanks[0];
   const secondCardRank = cardRanks[1];
@@ -38,7 +40,7 @@ const CardBox = (props: CardBoxProps) => {
             onOpenAnimationEnd();
           }
         }}
-        aria-label="카드 상자를 열어 추첨 진행하기"
+        aria-label={t('widget.cardBox.openAriaLabel')}
       >
         <S.GlowingBox $isCardBoxOpening={isCardBoxOpening} />
         <S.CardBoxInside src={CARD_BOXES.inside[color]} draggable={false} />

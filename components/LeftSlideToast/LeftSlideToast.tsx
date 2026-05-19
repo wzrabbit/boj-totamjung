@@ -6,6 +6,7 @@ import { CheckIcon, CloseIcon } from '@/assets/svg';
 import type { SVGProps, ReactElement } from 'react';
 import type { MainTheme } from '@/types/mainTheme';
 import CircleProgressBar from '@/components/common/CircleProgressBar';
+import { useTranslation } from '@/i18n';
 
 interface LeftSlideToastProps {
   mainIconSrc: string | ReactElement<SVGProps<SVGSVGElement>>;
@@ -20,6 +21,7 @@ interface LeftSlideToastProps {
 const LeftSlideToast = (props: LeftSlideToastProps) => {
   const { mainIconSrc, theme, progress, title, descriptions, open, onClose } =
     props;
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const listedDescriptions = Array.isArray(descriptions)
     ? descriptions
@@ -70,7 +72,7 @@ const LeftSlideToast = (props: LeftSlideToastProps) => {
       <S.RightControlPanel>
         <S.CloseButton
           type="button"
-          aria-label="토스트 닫기"
+          aria-label={t('widget.toast.closeAriaLabel')}
           $totamjungTheme={theme}
           onClick={onClose}
         >

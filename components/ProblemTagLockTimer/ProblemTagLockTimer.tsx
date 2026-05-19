@@ -5,6 +5,7 @@ import Input from '@/components/common/Input';
 import useProblemTagLockTimer from '@/hooks/tagLock/useProblemTagLockTimer';
 import { MAX_HOURS, MAX_MINUTES } from '@/constants/tagLock';
 import { theme } from '@/styles/theme';
+import { useTranslation } from '@/i18n';
 
 interface ProblemTagLockTimerProps {
   hours: number;
@@ -23,6 +24,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
     submitHours,
     submitMinutes,
   } = useProblemTagLockTimer({ initHours, initMinutes, onChange });
+  const { t } = useTranslation();
   return (
     <S.Container>
       <img src={lockWithClockIcon} width="54px" height="46px" alt="" />
@@ -43,10 +45,10 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         disabled={disabled}
         onChange={updateHours}
         onBlur={submitHours}
-        aria-label="시간"
+        aria-label={t('widget.tagLockTimer.hoursAriaLabel')}
       />
       <Text type="normal" as="span" fontSize={16} width={30}>
-        시간
+        {t('widget.tagLockTimer.hoursUnit')}
       </Text>
       <Input
         name="minutes"
@@ -65,10 +67,10 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         disabled={disabled}
         onChange={updateMinutes}
         onBlur={submitMinutes}
-        aria-label="분"
+        aria-label={t('widget.tagLockTimer.minutesAriaLabel')}
       />
       <Text type="normal" as="span" fontSize={16} width={30}>
-        분
+        {t('widget.tagLockTimer.minutesUnit')}
       </Text>
     </S.Container>
   );

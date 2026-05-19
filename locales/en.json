@@ -106,7 +106,7 @@
       "exportButton": "Export Settings",
       "uploadButton": "Upload Settings",
       "resetButton": "Reset Settings",
-      "description1": "If you want to back up your current settings or move your data to another device, you can export the settings as a save file or upload one.",
+      "description1": "You can export your current settings to a save file, or upload a save file to restore them — useful for backups or transferring data between devices.",
       "description2Prefix": "The Detective Toh save file extension is",
       "description2Suffix": ".",
 
@@ -117,7 +117,7 @@
       "resetConfirmText": "I agree to reset",
       "resetWarningIntro": "Please read the warnings below before resetting:",
       "resetWarning1": "Resetting will erase all data, including critical data such as Quick Slot queries and history records.",
-      "resetWarning2": "Reset cannot be undone. If you want to preserve important data, we recommend first using \"Export Settings\" to back up your data.",
+      "resetWarning2": "Reset cannot be undone. If you want to preserve important data, we recommend using \"Export Settings\" first to back up your data.",
       "resetWarning3": "The settings page will reload automatically after reset.",
       "resetInstructionPrefix": "If you understand the warnings above and want to proceed with the reset, please type",
       "resetInstructionSuffix": "in the input field below.",
@@ -127,8 +127,8 @@
       "uploadModalTitle": "Upload Data",
       "uploadConfirmText": "I understand",
       "uploadWarningIntro": "Please read the warnings below before uploading:",
-      "uploadWarning1": "Uploading will overwrite your existing data. That is, your existing data will be lost.",
-      "uploadWarning2": "Upload cannot be undone. If you want to preserve existing data, we recommend first using \"Export Settings\" to back up your data.",
+      "uploadWarning1": "Uploading will overwrite your existing data — in other words, your existing data will be lost.",
+      "uploadWarning2": "Upload cannot be undone. If you want to preserve existing data, we recommend using \"Export Settings\" first to back up your data.",
       "uploadWarning3": "The settings page will reload automatically after upload.",
       "uploadInstructionPrefix": "If you understand the warnings above and want to proceed with the upload, please type",
       "uploadInstructionSuffix": "in the input field below.",
@@ -168,7 +168,7 @@
       "checkAllConfirmMessage": "Select all algorithm tags?",
       "uncheckAllConfirmTitle": "Confirm Deselect All",
       "uncheckAllConfirmMessage": "Deselect all algorithm tags?",
-      "searchInputAriaLabel": "Enter an algorithm"
+      "searchInputAriaLabel": "Enter an algorithm tag"
     },
 
     "tierSelect": {
@@ -189,7 +189,7 @@
     "randomDefenseAriaLabel": "Run Random Defense",
     "welcomeLine1": "Thank you for installing Detective Toh!",
     "welcomeLine2Prefix": "Right-click the widget",
-    "welcomeLine2Suffix": " to explore Detective Toh's various features.",
+    "welcomeLine2Suffix": " to explore everything Detective Toh can do.",
 
     "timer": {
       "pauseAriaLabel": "Pause problem timer",
@@ -360,7 +360,7 @@
   "randomDefenseGacha": {
     "modalTitle": "Gacha Pull",
     "loadingMessage": "Please wait...",
-    "cardClickHint": "Click the card box to see the result",
+    "cardClickHint": "Click the card box to reveal your result",
     "retryButton": "Retry",
     "copyProblemsButton": "Copy Problem List",
     "saveHistoryButton": "Save to Draw History",
@@ -376,7 +376,7 @@
   "gachaProblemCount": {
     "modalTitle": "Gacha Pull",
     "promptMessage": "Enter the number of problems to pull.",
-    "rangeLabel": "1 or more, up to $1 problems",
+    "rangeLabel": "1 to $1 problems",
     "hotkeyTip": "TIP: You can also start a Gacha Pull from within BOJ by long-pressing the hotkey for the corresponding slot number.",
     "confirmButton": "Confirm"
   },
@@ -386,13 +386,13 @@
       "titleTooLong": "Draw name must be $1 characters or fewer.",
       "handleLength": "Handle must be 3 to 20 characters.",
       "handleFormat": "Handle must contain only letters, digits, underscore (_), and hyphen (-).",
-      "solvedMinFormat": "Solved count minimum must be a non-negative integer.",
-      "solvedMaxFormat": "Solved count maximum must be a non-negative integer.",
+      "solvedMinFormat": "Minimum solved count must be a non-negative integer.",
+      "solvedMaxFormat": "Maximum solved count must be a non-negative integer.",
       "solvedCountTooLarge": "Solved count must be $1 or fewer.",
-      "solvedMinGreaterThanMax": "Solved count minimum cannot be greater than the maximum.",
-      "difficultyRangeInverted": "Difficulty range maximum cannot be lower than the minimum.",
+      "solvedMinGreaterThanMax": "Minimum solved count cannot exceed the maximum.",
+      "difficultyRangeInverted": "The maximum difficulty cannot be lower than the minimum.",
       "algorithmCountTooMany": "The number of algorithms used in the draw must be $1 or fewer.",
-      "invalidAlgorithm": "An invalid algorithm seems to be included. Please reload the page and try again.",
+      "invalidAlgorithm": "An invalid algorithm was detected. Please reload the page and try again.",
       "queryEmpty": "Query cannot be empty. Please enter a query.",
       "queryTooLong": "Query is too long. Please shorten it to $1 characters or fewer."
     },
@@ -415,7 +415,7 @@
       "unknownErrorAdvice": "Try refreshing, verifying the query, and checking whether the solved.ac API server is stable.",
       "statusCodeInfo": "Status Code is $1. Please include this information when reporting the issue to the developer.",
       "responseShapeMismatch": "The data loaded from the API does not match the shape Detective Toh expects.",
-      "responseShapeCause": "Most likely Detective Toh's implementation is wrong, or solved.ac changed the API shape.",
+      "responseShapeCause": "Most likely, Detective Toh's implementation is wrong, or solved.ac changed the API shape.",
       "responseShapeReportPlease": "This is unlikely to be a transient issue. Please report this error to the developer.",
       "noMatchingProblem": "No problems match the draw conditions.",
       "checkTypo": "Check the query for typos.",
@@ -451,9 +451,9 @@
 
   "hooks": {
     "gacha": {
-      "apiDataMismatch": "Data mismatch detected in the data loaded from the API.",
-      "contactDeveloper": "Please notify the developer that this issue occurred.",
-      "settingsDataMismatch": "Data mismatch detected in the settings data.",
+      "apiDataMismatch": "Data mismatch detected in the API response.",
+      "contactDeveloper": "Please let us know about this issue.",
+      "settingsDataMismatch": "Data mismatch detected in your saved settings.",
       "copiedToClipboard": "Problem list copied to clipboard!",
       "savedToHistory": "Problem list saved to draw history!"
     },
@@ -463,14 +463,14 @@
     "defaultSlotTitle": "Draw $1",
     "lockTimer": {
       "show": "Show",
-      "lockedFormat": "Locked (🔒︎$1:$2:$3 until viewable)"
+      "lockedFormat": "Locked (🔒︎$1:$2:$3 remaining)"
     },
     "randomDefense": {
       "emptySlotTitle": "Slot $1 is currently empty.",
       "emptySlotDescription1": "If you haven't created a draw yet, create one in that slot from the settings page first!",
-      "emptySlotDescription2": "You can change which slot the widget click uses by changing the selected slot number in the Quick Slots menu in settings.",
+      "emptySlotDescription2": "To change which slot is used when you click the widget, update the selected slot number in the Quick Slots menu in settings.",
       "dataMismatchTitle": "Data mismatch detected.",
-      "dataMismatchDescription": "Please notify the developer that this issue occurred."
+      "dataMismatchDescription": "Please let us know about this issue."
     },
     "widget": {
       "inspectQuestionTitle": "Solving this problem may require algorithms you don't know.",
@@ -482,11 +482,11 @@
       "errorSizeMessage": "Save file must be 1MiB or smaller.",
       "errorFormatMessage": "Save file format is invalid.",
       "errorUnknownVersionMessage": "Cannot determine the version of this save file. If you believe this is a bug, please contact the developer.",
-      "errorTooHighVersionMessage": "This save file's version is $1, which is higher than the maximum data version (5) this build can handle, or is unrecognized.",
-      "errorV2CorruptedMessage": "v1.2.* save files are supported for upload, but this save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
-      "errorV3CorruptedMessage": "v1.3 ~ v1.3.3.2 save files are supported for upload, but this save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
-      "errorV4CorruptedMessage": "v1.3.4 save files are supported for upload, but this save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
-      "errorCorruptedMessage": "This save file appears to have some or all data missing. If you believe this is a bug, please contact the developer.",
+      "errorTooHighVersionMessage": "This save file's version ($1) is either unrecognized or higher than the maximum supported by this build (5).",
+      "errorV2CorruptedMessage": "v1.2.* save files are supported for upload, but this save file appears to be missing some or all of its data. If you believe this is a bug, please contact the developer.",
+      "errorV3CorruptedMessage": "v1.3 ~ v1.3.3.2 save files are supported for upload, but this save file appears to be missing some or all of its data. If you believe this is a bug, please contact the developer.",
+      "errorV4CorruptedMessage": "v1.3.4 save files are supported for upload, but this save file appears to be missing some or all of its data. If you believe this is a bug, please contact the developer.",
+      "errorCorruptedMessage": "This save file appears to be missing some or all of its data. If you believe this is a bug, please contact the developer.",
       "errorInvalidDataMessage": "Data format is invalid. This can happen when a file not created by Detective Toh has its extension renamed to \".ttj\". Could you double-check the save file?"
     }
   }

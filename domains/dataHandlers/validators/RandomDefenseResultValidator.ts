@@ -1,6 +1,22 @@
 import { isObject, isTier } from '@/types/typeGuards';
 import type { ProblemInfo, RandomDefenseResult } from '@/types/randomDefense';
 
+const isLocalizableMessage = (data: unknown): boolean => {
+  if (!isObject(data) || !('key' in data) || typeof data.key !== 'string') {
+    return false;
+  }
+
+  if (!('substitutions' in data)) {
+    return true;
+  }
+
+  const { substitutions } = data;
+  return (
+    Array.isArray(substitutions) &&
+    substitutions.every((substitution) => typeof substitution === 'string')
+  );
+};
+
 export const isRandomDefenseResult = (
   data: unknown,
 ): data is RandomDefenseResult => {
@@ -20,7 +36,7 @@ export const isRandomDefenseResult = (
     return false;
   }
 
-  if (!('errorMessage' in data) || typeof data.errorMessage !== 'string') {
+  if (!('errorMessage' in data) || !isLocalizableMessage(data.errorMessage)) {
     return false;
   }
 
@@ -31,10 +47,10 @@ export const isRandomDefenseResult = (
   const { errorDescriptions } = data;
 
   return (
-    typeof errorDescriptions === 'string' ||
+    isLocalizableMessage(errorDescriptions) ||
     (Array.isArray(errorDescriptions) &&
-      errorDescriptions.every(
-        (errorDescription) => typeof errorDescription === 'string',
+      errorDescriptions.every((errorDescription) =>
+        isLocalizableMessage(errorDescription),
       ))
   );
 };

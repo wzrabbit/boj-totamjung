@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useTranslation } from '@/i18n';
 import { isRandomDefenseFormData } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import { validateRandomDefenseFormData } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import type { ChangeEventHandler, MouseEventHandler } from 'react';
@@ -33,6 +34,7 @@ const useRandomDefenseCreateMenu = (
   params: UseRandomDefenseCreateMenuParams,
 ) => {
   const { selectedSlotNo, onSubmit } = params;
+  const { t } = useTranslation();
   const [randomDefenseFormData, setRandomDefenseFormData] =
     useState<RandomDefenseFormData>(initialRandomDefenseFormData);
   const [errorMessage, setErrorMessage] = useState('');
@@ -143,7 +145,7 @@ const useRandomDefenseCreateMenu = (
     if (validationResult.isValid) {
       const title =
         randomDefenseFormData.title.trim() === ''
-          ? `추첨 ${selectedSlotNo}`
+          ? t('hooks.defaultSlotTitle', [String(selectedSlotNo)])
           : randomDefenseFormData.title;
       const query = generateRandomDefenseQuery(randomDefenseFormData);
 

@@ -4,6 +4,7 @@ import { DEFAULT_QUICK_SLOT_OPTIONS } from '@/constants/defaultValues';
 import { isQuickSlotOptions } from '@/domains/dataHandlers/validators/quickSlotsValidator';
 import { isRandomDefenseResult } from '@/domains/dataHandlers/validators/RandomDefenseResultValidator';
 import useHotKeyLongPress from '../useHotkeyLongPress';
+import { useTranslation } from '@/i18n';
 import type { ToastInfo } from '@/types/toast';
 import type {
   FilledQuickSlot,
@@ -19,6 +20,7 @@ interface UseRandomDefenseParams {
 
 const useRandomDefense = (params: UseRandomDefenseParams) => {
   const { onToast, onGachaStart } = params;
+  const { t } = useTranslation();
   const [isRandomDefenseAvailable, setIsRandomDefenseAvailable] =
     useState(false);
   const isRandomDefenseAvailableRef = useRef(isRandomDefenseAvailable);
@@ -92,11 +94,13 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
       if (method === 'click' || method === 'mouseLongPress') {
         onToast(
           {
-            title: `${selectedSlotNo}번 슬롯은 현재 비어 있습니다.`,
+            title: t('hooks.randomDefense.emptySlotTitle', [
+              String(selectedSlotNo),
+            ]),
             mainIconSrc: browser.runtime.getURL('/dice.png'),
             descriptions: [
-              '추첨을 만들지 않으셨다면, 설정에서 해당 슬롯에 추첨을 먼저 만들어 주세요!',
-              '설정의 퀵슬롯 메뉴에서 선택된 슬롯 번호를 변경하는 것으로 위젯 클릭 시 사용할 추첨의 슬롯을 정하실 수 있습니다.',
+              t('hooks.randomDefense.emptySlotDescription1'),
+              t('hooks.randomDefense.emptySlotDescription2'),
             ],
           },
           8000,
@@ -122,9 +126,9 @@ const useRandomDefense = (params: UseRandomDefenseParams) => {
     if (!isRandomDefenseResult(randomDefenseResult)) {
       onToast(
         {
-          title: '데이터 불일치가 발견되었습니다.',
+          title: t('hooks.randomDefense.dataMismatchTitle'),
           mainIconSrc: browser.runtime.getURL('/dice.png'),
-          descriptions: '개발자에게 이 문제가 발생했음을 알려 주세요.',
+          descriptions: t('hooks.randomDefense.dataMismatchDescription'),
         },
         8000,
       );

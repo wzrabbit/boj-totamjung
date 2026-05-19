@@ -10,6 +10,7 @@ import type { ProblemInfo } from '@/types/randomDefense';
 import type { PreviewCardRanks } from '@/types/gacha';
 import { isGachaOptions } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
 import { getProblemInfosInMarkdownText } from '@/domains/gacha/getProblemInfosInMarkdownText';
+import { useTranslation } from '@/i18n';
 
 interface UseRandomDefenseGachaModalParams {
   open: boolean;
@@ -65,6 +66,7 @@ const useRandomDefenseGachaModal = (
   const [isSavedToHistory, setIsSavedToHistory] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const gachaAudioRef = useRef<HTMLAudioElement>(new Audio(gachaAudio));
+  const { t } = useTranslation();
 
   const previewCardRanks: PreviewCardRanks =
     problemInfos.length > 0
@@ -79,10 +81,8 @@ const useRandomDefenseGachaModal = (
     });
 
     if (!isRandomDefenseResult(randomDefenseResult)) {
-      setErrorMessage(
-        'API로부터 불러온 데이터에서 데이터 불일치가 발견되었습니다.',
-      );
-      setErrorDescriptions('개발자에게 이 문제가 발생했음을 알려주세요.');
+      setErrorMessage(t('hooks.gacha.apiDataMismatch'));
+      setErrorDescriptions(t('hooks.gacha.contactDeveloper'));
       setGachaStatus('error');
       return;
     }
@@ -106,8 +106,8 @@ const useRandomDefenseGachaModal = (
     });
 
     if (!isGachaOptions(gachaOptions)) {
-      setErrorMessage('설정 데이터에서 불일치가 발견되었습니다.');
-      setErrorDescriptions('개발자에게 이 문제가 발생했음을 알려주세요.');
+      setErrorMessage(t('hooks.gacha.settingsDataMismatch'));
+      setErrorDescriptions(t('hooks.gacha.contactDeveloper'));
       setGachaStatus('error');
       return;
     }
@@ -158,7 +158,7 @@ const useRandomDefenseGachaModal = (
     navigator.clipboard.writeText(
       getProblemInfosInMarkdownText(slot.title, problemInfos),
     );
-    setNotificationMessage('문제 목록을 클립보드에 복사했어요!');
+    setNotificationMessage(t('hooks.gacha.copiedToClipboard'));
     setShouldNotificationFadeOut(false);
     setTimeout(() => setShouldNotificationFadeOut(true));
   };
@@ -183,7 +183,7 @@ const useRandomDefenseGachaModal = (
     });
 
     setIsSavedToHistory(true);
-    setNotificationMessage('문제 목록을 추첨 기록에 저장했어요!');
+    setNotificationMessage(t('hooks.gacha.savedToHistory'));
     setShouldNotificationFadeOut(false);
     setTimeout(() => setShouldNotificationFadeOut(true));
   };

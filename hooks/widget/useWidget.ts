@@ -8,6 +8,7 @@ import useRandomDefense from './useRandomDefense';
 import useModalState from '@/hooks/useModalState';
 import useRandomDefenseButtonLongPress from '@/hooks/useRandomDefenseButtonLongPress';
 import { changeNormalToWarnTier } from '@/domains/tierHider/normalToWarnTierChanger';
+import { useTranslation } from '@/i18n';
 import { isShouldShowWelcomeMessage } from '@/domains/dataHandlers/validators/isShouldShowWelcomeMessageDataValidator';
 import type { ToastInfo } from '@/types/toast';
 import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
@@ -22,6 +23,7 @@ interface UseWidgetParams {
 
 const useWidget = (params: UseWidgetParams) => {
   const { theme, onChangeTheme, onToast } = params;
+  const { t } = useTranslation();
   const [isScrollingToTop, setIsScrollingToTop] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [checkedAlgorithmIds, setCheckedAlgorithmIds] = useState<
@@ -208,8 +210,7 @@ const useWidget = (params: UseWidgetParams) => {
     if (hasUnknownAlgorithms) {
       onToast(
         {
-          title:
-            '이 문제를 풀기 위해서는 모르는 알고리즘을 사용해야 할 수 있습니다.',
+          title: t('hooks.widget.inspectQuestionTitle'),
           mainIconSrc: browser.runtime.getURL('/inspect-result-question.png'),
         },
         3500,
@@ -217,7 +218,7 @@ const useWidget = (params: UseWidgetParams) => {
     } else {
       onToast(
         {
-          title: '이 문제는 알고 있는 알고리즘만으로 풀 수 있습니다.',
+          title: t('hooks.widget.inspectCheckTitle'),
           mainIconSrc: browser.runtime.getURL('/inspect-result-check.png'),
         },
         3500,

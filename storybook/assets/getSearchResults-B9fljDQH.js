@@ -1,0 +1,1 @@
+import{a as h}from"./algorithmInfos-yvhlfANf.js";const u=(e,o)=>o==="en"?e.englishName:e.name,d=e=>e.toLowerCase().replace(/^(tag:|#)|[ ,_/-]|–/g,""),R=(e,o="ko")=>{const s=d(e),r=[];return h.forEach(a=>{const{id:m,name:n,englishName:c,tag:l,alias:i}=a,g=[n,c,l,...i].map(t=>d(t));(s===""||g.some(t=>t.indexOf(s)!==-1))&&r.push({id:m,name:u(a,o)})}),r};export{R as a,u as g};

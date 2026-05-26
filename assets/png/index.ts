@@ -4,6 +4,7 @@ export { default as lockWithClockIcon } from './lock-with-clock.png';
 export { default as hiddenTierBadgeIcon } from './hidden-tier-badge.png';
 export { default as tier1BadgeIcon } from './tier-1-badge.png';
 export { default as settingsTitle } from './settings-title.png';
+export { default as settingsTitleEn } from './settings-title-en.png';
 export { default as guidebookButton } from './guidebook-button.png';
 export { default as infoButton } from './info-button.png';
 export { default as i18nButton } from './i18n-button.png';

@@ -3,7 +3,12 @@ import OptionsNav from './OptionsNav';
 import SimpleModal from '@/components/common/SimpleModal';
 import TotamjungInfoModal from './TotamjungInfoModal';
 import LanguageSelector from './LanguageSelector';
-import { settingsTitle, guidebookButton, infoButton } from '@/assets/png';
+import {
+  settingsTitle,
+  settingsTitleEn,
+  guidebookButton,
+  infoButton,
+} from '@/assets/png';
 import { useTranslation } from '@/i18n';
 import type { OptionsNavCategory } from '@/types/options';
 import { TOTAMJUNG_GUIDE_URL } from '@/constants/urls';
@@ -19,12 +24,15 @@ type OptionsHeaderModal = 'none' | 'guidePageOpenConfirm' | 'totamjungInfo';
 const OptionsHeader = (props: OptionsHeaderProps) => {
   const { selectedCategory, onCategoryChange } = props;
   const [activeModal, setActiveModal] = useState<OptionsHeaderModal>('none');
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   return (
     <S.Container>
       <S.Title>
-        <S.OptionsLogoImage src={settingsTitle} alt={t('extensionName')} />
+        <S.OptionsLogoImage
+          src={language === 'en' ? settingsTitleEn : settingsTitle}
+          alt={t('browserTab.optionsTitle')}
+        />
       </S.Title>
       <OptionsNav
         selectedCategory={selectedCategory}

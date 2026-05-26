@@ -45,7 +45,9 @@ export const updateAllLegacyData = async () => {
 
   const result = converters
     .slice(dataVersion - 2)
-    .reduce((acc, convert) => convert(acc), data);
+    .reduce<
+      Record<string, unknown>
+    >((acc, convert) => ({ ...convert(acc) }), { ...data });
 
   await browser.storage.local.set(result);
   await browser.storage.local.remove(LEGACY_LOCAL_STORAGE_KEYS);

@@ -8,6 +8,7 @@ import { $ } from '@/utils/querySelector';
 import GachaProblemCountInputModal from '@/components/GachaProblemCountInputModal';
 import RandomDefenseGachaModal from '@/components/RandomDefenseGachaModal';
 import { isSolvedAcTheme } from '@/domains/dataHandlers/validators/solvedAcThemeValidator';
+import { useTranslation } from '@/i18n';
 import type { MainTheme, TotamjungTheme } from '@/types/mainTheme';
 
 interface WidgetProps {
@@ -47,6 +48,7 @@ const Widget = (props: WidgetProps) => {
     topButtonRef,
     randomDefenseButtonRef,
   } = useWidget(props);
+  const { t } = useTranslation();
 
   const problemTitleElement = $('#problem_title');
   const isExternalThemeEnabled = theme !== 'none' && theme !== 'totamjung';
@@ -61,7 +63,7 @@ const Widget = (props: WidgetProps) => {
             $widgetTheme={theme}
             onClick={scrollToTop}
             onContextMenu={toggleWidgetOpen}
-            aria-label="토탐정 위젯입니다. 클릭하여 웹사이트의 상단으로 이동하거나, 우클릭하여 위젯을 여세요."
+            aria-label={t('widget.topButtonAriaLabel')}
             ref={topButtonRef}
           >
             <S.TopIconContainer onAnimationEnd={endScrollingAnimation}>
@@ -74,7 +76,7 @@ const Widget = (props: WidgetProps) => {
               <S.DropdownMenuButton
                 type="button"
                 $widgetTheme={theme}
-                aria-label="토탐정 설정 페이지로 이동"
+                aria-label={t('widget.openOptionsAriaLabel')}
                 onClick={openOptionsPage}
               >
                 <S.DropdownButtonIcon
@@ -87,7 +89,9 @@ const Widget = (props: WidgetProps) => {
                 type="button"
                 $widgetTheme={theme}
                 aria-label={
-                  theme === 'none' ? '토탐정 테마 켜기' : '토탐정 테마 끄기'
+                  theme === 'none'
+                    ? t('widget.themeOnAriaLabel')
+                    : t('widget.themeOffAriaLabel')
                 }
                 disabled={isExternalThemeEnabled}
                 onClick={toggleTotamjungTheme}
@@ -103,7 +107,7 @@ const Widget = (props: WidgetProps) => {
                 type="button"
                 className={isRandomDefenseButtonPressing ? 'pressing' : ''}
                 $widgetTheme={theme}
-                aria-label="랜덤 디펜스 진행하기"
+                aria-label={t('widget.randomDefenseAriaLabel')}
                 disabled={isRandomDefenseButtonDisabled}
               >
                 <S.DropdownButtonIcon
@@ -160,11 +164,11 @@ const Widget = (props: WidgetProps) => {
                 content={
                   <S.SpeechBubbleContentContainer $totamjungTheme={theme}>
                     <S.SpeechBubbleText>
-                      토탐정을 설치해 주셔서 감사합니다!
+                      {t('widget.welcomeLine1')}
                     </S.SpeechBubbleText>
                     <S.SpeechBubbleText>
-                      <strong>위젯을 우클릭</strong>하여 토탐정의 여러 기능들을
-                      활용해 보세요.
+                      <strong>{t('widget.welcomeLine2Prefix')}</strong>
+                      {t('widget.welcomeLine2Suffix')}
                     </S.SpeechBubbleText>
                   </S.SpeechBubbleContentContainer>
                 }

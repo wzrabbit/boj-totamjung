@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import * as S from './MiniAlgorithmButton.styled';
 import { CloseSmallIcon } from '@/assets/svg';
+import { useTranslation } from '@/i18n';
 import type { KeyboardEventHandler } from 'react';
 
 interface MiniAlgorithmButtonProps {
@@ -17,6 +18,7 @@ const MiniAlgorithmButton = forwardRef<
   MiniAlgorithmButtonProps
 >((props, ref) => {
   const { id, name, mode, tabIndex, onClick, onKeyDown } = props;
+  const { t } = useTranslation();
 
   return (
     <S.Container>
@@ -25,8 +27,8 @@ const MiniAlgorithmButton = forwardRef<
         tabIndex={tabIndex}
         aria-label={
           mode === 'add'
-            ? `${name}을 검색에 포함할 알고리즘 목록에 추가하기`
-            : `${name}을 검색에 포함할 알고리즘 목록에서 제거하기`
+            ? t('randomDefenseCreate.miniAlgorithm.addAriaLabel', [name])
+            : t('randomDefenseCreate.miniAlgorithm.removeAriaLabel', [name])
         }
         onClick={() => {
           onClick(id);

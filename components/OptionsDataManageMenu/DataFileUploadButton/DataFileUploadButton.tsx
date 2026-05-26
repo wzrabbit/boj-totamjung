@@ -1,6 +1,7 @@
 import type { MouseEvent, ChangeEvent, KeyboardEventHandler } from 'react';
 import { FileUploadIcon } from '@/assets/svg';
 import { useRef } from 'react';
+import { useTranslation } from '@/i18n';
 import * as S from './DataFileUploadButton.styled';
 
 interface DataFileUploadButtonProps {
@@ -10,6 +11,7 @@ interface DataFileUploadButtonProps {
 const DataFileUploadButton = (props: DataFileUploadButtonProps) => {
   const { onChange } = props;
   const fakeUploadButtonRef = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
 
   const triggerFileInput: KeyboardEventHandler = (event) => {
     if (event.key === ' ' || event.key === 'Enter') {
@@ -28,7 +30,7 @@ const DataFileUploadButton = (props: DataFileUploadButtonProps) => {
         <S.UploadIconWrapper>
           <FileUploadIcon />
         </S.UploadIconWrapper>
-        <S.Text>설정 데이터 업로드</S.Text>
+        <S.Text>{t('options.dataManage.uploadButton')}</S.Text>
       </S.FakeUploadButton>
       <S.UploadInput
         type="file"

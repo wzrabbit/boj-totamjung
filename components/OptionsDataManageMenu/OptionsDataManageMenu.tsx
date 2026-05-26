@@ -8,6 +8,7 @@ import Text from '@/components/common/Text';
 import { SaveIcon, FileDownloadIcon, FileDeleteIcon } from '@/assets/svg';
 import useOptionsDataManageMenu from '@/hooks/useOptionsDataManageMenu';
 import DataFileUploadButton from './DataFileUploadButton';
+import { useTranslation } from '@/i18n';
 
 const OptionsDataManageMenu = () => {
   const {
@@ -21,13 +22,14 @@ const OptionsDataManageMenu = () => {
     uploadOptionsData,
     closeModal,
   } = useOptionsDataManageMenu();
+  const { t } = useTranslation();
 
   return (
     <S.Container>
-      <MenuTitle title="데이터 관리" iconSrc={<SaveIcon />} />
+      <MenuTitle title={t('options.dataManage.title')} iconSrc={<SaveIcon />} />
       <IconButton
         type="button"
-        name="설정 데이터 내보내기"
+        name={t('options.dataManage.exportButton')}
         size="large"
         color="cyan"
         disabled={false}
@@ -39,7 +41,7 @@ const OptionsDataManageMenu = () => {
       <DataFileUploadButton onChange={stageOptionsData} />
       <IconButton
         type="button"
-        name="설정 데이터 초기화"
+        name={t('options.dataManage.resetButton')}
         size="large"
         color="#ff5050"
         disabled={false}
@@ -49,20 +51,19 @@ const OptionsDataManageMenu = () => {
         }}
       />
       <Text type="normal" fontSize={16}>
-        현재 설정을 백업해 두고 싶으시거나, 다른 기기로 데이터를 옮기고 싶으실
-        경우 설정 파일에 대한 데이터를 세이브파일 형태로 내보내거나, 업로드할 수
-        있습니다.
+        {t('options.dataManage.description1')}
       </Text>
       <Text type="normal" fontSize={16}>
-        토탐정 세이브파일의 확장자는 <b>.ttj</b>입니다.
+        {t('options.dataManage.description2Prefix')} <b>.ttj</b>
+        {t('options.dataManage.description2Suffix')}
       </Text>
       <SimpleModal
-        title="데이터 내보내기"
+        title={t('options.dataManage.extractModalTitle')}
         actionType="cancelConfirm"
         width="350px"
         height="auto"
         open={activeModal === 'extract'}
-        message="현재 설정을 세이브파일로 내보냅니다. 계속하시려면 [확인] 버튼을 눌러 주세요."
+        message={t('options.dataManage.extractModalMessage')}
         onConfirm={extractOptionsData}
         onClose={closeModal}
       />

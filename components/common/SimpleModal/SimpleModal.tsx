@@ -2,6 +2,7 @@ import Modal, { ModalActionButtonsContainer } from '@/components/common/Modal';
 import IconButton from '@/components/common/IconButton';
 import { theme as styledTheme } from '@/styles/theme';
 import { CheckCircleIcon, CloseCircleIcon } from '@/assets/svg';
+import { useTranslation } from '@/i18n';
 import * as S from './SimpleModal.styled';
 import type { MainTheme } from '@/types/mainTheme';
 
@@ -87,11 +88,12 @@ const SimpleModal = (props: SimpleModalProps) => {
 
 const ConfirmButton = (props: Omit<ConfirmModalProps, 'actionType'>) => {
   const { theme = 'totamjung', onClose } = props;
+  const { t } = useTranslation();
 
   return (
     <IconButton
       type="button"
-      name="확인"
+      name={t('common.confirm')}
       size="medium"
       iconSrc={<CheckCircleIcon />}
       color={
@@ -110,12 +112,13 @@ const CancelConfirmButtons = (
   props: Omit<CancelConfirmModalProps, 'actionType'>,
 ) => {
   const { theme = 'totamjung', onClose, onConfirm } = props;
+  const { t } = useTranslation();
 
   return (
     <>
       <IconButton
         type="button"
-        name="취소"
+        name={t('common.cancel')}
         size="medium"
         iconSrc={<CloseCircleIcon />}
         color={
@@ -128,7 +131,7 @@ const CancelConfirmButtons = (
       />
       <IconButton
         type="button"
-        name="확인"
+        name={t('common.confirm')}
         size="medium"
         iconSrc={<CheckCircleIcon />}
         color={
@@ -145,12 +148,13 @@ const CancelConfirmButtons = (
 
 const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
   const { theme = 'totamjung', onYesSelect, onNoSelect } = props;
+  const { t } = useTranslation();
 
   return (
     <>
       <IconButton
         type="button"
-        name="예"
+        name={t('common.yes')}
         size="medium"
         width="80px"
         iconSrc={<CheckCircleIcon />}
@@ -164,7 +168,7 @@ const YesNoButtons = (props: Omit<YesNoModalProps, 'actionType'>) => {
       />
       <IconButton
         type="button"
-        name="아니요"
+        name={t('common.no')}
         size="medium"
         iconSrc={<CloseCircleIcon />}
         color={styledTheme.colors.RED}

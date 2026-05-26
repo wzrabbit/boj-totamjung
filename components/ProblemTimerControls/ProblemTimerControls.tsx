@@ -7,6 +7,7 @@ import {
   TrashIcon,
 } from '@/assets/svg';
 import { toPx } from '@/utils/toPx';
+import { useTranslation } from '@/i18n';
 
 interface BaseTimerControls {
   hours: number;
@@ -73,6 +74,7 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
     onStop,
     onEdit,
   } = props;
+  const { t } = useTranslation();
   const { transparent, normal } = getTransparentAndNormalTimeParts(
     hours,
     minutes,
@@ -90,25 +92,31 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
       <S.ButtonContainer $maxButtonCount={hasDeleteButton ? 3 : 2}>
         {status === 'play' && (
           <S.ControlButton
-            aria-label="문제 타이머 일시정지하기"
+            aria-label={t('widget.timer.pauseAriaLabel')}
             onClick={onPause}
           >
             <PauseIcon />
           </S.ControlButton>
         )}
         {status === 'pause' && (
-          <S.ControlButton aria-label="문제 타이머 시작하기" onClick={onPlay}>
+          <S.ControlButton
+            aria-label={t('widget.timer.playAriaLabel')}
+            onClick={onPlay}
+          >
             <PlayIcon />
           </S.ControlButton>
         )}
         {status !== 'stop' && (
-          <S.ControlButton aria-label="문제 타이머 정지하기" onClick={onStop}>
+          <S.ControlButton
+            aria-label={t('widget.timer.stopAriaLabel')}
+            onClick={onStop}
+          >
             <StopIcon />
           </S.ControlButton>
         )}
         {status === 'stop' && (
           <S.ControlButton
-            aria-label="문제 타이머 시간 설정하기"
+            aria-label={t('widget.timer.setTimeAriaLabel')}
             onClick={onEdit}
           >
             <ClockEditIcon />
@@ -116,7 +124,7 @@ const ProblemTimerControls = (props: ProblemTimerControlsProps) => {
         )}
         {hasDeleteButton && (
           <S.ControlButton
-            aria-label="타이머 삭제하기"
+            aria-label={t('widget.timer.deleteAriaLabel')}
             onClick={props.onDelete}
           >
             <TrashIcon />

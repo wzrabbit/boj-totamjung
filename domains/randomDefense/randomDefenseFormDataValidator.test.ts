@@ -8,7 +8,7 @@ import {
 import type { RandomDefenseFormData } from '@/types/randomDefense';
 
 const emptyValidFormData: RandomDefenseFormData = {
-  mode: 'easy',
+  mode: 'simple',
   title: '',
   handle: '',
   solvedMin: '',
@@ -25,7 +25,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
   describe('정상적인 추첨을 이루는 값이 주어질 경우, true를 반환해야 한다.', () => {
     const testcases: RandomDefenseFormData[] = [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '연습 1',
         handle: 'testuser1234',
         solvedMin: '1',
@@ -38,7 +38,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: '',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '123123123123123123123123123123',
         handle: '1_ABc__DeFgHIJ0_KlM9',
         solvedMin: '0',
@@ -51,7 +51,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: 'asdf',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: 'X',
         handle: 'abc',
         solvedMin: '300',
@@ -64,7 +64,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: 'a'.repeat(999),
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '테스트 연습 1',
         handle: '',
         solvedMin: '',
@@ -77,7 +77,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: '',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: 'solved max',
         handle: '',
         solvedMin: '100000000',
@@ -90,7 +90,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: '',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '1★ Practice ☆@!?※△  NOR+=',
         handle: '      ',
         solvedMin: '   ',
@@ -103,7 +103,7 @@ describe('# Test 1 - 정상 추첨 판정', () => {
         customQuery: '',
       },
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '0',
         handle: '',
         solvedMin: '',
@@ -160,14 +160,17 @@ describe('# Test 2 - 잘못된 추첨명에 대응하기', () => {
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: `추첨 이름은 ${TITLE_MAX_LENGTH}자 이하여야 해요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.titleTooLong',
+        substitutions: [String(TITLE_MAX_LENGTH)],
+      },
       focusElementName: 'title',
     });
   });
 });
 
-describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
-  test('핸들 이름이 비어있지 않으면서, 핸들명이 3자 미만으로 너무 짧을 경우 관련 오류 메시지를 반환해야 한다.', () => {
+describe('# Test 3 - 잘못된 아이디에 대응하기', () => {
+  test('아이디가 비어있지 않으면서, 아이디 길이가 3자 미만으로 너무 짧을 경우 관련 오류 메시지를 반환해야 한다.', () => {
     const randomDefenseFormData: RandomDefenseFormData = {
       ...emptyValidFormData,
       handle: 'ab',
@@ -175,12 +178,12 @@ describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: '핸들(닉네임)은 3자 이상 20자 이하여야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.handleLength' },
       focusElementName: 'handle',
     });
   });
 
-  test('핸들 이름이 비어있지 않으면서, 핸들명이 20자 초과로 너무 길 경우 관련 오류 메시지를 반환해야 한다.', () => {
+  test('아이디가 비어있지 않으면서, 아이디 길이가 20자 초과로 너무 길 경우 관련 오류 메시지를 반환해야 한다.', () => {
     const randomDefenseFormData: RandomDefenseFormData = {
       ...emptyValidFormData,
       handle: 'too_looooooooooooooooong_handle',
@@ -188,12 +191,12 @@ describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: '핸들(닉네임)은 3자 이상 20자 이하여야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.handleLength' },
       focusElementName: 'handle',
     });
   });
 
-  describe(`핸들 이름이 비어있지 않으면서, 핸들명의 형식이 올바르지 않을 경우 관련 오류 메시지를 반환해야 한다.`, () => {
+  describe(`아이디가 비어있지 않으면서, 아이디 형식이 올바르지 않을 경우 관련 오류 메시지를 반환해야 한다.`, () => {
     const testcases: RandomDefenseFormData[] = [
       {
         ...emptyValidFormData,
@@ -221,8 +224,7 @@ describe('# Test 3 - 잘못된 핸들명에 대응하기', () => {
       expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
         isValid: false,
         focusElementName: 'handle',
-        errorMessage:
-          '핸들(닉네임)은 영문자, 숫자, 언더바(_), 하이픈(-)으로만 이루어져야 해요.',
+        errorMessage: { key: 'errors.randomDefenseForm.handleFormat' },
       });
     });
   });
@@ -238,7 +240,7 @@ describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => 
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: '맞은 사람 수의 하한은 양의 정수 또는 0이어야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.solvedMinFormat' },
       focusElementName: 'solvedMin',
     });
   });
@@ -252,7 +254,7 @@ describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => 
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: '맞은 사람 수의 하한은 양의 정수 또는 0이어야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.solvedMinFormat' },
       focusElementName: 'solvedMin',
     });
   });
@@ -266,7 +268,7 @@ describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => 
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: '맞은 사람 수의 상한은 양의 정수 또는 0이어야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.solvedMaxFormat' },
       focusElementName: 'solvedMax',
     });
   });
@@ -280,7 +282,7 @@ describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => 
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: '맞은 사람 수의 하한은 양의 정수 또는 0이어야 해요.',
+      errorMessage: { key: 'errors.randomDefenseForm.solvedMinFormat' },
       focusElementName: 'solvedMin',
     });
   });
@@ -294,7 +296,10 @@ describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => 
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: `맞은 사람 수는 ${MAX_SOLVED_COUNT.toLocaleString()}명 이하여야 해요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.solvedCountTooLarge',
+        substitutions: [MAX_SOLVED_COUNT.toLocaleString()],
+      },
       focusElementName: 'solvedMin',
     });
   });
@@ -308,7 +313,10 @@ describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => 
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: `맞은 사람 수는 ${MAX_SOLVED_COUNT.toLocaleString()}명 이하여야 해요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.solvedCountTooLarge',
+        substitutions: [MAX_SOLVED_COUNT.toLocaleString()],
+      },
       focusElementName: 'solvedMax',
     });
   });
@@ -322,7 +330,9 @@ describe('# Test 4 - 잘못된 맞은 사람 수 범위에 대응하기', () => 
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: '맞은 사람 수의 하한은 상한보다 클 수 없어요.',
+      errorMessage: {
+        key: 'errors.randomDefenseForm.solvedMinGreaterThanMax',
+      },
       focusElementName: 'solvedMin',
     });
   });
@@ -338,7 +348,9 @@ describe('# Test 5 - 잘못된 난이도 범위에 대응하기', () => {
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: '난이도의 범위는 하한보다 상한이 더 낮을 수 없어요.',
+      errorMessage: {
+        key: 'errors.randomDefenseForm.difficultyRangeInverted',
+      },
     });
   });
 });
@@ -352,7 +364,10 @@ describe('# Test 6 - 잘못된 알고리즘 분류 아이디에 대응하기', (
 
     expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
       isValid: false,
-      errorMessage: `추첨에 사용할 알고리즘의 개수는 ${MAX_SEARCH_ALGORITHMS_COUNT.toLocaleString()}개 이하여야 해요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.algorithmCountTooMany',
+        substitutions: [MAX_SEARCH_ALGORITHMS_COUNT.toLocaleString()],
+      },
     });
   });
 
@@ -379,8 +394,7 @@ describe('# Test 6 - 잘못된 알고리즘 분류 아이디에 대응하기', (
     test.each(testcases)('#%#', (randomDefenseFormData) => {
       expect(validateRandomDefenseFormData(randomDefenseFormData)).toEqual({
         isValid: false,
-        errorMessage:
-          '잘못된 알고리즘이 포함되어 있는 것 같습니다. 페이지 새로고침 후 다시 시도해 주세요.',
+        errorMessage: { key: 'errors.randomDefenseForm.invalidAlgorithm' },
       });
     });
   });

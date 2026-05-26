@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const EasyMode: Story = {
   args: {
-    mode: 'easy',
+    mode: 'simple',
     onClick: fn(),
   },
 };

@@ -1,29 +1,40 @@
 import type { ProblemInfo } from '@/types/randomDefense';
+import { getMessage } from '@/i18n/dict';
+import type { ResolvedLanguage } from '@/i18n';
 
 const diceEmoji = '\u{1F3B2}';
-const greenCheckEmoji = '\u2705';
+const greenCheckEmoji = '✅';
 const scrollEmoji = '\u{1f4dc}';
 
 export const getProblemInfosInMarkdownText = (
   slotTitle: string,
   problemInfos: ProblemInfo[],
+  language: ResolvedLanguage,
 ) => {
+  const t = (
+    key: Parameters<typeof getMessage>[1],
+    substitutions?: readonly string[],
+  ) => getMessage(language, key, substitutions);
+
   const problemListInMarkdownText = problemInfos
-    .map(
-      ({ problemId, title }) =>
-        `- ${problemId}번 - ${title} (https://acmicpc.net/problem/${problemId})`,
+    .map(({ problemId, title }) =>
+      t('markdown.gacha.problemListItem', [
+        String(problemId),
+        title,
+        String(problemId),
+      ]),
     )
     .join('\n');
 
   return `
-# 추첨 결과 ${diceEmoji}
+# ${t('markdown.gacha.headingResult')} ${diceEmoji}
 
-## 추첨 정보 ${greenCheckEmoji}
+## ${t('markdown.gacha.headingInfo')} ${greenCheckEmoji}
 
-- 추첨 이름: ${slotTitle}
-- 문제 수: ${problemInfos.length}
+- ${t('markdown.gacha.drawName', [slotTitle])}
+- ${t('markdown.gacha.problemCount', [String(problemInfos.length)])}
 
-## 문제 목록 ${scrollEmoji}
+## ${t('markdown.gacha.headingProblemList')} ${scrollEmoji}
 ${problemListInMarkdownText}
 `.trim();
 };

@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from '@/i18n';
 
 const useLockTimer = () => {
+  const { t } = useTranslation();
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
   const [endTime, setEndTime] = useState(0);
-  const [timerDisplayText, setTimerDisplayText] = useState('보기');
+  const [timerDisplayText, setTimerDisplayText] = useState(
+    t('hooks.lockTimer.show'),
+  );
 
   useEffect(() => {
     if (!isTimerRunning) {
-      setTimerDisplayText('보기');
+      setTimerDisplayText(t('hooks.lockTimer.show'));
       return;
     }
 
@@ -15,7 +19,7 @@ const useLockTimer = () => {
       const remainTime = endTime - Date.now();
 
       if (remainTime <= 0) {
-        setTimerDisplayText('보기');
+        setTimerDisplayText(t('hooks.lockTimer.show'));
         setIsTimerRunning(false);
         return;
       }
@@ -29,7 +33,11 @@ const useLockTimer = () => {
       ).padStart(2, '0');
 
       setTimerDisplayText(
-        `잠김 (🔒︎${remainHours}:${remainMinutes}:${remainSeconds} 후 보기 가능)`,
+        t('hooks.lockTimer.lockedFormat', [
+          String(remainHours),
+          remainMinutes,
+          remainSeconds,
+        ]),
       );
     };
 
@@ -40,7 +48,7 @@ const useLockTimer = () => {
     return () => {
       clearInterval(lockTimer);
     };
-  }, [isTimerRunning, endTime]);
+  }, [isTimerRunning, endTime, t]);
 
   const setTimerByDuration = (duration: number) => {
     const newEndTime = Date.now() + duration;

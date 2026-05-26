@@ -1,6 +1,7 @@
 import type { MainTheme } from '@/types/mainTheme';
 import * as S from './SpeechBubble.styled';
 import { CloseIcon } from '@/assets/svg';
+import { useTranslation } from '@/i18n';
 import type { ReactNode } from 'react';
 
 type SpeechBubbleProps = PlainSpeechBubbleProps | CloseButtonSpeechBubbleProps;
@@ -26,6 +27,7 @@ interface PlainSpeechBubbleProps {
 
 const SpeechBubble = (props: SpeechBubbleProps) => {
   const { open, content, theme, direction, maxWidth, hasCloseButton } = props;
+  const { t } = useTranslation();
 
   return (
     <S.Container
@@ -44,7 +46,7 @@ const SpeechBubble = (props: SpeechBubbleProps) => {
           <S.CloseButton
             $totamjungTheme={theme}
             type="button"
-            aria-label="닫기"
+            aria-label={t('common.close')}
             onClick={props.onClose}
           >
             <CloseIcon />

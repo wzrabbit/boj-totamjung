@@ -1,4 +1,5 @@
 import type { QuickSlotNo } from '@/types/randomDefense';
+import { useTranslation } from '@/i18n';
 import * as S from './SlotPagination.styled';
 
 interface SlotPaginationProps {
@@ -11,6 +12,7 @@ const SLOT_NOS: QuickSlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 const SlotPagination = (props: SlotPaginationProps) => {
   const { selectedSlotNo, occupiedSlotNos, onChange } = props;
+  const { t } = useTranslation();
 
   return (
     <S.Container>
@@ -22,8 +24,10 @@ const SlotPagination = (props: SlotPaginationProps) => {
             onClick={() => {
               onChange(slotNo);
             }}
-            aria-label={`${slotNo}번 슬롯 선택하기. ${
-              slotNo === selectedSlotNo ? '이미 선택되어 있는 슬롯입니다' : ''
+            aria-label={`${t('quickSlots.pagination.selectAriaLabel', [String(slotNo)])} ${
+              slotNo === selectedSlotNo
+                ? t('quickSlots.pagination.alreadySelectedSuffix')
+                : ''
             }`}
           >
             {slotNo}

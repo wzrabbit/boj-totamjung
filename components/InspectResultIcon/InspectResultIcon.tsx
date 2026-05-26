@@ -1,4 +1,5 @@
 import { theme as styledTheme } from '@/styles/theme';
+import { useTranslation } from '@/i18n';
 import type { BojExtendedTheme, TotamjungTheme } from '@/types/mainTheme';
 
 interface InspectResultIconProps {
@@ -9,12 +10,6 @@ interface InspectResultIconProps {
 const iconSources = {
   check: browser.runtime.getURL('/inspect-result-check.png'),
   question: browser.runtime.getURL('/inspect-result-question.png'),
-};
-
-const descriptions = {
-  check: '이 문제는 알고 있는 알고리즘만으로 풀 수 있는 문제입니다.',
-  question:
-    '이 문제를 풀기 위해서는 모르는 알고리즘을 사용해야 할 수 있습니다.',
 };
 
 const filters: Record<TotamjungTheme | BojExtendedTheme, string> = {
@@ -30,6 +25,10 @@ const filters: Record<TotamjungTheme | BojExtendedTheme, string> = {
  */
 const InspectResultIcon = (props: InspectResultIconProps) => {
   const { theme, icon } = props;
+  const { t } = useTranslation();
+
+  const description =
+    icon === 'check' ? t('widget.inspect.check') : t('widget.inspect.question');
 
   const styles = {
     width: '26px',
@@ -43,8 +42,8 @@ const InspectResultIcon = (props: InspectResultIconProps) => {
     <img
       src={iconSources[icon]}
       style={styles}
-      alt={descriptions[icon]}
-      title={descriptions[icon]}
+      alt={description}
+      title={description}
       draggable="false"
     />
   );

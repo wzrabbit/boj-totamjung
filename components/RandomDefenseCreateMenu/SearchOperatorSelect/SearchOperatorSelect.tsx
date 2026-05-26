@@ -1,5 +1,7 @@
 import { CheckIcon } from '@/assets/svg';
-import type { SearchOperator, SearchOperatorInfo } from '@/types/randomDefense';
+import type { SearchOperator } from '@/types/randomDefense';
+import { useTranslation } from '@/i18n';
+import type { TranslationKey } from '@/i18n';
 import * as S from './SearchOperatorSelect.styled';
 
 interface SearchOperatorSelectProps {
@@ -7,30 +9,21 @@ interface SearchOperatorSelectProps {
   onClick: (operator: SearchOperator) => void;
 }
 
-const searchOperatorInfos: readonly SearchOperatorInfo[] = [
-  {
-    operator: 'OR',
-    description:
-      'OR: 선택된 알고리즘 분류 중 하나 이상 포함되는 문제들만 추첨에서 등장합니다.',
-  },
-  {
-    operator: 'AND',
-    description:
-      'AND: 선택된 알고리즘 분류 모두를 포함하는 문제들만 추첨에서 등장합니다.',
-  },
-  {
-    operator: 'NOR',
-    description:
-      'NOR: 선택된 알고리즘 분류 모두를 포함하지 않는 문제들만 추첨에서 등장합니다.',
-  },
-];
+const DESCRIPTION_KEYS: Record<SearchOperator, TranslationKey> = {
+  OR: 'randomDefenseCreate.searchOperator.orDescription',
+  AND: 'randomDefenseCreate.searchOperator.andDescription',
+  NOR: 'randomDefenseCreate.searchOperator.norDescription',
+};
 
 const SearchOperatorSelect = (props: SearchOperatorSelectProps) => {
   const { selectedOperator, onClick } = props;
+  const { t } = useTranslation();
+
+  const operators: SearchOperator[] = ['OR', 'AND', 'NOR'];
 
   return (
     <S.Container>
-      {searchOperatorInfos.map(({ operator, description }) => (
+      {operators.map((operator) => (
         <S.ButtonContainer key={operator}>
           {operator === selectedOperator && (
             <S.CheckIconWrapper>
@@ -39,8 +32,10 @@ const SearchOperatorSelect = (props: SearchOperatorSelectProps) => {
           )}
           <S.Button
             type="button"
-            title={description}
-            aria-label={`알고리즘 검색 옵션을 ${operator}로 설정하기`}
+            title={t(DESCRIPTION_KEYS[operator])}
+            aria-label={t('randomDefenseCreate.searchOperator.setAriaLabel', [
+              operator,
+            ])}
             $isSelected={operator === selectedOperator}
             onClick={() => {
               onClick(operator);

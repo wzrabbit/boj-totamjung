@@ -2,7 +2,14 @@ import { useState } from 'react';
 import OptionsNav from './OptionsNav';
 import SimpleModal from '@/components/common/SimpleModal';
 import TotamjungInfoModal from './TotamjungInfoModal';
-import { settingsTitle, guidebookButton, infoButton } from '@/assets/png';
+import LanguageSelector from './LanguageSelector';
+import {
+  settingsTitle,
+  settingsTitleEn,
+  guidebookButton,
+  infoButton,
+} from '@/assets/png';
+import { useTranslation } from '@/i18n';
 import type { OptionsNavCategory } from '@/types/options';
 import { TOTAMJUNG_GUIDE_URL } from '@/constants/urls';
 import * as S from './OptionsHeader.styled';
@@ -17,11 +24,15 @@ type OptionsHeaderModal = 'none' | 'guidePageOpenConfirm' | 'totamjungInfo';
 const OptionsHeader = (props: OptionsHeaderProps) => {
   const { selectedCategory, onCategoryChange } = props;
   const [activeModal, setActiveModal] = useState<OptionsHeaderModal>('none');
+  const { t, language } = useTranslation();
 
   return (
     <S.Container>
       <S.Title>
-        <S.OptionsLogoImage src={settingsTitle} alt="토탐정 설정" />
+        <S.OptionsLogoImage
+          src={language === 'en' ? settingsTitleEn : settingsTitle}
+          alt={t('browserTab.optionsTitle')}
+        />
       </S.Title>
       <OptionsNav
         selectedCategory={selectedCategory}
@@ -31,9 +42,10 @@ const OptionsHeader = (props: OptionsHeaderProps) => {
         <S.VersionText>{`v${
           browser.runtime.getManifest().version
         }`}</S.VersionText>
+        <LanguageSelector />
         <S.Button
           type="button"
-          aria-label="도움말"
+          aria-label={t('options.nav.guideAriaLabel')}
           onClick={() => {
             setActiveModal('guidePageOpenConfirm');
           }}
@@ -42,7 +54,7 @@ const OptionsHeader = (props: OptionsHeaderProps) => {
         </S.Button>
         <S.Button
           type="button"
-          aria-label="버전 정보 및 문의"
+          aria-label={t('options.nav.infoAriaLabel')}
           onClick={() => {
             setActiveModal('totamjungInfo');
           }}
@@ -51,12 +63,12 @@ const OptionsHeader = (props: OptionsHeaderProps) => {
         </S.Button>
       </S.ButtonPanel>
       <SimpleModal
-        title="도움말 페이지 열기 확인"
+        title={t('options.nav.guideConfirmTitle')}
         actionType="yesNo"
         width="350px"
         height="auto"
         open={activeModal === 'guidePageOpenConfirm'}
-        message="토탐정 사용 가이드 페이지를 열람하시겠어요?"
+        message={t('options.nav.guideConfirmMessage')}
         onYesSelect={() => {
           window.open(TOTAMJUNG_GUIDE_URL.LANDING);
           setActiveModal('none');

@@ -5,6 +5,7 @@ import Input from '@/components/common/Input';
 import useConfirmInput from '@/hooks/useConfirmInput';
 import { theme } from '@/styles/theme';
 import { CloseCircleIcon, TrashIcon } from '@/assets/svg';
+import { useTranslation } from '@/i18n';
 import * as S from './OptionsDataResetModal.styled';
 
 interface OptionsDataResetModalProps {
@@ -13,38 +14,39 @@ interface OptionsDataResetModalProps {
   onReset: () => void;
 }
 
-const DATA_RESET_CONFIRM_TEXT = '초기화에 동의합니다';
-
 const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
   const { open, onClose, onReset } = props;
+  const { t } = useTranslation();
+  const confirmText = t('options.dataManage.resetConfirmText');
   const { inputValue, isSameWithConfirmText, updateInputValue } =
     useConfirmInput({
-      confirmText: DATA_RESET_CONFIRM_TEXT,
+      confirmText,
     });
 
   return (
-    <Modal title="데이터 초기화" open={open} onClose={onClose}>
+    <Modal
+      title={t('options.dataManage.resetModalTitle')}
+      open={open}
+      onClose={onClose}
+    >
       <S.ContentContainer>
         <Text type="normal" fontSize={16}>
-          초기화 전 아래의 주의사항을 읽어 주십시오:
+          {t('options.dataManage.resetWarningIntro')}
         </Text>
         <S.WarnList>
           <S.WarnListItem>
-            데이터를 초기화할 경우 퀵 슬롯의 쿼리, 추첨 기록 등의 중요한
-            데이터를 포함하여 모든 데이터가 초기화됩니다.
+            {t('options.dataManage.resetWarning1')}
           </S.WarnListItem>
           <S.WarnListItem>
-            초기화를 진행할 경우 다시 되돌릴 수 없습니다. 중요한 데이터를
-            보존하시고 싶으신 경우 먼저 "데이터 내보내기" 를 이용해 데이터를
-            백업해 두실 것을 권장드립니다.
+            {t('options.dataManage.resetWarning2')}
           </S.WarnListItem>
           <S.WarnListItem>
-            초기화 이후에는 설정 페이지가 자동으로 새로고침됩니다.
+            {t('options.dataManage.resetWarning3')}
           </S.WarnListItem>
         </S.WarnList>
         <Text type="normal" fontSize={16}>
-          위의 주의사항을 이해하셨고, 데이터 초기화를 진행하고 싶으시면, 하단의
-          입력창에 <b>{DATA_RESET_CONFIRM_TEXT}</b>를 입력해 주십시오.
+          {t('options.dataManage.resetInstructionPrefix')} <b>{confirmText}</b>
+          {t('options.dataManage.resetInstructionSuffix')}
         </Text>
         <S.ConfirmInputWrapper>
           <Input
@@ -55,7 +57,9 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
             borderWidth={2}
             value={inputValue}
             textAlign="center"
-            placeholder={`"${DATA_RESET_CONFIRM_TEXT}"를 입력해 주세요`}
+            placeholder={t('options.dataManage.resetInputPlaceholder', [
+              confirmText,
+            ])}
             hasError={false}
             onChange={updateInputValue}
           />
@@ -64,7 +68,7 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
       <ModalActionButtonsContainer>
         <IconButton
           type="button"
-          name="취소"
+          name={t('common.cancel')}
           size="medium"
           iconSrc={<CloseCircleIcon />}
           color={theme.colors.GRAY_300}
@@ -73,7 +77,7 @@ const OptionsDataResetModal = (props: OptionsDataResetModalProps) => {
         />
         <IconButton
           type="button"
-          name="초기화"
+          name={t('options.dataManage.resetActionButton')}
           size="medium"
           iconSrc={<TrashIcon />}
           color={theme.colors.RED}

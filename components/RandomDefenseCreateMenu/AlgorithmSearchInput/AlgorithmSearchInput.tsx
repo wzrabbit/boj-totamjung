@@ -3,6 +3,7 @@ import MiniAlgorithmButton from './MiniAlgorithmButton';
 import useAlgorithmSearchInput from '@/hooks/randomDefense/useAlgorithmSearchInput';
 import useRovingFocus from '@/hooks/useRovingFocus';
 import { ALGORITHM_INFOS } from '@/constants/algorithmInfos';
+import { useTranslation, getAlgorithmDisplayName } from '@/i18n';
 
 interface AlgorithmSearchInputProps {
   selectedAlgorithmIds: number[];
@@ -11,6 +12,7 @@ interface AlgorithmSearchInputProps {
 
 const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
   const { selectedAlgorithmIds, onChange } = props;
+  const { language, t } = useTranslation();
   const {
     isOpen,
     inputValue,
@@ -39,7 +41,7 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
               ({ id }) => id === selectedId,
             );
             const searchedName = searchedAlgorithm
-              ? searchedAlgorithm.name
+              ? getAlgorithmDisplayName(searchedAlgorithm, language)
               : '';
 
             return (
@@ -56,7 +58,7 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
           <S.SearchInput
             ref={inputRef}
             maxLength={100}
-            aria-label="알고리즘을 입력해 주세요"
+            aria-label={t('options.algorithmPool.searchInputAriaLabel')}
             $isOpen={isOpen}
             value={inputValue}
             onChange={updateInputValue}
@@ -69,7 +71,9 @@ const AlgorithmSearchInput = (props: AlgorithmSearchInputProps) => {
           const searchedAlgorithm = ALGORITHM_INFOS.find(
             ({ id }) => id === selectedId,
           );
-          const searchedName = searchedAlgorithm ? searchedAlgorithm.name : '';
+          const searchedName = searchedAlgorithm
+            ? getAlgorithmDisplayName(searchedAlgorithm, language)
+            : '';
 
           return (
             <MiniAlgorithmButton

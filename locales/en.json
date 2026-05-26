@@ -1,0 +1,493 @@
+{
+  "extensionName": "Detective Toh",
+  "extensionDescription": "[BOJ-Extension] Algorithm tag hider & Random Defense, Detective Toh!",
+
+  "language": {
+    "label": "Language",
+    "auto": "Auto (Browser language)",
+    "ko": "한국어",
+    "en": "English"
+  },
+
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No",
+    "close": "Close",
+    "modalCloseAriaLabel": "Close modal",
+    "on": "ON",
+    "off": "OFF"
+  },
+
+  "options": {
+    "nav": {
+      "algorithmHider": "Algorithm Hider",
+      "randomDefense": "Random Defense",
+      "appearanceAndDataManage": "Appearance & Data",
+      "guideAriaLabel": "Guide",
+      "infoAriaLabel": "Version info & contact",
+      "guideConfirmTitle": "Open Guide Page",
+      "guideConfirmMessage": "Open the Detective Toh user guide page?"
+    },
+
+    "sections": {
+      "hider": {
+        "algorithmsTitle": "Manage Known Algorithms"
+      },
+      "randomDefense": {
+        "title": "Random Defense"
+      }
+    },
+
+    "hider": {
+      "lockTimeTitle": "Lock Duration Settings",
+      "tierHiderTitle": "Tier Hider Settings",
+      "hideTierLegend": "Hide difficulty of unsolved problems",
+      "hide": "Hide",
+      "doNotHide": "Do not hide",
+      "warnHighTierLegend": "High difficulty warning",
+      "doNotUse": "Do not use",
+      "warnAtHighTierSuffix": "or higher will trigger a warning",
+      "revealOnHoverLegend": "Reveal difficulty when hovering over the tier icon",
+      "reveal": "Reveal",
+      "doNotReveal": "Do not reveal",
+      "sourceHiderTitle": "Source Hider Settings",
+      "hideSourceLegend": "Hide the problem source",
+      "basicTitle": "Basic Settings",
+      "algorithmHiderUsageLegend": "How to reveal whether a problem is solvable using only known algorithms",
+      "revealOnClick": "Reveal on click",
+      "revealAlways": "Always reveal",
+      "problemTagLockUsageLegend": "Algorithm tag lock method",
+      "lockOnClick": "Lock on click",
+      "lockAuto": "Lock automatically"
+    },
+
+    "appearance": {
+      "themeTitle": "Theme Settings",
+      "themeLegend": "Use Toh's theme",
+      "themeUse": "Use",
+      "themeDoNotUse": "Do not use",
+      "fontTitle": "Font Settings",
+      "fontBodyLegend": "Problem body font",
+      "fonts": {
+        "default": "Default",
+        "nanumGothic": "Nanum Gothic",
+        "nanumGothicCoding": "Nanum Gothic Coding",
+        "nanumMyeongjo": "Nanum Myeongjo",
+        "doHyeon": "Do Hyeon",
+        "jua": "Jua",
+        "notoSerifKr": "Noto Serif KR",
+        "sunflower": "Sunflower",
+        "yeonSung": "Yeon Sung",
+        "cuteFont": "Cute Font",
+        "gaegu": "Gaegu",
+        "gothicA1": "Gothic A1",
+        "gowunBatang": "Gowun Batang",
+        "gowunDodum": "Gowun Dodum",
+        "hiMelody": "Hi Melody",
+        "ibmPlexSans": "IBM Plex Sans",
+        "poorStory": "Poor Story",
+        "singleDay": "Single Day",
+        "songMyung": "Song Myung",
+        "stylish": "Stylish",
+        "pretendard": "Pretendard",
+        "neoDunggeunmo": "NeoDunggeunmo",
+        "spoqaHanSansNeo": "Spoqa Han Sans Neo",
+        "notoSerif": "Noto Serif",
+        "hahmlet": "Hahmlet",
+        "diphylleia": "Diphylleia",
+        "cookieRun": "CookieRun"
+      }
+    },
+
+    "dataManage": {
+      "title": "Data Management",
+      "exportButton": "Export Settings",
+      "uploadButton": "Upload Settings",
+      "resetButton": "Reset Settings",
+      "description1": "You can export your current settings to a save file, or upload a save file to restore them — useful for backups or transferring data between devices.",
+      "description2Prefix": "The Detective Toh save file extension is",
+      "description2Suffix": ".",
+
+      "extractModalTitle": "Export Data",
+      "extractModalMessage": "Export current settings to a save file. Click [Confirm] to proceed.",
+
+      "resetModalTitle": "Reset Data",
+      "resetConfirmText": "I agree to reset",
+      "resetWarningIntro": "Please read the warnings below before resetting:",
+      "resetWarning1": "Resetting will erase all data, including critical data such as Quick Slot queries and history records.",
+      "resetWarning2": "Reset cannot be undone. If you want to preserve important data, we recommend using \"Export Settings\" first to back up your data.",
+      "resetWarning3": "The settings page will reload automatically after reset.",
+      "resetInstructionPrefix": "If you understand the warnings above and want to proceed with the reset, please type",
+      "resetInstructionSuffix": "in the input field below.",
+      "resetInputPlaceholder": "Please type \"$1\"",
+      "resetActionButton": "Reset",
+
+      "uploadModalTitle": "Upload Data",
+      "uploadConfirmText": "I understand",
+      "uploadWarningIntro": "Please read the warnings below before uploading:",
+      "uploadWarning1": "Uploading will overwrite your existing data — in other words, your existing data will be lost.",
+      "uploadWarning2": "Upload cannot be undone. If you want to preserve existing data, we recommend using \"Export Settings\" first to back up your data.",
+      "uploadWarning3": "The settings page will reload automatically after upload.",
+      "uploadInstructionPrefix": "If you understand the warnings above and want to proceed with the upload, please type",
+      "uploadInstructionSuffix": "in the input field below.",
+      "uploadInputPlaceholder": "Please type \"$1\"",
+      "uploadActionButton": "Upload"
+    },
+
+    "totamjungInfo": {
+      "modalTitle": "About Detective Toh",
+      "appName": "Detective Toh",
+      "versionLabel": "Version",
+      "buildSuffix": "build",
+      "developerLabel": "Developer",
+      "developerHandle": "WizardRabbit",
+      "bugReportButton": "Report Bug / Suggestion",
+      "releaseNotesButton": "View Release Notes",
+      "githubButton": "Visit GitHub Repository",
+      "complainTitle": "Why would you...",
+      "complainMessage": "Could you please stop poking me!?",
+      "intro1": "\"Check whether a problem is solvable using only algorithms you know, without revealing the algorithm tags\"",
+      "intro2": "\"Use a timer to lock algorithm tags for a set duration so they cannot be revealed\"",
+      "intro3": "\"Save frequently used solved.ac search queries in slots, and run Random Defense with a single hotkey from within BOJ\"",
+      "intro4": "\"Enjoy Toh's gorgeous, immersive theme\"",
+      "intro5": "\"Apply a variety of fonts to the problem body to suit your taste\"",
+      "intro6": "\"Use solved.ac's high-difficulty warning on BOJ as well\""
+    },
+
+    "algorithmPool": {
+      "noResultTitle": "No search results.",
+      "noResultDescription": "Please check your search keyword for typos.",
+      "searchPlaceholder": "Enter an algorithm tag...",
+      "checkAllLabel": "Select All",
+      "uncheckAllLabel": "Deselect All",
+      "checkAllAriaLabel": "Select all algorithm tags",
+      "uncheckAllAriaLabel": "Deselect all algorithm tags",
+      "checkAllConfirmTitle": "Confirm Select All",
+      "checkAllConfirmMessage": "Select all algorithm tags?",
+      "uncheckAllConfirmTitle": "Confirm Deselect All",
+      "uncheckAllConfirmMessage": "Deselect all algorithm tags?",
+      "searchInputAriaLabel": "Enter an algorithm tag"
+    },
+
+    "tierSelect": {
+      "openAriaLabel": "Change warning threshold tier",
+      "selectTierAriaLabel": "Set $1 as the warning threshold tier"
+    },
+
+    "queryInput": {
+      "noAutocomplete": "No autocomplete results."
+    }
+  },
+
+  "widget": {
+    "topButtonAriaLabel": "Detective Toh widget. Click to scroll to the top of the page, or right-click to open the widget.",
+    "openOptionsAriaLabel": "Open Detective Toh settings page",
+    "themeOnAriaLabel": "Turn on Toh's theme",
+    "themeOffAriaLabel": "Turn off Toh's theme",
+    "randomDefenseAriaLabel": "Run Random Defense",
+    "welcomeLine1": "Thank you for installing Detective Toh!",
+    "welcomeLine2Prefix": "Right-click the widget",
+    "welcomeLine2Suffix": " to explore everything Detective Toh can do.",
+
+    "timer": {
+      "pauseAriaLabel": "Pause problem timer",
+      "playAriaLabel": "Start problem timer",
+      "stopAriaLabel": "Stop problem timer",
+      "setTimeAriaLabel": "Set problem timer duration",
+      "deleteAriaLabel": "Delete timer"
+    },
+
+    "tagLockTimer": {
+      "hoursAriaLabel": "Hours",
+      "minutesAriaLabel": "Minutes",
+      "hoursUnit": "h",
+      "minutesUnit": "m"
+    },
+
+    "toast": {
+      "closeAriaLabel": "Close toast"
+    },
+
+    "inspect": {
+      "check": "This problem can be solved using only algorithms you know.",
+      "question": "Solving this problem may require algorithms you don't know."
+    },
+
+    "problemCard": {
+      "ariaLabel": "Problem #$1 $2"
+    },
+
+    "problemTimerInfo": {
+      "problemAriaLabel": "Problem #$1 $2"
+    },
+
+    "cardBox": {
+      "openAriaLabel": "Open the card box and run the draw"
+    }
+  },
+
+  "quickSlots": {
+    "frameTitle": "Quick Slots",
+    "copyQueryButton": "Copy Query",
+    "editButton": "Edit",
+    "deleteButton": "Delete",
+    "gachaPullButton": "Gacha Pull",
+    "copyDoneTitle": "Query Copied",
+    "copyDoneMessage": "Query copied to clipboard!",
+    "deleteConfirmTitle": "Delete Draw",
+    "deleteConfirmMessage": "Delete the draw saved in slot $1?",
+
+    "hotkey": {
+      "notInUse": "Hotkey: Disabled",
+      "f2Combo": "Hotkey: F2 + $1",
+      "altCombo": "Hotkey: $1 + $2",
+      "switchAriaLabel": "Switch hotkey"
+    },
+
+    "slotInfo": {
+      "nameLabel": "Draw Name",
+      "queryLabel": "Query",
+      "empty": "(empty)"
+    },
+
+    "pagination": {
+      "selectAriaLabel": "Select slot $1.",
+      "alreadySelectedSuffix": "This slot is already selected"
+    },
+
+    "edit": {
+      "modalTitle": "Edit Draw",
+      "nameLabel": "Draw Name",
+      "namePlaceholder": "0 ~ 30 chars",
+      "nameAriaLabel": "Enter a new draw name",
+      "queryLabel": "Query",
+      "queryPlaceholder": "Enter a new query",
+      "advancedSearchLinkText": "solved.ac advanced problem search",
+      "advancedSearchSuffix": " page to learn how to write solved.ac search queries!",
+      "proPlanNotice": "Draws are performed while signed out, so solved.ac Pro-only queries are not available."
+    }
+  },
+
+  "randomDefenseCreate": {
+    "frameTitle": "Create Draw",
+    "nameLabel": "Draw Name",
+    "namePlaceholder": "0 ~ 30 chars",
+    "nameAriaLabel": "Draw name",
+    "excludeHandleLabel": "Handle to exclude from search",
+    "excludeHandlePlaceholder": "3 ~ 20 chars",
+    "excludeHandleAriaLabel": "Handle to exclude from search",
+    "solvedRangeLabel": "Solved count",
+    "solvedMinAriaLabel": "Minimum solved count",
+    "solvedMaxAriaLabel": "Maximum solved count",
+    "languageLabel": "Problem language",
+    "languageAriaLabel": "Choose problem language",
+    "languageKo": "Korean",
+    "languageEn": "English",
+    "languageBoth": "Korean & English",
+    "languageAll": "All languages",
+    "tierRangeLabel": "Difficulty range",
+    "includeAlgorithmsLabel": "Algorithms to include in search",
+    "queryLabel": "Query",
+    "queryPlaceholder": "1 ~ $1 chars",
+    "advancedSearchLinkText": "solved.ac advanced problem search",
+    "advancedSearchSuffix": " page to learn how to write solved.ac search queries!",
+    "proPlanNotice": "Draws are performed while signed out, so solved.ac Pro-only queries are not available.",
+
+    "createButton": {
+      "ariaLabel": "Create draw in slot $1",
+      "title": "Create Draw",
+      "slotNumber": "Slot − $1",
+      "loading": "Loading..."
+    },
+
+    "capsule": {
+      "simpleAriaLabel": "Switch to Simple Mode",
+      "simpleLabel": "Simple Mode",
+      "manualAriaLabel": "Switch to Manual Mode",
+      "manualLabel": "Manual Mode"
+    },
+
+    "miniAlgorithm": {
+      "addAriaLabel": "Add $1 to the search algorithm list",
+      "removeAriaLabel": "Remove $1 from the search algorithm list"
+    },
+
+    "tierSlider": {
+      "startAriaLabel": "Set start tier of the range",
+      "endAriaLabel": "Set end tier of the range"
+    },
+
+    "tierPreset": {
+      "unratedAriaLabel": "Set tier to Unrated",
+      "bronzeAriaLabel": "Set range from Bronze V to Bronze I",
+      "silverAriaLabel": "Set range from Silver V to Silver I",
+      "goldAriaLabel": "Set range from Gold V to Gold I",
+      "platinumAriaLabel": "Set range from Platinum V to Platinum I",
+      "diamondAriaLabel": "Set range from Diamond V to Diamond I",
+      "rubyAriaLabel": "Set range from Ruby V to Ruby I"
+    },
+
+    "searchOperator": {
+      "orDescription": "OR: Only problems containing at least one of the selected algorithm tags appear in the draw.",
+      "andDescription": "AND: Only problems containing all of the selected algorithm tags appear in the draw.",
+      "norDescription": "NOR: Only problems containing none of the selected algorithm tags appear in the draw.",
+      "setAriaLabel": "Set algorithm search option to $1"
+    }
+  },
+
+  "randomDefenseHistory": {
+    "frameTitle": "Draw History",
+    "indicatorDefaultMessage": "$1 problem(s) currently saved in history; maximum is $2.\nWhen the limit is exceeded, the oldest entries are removed first.",
+    "indicatorWarning": "\n\nThe number of saved problems is approaching the limit. Make some space to avoid losing entries you want to keep.",
+    "indicatorFull": "\n\nThe maximum number of saved problems has been reached. New draws will remove the oldest entries. Make some space to avoid losing entries you want to keep.",
+    "hideTierLabel": "Hide tier",
+    "hideTierAriaLabel": "Hide tier",
+    "emptyTitle": "Draw History",
+    "emptyDescription": "Once you run a draw, your history will appear here.",
+    "clearButton": "Clear Draw History",
+    "clearAriaLabel": "Clear draw history",
+    "clearConfirmTitle": "Confirm Clear History",
+    "clearConfirmMessage": "Remove all draw history?",
+
+    "item": {
+      "problemAriaLabel": "Problem #$1 $2",
+      "removeAriaLabel": "Remove from draw history"
+    }
+  },
+
+  "randomDefenseGacha": {
+    "modalTitle": "Gacha Pull",
+    "loadingMessage": "Please wait...",
+    "cardClickHint": "Click the card box to reveal your result",
+    "retryButton": "Retry",
+    "copyProblemsButton": "Copy Problem List",
+    "saveHistoryButton": "Save to Draw History",
+    "pullAgainButton": "Pull again!",
+    "showTierAriaLabel": "Show problem difficulty",
+    "hideTierAriaLabel": "Hide problem difficulty",
+    "tierHiddenLabel": "Hide tier: $1",
+    "audioLabel": "Sound: $1",
+    "audioOnAriaLabel": "Turn on sound",
+    "audioOffAriaLabel": "Turn off sound"
+  },
+
+  "gachaProblemCount": {
+    "modalTitle": "Gacha Pull",
+    "promptMessage": "Enter the number of problems to pull.",
+    "rangeLabel": "1 to $1 problems",
+    "hotkeyTip": "TIP: You can also start a Gacha Pull from within BOJ by long-pressing the hotkey for the corresponding slot number.",
+    "confirmButton": "Confirm"
+  },
+
+  "errors": {
+    "randomDefenseForm": {
+      "titleTooLong": "Draw name must be $1 characters or fewer.",
+      "handleLength": "Handle must be 3 to 20 characters.",
+      "handleFormat": "Handle must contain only letters, digits, underscore (_), and hyphen (-).",
+      "solvedMinFormat": "Minimum solved count must be a non-negative integer.",
+      "solvedMaxFormat": "Maximum solved count must be a non-negative integer.",
+      "solvedCountTooLarge": "Solved count must be $1 or fewer.",
+      "solvedMinGreaterThanMax": "Minimum solved count cannot exceed the maximum.",
+      "difficultyRangeInverted": "The maximum difficulty cannot be lower than the minimum.",
+      "algorithmCountTooMany": "The number of algorithms used in the draw must be $1 or fewer.",
+      "invalidAlgorithm": "An invalid algorithm was detected. Please reload the page and try again.",
+      "queryEmpty": "Query cannot be empty. Please enter a query.",
+      "queryTooLong": "Query is too long. Please shorten it to $1 characters or fewer."
+    },
+    "querySuggestion": {
+      "fetchFailed": "Failed to load autocomplete results.",
+      "unexpected": "An unexpected error occurred. Please report this bug to the developer."
+    },
+    "randomDefenseChoose": {
+      "title": "An error occurred while drawing the problem.",
+      "queryInvalid": "The query you wrote when creating the draw seems to be invalid.",
+      "queryTooLong": "This issue may occur if the query used to create the draw is excessively long.",
+      "ipBlocked": "Your current IP is blocked from using the solved.ac API.",
+      "tryDisableVpn": "If you are using a VPN, please turn it off and try again.",
+      "rateLimitedAdvice": "Too many Random Defense runs in a short time. Usually resolved by waiting a few minutes and retrying.",
+      "rateLimitedExplanation": "This occurs when too many requests are sent to the solved.ac API in a short time.",
+      "rateLimitedOtherCause": "If you haven't used the draw feature excessively, requests from other Detective Toh features or other extensions may also be the cause.",
+      "serverErrorRetry": "First, try refreshing the page and running Random Defense again.",
+      "serverErrorUnstable": "If the issue persists after multiple retries, the solved.ac API server may be unstable. Please try again later.",
+      "unknownErrorIntro": "Sorry, this is an error Detective Toh does not recognize yet.",
+      "unknownErrorAdvice": "Try refreshing, verifying the query, and checking whether the solved.ac API server is stable.",
+      "statusCodeInfo": "Status Code is $1. Please include this information when reporting the issue to the developer.",
+      "responseShapeMismatch": "The data loaded from the API does not match the shape Detective Toh expects.",
+      "responseShapeCause": "Most likely, Detective Toh's implementation is wrong, or solved.ac changed the API shape.",
+      "responseShapeReportPlease": "This is unlikely to be a transient issue. Please report this error to the developer.",
+      "noMatchingProblem": "No problems match the draw conditions.",
+      "checkTypo": "Check the query for typos.",
+      "broadenQuery": "Try a different topic or a broader query.",
+      "notEnoughMatchingProblem": "Not enough problems match the draw conditions.",
+      "foundLessThanRequested": "Found $1 problem(s), which is fewer than the $2 you requested. The draw could not be performed.",
+      "broadenOrReduce": "Try a broader query, or reduce the problem count to $1 or fewer.",
+      "networkUnstable": "Your network connection may be unstable. Please check your connection."
+    }
+  },
+
+  "defaultSlots": {
+    "goldRandomDefense": "Gold Random Defense",
+    "silverRandomDefense": "Silver Random Defense",
+    "allRandom": "All Random",
+    "fallbackTitle": "Draw $1"
+  },
+
+  "browserTab": {
+    "optionsTitle": "Detective Toh Settings"
+  },
+
+  "markdown": {
+    "gacha": {
+      "headingResult": "Draw Result",
+      "headingInfo": "Draw Info",
+      "headingProblemList": "Problem List",
+      "drawName": "Draw name: $1",
+      "problemCount": "Problem count: $1",
+      "problemListItem": "- #$1 - $2 (https://acmicpc.net/problem/$3)"
+    }
+  },
+
+  "hooks": {
+    "gacha": {
+      "apiDataMismatch": "Data mismatch detected in the API response.",
+      "contactDeveloper": "Please let us know about this issue.",
+      "settingsDataMismatch": "Data mismatch detected in your saved settings.",
+      "copiedToClipboard": "Problem list copied to clipboard!",
+      "savedToHistory": "Problem list saved to draw history!"
+    },
+    "queryInput": {
+      "loadingFallback": "Please wait..."
+    },
+    "defaultSlotTitle": "Draw $1",
+    "lockTimer": {
+      "show": "Show",
+      "lockedFormat": "Locked (🔒︎$1:$2:$3 remaining)"
+    },
+    "randomDefense": {
+      "emptySlotTitle": "Slot $1 is currently empty.",
+      "emptySlotDescription1": "If you haven't created a draw yet, create one in that slot from the settings page first!",
+      "emptySlotDescription2": "To change which slot is used when you click the widget, update the selected slot number in the Quick Slots menu in settings.",
+      "dataMismatchTitle": "Data mismatch detected.",
+      "dataMismatchDescription": "Please let us know about this issue."
+    },
+    "widget": {
+      "inspectQuestionTitle": "Solving this problem may require algorithms you don't know.",
+      "inspectCheckTitle": "This problem can be solved using only algorithms you know."
+    },
+    "dataUpload": {
+      "errorTitle": "Failed to upload data",
+      "errorExtensionMessage": "Save file must have the \".ttj\" extension.",
+      "errorSizeMessage": "Save file must be 1MiB or smaller.",
+      "errorFormatMessage": "Save file format is invalid.",
+      "errorUnknownVersionMessage": "Cannot determine the version of this save file. If you believe this is a bug, please contact the developer.",
+      "errorTooHighVersionMessage": "This save file's version ($1) is either unrecognized or higher than the maximum supported by this build (5).",
+      "errorV2CorruptedMessage": "v1.2.* save files are supported for upload, but this save file appears to be missing some or all of its data. If you believe this is a bug, please contact the developer.",
+      "errorV3CorruptedMessage": "v1.3 ~ v1.3.3.2 save files are supported for upload, but this save file appears to be missing some or all of its data. If you believe this is a bug, please contact the developer.",
+      "errorV4CorruptedMessage": "v1.3.4 save files are supported for upload, but this save file appears to be missing some or all of its data. If you believe this is a bug, please contact the developer.",
+      "errorCorruptedMessage": "This save file appears to be missing some or all of its data. If you believe this is a bug, please contact the developer.",
+      "errorInvalidDataMessage": "Data format is invalid. This can happen when a file not created by Detective Toh has its extension renamed to \".ttj\". Could you double-check the save file?"
+    }
+  }
+}

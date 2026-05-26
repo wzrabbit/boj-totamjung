@@ -6,8 +6,10 @@ import {
   fetchCheckedAlgorithmIds,
   saveCheckedAlgorithmIds,
 } from '@/domains/dataHandlers/checkedAlgorithmsHandler';
+import { useTranslation } from '@/i18n';
 
 const useAlgorithmPool = () => {
+  const { language } = useTranslation();
   const [keyword, setKeyword] = useState('');
   const [checkedAlgorithmIds, setCheckedAlgorithmIds] = useState<number[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -56,7 +58,7 @@ const useAlgorithmPool = () => {
     setCheckedAlgorithmIds([]);
   };
 
-  const items = getSearchResults(keyword);
+  const items = getSearchResults(keyword, language);
 
   return {
     keyword,

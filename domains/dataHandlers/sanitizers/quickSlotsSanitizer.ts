@@ -21,6 +21,8 @@ import type {
   QuickSlot,
 } from '@/types/randomDefense';
 import { V1 } from '@/types/legacyData';
+import { getMessage } from '@/i18n/dict';
+import { detectBrowserLanguage } from '@/i18n/detectBrowserLanguage';
 
 const SLOT_NOS: QuickSlotNo[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
@@ -41,7 +43,9 @@ const sanitizeQuickSlot = (slot: unknown, slotNo: QuickSlotNo): QuickSlot => {
     return {
       ...slot,
       isEmpty: false,
-      title: `추첨 ${slotNo}`,
+      title: getMessage(detectBrowserLanguage(), 'defaultSlots.fallbackTitle', [
+        String(slotNo),
+      ]),
     };
   }
 

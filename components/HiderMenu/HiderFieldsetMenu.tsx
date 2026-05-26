@@ -6,6 +6,7 @@ import ProblemTagLockTimer from '@/components/ProblemTagLockTimer';
 import { ToolsIcon, BookIcon } from '@/assets/svg';
 import { hiddenTierBadgeIcon } from '@/assets/png';
 import useHiderFieldsetMenu from '@/hooks/algorithm/useHiderFieldsetMenu';
+import { useTranslation } from '@/i18n';
 import * as S from './HiderFieldsetMenu.styled';
 
 const HiderFieldsetMenu = () => {
@@ -28,11 +29,12 @@ const HiderFieldsetMenu = () => {
     updateProblemTagLockUsage,
   } = useHiderFieldsetMenu();
   const { hours, minutes } = problemTagLockDuration;
+  const { t } = useTranslation();
 
   return (
     <S.Container>
       <MenuTitle
-        title="잠금 시간 설정"
+        title={t('options.hider.lockTimeTitle')}
         iconSrc={browser.runtime.getURL('/lock.png')}
       />
       <ProblemTagLockTimer
@@ -40,13 +42,16 @@ const HiderFieldsetMenu = () => {
         minutes={minutes}
         onChange={updateProblemTagLockDuration}
       />
-      <MenuTitle title="티어 가리개 설정" iconSrc={hiddenTierBadgeIcon} />
+      <MenuTitle
+        title={t('options.hider.tierHiderTitle')}
+        iconSrc={hiddenTierBadgeIcon}
+      />
       <Fieldset
-        legend="맞추지 않은 문제의 난이도 숨기기"
+        legend={t('options.hider.hideTierLegend')}
         name="shouldHideTier"
         options={[
-          { label: '숨기기', value: 'true' },
-          { label: '숨기지 않기', value: 'false' },
+          { label: t('options.hider.hide'), value: 'true' },
+          { label: t('options.hider.doNotHide'), value: 'false' },
         ]}
         checkedValue={
           shouldHideTier ? 'true' : shouldHideTier === undefined ? '' : 'false'
@@ -54,18 +59,18 @@ const HiderFieldsetMenu = () => {
         onChange={updateShouldHideTier}
       />
       <Fieldset
-        legend="어려운 문제 경고"
+        legend={t('options.hider.warnHighTierLegend')}
         name="shouldWarnHighTier"
         isVertical={true}
         disabled={!shouldHideTier}
         options={[
-          { label: '사용하지 않음', value: 'false' },
+          { label: t('options.hider.doNotUse'), value: 'false' },
           {
             label: (
               <S.WarningTierLabel>
                 <TierSelect selectedTier={warnTier} onChange={updateWarnTier} />
                 <Text type="semiPrimary" fontSize={16}>
-                  이상 난이도일 경우 경고
+                  {t('options.hider.warnAtHighTierSuffix')}
                 </Text>
               </S.WarningTierLabel>
             ),
@@ -76,23 +81,26 @@ const HiderFieldsetMenu = () => {
         onChange={updateShouldWarnHighTier}
       />
       <Fieldset
-        legend="티어 아이콘에 마우스를 올릴 경우 난이도 공개하기"
+        legend={t('options.hider.revealOnHoverLegend')}
         name="shouldRevealTierOnHover"
         disabled={!shouldHideTier}
         options={[
-          { label: '공개', value: 'true' },
-          { label: '공개하지 않음', value: 'false' },
+          { label: t('options.hider.reveal'), value: 'true' },
+          { label: t('options.hider.doNotReveal'), value: 'false' },
         ]}
         checkedValue={shouldRevealTierOnHover ? 'true' : 'false'}
         onChange={updateShouldRevealTierOnHover}
       />
-      <MenuTitle title="출처 가리개 설정" iconSrc={<BookIcon />} />
+      <MenuTitle
+        title={t('options.hider.sourceHiderTitle')}
+        iconSrc={<BookIcon />}
+      />
       <Fieldset
-        legend="문제의 출처 숨기기"
+        legend={t('options.hider.hideSourceLegend')}
         name="shouldHideSource"
         options={[
-          { label: '숨기기', value: 'true' },
-          { label: '숨기지 않기', value: 'false' },
+          { label: t('options.hider.hide'), value: 'true' },
+          { label: t('options.hider.doNotHide'), value: 'false' },
         ]}
         checkedValue={
           shouldHideSource
@@ -103,23 +111,26 @@ const HiderFieldsetMenu = () => {
         }
         onChange={updateShouldHideSource}
       />
-      <MenuTitle title="기본 설정" iconSrc={<ToolsIcon />} />
+      <MenuTitle
+        title={t('options.hider.basicTitle')}
+        iconSrc={<ToolsIcon />}
+      />
       <Fieldset
-        legend="알고 있는 알고리즘만으로 문제를 풀 수 있는지의 여부 공개 방법"
+        legend={t('options.hider.algorithmHiderUsageLegend')}
         name="algorithmHiderUsage"
         options={[
-          { label: '클릭하여 공개', value: 'click' },
-          { label: '항상 공개', value: 'always' },
+          { label: t('options.hider.revealOnClick'), value: 'click' },
+          { label: t('options.hider.revealAlways'), value: 'always' },
         ]}
         checkedValue={algorithmHiderUsage ?? ''}
         onChange={updateAlgorithmHiderUsage}
       />
       <Fieldset
-        legend="알고리즘 분류 잠금 방법"
+        legend={t('options.hider.problemTagLockUsageLegend')}
         name="problemTagLockUsage"
         options={[
-          { label: '클릭하여 잠금', value: 'click' },
-          { label: '자동으로 잠금', value: 'auto' },
+          { label: t('options.hider.lockOnClick'), value: 'click' },
+          { label: t('options.hider.lockAuto'), value: 'auto' },
         ]}
         checkedValue={problemTagLockUsage ?? ''}
         onChange={updateProblemTagLockUsage}

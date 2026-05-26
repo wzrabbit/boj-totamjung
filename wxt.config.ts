@@ -2,7 +2,7 @@ import { defineConfig } from 'wxt';
 import vitePluginSvgr from 'vite-plugin-svgr';
 
 export default defineConfig({
-  modules: ['@wxt-dev/module-react'],
+  modules: ['@wxt-dev/module-react', '@wxt-dev/i18n/module'],
   vite: () => ({
     plugins: [vitePluginSvgr()],
     define: {
@@ -12,7 +12,9 @@ export default defineConfig({
     },
   }),
   manifest: {
-    name: '토탐정',
+    name: '__MSG_extensionName__',
+    description: '__MSG_extensionDescription__',
+    default_locale: 'ko',
     permissions: ['storage'],
     host_permissions: ['https://solved.ac/api/v3/search/*'],
     web_accessible_resources: [

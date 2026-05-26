@@ -1,6 +1,7 @@
 import { fetchQuerySuggestion } from '@/domains/randomDefense/querySuggestionFetcher';
 import type { QuerySuggestion } from '@/types/randomDefense';
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from '@/i18n';
 import type {
   ChangeEventHandler,
   ForwardedRef,
@@ -92,9 +93,10 @@ interface useQueryInputParams {
 
 const useQueryInput = (params: useQueryInputParams) => {
   const { value, textareaRef, onChange } = params;
+  const { t } = useTranslation();
   const [suggestions, setSuggestions] = useState<QuerySuggestion[]>([]);
   const [fallbackMessage, setFallbackMessage] = useState<string | null>(
-    '잠시만 기다려주세요...',
+    t('hooks.queryInput.loadingFallback'),
   );
   const valueRef = useRef(value);
   const throttleRef = useRef(false);
@@ -120,7 +122,12 @@ const useQueryInput = (params: useQueryInputParams) => {
       }
 
       setSuggestions([]);
-      setFallbackMessage(querySuggestionResult.errorMessage);
+      setFallbackMessage(
+        t(
+          querySuggestionResult.errorMessage.key,
+          querySuggestionResult.errorMessage.substitutions,
+        ),
+      );
     };
 
     setTimeout(() => {

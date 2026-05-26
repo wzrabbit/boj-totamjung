@@ -7,6 +7,7 @@ import useAlgorithmPool from '@/hooks/algorithm/useAlgorithmPool';
 import useModalState from '@/hooks/useModalState';
 import { SearchIcon } from '@/assets/svg';
 import { allCheckedIcon, allUncheckedIcon, noSearchResult } from '@/assets/png';
+import { useTranslation } from '@/i18n';
 
 const AlgorithmPool = () => {
   const {
@@ -22,6 +23,7 @@ const AlgorithmPool = () => {
   const { activeModalName, openModal, closeModal } = useModalState<
     'checkAll' | 'uncheckAll'
   >();
+  const { t } = useTranslation();
 
   return (
     <S.Container role="group">
@@ -38,8 +40,8 @@ const AlgorithmPool = () => {
               imageSrc={noSearchResult}
               imageWidth={136}
               imageHeight={125}
-              title="검색 결과가 없습니다."
-              description="검색어에 오탈자가 있는지 확인해주세요."
+              title={t('options.algorithmPool.noResultTitle')}
+              description={t('options.algorithmPool.noResultDescription')}
             />
           )
         ) : (
@@ -52,7 +54,7 @@ const AlgorithmPool = () => {
             <SearchIcon />
           </S.SearchIconWrapper>
           <S.SearchInput
-            placeholder="알고리즘 분류를 입력해 주세요..."
+            placeholder={t('options.algorithmPool.searchPlaceholder')}
             value={keyword}
             onChange={handleChangeKeyword}
           />
@@ -63,32 +65,36 @@ const AlgorithmPool = () => {
             onClick={() => {
               openModal('checkAll');
             }}
-            aria-label="알고리즘 분류 전체 선택"
+            aria-label={t('options.algorithmPool.checkAllAriaLabel')}
             disabled={!isLoaded}
           >
             <S.CheckButtonImage src={allCheckedIcon} />
-            <S.CheckButtonLabel>전체 선택</S.CheckButtonLabel>
+            <S.CheckButtonLabel>
+              {t('options.algorithmPool.checkAllLabel')}
+            </S.CheckButtonLabel>
           </S.CheckButton>
           <S.CheckButton
             type="button"
             onClick={() => {
               openModal('uncheckAll');
             }}
-            aria-label="알고리즘 분류 전체 해제"
+            aria-label={t('options.algorithmPool.uncheckAllAriaLabel')}
             disabled={!isLoaded}
           >
             <S.CheckButtonImage src={allUncheckedIcon} />
-            <S.CheckButtonLabel>전체 해제</S.CheckButtonLabel>
+            <S.CheckButtonLabel>
+              {t('options.algorithmPool.uncheckAllLabel')}
+            </S.CheckButtonLabel>
           </S.CheckButton>
         </S.CheckButtonPanel>
       </S.ControlPanel>
       <SimpleModal
-        title="알고리즘 분류 전체 선택 확인"
+        title={t('options.algorithmPool.checkAllConfirmTitle')}
         actionType="yesNo"
         width="350px"
         height="auto"
         open={activeModalName === 'checkAll'}
-        message="모든 알고리즘 분류를 선택할까요?"
+        message={t('options.algorithmPool.checkAllConfirmMessage')}
         onYesSelect={() => {
           checkAllAlgorithms();
           closeModal();
@@ -96,12 +102,12 @@ const AlgorithmPool = () => {
         onNoSelect={closeModal}
       />
       <SimpleModal
-        title="알고리즘 분류 전체 해제 확인"
+        title={t('options.algorithmPool.uncheckAllConfirmTitle')}
         actionType="yesNo"
         width="350px"
         height="auto"
         open={activeModalName === 'uncheckAll'}
-        message="모든 알고리즘 분류를 선택 해제할까요?"
+        message={t('options.algorithmPool.uncheckAllConfirmMessage')}
         onYesSelect={() => {
           uncheckAllAlgorithms();
           closeModal();

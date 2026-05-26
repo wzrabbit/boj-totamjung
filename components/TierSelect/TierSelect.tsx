@@ -2,6 +2,7 @@ import * as S from './TierSelect.styled';
 import { CheckIcon, ArrowDownTriangleIcon } from '@/assets/svg';
 import { solvedAcNumericTierIcons } from '@/assets/svg/tier';
 import useSelect from '@/hooks/useSelect';
+import { useTranslation } from '@/i18n';
 import type { RatedTier } from '@/types/tierHider';
 
 interface TierSelectProps {
@@ -49,6 +50,7 @@ const ratedTierNames: Record<RatedTier, string> = {
 
 const TierSelect = (props: TierSelectProps) => {
   const { selectedTier: initSelectedValue, onChange } = props;
+  const { t } = useTranslation();
   const {
     selectedValue,
     updateSelectedValue,
@@ -65,7 +67,7 @@ const TierSelect = (props: TierSelectProps) => {
     <S.Container ref={containerRef}>
       <S.Button
         type="button"
-        aria-label="난이도 경고 시작 티어 변경하기"
+        aria-label={t('options.tierSelect.openAriaLabel')}
         $isActivated={isSelectOpen}
         ref={selectButtonRef}
         onClick={toggleSelect}
@@ -83,7 +85,9 @@ const TierSelect = (props: TierSelectProps) => {
           <S.ListItem key={tier}>
             <S.ListButton
               type="button"
-              aria-label={`${ratedTierNames[tier]}를 경고 시작 티어로 설정하기`}
+              aria-label={t('options.tierSelect.selectTierAriaLabel', [
+                ratedTierNames[tier],
+              ])}
               onClick={() => {
                 updateSelectedValue(tier);
               }}

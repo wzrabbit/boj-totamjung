@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from '@/i18n';
 import type {
   QuickSlotNo,
   Hotkey,
@@ -26,6 +27,7 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
     onSlotNoChange,
   } = params;
   const { selectedSlotNo, slots, hotkey } = quickSlotsInfo;
+  const { t } = useTranslation();
   const [shouldEditModalShow, setShouldEditModalShow] = useState(false);
   const [gachaProblemCount, setGachaProblemCount] = useState(0);
 
@@ -72,7 +74,10 @@ const useQuickSlotMenu = (params: UseQuickSlotMenuParams) => {
       return;
     }
 
-    const finalTitle = title.trim() === '' ? `추첨 ${selectedSlotNo}` : title;
+    const finalTitle =
+      title.trim() === ''
+        ? t('hooks.defaultSlotTitle', [String(selectedSlotNo)])
+        : title;
 
     onSlotChange(finalTitle, query);
     closeEditModal();

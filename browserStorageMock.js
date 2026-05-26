@@ -34,4 +34,8 @@ global.browser = {
       );
     },
   },
+
+  i18n: {
+    getUILanguage: () => 'ko',
+  },
 };

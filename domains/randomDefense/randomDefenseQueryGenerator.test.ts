@@ -5,7 +5,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
   const testcases: [RandomDefenseFormData, string][] = [
     [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '랜덤 디펜스',
         handle: 'test_user',
         solvedMin: '100',
@@ -21,7 +21,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
     ],
     [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '골랜디',
         handle: '',
         solvedMin: '',
@@ -37,7 +37,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
     ],
     [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '실버 그리디',
         handle: 'silverlove1234',
         solvedMin: '200',
@@ -53,7 +53,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
     ],
     [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '언레사냥',
         handle: 'ChoGosu',
         solvedMin: '',
@@ -69,7 +69,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
     ],
     [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: 'bfs random defense',
         handle: '',
         language: 'ko',
@@ -85,7 +85,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
     ],
     [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '단일 알고리즘 밴 테스트',
         handle: '',
         language: 'ko',
@@ -101,7 +101,7 @@ describe('#Test 1 - 쿼리 생성 테스트', () => {
     ],
     [
       {
-        mode: 'easy',
+        mode: 'simple',
         title: '수학시러',
         handle: '',
         solvedMin: '0',

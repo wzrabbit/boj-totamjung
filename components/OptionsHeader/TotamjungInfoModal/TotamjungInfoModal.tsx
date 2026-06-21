@@ -131,7 +131,7 @@ const TotamjungInfoModal = (props: TotamjungInfoModalProps) => {
         </S.ControlButtonsContainer>
         <SimpleModal
           title={t('options.totamjungInfo.complainTitle')}
-          width="350px"
+          width="380px"
           height="auto"
           open={activeModalName === 'totamjungComplain'}
           message={t('options.totamjungInfo.complainMessage')}

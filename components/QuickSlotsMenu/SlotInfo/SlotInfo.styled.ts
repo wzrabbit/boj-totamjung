@@ -29,7 +29,7 @@ export const TextLabel = styled.span<{
   display: inline-block;
   flex-shrink: 0;
 
-  width: 80px;
+  width: 90px;
   height: 20px;
 
   border-radius: 10px;

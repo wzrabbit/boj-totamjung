@@ -69,6 +69,7 @@ export const SearchInput = styled.input`
 
 export const CheckButtonPanel = styled.div`
   display: flex;
+  column-gap: 20px;
 
   user-select: none;
 `;
@@ -78,7 +79,7 @@ export const CheckButton = styled.button`
   align-items: center;
   column-gap: 6px;
 
-  width: 120px;
+  min-width: 100px;
   height: 100%;
 
   background-color: transparent;

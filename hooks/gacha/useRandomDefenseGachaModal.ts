@@ -11,6 +11,7 @@ import type { PreviewCardRanks } from '@/types/gacha';
 import { isGachaOptions } from '@/domains/dataHandlers/validators/gachaOptionsValidator';
 import { getProblemInfosInMarkdownText } from '@/domains/gacha/getProblemInfosInMarkdownText';
 import { useTranslation } from '@/i18n';
+import type { LocalizableMessage } from '@/i18n';
 
 interface UseRandomDefenseGachaModalParams {
   open: boolean;
@@ -54,10 +55,10 @@ const useRandomDefenseGachaModal = (
   const [gachaStatus, setGachaStatus] = useState<GachaStatus>('loading');
   const [problemInfos, setProblemInfos] = useState<ProblemInfo[]>([]);
   const [cardBoxColor, setCardBoxColor] = useState<CardBoxColor>('black');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [errorDescriptions, setErrorDescriptions] = useState<string | string[]>(
-    [],
-  );
+  const [errorLocalizableMessage, setErrorLocalizableMessage] =
+    useState<LocalizableMessage | null>(null);
+  const [errorLocalizableDescriptions, setErrorLocalizableDescriptions] =
+    useState<LocalizableMessage | LocalizableMessage[] | null>(null);
   const [isTierHidden, setIsTierHidden] = useState(false);
   const [isAudioMuted, setIsAudioMuted] = useState(true);
   const [notificationMessage, setNotificationMessage] = useState('');
@@ -81,28 +82,16 @@ const useRandomDefenseGachaModal = (
     });
 
     if (!isRandomDefenseResult(randomDefenseResult)) {
-      setErrorMessage(t('hooks.gacha.apiDataMismatch'));
-      setErrorDescriptions(t('hooks.gacha.contactDeveloper'));
+      setErrorLocalizableMessage({ key: 'hooks.gacha.apiDataMismatch' });
+      setErrorLocalizableDescriptions({ key: 'hooks.gacha.contactDeveloper' });
       setGachaStatus('error');
       return;
     }
 
     if (!randomDefenseResult.success) {
       const { errorMessage, errorDescriptions } = randomDefenseResult;
-      setErrorMessage(t(errorMessage.key, errorMessage.substitutions));
-      if (!errorDescriptions) {
-        setErrorDescriptions([]);
-      } else if (Array.isArray(errorDescriptions)) {
-        setErrorDescriptions(
-          errorDescriptions.map((message) =>
-            t(message.key, message.substitutions),
-          ),
-        );
-      } else {
-        setErrorDescriptions(
-          t(errorDescriptions.key, errorDescriptions.substitutions),
-        );
-      }
+      setErrorLocalizableMessage(errorMessage);
+      setErrorLocalizableDescriptions(errorDescriptions ?? null);
       setGachaStatus('error');
       return;
     }
@@ -118,8 +107,8 @@ const useRandomDefenseGachaModal = (
     });
 
     if (!isGachaOptions(gachaOptions)) {
-      setErrorMessage(t('hooks.gacha.settingsDataMismatch'));
-      setErrorDescriptions(t('hooks.gacha.contactDeveloper'));
+      setErrorLocalizableMessage({ key: 'hooks.gacha.settingsDataMismatch' });
+      setErrorLocalizableDescriptions({ key: 'hooks.gacha.contactDeveloper' });
       setGachaStatus('error');
       return;
     }
@@ -221,6 +210,20 @@ const useRandomDefenseGachaModal = (
       isAudioMuted,
     });
   }, [isLoaded, isTierHidden, isAudioMuted]);
+
+  const errorMessage = errorLocalizableMessage
+    ? t(errorLocalizableMessage.key, errorLocalizableMessage.substitutions)
+    : '';
+  const errorDescriptions: string | string[] = !errorLocalizableDescriptions
+    ? []
+    : Array.isArray(errorLocalizableDescriptions)
+      ? errorLocalizableDescriptions.map((message) =>
+          t(message.key, message.substitutions),
+        )
+      : t(
+          errorLocalizableDescriptions.key,
+          errorLocalizableDescriptions.substitutions,
+        );
 
   return {
     gachaStatus,

@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from '@/i18n';
+import type { LocalizableMessage } from '@/i18n';
 import { isRandomDefenseFormData } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import { validateRandomDefenseFormData } from '@/domains/randomDefense/randomDefenseFormDataValidator';
 import type { ChangeEventHandler, MouseEventHandler } from 'react';
@@ -37,7 +38,8 @@ const useRandomDefenseCreateMenu = (
   const { t } = useTranslation();
   const [randomDefenseFormData, setRandomDefenseFormData] =
     useState<RandomDefenseFormData>(initialRandomDefenseFormData);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorLocalizableMessage, setErrorLocalizableMessage] =
+    useState<LocalizableMessage | null>(null);
   const [errorElementName, setErrorElementName] = useState<string | undefined>(
     undefined,
   );
@@ -65,7 +67,7 @@ const useRandomDefenseCreateMenu = (
       ...prev,
       mode,
     }));
-    setErrorMessage('');
+    setErrorLocalizableMessage(null);
     setErrorElementName(undefined);
   };
 
@@ -150,17 +152,12 @@ const useRandomDefenseCreateMenu = (
       const query = generateRandomDefenseQuery(randomDefenseFormData);
 
       onSubmit(title, query);
-      setErrorMessage('');
+      setErrorLocalizableMessage(null);
       setErrorElementName(undefined);
       return;
     }
 
-    setErrorMessage(
-      t(
-        validationResult.errorMessage.key,
-        validationResult.errorMessage.substitutions,
-      ),
-    );
+    setErrorLocalizableMessage(validationResult.errorMessage);
     setErrorElementName(validationResult.focusElementName);
 
     const focusElementName = validationResult.focusElementName;
@@ -183,6 +180,10 @@ const useRandomDefenseCreateMenu = (
         break;
     }
   };
+
+  const errorMessage = errorLocalizableMessage
+    ? t(errorLocalizableMessage.key, errorLocalizableMessage.substitutions)
+    : '';
 
   return {
     mode,

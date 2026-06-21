@@ -47,9 +47,9 @@
       "hide": "Hide",
       "doNotHide": "Do not hide",
       "warnHighTierLegend": "High difficulty warning",
-      "doNotUse": "Do not use",
-      "warnAtHighTierSuffix": "or higher will trigger a warning",
-      "revealOnHoverLegend": "Reveal difficulty when hovering over the tier icon",
+      "doNotWarn": "Do not warn",
+      "warnAtHighTierSuffix": "or higher",
+      "revealOnHoverLegend": "Reveal difficulty on tier-icon hover",
       "reveal": "Reveal",
       "doNotReveal": "Do not reveal",
       "sourceHiderTitle": "Source Hider Settings",
@@ -189,7 +189,7 @@
     "randomDefenseAriaLabel": "Run Random Defense",
     "welcomeLine1": "Thank you for installing Detective Toh!",
     "welcomeLine2Prefix": "Right-click the widget",
-    "welcomeLine2Suffix": " to explore everything Detective Toh can do.",
+    "welcomeLine2Suffix": " to explore its features.",
 
     "timer": {
       "pauseAriaLabel": "Pause problem timer",
@@ -275,7 +275,7 @@
     "nameLabel": "Draw Name",
     "namePlaceholder": "0 ~ 30 chars",
     "nameAriaLabel": "Draw name",
-    "excludeHandleLabel": "Handle to exclude from search",
+    "excludeHandleLabel": "Handle to exclude",
     "excludeHandlePlaceholder": "3 ~ 20 chars",
     "excludeHandleAriaLabel": "Handle to exclude from search",
     "solvedRangeLabel": "Solved count",
@@ -297,7 +297,7 @@
 
     "createButton": {
       "ariaLabel": "Create draw in slot $1",
-      "title": "Create Draw",
+      "title": "Create",
       "slotNumber": "Slot − $1",
       "loading": "Loading..."
     },

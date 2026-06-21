@@ -68,175 +68,177 @@ const RandomDefenseCreateMenu = (props: RandomDefenseCreateMenuProps) => {
       padding="10px"
       title={t('randomDefenseCreate.frameTitle')}
     >
-      <S.Form>
+      <S.Container>
         <S.ErrorTextWrapper>
           <ErrorText errorMessage={errorMessage} fontSize={14} />
         </S.ErrorTextWrapper>
-        <S.RandomDefenseCapsuleButtonWrapper>
-          <RandomDefenseCapsuleButton mode={mode} onClick={setMode} />
-        </S.RandomDefenseCapsuleButtonWrapper>
-        <S.Label $width="380px">
-          <Text type="primary" fontSize={16}>
-            {t('randomDefenseCreate.nameLabel')}
-          </Text>
-          <Input
-            ref={titleRef}
-            type="text"
-            width="100%"
-            height="30px"
-            textAlign="left"
-            placeholder={t('randomDefenseCreate.namePlaceholder')}
-            aria-label={t('randomDefenseCreate.nameAriaLabel')}
-            name="title"
-            value={title}
-            maxLength={30}
-            hasError={errorElementName === 'title'}
-            onChange={setRandomDefenseInputValue}
-          />
-        </S.Label>
-        {mode === 'simple' ? (
-          <>
-            <S.Row $columnGap="50px">
-              <S.Label $width="190px">
-                <Text type="primary" fontSize={16}>
-                  {t('randomDefenseCreate.excludeHandleLabel')}
-                </Text>
-                <Input
-                  ref={handleRef}
-                  type="text"
-                  width="100%"
-                  height="30px"
-                  textAlign="left"
-                  placeholder={t(
-                    'randomDefenseCreate.excludeHandlePlaceholder',
-                  )}
-                  aria-label={t('randomDefenseCreate.excludeHandleLabel')}
-                  name="handle"
-                  value={handle}
-                  minLength={3}
-                  maxLength={20}
-                  hasError={errorElementName === 'handle'}
-                  onChange={setRandomDefenseInputValue}
-                />
-              </S.Label>
-              <S.PanelContainer $width="166px">
-                <Text type="primary" fontSize={16}>
-                  {t('randomDefenseCreate.solvedRangeLabel')}
-                </Text>
-                <S.SolvedRangeInputsContainer>
-                  <Input
-                    ref={solvedMinRef}
-                    type="number"
-                    width="70px"
-                    height="30px"
-                    textAlign="center"
-                    placeholder=""
-                    aria-label={t('randomDefenseCreate.solvedMinAriaLabel')}
-                    name="solvedMin"
-                    value={solvedMin}
-                    hasError={errorElementName === 'solvedMin'}
-                    onChange={setRandomDefenseInputValue}
-                  />
+        <S.Form>
+          <S.RandomDefenseCapsuleButtonWrapper>
+            <RandomDefenseCapsuleButton mode={mode} onClick={setMode} />
+          </S.RandomDefenseCapsuleButtonWrapper>
+          <S.Label $width="380px">
+            <Text type="primary" fontSize={16}>
+              {t('randomDefenseCreate.nameLabel')}
+            </Text>
+            <Input
+              ref={titleRef}
+              type="text"
+              width="100%"
+              height="30px"
+              textAlign="left"
+              placeholder={t('randomDefenseCreate.namePlaceholder')}
+              aria-label={t('randomDefenseCreate.nameAriaLabel')}
+              name="title"
+              value={title}
+              maxLength={30}
+              hasError={errorElementName === 'title'}
+              onChange={setRandomDefenseInputValue}
+            />
+          </S.Label>
+          {mode === 'simple' ? (
+            <>
+              <S.Row $columnGap="50px">
+                <S.Label $width="190px">
                   <Text type="primary" fontSize={16}>
-                    ~
+                    {t('randomDefenseCreate.excludeHandleLabel')}
                   </Text>
                   <Input
-                    ref={solvedMaxRef}
-                    type="number"
-                    width="70px"
+                    ref={handleRef}
+                    type="text"
+                    width="100%"
                     height="30px"
-                    textAlign="center"
-                    placeholder=""
-                    aria-label={t('randomDefenseCreate.solvedMaxAriaLabel')}
-                    name="solvedMax"
-                    value={solvedMax}
-                    hasError={errorElementName === 'solvedMax'}
+                    textAlign="left"
+                    placeholder={t(
+                      'randomDefenseCreate.excludeHandlePlaceholder',
+                    )}
+                    aria-label={t('randomDefenseCreate.excludeHandleAriaLabel')}
+                    name="handle"
+                    value={handle}
+                    minLength={3}
+                    maxLength={20}
+                    hasError={errorElementName === 'handle'}
                     onChange={setRandomDefenseInputValue}
                   />
-                </S.SolvedRangeInputsContainer>
-              </S.PanelContainer>
-              <S.PanelContainer $width="190px">
-                <Text type="primary" fontSize={16}>
-                  {t('randomDefenseCreate.languageLabel')}
-                </Text>
-                <Select
-                  options={languageOptions}
-                  selectedValue={language}
-                  width="130px"
-                  ariaLabel={t('randomDefenseCreate.languageAriaLabel')}
-                  onChange={setLanguage}
-                />
-              </S.PanelContainer>
-            </S.Row>
-            <S.PanelContainer $width="100%">
-              <Text type="primary" fontSize={16}>
-                {t('randomDefenseCreate.tierRangeLabel')}
-              </Text>
-              <S.DifficultyAdjustMenuWrapper>
-                <DifficultyAdjustMenu
-                  startTier={startTier}
-                  endTier={endTier}
-                  onChange={setTierRange}
-                />
-              </S.DifficultyAdjustMenuWrapper>
-            </S.PanelContainer>
-            <S.PanelContainer $width="446px">
-              <S.Row>
-                <Text type="primary" fontSize={16}>
-                  {t('randomDefenseCreate.includeAlgorithmsLabel')}
-                </Text>
-                <SearchOperatorSelect
-                  selectedOperator={searchOperator}
-                  onClick={setSearchOperator}
-                />
+                </S.Label>
+                <S.PanelContainer $width="166px">
+                  <Text type="primary" fontSize={16}>
+                    {t('randomDefenseCreate.solvedRangeLabel')}
+                  </Text>
+                  <S.SolvedRangeInputsContainer>
+                    <Input
+                      ref={solvedMinRef}
+                      type="number"
+                      width="70px"
+                      height="30px"
+                      textAlign="center"
+                      placeholder=""
+                      aria-label={t('randomDefenseCreate.solvedMinAriaLabel')}
+                      name="solvedMin"
+                      value={solvedMin}
+                      hasError={errorElementName === 'solvedMin'}
+                      onChange={setRandomDefenseInputValue}
+                    />
+                    <Text type="primary" fontSize={16}>
+                      ~
+                    </Text>
+                    <Input
+                      ref={solvedMaxRef}
+                      type="number"
+                      width="70px"
+                      height="30px"
+                      textAlign="center"
+                      placeholder=""
+                      aria-label={t('randomDefenseCreate.solvedMaxAriaLabel')}
+                      name="solvedMax"
+                      value={solvedMax}
+                      hasError={errorElementName === 'solvedMax'}
+                      onChange={setRandomDefenseInputValue}
+                    />
+                  </S.SolvedRangeInputsContainer>
+                </S.PanelContainer>
+                <S.PanelContainer $width="190px">
+                  <Text type="primary" fontSize={16}>
+                    {t('randomDefenseCreate.languageLabel')}
+                  </Text>
+                  <Select
+                    options={languageOptions}
+                    selectedValue={language}
+                    width="160px"
+                    ariaLabel={t('randomDefenseCreate.languageAriaLabel')}
+                    onChange={setLanguage}
+                  />
+                </S.PanelContainer>
               </S.Row>
-              <AlgorithmSearchInput
-                selectedAlgorithmIds={algorithmIds}
-                onChange={(foo) => {
-                  setAlgorithmIds(foo);
-                }}
-              />
-            </S.PanelContainer>
-          </>
-        ) : (
-          <>
-            <S.Label $width="100%">
-              <Text type="primary" fontSize={16}>
-                {t('randomDefenseCreate.queryLabel')}
-              </Text>
-              <QueryInput
-                ref={customQueryRef}
-                width="100%"
-                height="160px"
-                value={customQuery}
-                placeholder={t('randomDefenseCreate.queryPlaceholder', [
-                  String(MAX_CUSTOM_QUERY_LENGTH),
-                ])}
-                hasError={errorElementName === 'customQuery'}
-                onChange={setCustomQuery}
-              />
-            </S.Label>
-            <S.InformationTextContainer>
-              <Text type="normal" fontSize={14}>
-                <TextLink href="https://solved.ac/search" fontSize={14}>
-                  {t('randomDefenseCreate.advancedSearchLinkText')}
-                </TextLink>{' '}
-                {t('randomDefenseCreate.advancedSearchSuffix')}
-              </Text>
-              <Text type="normal" fontSize={14}>
-                {t('randomDefenseCreate.proPlanNotice')}
-              </Text>
-            </S.InformationTextContainer>
-          </>
-        )}
-        <S.RandomDefenseCreateButtonWrapper>
-          <RandomDefenseCreateButton
-            isLoaded={isLoaded}
-            selectedSlotNo={selectedSlotNo}
-            onClick={submitRandomDefense}
-          />
-        </S.RandomDefenseCreateButtonWrapper>
-      </S.Form>
+              <S.PanelContainer $width="100%">
+                <Text type="primary" fontSize={16}>
+                  {t('randomDefenseCreate.tierRangeLabel')}
+                </Text>
+                <S.DifficultyAdjustMenuWrapper>
+                  <DifficultyAdjustMenu
+                    startTier={startTier}
+                    endTier={endTier}
+                    onChange={setTierRange}
+                  />
+                </S.DifficultyAdjustMenuWrapper>
+              </S.PanelContainer>
+              <S.PanelContainer $width="446px">
+                <S.Row>
+                  <Text type="primary" fontSize={16}>
+                    {t('randomDefenseCreate.includeAlgorithmsLabel')}
+                  </Text>
+                  <SearchOperatorSelect
+                    selectedOperator={searchOperator}
+                    onClick={setSearchOperator}
+                  />
+                </S.Row>
+                <AlgorithmSearchInput
+                  selectedAlgorithmIds={algorithmIds}
+                  onChange={(foo) => {
+                    setAlgorithmIds(foo);
+                  }}
+                />
+              </S.PanelContainer>
+            </>
+          ) : (
+            <>
+              <S.Label $width="100%">
+                <Text type="primary" fontSize={16}>
+                  {t('randomDefenseCreate.queryLabel')}
+                </Text>
+                <QueryInput
+                  ref={customQueryRef}
+                  width="100%"
+                  height="160px"
+                  value={customQuery}
+                  placeholder={t('randomDefenseCreate.queryPlaceholder', [
+                    String(MAX_CUSTOM_QUERY_LENGTH),
+                  ])}
+                  hasError={errorElementName === 'customQuery'}
+                  onChange={setCustomQuery}
+                />
+              </S.Label>
+              <S.InformationTextContainer>
+                <Text type="normal" fontSize={14}>
+                  <TextLink href="https://solved.ac/search" fontSize={14}>
+                    {t('randomDefenseCreate.advancedSearchLinkText')}
+                  </TextLink>{' '}
+                  {t('randomDefenseCreate.advancedSearchSuffix')}
+                </Text>
+                <Text type="normal" fontSize={14}>
+                  {t('randomDefenseCreate.proPlanNotice')}
+                </Text>
+              </S.InformationTextContainer>
+            </>
+          )}
+          <S.RandomDefenseCreateButtonWrapper>
+            <RandomDefenseCreateButton
+              isLoaded={isLoaded}
+              selectedSlotNo={selectedSlotNo}
+              onClick={submitRandomDefense}
+            />
+          </S.RandomDefenseCreateButtonWrapper>
+        </S.Form>
+      </S.Container>
     </NamedFrame>
   );
 };

@@ -1,6 +1,5 @@
 import * as S from './ProblemTagLockTimer.styled';
 import { lockWithClockIcon } from '@/assets/png';
-import Text from '@/components/common/Text';
 import Input from '@/components/common/Input';
 import useProblemTagLockTimer from '@/hooks/tagLock/useProblemTagLockTimer';
 import { MAX_HOURS, MAX_MINUTES } from '@/constants/tagLock';
@@ -47,9 +46,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         onBlur={submitHours}
         aria-label={t('widget.tagLockTimer.hoursAriaLabel')}
       />
-      <Text type="normal" as="span" fontSize={16} width={30}>
-        {t('widget.tagLockTimer.hoursUnit')}
-      </Text>
+      <S.UnitLabel>{t('widget.tagLockTimer.hoursUnit')}</S.UnitLabel>
       <Input
         name="minutes"
         type="number"
@@ -69,9 +66,7 @@ const ProblemTagLockTimer = (props: ProblemTagLockTimerProps) => {
         onBlur={submitMinutes}
         aria-label={t('widget.tagLockTimer.minutesAriaLabel')}
       />
-      <Text type="normal" as="span" fontSize={16} width={30}>
-        {t('widget.tagLockTimer.minutesUnit')}
-      </Text>
+      <S.UnitLabel>{t('widget.tagLockTimer.minutesUnit')}</S.UnitLabel>
     </S.Container>
   );
 };

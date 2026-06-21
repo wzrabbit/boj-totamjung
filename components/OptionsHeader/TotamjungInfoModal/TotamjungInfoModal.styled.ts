@@ -17,7 +17,7 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   row-gap: 13px;
 
-  width: 310px;
+  width: 380px;
   max-width: 100%;
   height: 420px;
 
@@ -105,6 +105,6 @@ export const ControlButtonsContainer = styled.div`
   align-items: center;
   row-gap: 8px;
 
-  width: 220px;
+  width: 240px;
   margin: 0 auto;
 `;

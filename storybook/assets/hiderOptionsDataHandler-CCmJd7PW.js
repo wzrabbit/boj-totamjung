@@ -1,1 +1,0 @@
-import{S as t}from"./useTranslation-oInNA2-n.js";import{c as a}from"./defaultValues-CdP65zEr.js";import{i as r}from"./hiderOptionsValidator-CTYLfD5r.js";const n=async()=>{const o=(await browser.storage.local.get(t.HIDER_OPTIONS))[t.HIDER_OPTIONS];return r(o)?o:a},c=s=>{r(s)&&browser.storage.local.set({[t.HIDER_OPTIONS]:s})};export{n as f,c as s};

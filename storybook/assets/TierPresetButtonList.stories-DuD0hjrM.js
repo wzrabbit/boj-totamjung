@@ -1,5 +1,0 @@
-import{T as s}from"./TierPresetButtonList-BD-zN8Jq.js";import{f as n}from"./index-BnbMJD-K.js";import"./jsx-runtime-SwSI87LU.js";import"./index-C5e9SFkp.js";import"./styled-components.browser.esm-DmPUYCQi.js";import"./TierPresetButton-C5ZFsZ3G.js";import"./index-CElCL35T.js";import"./useTranslation-oInNA2-n.js";const l={title:"components/RandomDefenseCreateMenu/DifficultyAdjustMenu/TierPresetButtonList",component:s,argTypes:{onClick:{description:"이 리스트의 버튼이 클릭되었을 경우 실행시킬 콜백 함수입니다. 이 때 변경해야 하는 티어 범위와 함께 실행됩니다."}},parameters:{docs:{description:{component:"`TierPresetButtonList`은 무작위 추첨에서 티어를 설정할 때, 티어를 특정 범위로 빠르게 지정할 수 있는 버튼들을 모아둔 메뉴입니다."}}}},t={args:{onClick:n()}};var e,r,o;t.parameters={...t.parameters,docs:{...(e=t.parameters)==null?void 0:e.docs,source:{originalSource:`{
-  args: {
-    onClick: fn()
-  }
-}`,...(o=(r=t.parameters)==null?void 0:r.docs)==null?void 0:o.source}}};const T=["Default"];export{t as Default,T as __namedExportsOrder,l as default};

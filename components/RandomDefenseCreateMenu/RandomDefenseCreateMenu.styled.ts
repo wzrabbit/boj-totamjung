@@ -1,30 +1,33 @@
 import { styled } from 'styled-components';
 import type { CSSProperties } from 'react';
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+
+  height: 100%;
+`;
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
+  flex: 1;
+  min-height: 0;
   row-gap: 12px;
   position: relative;
 
   width: 100%;
-  height: 100%;
-  padding-top: 22px;
 
   z-index: 1;
 `;
 
-export const ErrorTextWrapper = styled.div`
-  position: absolute;
-  top: -32px;
-  right: 0;
-`;
+export const ErrorTextWrapper = styled.div``;
 
 export const RandomDefenseCapsuleButtonWrapper = styled.div`
   display: flex;
   position: absolute;
-  top: 26px;
+  top: 6px;
   right: 0;
 `;
 

@@ -48,8 +48,10 @@ describe('Test #2 - 잘못된 데이터 판정 테스트', () => {
     (title, query) => {
       expect(validateSlot(title, query)).toEqual({
         isValid: false,
-        errorMessage:
-          '추첨 이름의 길이가 너무 길어요. 30자 이하가 되도록 줄여 주세요.',
+        errorMessage: {
+          key: 'errors.randomDefenseForm.titleTooLong',
+          substitutions: ['30'],
+        },
         focusElementName: 'title',
       });
     },
@@ -60,7 +62,7 @@ describe('Test #2 - 잘못된 데이터 판정 테스트', () => {
     (title, query) => {
       expect(validateSlot(title, query)).toEqual({
         isValid: false,
-        errorMessage: '쿼리는 비워둘 수 없어요. 쿼리를 입력해 주세요.',
+        errorMessage: { key: 'errors.randomDefenseForm.queryEmpty' },
         focusElementName: 'query',
       });
     },
@@ -71,8 +73,10 @@ describe('Test #2 - 잘못된 데이터 판정 테스트', () => {
     (title, query) => {
       expect(validateSlot(title, query)).toEqual({
         isValid: false,
-        errorMessage:
-          '쿼리의 길이가 너무 길어요. 512자 이하가 되도록 줄여 주세요.',
+        errorMessage: {
+          key: 'errors.randomDefenseForm.queryTooLong',
+          substitutions: ['512'],
+        },
         focusElementName: 'query',
       });
     },

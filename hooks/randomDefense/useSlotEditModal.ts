@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { validateSlot } from '@/domains/randomDefense/slotValidator';
+import { useTranslation } from '@/i18n';
+import type { LocalizableMessage } from '@/i18n';
 
 interface UseSlotEditModalParams {
   initTitle: string;
@@ -9,9 +11,11 @@ interface UseSlotEditModalParams {
 
 const useSlotEditModal = (params: UseSlotEditModalParams) => {
   const { initTitle, initQuery, onSlotChange } = params;
+  const { t } = useTranslation();
   const [title, setTitle] = useState(initTitle);
   const [query, setQuery] = useState(initQuery);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorLocalizableMessage, setErrorLocalizableMessage] =
+    useState<LocalizableMessage | null>(null);
   const [errorElementName, setErrorElementName] = useState<string | undefined>(
     undefined,
   );
@@ -21,7 +25,7 @@ const useSlotEditModal = (params: UseSlotEditModalParams) => {
   useEffect(() => {
     setTitle(initTitle);
     setQuery(initQuery);
-    setErrorMessage('');
+    setErrorLocalizableMessage(null);
     setErrorElementName(undefined);
   }, [initTitle, initQuery]);
 
@@ -30,7 +34,7 @@ const useSlotEditModal = (params: UseSlotEditModalParams) => {
 
     if (slotValidationResult.isValid) {
       onSlotChange(title, query);
-      setErrorMessage('');
+      setErrorLocalizableMessage(null);
       return;
     }
 
@@ -47,9 +51,12 @@ const useSlotEditModal = (params: UseSlotEditModalParams) => {
     }
 
     setErrorElementName(focusElementName);
-    setErrorMessage(slotValidationResult.errorMessage);
+    setErrorLocalizableMessage(slotValidationResult.errorMessage);
   };
 
+  const errorMessage = errorLocalizableMessage
+    ? t(errorLocalizableMessage.key, errorLocalizableMessage.substitutions)
+    : '';
   const isTitleElementHasErrors = errorElementName === 'title';
   const isQueryElementHasErrors = errorElementName === 'query';
 

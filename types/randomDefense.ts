@@ -67,7 +67,7 @@ interface QuickSlotValidVerdict {
 
 interface QuickSlotInvalidVerdict {
   isValid: false;
-  errorMessage: string;
+  errorMessage: import('@/i18n').LocalizableMessage;
   focusElementName?: string;
 }
 

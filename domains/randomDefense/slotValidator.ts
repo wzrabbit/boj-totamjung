@@ -11,7 +11,10 @@ export const validateSlot = (
   if (title.length > TITLE_MAX_LENGTH) {
     return {
       isValid: false,
-      errorMessage: `추첨 이름의 길이가 너무 길어요. ${TITLE_MAX_LENGTH}자 이하가 되도록 줄여 주세요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.titleTooLong',
+        substitutions: [String(TITLE_MAX_LENGTH)],
+      },
       focusElementName: 'title',
     };
   }
@@ -19,7 +22,7 @@ export const validateSlot = (
   if (query.trim() === '') {
     return {
       isValid: false,
-      errorMessage: '쿼리는 비워둘 수 없어요. 쿼리를 입력해 주세요.',
+      errorMessage: { key: 'errors.randomDefenseForm.queryEmpty' },
       focusElementName: 'query',
     };
   }
@@ -27,7 +30,10 @@ export const validateSlot = (
   if (query.length > MAX_CUSTOM_QUERY_LENGTH) {
     return {
       isValid: false,
-      errorMessage: `쿼리의 길이가 너무 길어요. ${MAX_CUSTOM_QUERY_LENGTH}자 이하가 되도록 줄여 주세요.`,
+      errorMessage: {
+        key: 'errors.randomDefenseForm.queryTooLong',
+        substitutions: [String(MAX_CUSTOM_QUERY_LENGTH)],
+      },
       focusElementName: 'query',
     };
   }

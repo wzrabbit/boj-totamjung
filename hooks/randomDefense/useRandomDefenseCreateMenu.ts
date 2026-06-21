@@ -182,10 +182,7 @@ const useRandomDefenseCreateMenu = (
   };
 
   const errorMessage = errorLocalizableMessage
-    ? t(
-        errorLocalizableMessage.key,
-        errorLocalizableMessage.substitutions,
-      )
+    ? t(errorLocalizableMessage.key, errorLocalizableMessage.substitutions)
     : '';
 
   return {

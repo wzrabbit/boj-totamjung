@@ -64,7 +64,7 @@ const HiderFieldsetMenu = () => {
         isVertical={true}
         disabled={!shouldHideTier}
         options={[
-          { label: t('options.hider.doNotUse'), value: 'false' },
+          { label: t('options.hider.doNotWarn'), value: 'false' },
           {
             label: (
               <S.WarningTierLabel>

@@ -1,0 +1,13 @@
+import{j as u}from"./jsx-runtime-SwSI87LU.js";import{y as T}from"./styled-components.browser.esm-DmPUYCQi.js";import{I as h}from"./Input-Dals97Fw.js";import{r as d}from"./index-C5e9SFkp.js";import{t as f}from"./theme-C-IIZrvZ.js";import{u as y}from"./useTranslation-CHmiwnmk.js";const k=""+new URL("lock-with-clock-DphQokL3.png",import.meta.url).href,H=T.div`
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  height: 46px;
+`,x=T.span`
+  width: fit-content;
+
+  font-family: Pretendard;
+  font-size: 16px;
+  color: ${({theme:e})=>e.colors.OFF_WHITE};
+`,L=99,M=59,S=/^\d+$/,_=e=>S.test(e)&&Number(e)>=0&&Number(e)<=L,w=e=>S.test(e)&&Number(e)>=0&&Number(e)<=M,C=e=>{const{initHours:n,initMinutes:i,onChange:a}=e,[t,o]=d.useState(String(n)),[r,s]=d.useState(String(i));return d.useEffect(()=>{o(String(n)),s(String(i))},[n,i]),{hours:t,minutes:r,updateHours:c=>{const l=c.target.value;l.length>=3||o(l)},updateMinutes:c=>{const l=c.target.value;l.length>=3||s(l)},submitHours:()=>{if(!_(t)||Number(t)===n){o(String(n));return}o(String(Number(t))),a(Number(t),Number(r))},submitMinutes:()=>{if(!w(r)||Number(r)===i){s(String(i));return}s(String(Number(r))),a(Number(t),Number(r))}}},N=e=>{const{hours:n,minutes:i,disabled:a,onChange:t}=e,{hours:o,minutes:r,updateHours:s,updateMinutes:g,submitHours:p,submitMinutes:b}=C({initHours:n,initMinutes:i,onChange:t}),{t:m}=y();return u.jsxs(H,{children:[u.jsx("img",{src:k,width:"54px",height:"46px",alt:""}),u.jsx(h,{name:"hours",type:"number",width:60,height:46,min:0,max:L,value:o,borderWidth:2,borderRadius:8,fontSize:26,fontWeight:800,color:f.colors.GOLD,textAlign:"center",disabled:a,onChange:s,onBlur:p,"aria-label":m("widget.tagLockTimer.hoursAriaLabel")}),u.jsx(x,{children:m("widget.tagLockTimer.hoursUnit")}),u.jsx(h,{name:"minutes",type:"number",width:60,height:46,min:0,max:M,value:r,borderWidth:2,borderRadius:8,fontSize:26,fontWeight:800,color:f.colors.GOLD,textAlign:"center",disabled:a,onChange:g,onBlur:b,"aria-label":m("widget.tagLockTimer.minutesAriaLabel")}),u.jsx(x,{children:m("widget.tagLockTimer.minutesUnit")})]})};try{N.displayName="ProblemTagLockTimer",N.__docgenInfo={description:"",displayName:"ProblemTagLockTimer",props:{hours:{defaultValue:null,description:"",name:"hours",required:!0,type:{name:"number"}},minutes:{defaultValue:null,description:"",name:"minutes",required:!0,type:{name:"number"}},disabled:{defaultValue:null,description:"",name:"disabled",required:!1,type:{name:"boolean"}},onChange:{defaultValue:null,description:"",name:"onChange",required:!0,type:{name:"(hours: number, minutes: number) => void"}}}}}catch{}export{N as P};

@@ -1,0 +1,11 @@
+import{R as m}from"./RandomDefenseCreateMenu-BZCFJHU1.js";import"./jsx-runtime-SwSI87LU.js";import"./index-C5e9SFkp.js";import"./NamedFrame-BHHwjqxM.js";import"./styled-components.browser.esm-DmPUYCQi.js";import"./Input-Dals97Fw.js";import"./toPx-DeOSKary.js";import"./getTransparentHexColor-DN69VCBw.js";import"./theme-C-IIZrvZ.js";import"./TextLink-BhnHPjL5.js";import"./ErrorText-CryoO5wa.js";import"./warning-CDzyeWVE.js";import"./Text-DkpU561P.js";import"./RandomDefenseCreateButton-DYYcu876.js";import"./useTranslation-CHmiwnmk.js";import"./RandomDefenseCapsuleButton-BZXQhXSg.js";import"./DifficultyAdjustMenu-m70cXpae.js";import"./TierSlider-5dBVNnml.js";import"./typeGuards-DnhUVcj4.js";import"./TierRange--YUAPKMG.js";import"./index-CElCL35T.js";import"./TierPresetButtonList-GeSYt4lG.js";import"./TierPresetButton-BvASmFbj.js";import"./SearchOperatorSelect-Cme_kog4.js";import"./check-BDBG6Lff.js";import"./AlgorithmSearchInput-J6chOaqt.js";import"./MiniAlgorithmButton-DPTcHpX1.js";import"./getSearchResults-B9fljDQH.js";import"./algorithmInfos-yvhlfANf.js";import"./randomDefense-JL_bjho1.js";import"./useRovingFocus-B429qbOp.js";import"./Select-DkpS9sOg.js";import"./useSelect-BAxy8jk-.js";import"./QueryInput-D38iz6TF.js";const A={title:"components/RandomDefenseCreateMenu",component:m,argTypes:{selectedSlotNo:{description:"현재 선택되어 있는 슬롯의 번호입니다."},isLoaded:{description:"본 컴포넌트가 로드되었는지를 의미합니다."},onSubmit:{description:"사용자가 추첨 생성 버튼을 눌러 새로운 추첨 결과를 생성하기 위해 정보를 보낼 때 실행시킬 콜백 함수입니다."}},parameters:{docs:{description:{component:"`RandomDefenseCreateMenu`는 추첨 생성을 위한 메뉴입니다."}}}},o={args:{selectedSlotNo:1,isLoaded:!0,onSubmit:i=>{alert(`이 알림창이 떴다는 것은 검증 결과 [성공]을 의미합니다. 이제 부모로부터 전달받은 아래의 함수를 실행해, 본격적인 추첨 생성 작업을 시작하겠죠.
+
+onSubmit(${JSON.stringify(i)})`)}}};var t,r,e;o.parameters={...o.parameters,docs:{...(t=o.parameters)==null?void 0:t.docs,source:{originalSource:`{
+  args: {
+    selectedSlotNo: 1,
+    isLoaded: true,
+    onSubmit: randomDefenseFormData => {
+      alert(\`이 알림창이 떴다는 것은 검증 결과 [성공]을 의미합니다. 이제 부모로부터 전달받은 아래의 함수를 실행해, 본격적인 추첨 생성 작업을 시작하겠죠.\\n\\nonSubmit(\${JSON.stringify(randomDefenseFormData)})\`);
+    }
+  }
+}`,...(e=(r=o.parameters)==null?void 0:r.docs)==null?void 0:e.source}}};const B=["Default"];export{o as Default,B as __namedExportsOrder,A as default};

@@ -14,6 +14,17 @@ const breathe = keyframes`
   }
 `;
 
+const sleepBreathe = keyframes`
+  0%,
+  100% {
+    transform: scale(100%);
+  }
+
+  50% {
+    transform: scale(101.5%);
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
 
@@ -37,16 +48,34 @@ export const OptionsBody = styled.main`
 `;
 
 export const TotamjungImageWrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
+  position: relative;
 
   width: 250px;
 `;
 
-export const TotamjungImage = styled.img`
+export const StandingTotamjungImage = styled.img<{ $visible: boolean }>`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
   width: 250px;
   height: 331px;
 
+  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transform-origin: bottom;
+  transition: opacity 1.5s ease;
   animation: ${breathe} 3s forwards infinite;
+`;
+
+export const SleepingTotamjungImage = styled.img<{ $visible: boolean }>`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 350px;
+  height: auto;
+
+  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+  transition: opacity 1.5s ease;
+  animation: ${sleepBreathe} 4s ease-in-out infinite;
 `;
